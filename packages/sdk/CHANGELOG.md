@@ -1,5 +1,11 @@
 # @esphome/compose
 
+## 0.1.1
+
+### Patch Changes
+
+- [#7](https://github.com/xmlguy74/espcompose/pull/7) [`3e04425`](https://github.com/xmlguy74/espcompose/commit/3e04425aa3b46c0618d614d80fce96d2eb3e9494) Thanks [@xmlguy74](https://github.com/xmlguy74)! - Pipline related fix
+
 ## 0.1.0
 
 ### Minor Changes
