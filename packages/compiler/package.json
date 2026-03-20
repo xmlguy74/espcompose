@@ -30,6 +30,9 @@
   ],
   "author": "",
   "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
   "dependencies": {
     "@esphome/compose": "workspace:*",
     "@esphome/compose-eslint": "workspace:*",

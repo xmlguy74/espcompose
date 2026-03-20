@@ -27,7 +27,7 @@ There is no JavaScript runtime on the device. ESPHome Compose is purely a build-
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) 18+
+- [Node.js](https://nodejs.org/) 22+
 - [pnpm](https://pnpm.io/) (for development)
 - [ESPHome](https://esphome.io/guides/installing_esphome) (only needed for `config`, `compile`, `run`, and `logs` commands)
 
