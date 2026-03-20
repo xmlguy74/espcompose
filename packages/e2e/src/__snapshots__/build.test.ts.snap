@@ -1,0 +1,265 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ESPHome Compose Build > basic-device 1`] = `
+"esphome:
+  name: basic-device
+  comment: A basic ESPHome device
+esp32:
+  board: esp32dev
+  framework:
+    type: esp-idf
+wifi:
+  ssid: HomeWifi
+  password: s3cr3t!!
+api:
+ota:
+  platform: esphome
+logger:
+  level: DEBUG
+"
+`;
+
+exports[`ESPHome Compose Build > dashboard-device 1`] = `
+"esphome:
+  name: living-room-dashboard
+  friendly_name: Living Room Dashboard
+  comment: A custom Home Assistant dashboard.
+  min_version: 2026.1.0
+esp32:
+  variant: ESP32P4
+  flash_size: 32MB
+  cpu_frequency: 360MHZ
+  framework:
+    type: esp-idf
+    version: latest
+    advanced:
+      enable_idf_experimental_features: true
+esp32_hosted:
+  variant: ESP32C6
+  reset_pin: 54
+  cmd_pin: 19
+  clk_pin: 18
+  d0_pin: 14
+  d1_pin: 15
+  d2_pin: 16
+  d3_pin: 17
+  active_high: true
+psram:
+  mode: hex
+  speed: 200MHz
+preferences:
+  flash_write_interval: 5min
+esp_ldo:
+  voltage: 2.5V
+  channel: "3"
+i2c:
+  id: r_ref0
+  sda: 7
+  scl: 8
+  frequency: 400kHz
+  scan: true
+touchscreen:
+  platform: gt911
+  i2c_id: r_ref0
+  display: r_ref1
+  update_interval: 50ms
+  transform:
+    swap_xy: true
+    mirror_x: true
+    mirror_y: false
+output:
+  id: r_ref2
+  platform: ledc
+  pin: 26
+  frequency: 1000Hz
+light:
+  platform: monochromatic
+  output: r_ref2
+  name: Display Backlight
+  icon: mdi:lightbulb-on
+  restore_mode: ALWAYS_ON
+  default_transition_length:
+    milliseconds: 250
+display:
+  id: r_ref1
+  platform: mipi_dsi
+  model: WAVESHARE-P4-NANO-10.1
+  rotation: 270
+i2s_audio:
+  id: r_ref3
+  i2s_mclk_pin: 13
+  i2s_lrclk_pin: 10
+  i2s_bclk_pin: 12
+audio_dac:
+  platform: es8311
+  i2c_id: r_ref0
+  address: 24
+audio_adc:
+  platform: es7210
+  i2c_id: r_ref0
+  address: 64
+microphone:
+  platform: i2s_audio
+  i2s_audio_id: r_ref3
+  i2s_din_pin: 11
+  sample_rate: 16000
+  bits_per_sample: 16bit
+  adc_type: external
+speaker:
+  - id: r_ref4
+    platform: i2s_audio
+    i2s_audio_id: r_ref3
+    i2s_dout_pin: 9
+    dac_type: external
+    channel: mono
+    buffer_ref5: 100ms
+    bits_per_sample: 16bit
+    sample_rate: 48000
+  - platform: mixer
+    output_speaker: r_ref4
+    source_speakers:
+      - id: r_ref6
+        timeout: never
+      - id: r_ref7
+        timeout: never
+  - id: r_ref8
+    platform: resampler
+    output_speaker: r_ref6
+    sample_rate: 48000
+    bits_per_sample: 16
+  - platform: resampler
+    output_speaker: r_ref7
+    sample_rate: 48000
+    bits_per_sample: 16
+rtttl:
+  speaker: r_ref8
+switch:
+  platform: gpio
+  pin: 53
+  name: Speaker Enable
+  icon: mdi:speaker
+  entity_category: config
+  restore_mode: RESTORE_DEFAULT_ON
+wifi:
+  networks:
+    - ssid: HomeWifi
+      password: s3cr3t!!
+  power_save_mode: NONE
+  fast_connect: true
+  ap:
+    password: password1234
+api:
+captive_portal:
+web_server:
+  port: 80
+  version: "3"
+ota:
+  platform: esphome
+logger:
+  level: DEBUG
+  hardware_uart: UART0
+  logs:
+    lvgl: INFO
+binary_sensor:
+  - platform: homeassistant
+    name: Kitchen Floods
+    entity_id: light.kitchen_floods
+    trigger_on_initial_state: true
+  - platform: homeassistant
+    name: Living Room Light
+    entity_id: light.living_room
+    trigger_on_initial_state: true
+  - platform: homeassistant
+    name: Front Door
+    entity_id: binary_sensor.front_door_sensor_window_door_is_open
+    trigger_on_initial_state: true
+  - platform: homeassistant
+    name: Back Door
+    entity_id: binary_sensor.back_door_sensor_window_door_is_open_2
+    trigger_on_initial_state: true
+  - platform: homeassistant
+    name: Living Room Motion
+    entity_id: binary_sensor.living_room_motion_sensor_motion_detection
+    trigger_on_initial_state: true
+lvgl:
+  displays:
+    - r_ref1
+"
+`;
+
+exports[`ESPHome Compose Build > function-component-device 1`] = `
+"esphome:
+  name: component-device
+  comment: Device built from function components
+esp32:
+  board: esp32dev
+  framework:
+    type: esp-idf
+wifi:
+  ssid: HomeWifi
+  password: s3cr3t!!
+api:
+ota:
+  platform: esphome
+logger:
+  level: INFO
+"
+`;
+
+exports[`ESPHome Compose Build > script-device 1`] = `
+"esphome:
+  name: script-device
+  comment: Device using function-as-script authoring
+esp32:
+  board: esp32dev
+  framework:
+    type: esp-idf
+wifi:
+  ssid: HomeWifi
+  password: s3cr3t!!
+api:
+logger:
+  level: INFO
+binary_sensor:
+  platform: gpio
+  pin: 4
+  name: Button
+  on_press:
+    - script.execute: greet
+  on_release:
+    - delay: 100ms
+script:
+  - id: greet
+    then:
+      - logger.log: Hello from ESPCompose!
+      - delay: 500ms
+"
+`;
+
+exports[`ESPHome Compose Build > sensor-device 1`] = `
+"esphome:
+  name: sensor-device
+esp32:
+  board: esp32dev
+  framework:
+    type: esp-idf
+wifi:
+  ssid: HomeWifi
+  password: s3cr3t!!
+sensor:
+  platform: dht
+  pin: 4
+  model: DHT22
+  temperature:
+    name: Temperature
+  humidity:
+    name: Humidity
+binary_sensor:
+  platform: gpio
+  pin: 5
+  name: Motion Sensor
+  device_class: motion
+logger:
+  level: INFO
+"
+`;

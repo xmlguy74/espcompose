@@ -1,0 +1,45 @@
+{
+  "name": "@esphome/compose",
+  "version": "0.0.1",
+  "description": "ESPHome Compose SDK - TypeScript framework for generating ESPHome YAML",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./tsconfig.sdk.json": "./tsconfig.sdk.json"
+  },
+  "files": [
+    "dist",
+    "tsconfig.sdk.json"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts --tsconfig tsconfig.json",
+    "clean": "rimraf dist",
+    "codegen": "tsx tools/codegen/generate.ts",
+    "lint": "eslint --ext .ts,.tsx src",
+    "test": "echo \"No tests yet\""
+  },
+  "keywords": ["esphome", "typescript", "yaml", "sdk"],
+  "author": "",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "yaml": "catalog:"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "catalog:",
+    "@typescript-eslint/parser": "catalog:",
+    "@types/node": "catalog:",
+    "eslint": "catalog:",
+    "tsup": "catalog:",
+    "tsx": "catalog:",
+    "typescript": "catalog:"
+  }
+}

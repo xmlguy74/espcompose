@@ -1,0 +1,54 @@
+// AUTO-GENERATED — DO NOT EDIT.
+// Regenerate with: pnpm --filter @esphome/compose codegen
+
+/* eslint-disable */
+
+import type { ComponentProps, Pin, Ref } from "../../types";
+import type { _CoreComponent } from "../bases";
+import type { hlk_fm22x_HlkFm22xComponent, uart_UARTComponent } from "../markers";
+export interface HlkFm22xProps extends _CoreComponent {
+    /**
+     * [Automation](/automations/): An action to be performed when an enrolled face is scanned and recognized. See [`on_face...
+     * @yamlKey on_face_scan_matched
+     */
+    onFaceScanMatched?: () => void;
+    /**
+     * [Automation](/automations/): An action to be performed when an unknown face is scanned. See [`on_face_scan_unmatched`...
+     * @yamlKey on_face_scan_unmatched
+     */
+    onFaceScanUnmatched?: () => void;
+    /**
+     * [Automation](/automations/): An action to be performed when the face scan failed. See [`on_face_scan_invalid`](https:...
+     * @yamlKey on_face_scan_invalid
+     */
+    onFaceScanInvalid?: () => void;
+    /**
+     * [Automation](/automations/): An action to be performed when face information is available. See [`on_face_info`](https...
+     * @yamlKey on_face_info
+     */
+    onFaceInfo?: () => void;
+    /**
+     * [Automation](/automations/): An action to be performed when a face enrollment step is successful. See [`on_enrollment...
+     * @yamlKey on_enrollment_done
+     */
+    onEnrollmentDone?: () => void;
+    /**
+     * [Automation](/automations/): An action to be performed when a face enrollment step failed. See [`on_enrollment_failed...
+     * @yamlKey on_enrollment_failed
+     */
+    onEnrollmentFailed?: () => void;
+    /** @yamlKey update_interval */
+    updateInterval?: unknown;
+    /**
+     * ID: Manually specify the ID of the UART hub.
+     * @yamlKey uart_id
+     */
+    uartId?: Ref<uart_UARTComponent>;
+}
+declare global {
+    namespace JSX {
+        interface IntrinsicElements {
+            hlk_fm22x: HlkFm22xProps & ComponentProps<hlk_fm22x_HlkFm22xComponent>;
+        }
+    }
+}

@@ -1,0 +1,20 @@
+// AUTO-GENERATED — DO NOT EDIT.
+// Regenerate with: pnpm --filter @esphome/compose codegen
+
+/* eslint-disable */
+
+import type { ComponentProps, Pin, Ref } from "../../types";
+import type { _CoreComponent } from "../bases";
+import type { i2c_I2CBus, ttp229_lsf_TTP229LSFComponent } from "../markers";
+export interface Ttp229LsfProps extends _CoreComponent {
+    /** @yamlKey i2c_id */
+    i2cId?: Ref<i2c_I2CBus>;
+    address?: unknown;
+}
+declare global {
+    namespace JSX {
+        interface IntrinsicElements {
+            ttp229_lsf: Ttp229LsfProps & ComponentProps<ttp229_lsf_TTP229LSFComponent>;
+        }
+    }
+}
