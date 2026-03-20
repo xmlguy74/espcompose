@@ -21,7 +21,7 @@
     "build": "tsup src/index.ts --format cjs,esm --dts --tsconfig tsconfig.json",
     "clean": "rimraf dist",
     "codegen": "tsx tools/codegen/generate.ts",
-    "lint": "eslint --ext .ts,.tsx src",
+    "lint": "eslint src",
     "test": "echo \"No tests yet\""
   },
   "keywords": ["esphome", "typescript", "yaml", "sdk"],
@@ -34,8 +34,7 @@
     "yaml": "catalog:"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "catalog:",
-    "@typescript-eslint/parser": "catalog:",
+    "typescript-eslint": "catalog:",
     "@types/node": "catalog:",
     "eslint": "catalog:",
     "tsup": "catalog:",

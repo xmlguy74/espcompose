@@ -2,21 +2,22 @@
   "name": "@esphome/compose-eslint",
   "version": "0.0.1",
   "description": "ESLint plugin with custom rules for ESPHome Compose projects",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/index.mjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.mts",
   "exports": {
     ".": {
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
     }
   },
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --format cjs --dts",
+    "build": "tsup src/index.ts --format esm --dts",
     "clean": "rimraf dist",
-    "lint": "eslint --ext .ts src",
+    "lint": "eslint src",
     "test": "echo \"No tests yet\""
   },
   "keywords": ["esphome", "typescript", "eslint", "eslint-plugin"],
@@ -25,13 +26,13 @@
   "publishConfig": {
     "access": "public"
   },
+  "dependencies": {
+    "typescript-eslint": "catalog:"
+  },
   "peerDependencies": {
-    "eslint": ">=8.0.0"
+    "eslint": ">=9.0.0"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "catalog:",
-    "@typescript-eslint/parser": "catalog:",
-    "@types/eslint": "catalog:",
     "eslint": "catalog:",
     "tsup": "catalog:",
     "typescript": "catalog:"

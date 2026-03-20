@@ -30,9 +30,11 @@
     "@changesets/cli": "^2.29.0",
     "@commitlint/cli": "^20.5.0",
     "@commitlint/config-conventional": "^20.5.0",
+    "eslint": "catalog:",
     "husky": "^9.1.7",
     "rimraf": "catalog:",
     "turbo": "catalog:",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "typescript-eslint": "catalog:"
   }
 }
