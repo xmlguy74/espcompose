@@ -1,6 +1,6 @@
 {
   "name": "@esphome/compose",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "ESPHome Compose SDK - TypeScript framework for generating ESPHome YAML",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -24,7 +24,12 @@
     "lint": "eslint src",
     "test": "echo \"No tests yet\""
   },
-  "keywords": ["esphome", "typescript", "yaml", "sdk"],
+  "keywords": [
+    "esphome",
+    "typescript",
+    "yaml",
+    "sdk"
+  ],
   "author": "",
   "license": "MIT",
   "publishConfig": {

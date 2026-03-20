@@ -1,6 +1,6 @@
 {
   "name": "@esphome/compose-eslint",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "ESLint plugin with custom rules for ESPHome Compose projects",
   "main": "dist/index.mjs",
   "module": "dist/index.mjs",
@@ -20,7 +20,12 @@
     "lint": "eslint src",
     "test": "echo \"No tests yet\""
   },
-  "keywords": ["esphome", "typescript", "eslint", "eslint-plugin"],
+  "keywords": [
+    "esphome",
+    "typescript",
+    "eslint",
+    "eslint-plugin"
+  ],
   "author": "",
   "license": "MIT",
   "publishConfig": {
