@@ -1,0 +1,20 @@
+// AUTO-GENERATED — DO NOT EDIT.
+// Regenerate with: pnpm --filter @esphome/compose codegen
+
+/* eslint-disable */
+
+import type { ComponentProps, Pin, Ref } from "../../types";
+import type { qr_code_QrCode } from "../markers";
+export interface QrCodeProps {
+    /** string: The string which you want to encode in the QR-code. */
+    value: string;
+    /** string: The error correction code level you want to use. Defaults to `LOW`. You can use one of the following values: */
+    ecc?: "LOW" | "MEDIUM" | "QUARTILE" | "HIGH";
+}
+declare global {
+    namespace JSX {
+        interface IntrinsicElements {
+            qr_code: QrCodeProps & ComponentProps<qr_code_QrCode>;
+        }
+    }
+}

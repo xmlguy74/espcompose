@@ -1,0 +1,21 @@
+{
+  "name": "@esphome/compose-e2e",
+  "version": "0.0.1",
+  "private": true,
+  "description": "End-to-end tests for the ESPHome Compose pipeline",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "build": "echo \"no build step for e2e\""
+  },
+  "dependencies": {
+    "@esphome/compose": "workspace:*",
+    "@esphome/compose-compiler": "workspace:*",
+    "yaml": "catalog:"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
+  }
+}

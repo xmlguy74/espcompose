@@ -1,0 +1,22 @@
+// AUTO-GENERATED — DO NOT EDIT.
+// Regenerate with: pnpm --filter @esphome/compose codegen
+
+/* eslint-disable */
+
+import type { ComponentProps, Pin, Ref } from "../../types";
+import type { _CoreComponent } from "../bases";
+import type { gdk101_GDK101Component, i2c_I2CBus } from "../markers";
+export interface Gdk101Props extends _CoreComponent {
+    /** @yamlKey update_interval */
+    updateInterval?: unknown;
+    /** @yamlKey i2c_id */
+    i2cId?: Ref<i2c_I2CBus>;
+    address?: unknown;
+}
+declare global {
+    namespace JSX {
+        interface IntrinsicElements {
+            gdk101: Gdk101Props & ComponentProps<gdk101_GDK101Component>;
+        }
+    }
+}

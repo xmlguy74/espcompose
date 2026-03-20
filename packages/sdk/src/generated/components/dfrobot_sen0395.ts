@@ -1,0 +1,21 @@
+// AUTO-GENERATED — DO NOT EDIT.
+// Regenerate with: pnpm --filter @esphome/compose codegen
+
+/* eslint-disable */
+
+import type { ComponentProps, Pin, Ref } from "../../types";
+import type { dfrobot_sen0395_DfrobotSen0395Component, uart_UARTComponent } from "../markers";
+export interface DfrobotSen0395Props {
+    /**
+     * [ID](/guides/configuration-types#id): Manually specify the ID of the [Uart](/components/uart/) if you want to use mul...
+     * @yamlKey uart_id
+     */
+    uartId?: Ref<uart_UARTComponent>;
+}
+declare global {
+    namespace JSX {
+        interface IntrinsicElements {
+            dfrobot_sen0395: DfrobotSen0395Props & ComponentProps<dfrobot_sen0395_DfrobotSen0395Component>;
+        }
+    }
+}

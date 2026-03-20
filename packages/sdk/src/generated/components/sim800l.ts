@@ -1,0 +1,46 @@
+// AUTO-GENERATED — DO NOT EDIT.
+// Regenerate with: pnpm --filter @esphome/compose codegen
+
+/* eslint-disable */
+
+import type { ComponentProps, Pin, Ref } from "../../types";
+import type { _CoreComponent } from "../bases";
+import type { sim800l_Sim800LComponent, uart_UARTComponent } from "../markers";
+export interface Sim800lProps extends _CoreComponent {
+    /**
+     * [Automation](/automations): An action to be performed when an SMS is received. See [`on_sms_received` Trigger](https:...
+     * @yamlKey on_sms_received
+     */
+    onSmsReceived?: () => void;
+    /**
+     * [Automation](/automations): An action to be performed when a call is received. See [`on_incoming_call` Trigger](https...
+     * @yamlKey on_incoming_call
+     */
+    onIncomingCall?: () => void;
+    /**
+     * [Automation](/automations): An action to be performed when a call is connected, either because an outgoing call accep...
+     * @yamlKey on_call_connected
+     */
+    onCallConnected?: () => void;
+    /**
+     * [Automation](/automations): An action to be performed when a call is disconnected.
+     * @yamlKey on_call_disconnected
+     */
+    onCallDisconnected?: () => void;
+    /** @yamlKey on_ussd_received */
+    onUssdReceived?: () => void;
+    /** @yamlKey update_interval */
+    updateInterval?: unknown;
+    /**
+     * [ID](/guides/configuration-types#id): Manually specify the ID of the UART hub.
+     * @yamlKey uart_id
+     */
+    uartId?: Ref<uart_UARTComponent>;
+}
+declare global {
+    namespace JSX {
+        interface IntrinsicElements {
+            sim800l: Sim800lProps & ComponentProps<sim800l_Sim800LComponent>;
+        }
+    }
+}

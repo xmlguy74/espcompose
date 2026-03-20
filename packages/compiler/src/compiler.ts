@@ -1,0 +1,282 @@
+import * as esbuild from 'esbuild';
+import * as fs from 'fs';
+import * as path from 'path';
+import { createRequire } from 'module';
+import ts from 'typescript';
+import { ESPCompose } from '@esphome/compose';
+import { applyTransform } from './transform/index.js';
+
+export interface CompileOptions {
+  /** Absolute path to the TSX/TS entry file. */
+  entryFile: string;
+  /** Absolute path to the YAML output file. */
+  outFile: string;
+}
+
+// ────────────────────────────────────────────────────────────────────────────
+// Phase 0: Type-check
+// ────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Run the TypeScript compiler over the entry file and its transitive imports,
+ * returning the ts.Program for reuse by Phase 1.
+ *
+ * Uses the project's own tsconfig.json when one can be located (by walking up
+ * from the entry file's directory), falling back to sensible JSX defaults so
+ * the check can still run for projects without a tsconfig.
+ *
+ * Throws a descriptive error if any type errors are found.
+ */
+async function typeCheck(entryFile: string): Promise<ts.Program> {
+  const projectDir = path.dirname(entryFile);
+  const tsConfigPath = ts.findConfigFile(projectDir, ts.sys.fileExists, 'tsconfig.json');
+
+  let compilerOptions: ts.CompilerOptions;
+  if (tsConfigPath) {
+    const configFile = ts.readConfigFile(tsConfigPath, ts.sys.readFile);
+    if (configFile.error) {
+      const message = ts.flattenDiagnosticMessageText(configFile.error.messageText, '\n');
+      throw new Error(`Error reading tsconfig.json: ${message}`);
+    }
+    const parsedConfig = ts.parseJsonConfigFileContent(
+      configFile.config,
+      ts.sys,
+      path.dirname(tsConfigPath),
+    );
+    compilerOptions = parsedConfig.options;
+  } else {
+    compilerOptions = {
+      target: ts.ScriptTarget.ES2022,
+      moduleResolution: ts.ModuleResolutionKind.Bundler,
+      jsx: ts.JsxEmit.React,
+      jsxFactory: 'ESPCompose.createElement',
+      jsxFragmentFactory: 'ESPCompose.Fragment',
+      strict: true,
+      esModuleInterop: true,
+      skipLibCheck: true,
+    };
+  }
+
+  const program = ts.createProgram([entryFile], compilerOptions);
+  const diagnostics = ts.getPreEmitDiagnostics(program);
+
+  const errors = Array.from(diagnostics).filter(
+    (d) =>
+      d.category === ts.DiagnosticCategory.Error &&
+      d.file !== undefined &&
+      !d.file.fileName.includes('node_modules'),
+  );
+
+  if (errors.length > 0) {
+    const formatted = errors.map((d) => {
+      const message = ts.flattenDiagnosticMessageText(d.messageText, '\n');
+      if (d.file && d.start !== undefined) {
+        const { line, character } = d.file.getLineAndCharacterOfPosition(d.start);
+        const relFile = path.relative(process.cwd(), d.file.fileName);
+        return `  error ${relFile}:${line + 1}:${character + 1} - ${message}`;
+      }
+      return `  error ${message}`;
+    });
+    throw new Error(
+      `TypeScript type-check failed with ${errors.length} error(s):\n${formatted.join('\n')}`,
+    );
+  }
+
+  return program;
+}
+
+// ────────────────────────────────────────────────────────────────────────────
+// Phase 1: Transform  (TypeScript AST transformation)
+// ────────────────────────────────────────────────────────────────────────────
+
+interface TransformResult {
+  /** Resolved path of the (potentially transformed) entry file to bundle. */
+  entryFile: string;
+  /** Temp file path created by the transform, if any — cleaned up by caller. */
+  tempFile: string | null;
+}
+
+/**
+ * Apply the TypeScript AST transformation step (Phase 1).
+ *
+ * Detects top-level `function` declarations and rewrites them as ESPHome
+ * `<script>` elements. Trigger props (those starting with `on`) referencing
+ * function declarations or inline arrow functions are also rewritten into
+ * ESPHome action arrays.
+ *
+ * If no function declarations are detected the original entry file is
+ * returned unchanged and no temp file is written.
+ */
+async function transform(options: CompileOptions, program: ts.Program): Promise<TransformResult> {
+  const result = await applyTransform({ entryFile: options.entryFile, program });
+
+  if (result.diagnostics.length > 0) {
+    const formatted = result.diagnostics.map((d) => {
+      const loc = d.line != null ? `:${d.line}:${d.character ?? 1}` : '';
+      return `  transform ${d.file}${loc} - ${d.message}`;
+    });
+    throw new Error(
+      `Script transformation failed with ${result.diagnostics.length} error(s):\n${formatted.join('\n')}`,
+    );
+  }
+
+  return { entryFile: result.entryFile, tempFile: result.tempFile };
+}
+
+// ────────────────────────────────────────────────────────────────────────────
+// Phase 2: Bundle
+// ────────────────────────────────────────────────────────────────────────────
+
+async function bundle(entryFile: string, outFile: string): Promise<void> {
+  const result = await esbuild.build({
+    entryPoints: [entryFile],
+    bundle: true,
+    platform: 'node',
+    format: 'cjs',
+    target: 'node18',
+    jsx: 'transform',
+    jsxFactory: 'ESPCompose.createElement',
+    jsxFragment: 'ESPCompose.Fragment',
+    // Keep the SDK external — it will be require()'d from the host process
+    external: ['@esphome/compose'],
+    outfile: outFile,
+    sourcemap: false,
+  });
+
+  if (result.errors.length > 0) {
+    const messages = await esbuild.formatMessages(result.errors, { kind: 'error' });
+    throw new Error(`Bundle failed:\n${messages.join('\n')}`);
+  }
+}
+
+// ────────────────────────────────────────────────────────────────────────────
+// Phase 3: Execute + emit YAML
+// ────────────────────────────────────────────────────────────────────────────
+
+async function execute(bundleFile: string, outFile: string): Promise<void> {
+  // Use createRequire so this works correctly in both CJS and ESM contexts.
+  // Rooting the require at the bundle file itself means @esphome/compose
+  // resolves from the user's project node_modules (bundle sits next to source).
+  const _require = createRequire(bundleFile);
+
+  // Clear the require cache so re-runs in the same process get a fresh module
+  delete _require.cache[_require.resolve(bundleFile)];
+
+  // Load the SDK via the same CommonJS require that the bundle will use.
+  // This ensures _withScriptScope and useScript share the same module-level
+  // state, avoiding the ESM / CJS dual-instance problem where the compiler's
+  // statically-imported ESM copy and the user bundle's CJS copy would have
+  // separate hook state and never communicate.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const cjsSDK = (_require('@esphome/compose') as any).ESPCompose;
+
+  // Wrap the bundle load in a script scope.  useScript hook calls fire during
+  // module evaluation (when JSX prop values like `onPress={greet()}` are
+  // computed), so the scope only needs to be active during `_require(bundleFile)`.
+  const { result: mod, scripts } = cjsSDK.withScriptScope(() => {
+    return _require(bundleFile) as { default?: unknown };
+  });
+
+  const rootElement = mod.default;
+
+  if (rootElement == null) {
+    throw new Error(
+      `Entry module does not have a default export. ` +
+        `Make sure your TSX file exports a default ESPCompose element tree.`
+    );
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const config = cjsSDK.render(rootElement as any) as Record<string, unknown>;
+
+  // Prepend any registered scripts as a top-level `script:` section.
+  const withScripts: Record<string, unknown> =
+    scripts.length > 0
+      ? { ...config, script: scripts }
+      : config;
+
+  const yamlOutput = cjsSDK.toYAML(withScripts);
+
+  fs.mkdirSync(path.dirname(outFile), { recursive: true });
+  fs.writeFileSync(outFile, yamlOutput, 'utf8');
+}
+
+// ────────────────────────────────────────────────────────────────────────────
+// Public entry point
+// ────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Compile a TSX entry file into an ESPHome YAML configuration file.
+ *
+ * Pipeline:
+ *   [type-check] → [transform] → [esbuild bundle] → [require + render] → [write YAML]
+ */
+export async function compile(options: CompileOptions): Promise<void> {
+  const { entryFile, outFile } = options;
+
+  // Phase 0: Type-check — fail fast on any TypeScript errors before bundling.
+  // Returns the ts.Program so Phase 1 can reuse it without a second parse.
+  const program = await typeCheck(entryFile);
+
+  // Phase 1: Transform — rewrite function declarations into <script> elements
+  // and trigger props into ESPHome action arrays.
+  const { entryFile: transformedEntry, tempFile: transformTempFile } = await transform(
+    options,
+    program,
+  );
+
+  // Phase 2: Bundle to a temp CJS file that lives next to the entry file.
+  // This is important: @esphome/compose is marked external, so the bundle will
+  // emit a require('@esphome/compose') call. Node resolves that require from
+  // the bundle file's own directory — placing it next to the user's source
+  // ensures the workspace package is reachable via the project's node_modules.
+  const tmpBundle = path.join(
+    path.dirname(transformedEntry),
+    `.espcompose-tmp-${process.pid}-${Date.now()}.cjs`,
+  );
+
+  try {
+    await bundle(transformedEntry, tmpBundle);
+
+    // Phase 3: Execute the bundle and emit YAML
+    await execute(tmpBundle, outFile);
+  } finally {
+    if (fs.existsSync(tmpBundle)) {
+      fs.rmSync(tmpBundle);
+    }
+    // Clean up the Phase 1 temp file (if one was written)
+    if (transformTempFile && fs.existsSync(transformTempFile)) {
+      fs.rmSync(transformTempFile);
+    }
+  }
+}
+
+// ────────────────────────────────────────────────────────────────────────────
+// Project-level build entry point
+// ────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Build an ESPHome Compose project directory.
+ *
+ * Reads the `main` field from `<projectDir>/package.json` as the entry point
+ * and writes the generated YAML to `<projectDir>/.espcompose/esphome.yaml`.
+ *
+ * @param projectDir  Absolute path to the project directory.
+ */
+export async function build(projectDir: string): Promise<void> {
+  const pkgPath = path.join(projectDir, 'package.json');
+  if (!fs.existsSync(pkgPath)) {
+    throw new Error(`No package.json found in project directory: ${projectDir}`);
+  }
+
+  const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8')) as { main?: string };
+  if (!pkg.main) {
+    throw new Error(`package.json is missing a "main" field: ${pkgPath}`);
+  }
+
+  const entryFile = path.resolve(projectDir, pkg.main);
+  const outFile = path.join(projectDir, '.espcompose', 'esphome.yaml');
+
+  await compile({ entryFile, outFile });
+}

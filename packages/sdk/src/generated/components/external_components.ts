@@ -1,0 +1,19 @@
+// AUTO-GENERATED — DO NOT EDIT.
+// Regenerate with: pnpm --filter @esphome/compose codegen
+
+/* eslint-disable */
+
+import type { ComponentProps, Pin } from "../../types";
+export interface ExternalComponentsProps {
+    /** Repository type. One of `local`, `git`. */
+    source: unknown;
+    refresh?: string;
+    components?: Array<string>;
+}
+declare global {
+    namespace JSX {
+        interface IntrinsicElements {
+            external_components: ExternalComponentsProps & ComponentProps;
+        }
+    }
+}

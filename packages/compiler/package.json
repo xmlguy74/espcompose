@@ -1,0 +1,47 @@
+{
+  "name": "@esphome/compose-compiler",
+  "version": "0.0.1",
+  "private": true,
+  "description": "ESPHome Compose Compiler - Bundles and executes TSX component trees into ESPHome YAML",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "clean": "rimraf dist",
+    "lint": "eslint --ext .ts src",
+    "test": "echo \"No tests yet\""
+  },
+  "keywords": [
+    "esphome",
+    "typescript",
+    "compiler",
+    "yaml"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@esphome/compose": "workspace:*",
+    "esbuild": "catalog:",
+    "typescript": "catalog:",
+    "which": "catalog:"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "catalog:",
+    "@typescript-eslint/parser": "catalog:",
+    "@types/node": "catalog:",
+    "@types/which": "catalog:",
+    "eslint": "catalog:",
+    "tsup": "catalog:"
+  }
+}

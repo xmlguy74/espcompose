@@ -1,0 +1,607 @@
+// AUTO-GENERATED — DO NOT EDIT.
+// Regenerate with: pnpm --filter @esphome/compose codegen
+
+/* eslint-disable */
+
+import type { ComponentProps, Pin, Ref } from "../../types";
+import type { _CoreComponent, _CoreEntityBase, _CoreMqttCommandComponent } from "../bases";
+import type { am43_Am43Component, binary_sensor_BinarySensor, ble_client_BLEClient, copy_CopyCover, cover_Cover, current_based_CurrentBasedCover, endstop_EndstopCover, feedback_FeedbackCover, he60r_HE60rCover, sensor_Sensor, template__TemplateCover, time_based_TimeBasedCover, tormatic_Tormatic, tuya_Tuya, tuya_TuyaCover, uart_UARTComponent, web_server_WebServer } from "../markers";
+interface CoverWebServerProps {
+    /** @yamlKey web_server_id */
+    webServerId?: Ref<web_server_WebServer>;
+    /** @yamlKey sorting_weight */
+    sortingWeight?: unknown;
+    /** @yamlKey sorting_group_id */
+    sortingGroupId?: number;
+}
+interface CurrentBasedOpenDurationProps {
+    days?: unknown;
+    hours?: unknown;
+    minutes?: unknown;
+    seconds?: unknown;
+    milliseconds?: unknown;
+    microseconds?: unknown;
+}
+interface CurrentBasedCloseDurationProps {
+    days?: unknown;
+    hours?: unknown;
+    minutes?: unknown;
+    seconds?: unknown;
+    milliseconds?: unknown;
+    microseconds?: unknown;
+}
+interface CurrentBasedMaxDurationProps {
+    days?: unknown;
+    hours?: unknown;
+    minutes?: unknown;
+    seconds?: unknown;
+    milliseconds?: unknown;
+    microseconds?: unknown;
+}
+interface CurrentBasedStartSensingDelayProps {
+    days?: unknown;
+    hours?: unknown;
+    minutes?: unknown;
+    seconds?: unknown;
+    milliseconds?: unknown;
+    microseconds?: unknown;
+}
+interface EndstopOpenDurationProps {
+    days?: unknown;
+    hours?: unknown;
+    minutes?: unknown;
+    seconds?: unknown;
+    milliseconds?: unknown;
+    microseconds?: unknown;
+}
+interface EndstopCloseDurationProps {
+    days?: unknown;
+    hours?: unknown;
+    minutes?: unknown;
+    seconds?: unknown;
+    milliseconds?: unknown;
+    microseconds?: unknown;
+}
+interface EndstopMaxDurationProps {
+    days?: unknown;
+    hours?: unknown;
+    minutes?: unknown;
+    seconds?: unknown;
+    milliseconds?: unknown;
+    microseconds?: unknown;
+}
+interface FeedbackOpenDurationProps {
+    days?: unknown;
+    hours?: unknown;
+    minutes?: unknown;
+    seconds?: unknown;
+    milliseconds?: unknown;
+    microseconds?: unknown;
+}
+interface FeedbackCloseDurationProps {
+    days?: unknown;
+    hours?: unknown;
+    minutes?: unknown;
+    seconds?: unknown;
+    milliseconds?: unknown;
+    microseconds?: unknown;
+}
+interface FeedbackMaxDurationProps {
+    days?: unknown;
+    hours?: unknown;
+    minutes?: unknown;
+    seconds?: unknown;
+    milliseconds?: unknown;
+    microseconds?: unknown;
+}
+interface FeedbackUpdateIntervalProps {
+    days?: unknown;
+    hours?: unknown;
+    minutes?: unknown;
+    seconds?: unknown;
+    milliseconds?: unknown;
+    microseconds?: unknown;
+}
+interface FeedbackDirectionChangeWaitTimeProps {
+    days?: unknown;
+    hours?: unknown;
+    minutes?: unknown;
+    seconds?: unknown;
+    milliseconds?: unknown;
+    microseconds?: unknown;
+}
+interface FeedbackAccelerationWaitTimeProps {
+    days?: unknown;
+    hours?: unknown;
+    minutes?: unknown;
+    seconds?: unknown;
+    milliseconds?: unknown;
+    microseconds?: unknown;
+}
+interface He60rOpenDurationProps {
+    days?: unknown;
+    hours?: unknown;
+    minutes?: unknown;
+    seconds?: unknown;
+    milliseconds?: unknown;
+    microseconds?: unknown;
+}
+interface He60rCloseDurationProps {
+    days?: unknown;
+    hours?: unknown;
+    minutes?: unknown;
+    seconds?: unknown;
+    milliseconds?: unknown;
+    microseconds?: unknown;
+}
+interface TimeBasedOpenDurationProps {
+    days?: unknown;
+    hours?: unknown;
+    minutes?: unknown;
+    seconds?: unknown;
+    milliseconds?: unknown;
+    microseconds?: unknown;
+}
+interface TimeBasedCloseDurationProps {
+    days?: unknown;
+    hours?: unknown;
+    minutes?: unknown;
+    seconds?: unknown;
+    milliseconds?: unknown;
+    microseconds?: unknown;
+}
+interface TormaticOpenDurationProps {
+    days?: unknown;
+    hours?: unknown;
+    minutes?: unknown;
+    seconds?: unknown;
+    milliseconds?: unknown;
+    microseconds?: unknown;
+}
+interface TormaticCloseDurationProps {
+    days?: unknown;
+    hours?: unknown;
+    minutes?: unknown;
+    seconds?: unknown;
+    milliseconds?: unknown;
+    microseconds?: unknown;
+}
+interface CoverBaseProps extends _CoreEntityBase, _CoreMqttCommandComponent {
+    /** @yamlKey web_server */
+    webServer?: CoverWebServerProps;
+    /** @yamlKey mqtt_json_state_payload */
+    mqttJsonStatePayload?: boolean;
+    /** @yamlKey device_class */
+    deviceClass?: "awning" | "blind" | "curtain" | "damper" | "door" | "" | "garage" | "gate" | "shade" | "shutter" | "window";
+    /** @yamlKey position_command_topic */
+    positionCommandTopic?: unknown;
+    /** @yamlKey position_state_topic */
+    positionStateTopic?: unknown;
+    /** @yamlKey tilt_command_topic */
+    tiltCommandTopic?: unknown;
+    /** @yamlKey tilt_state_topic */
+    tiltStateTopic?: unknown;
+    /** @yamlKey on_open */
+    onOpen?: () => void;
+    /** @yamlKey on_opened */
+    onOpened?: () => void;
+    /** @yamlKey on_closed */
+    onClosed?: () => void;
+    /** @yamlKey on_closing */
+    onClosing?: () => void;
+    /** @yamlKey on_opening */
+    onOpening?: () => void;
+    /** @yamlKey on_idle */
+    onIdle?: () => void;
+}
+interface Am43Props extends _CoreComponent {
+    /** int: The pin for the device, as set in the app. The default is usually printed on the device. Defaults to `8888`. */
+    pin?: number;
+    /**
+     * boolean: Inverts the position value to and from the device. Set if ESPHome is swapping around the open/close state of...
+     * @yamlKey invert_position
+     */
+    invertPosition?: boolean;
+    /**
+     * [ID](/guides/configuration-types#id): The id of the `ble_client` entry associated with the device.
+     * @yamlKey ble_client_id
+     */
+    bleClientId?: Ref<ble_client_BLEClient>;
+}
+interface CurrentBasedProps extends _CoreComponent {
+    /**
+     * [Action](/automations/actions#all-actions): The action that should be performed to stop the cover.
+     * @yamlKey stop_action
+     */
+    stopAction: () => void;
+    /**
+     * [ID](/guides/configuration-types#id): The open current sensor.
+     * @yamlKey open_sensor
+     */
+    openSensor: Ref<sensor_Sensor>;
+    /**
+     * float: The amount of current in Amps the motor should drain to consider the cover is opening.
+     * @yamlKey open_moving_current_threshold
+     */
+    openMovingCurrentThreshold: unknown;
+    /**
+     * float: The amount of current in Amps the motor should drain to consider the cover is blocked during opening.
+     * @yamlKey open_obstacle_current_threshold
+     */
+    openObstacleCurrentThreshold?: unknown;
+    /**
+     * [Action](/automations/actions#all-actions): The action that should be performed when the remote requests the cover to...
+     * @yamlKey open_action
+     */
+    openAction: () => void;
+    /**
+     * [Time](/guides/configuration-types#time): The amount of time it takes the cover to open up from the fully-closed state.
+     * @yamlKey open_duration
+     */
+    openDuration: CurrentBasedOpenDurationProps;
+    /**
+     * [ID](/guides/configuration-types#id): The close current sensor.
+     * @yamlKey close_sensor
+     */
+    closeSensor: Ref<sensor_Sensor>;
+    /**
+     * float: The amount of current in Amps the motor should drain to consider the cover is closing.
+     * @yamlKey close_moving_current_threshold
+     */
+    closeMovingCurrentThreshold: unknown;
+    /**
+     * float: The amount of current in Amps the motor should drain to consider the cover is blocked during closing.
+     * @yamlKey close_obstacle_current_threshold
+     */
+    closeObstacleCurrentThreshold?: unknown;
+    /**
+     * [Action](/automations/actions#all-actions): The action that should be performed when the remote requests the cover to...
+     * @yamlKey close_action
+     */
+    closeAction: () => void;
+    /**
+     * [Time](/guides/configuration-types#time): The amount of time it takes the cover to close from the fully-open state.
+     * @yamlKey close_duration
+     */
+    closeDuration: CurrentBasedCloseDurationProps;
+    /**
+     * percentage: The percentage of rollback the cover will perform in case of obstacle detection. Defaults to `10%`.
+     * @yamlKey obstacle_rollback
+     */
+    obstacleRollback?: unknown;
+    /**
+     * [Time](/guides/configuration-types#time): The maximum duration the cover should be opening or closing. Useful for pro...
+     * @yamlKey max_duration
+     */
+    maxDuration?: CurrentBasedMaxDurationProps;
+    /**
+     * boolean: Enable to detect malfunction detection (Typically welded relays). Defaults to `True`.
+     * @yamlKey malfunction_detection
+     */
+    malfunctionDetection?: boolean;
+    /**
+     * [Action](/automations/actions#all-actions): The action that should be performed when relay malfunction is detected. M...
+     * @yamlKey malfunction_action
+     */
+    malfunctionAction?: () => void;
+    /**
+     * [Time](/guides/configuration-types#time): The amount of time the current sensing will be disabled when the movement s...
+     * @yamlKey start_sensing_delay
+     */
+    startSensingDelay?: CurrentBasedStartSensingDelayProps;
+}
+interface EndstopProps extends _CoreComponent {
+    /**
+     * [Action](/automations/actions#all-actions): The action that should be performed when the remote requests the cover to...
+     * @yamlKey stop_action
+     */
+    stopAction: () => void;
+    /**
+     * [ID](/guides/configuration-types#id): The ID of the [Binary Sensor](/components/binary_sensor#config-binary_sensor) t...
+     * @yamlKey open_endstop
+     */
+    openEndstop: Ref<binary_sensor_BinarySensor>;
+    /**
+     * [Action](/automations/actions#all-actions): The action that should be performed when the remote requests the cover to...
+     * @yamlKey open_action
+     */
+    openAction: () => void;
+    /**
+     * [Time](/guides/configuration-types#time): The amount of time it takes the cover to open up from the fully-closed state.
+     * @yamlKey open_duration
+     */
+    openDuration: EndstopOpenDurationProps;
+    /**
+     * [Action](/automations/actions#all-actions): The action that should be performed when the remote requests the cover to...
+     * @yamlKey close_action
+     */
+    closeAction: () => void;
+    /**
+     * [ID](/guides/configuration-types#id): The ID of the [Binary Sensor](/components/binary_sensor#config-binary_sensor) t...
+     * @yamlKey close_endstop
+     */
+    closeEndstop: Ref<binary_sensor_BinarySensor>;
+    /**
+     * [Time](/guides/configuration-types#time): The amount of time it takes the cover to close from the fully-open state.
+     * @yamlKey close_duration
+     */
+    closeDuration: EndstopCloseDurationProps;
+    /**
+     * [Time](/guides/configuration-types#time): The maximum duration the cover should be opening or closing. Useful for pro...
+     * @yamlKey max_duration
+     */
+    maxDuration?: EndstopMaxDurationProps;
+}
+interface FeedbackProps extends _CoreComponent {
+    /**
+     * [Action](/automations/actions#all-actions): The action that should be performed when the remote requests the cover to...
+     * @yamlKey stop_action
+     */
+    stopAction: () => void;
+    /**
+     * [Action](/automations/actions#all-actions): The action that should be performed when the remote requests the cover to...
+     * @yamlKey open_action
+     */
+    openAction: () => void;
+    /**
+     * [Time](/guides/configuration-types#time): The amount of time it takes the cover to open up from the fully-closed state.
+     * @yamlKey open_duration
+     */
+    openDuration: FeedbackOpenDurationProps;
+    /**
+     * [ID](/guides/configuration-types#id): The ID of the [Binary Sensor](/components/binary_sensor#config-binary_sensor) t...
+     * @yamlKey open_endstop
+     */
+    openEndstop?: Ref<binary_sensor_BinarySensor>;
+    /**
+     * [ID](/guides/configuration-types#id): The ID of the [Binary Sensor](/components/binary_sensor#config-binary_sensor) t...
+     * @yamlKey open_sensor
+     */
+    openSensor?: Ref<binary_sensor_BinarySensor>;
+    /**
+     * [ID](/guides/configuration-types#id): The ID of the [Binary Sensor](/components/binary_sensor#config-binary_sensor) t...
+     * @yamlKey open_obstacle_sensor
+     */
+    openObstacleSensor?: Ref<binary_sensor_BinarySensor>;
+    /**
+     * [Action](/automations/actions#all-actions): The action that should be performed when the remote requests the cover to...
+     * @yamlKey close_action
+     */
+    closeAction: () => void;
+    /**
+     * [Time](/guides/configuration-types#time): The amount of time it takes the cover to close from the fully-open state.
+     * @yamlKey close_duration
+     */
+    closeDuration: FeedbackCloseDurationProps;
+    /**
+     * [ID](/guides/configuration-types#id): The ID of the [Binary Sensor](/components/binary_sensor#config-binary_sensor) t...
+     * @yamlKey close_endstop
+     */
+    closeEndstop?: Ref<binary_sensor_BinarySensor>;
+    /**
+     * [ID](/guides/configuration-types#id): The ID of the [Binary Sensor](/components/binary_sensor#config-binary_sensor) t...
+     * @yamlKey close_sensor
+     */
+    closeSensor?: Ref<binary_sensor_BinarySensor>;
+    /**
+     * [ID](/guides/configuration-types#id): The ID of the [Binary Sensor](/components/binary_sensor#config-binary_sensor) t...
+     * @yamlKey close_obstacle_sensor
+     */
+    closeObstacleSensor?: Ref<binary_sensor_BinarySensor>;
+    /**
+     * [Time](/guides/configuration-types#time): The maximum duration the cover should be opening or closing. Useful for pro...
+     * @yamlKey max_duration
+     */
+    maxDuration?: FeedbackMaxDurationProps;
+    /**
+     * boolean: Indicates that the cover has built in end stop detectors. In this configuration the `stop_action` is not per...
+     * @yamlKey has_built_in_endstop
+     */
+    hasBuiltInEndstop?: boolean;
+    /**
+     * boolean: Whether the true state of the cover is not known. This will make the Home Assistant frontend show buttons fo...
+     * @yamlKey assumed_state
+     */
+    assumedState?: boolean;
+    /**
+     * [Time](/guides/configuration-types#time): The interval to publish updated position information to the UI while the co...
+     * @yamlKey update_interval
+     */
+    updateInterval?: FeedbackUpdateIntervalProps;
+    /**
+     * boolean: Whether to infer endstop state from the movement sensor. Requires movement sensors to be set, no endstop sen...
+     * @yamlKey infer_endstop_from_movement
+     */
+    inferEndstopFromMovement?: boolean;
+    /**
+     * [Time](/guides/configuration-types#time): Stops cover and forces a wait time between changes in direction, and takes ...
+     * @yamlKey direction_change_wait_time
+     */
+    directionChangeWaitTime?: FeedbackDirectionChangeWaitTimeProps;
+    /**
+     * [Time](/guides/configuration-types#time): Considers a wait time needed by the cover to actually start moving after co...
+     * @yamlKey acceleration_wait_time
+     */
+    accelerationWaitTime?: FeedbackAccelerationWaitTimeProps;
+    /**
+     * percentage: The percentage of rollback the cover will perform in case of obstacle detection while moving. Defaults to...
+     * @yamlKey obstacle_rollback
+     */
+    obstacleRollback?: unknown;
+}
+interface He60rProps extends _CoreComponent {
+    /** @yamlKey uart_id */
+    uartId?: Ref<uart_UARTComponent>;
+    /**
+     * [Time](/guides/configuration-types#time): The time required for the door to fully open from the closed position. Defa...
+     * @yamlKey open_duration
+     */
+    openDuration?: He60rOpenDurationProps;
+    /**
+     * [Time](/guides/configuration-types#time): The time required for the door to fully close from the open position. Defau...
+     * @yamlKey close_duration
+     */
+    closeDuration?: He60rCloseDurationProps;
+}
+interface TimeBasedProps extends _CoreComponent {
+    /**
+     * [Action](/automations/actions#all-actions): The action that should be performed to stop the cover when the remote req...
+     * @yamlKey stop_action
+     */
+    stopAction: () => void;
+    /**
+     * [Action](/automations/actions#all-actions): The action that should be performed when the remote requests the cover to...
+     * @yamlKey open_action
+     */
+    openAction: () => void;
+    /**
+     * [Time](/guides/configuration-types#time): The amount of time it takes the cover to open up from the fully-closed state.
+     * @yamlKey open_duration
+     */
+    openDuration: TimeBasedOpenDurationProps;
+    /**
+     * [Action](/automations/actions#all-actions): The action that should be performed when the remote requests the cover to...
+     * @yamlKey close_action
+     */
+    closeAction: () => void;
+    /**
+     * [Time](/guides/configuration-types#time): The amount of time it takes the cover to close from the fully-open state.
+     * @yamlKey close_duration
+     */
+    closeDuration: TimeBasedCloseDurationProps;
+    /**
+     * boolean: Indicates that the cover has built in end stop detectors. In this configuration the `stop_action` is not per...
+     * @yamlKey has_built_in_endstop
+     */
+    hasBuiltInEndstop?: boolean;
+    /**
+     * boolean: For covers with manual external controls. With this configuration if the cover is commanded to open or close...
+     * @yamlKey manual_control
+     */
+    manualControl?: boolean;
+    /**
+     * boolean: Whether the true state of the cover is not known. This will make the Home Assistant frontend show buttons fo...
+     * @yamlKey assumed_state
+     */
+    assumedState?: boolean;
+}
+interface TormaticProps extends _CoreComponent {
+    /** @yamlKey uart_id */
+    uartId?: Ref<uart_UARTComponent>;
+    /** @yamlKey update_interval */
+    updateInterval?: unknown;
+    /** @yamlKey open_duration */
+    openDuration?: TormaticOpenDurationProps;
+    /** @yamlKey close_duration */
+    closeDuration?: TormaticCloseDurationProps;
+}
+interface CopyProps extends _CoreComponent {
+    /**
+     * [ID](/guides/configuration-types#id): The cover that should be mirrored.
+     * @yamlKey source_id
+     */
+    sourceId: Ref<cover_Cover>;
+}
+interface TemplateProps extends _CoreComponent {
+    /** [lambda](/automations/templates#config-lambda): Lambda to be evaluated repeatedly to get the current state/position o... */
+    lambda?: unknown;
+    /** boolean: Whether to operate in optimistic mode - when in this mode, any command sent to the template cover will immed... */
+    optimistic?: boolean;
+    /**
+     * boolean: Whether the true state/position of the cover is not known. This will make the Home Assistant frontend show b...
+     * @yamlKey assumed_state
+     */
+    assumedState?: boolean;
+    /**
+     * boolean: Whether this cover will publish its position as a floating point number. By default (`false` ), the cover on...
+     * @yamlKey has_position
+     */
+    hasPosition?: boolean;
+    /**
+     * [Action](/automations/actions#all-actions): The action that should be performed when the remote (like Home Assistant'...
+     * @yamlKey open_action
+     */
+    openAction?: () => void;
+    /**
+     * [Action](/automations/actions#all-actions): The action that should be performed when the remote requests the cover to...
+     * @yamlKey close_action
+     */
+    closeAction?: () => void;
+    /**
+     * [Action](/automations/actions#all-actions): The action that should be performed when the remote requests the cover to...
+     * @yamlKey stop_action
+     */
+    stopAction?: () => void;
+    /**
+     * [Action](/automations/actions#all-actions): The action that should be performed when the remote (like Home Assistant'...
+     * @yamlKey tilt_action
+     */
+    tiltAction?: () => void;
+    /**
+     * [lambda](/automations/templates#config-lambda): Lambda to be evaluated repeatedly to get the current tilt position of...
+     * @yamlKey tilt_lambda
+     */
+    tiltLambda?: unknown;
+    /**
+     * [Action](/automations/actions#all-actions): The action that should be performed when the remote requests to toggle th...
+     * @yamlKey toggle_action
+     */
+    toggleAction?: () => void;
+    /**
+     * [Action](/automations/actions#all-actions): The action that should be performed when the remote (like Home Assistant'...
+     * @yamlKey position_action
+     */
+    positionAction?: () => void;
+    /** @yamlKey restore_mode */
+    restoreMode?: "NO_RESTORE" | "RESTORE" | "RESTORE_AND_CALL";
+}
+interface TuyaProps extends _CoreComponent {
+    /** @yamlKey tuya_id */
+    tuyaId?: Ref<tuya_Tuya>;
+    /** @yamlKey control_datapoint */
+    controlDatapoint?: number;
+    /** @yamlKey direction_datapoint */
+    directionDatapoint?: number;
+    /** @yamlKey position_datapoint */
+    positionDatapoint: number;
+    /** @yamlKey position_report_datapoint */
+    positionReportDatapoint?: number;
+    /** @yamlKey min_value */
+    minValue?: number;
+    /** @yamlKey max_value */
+    maxValue?: number;
+    /** @yamlKey invert_position */
+    invertPosition?: boolean;
+    /** @yamlKey invert_position_report */
+    invertPositionReport?: boolean;
+    /** @yamlKey restore_mode */
+    restoreMode?: "NO_RESTORE" | "RESTORE" | "RESTORE_AND_CALL";
+}
+export type CoverProps = (CoverBaseProps & {
+    platform: "am43";
+} & Am43Props & ComponentProps<am43_Am43Component>) | (CoverBaseProps & {
+    platform: "current_based";
+} & CurrentBasedProps & ComponentProps<current_based_CurrentBasedCover>) | (CoverBaseProps & {
+    platform: "endstop";
+} & EndstopProps & ComponentProps<endstop_EndstopCover>) | (CoverBaseProps & {
+    platform: "feedback";
+} & FeedbackProps & ComponentProps<feedback_FeedbackCover>) | (CoverBaseProps & {
+    platform: "he60r";
+} & He60rProps & ComponentProps<he60r_HE60rCover>) | (CoverBaseProps & {
+    platform: "time_based";
+} & TimeBasedProps & ComponentProps<time_based_TimeBasedCover>) | (CoverBaseProps & {
+    platform: "tormatic";
+} & TormaticProps & ComponentProps<tormatic_Tormatic>) | (CoverBaseProps & {
+    platform: "copy";
+} & CopyProps & ComponentProps<copy_CopyCover>) | (CoverBaseProps & {
+    platform: "template";
+} & TemplateProps & ComponentProps<template__TemplateCover>) | (CoverBaseProps & {
+    platform: "tuya";
+} & TuyaProps & ComponentProps<tuya_TuyaCover>);
+declare global {
+    namespace JSX {
+        interface IntrinsicElements {
+            cover: CoverProps;
+        }
+    }
+}

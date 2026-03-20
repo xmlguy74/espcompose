@@ -1,0 +1,38 @@
+{
+  "name": "esphome-compose",
+  "version": "0.0.0",
+  "private": true,
+  "description": "TypeScript to ESPHome YAML transpiler toolset",
+  "scripts": {
+    "build": "turbo build",
+    "clean": "turbo clean",
+    "codegen": "pnpm --filter @esphome/compose codegen",
+    "lint": "turbo lint",
+    "test": "turbo test",
+    "version": "changeset version",
+    "release": "changeset publish",
+    "prepare": "husky"
+  },
+  "keywords": [
+    "esphome",
+    "typescript",
+    "yaml",
+    "transpiler"
+  ],
+  "author": "",
+  "license": "MIT",
+  "esphome": {
+    "version": "2026.3.0"
+  },
+  "packageManager": "pnpm@10.25.0",
+  "devDependencies": {
+    "@changesets/changelog-github": "^0.5.0",
+    "@changesets/cli": "^2.29.0",
+    "@commitlint/cli": "^20.5.0",
+    "@commitlint/config-conventional": "^20.5.0",
+    "husky": "^9.1.7",
+    "rimraf": "catalog:",
+    "turbo": "catalog:",
+    "typescript": "catalog:"
+  }
+}

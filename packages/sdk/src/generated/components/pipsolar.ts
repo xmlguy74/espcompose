@@ -1,0 +1,24 @@
+// AUTO-GENERATED — DO NOT EDIT.
+// Regenerate with: pnpm --filter @esphome/compose codegen
+
+/* eslint-disable */
+
+import type { ComponentProps, Pin, Ref } from "../../types";
+import type { _CoreComponent } from "../bases";
+import type { pipsolar_Pipsolar, uart_UARTComponent } from "../markers";
+export interface PipsolarProps extends _CoreComponent {
+    /** @yamlKey update_interval */
+    updateInterval?: unknown;
+    /**
+     * The uart Bus ID
+     * @yamlKey uart_id
+     */
+    uartId?: Ref<uart_UARTComponent>;
+}
+declare global {
+    namespace JSX {
+        interface IntrinsicElements {
+            pipsolar: PipsolarProps & ComponentProps<pipsolar_Pipsolar>;
+        }
+    }
+}
