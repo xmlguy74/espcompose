@@ -1,6 +1,6 @@
 {
   "name": "@esphome/compose-compiler",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": true,
   "description": "ESPHome Compose Compiler - Bundles and executes TSX component trees into ESPHome YAML",
   "main": "dist/index.js",

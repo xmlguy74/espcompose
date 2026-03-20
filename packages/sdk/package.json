@@ -1,6 +1,6 @@
 {
   "name": "@esphome/compose",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "ESPHome Compose SDK - TypeScript framework for generating ESPHome YAML",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
