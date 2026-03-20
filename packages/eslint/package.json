@@ -28,6 +28,9 @@
   ],
   "author": "",
   "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
   "publishConfig": {
     "access": "public"
   },
