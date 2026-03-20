@@ -1,4 +1,4 @@
-export { compile, build } from './compiler';
+export { compile, build, lint } from './compiler';
 export type { CompileOptions } from './compiler';
 export {
   resolveEsphome,

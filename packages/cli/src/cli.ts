@@ -9,6 +9,7 @@ import {
   esphomeRun,
   esphomeLogs,
 } from '@esphome/compose-compiler';
+import { initProject } from './init';
 
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const packageJson = require('../package.json') as { version: string };
@@ -31,6 +32,24 @@ async function transpileProject(resolvedDir: string, yamlPath: string): Promise<
   await build(resolvedDir);
   console.log(`✓ Written to ${yamlPath}`);
 }
+
+// ── init ─────────────────────────────────────────────────────────────────────
+
+program
+  .command('init <name>')
+  .description(
+    'Create a new ESPHome Compose project with a minimal starter template. ' +
+    'Sets up the SDK, CLI, ESLint plugin, and TypeScript configuration.',
+  )
+  .option('-b, --board <board>', 'ESP32 board identifier', 'esp32dev')
+  .action((name: string, opts: { board: string }) => {
+    try {
+      initProject(name, { board: opts.board });
+    } catch (err) {
+      console.error('Init failed:', err instanceof Error ? err.message : err);
+      process.exit(1);
+    }
+  });
 
 // ── transpile ────────────────────────────────────────────────────────────────
 

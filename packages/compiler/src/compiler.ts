@@ -3,7 +3,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { createRequire } from 'module';
 import ts from 'typescript';
-import { ESPCompose } from '@esphome/compose';
+import { ESLint } from 'eslint';
 import { applyTransform } from './transform/index.js';
 
 export interface CompileOptions {
@@ -83,6 +83,71 @@ async function typeCheck(entryFile: string): Promise<ts.Program> {
   }
 
   return program;
+}
+
+// ────────────────────────────────────────────────────────────────────────────
+// Phase 0.5: Lint
+// ────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Build the default ESLint flat config used when a project has no config file.
+ *
+ * Loads the `@esphome/compose-eslint` recommended preset, which includes
+ * `typescript-eslint` recommended rules and JSX parser options.
+ */
+async function buildDefaultConfig(): Promise<ESLint.Options['overrideConfig']> {
+  const composeESLint = (await import('@esphome/compose-eslint')).default;
+  return composeESLint.recommended as ESLint.Options['overrideConfig'];
+}
+
+/**
+ * Run ESLint over the entry file and its sibling source files.
+ *
+ * Always enforced — if the project has its own `eslint.config.*` the ESLint
+ * API discovers it automatically; otherwise the compiler supplies a built-in
+ * default config based on `@esphome/compose-eslint` recommended.
+ *
+ * Throws on lint errors. Warnings are printed to stderr but do not fail.
+ */
+export async function lint(entryFile: string): Promise<void> {
+  const projectDir = path.dirname(entryFile);
+
+  // Determine whether the project ships its own ESLint config
+  const configFiles = [
+    'eslint.config.js', 'eslint.config.mjs', 'eslint.config.cjs',
+    'eslint.config.ts', 'eslint.config.mts', 'eslint.config.cts',
+  ];
+  const hasProjectConfig = configFiles.some((f) =>
+    fs.existsSync(path.join(projectDir, f)),
+  );
+
+  let eslint: ESLint;
+  if (hasProjectConfig) {
+    eslint = new ESLint({ cwd: projectDir });
+  } else {
+    eslint = new ESLint({
+      cwd: projectDir,
+      overrideConfigFile: true,
+      overrideConfig: await buildDefaultConfig(),
+    });
+  }
+
+  const results = await eslint.lintFiles([entryFile]);
+
+  const errorCount = results.reduce((sum, r) => sum + r.errorCount, 0);
+  const warningCount = results.reduce((sum, r) => sum + r.warningCount, 0);
+
+  if (warningCount > 0 || errorCount > 0) {
+    const formatter = await eslint.loadFormatter('stylish');
+    const output = await formatter.format(results);
+    if (output) {
+      console.error(output);
+    }
+  }
+
+  if (errorCount > 0) {
+    throw new Error(`ESLint found ${errorCount} error(s).`);
+  }
 }
 
 // ────────────────────────────────────────────────────────────────────────────
@@ -168,7 +233,6 @@ async function execute(bundleFile: string, outFile: string): Promise<void> {
   // statically-imported ESM copy and the user bundle's CJS copy would have
   // separate hook state and never communicate.
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const cjsSDK = (_require('@esphome/compose') as any).ESPCompose;
 
   // Wrap the bundle load in a script scope.  useScript hook calls fire during
@@ -210,7 +274,7 @@ async function execute(bundleFile: string, outFile: string): Promise<void> {
  * Compile a TSX entry file into an ESPHome YAML configuration file.
  *
  * Pipeline:
- *   [type-check] → [transform] → [esbuild bundle] → [require + render] → [write YAML]
+ *   [type-check] → [lint] → [transform] → [esbuild bundle] → [require + render] → [write YAML]
  */
 export async function compile(options: CompileOptions): Promise<void> {
   const { entryFile, outFile } = options;
@@ -218,6 +282,9 @@ export async function compile(options: CompileOptions): Promise<void> {
   // Phase 0: Type-check — fail fast on any TypeScript errors before bundling.
   // Returns the ts.Program so Phase 1 can reuse it without a second parse.
   const program = await typeCheck(entryFile);
+
+  // Phase 0.5: Lint — enforce ESLint rules on the original source.
+  await lint(entryFile);
 
   // Phase 1: Transform — rewrite function declarations into <script> elements
   // and trigger props into ESPHome action arrays.

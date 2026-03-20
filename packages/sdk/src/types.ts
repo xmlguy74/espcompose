@@ -152,7 +152,9 @@ export type AnyProps = BaseProps & Record<string, unknown>;
 // ────────────────────────────────────────────────────────────────────────────
 
 declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace JSX {
+    // eslint-disable-next-line @typescript-eslint/no-empty-object-type
     interface Element extends EspComposeElement {}
     // eslint-disable-next-line @typescript-eslint/no-empty-object-type
     interface IntrinsicElements {}
