@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/logo.png" alt="ESPHome Compose" />
+</p>
+
 # ESPHome Compose
 
 Write [ESPHome](https://esphome.io/) device configurations in TypeScript/TSX instead of YAML.

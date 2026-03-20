@@ -143,3 +143,5 @@ vite.config.ts.timestamp-*
 
 .espcompose/
 .pnpm-store/
+
+.DS_Store
