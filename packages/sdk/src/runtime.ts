@@ -2,48 +2,16 @@ import yaml from 'yaml';
 import type { EspComposeElement, FunctionComponent } from './types';
 import { isRef } from './types';
 import { useScript, withScriptScope } from './hooks';
+import {
+  Fragment,
+  flattenFragments,
+  keysToSnakeCase,
+  stripUndefined,
+  toYamlKey,
+} from './serialize';
+import { buildLvglSection, isLvglElement, lvglWidgetToPlain } from './lvgl';
 
 export * from './hooks';
-
-// ────────────────────────────────────────────────────────────────────────────
-// camelCase → snake_case key conversion
-//
-// Generated TypeScript props use camelCase (e.g. `buildPath`, `friendlyName`).
-// ESPHome YAML requires snake_case (e.g. `build_path`, `friendly_name`).
-// We convert all prop keys at the point where we build the plain object so
-// the YAML output is always correct.
-//
-// The convention: any uppercase letter that follows a lowercase letter or digit
-// becomes `_<lowercase>`. This handles the common cases produced by codegen.
-// ────────────────────────────────────────────────────────────────────────────
-
-function camelToSnake(key: string): string {
-  return key.replace(/([a-z0-9])([A-Z])/g, '$1_$2').toLowerCase();
-}
-
-function keysToSnakeCase(obj: Record<string, unknown>): Record<string, unknown> {
-  const out: Record<string, unknown> = {};
-  for (const [k, v] of Object.entries(obj)) {
-    out[camelToSnake(k)] = serializeValue(v);
-  }
-  return out;
-}
-
-/**
- * Serialize a prop value for YAML output.
- * Ref<T> instances (produced by useRef()) are serialized as their string token.
- * Plain objects have their keys recursively converted to snake_case.
- * Arrays are mapped element-wise.
- * All other values are passed through unchanged.
- */
-function serializeValue(v: unknown): unknown {
-  if (isRef(v)) return v.toString();
-  if (Array.isArray(v)) return v.map(serializeValue);
-  if (v !== null && typeof v === 'object') {
-    return keysToSnakeCase(v as Record<string, unknown>);
-  }
-  return v;
-}
 
 // ────────────────────────────────────────────────────────────────────────────
 // JSX factory
@@ -63,12 +31,6 @@ function createElement(
       ...(flatChildren.length > 0 ? { children: flatChildren } : {}),
     },
   };
-}
-
-function Fragment(props: { children?: EspComposeElement | EspComposeElement[] }): EspComposeElement {
-  const { children } = props;
-  if (children == null) return null!;
-  return (Array.isArray(children) ? children : [children]) as unknown as EspComposeElement;
 }
 
 // ────────────────────────────────────────────────────────────────────────────
@@ -116,12 +78,23 @@ function toPlainObject(el: EspComposeElement | EspComposeElement[] | null | unde
     };
   }
 
+  // LVGL container: children become pages/widgets arrays
+  if (el.type === 'lvgl') {
+    const lvglData = buildLvglSection(el);
+    return { lvgl: Object.keys(lvglData).length > 0 ? lvglData : null };
+  }
+
+  // LVGL widget elements: { widget_type: { ...props, widgets?: [...] } }
+  if (isLvglElement(el.type)) {
+    return lvglWidgetToPlain(el);
+  }
+
   // All other intrinsic elements: { [type]: { ...ownProps, ...childrenMerged } }
   const childData = buildChildData(
     children as EspComposeElement | EspComposeElement[] | undefined
   );
   const data = stripUndefined(keysToSnakeCase({ ...allProps, ...childData }));
-  return { [el.type]: Object.keys(data).length > 0 ? data : null };
+  return { [toYamlKey(el.type as string)]: Object.keys(data).length > 0 ? data : null };
 }
 
 /**
@@ -163,6 +136,14 @@ function childrenToTopLevelSections(
 }
 
 function mergeSection(sections: Record<string, unknown[]>, child: EspComposeElement) {
+  // LVGL container: delegate to LVGL-specific serialization
+  if (child.type === 'lvgl') {
+    const lvglData = buildLvglSection(child);
+    if (!sections['lvgl']) sections['lvgl'] = [];
+    sections['lvgl'].push(Object.keys(lvglData).length > 0 ? lvglData : null);
+    return;
+  }
+
   const { children: grandchildren, ref, "x:custom": xCustom, ...ownProps } = child.props as Record<string, unknown> & { children?: unknown; ref?: unknown; "x:custom"?: unknown };
   const propsWithId = ref != null
     ? { id: isRef(ref) ? ref.toString() : String(ref), ...ownProps }
@@ -175,8 +156,9 @@ function mergeSection(sections: Record<string, unknown[]>, child: EspComposeElem
   );
   // Convert camelCase prop keys to snake_case for YAML output.
   const data = stripUndefined(keysToSnakeCase({ ...allProps, ...childData }));
-  if (!sections[child.type as string]) sections[child.type as string] = [];
-  sections[child.type as string].push(Object.keys(data).length > 0 ? data : null);
+  const yamlKey = toYamlKey(child.type as string);
+  if (!sections[yamlKey]) sections[yamlKey] = [];
+  sections[yamlKey].push(Object.keys(data).length > 0 ? data : null);
 }
 
 /**
@@ -196,26 +178,6 @@ function buildChildData(
     }
   }
   return out;
-}
-
-function flattenFragments(elements: EspComposeElement[]): EspComposeElement[] {
-  const out: EspComposeElement[] = [];
-  for (const el of elements) {
-    if (el.type === Fragment) {
-      const result = Fragment(el.props as never);
-      if (result != null) {
-        const nested = Array.isArray(result) ? result : [result];
-        out.push(...flattenFragments(nested));
-      }
-    } else {
-      out.push(el);
-    }
-  }
-  return out;
-}
-
-function stripUndefined(obj: Record<string, unknown>): Record<string, unknown> {
-  return Object.fromEntries(Object.entries(obj).filter(([, v]) => v !== undefined));
 }
 
 // ────────────────────────────────────────────────────────────────────────────

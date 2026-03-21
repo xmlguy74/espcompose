@@ -2,8 +2,9 @@
 /**
  * ESPHome type codegen — data-driven multi-schema pass
  *
- * Fetches https://schema.esphome.io/<version>/esphome.json to discover all platforms
- * and components, then fetches each one's individual schema file in batches of 5.
+ * Reads cached JSON schemas from .cache/schemas/ (fetched from
+ * schema.esphome.io by build-schemas.ts).
+ * Falls back with a clear error if schemas haven't been fetched yet.
  *
  * Output layout:
  *   src/generated/
@@ -19,7 +20,7 @@
  *                                  e.g. <binary_sensor platform="gpio" pin={4} />
  *
  * Usage:
- *   pnpm --filter @esphome/compose codegen
+ *   pnpm codegen
  */
 
 import * as fs from 'fs';
@@ -28,6 +29,7 @@ import { fileURLToPath } from 'url';
 import ts from 'typescript';
 import type { RootSchema, ComponentEntry, SchemaDefinition, SchemaConfigVar, ConfigSchemaEntry, ComponentSchemas, SchemaRegistry } from './schema-types.js';
 import { buildInterfaceBody, cppClassToMarkerName, toCamelCase, toPascalCase, CPP_PRIMITIVE_TO_TS, type InterfaceAccumulator } from './type-mapper.js';
+import { buildLvglFileContent } from './lvgl-codegen.js';
 import {
   printStatements, addFileHeader, addLineComment, addJsDoc,
   keyword, typeRef, stringLiteralType, unionType, intersectionType, typeLiteral,
@@ -50,8 +52,8 @@ import {
 export type { SchemaRegistry } from './schema-types.js';
 
 /**
- * Build a SchemaRegistry from the root esphome.json, all fetched platform JSONs,
- * and all fetched component JSONs.
+ * Build a SchemaRegistry from the root esphome.json, all platform JSONs,
+ * and all component JSONs read from the local schema cache.
  * Registers every named schema found under each source's `schemas` key.
  */
 function buildSchemaRegistry(
@@ -113,19 +115,16 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // Read the pinned ESPHome version from the workspace root package.json
 // so the schema URL stays in sync with the version used in .devcontainer.
 const rootPkg = JSON.parse(
-  fs.readFileSync(path.resolve(__dirname, '../../../../package.json'), 'utf-8'),
+  fs.readFileSync(path.resolve(__dirname, '../../package.json'), 'utf-8'),
 );
 const ESPHOME_VERSION: string = rootPkg.esphome?.version;
 if (!ESPHOME_VERSION) {
   throw new Error('Missing esphome.version in root package.json');
 }
 
-const SCHEMA_BASE = `https://schema.esphome.io/${ESPHOME_VERSION}`;
-const SCHEMA_URL = `${SCHEMA_BASE}/esphome.json`;
+const SCHEMAS_DIR = path.resolve(__dirname, '../../.cache/schemas');
 
-const BATCH_SIZE = 5;
-
-const GENERATED_DIR = path.resolve(__dirname, '../../src/generated');
+const GENERATED_DIR = path.resolve(__dirname, '../../packages/sdk/src/generated');
 const COMPONENTS_DIR = path.join(GENERATED_DIR, 'components');
 
 // ────────────────────────────────────────────────────────────────────────────
@@ -322,7 +321,7 @@ function buildMarkersFileContent(classes: Set<string>, parentMap: Map<string, st
   const printed = printStatements(statements);
   return addFileHeader(printed, [
     `AUTO-GENERATED — DO NOT EDIT.`,
-    `Regenerate with: pnpm --filter @esphome/compose codegen`,
+    `Regenerate with: pnpm codegen`,
     ``,
     `Each interface is a phantom type used to brand Ref<T> values.`,
     `Each marker has one readonly property per ancestor class, making`,
@@ -333,7 +332,7 @@ function buildMarkersFileContent(classes: Set<string>, parentMap: Map<string, st
 }
 
 // ────────────────────────────────────────────────────────────────────────────
-// Fetch helpers
+// Local schema readers
 // ────────────────────────────────────────────────────────────────────────────
 
 /**
@@ -343,32 +342,32 @@ function buildMarkersFileContent(classes: Set<string>, parentMap: Map<string, st
  */
 type RawSchemaFile = Record<string, ComponentEntry>;
 
-async function fetchSchema(url: string): Promise<RawSchemaFile | null> {
+/**
+ * Read a single schema JSON file from the local .cache/schemas/ directory.
+ * Returns null if the file does not exist.
+ */
+function readLocalSchema(name: string): RawSchemaFile | null {
+  const filePath = path.join(SCHEMAS_DIR, `${name}.json`);
   try {
-    const res = await fetch(url);
-    if (!res.ok) {
-      if (res.status === 404) return null;
-      throw new Error(`HTTP ${res.status} ${res.statusText}`);
-    }
-    return (await res.json()) as RawSchemaFile;
-  } catch (err) {
-    console.warn(`  WARN: could not fetch ${url}: ${err instanceof Error ? err.message : err}`);
+    const data = fs.readFileSync(filePath, 'utf-8');
+    return JSON.parse(data) as RawSchemaFile;
+  } catch {
     return null;
   }
 }
 
-async function batchFetch(
+/**
+ * Read all schema files for the given targets from the local cache.
+ * Replaces the old batchFetch() that hit schema.esphome.io.
+ */
+function readLocalSchemas(
   targets: SchemaTarget[],
-): Promise<Map<SchemaTarget, RawSchemaFile | null>> {
+): Map<SchemaTarget, RawSchemaFile | null> {
   const results = new Map<SchemaTarget, RawSchemaFile | null>();
-  for (let i = 0; i < targets.length; i += BATCH_SIZE) {
-    const batch = targets.slice(i, i + BATCH_SIZE);
-    const resolved = await Promise.all(batch.map((t) => fetchSchema(t.url)));
-    batch.forEach((t, idx) => results.set(t, resolved[idx]));
-    const pct = Math.min(i + BATCH_SIZE, targets.length);
-    process.stdout.write(`\r  Fetched ${pct}/${targets.length} schemas...`);
+  for (const target of targets) {
+    results.set(target, readLocalSchema(target.name));
   }
-  process.stdout.write('\n');
+  console.log(`  Read ${targets.length} schema files from ${SCHEMAS_DIR}`);
   return results;
 }
 
@@ -455,7 +454,7 @@ function buildOpenStandaloneFileContent(
   const printed = printStatements(statements);
   return addFileHeader(printed, [
     `AUTO-GENERATED — DO NOT EDIT.`,
-    `Regenerate with: pnpm --filter @esphome/compose codegen`,
+    `Regenerate with: pnpm codegen`,
   ]);
 }
 
@@ -555,7 +554,7 @@ function buildStandaloneFileContent(
   const printed = printStatements(statements);
   return addFileHeader(printed, [
     `AUTO-GENERATED — DO NOT EDIT.`,
-    `Regenerate with: pnpm --filter @esphome/compose codegen`,
+    `Regenerate with: pnpm codegen`,
   ]);
 }
 
@@ -819,7 +818,7 @@ function buildPlatformFileContent(
   const printed = printStatements(statements);
   return addFileHeader(printed, [
     `AUTO-GENERATED — DO NOT EDIT.`,
-    `Regenerate with: pnpm --filter @esphome/compose codegen`,
+    `Regenerate with: pnpm codegen`,
   ]);
 }
 
@@ -852,22 +851,6 @@ function mergeExtends(
   // Own config_vars override anything inherited.
   Object.assign(merged, schema.config_vars ?? {});
   return merged;
-}
-
-/**
- * Return a copy of `vars` with any key that also appears in `base` removed.
- * Used to avoid duplicating platform-base props in per-component interfaces.
- */
-function subtractKeys(
-  vars: Record<string, SchemaConfigVar>,
-  base: Record<string, SchemaConfigVar>,
-): Record<string, SchemaConfigVar> {
-  if (Object.keys(base).length === 0) return vars;
-  const result: Record<string, SchemaConfigVar> = {};
-  for (const [k, v] of Object.entries(vars)) {
-    if (!(k in base)) result[k] = v;
-  }
-  return result;
 }
 
 /**
@@ -1110,7 +1093,7 @@ function buildBasesFileContent(
   const printed = printStatements(statements);
   return addFileHeader(printed, [
     `AUTO-GENERATED — DO NOT EDIT.`,
-    `Regenerate with: pnpm --filter @esphome/compose codegen`,
+    `Regenerate with: pnpm codegen`,
     ``,
     `Shared base interfaces mirroring ESPHome schema "extends" hierarchy.`,
     `These are imported by individual component files.`,
@@ -1195,7 +1178,7 @@ function buildBarrel(writtenPaths: string[]): string {
   const printed = printStatements(statements);
   return addFileHeader(printed, [
     `AUTO-GENERATED — DO NOT EDIT.`,
-    `Regenerate with: pnpm --filter @esphome/compose codegen`,
+    `Regenerate with: pnpm codegen`,
   ]);
 }
 
@@ -1249,7 +1232,7 @@ function buildRegistry(entries: Map<string, RegistryEntry>): string {
   const printed = printStatements(statements);
   return addFileHeader(printed, [
     `AUTO-GENERATED — DO NOT EDIT.`,
-    `Regenerate with: pnpm --filter @esphome/compose codegen`,
+    `Regenerate with: pnpm codegen`,
   ]);
 }
 
@@ -1258,13 +1241,23 @@ function buildRegistry(entries: Map<string, RegistryEntry>): string {
 // ────────────────────────────────────────────────────────────────────────────
 
 async function run(): Promise<void> {
-  // ── Phase 1: Fetch root schema ─────────────────────────────────────────────
-  console.log(`Fetching root schema from ${SCHEMA_URL} ...`);
-  const rootRes = await fetch(SCHEMA_URL);
-  if (!rootRes.ok) {
-    throw new Error(`Failed to fetch root schema: HTTP ${rootRes.status} ${rootRes.statusText}`);
+  // ── Phase 1: Read root schema from local cache ─────────────────────────────
+  if (!fs.existsSync(SCHEMAS_DIR)) {
+    throw new Error(
+      `Schema directory not found: ${SCHEMAS_DIR}\n` +
+      `Run 'pnpm codegen:schemas' first to fetch schemas.`,
+    );
   }
-  const root = (await rootRes.json()) as RootSchema;
+
+  console.log(`Reading root schema from ${SCHEMAS_DIR}/esphome.json ...`);
+  const rootRaw = readLocalSchema('esphome');
+  if (!rootRaw) {
+    throw new Error(
+      `Root schema not found: ${SCHEMAS_DIR}/esphome.json\n` +
+      `Run 'pnpm codegen:schemas' first to fetch schemas.`,
+    );
+  }
+  const root = rootRaw as unknown as RootSchema;
 
   const platformNames = new Set(Object.keys(root.core?.platforms ?? {}));
   const topLevelComponents = root.core?.components ?? {};
@@ -1272,15 +1265,15 @@ async function run(): Promise<void> {
   console.log(`  Platforms: ${platformNames.size}`);
   console.log(`  Top-level components: ${Object.keys(topLevelComponents).length}`);
 
-  // ── Phase 2: Fetch platform schemas to discover platform-specific components
+  // ── Phase 2: Read platform schemas to discover platform-specific components
   const platformTargets: SchemaTarget[] = [...platformNames].map((name) => ({
     name,
-    url: `${SCHEMA_BASE}/${name}.json`,
+    url: `local://${name}.json`,
     isPlatform: true,
   }));
 
-  console.log(`\nFetching ${platformTargets.length} platform schemas (batch ${BATCH_SIZE})...`);
-  const platformFetched = await batchFetch(platformTargets);
+  console.log(`\nReading ${platformTargets.length} platform schemas...`);
+  const platformFetched = readLocalSchemas(platformTargets);
 
   // Build a map of platform name → resolved ComponentEntry for base-props extraction
   const platformEntryMap = new Map<string, ComponentEntry | null>();
@@ -1298,7 +1291,7 @@ async function run(): Promise<void> {
 
   componentTargets.set('esphome', {
     name: 'esphome',
-    url: SCHEMA_URL,
+    url: `local://esphome.json`,
     isPlatform: false,
   });
 
@@ -1310,7 +1303,7 @@ async function run(): Promise<void> {
     // platform JSON's own `components` dict.
     componentTargets.set(name, {
       name,
-      url: `${SCHEMA_BASE}/${name}.json`,
+      url: `local://${name}.json`,
       isPlatform: false,
     });
   }
@@ -1327,7 +1320,7 @@ async function run(): Promise<void> {
       if (!componentTargets.has(compName)) {
         componentTargets.set(compName, {
           name: compName,
-          url: `${SCHEMA_BASE}/${compName}.json`,
+          url: `local://${compName}.json`,
           isPlatform: false,
           platform: platformTarget.name,
         });
@@ -1338,9 +1331,9 @@ async function run(): Promise<void> {
   const allComponentTargets = [...componentTargets.values()];
   console.log(`  Total component targets: ${allComponentTargets.length}`);
 
-  // ── Phase 4: Fetch all component schemas ───────────────────────────────────
-  console.log(`\nFetching ${allComponentTargets.length} component schemas (batch ${BATCH_SIZE})...`);
-  const componentFetched = await batchFetch(allComponentTargets);
+  // ── Phase 4: Read all component schemas ──────────────────────────────────
+  console.log(`\nReading ${allComponentTargets.length} component schemas...`);
+  const componentFetched = readLocalSchemas(allComponentTargets);
 
   // ── Phase 5: Group resolved components into platform buckets or standalone ─
   const platformComponentMap = new Map<string, PlatformComponent[]>();
@@ -1491,7 +1484,7 @@ async function run(): Promise<void> {
   // Emit one flat file per platform containing a discriminated union
   for (const [platformName, components] of platformComponentMap) {
     const platformEntry = platformEntryMap.get(platformName) ?? null;
-    const platformUrl = `${SCHEMA_BASE}/${platformName}.json`;
+    const platformUrl = `local://${platformName}.json`;
     const content = buildPlatformFileContent(platformName, platformEntry, components, platformUrl, schemaRegistry, globalStubs);
     if (!content) { skipped++; continue; }
     const outPath = path.join(COMPONENTS_DIR, `${platformName}.ts`);
@@ -1502,6 +1495,21 @@ async function run(): Promise<void> {
 
   // Emit standalone component files (esphome, wifi, api, logger, etc.)
   for (const { target, entry } of standaloneTargets) {
+    // LVGL: use dedicated codegen that reads the extracted lvgl-schema.json
+    if (target.name === 'lvgl') {
+      const lvglSchemaPath = path.join(SCHEMAS_DIR, 'lvgl-schema.json');
+      if (fs.existsSync(lvglSchemaPath)) {
+        const content = buildLvglFileContent(lvglSchemaPath);
+        const outPath = path.join(COMPONENTS_DIR, 'lvgl.ts');
+        fs.writeFileSync(outPath, content, 'utf8');
+        writtenPaths.push(outPath);
+        registry.set('lvgl', { yamlKey: 'lvgl' });
+        console.log(`  LVGL    → ${outPath} (custom codegen)`);
+        continue;
+      }
+      // Fall through to generic codegen if lvgl-schema.json is missing
+    }
+
     const content = buildStandaloneFileContent(target, entry, schemaRegistry, globalStubs);
     if (!content) { skipped++; continue; }
     const outPath = path.join(COMPONENTS_DIR, `${target.name}.ts`);

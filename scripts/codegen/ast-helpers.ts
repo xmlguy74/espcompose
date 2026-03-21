@@ -163,9 +163,14 @@ export function propSig(
   type: ts.TypeNode,
   optional: boolean,
 ): ts.PropertySignature {
+  // Names that aren't valid JS identifiers (e.g. contain hyphens) must be
+  // expressed as string literal keys so the printer emits them quoted.
+  const key = /[^a-zA-Z0-9_$]/.test(name) || /^[0-9]/.test(name)
+    ? ts.factory.createStringLiteral(name)
+    : name;
   return ts.factory.createPropertySignature(
     undefined,
-    name,
+    key,
     optional ? ts.factory.createToken(ts.SyntaxKind.QuestionToken) : undefined,
     type,
   );

@@ -1,5 +1,5 @@
 // AUTO-GENERATED — DO NOT EDIT.
-// Regenerate with: pnpm --filter @esphome/compose codegen
+// Regenerate with: pnpm codegen
 
 // Each interface is a phantom type used to brand Ref<T> values.
 // Each marker has one readonly property per ancestor class, making
