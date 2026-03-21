@@ -1,6 +1,14 @@
+
+
 <p align="center">
   <img src="assets/logo.png" alt="ESPHome Compose" />
 </p>
+
+<div align="center">
+
+[![Release](https://github.com/xmlguy74/espcompose/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/xmlguy74/espcompose/actions/workflows/release.yml)
+
+</div>
 
 # ESPHome Compose
 

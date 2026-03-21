@@ -143,5 +143,6 @@ vite.config.ts.timestamp-*
 
 .espcompose/
 .pnpm-store/
+.cache/
 
 .DS_Store

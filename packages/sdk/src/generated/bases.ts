@@ -1,5 +1,5 @@
 // AUTO-GENERATED — DO NOT EDIT.
-// Regenerate with: pnpm --filter @esphome/compose codegen
+// Regenerate with: pnpm codegen
 
 // Shared base interfaces mirroring ESPHome schema "extends" hierarchy.
 // These are imported by individual component files.

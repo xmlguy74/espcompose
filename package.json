@@ -6,7 +6,8 @@
   "scripts": {
     "build": "turbo build",
     "clean": "turbo clean",
-    "codegen": "pnpm --filter @esphome/compose codegen",
+    "codegen:schemas": "tsx scripts/codegen/build-schemas.ts",
+    "codegen": "npm run codegen:schemas && tsx scripts/codegen/generate.ts",
     "lint": "turbo lint",
     "test": "turbo test",
     "version": "changeset version",
@@ -41,6 +42,7 @@
     "husky": "^9.1.7",
     "rimraf": "catalog:",
     "turbo": "catalog:",
+    "tsx": "catalog:",
     "typescript": "catalog:",
     "typescript-eslint": "catalog:"
   }
