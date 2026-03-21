@@ -4,10 +4,9 @@
   "private": true,
   "main": "src/index.tsx",
   "scripts": {
-    "build": "espcompose compile",
-    "build:transpile": "espcompose transpile",
+    "build": "espcompose transpile",
     "lint": "eslint .",
-    "burn": "espcompose run"
+    "flash": "espcompose run"
   },
   "dependencies": {
     "@esphome/compose": "workspace:*",
