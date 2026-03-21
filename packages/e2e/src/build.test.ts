@@ -24,4 +24,8 @@ describe('ESPHome Compose Build', () => {
   it('dashboard-device', async () => {
     await createProjectTest(projectsDir, 'dashboard-device');
   });
+
+  it('lvgl-device', async () => {
+    await createProjectTest(projectsDir, 'lvgl-device');
+  });
 });

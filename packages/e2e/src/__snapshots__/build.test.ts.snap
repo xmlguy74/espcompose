@@ -206,6 +206,49 @@ logger:
 "
 `;
 
+exports[`ESPHome Compose Build > lvgl-device 1`] = `
+"esphome:
+  name: lvgl-device
+  comment: LVGL single-page button demo
+esp32:
+  board: esp32dev
+  framework:
+    type: esp-idf
+wifi:
+  ssid: HomeWifi
+  password: s3cr3t!!
+api:
+logger:
+  level: DEBUG
+spi:
+  clk_pin: 18
+  mosi_pin: 23
+display:
+  id: r_ref0
+  platform: ili9xxx
+  model: ILI9341
+  invert_colors: false
+  data_rate: 40MHz
+  cs_pin: 5
+  dc_pin: 27
+  reset_pin: 33
+lvgl:
+  displays:
+    - r_ref0
+  pages:
+    - widgets:
+        - button:
+            x: 10
+            y: 10
+            width: 120
+            height: 50
+            widgets:
+              - label:
+                  text: Click me
+                  align: CENTER
+"
+`;
+
 exports[`ESPHome Compose Build > script-device 1`] = `
 "esphome:
   name: script-device

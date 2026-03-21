@@ -224,11 +224,38 @@ async function fetchAndCacheSchemas(): Promise<void> {
 }
 
 // ────────────────────────────────────────────────────────────────────────────
-// Step 4: Validate output and write version marker
+// Step 4: Extract LVGL schema from ESPHome Python source
+// ────────────────────────────────────────────────────────────────────────────
+
+function extractLvglSchema(): void {
+  console.log(`\n── Step 4: Extract LVGL schema ──`);
+
+  const venvPython = path.join(VENV_DIR, 'bin', 'python');
+  const extractScript = path.join(REPO_ROOT, 'scripts', 'codegen', 'extract_lvgl_schema.py');
+  const outputFile = path.join(SCHEMAS_DIR, 'lvgl-schema.json');
+
+  if (!fs.existsSync(extractScript)) {
+    throw new Error(`LVGL extraction script not found: ${extractScript}`);
+  }
+
+  run(`${venvPython} ${extractScript} --esphome-path ${ESPHOME_REPO_DIR} --output ${outputFile}`);
+
+  if (!fs.existsSync(outputFile)) {
+    throw new Error(`LVGL schema extraction failed: ${outputFile} not produced`);
+  }
+
+  const data = JSON.parse(fs.readFileSync(outputFile, 'utf-8'));
+  const widgetCount = Object.keys(data.widgets ?? {}).length;
+  const styleCount = Object.keys(data.style_props ?? {}).length;
+  console.log(`  ✓ lvgl-schema.json: ${widgetCount} widgets, ${styleCount} style props`);
+}
+
+// ────────────────────────────────────────────────────────────────────────────
+// Step 5: Validate output and write version marker
 // ────────────────────────────────────────────────────────────────────────────
 
 function validateAndMark(): void {
-  console.log(`\n── Step 4: Validate ──`);
+  console.log(`\n── Step 5: Validate ──`);
 
   const esphomeJson = path.join(SCHEMAS_DIR, 'esphome.json');
   if (!fs.existsSync(esphomeJson)) {
@@ -247,6 +274,13 @@ function validateAndMark(): void {
     console.log(`  ✓ lvgl.json present`);
   } else {
     console.warn(`  ⚠ lvgl.json not found — LVGL schemas may be incomplete`);
+  }
+
+  const lvglSchema = path.join(SCHEMAS_DIR, 'lvgl-schema.json');
+  if (fs.existsSync(lvglSchema)) {
+    console.log(`  ✓ lvgl-schema.json present (extracted from Python source)`);
+  } else {
+    console.warn(`  ⚠ lvgl-schema.json not found — LVGL types will be untyped`);
   }
 
   // Write version marker
@@ -269,6 +303,7 @@ async function main(): Promise<void> {
   ensureRepo();
   ensureVenv();
   await fetchAndCacheSchemas();
+  extractLvglSchema();
   validateAndMark();
   console.log(`\nDone. Schemas are in ${SCHEMAS_DIR}`);
 }

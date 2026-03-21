@@ -29,6 +29,7 @@ import { fileURLToPath } from 'url';
 import ts from 'typescript';
 import type { RootSchema, ComponentEntry, SchemaDefinition, SchemaConfigVar, ConfigSchemaEntry, ComponentSchemas, SchemaRegistry } from './schema-types.js';
 import { buildInterfaceBody, cppClassToMarkerName, toCamelCase, toPascalCase, CPP_PRIMITIVE_TO_TS, type InterfaceAccumulator } from './type-mapper.js';
+import { buildLvglFileContent } from './lvgl-codegen.js';
 import {
   printStatements, addFileHeader, addLineComment, addJsDoc,
   keyword, typeRef, stringLiteralType, unionType, intersectionType, typeLiteral,
@@ -1494,6 +1495,21 @@ async function run(): Promise<void> {
 
   // Emit standalone component files (esphome, wifi, api, logger, etc.)
   for (const { target, entry } of standaloneTargets) {
+    // LVGL: use dedicated codegen that reads the extracted lvgl-schema.json
+    if (target.name === 'lvgl') {
+      const lvglSchemaPath = path.join(SCHEMAS_DIR, 'lvgl-schema.json');
+      if (fs.existsSync(lvglSchemaPath)) {
+        const content = buildLvglFileContent(lvglSchemaPath);
+        const outPath = path.join(COMPONENTS_DIR, 'lvgl.ts');
+        fs.writeFileSync(outPath, content, 'utf8');
+        writtenPaths.push(outPath);
+        registry.set('lvgl', { yamlKey: 'lvgl' });
+        console.log(`  LVGL    → ${outPath} (custom codegen)`);
+        continue;
+      }
+      // Fall through to generic codegen if lvgl-schema.json is missing
+    }
+
     const content = buildStandaloneFileContent(target, entry, schemaRegistry, globalStubs);
     if (!content) { skipped++; continue; }
     const outPath = path.join(COMPONENTS_DIR, `${target.name}.ts`);
