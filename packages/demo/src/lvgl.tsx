@@ -1,5 +1,4 @@
-import { Display, ESPCompose, Ref } from "@esphome/compose";
-import { Button } from "./button";
+import { Button, Display, ESPCompose, Ref, Screen, Text, VStack } from "@esphome/compose";
 
 type UIProps = {
     display: Ref<Display>,
@@ -16,13 +15,12 @@ export const UI = (props: UIProps) => {
                 props.display
             ]}
         >
-            <lvgl-page>
-                <Button />
-                <lvgl-label
-                    x={100}
-                    y={100}
-                    text="Hello world" />
-            </lvgl-page>
+            <Screen>
+                <VStack height="100%" width="100%">
+                    <Text text="Hello World!" />
+                    <Button text="Click Me" />
+                </VStack>
+            </Screen>
         </lvgl>
     </>
 }
