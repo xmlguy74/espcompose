@@ -8,6 +8,8 @@
 export * from './runtime';
 export * from './types';
 export * from './actions';
+export * from './intents';
+export { INTRINSIC_INTENT_REGISTRY } from './intent-registry';
 
 // Re-export the generated barrel: this pulls in all generated
 // JSX.IntrinsicElements augmentations via declaration merging AND exposes

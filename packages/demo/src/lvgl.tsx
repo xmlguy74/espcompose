@@ -18,7 +18,7 @@ export const UI = (props: UIProps) => {
         >
             <lvgl-page>
                 <Button />
-                <lvgl-label 
+                <lvgl-label
                     x={100}
                     y={100}
                     text="Hello world" />
