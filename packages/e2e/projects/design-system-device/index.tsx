@@ -8,6 +8,8 @@ import {
   Display,
   ESPCompose,
   useRef,
+} from '@esphome/compose';
+import {
   Screen,
   VStack,
   HStack,
@@ -16,7 +18,9 @@ import {
   Card,
   SliderField,
   SwitchField,
-} from '@esphome/compose';
+  ThemeProvider,
+  darkTheme,
+} from '@esphome/compose-ui';
 
 export default (() => {
   const displayRef = useRef<Display>();
@@ -42,22 +46,24 @@ export default (() => {
       />
 
       <lvgl displays={[displayRef]}>
-        <Screen padding="lg">
-          <VStack>
-            <Text variant="title">Smart Home</Text>
+        <ThemeProvider value={darkTheme}>
+          <Screen padding="lg">
+            <VStack>
+              <Text variant="title">Smart Home</Text>
 
-            <Card>
-              <Text variant="subtitle">Living Room</Text>
-              <SliderField label="Brightness" min={0} max={255} />
-              <SwitchField label="Power" />
-            </Card>
+              <Card>
+                <Text variant="subtitle">Living Room</Text>
+                <SliderField label="Brightness" min={0} max={255} />
+                <SwitchField label="Power" />
+              </Card>
 
-            <HStack align="SPACE_BETWEEN">
-              <Button text="Turn On" status="success" size="sm" />
-              <Button text="Turn Off" status="danger" size="sm" variant="outline" />
-            </HStack>
-          </VStack>
-        </Screen>
+              <HStack align="SPACE_BETWEEN">
+                <Button text="Turn On" status="success" size="sm" />
+                <Button text="Turn Off" status="danger" size="sm" variant="outline" />
+              </HStack>
+            </VStack>
+          </Screen>
+        </ThemeProvider>
       </lvgl>
     </esphome>
   );

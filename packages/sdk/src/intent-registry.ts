@@ -15,8 +15,7 @@
  *   esphome:display        — display and touchscreen components
  *   lvgl:root              — <lvgl> element
  *   lvgl:page              — <lvgl-page> container
- *   lvgl:widget            — leaf LVGL widgets
- *   lvgl:container         — LVGL widgets that accept child widgets
+ *   lvgl:widget            — any LVGL visual element (leaf or container)
  */
 
 import type { IntrinsicIntentMeta } from './intents';
@@ -165,42 +164,42 @@ export const INTRINSIC_INTENT_REGISTRY: Readonly<Record<string, IntrinsicIntentM
   // ─── LVGL ──────────────────────────────────────────────────────────────────
   lvgl: {
     intents: ['lvgl:root'],
-    allowedChildIntents: ['lvgl:page', 'lvgl:widget', 'lvgl:container'],
+    allowedChildIntents: ['lvgl:page', 'lvgl:widget'],
   },
 
   'lvgl-page': {
     intents: ['lvgl:page'],
-    allowedChildIntents: ['lvgl:widget', 'lvgl:container', 'ds:layout', 'ds:component', 'ds:field'],
+    allowedChildIntents: ['lvgl:widget'],
   },
 
   // Containers — accept child widgets
   'lvgl-obj': {
-    intents: ['lvgl:container', 'lvgl:widget'],
-    allowedChildIntents: ['lvgl:widget', 'lvgl:container', 'ds:layout', 'ds:component', 'ds:field'],
+    intents: ['lvgl:widget'],
+    allowedChildIntents: ['lvgl:widget'],
   },
   'lvgl-button': {
-    intents: ['lvgl:container', 'lvgl:widget'],
+    intents: ['lvgl:widget'],
     allowedChildIntents: ['lvgl:widget'],
   },
   'lvgl-buttonmatrix': {
-    intents: ['lvgl:container', 'lvgl:widget'],
+    intents: ['lvgl:widget'],
     allowedChildIntents: ['lvgl:widget'],
   },
   'lvgl-container': {
-    intents: ['lvgl:container', 'lvgl:widget'],
-    allowedChildIntents: ['lvgl:widget', 'lvgl:container', 'ds:layout', 'ds:component', 'ds:field'],
+    intents: ['lvgl:widget'],
+    allowedChildIntents: ['lvgl:widget'],
   },
   'lvgl-tabview': {
-    intents: ['lvgl:container', 'lvgl:widget'],
-    allowedChildIntents: ['lvgl:widget', 'lvgl:container'],
+    intents: ['lvgl:widget'],
+    allowedChildIntents: ['lvgl:widget'],
   },
   'lvgl-tileview': {
-    intents: ['lvgl:container', 'lvgl:widget'],
-    allowedChildIntents: ['lvgl:widget', 'lvgl:container'],
+    intents: ['lvgl:widget'],
+    allowedChildIntents: ['lvgl:widget'],
   },
   'lvgl-lv-tileview-tile-t': {
-    intents: ['lvgl:container', 'lvgl:widget'],
-    allowedChildIntents: ['lvgl:widget', 'lvgl:container'],
+    intents: ['lvgl:widget'],
+    allowedChildIntents: ['lvgl:widget'],
   },
 
   // Leaf widgets — no children

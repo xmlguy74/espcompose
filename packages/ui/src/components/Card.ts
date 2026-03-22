@@ -1,12 +1,14 @@
 /**
  * Card component — a styled container for grouping content.
  *
- * Compiles to <lvgl-obj> with rounded corners, padding, and an optional background.
+ * Compiles to <lvgl-obj> with rounded corners, padding, and themed background.
  */
 
-import type { EspComposeElement } from '../types';
-import { createIntentComponent } from '../intents';
-import { resolveSpacing, resolveRadius, type SpacingToken, type RadiusToken } from '../design-tokens';
+import type { EspComposeElement } from '@esphome/compose';
+import { createIntentComponent, LVGL_INTENTS } from '@esphome/compose';
+import { resolveSpacing, resolveRadius } from '../theme/resolvers';
+import type { SpacingToken, RadiusToken } from '../theme/types';
+import { useTheme } from '../theme/context';
 
 interface CardProps {
   children?: EspComposeElement | EspComposeElement[];
@@ -14,7 +16,7 @@ interface CardProps {
   padding?: SpacingToken | number;
   /** Corner radius. Default: 'md'. */
   radius?: RadiusToken | number;
-  /** Background color (hex). Default: '0x2D2D2D'. */
+  /** Background color (hex). Default: theme surfaceAlt. */
   bgColor?: string;
   /** Border color (hex). */
   borderColor?: string;
@@ -24,6 +26,8 @@ interface CardProps {
   width?: number | string;
   /** Height. */
   height?: number | string;
+  /** Gap between children. Token name or pixel value. */
+  gap?: SpacingToken | number;
 }
 
 /**
@@ -39,21 +43,24 @@ export const Card = createIntentComponent(
   (props: CardProps): EspComposeElement => {
     const padding = resolveSpacing(props.padding ?? 'md');
     const radius = resolveRadius(props.radius ?? 'md');
+    const theme = useTheme();
+    const gap = props.gap != null ? resolveSpacing(props.gap) : undefined;
 
     return {
       type: 'lvgl-obj',
       props: {
         padAll: padding,
         radius,
-        bgColor: props.bgColor ?? '0x2D2D2D',
+        bgColor: props.bgColor ?? theme.colors.surfaceAlt,
         ...(props.borderColor != null ? { borderColor: props.borderColor } : {}),
-        ...(props.borderWidth != null ? { borderWidth: props.borderWidth } : {}),
+        borderWidth: props.borderWidth ?? 0,
         ...(props.width != null ? { width: props.width } : {}),
         ...(props.height != null ? { height: props.height } : {}),
         'x:custom': {
           layout: {
             type: 'flex',
             flex_flow: 'COLUMN',
+            ...(gap != null ? { pad_row: gap } : {}),
           },
         },
         ...(props.children
@@ -63,7 +70,8 @@ export const Card = createIntentComponent(
     };
   },
   {
-    intents: ['ds:component', 'lvgl:container', 'lvgl:widget'] as const,
-    allowedChildIntents: ['ds:component', 'ds:layout', 'ds:field', 'lvgl:widget', 'lvgl:container'] as const,
+    intents: [LVGL_INTENTS.WIDGET] as const,
+    allowedChildIntents: [LVGL_INTENTS.WIDGET] as const,
+    contextTransparent: true as const,
   },
 );

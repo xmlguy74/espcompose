@@ -1,13 +1,14 @@
 /**
  * Screen component — top-level page wrapper.
  *
- * Compiles to <lvgl-page> with optional padding.
- * This is the primary entry point for a page in the design system.
+ * Compiles to <lvgl-page> with theme background color and optional padding.
  */
 
-import type { EspComposeElement } from '../types';
-import { createIntentComponent } from '../intents';
-import { resolveSpacing, type SpacingToken } from '../design-tokens';
+import type { EspComposeElement } from '@esphome/compose';
+import { createIntentComponent, LVGL_INTENTS } from '@esphome/compose';
+import { resolveSpacing } from '../theme/resolvers';
+import type { SpacingToken } from '../theme/types';
+import { useTheme } from '../theme/context';
 
 interface ScreenProps {
   children?: EspComposeElement | EspComposeElement[];
@@ -15,10 +16,18 @@ interface ScreenProps {
   padding?: SpacingToken | number;
   /** Skip this page in the page list. */
   skip?: boolean;
+  /** Background color override (hex). If omitted, uses theme background. */
+  bgColor?: string;
+  /** Border width in pixels. Default: 0. */
+  borderWidth?: number;
+  /** Border color (hex). */
+  borderColor?: string;
 }
 
 /**
  * Screen — a top-level LVGL page container.
+ *
+ * Applies the active theme's background color by default.
  *
  * @example
  * <Screen padding="lg">
@@ -31,10 +40,15 @@ interface ScreenProps {
 export const Screen = createIntentComponent(
   (props: ScreenProps): EspComposeElement => {
     const padding = props.padding != null ? resolveSpacing(props.padding) : undefined;
+    const theme = useTheme();
+    const bgColor = props.bgColor ?? theme.colors.background;
 
     return {
       type: 'lvgl-page',
       props: {
+        bgColor,
+        borderWidth: props.borderWidth ?? 0,
+        ...(props.borderColor != null ? { borderColor: props.borderColor } : {}),
         ...(padding != null ? { padAll: padding } : {}),
         ...(props.skip != null ? { skip: props.skip } : {}),
         ...(props.children
@@ -44,7 +58,7 @@ export const Screen = createIntentComponent(
     };
   },
   {
-    intents: ['ds:screen', 'lvgl:page'] as const,
-    allowedChildIntents: ['ds:layout', 'ds:component', 'ds:field', 'lvgl:widget', 'lvgl:container'] as const,
+    intents: [LVGL_INTENTS.WIDGET] as const,
+    allowedChildIntents: [LVGL_INTENTS.WIDGET] as const,
   },
 );

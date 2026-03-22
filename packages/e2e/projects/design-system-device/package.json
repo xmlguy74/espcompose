@@ -4,6 +4,7 @@
   "private": true,
   "main": "index.tsx",
   "dependencies": {
-    "@esphome/compose": "workspace:*"
+    "@esphome/compose": "workspace:*",
+    "@esphome/compose-ui": "workspace:*"
   }
 }

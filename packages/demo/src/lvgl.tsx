@@ -1,4 +1,5 @@
-import { Button, Display, ESPCompose, Ref, Screen, Text, VStack } from "@esphome/compose";
+import { Display, ESPCompose, Ref } from "@esphome/compose";
+import { Button, Screen, Text, VStack } from "@esphome/compose-ui";
 
 type UIProps = {
     display: Ref<Display>,

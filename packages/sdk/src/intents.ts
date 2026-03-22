@@ -43,15 +43,6 @@ export const LVGL_INTENTS = {
   ROOT: 'lvgl:root',
   PAGE: 'lvgl:page',
   WIDGET: 'lvgl:widget',
-  CONTAINER: 'lvgl:container',
-} as const;
-
-/** Design system intents (Phase 2) */
-export const DS_INTENTS = {
-  SCREEN: 'ds:screen',
-  LAYOUT: 'ds:layout',
-  COMPONENT: 'ds:component',
-  FIELD: 'ds:field',
 } as const;
 
 // ────────────────────────────────────────────────────────────────────────────
@@ -105,9 +96,8 @@ export interface IntentBrandOptions<
  * const Screen = createIntentComponent(
  *   (props: ScreenProps) => <lvgl-page>{props.children}</lvgl-page>,
  *   {
- *     intents: ['ds:screen', 'lvgl:page'] as const,
- *     allowedChildIntents: ['ds:layout', 'ds:component', 'lvgl:widget', 'lvgl:container'] as const,
- *     context: ['lvgl:page'] as const,
+ *     intents: ['compose-ui:screen', 'lvgl:widget'] as const,
+ *     allowedChildIntents: ['compose-ui:layout', 'compose-ui:component', 'lvgl:widget'] as const,
  *   }
  * );
  */

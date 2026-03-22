@@ -2,16 +2,14 @@
  * Button component — interactive button with label.
  *
  * Compiles to <lvgl-button> with an inner <lvgl-label>.
+ * Uses theme-driven status colors and sizes.
  */
 
-import type { EspComposeElement } from '../types';
-import { createIntentComponent } from '../intents';
-import {
-  resolveStatus,
-  resolveSize,
-  type StatusToken,
-  type SizeToken,
-} from '../design-tokens';
+import type { EspComposeElement } from '@esphome/compose';
+import { createIntentComponent, LVGL_INTENTS } from '@esphome/compose';
+import { resolveStatus, resolveSize, fontDefToLvgl } from '../theme/resolvers';
+import type { StatusToken, SizeToken } from '../theme/types';
+import { useTheme } from '../theme/context';
 
 type ButtonVariant = 'solid' | 'outline';
 
@@ -51,8 +49,11 @@ export const Button = createIntentComponent(
 
     const colors = resolveStatus(status);
     const dims = resolveSize(size);
+    const theme = useTheme();
 
     const isSolid = variant === 'solid';
+
+    const textFont = fontDefToLvgl({ fontFamily: theme.typography.body.fontFamily, fontSize: dims.fontSize });
 
     const buttonProps: Record<string, unknown> = {
       width: props.width ?? dims.paddingX * 2 + 80,
@@ -79,7 +80,7 @@ export const Button = createIntentComponent(
       props: {
         text: props.text ?? '',
         textColor: isSolid ? colors.text : colors.bg,
-        textFont: `montserrat_${dims.fontSize}`,
+        textFont,
         align: 'CENTER',
       },
     };
@@ -93,7 +94,7 @@ export const Button = createIntentComponent(
     };
   },
   {
-    intents: ['ds:component', 'lvgl:container', 'lvgl:widget'] as const,
+    intents: [LVGL_INTENTS.WIDGET] as const,
     allowedChildIntents: [] as const,
   },
 );
