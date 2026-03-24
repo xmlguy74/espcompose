@@ -562,3 +562,59 @@ logger:
   level: INFO
 "
 `;
+
+exports[`ESPHome Compose Build > trigger-device 1`] = `
+"esphome:
+  name: trigger-device
+  comment: Device demonstrating automation API
+esp32:
+  board: esp32dev
+  framework:
+    type: esp-idf
+wifi:
+  ssid: HomeWifi
+  password: s3cr3t!!
+api:
+logger:
+  level: DEBUG
+output:
+  id: r_ref0
+  platform: ledc
+  pin: 19
+  frequency: 1000Hz
+light:
+  id: r_ref1
+  platform: monochromatic
+  name: Desk Light
+  output: r_ref0
+switch:
+  id: r_ref2
+  platform: gpio
+  pin: 5
+  name: Relay
+binary_sensor:
+  platform: gpio
+  pin: 4
+  name: Button
+  on_press:
+    - script.execute: toggle_all
+  on_release:
+    - light.turn_off: r_ref1
+    - delay: 100ms
+    - switch.turn_off: r_ref2
+  on_double_click:
+    - script.execute: dim_light
+script:
+  - id: toggle_all
+    then:
+      - light.toggle: r_ref1
+      - delay: 200ms
+      - switch.toggle: r_ref2
+  - id: dim_light
+    then:
+      - light.turn_on:
+          id: r_ref1
+          brightness: 0.5
+      - logger.log: Light dimmed to 50%
+"
+`;

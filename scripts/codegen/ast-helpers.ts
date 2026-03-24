@@ -137,6 +137,11 @@ export function refType(markerName: string): ts.TypeReferenceNode {
   return typeRef('Ref', [typeRef(markerName)]);
 }
 
+/** `RefProp<T>` — used for prop-side ref types (contravariant) */
+export function refPropType(markerName: string): ts.TypeReferenceNode {
+  return typeRef('RefProp', [typeRef(markerName)]);
+}
+
 /** `Readonly<T>` */
 export function readonlyType(inner: ts.TypeNode): ts.TypeReferenceNode {
   return typeRef('Readonly', [inner]);

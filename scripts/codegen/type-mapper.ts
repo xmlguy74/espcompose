@@ -1,7 +1,7 @@
 import ts from 'typescript';
 import type { SchemaConfigVar, SchemaDefinition, SchemaRegistry } from './schema-types.js';
 import { OPTIONAL_FIELD_OVERRIDES, TYPE_OVERRIDES } from './overrides.js';
-import { keyword, typeRef, stringLiteralType, unionType, arrayType, recordType, refType, voidFunctionType, propSig, addJsDoc } from './ast-helpers.js';
+import { keyword, typeRef, stringLiteralType, unionType, arrayType, recordType, refType, refPropType, voidFunctionType, propSig, addJsDoc } from './ast-helpers.js';
 
 // ────────────────────────────────────────────────────────────────────────────
 // Types
@@ -191,10 +191,10 @@ function resolveBaseType(
         const validIdent = /^[A-Za-z_$][A-Za-z0-9_$]*$/;
         if (validIdent.test(markerName)) {
           markerRefs.add(markerName);
-          return refType(markerName);
+          return refPropType(markerName);
         }
       }
-      return typeRef('Ref', [keyword('unknown')]);
+      return typeRef('RefProp', [keyword('unknown')]);
     }
     default:
       return keyword('unknown');
