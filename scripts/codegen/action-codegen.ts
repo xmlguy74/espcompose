@@ -19,15 +19,11 @@
  */
 
 import type { ClassActionMap, ActionEntry, ActionParamEntry } from './schema-action-extractor.js';
-import { cppClassToMarkerName } from './type-mapper.js';
+import { cppClassToMarkerName, toPascalCase } from './type-mapper.js';
 
 // ────────────────────────────────────────────────────────────────────────────
 // Helpers
 // ────────────────────────────────────────────────────────────────────────────
-
-function toPascalCase(s: string): string {
-  return s.replace(/(^|_)([a-z])/g, (_m, _sep, c) => c.toUpperCase());
-}
 
 function indent(lines: string, level: number): string {
   const pad = '  '.repeat(level);

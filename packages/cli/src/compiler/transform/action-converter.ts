@@ -19,7 +19,7 @@
 
 import ts from 'typescript';
 import { exprToCpp, type ConstMap } from './expression-to-cpp.js';
-import { resolveActionYamlKey } from '@esphome/compose';
+import { resolveActionYamlKey, camelToSnake } from '@esphome/compose';
 
 // ────────────────────────────────────────────────────────────────────────────
 // Public API
@@ -475,13 +475,7 @@ function convertBlockOrStatement(stmt: ts.Statement, ctx: ConverterContext, cons
   return action === null ? [] : Array.isArray(action) ? action : [action];
 }
 
-/** camelCase / PascalCase identifier → snake_case string for ESPHome IDs. */
-export function camelToSnake(name: string): string {
-  return name
-    .replace(/([a-z0-9])([A-Z])/g, '$1_$2')
-    .replace(/([A-Z]+)([A-Z][a-z])/g, '$1_$2')
-    .toLowerCase();
-}
+
 
 // ────────────────────────────────────────────────────────────────────────────
 // Ref action conversion

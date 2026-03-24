@@ -71,9 +71,9 @@
  */
 
 import ts from 'typescript';
-import { convertStatements, camelToSnake, RefTokenMarker, type ConverterContext, type RefInfo } from './action-converter.js';
+import { convertStatements, RefTokenMarker, type ConverterContext, type RefInfo } from './action-converter.js';
 import { mapParamType } from './param-type-mapper.js';
-import { MARKER_ACTION_CLASS_MAP } from '@esphome/compose';
+import { MARKER_ACTION_CLASS_MAP, camelToSnake } from '@esphome/compose';
 
 // ────────────────────────────────────────────────────────────────────────────
 // Public API
@@ -84,6 +84,14 @@ export interface TransformDiagnostic {
   file: string;
   line?: number;
   character?: number;
+}
+
+/** Shared context threaded through the AST visitor functions. */
+interface TransformCtx {
+  knownScripts: Set<string>;
+  scriptParams: Map<string, string[]>;
+  knownRefs: Map<string, RefInfo>;
+  addDiag: (message: string, node?: ts.Node) => void;
 }
 
 export interface TransformOutput {
@@ -128,6 +136,7 @@ export function transformScriptFile(
   const knownRefs = collectActionRefDeclarations(sourceFile);
 
   // ── Step 2: Convert each function body to action metadata ─────────────────
+  const tctx: TransformCtx = { knownScripts, scriptParams, knownRefs, addDiag };
   const scriptMetadata = scriptFunctions.map((fn) => {
     const ctx: ConverterContext = { knownScripts, scriptParams, knownRefs, errors: [] };
     const bodyStatements = fn.node.body ? Array.from(fn.node.body.statements) : [];
@@ -139,7 +148,7 @@ export function transformScriptFile(
   // ── Step 3: Run the TypeScript transformer ──────────────────────────────
   const transformerFactory: ts.TransformerFactory<ts.SourceFile> = (context) => {
     return (sf) => {
-      return visitSourceFile(sf, context, scriptMetadata, knownScripts, scriptParams, knownRefs, addDiag);
+      return visitSourceFile(sf, context, scriptMetadata, tctx);
     };
   };
 
@@ -298,26 +307,21 @@ function visitSourceFile(
   sf: ts.SourceFile,
   context: ts.TransformationContext,
   scriptMetadata: (ScriptFn & { actions: unknown[] })[],
-  knownScripts: Set<string>,
-  scriptParams: Map<string, string[]>,
-  knownRefs: Map<string, RefInfo>,
-  addDiag: (message: string, node?: ts.Node) => void,
+  tctx: TransformCtx,
 ): ts.SourceFile {
   const { factory } = context;
+  const { knownScripts } = tctx;
   const newStatements: ts.Statement[] = [];
 
   for (const stmt of sf.statements) {
     if (ts.isFunctionDeclaration(stmt) && stmt.name && knownScripts.has(stmt.name.text)) {
-      // Keep the function declaration but replace its body with a useScript hook call.
-      // This mirrors the Resolut pattern: the function stays callable so that trigger
-      // props (`onPress={greet()}`) can evaluate it to register the script in scope.
       const meta = scriptMetadata.find((m) => m.name === stmt.name!.text)!;
       newStatements.push(buildScriptFunctionWithHook(factory, stmt, meta, scriptMetadata));
       continue;
     }
 
     // Visit all other statements to rewrite trigger props in JSX
-    const visited = visitNode(stmt, context, knownScripts, scriptParams, knownRefs, addDiag);
+    const visited = visitNode(stmt, context, tctx);
     newStatements.push(visited as ts.Statement);
   }
 
@@ -331,10 +335,7 @@ function visitSourceFile(
 function visitNode(
   node: ts.Node,
   context: ts.TransformationContext,
-  knownScripts: Set<string>,
-  scriptParams: Map<string, string[]>,
-  knownRefs: Map<string, RefInfo>,
-  addDiag: (message: string, node?: ts.Node) => void,
+  tctx: TransformCtx,
 ): ts.Node {
   const { factory } = context;
 
@@ -342,12 +343,9 @@ function visitNode(
     const rewrittenAttrs = rewriteTriggerAttributes(
       node.openingElement.attributes,
       factory,
-      knownScripts,
-      scriptParams,
-      knownRefs,
-      addDiag,
+      tctx,
     );
-    const visitedChildren = visitChildren(node.children, context, knownScripts, scriptParams, knownRefs, addDiag);
+    const visitedChildren = visitChildren(node.children, context, tctx);
     const newOpening = factory.updateJsxOpeningElement(
       node.openingElement,
       node.openingElement.tagName,
@@ -361,10 +359,7 @@ function visitNode(
     const rewrittenAttrs = rewriteTriggerAttributes(
       node.attributes,
       factory,
-      knownScripts,
-      scriptParams,
-      knownRefs,
-      addDiag,
+      tctx,
     );
     return factory.updateJsxSelfClosingElement(
       node,
@@ -376,7 +371,7 @@ function visitNode(
 
   return ts.visitEachChild(
     node,
-    (child) => visitNode(child, context, knownScripts, scriptParams, knownRefs, addDiag),
+    (child) => visitNode(child, context, tctx),
     context,
   );
 }
@@ -384,15 +379,12 @@ function visitNode(
 function visitChildren(
   children: ts.NodeArray<ts.JsxChild>,
   context: ts.TransformationContext,
-  knownScripts: Set<string>,
-  scriptParams: Map<string, string[]>,
-  knownRefs: Map<string, RefInfo>,
-  addDiag: (message: string, node?: ts.Node) => void,
+  tctx: TransformCtx,
 ): ts.NodeArray<ts.JsxChild> {
   const { factory } = context;
   const newChildren = children.map(
     (child) =>
-      visitNode(child, context, knownScripts, scriptParams, knownRefs, addDiag) as ts.JsxChild,
+      visitNode(child, context, tctx) as ts.JsxChild,
   );
   return factory.createNodeArray(newChildren);
 }
@@ -560,11 +552,9 @@ function collectScriptDepNames(
 function rewriteTriggerAttributes(
   attributes: ts.JsxAttributes,
   factory: ts.NodeFactory,
-  knownScripts: Set<string>,
-  scriptParams: Map<string, string[]>,
-  knownRefs: Map<string, RefInfo>,
-  addDiag: (message: string, node?: ts.Node) => void,
+  tctx: TransformCtx,
 ): ts.JsxAttributes {
+  const { knownScripts, scriptParams, knownRefs, addDiag } = tctx;
   const newAttrs: ts.JsxAttributeLike[] = [];
   let changed = false;
 

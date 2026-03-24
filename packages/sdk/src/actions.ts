@@ -44,34 +44,3 @@ export const logger = {
     // Intentional no-op — body is replaced by the compiler transformer.
   },
 } as const;
-
-/**
- * Inject a raw C++ lambda expression into the action list.
- *
- * Compiles to:  `lambda: |-\n  <code>`
- *
- * **Designed but not yet implemented in the transformer.**
- *
- * @espcomposeAction lambda
- */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function lambda(_code: string): void {
-  // Intentional no-op — body is replaced by the compiler transformer.
-}
-
-/**
- * Inject a raw ESPHome action object verbatim into the action list.
- *
- * This is the ultimate escape hatch when the typed API doesn't cover
- * a particular ESPHome action or when you need a very specific YAML shape.
- *
- * Compiles to the provided object as-is in the action list.
- *
- * **Designed but not yet implemented in the transformer.**
- *
- * @espcomposeAction raw
- */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function raw(_action: Record<string, unknown>): void {
-  // Intentional no-op — body is replaced by the compiler transformer.
-}

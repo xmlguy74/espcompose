@@ -25,14 +25,6 @@ export function printStatements(statements: ts.Statement[]): string {
   return printer.printFile(sourceFile);
 }
 
-/**
- * Print a single AST node to a string (useful for debugging / tests).
- */
-export function printNode(node: ts.Node): string {
-  const sourceFile = ts.createSourceFile('', '', ts.ScriptTarget.Latest, false, ts.ScriptKind.TS);
-  return printer.printNode(ts.EmitHint.Unspecified, node, sourceFile);
-}
-
 // ────────────────────────────────────────────────────────────────────────────
 // Header comments
 // ────────────────────────────────────────────────────────────────────────────
@@ -130,11 +122,6 @@ export function arrayType(elementType: ts.TypeNode): ts.TypeReferenceNode {
 /** `Record<K, V>` */
 export function recordType(keyType: ts.TypeNode, valueType: ts.TypeNode): ts.TypeReferenceNode {
   return typeRef('Record', [keyType, valueType]);
-}
-
-/** `Ref<T>` */
-export function refType(markerName: string): ts.TypeReferenceNode {
-  return typeRef('Ref', [typeRef(markerName)]);
 }
 
 /** `RefProp<T>` — used for prop-side ref types (contravariant) */

@@ -28,7 +28,7 @@ import * as path from 'path';
 import { fileURLToPath } from 'url';
 import ts from 'typescript';
 import type { RootSchema, ComponentEntry, SchemaDefinition, SchemaConfigVar, ConfigSchemaEntry, ComponentSchemas, SchemaRegistry } from './schema-types.js';
-import { buildInterfaceBody, cppClassToMarkerName, toCamelCase, toPascalCase, CPP_PRIMITIVE_TO_TS, type InterfaceAccumulator } from './type-mapper.js';
+import { buildInterfaceBody, cppClassToMarkerName, toCamelCase, toPascalCase, CPP_PRIMITIVE_TO_TS, mergeExtends, type InterfaceAccumulator } from './type-mapper.js';
 import { buildLvglFileContent } from './lvgl-codegen.js';
 import { generateActionsFile } from './action-codegen.js';
 import { extractSchemaActions } from './schema-action-extractor.js';
@@ -229,6 +229,26 @@ function collectRegistryClasses(registry: SchemaRegistry, out: Set<string>, pare
 }
 
 /**
+ * Walk the C++ parent chain for `cls`, returning all ancestor class names
+ * (including `cls` itself).  Cycle-safe via visited set.
+ */
+function getAncestors(
+  cls: string,
+  parentMap: Map<string, string[]>,
+  visited = new Set<string>(),
+): string[] {
+  if (visited.has(cls)) return [];
+  visited.add(cls);
+  const list = [cls];
+  for (const p of parentMap.get(cls) ?? []) {
+    if (!CPP_PRIMITIVE_TO_TS.has(p)) {
+      list.push(...getAncestors(p, parentMap, visited));
+    }
+  }
+  return list;
+}
+
+/**
  * Build mappings from marker type names to the C++ classes whose actions
  * apply, using the classActions map from schema extraction.
  *
@@ -253,18 +273,6 @@ function buildMarkerClassMap(
   const validIdent = /^[A-Za-z_$][A-Za-z0-9_$]*$/;
   const markerClassMap = new Map<string, string[]>();
 
-  function getAncestors(cls: string, visited = new Set<string>()): string[] {
-    if (visited.has(cls)) return [];
-    visited.add(cls);
-    const list = [cls];
-    for (const p of parentMap.get(cls) ?? []) {
-      if (!CPP_PRIMITIVE_TO_TS.has(p)) {
-        list.push(...getAncestors(p, visited));
-      }
-    }
-    return list;
-  }
-
   // Build namespace → action classes map for fallback.
   // Some component id_types (e.g. light::LightOutput) are in the same C++
   // namespace as their action targets (e.g. light::LightState) but have no
@@ -286,7 +294,7 @@ function buildMarkerClassMap(
     const markerName = cppClassToMarkerName(cls);
     if (!validIdent.test(markerName)) continue;
 
-    const ancestors = getAncestors(cls);
+    const ancestors = getAncestors(cls, parentMap);
     const matchingClasses: string[] = [];
     for (const anc of ancestors) {
       if (actionClassKeys.has(anc)) {
@@ -352,21 +360,6 @@ function buildMarkersFileContent(
     // Event, Text, Image etc. are DOM types but safe to shadow in module scope
   };
 
-  // Compute transitive ancestors for each class so that Ref<Derived> is
-  // assignable to Ref<Base>.  Each marker gets one `readonly __<name>?: true`
-  // property per ancestor (including itself).
-  function getAncestors(cls: string, visited = new Set<string>()): string[] {
-    if (visited.has(cls)) return [];
-    visited.add(cls);
-    const result = [cls];
-    for (const p of parentMap.get(cls) ?? []) {
-      if (!CPP_PRIMITIVE_TO_TS.has(p)) {
-        result.push(...getAncestors(p, visited));
-      }
-    }
-    return result;
-  }
-
   const sorted = [...classes].sort();
   for (const cls of sorted) {
     if (CPP_PRIMITIVE_TO_TS.has(cls)) continue;
@@ -375,7 +368,7 @@ function buildMarkersFileContent(
 
     // One readonly optional property per ancestor (self + parents), each with
     // a unique name.  This makes Derived structurally extend Base in TS.
-    const ancestors = getAncestors(cls);
+    const ancestors = getAncestors(cls, parentMap);
     const members: ts.TypeElement[] = [];
     const seen = new Set<string>();
     for (const anc of ancestors) {
@@ -949,33 +942,6 @@ function buildPlatformFileContent(
 // ────────────────────────────────────────────────────────────────────────────
 // Extends resolution helpers
 // ────────────────────────────────────────────────────────────────────────────
-
-/**
- * Merge all `extends` references in `schema` into a flat config_vars map.
- * Referenced schemas are looked up in `registry`. The schema's own config_vars
- * take precedence (they override inherited fields with the same name).
- * Cycle-safe: each resolved key is tracked and won't be re-entered.
- */
-function mergeExtends(
-  schema: SchemaDefinition,
-  registry: SchemaRegistry,
-  _visited: Set<string> = new Set(),
-): Record<string, SchemaConfigVar> {
-  const merged: Record<string, SchemaConfigVar> = {};
-
-  for (const ref of schema.extends ?? []) {
-    if (_visited.has(ref)) continue;
-    _visited.add(ref);
-    const refDef = registry.get(ref);
-    if (!refDef) continue;
-    const inherited = mergeExtends(refDef, registry, _visited);
-    Object.assign(merged, inherited);
-  }
-
-  // Own config_vars override anything inherited.
-  Object.assign(merged, schema.config_vars ?? {});
-  return merged;
-}
 
 /**
  * Flatten a `type: "typed"` CONFIG_SCHEMA into a single SchemaDefinition by
