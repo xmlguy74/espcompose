@@ -19,6 +19,7 @@
 // ────────────────────────────────────────────────────────────────────────────
 
 import type { TriggerSignature } from './trigger-registry';
+import { getTriggerSignature } from './trigger-registry';
 
 declare const EXPRESSION_BRAND: unique symbol;
 
@@ -46,6 +47,8 @@ export interface ExpressionConfig {
   triggerType: string;
   /** Component domain for trigger registry lookup (e.g. `binary_sensor`, `sensor`, `light`). */
   sourceDomain: string;
+  /** Expected C++ return type (e.g. `std::string`, `bool`, `float`). When set, lambdas apply type conversions if the source provides a different type. */
+  cppReturnType?: string;
 }
 
 /**
@@ -72,11 +75,15 @@ export class Expression<T = unknown> {
   /** Component domain for trigger registry lookup. */
   readonly sourceDomain: string;
 
+  /** Expected C++ return type for lambda generation. */
+  readonly cppReturnType?: string;
+
   constructor(config: ExpressionConfig) {
     this.sourceId = config.sourceId;
     this.property = config.property;
     this.triggerType = config.triggerType;
     this.sourceDomain = config.sourceDomain;
+    this.cppReturnType = config.cppReturnType;
   }
 
   /**
@@ -97,7 +104,15 @@ export class Expression<T = unknown> {
    * Example output: `"return id(ha_light_kitchen).state;"`
    */
   toLambdaInit(): string {
-    return `return id(${this.sourceId})${this.property};`;
+    const raw = `id(${this.sourceId})${this.property}`;
+    if (this.cppReturnType) {
+      const sig = getTriggerSignature(this.sourceDomain, this.triggerType);
+      const sourceType = sig?.variables[0]?.cppType;
+      if (sourceType && sourceType !== this.cppReturnType) {
+        return `return ${wrapConversion(raw, sourceType, this.cppReturnType)};`;
+      }
+    }
+    return `return ${raw};`;
   }
 
   /**
@@ -114,13 +129,27 @@ export class Expression<T = unknown> {
    */
   toLambdaTrigger(sig?: TriggerSignature): string {
     if (sig && sig.variables.length > 0) {
-      // Trigger provides a variable — use it directly.
-      // The first variable is the primary value (e.g. `x` for on_state/on_value).
-      return `return ${sig.variables[0].name};`;
+      const varName = sig.variables[0].name;
+      const sourceType = sig.variables[0].cppType;
+      if (this.cppReturnType && sourceType !== this.cppReturnType) {
+        return `return ${wrapConversion(varName, sourceType, this.cppReturnType)};`;
+      }
+      return `return ${varName};`;
     }
     // No trigger variable available — full component lookup.
     return this.toLambdaInit();
   }
+}
+
+/**
+ * Wrap a C++ expression with a type conversion when source and target types differ.
+ */
+function wrapConversion(expr: string, fromType: string, toType: string): string {
+  if (toType === 'std::string') {
+    if (fromType === 'bool') return `std::string(${expr} ? "on" : "off")`;
+    if (fromType === 'float') return `to_string(${expr})`;
+  }
+  return expr;
 }
 
 /**

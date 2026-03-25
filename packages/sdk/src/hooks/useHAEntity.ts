@@ -118,6 +118,7 @@ function makeTextExpression(
     property: '.state',
     triggerType,
     sourceDomain,
+    cppReturnType: 'std::string',
   });
 }
 
