@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _BleClient, _CoreComponent, _DisplayBasicDisplay, _DisplayFullDisplay, _QspiDbiDisplayBase } from "../bases";
 import type { _esphome_hub75_HUB75Display, addressable_light_AddressableLightDisplay, i2c_I2CBus, ili9xxx_ILI9XXXDisplay, inkplate_Inkplate, lcd_gpio_GPIOLCDDisplay, lcd_pcf8574_PCF8574LCDDisplay, light_AddressableLightState, max7219_MAX7219Component, max7219digit_MAX7219Component, nextion_Nextion, pcd8544_PCD8544, power_supply_PowerSupply, pvvx_mithermometer_PVVXDisplay, rpi_dpi_rgb_RpiDpiRgb, sdl_Sdl, spi_SPIComponent, ssd1306_i2c_I2CSSD1306, ssd1306_spi_SPISSD1306, ssd1322_spi_SPISSD1322, ssd1325_spi_SPISSD1325, ssd1327_i2c_I2CSSD1327, ssd1327_spi_SPISSD1327, ssd1331_spi_SPISSD1331, ssd1351_spi_SPISSD1351, st7567_i2c_I2CST7567, st7567_spi_SPIST7567, st7701s_ST7701S, st7735_ST7735, st7789v_ST7789V, st7920_ST7920, time_RealTimeClock, tm1621_TM1621Display, tm1637_TM1637Display, tm1638_TM1638Component, uart_UARTComponent, waveshare_epaper_WaveshareEPaperBase } from "../markers";
 interface Ili9xxxDimensionsProps {
@@ -1564,32 +1564,32 @@ interface NextionProps extends _DisplayBasicDisplay, _CoreComponent {
      * [Action](/automations/actions#all-actions): An action to be performed when the Nextion reports a buffer overflow. See...
      * @yamlKey on_buffer_overflow
      */
-    onBufferOverflow?: () => void;
+    onBufferOverflow?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): An action to be performed after a page change. See [Nextion Automation](h...
      * @yamlKey on_page
      */
-    onPage?: () => void;
+    onPage?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): An action to be performed after ESPHome connects to the Nextion. See [Nex...
      * @yamlKey on_setup
      */
-    onSetup?: () => void;
+    onSetup?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): An action to be performed when the Nextion goes to sleep. See [Nextion Au...
      * @yamlKey on_sleep
      */
-    onSleep?: () => void;
+    onSleep?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): An action to be performed after a touch event (press or release). See [Ne...
      * @yamlKey on_touch
      */
-    onTouch?: () => void;
+    onTouch?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): An action to be performed when the Nextion wakes up. See [Nextion Automat...
      * @yamlKey on_wake
      */
-    onWake?: () => void;
+    onWake?: TriggerHandler;
     /**
      * boolean: Sets whether the initial display connection handshake process is skipped. When set to `true`, the connection...
      * @yamlKey skip_connection_handshake

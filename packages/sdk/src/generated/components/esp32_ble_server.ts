@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _CoreComponent } from "../bases";
 import type { esp32_ble_ESP32BLE, esp32_ble_server_BLEServer } from "../markers";
 export interface Esp32BleServerManufacturerProps {
@@ -46,7 +46,7 @@ export interface Esp32BleServerServicesPropsCharacteristicsPropsDescriptorsProps
     read?: boolean;
     write?: boolean;
     /** @yamlKey on_write */
-    onWrite?: () => void;
+    onWrite?: TriggerHandler;
     value: Esp32BleServerServicesPropsCharacteristicsPropsDescriptorsPropsValueProps;
     /** @yamlKey max_length */
     maxLength?: number;
@@ -63,7 +63,7 @@ export interface Esp32BleServerServicesPropsCharacteristicsProps {
     value?: Esp32BleServerServicesPropsCharacteristicsPropsValueProps;
     descriptors?: Array<Esp32BleServerServicesPropsCharacteristicsPropsDescriptorsProps>;
     /** @yamlKey on_write */
-    onWrite?: () => void;
+    onWrite?: TriggerHandler;
     description?: Esp32BleServerServicesPropsCharacteristicsPropsDescriptionProps;
     read?: boolean;
     write?: boolean;
@@ -108,12 +108,12 @@ export interface Esp32BleServerProps extends _CoreComponent {
      * [Automation](/automations): An action to be performed when a client connects to the BLE server. It provides the `id` ...
      * @yamlKey on_connect
      */
-    onConnect?: () => void;
+    onConnect?: TriggerHandler;
     /**
      * [Automation](/automations): An action to be performed when a client disconnects from the BLE server. It provides the ...
      * @yamlKey on_disconnect
      */
-    onDisconnect?: () => void;
+    onDisconnect?: TriggerHandler;
 }
 declare global {
     namespace JSX {

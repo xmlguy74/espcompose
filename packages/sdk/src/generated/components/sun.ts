@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { sun_Sun, time_RealTimeClock } from "../markers";
 export interface SunProps {
     /** @yamlKey time_id */
@@ -16,12 +16,12 @@ export interface SunProps {
      * [Automation](/automations): An automation to perform at sunrise when the sun crosses a specified angle.
      * @yamlKey on_sunrise
      */
-    onSunrise?: () => void;
+    onSunrise?: TriggerHandler;
     /**
      * [Automation](/automations): An automation to perform at sunset when the sun crosses a specified angle.
      * @yamlKey on_sunset
      */
-    onSunset?: () => void;
+    onSunset?: TriggerHandler;
 }
 declare global {
     namespace JSX {

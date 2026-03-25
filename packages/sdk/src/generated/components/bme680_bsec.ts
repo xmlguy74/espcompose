@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { bme680_bsec_BME680BSECComponent, i2c_I2CBus } from "../markers";
 export interface Bme680BsecStateSaveIntervalProps {
     days?: unknown;

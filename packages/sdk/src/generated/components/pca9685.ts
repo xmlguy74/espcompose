@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _CoreComponent } from "../bases";
 import type { i2c_I2CBus, pca9685_PCA9685Output } from "../markers";
 export interface Pca9685Props extends _CoreComponent {

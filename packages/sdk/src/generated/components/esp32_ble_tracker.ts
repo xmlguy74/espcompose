@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _CoreComponent } from "../bases";
 import type { esp32_ble_ESP32BLE, esp32_ble_tracker_ESP32BLETracker } from "../markers";
 export interface Esp32BleTrackerScanParametersPropsDurationProps {
@@ -59,22 +59,22 @@ export interface Esp32BleTrackerProps extends _CoreComponent {
      * [Automation](/automations): An automation to perform when a Bluetooth advertising is received. See [`on_ble_advertise...
      * @yamlKey on_ble_advertise
      */
-    onBleAdvertise?: () => void;
+    onBleAdvertise?: TriggerHandler;
     /**
      * [Automation](/automations): An automation to perform when a Bluetooth advertising with service data is received. See ...
      * @yamlKey on_ble_service_data_advertise
      */
-    onBleServiceDataAdvertise?: () => void;
+    onBleServiceDataAdvertise?: TriggerHandler;
     /**
      * [Automation](/automations): An automation to perform when a Bluetooth advertising with manufacturer data is received....
      * @yamlKey on_ble_manufacturer_data_advertise
      */
-    onBleManufacturerDataAdvertise?: () => void;
+    onBleManufacturerDataAdvertise?: TriggerHandler;
     /**
      * [Automation](/automations): An automation to perform when a BLE scan has completed (the duration of the scan). This w...
      * @yamlKey on_scan_end
      */
-    onScanEnd?: () => void;
+    onScanEnd?: TriggerHandler;
     /**
      * boolean: When enabled, software coexistence will briefly prioritize Bluetooth over Wi-Fi during the initial establish...
      * @yamlKey software_coexistence

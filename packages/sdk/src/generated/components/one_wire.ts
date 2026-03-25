@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _CoreComponent } from "../bases";
 import type { ds2484_DS2484OneWireBus, gpio_GPIOOneWireBus, i2c_I2CBus } from "../markers";
 interface Ds2484Props extends _CoreComponent {

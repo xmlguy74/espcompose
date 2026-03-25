@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _CoreComponent, _CoreEntityBase } from "../bases";
 import type { esp32_camera_ESP32Camera, i2c_InternalI2CBus } from "../markers";
 export interface Esp32CameraExternalClockProps {
@@ -158,17 +158,17 @@ export interface Esp32CameraProps extends _CoreEntityBase, _CoreComponent {
      * [Automation](/automations): An automation to perform when a stream starts.
      * @yamlKey on_stream_start
      */
-    onStreamStart?: () => void;
+    onStreamStart?: TriggerHandler;
     /**
      * [Automation](/automations): An automation to perform when a stream stops.
      * @yamlKey on_stream_stop
      */
-    onStreamStop?: () => void;
+    onStreamStop?: TriggerHandler;
     /**
      * [Automation](/automations): An automation called when image taken. Image is available as `image` variable of type <AP...
      * @yamlKey on_image
      */
-    onImage?: () => void;
+    onImage?: TriggerHandler;
 }
 declare global {
     namespace JSX {

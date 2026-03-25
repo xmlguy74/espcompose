@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin } from "../../types";
+import type { ComponentProps, Pin, TriggerHandler } from "../../types";
 export interface Esp8266FrameworkProps {
     /** string: The base framework version number to use, from [esp8266 arduino releases](https://github.com/esp8266/Arduino/... */
     version?: string;

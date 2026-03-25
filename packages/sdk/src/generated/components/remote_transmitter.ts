@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _CoreComponent } from "../bases";
 import type { remote_transmitter_RemoteTransmitterComponent } from "../markers";
 export interface RemoteTransmitterProps extends _CoreComponent {
@@ -43,12 +43,12 @@ export interface RemoteTransmitterProps extends _CoreComponent {
      * [Automation](/automations): An automation to perform before data is sent. Useful if the radio / IR hardware needs to ...
      * @yamlKey on_transmit
      */
-    onTransmit?: () => void;
+    onTransmit?: TriggerHandler;
     /**
      * [Automation](/automations): An automation to perform after data has been sent. Useful if the radio / IR hardware need...
      * @yamlKey on_complete
      */
-    onComplete?: () => void;
+    onComplete?: TriggerHandler;
 }
 declare global {
     namespace JSX {

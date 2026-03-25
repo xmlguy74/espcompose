@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _CoreComponent } from "../bases";
 import type { fingerprint_grow_FingerprintGrowComponent, uart_UARTComponent } from "../markers";
 export interface FingerprintGrowIdlePeriodToSleepProps {
@@ -41,42 +41,42 @@ export interface FingerprintGrowProps extends _CoreComponent {
      * [Automation](/automations): An action to be performed when the finger touches the sensor. See [`on_finger_scan_start`...
      * @yamlKey on_finger_scan_start
      */
-    onFingerScanStart?: () => void;
+    onFingerScanStart?: TriggerHandler;
     /**
      * [Automation](/automations): An action to be performed when an enrolled fingerprint is scanned. See [`on_finger_scan_m...
      * @yamlKey on_finger_scan_matched
      */
-    onFingerScanMatched?: () => void;
+    onFingerScanMatched?: TriggerHandler;
     /**
      * [Automation](/automations): An action to be performed when an unknown fingerprint is scanned. See [`on_finger_scan_un...
      * @yamlKey on_finger_scan_unmatched
      */
-    onFingerScanUnmatched?: () => void;
+    onFingerScanUnmatched?: TriggerHandler;
     /**
      * [Automation](/automations): An action to be performed when the finger is not entirely touching the sensor. See [`on_f...
      * @yamlKey on_finger_scan_misplaced
      */
-    onFingerScanMisplaced?: () => void;
+    onFingerScanMisplaced?: TriggerHandler;
     /**
      * [Automation](/automations): An action to be performed when the scan of a fingerprint failed. See [`on_finger_scan_inv...
      * @yamlKey on_finger_scan_invalid
      */
-    onFingerScanInvalid?: () => void;
+    onFingerScanInvalid?: TriggerHandler;
     /**
      * [Automation](/automations): An action to be performed when a fingerprint is scanned during enrollment. See [`on_enrol...
      * @yamlKey on_enrollment_scan
      */
-    onEnrollmentScan?: () => void;
+    onEnrollmentScan?: TriggerHandler;
     /**
      * [Automation](/automations): An action to be performed when a fingerprint is enrolled. See [`on_enrollment_done` Trigg...
      * @yamlKey on_enrollment_done
      */
-    onEnrollmentDone?: () => void;
+    onEnrollmentDone?: TriggerHandler;
     /**
      * [Automation](/automations): An action to be performed when a fingerprint enrollment failed. See [`on_enrollment_faile...
      * @yamlKey on_enrollment_failed
      */
-    onEnrollmentFailed?: () => void;
+    onEnrollmentFailed?: TriggerHandler;
     /** @yamlKey update_interval */
     updateInterval?: unknown;
     /**

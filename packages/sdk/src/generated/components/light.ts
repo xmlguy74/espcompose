@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _CoreComponent, _LightAddressableLight, _LightBinaryLight, _LightBrightnessOnlyLight, _LightRgbLight } from "../bases";
 import type { beken_spi_led_strip_BekenSPILEDStripLightOutput, binary_BinaryLightOutput, color_temperature_CTLightOutput, cwww_CWWWLightOutput, esp32_rmt_led_strip_ESP32RMTLEDStripLightOutput, hbridge_HBridgeLightOutput, light_AddressableLightState, light_LightState, lv_led_t, lvgl_LVLight, m5stack_8angle_M5Stack8AngleComponent, m5stack_8angle_M5Stack8AngleLightOutput, monochromatic_MonochromaticLightOutput, neopixelbus_NeoPixelBusLightOutputBase, output_BinaryOutput, output_FloatOutput, partition_PartitionLightOutput, rgb_RGBLightOutput, rgbct_RGBCTLightOutput, rgbw_RGBWLightOutput, rgbww_RGBWWLightOutput, rp2040_pio_led_strip_RP2040PIOLEDStripLightOutput, shelly_dimmer_ShellyDimmer, sonoff_d1_SonoffD1Output, spi_SPIComponent, spi_led_strip_SpiLedStrip, status_led_StatusLEDLightOutput, tuya_Tuya, tuya_TuyaLight, uart_UARTComponent, web_server_WebServer, zigbee_ZigbeeComponent } from "../markers";
 interface BekenSpiLedStripMaxRefreshRateProps {
@@ -158,11 +158,11 @@ interface ShellyDimmerPowerProps {
     expireAfter?: ShellyDimmerPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler;
 }
 interface ShellyDimmerVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -229,11 +229,11 @@ interface ShellyDimmerVoltageProps {
     expireAfter?: ShellyDimmerVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler;
 }
 interface ShellyDimmerCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -300,11 +300,11 @@ interface ShellyDimmerCurrentProps {
     expireAfter?: ShellyDimmerCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler;
 }
 interface BekenSpiLedStripProps extends _LightAddressableLight {
     /** [Pin](/guides/configuration-types#pin): The pin for the data line of the light. */

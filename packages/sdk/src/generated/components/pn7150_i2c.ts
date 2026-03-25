@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _CoreComponent } from "../bases";
 import type { i2c_I2CBus, pn7150_PN7150 } from "../markers";
 export interface Pn7150I2cTagTtlProps {
@@ -19,13 +19,13 @@ export interface Pn7150I2cProps extends _CoreComponent {
     i2cId?: RefProp<i2c_I2CBus>;
     address?: unknown;
     /** @yamlKey on_emulated_tag_scan */
-    onEmulatedTagScan?: () => void;
+    onEmulatedTagScan?: TriggerHandler;
     /** @yamlKey on_finished_write */
-    onFinishedWrite?: () => void;
+    onFinishedWrite?: TriggerHandler;
     /** @yamlKey on_tag */
-    onTag?: () => void;
+    onTag?: TriggerHandler;
     /** @yamlKey on_tag_removed */
-    onTagRemoved?: () => void;
+    onTagRemoved?: TriggerHandler;
     /** @yamlKey irq_pin */
     irqPin: Pin;
     /** @yamlKey ven_pin */

@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _CoreComponent } from "../bases";
 import type { es7210_ES7210, es7243e_ES7243E, i2c_I2CBus } from "../markers";
 interface Es7210Props extends _CoreComponent {

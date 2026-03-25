@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin } from "../../types";
+import type { ComponentProps, Pin, TriggerHandler } from "../../types";
 import type { _PackagesPackage } from "../bases";
 export interface PackagesStringPropsFilesProps {
     path: unknown;

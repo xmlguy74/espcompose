@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { Area } from "../markers";
 export interface EsphomeProjectProps {
     /** string: Name of the project */
@@ -14,7 +14,7 @@ export interface EsphomeProjectProps {
      * [Automation](/automations): An automation to perform when the device firmware is updated. This compares the above `ve...
      * @yamlKey on_update
      */
-    onUpdate?: () => void;
+    onUpdate?: TriggerHandler;
 }
 export interface EsphomeAreasProps {
     name: unknown;
@@ -55,17 +55,17 @@ export interface EsphomeProps {
      * [Automation](/automations): An automation to perform when the node starts. See [`on_boot`](https://esphome.io/compone...
      * @yamlKey on_boot
      */
-    onBoot?: () => void;
+    onBoot?: TriggerHandler;
     /**
      * [Automation](/automations): An automation to perform right before the node shuts down. See [`on_shutdown`](https://es...
      * @yamlKey on_shutdown
      */
-    onShutdown?: () => void;
+    onShutdown?: TriggerHandler;
     /**
      * [Automation](/automations): An automation to perform on each `loop()` iteration. See [`on_loop`](https://esphome.io/c...
      * @yamlKey on_loop
      */
-    onLoop?: () => void;
+    onLoop?: TriggerHandler;
     /** list of files: A list of C/C++ files to include in the (auto-generated) `main` file. The paths in this list are relat... */
     includes?: Array<unknown>;
     /**

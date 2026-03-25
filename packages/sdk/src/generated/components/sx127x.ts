@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _CoreComponent } from "../bases";
 import type { spi_SPIComponent, sx127x_SX127x } from "../markers";
 export interface Sx127xProps extends _CoreComponent {
@@ -43,7 +43,7 @@ export interface Sx127xProps extends _CoreComponent {
      * [Automation](/automations): An automation to perform in packet mode when a packet has been decoded. A variable x of t...
      * @yamlKey on_packet
      */
-    onPacket?: () => void;
+    onPacket?: TriggerHandler;
     /**
      * enum: Transmitter output pin, can be `BOOST` or `RFO`.
      * @yamlKey pa_pin

@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _CoreComponent } from "../bases";
 import type { http_request_HttpRequestComponent, image_Image, online_image_OnlineImage } from "../markers";
 export interface OnlineImageProps extends _CoreComponent {
@@ -40,12 +40,12 @@ export interface OnlineImageProps extends _CoreComponent {
      * [Automation](/automations): An automation to perform when the image has been successfully downloaded.
      * @yamlKey on_download_finished
      */
-    onDownloadFinished?: () => void;
+    onDownloadFinished?: TriggerHandler;
     /**
      * [Automation](/automations): An automation to perform when an error happened during download or decode.
      * @yamlKey on_error
      */
-    onError?: () => void;
+    onError?: TriggerHandler;
     /**
      * int: Redownload the image when the specified time has elapsed. Defaults to `never` (i.e. the update component action ...
      * @yamlKey update_interval

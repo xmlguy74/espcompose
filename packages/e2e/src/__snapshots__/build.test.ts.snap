@@ -495,7 +495,8 @@ lvgl:
         - label:
             x: 10
             y: 10
-            text: !lambda "return std::string(\\"\\");"
+            text: !lambda "return std::string(id(ha_light_kitchen_floods).state ? \\"on\\" :
+              \\"off\\");"
             id: rw_ref1
         - button:
             x: 10
@@ -514,7 +515,7 @@ lvgl:
         - label:
             x: 10
             y: 100
-            text: !lambda "return std::string(\\"\\");"
+            text: !lambda "return to_string(id(ha_sensor_living_room_temperature).state);"
             id: rw_ref2
 binary_sensor:
   platform: homeassistant

@@ -75,6 +75,8 @@ function resolveParamType(varDef: SchemaConfigVar): string {
     case 'schema':
       // Nested object params — use Record for now; complex schemas are rare in action params
       return 'Record<string, unknown>';
+    case 'trigger':
+      return 'TriggerHandler';
     default:
       // Untyped params (common for templatable fields like brightness, level)
       // These are typically numbers in ESPHome

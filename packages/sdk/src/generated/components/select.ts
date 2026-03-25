@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _CoreComponent, _CoreEntityBase, _CoreMqttCommandComponent } from "../bases";
 import type { EntityBase, copy_CopySelect, es8388_ES8388, ld2410_LD2410Component, ld2412_LD2412Component, ld2420_LD2420Component, ld2450_LD2450Component, logger_Logger, logger_LoggerLevelSelect, lvgl_LVGLSelect, modbus_controller_ModbusController, modbus_controller_ModbusSelect, seeed_mr24hpc1_MR24HPC1Component, seeed_mr60fda2_MR60FDA2Component, select_Select, template__TemplateSelect, tuya_Tuya, tuya_TuyaSelect, web_server_WebServer } from "../markers";
 interface SelectWebServerProps {
@@ -59,7 +59,9 @@ interface Es8388DacOutputProps {
     /** @yamlKey web_server */
     webServer?: Es8388DacOutputPropsWebServerProps;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface Es8388AdcInputMicPropsAvailabilityProps {
     topic: unknown;
@@ -106,7 +108,9 @@ interface Es8388AdcInputMicProps {
     /** @yamlKey web_server */
     webServer?: Es8388AdcInputMicPropsWebServerProps;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface Ld2410DistanceResolutionPropsAvailabilityProps {
     topic: unknown;
@@ -153,7 +157,9 @@ interface Ld2410DistanceResolutionProps {
     /** @yamlKey web_server */
     webServer?: Ld2410DistanceResolutionPropsWebServerProps;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface Ld2410LightFunctionPropsAvailabilityProps {
     topic: unknown;
@@ -200,7 +206,9 @@ interface Ld2410LightFunctionProps {
     /** @yamlKey web_server */
     webServer?: Ld2410LightFunctionPropsWebServerProps;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface Ld2410OutPinLevelPropsAvailabilityProps {
     topic: unknown;
@@ -247,7 +255,9 @@ interface Ld2410OutPinLevelProps {
     /** @yamlKey web_server */
     webServer?: Ld2410OutPinLevelPropsWebServerProps;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface Ld2410BaudRatePropsAvailabilityProps {
     topic: unknown;
@@ -294,7 +304,9 @@ interface Ld2410BaudRateProps {
     /** @yamlKey web_server */
     webServer?: Ld2410BaudRatePropsWebServerProps;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface Ld2412BaudRatePropsAvailabilityProps {
     topic: unknown;
@@ -341,7 +353,9 @@ interface Ld2412BaudRateProps {
     /** @yamlKey web_server */
     webServer?: Ld2412BaudRatePropsWebServerProps;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface Ld2412DistanceResolutionPropsAvailabilityProps {
     topic: unknown;
@@ -388,7 +402,9 @@ interface Ld2412DistanceResolutionProps {
     /** @yamlKey web_server */
     webServer?: Ld2412DistanceResolutionPropsWebServerProps;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface Ld2412LightFunctionPropsAvailabilityProps {
     topic: unknown;
@@ -435,7 +451,9 @@ interface Ld2412LightFunctionProps {
     /** @yamlKey web_server */
     webServer?: Ld2412LightFunctionPropsWebServerProps;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface Ld2412OutPinLevelPropsAvailabilityProps {
     topic: unknown;
@@ -482,7 +500,9 @@ interface Ld2412OutPinLevelProps {
     /** @yamlKey web_server */
     webServer?: Ld2412OutPinLevelPropsWebServerProps;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface Ld2420OperatingModePropsAvailabilityProps {
     topic: unknown;
@@ -530,7 +550,9 @@ interface Ld2420OperatingModeProps {
     /** @yamlKey web_server */
     webServer?: Ld2420OperatingModePropsWebServerProps;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface Ld2450BaudRatePropsAvailabilityProps {
     topic: unknown;
@@ -577,7 +599,9 @@ interface Ld2450BaudRateProps {
     /** @yamlKey web_server */
     webServer?: Ld2450BaudRatePropsWebServerProps;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface Ld2450ZoneTypePropsAvailabilityProps {
     topic: unknown;
@@ -624,7 +648,9 @@ interface Ld2450ZoneTypeProps {
     /** @yamlKey web_server */
     webServer?: Ld2450ZoneTypePropsWebServerProps;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface SeeedMr24hpc1SceneModePropsAvailabilityProps {
     topic: unknown;
@@ -671,7 +697,9 @@ interface SeeedMr24hpc1SceneModeProps {
     /** @yamlKey web_server */
     webServer?: SeeedMr24hpc1SceneModePropsWebServerProps;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface SeeedMr24hpc1UnmanTimePropsAvailabilityProps {
     topic: unknown;
@@ -718,7 +746,9 @@ interface SeeedMr24hpc1UnmanTimeProps {
     /** @yamlKey web_server */
     webServer?: SeeedMr24hpc1UnmanTimePropsWebServerProps;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface SeeedMr24hpc1ExistenceBoundaryPropsAvailabilityProps {
     topic: unknown;
@@ -766,7 +796,9 @@ interface SeeedMr24hpc1ExistenceBoundaryProps {
     /** @yamlKey web_server */
     webServer?: SeeedMr24hpc1ExistenceBoundaryPropsWebServerProps;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface SeeedMr24hpc1MotionBoundaryPropsAvailabilityProps {
     topic: unknown;
@@ -814,7 +846,9 @@ interface SeeedMr24hpc1MotionBoundaryProps {
     /** @yamlKey web_server */
     webServer?: SeeedMr24hpc1MotionBoundaryPropsWebServerProps;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface SeeedMr60fda2InstallHeightPropsAvailabilityProps {
     topic: unknown;
@@ -861,7 +895,9 @@ interface SeeedMr60fda2InstallHeightProps {
     /** @yamlKey web_server */
     webServer?: SeeedMr60fda2InstallHeightPropsWebServerProps;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface SeeedMr60fda2HeightThresholdPropsAvailabilityProps {
     topic: unknown;
@@ -908,7 +944,9 @@ interface SeeedMr60fda2HeightThresholdProps {
     /** @yamlKey web_server */
     webServer?: SeeedMr60fda2HeightThresholdPropsWebServerProps;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface SeeedMr60fda2SensitivityPropsAvailabilityProps {
     topic: unknown;
@@ -956,13 +994,17 @@ interface SeeedMr60fda2SensitivityProps {
     /** @yamlKey web_server */
     webServer?: SeeedMr60fda2SensitivityPropsWebServerProps;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface SelectBaseProps extends _CoreEntityBase, _CoreMqttCommandComponent {
     /** @yamlKey web_server */
     webServer?: SelectWebServerProps;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface CopyProps extends _CoreComponent {
     /**
@@ -1152,7 +1194,7 @@ interface TemplateProps extends _CoreComponent {
      * [Action](/automations/actions#all-actions): The action that should be performed when the remote (like Home Assistant'...
      * @yamlKey set_action
      */
-    setAction?: () => void;
+    setAction?: TriggerHandler;
     /**
      * string: The option to set the option to on setup if not restored with `restore_value`. Cannot be used with `lambda`. ...
      * @yamlKey initial_option

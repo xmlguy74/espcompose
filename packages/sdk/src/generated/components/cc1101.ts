@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { cc1101_CC1101Component, spi_SPIComponent } from "../markers";
 export interface Cc1101Props {
     /**
@@ -12,7 +12,7 @@ export interface Cc1101Props {
      */
     gdo0Pin?: Pin;
     /** @yamlKey on_packet */
-    onPacket?: () => void;
+    onPacket?: TriggerHandler;
     /** @yamlKey spi_id */
     spiId?: RefProp<spi_SPIComponent>;
     /** @yamlKey data_rate */

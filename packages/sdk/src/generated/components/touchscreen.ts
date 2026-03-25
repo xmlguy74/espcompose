@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _CoreComponent, _Touchscreen } from "../bases";
 import type { axs15231_AXS15231Touchscreen, chsc6x_CHSC6XTouchscreen, cst226_CST226Touchscreen, cst816_CST816Touchscreen, display_Display, ektf2232_EKTF2232Touchscreen, ft5x06_FT5x06Touchscreen, ft63x6_FT63X6Touchscreen, gt911_GT911Touchscreen, i2c_I2CBus, lilygo_t5_47_LilygoT547Touchscreen, sdl_Sdl, sdl_SdlTouchscreen, spi_SPIComponent, tt21100_TT21100Touchscreen, xpt2046_XPT2046Component } from "../markers";
 interface Axs15231TransformProps {
@@ -223,11 +223,11 @@ interface Axs15231Props extends _CoreComponent {
     touchTimeout?: Axs15231TouchTimeoutProps;
     calibration?: Axs15231CalibrationProps;
     /** @yamlKey on_touch */
-    onTouch?: () => void;
+    onTouch?: TriggerHandler;
     /** @yamlKey on_update */
-    onUpdate?: () => void;
+    onUpdate?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey update_interval */
     updateInterval?: unknown;
     /**
@@ -251,11 +251,11 @@ interface Chsc6xProps extends _CoreComponent {
     touchTimeout?: Chsc6xTouchTimeoutProps;
     calibration?: Chsc6xCalibrationProps;
     /** @yamlKey on_touch */
-    onTouch?: () => void;
+    onTouch?: TriggerHandler;
     /** @yamlKey on_update */
-    onUpdate?: () => void;
+    onUpdate?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey update_interval */
     updateInterval?: unknown;
     /**
@@ -315,11 +315,11 @@ interface LilygoT547Props extends _CoreComponent {
     touchTimeout?: LilygoT547TouchTimeoutProps;
     calibration?: LilygoT547CalibrationProps;
     /** @yamlKey on_touch */
-    onTouch?: () => void;
+    onTouch?: TriggerHandler;
     /** @yamlKey on_update */
-    onUpdate?: () => void;
+    onUpdate?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey update_interval */
     updateInterval?: unknown;
     /**
@@ -338,11 +338,11 @@ interface Cst226Props extends _CoreComponent {
     touchTimeout?: Cst226TouchTimeoutProps;
     calibration?: Cst226CalibrationProps;
     /** @yamlKey on_touch */
-    onTouch?: () => void;
+    onTouch?: TriggerHandler;
     /** @yamlKey on_update */
-    onUpdate?: () => void;
+    onUpdate?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey update_interval */
     updateInterval?: unknown;
     /**
@@ -400,11 +400,11 @@ interface Xpt2046Props extends _CoreComponent {
     touchTimeout?: Xpt2046TouchTimeoutProps;
     calibration: Xpt2046CalibrationProps;
     /** @yamlKey on_touch */
-    onTouch?: () => void;
+    onTouch?: TriggerHandler;
     /** @yamlKey on_update */
-    onUpdate?: () => void;
+    onUpdate?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey update_interval */
     updateInterval?: unknown;
     /** @yamlKey interrupt_pin */

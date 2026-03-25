@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _BleClient, _CoreComponent, _Emc2101Component, _ModbusControllerModbusitembaseschema, _OutputBinaryOutput, _OutputFloatOutput, _PipsolarComponent } from "../bases";
 import type { ac_dimmer_AcDimmer, ble_client_BLEBinaryOutput, bp1658cj_BP1658CJ, bp1658cj_BP1658CJ_Channel, bp5758d_BP5758D, bp5758d_BP5758D_Channel, dac7678_DAC7678Channel, dac7678_DAC7678Output, emc2101_EMC2101Output, esp32_dac_ESP32DAC, esp8266_pwm_ESP8266PWM, gp8403_GP8403Component, gp8403_GP8403Output, gpio_GPIOBinaryOutput, i2c_I2CBus, ledc_LEDCOutput, libretiny_pwm_LibreTinyPWM, max6956_MAX6956, max6956_MAX6956LedChannel, mcp4461_Mcp4461Component, mcp4461_Mcp4461Wiper, mcp4725_MCP4725, mcp4728_MCP4728Channel, mcp4728_MCP4728Component, mcp47a1_MCP47A1, modbus_controller_ModbusBinaryOutput, modbus_controller_ModbusFloatOutput, my9231_MY9231OutputComponent, my9231_MY9231OutputComponent_Channel, opentherm_OpenthermHub, pca9685_PCA9685Channel, pca9685_PCA9685Output, power_supply_PowerSupply, rp2040_pwm_RP2040PWM, sigma_delta_output_SigmaDeltaOutput, slow_pwm_SlowPWMOutput, sm16716_SM16716, sm16716_SM16716_Channel, sm2135_SM2135, sm2135_SM2135_Channel, sm2235_SM2235, sm2235_SM2235_Channel, sm2335_SM2335, sm2335_SM2335_Channel, sx1509_SX1509Component, sx1509_SX1509FloatOutputChannel, template__TemplateBinaryOutput, template__TemplateFloatOutput, tlc59208f_TLC59208FChannel, tlc59208f_TLC59208FOutput, tlc5947_TLC5947, tlc5947_TLC5947Channel, tlc5971_TLC5971, tlc5971_TLC5971Channel, tm1638_TM1638Component, tm1638_TM1638OutputLed, x9c_X9cOutput } from "../markers";
 interface SlowPwmPeriodProps {
@@ -438,17 +438,17 @@ interface SigmaDeltaOutputProps extends _OutputFloatOutput, _CoreComponent {
      * [Automation](/automations): An automation to perform when the load is switched. If a lambda is used the boolean `stat...
      * @yamlKey state_change_action
      */
-    stateChangeAction?: () => void;
+    stateChangeAction?: TriggerHandler;
     /**
      * [Automation](/automations): An automation to perform when the load is turned on. Can be used to control for example a...
      * @yamlKey turn_on_action
      */
-    turnOnAction?: () => void;
+    turnOnAction?: TriggerHandler;
     /**
      * [Automation](/automations): An automation to perform when the load is turned off. `turn_on_action` and `turn_off_acti...
      * @yamlKey turn_off_action
      */
-    turnOffAction?: () => void;
+    turnOffAction?: TriggerHandler;
 }
 interface SlowPwmProps extends _OutputFloatOutput, _CoreComponent {
     /** [Pin Schema](/guides/configuration-types#pin-schema): The pin to pulse. */
@@ -457,17 +457,17 @@ interface SlowPwmProps extends _OutputFloatOutput, _CoreComponent {
      * [Automation](/automations): An automation to perform when the load is turned on. Can be used to control for example a...
      * @yamlKey turn_on_action
      */
-    turnOnAction?: () => void;
+    turnOnAction?: TriggerHandler;
     /**
      * [Automation](/automations): An automation to perform when the load is turned off. `turn_on_action` and `turn_off_acti...
      * @yamlKey turn_off_action
      */
-    turnOffAction?: () => void;
+    turnOffAction?: TriggerHandler;
     /**
      * [Automation](/automations): An automation to perform when the load is switched. If a lambda is used the boolean `stat...
      * @yamlKey state_change_action
      */
-    stateChangeAction?: () => void;
+    stateChangeAction?: TriggerHandler;
     /** [Time](/guides/configuration-types#time): The duration of each cycle. (i.e. a 10s period at 50% duty would result in ... */
     period: SlowPwmPeriodProps;
     /**
@@ -756,14 +756,14 @@ interface TemplateBinaryProps extends _OutputBinaryOutput {
      * [Automation](/automations): An automation to perform when the state of the output is updated.
      * @yamlKey write_action
      */
-    writeAction: () => void;
+    writeAction: TriggerHandler;
 }
 interface TemplateFloatProps extends _OutputFloatOutput {
     /**
      * [Automation](/automations): An automation to perform when the state of the output is updated.
      * @yamlKey write_action
      */
-    writeAction: () => void;
+    writeAction: TriggerHandler;
 }
 interface Tlc59208fProps extends _OutputFloatOutput {
     /**

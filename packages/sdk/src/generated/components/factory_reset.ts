@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _CoreComponent } from "../bases";
 import type { factory_reset_FactoryResetComponent } from "../markers";
 export interface FactoryResetMaxDelayProps {
@@ -26,7 +26,7 @@ export interface FactoryResetProps extends _CoreComponent {
      */
     resetsRequired?: number;
     /** @yamlKey on_increment */
-    onIncrement?: () => void;
+    onIncrement?: TriggerHandler;
 }
 declare global {
     namespace JSX {

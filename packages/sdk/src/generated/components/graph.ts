@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { Color, font_Font, graph_Graph, sensor_Sensor } from "../markers";
 export interface GraphDurationProps {
     days?: unknown;

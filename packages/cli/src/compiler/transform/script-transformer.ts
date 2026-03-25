@@ -71,7 +71,7 @@
  */
 
 import ts from 'typescript';
-import { convertStatements, RefTokenMarker, type ConverterContext, type RefInfo, type HAEntityInfo } from './action-converter.js';
+import { convertStatements, RefTokenMarker, ActionSpreadMarker, type ConverterContext, type RefInfo, type HAEntityInfo } from './action-converter.js';
 import { mapParamType } from './param-type-mapper.js';
 import { MARKER_ACTION_CLASS_MAP, camelToSnake } from '@esphome/compose';
 
@@ -692,10 +692,17 @@ function rewriteTriggerAttributes(
  * function bodies.
  */
 function actionArrayToAst(factory: ts.NodeFactory, actions: unknown[]): ts.ArrayLiteralExpression {
-  return factory.createArrayLiteralExpression(
-    actions.map((a) => valueToAst(factory, a) as ts.Expression),
-    false,
-  );
+  const elements: ts.Expression[] = [];
+  for (const a of actions) {
+    if (a instanceof ActionSpreadMarker) {
+      // Spread the call's return value into the action array:
+      //   applyTheme(darkTheme)  →  ...applyTheme(darkTheme)
+      elements.push(factory.createSpreadElement(a.callNode));
+    } else {
+      elements.push(valueToAst(factory, a) as ts.Expression);
+    }
+  }
+  return factory.createArrayLiteralExpression(elements, false);
 }
 
 function valueToAst(factory: ts.NodeFactory, value: unknown): ts.Expression {

@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _CoreComponent, _CoreEntityBase, _CoreMqttCommandComponent } from "../bases";
 import type { binary_sensor_BinarySensor, template__TemplateAlarmControlPanel, web_server_WebServer } from "../markers";
 interface AlarmControlPanelWebServerProps {
@@ -84,27 +84,27 @@ interface AlarmControlPanelBaseProps extends _CoreEntityBase, _CoreMqttCommandCo
     /** @yamlKey web_server */
     webServer?: AlarmControlPanelWebServerProps;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler;
     /** @yamlKey on_triggered */
-    onTriggered?: () => void;
+    onTriggered?: TriggerHandler;
     /** @yamlKey on_arming */
-    onArming?: () => void;
+    onArming?: TriggerHandler;
     /** @yamlKey on_pending */
-    onPending?: () => void;
+    onPending?: TriggerHandler;
     /** @yamlKey on_armed_home */
-    onArmedHome?: () => void;
+    onArmedHome?: TriggerHandler;
     /** @yamlKey on_armed_night */
-    onArmedNight?: () => void;
+    onArmedNight?: TriggerHandler;
     /** @yamlKey on_armed_away */
-    onArmedAway?: () => void;
+    onArmedAway?: TriggerHandler;
     /** @yamlKey on_disarmed */
-    onDisarmed?: () => void;
+    onDisarmed?: TriggerHandler;
     /** @yamlKey on_cleared */
-    onCleared?: () => void;
+    onCleared?: TriggerHandler;
     /** @yamlKey on_chime */
-    onChime?: () => void;
+    onChime?: TriggerHandler;
     /** @yamlKey on_ready */
-    onReady?: () => void;
+    onReady?: TriggerHandler;
 }
 interface TemplateProps extends _CoreComponent {
     /** list of string: A list of codes for disarming the alarm, if *requires_code_to_arm* set to true then for arming the al... */

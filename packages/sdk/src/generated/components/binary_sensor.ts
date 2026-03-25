@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _BthomeMithermometerBleDevice, _CoreComponent, _CoreEntityBase, _CoreMqttComponent, _HomeassistantHomeAssistantImport, _ModbusControllerModbusitembaseschema, _Msa3xxMsaSensor, _NextionBinarySensorConfigBinarySensor, _PacketTransportBinarySensorStatusSensor, _PipsolarComponent, _Touchscreen } from "../bases";
 import type { EntityBase, analog_threshold_AnalogThresholdBinarySensor, apds9960_APDS9960, as3935_AS3935Component, binary_sensor_BinarySensor, ble_presence_BLEPresenceDevice, cap1188_CAP1188Channel, cap1188_CAP1188Component, copy_CopyBinarySensor, cst226_CST226Button, cst226_CST226Touchscreen, cst816_CST816Touchscreen, daly_bms_DalyBmsComponent, dfrobot_sen0395_DfrobotSen0395Component, display_DisplayPage, esp32_ble_tracker_ESP32BLETracker, esp32_touch_ESP32TouchBinarySensor, esp32_touch_ESP32TouchComponent, ezo_pmp_EzoPMP, fingerprint_grow_FingerprintGrowComponent, gdk101_GDK101Component, gpio_GPIOBinarySensor, gt911_GT911Button, gt911_GT911Touchscreen, haier_HonClimate, hlk_fm22x_HlkFm22xComponent, homeassistant_HomeassistantBinarySensor, hydreon_rgxx_HydreonRGxxBinaryComponent, hydreon_rgxx_HydreonRGxxComponent, i2c_I2CBus, ld2410_LD2410Component, ld2412_LD2412Component, ld2420_LD2420BinarySensor, ld2420_LD2420Component, ld2450_LD2450Component, lvgl_LvPseudoButton, m5stack_8angle_M5Stack8AngleComponent, m5stack_8angle_M5Stack8AngleSwitchBinarySensor, matrix_keypad_MatrixKeypad, matrix_keypad_MatrixKeypadBinarySensor, modbus_controller_ModbusBinarySensor, mpr121_MPR121BinarySensor, mpr121_MPR121Component, nextion_NextionBinarySensor, nfc_NfcTagBinarySensor, nfc_Nfcc, opentherm_OpenthermHub, packet_transport_PacketTransport, pn532_PN532, pn532_PN532BinarySensor, qwiic_pir_QwiicPIRComponent, rc522_RC522, rc522_RC522BinarySensor, rd03d_RD03DComponent, rdm6300_RDM6300BinarySensor, rdm6300_RDM6300Component, remote_base_RemoteReceiverBase, sdl_Sdl, seeed_mr24hpc1_MR24HPC1Component, seeed_mr60bha2_MR60BHA2Component, seeed_mr60fda2_MR60FDA2Component, sensor_Sensor, sim800l_Sim800LComponent, status_StatusBinarySensor, switch__Switch, switch__SwitchBinarySensor, sx1509_SX1509BinarySensor, sx1509_SX1509Component, sy6970_SY6970Component, template__TemplateBinarySensor, tm1637_TM1637Display, tm1637_TM1637Key, tm1638_TM1638Component, tm1638_TM1638Key, touchscreen_Touchscreen, touchscreen_TouchscreenBinarySensor, tt21100_TT21100Button, tt21100_TT21100Touchscreen, ttp229_bsf_TTP229BSFChannel, ttp229_bsf_TTP229BSFComponent, ttp229_lsf_TTP229Channel, ttp229_lsf_TTP229LSFComponent, tuya_Tuya, tuya_TuyaBinarySensor, udp_UDPComponent, vbus_DeltaSolBS2009BSensor, vbus_DeltaSolBS2BSensor, vbus_DeltaSolBSPlusBSensor, vbus_DeltaSolCBSensor, vbus_DeltaSolCS2BSensor, vbus_DeltaSolCSPlusBSensor, vbus_VBus, vbus_VBusCustomBSensor, web_server_WebServer, wireguard_Wireguard, xiaomi_cgpr1_XiaomiCGPR1, xiaomi_mjyd02yla_XiaomiMJYD02YLA, xiaomi_mue4094rt_XiaomiMUE4094RT, xiaomi_rtcgq02lm_XiaomiRTCGQ02LM, xiaomi_wx08zm_XiaomiWX08ZM, zigbee_ZigbeeComponent } from "../markers";
 interface BinarySensorWebServerProps {
@@ -78,19 +78,21 @@ interface HaierOutdoorFanStatusProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface HaierDefrostStatusPropsAvailabilityProps {
     topic: unknown;
@@ -142,19 +144,21 @@ interface HaierDefrostStatusProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface HaierCompressorStatusPropsAvailabilityProps {
     topic: unknown;
@@ -206,19 +210,21 @@ interface HaierCompressorStatusProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface HaierIndoorFanStatusPropsAvailabilityProps {
     topic: unknown;
@@ -270,19 +276,21 @@ interface HaierIndoorFanStatusProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface HaierFourWayValveStatusPropsAvailabilityProps {
     topic: unknown;
@@ -334,19 +342,21 @@ interface HaierFourWayValveStatusProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface HaierIndoorElectricHeatingStatusPropsAvailabilityProps {
     topic: unknown;
@@ -398,19 +408,21 @@ interface HaierIndoorElectricHeatingStatusProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface HydreonRgxxTooColdPropsAvailabilityProps {
     topic: unknown;
@@ -466,19 +478,21 @@ interface HydreonRgxxTooColdProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface HydreonRgxxLensBadPropsAvailabilityProps {
     topic: unknown;
@@ -534,19 +548,21 @@ interface HydreonRgxxLensBadProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface HydreonRgxxEmSatPropsAvailabilityProps {
     topic: unknown;
@@ -602,19 +618,21 @@ interface HydreonRgxxEmSatProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface QwiicPirDebounceProps {
     days?: unknown;
@@ -689,11 +707,11 @@ interface XiaomiCgpr1BatteryLevelProps {
     expireAfter?: XiaomiCgpr1BatteryLevelPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler;
 }
 interface XiaomiCgpr1IdleTimePropsAvailabilityProps {
     topic: unknown;
@@ -759,11 +777,11 @@ interface XiaomiCgpr1IdleTimeProps {
     expireAfter?: XiaomiCgpr1IdleTimePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler;
 }
 interface XiaomiCgpr1IlluminancePropsAvailabilityProps {
     topic: unknown;
@@ -830,11 +848,11 @@ interface XiaomiCgpr1IlluminanceProps {
     expireAfter?: XiaomiCgpr1IlluminancePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler;
 }
 interface XiaomiMjyd02ylaIdleTimePropsAvailabilityProps {
     topic: unknown;
@@ -900,11 +918,11 @@ interface XiaomiMjyd02ylaIdleTimeProps {
     expireAfter?: XiaomiMjyd02ylaIdleTimePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler;
 }
 interface XiaomiMjyd02ylaBatteryLevelPropsAvailabilityProps {
     topic: unknown;
@@ -971,11 +989,11 @@ interface XiaomiMjyd02ylaBatteryLevelProps {
     expireAfter?: XiaomiMjyd02ylaBatteryLevelPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler;
 }
 interface XiaomiMjyd02ylaIlluminancePropsAvailabilityProps {
     topic: unknown;
@@ -1042,11 +1060,11 @@ interface XiaomiMjyd02ylaIlluminanceProps {
     expireAfter?: XiaomiMjyd02ylaIlluminancePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler;
 }
 interface XiaomiMjyd02ylaLightPropsAvailabilityProps {
     topic: unknown;
@@ -1102,19 +1120,21 @@ interface XiaomiMjyd02ylaLightProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface XiaomiMue4094rtTimeoutProps {
     days?: unknown;
@@ -1188,11 +1208,11 @@ interface XiaomiWx08zmTabletProps {
     expireAfter?: XiaomiWx08zmTabletPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler;
 }
 interface XiaomiWx08zmBatteryLevelPropsAvailabilityProps {
     topic: unknown;
@@ -1259,11 +1279,11 @@ interface XiaomiWx08zmBatteryLevelProps {
     expireAfter?: XiaomiWx08zmBatteryLevelPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler;
 }
 interface DalyBmsChargingMosEnabledPropsAvailabilityProps {
     topic: unknown;
@@ -1319,19 +1339,21 @@ interface DalyBmsChargingMosEnabledProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface DalyBmsDischargingMosEnabledPropsAvailabilityProps {
     topic: unknown;
@@ -1387,19 +1409,21 @@ interface DalyBmsDischargingMosEnabledProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface EzoPmpPumpStatePropsAvailabilityProps {
     topic: unknown;
@@ -1452,19 +1476,21 @@ interface EzoPmpPumpStateProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface EzoPmpIsPausedPropsAvailabilityProps {
     topic: unknown;
@@ -1517,19 +1543,21 @@ interface EzoPmpIsPausedProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface Gdk101VibrationsPropsAvailabilityProps {
     topic: unknown;
@@ -1581,19 +1609,21 @@ interface Gdk101VibrationsProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface Ld2410HasTargetPropsAvailabilityProps {
     topic: unknown;
@@ -1648,19 +1678,21 @@ interface Ld2410HasTargetProps {
     deviceClass?: unknown;
     filters?: unknown;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface Ld2410HasMovingTargetPropsAvailabilityProps {
     topic: unknown;
@@ -1715,19 +1747,21 @@ interface Ld2410HasMovingTargetProps {
     deviceClass?: unknown;
     filters?: unknown;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface Ld2410HasStillTargetPropsAvailabilityProps {
     topic: unknown;
@@ -1782,19 +1816,21 @@ interface Ld2410HasStillTargetProps {
     deviceClass?: unknown;
     filters?: unknown;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface Ld2410OutPinPresenceStatusPropsAvailabilityProps {
     topic: unknown;
@@ -1846,19 +1882,21 @@ interface Ld2410OutPinPresenceStatusProps {
     deviceClass?: unknown;
     filters?: unknown;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface Ld2412DynamicBackgroundCorrectionStatusPropsAvailabilityProps {
     topic: unknown;
@@ -1910,19 +1948,21 @@ interface Ld2412DynamicBackgroundCorrectionStatusProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface Ld2412HasTargetPropsAvailabilityProps {
     topic: unknown;
@@ -1977,19 +2017,21 @@ interface Ld2412HasTargetProps {
     deviceClass?: unknown;
     filters?: unknown;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface Ld2412HasMovingTargetPropsAvailabilityProps {
     topic: unknown;
@@ -2044,19 +2086,21 @@ interface Ld2412HasMovingTargetProps {
     deviceClass?: unknown;
     filters?: unknown;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface Ld2412HasStillTargetPropsAvailabilityProps {
     topic: unknown;
@@ -2111,19 +2155,21 @@ interface Ld2412HasStillTargetProps {
     deviceClass?: unknown;
     filters?: unknown;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface Ld2420HasTargetPropsAvailabilityProps {
     topic: unknown;
@@ -2179,19 +2225,21 @@ interface Ld2420HasTargetProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface Ld2450HasTargetPropsAvailabilityProps {
     topic: unknown;
@@ -2246,19 +2294,21 @@ interface Ld2450HasTargetProps {
     deviceClass?: unknown;
     filters?: unknown;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface Ld2450HasMovingTargetPropsAvailabilityProps {
     topic: unknown;
@@ -2313,19 +2363,21 @@ interface Ld2450HasMovingTargetProps {
     deviceClass?: unknown;
     filters?: unknown;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface Ld2450HasStillTargetPropsAvailabilityProps {
     topic: unknown;
@@ -2380,19 +2432,21 @@ interface Ld2450HasStillTargetProps {
     deviceClass?: unknown;
     filters?: unknown;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface Msa3xxTapPropsAvailabilityProps {
     topic: unknown;
@@ -2447,19 +2501,21 @@ interface Msa3xxTapProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface Msa3xxDoubleTapPropsAvailabilityProps {
     topic: unknown;
@@ -2514,19 +2570,21 @@ interface Msa3xxDoubleTapProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface Msa3xxActivePropsAvailabilityProps {
     topic: unknown;
@@ -2581,19 +2639,21 @@ interface Msa3xxActiveProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface OpenthermFaultIndicationPropsAvailabilityProps {
     topic: unknown;
@@ -2649,19 +2709,21 @@ interface OpenthermFaultIndicationProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface OpenthermChActivePropsAvailabilityProps {
     topic: unknown;
@@ -2716,19 +2778,21 @@ interface OpenthermChActiveProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface OpenthermDhwActivePropsAvailabilityProps {
     topic: unknown;
@@ -2783,19 +2847,21 @@ interface OpenthermDhwActiveProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface OpenthermFlameOnPropsAvailabilityProps {
     topic: unknown;
@@ -2850,19 +2916,21 @@ interface OpenthermFlameOnProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface OpenthermCoolingActivePropsAvailabilityProps {
     topic: unknown;
@@ -2918,19 +2986,21 @@ interface OpenthermCoolingActiveProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface OpenthermCh2ActivePropsAvailabilityProps {
     topic: unknown;
@@ -2985,19 +3055,21 @@ interface OpenthermCh2ActiveProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface OpenthermDiagnosticIndicationPropsAvailabilityProps {
     topic: unknown;
@@ -3053,19 +3125,21 @@ interface OpenthermDiagnosticIndicationProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface OpenthermElectricityProductionPropsAvailabilityProps {
     topic: unknown;
@@ -3121,19 +3195,21 @@ interface OpenthermElectricityProductionProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface OpenthermDhwPresentPropsAvailabilityProps {
     topic: unknown;
@@ -3189,19 +3265,21 @@ interface OpenthermDhwPresentProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface OpenthermControlTypeOnOffPropsAvailabilityProps {
     topic: unknown;
@@ -3257,19 +3335,21 @@ interface OpenthermControlTypeOnOffProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface OpenthermCoolingSupportedPropsAvailabilityProps {
     topic: unknown;
@@ -3325,19 +3405,21 @@ interface OpenthermCoolingSupportedProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface OpenthermDhwStorageTankPropsAvailabilityProps {
     topic: unknown;
@@ -3393,19 +3475,21 @@ interface OpenthermDhwStorageTankProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface OpenthermControllerPumpControlAllowedPropsAvailabilityProps {
     topic: unknown;
@@ -3461,19 +3545,21 @@ interface OpenthermControllerPumpControlAllowedProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface OpenthermCh2PresentPropsAvailabilityProps {
     topic: unknown;
@@ -3529,19 +3615,21 @@ interface OpenthermCh2PresentProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface OpenthermWaterFillingPropsAvailabilityProps {
     topic: unknown;
@@ -3597,19 +3685,21 @@ interface OpenthermWaterFillingProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface OpenthermHeatModePropsAvailabilityProps {
     topic: unknown;
@@ -3665,19 +3755,21 @@ interface OpenthermHeatModeProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface OpenthermDhwSetpointTransferEnabledPropsAvailabilityProps {
     topic: unknown;
@@ -3733,19 +3825,21 @@ interface OpenthermDhwSetpointTransferEnabledProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface OpenthermMaxChSetpointTransferEnabledPropsAvailabilityProps {
     topic: unknown;
@@ -3801,19 +3895,21 @@ interface OpenthermMaxChSetpointTransferEnabledProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface OpenthermDhwSetpointRwPropsAvailabilityProps {
     topic: unknown;
@@ -3869,19 +3965,21 @@ interface OpenthermDhwSetpointRwProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface OpenthermMaxChSetpointRwPropsAvailabilityProps {
     topic: unknown;
@@ -3937,19 +4035,21 @@ interface OpenthermMaxChSetpointRwProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface OpenthermServiceRequestPropsAvailabilityProps {
     topic: unknown;
@@ -4005,19 +4105,21 @@ interface OpenthermServiceRequestProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface OpenthermLockoutResetPropsAvailabilityProps {
     topic: unknown;
@@ -4073,19 +4175,21 @@ interface OpenthermLockoutResetProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface OpenthermLowWaterPressurePropsAvailabilityProps {
     topic: unknown;
@@ -4141,19 +4245,21 @@ interface OpenthermLowWaterPressureProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface OpenthermFlameFaultPropsAvailabilityProps {
     topic: unknown;
@@ -4209,19 +4315,21 @@ interface OpenthermFlameFaultProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface OpenthermAirPressureFaultPropsAvailabilityProps {
     topic: unknown;
@@ -4277,19 +4385,21 @@ interface OpenthermAirPressureFaultProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface OpenthermWaterOverTempPropsAvailabilityProps {
     topic: unknown;
@@ -4345,19 +4455,21 @@ interface OpenthermWaterOverTempProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarAddSbuPriorityVersionPropsAvailabilityProps {
     topic: unknown;
@@ -4413,19 +4525,21 @@ interface PipsolarAddSbuPriorityVersionProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarConfigurationStatusPropsAvailabilityProps {
     topic: unknown;
@@ -4481,19 +4595,21 @@ interface PipsolarConfigurationStatusProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarSccFirmwareVersionPropsAvailabilityProps {
     topic: unknown;
@@ -4549,19 +4665,21 @@ interface PipsolarSccFirmwareVersionProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarLoadStatusPropsAvailabilityProps {
     topic: unknown;
@@ -4617,19 +4735,21 @@ interface PipsolarLoadStatusProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarBatteryVoltageToSteadyWhileChargingPropsAvailabilityProps {
     topic: unknown;
@@ -4685,19 +4805,21 @@ interface PipsolarBatteryVoltageToSteadyWhileChargingProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarChargingStatusPropsAvailabilityProps {
     topic: unknown;
@@ -4753,19 +4875,21 @@ interface PipsolarChargingStatusProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarSccChargingStatusPropsAvailabilityProps {
     topic: unknown;
@@ -4821,19 +4945,21 @@ interface PipsolarSccChargingStatusProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarAcChargingStatusPropsAvailabilityProps {
     topic: unknown;
@@ -4889,19 +5015,21 @@ interface PipsolarAcChargingStatusProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarChargingToFloatingModePropsAvailabilityProps {
     topic: unknown;
@@ -4957,19 +5085,21 @@ interface PipsolarChargingToFloatingModeProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarSwitchOnPropsAvailabilityProps {
     topic: unknown;
@@ -5025,19 +5155,21 @@ interface PipsolarSwitchOnProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarDustproofInstalledPropsAvailabilityProps {
     topic: unknown;
@@ -5093,19 +5225,21 @@ interface PipsolarDustproofInstalledProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarSilenceBuzzerOpenBuzzerPropsAvailabilityProps {
     topic: unknown;
@@ -5161,19 +5295,21 @@ interface PipsolarSilenceBuzzerOpenBuzzerProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarOverloadBypassFunctionPropsAvailabilityProps {
     topic: unknown;
@@ -5229,19 +5365,21 @@ interface PipsolarOverloadBypassFunctionProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarLcdEscapeToDefaultPropsAvailabilityProps {
     topic: unknown;
@@ -5297,19 +5435,21 @@ interface PipsolarLcdEscapeToDefaultProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarOverloadRestartFunctionPropsAvailabilityProps {
     topic: unknown;
@@ -5365,19 +5505,21 @@ interface PipsolarOverloadRestartFunctionProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarOverTemperatureRestartFunctionPropsAvailabilityProps {
     topic: unknown;
@@ -5433,19 +5575,21 @@ interface PipsolarOverTemperatureRestartFunctionProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarBacklightOnPropsAvailabilityProps {
     topic: unknown;
@@ -5501,19 +5645,21 @@ interface PipsolarBacklightOnProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarAlarmOnWhenPrimarySourceInterruptPropsAvailabilityProps {
     topic: unknown;
@@ -5569,19 +5715,21 @@ interface PipsolarAlarmOnWhenPrimarySourceInterruptProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarFaultCodeRecordPropsAvailabilityProps {
     topic: unknown;
@@ -5637,19 +5785,21 @@ interface PipsolarFaultCodeRecordProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarPowerSavingPropsAvailabilityProps {
     topic: unknown;
@@ -5705,19 +5855,21 @@ interface PipsolarPowerSavingProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarWarningsPresentPropsAvailabilityProps {
     topic: unknown;
@@ -5773,19 +5925,21 @@ interface PipsolarWarningsPresentProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarFaultsPresentPropsAvailabilityProps {
     topic: unknown;
@@ -5841,19 +5995,21 @@ interface PipsolarFaultsPresentProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarWarningPowerLossPropsAvailabilityProps {
     topic: unknown;
@@ -5909,19 +6065,21 @@ interface PipsolarWarningPowerLossProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarFaultInverterFaultPropsAvailabilityProps {
     topic: unknown;
@@ -5977,19 +6135,21 @@ interface PipsolarFaultInverterFaultProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarFaultBusOverPropsAvailabilityProps {
     topic: unknown;
@@ -6045,19 +6205,21 @@ interface PipsolarFaultBusOverProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarFaultBusUnderPropsAvailabilityProps {
     topic: unknown;
@@ -6113,19 +6275,21 @@ interface PipsolarFaultBusUnderProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarFaultBusSoftFailPropsAvailabilityProps {
     topic: unknown;
@@ -6181,19 +6345,21 @@ interface PipsolarFaultBusSoftFailProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarWarningLineFailPropsAvailabilityProps {
     topic: unknown;
@@ -6249,19 +6415,21 @@ interface PipsolarWarningLineFailProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarFaultOpvshortPropsAvailabilityProps {
     topic: unknown;
@@ -6317,19 +6485,21 @@ interface PipsolarFaultOpvshortProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarFaultInverterVoltageTooLowPropsAvailabilityProps {
     topic: unknown;
@@ -6385,19 +6555,21 @@ interface PipsolarFaultInverterVoltageTooLowProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarFaultInverterVoltageTooHighPropsAvailabilityProps {
     topic: unknown;
@@ -6453,19 +6625,21 @@ interface PipsolarFaultInverterVoltageTooHighProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarWarningOverTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -6521,19 +6695,21 @@ interface PipsolarWarningOverTemperatureProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarWarningFanLockPropsAvailabilityProps {
     topic: unknown;
@@ -6589,19 +6765,21 @@ interface PipsolarWarningFanLockProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarWarningBatteryVoltageHighPropsAvailabilityProps {
     topic: unknown;
@@ -6657,19 +6835,21 @@ interface PipsolarWarningBatteryVoltageHighProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarWarningBatteryLowAlarmPropsAvailabilityProps {
     topic: unknown;
@@ -6725,19 +6905,21 @@ interface PipsolarWarningBatteryLowAlarmProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarWarningBatteryUnderShutdownPropsAvailabilityProps {
     topic: unknown;
@@ -6793,19 +6975,21 @@ interface PipsolarWarningBatteryUnderShutdownProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarWarningBatteryDeratingPropsAvailabilityProps {
     topic: unknown;
@@ -6861,19 +7045,21 @@ interface PipsolarWarningBatteryDeratingProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarWarningOverLoadPropsAvailabilityProps {
     topic: unknown;
@@ -6929,19 +7115,21 @@ interface PipsolarWarningOverLoadProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarWarningEepromFailedPropsAvailabilityProps {
     topic: unknown;
@@ -6997,19 +7185,21 @@ interface PipsolarWarningEepromFailedProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarFaultInverterOverCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -7065,19 +7255,21 @@ interface PipsolarFaultInverterOverCurrentProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarFaultInverterSoftFailedPropsAvailabilityProps {
     topic: unknown;
@@ -7133,19 +7325,21 @@ interface PipsolarFaultInverterSoftFailedProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarFaultSelfTestFailedPropsAvailabilityProps {
     topic: unknown;
@@ -7201,19 +7395,21 @@ interface PipsolarFaultSelfTestFailedProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarFaultOpDcVoltageOverPropsAvailabilityProps {
     topic: unknown;
@@ -7269,19 +7465,21 @@ interface PipsolarFaultOpDcVoltageOverProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarFaultBatteryOpenPropsAvailabilityProps {
     topic: unknown;
@@ -7337,19 +7535,21 @@ interface PipsolarFaultBatteryOpenProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarFaultCurrentSensorFailedPropsAvailabilityProps {
     topic: unknown;
@@ -7405,19 +7605,21 @@ interface PipsolarFaultCurrentSensorFailedProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarFaultBatteryShortPropsAvailabilityProps {
     topic: unknown;
@@ -7473,19 +7675,21 @@ interface PipsolarFaultBatteryShortProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarWarningPowerLimitPropsAvailabilityProps {
     topic: unknown;
@@ -7541,19 +7745,21 @@ interface PipsolarWarningPowerLimitProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarWarningPvVoltageHighPropsAvailabilityProps {
     topic: unknown;
@@ -7609,19 +7815,21 @@ interface PipsolarWarningPvVoltageHighProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarFaultMpptOverloadPropsAvailabilityProps {
     topic: unknown;
@@ -7677,19 +7885,21 @@ interface PipsolarFaultMpptOverloadProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarWarningMpptOverloadPropsAvailabilityProps {
     topic: unknown;
@@ -7745,19 +7955,21 @@ interface PipsolarWarningMpptOverloadProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarWarningBatteryTooLowToChargePropsAvailabilityProps {
     topic: unknown;
@@ -7813,19 +8025,21 @@ interface PipsolarWarningBatteryTooLowToChargeProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarFaultDcDcOverCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -7881,19 +8095,21 @@ interface PipsolarFaultDcDcOverCurrentProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarFaultCodePropsAvailabilityProps {
     topic: unknown;
@@ -7949,19 +8165,21 @@ interface PipsolarFaultCodeProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarWarningLowPvEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -8017,19 +8235,21 @@ interface PipsolarWarningLowPvEnergyProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarWarningHighAcInputDuringBusSoftStartPropsAvailabilityProps {
     topic: unknown;
@@ -8085,19 +8305,21 @@ interface PipsolarWarningHighAcInputDuringBusSoftStartProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface PipsolarWarningBatteryEqualizationPropsAvailabilityProps {
     topic: unknown;
@@ -8153,19 +8375,21 @@ interface PipsolarWarningBatteryEqualizationProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface Rd03dTargetPropsAvailabilityProps {
     topic: unknown;
@@ -8221,19 +8445,21 @@ interface Rd03dTargetProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface Rd03dTarget1PropsAvailabilityProps {
     topic: unknown;
@@ -8289,19 +8515,21 @@ interface Rd03dTarget1Props {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface Rd03dTarget2PropsAvailabilityProps {
     topic: unknown;
@@ -8357,19 +8585,21 @@ interface Rd03dTarget2Props {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface Rd03dTarget3PropsAvailabilityProps {
     topic: unknown;
@@ -8425,19 +8655,21 @@ interface Rd03dTarget3Props {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface RemoteReceiverBeo4Props {
     /** int: The 8-bit source to trigger on, e.g. 0x00=video, 0x01=audio,..., see dumper output for more info. */
@@ -8797,19 +9029,21 @@ interface SeeedMr24hpc1HasTargetProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface SeeedMr60bha2HasTargetPropsAvailabilityProps {
     topic: unknown;
@@ -8864,19 +9098,21 @@ interface SeeedMr60bha2HasTargetProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface SeeedMr60fda2PeopleExistPropsAvailabilityProps {
     topic: unknown;
@@ -8931,19 +9167,21 @@ interface SeeedMr60fda2PeopleExistProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface SeeedMr60fda2FallDetectedPropsAvailabilityProps {
     topic: unknown;
@@ -8998,19 +9236,21 @@ interface SeeedMr60fda2FallDetectedProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface Sim800lRegisteredPropsAvailabilityProps {
     topic: unknown;
@@ -9063,19 +9303,21 @@ interface Sim800lRegisteredProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface Sy6970VbusConnectedPropsAvailabilityProps {
     topic: unknown;
@@ -9131,19 +9373,21 @@ interface Sy6970VbusConnectedProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface Sy6970ChargingPropsAvailabilityProps {
     topic: unknown;
@@ -9199,19 +9443,21 @@ interface Sy6970ChargingProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface Sy6970ChargeDonePropsAvailabilityProps {
     topic: unknown;
@@ -9267,19 +9513,21 @@ interface Sy6970ChargeDoneProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface VbusDeltasolBsPlusRelay1PropsAvailabilityProps {
     topic: unknown;
@@ -9335,19 +9583,21 @@ interface VbusDeltasolBsPlusRelay1Props {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface VbusDeltasolBsPlusRelay2PropsAvailabilityProps {
     topic: unknown;
@@ -9403,19 +9653,21 @@ interface VbusDeltasolBsPlusRelay2Props {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface VbusDeltasolBsPlusSensor1ErrorPropsAvailabilityProps {
     topic: unknown;
@@ -9468,19 +9720,21 @@ interface VbusDeltasolBsPlusSensor1ErrorProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface VbusDeltasolBsPlusSensor2ErrorPropsAvailabilityProps {
     topic: unknown;
@@ -9533,19 +9787,21 @@ interface VbusDeltasolBsPlusSensor2ErrorProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface VbusDeltasolBsPlusSensor3ErrorPropsAvailabilityProps {
     topic: unknown;
@@ -9598,19 +9854,21 @@ interface VbusDeltasolBsPlusSensor3ErrorProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface VbusDeltasolBsPlusSensor4ErrorPropsAvailabilityProps {
     topic: unknown;
@@ -9663,19 +9921,21 @@ interface VbusDeltasolBsPlusSensor4ErrorProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface VbusDeltasolBsPlusCollectorMaxPropsAvailabilityProps {
     topic: unknown;
@@ -9728,19 +9988,21 @@ interface VbusDeltasolBsPlusCollectorMaxProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface VbusDeltasolBsPlusCollectorMinPropsAvailabilityProps {
     topic: unknown;
@@ -9793,19 +10055,21 @@ interface VbusDeltasolBsPlusCollectorMinProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface VbusDeltasolBsPlusCollectorFrostPropsAvailabilityProps {
     topic: unknown;
@@ -9858,19 +10122,21 @@ interface VbusDeltasolBsPlusCollectorFrostProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface VbusDeltasolBsPlusTubeCollectorPropsAvailabilityProps {
     topic: unknown;
@@ -9923,19 +10189,21 @@ interface VbusDeltasolBsPlusTubeCollectorProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface VbusDeltasolBsPlusRecoolingPropsAvailabilityProps {
     topic: unknown;
@@ -9988,19 +10256,21 @@ interface VbusDeltasolBsPlusRecoolingProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface VbusDeltasolBsPlusHqmPropsAvailabilityProps {
     topic: unknown;
@@ -10053,19 +10323,21 @@ interface VbusDeltasolBsPlusHqmProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface VbusDeltasolBs2009Sensor1ErrorPropsAvailabilityProps {
     topic: unknown;
@@ -10118,19 +10390,21 @@ interface VbusDeltasolBs2009Sensor1ErrorProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface VbusDeltasolBs2009Sensor2ErrorPropsAvailabilityProps {
     topic: unknown;
@@ -10183,19 +10457,21 @@ interface VbusDeltasolBs2009Sensor2ErrorProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface VbusDeltasolBs2009Sensor3ErrorPropsAvailabilityProps {
     topic: unknown;
@@ -10248,19 +10524,21 @@ interface VbusDeltasolBs2009Sensor3ErrorProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface VbusDeltasolBs2009Sensor4ErrorPropsAvailabilityProps {
     topic: unknown;
@@ -10313,19 +10591,21 @@ interface VbusDeltasolBs2009Sensor4ErrorProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface VbusDeltasolBs2009FrostProtectionActivePropsAvailabilityProps {
     topic: unknown;
@@ -10378,19 +10658,21 @@ interface VbusDeltasolBs2009FrostProtectionActiveProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface VbusDeltasolBs2Sensor1ErrorPropsAvailabilityProps {
     topic: unknown;
@@ -10443,19 +10725,21 @@ interface VbusDeltasolBs2Sensor1ErrorProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface VbusDeltasolBs2Sensor2ErrorPropsAvailabilityProps {
     topic: unknown;
@@ -10508,19 +10792,21 @@ interface VbusDeltasolBs2Sensor2ErrorProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface VbusDeltasolBs2Sensor3ErrorPropsAvailabilityProps {
     topic: unknown;
@@ -10573,19 +10859,21 @@ interface VbusDeltasolBs2Sensor3ErrorProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface VbusDeltasolBs2Sensor4ErrorPropsAvailabilityProps {
     topic: unknown;
@@ -10638,19 +10926,21 @@ interface VbusDeltasolBs2Sensor4ErrorProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface VbusDeltasolCSensor1ErrorPropsAvailabilityProps {
     topic: unknown;
@@ -10703,19 +10993,21 @@ interface VbusDeltasolCSensor1ErrorProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface VbusDeltasolCSensor2ErrorPropsAvailabilityProps {
     topic: unknown;
@@ -10768,19 +11060,21 @@ interface VbusDeltasolCSensor2ErrorProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface VbusDeltasolCSensor3ErrorPropsAvailabilityProps {
     topic: unknown;
@@ -10833,19 +11127,21 @@ interface VbusDeltasolCSensor3ErrorProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface VbusDeltasolCSensor4ErrorPropsAvailabilityProps {
     topic: unknown;
@@ -10898,19 +11194,21 @@ interface VbusDeltasolCSensor4ErrorProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface VbusDeltasolCs2Sensor1ErrorPropsAvailabilityProps {
     topic: unknown;
@@ -10963,19 +11261,21 @@ interface VbusDeltasolCs2Sensor1ErrorProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface VbusDeltasolCs2Sensor2ErrorPropsAvailabilityProps {
     topic: unknown;
@@ -11028,19 +11328,21 @@ interface VbusDeltasolCs2Sensor2ErrorProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface VbusDeltasolCs2Sensor3ErrorPropsAvailabilityProps {
     topic: unknown;
@@ -11093,19 +11395,21 @@ interface VbusDeltasolCs2Sensor3ErrorProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface VbusDeltasolCs2Sensor4ErrorPropsAvailabilityProps {
     topic: unknown;
@@ -11158,19 +11462,21 @@ interface VbusDeltasolCs2Sensor4ErrorProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface VbusDeltasolCsPlusSensor1ErrorPropsAvailabilityProps {
     topic: unknown;
@@ -11223,19 +11529,21 @@ interface VbusDeltasolCsPlusSensor1ErrorProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface VbusDeltasolCsPlusSensor2ErrorPropsAvailabilityProps {
     topic: unknown;
@@ -11288,19 +11596,21 @@ interface VbusDeltasolCsPlusSensor2ErrorProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface VbusDeltasolCsPlusSensor3ErrorPropsAvailabilityProps {
     topic: unknown;
@@ -11353,19 +11663,21 @@ interface VbusDeltasolCsPlusSensor3ErrorProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface VbusDeltasolCsPlusSensor4ErrorPropsAvailabilityProps {
     topic: unknown;
@@ -11418,19 +11730,21 @@ interface VbusDeltasolCsPlusSensor4ErrorProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface VbusCustomBinarySensorsPropsAvailabilityProps {
     topic: unknown;
@@ -11486,19 +11800,21 @@ interface VbusCustomBinarySensorsProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
     lambda: unknown;
 }
 interface WireguardStatusPropsAvailabilityProps {
@@ -11555,19 +11871,21 @@ interface WireguardStatusProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface WireguardEnabledPropsAvailabilityProps {
     topic: unknown;
@@ -11620,19 +11938,21 @@ interface WireguardEnabledProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface XiaomiRtcgq02lmMotionPropsAvailabilityProps {
     topic: unknown;
@@ -11696,19 +12016,21 @@ interface XiaomiRtcgq02lmMotionProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
     timeout?: XiaomiRtcgq02lmMotionPropsTimeoutProps;
 }
 interface XiaomiRtcgq02lmLightPropsAvailabilityProps {
@@ -11765,19 +12087,21 @@ interface XiaomiRtcgq02lmLightProps {
     deviceClass?: unknown;
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface XiaomiRtcgq02lmButtonPropsAvailabilityProps {
     topic: unknown;
@@ -11841,19 +12165,21 @@ interface XiaomiRtcgq02lmButtonProps {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
     timeout?: XiaomiRtcgq02lmButtonPropsTimeoutProps;
 }
 interface BinarySensorBaseProps extends _CoreEntityBase, _CoreMqttComponent {
@@ -11869,19 +12195,21 @@ interface BinarySensorBaseProps extends _CoreEntityBase, _CoreMqttComponent {
     deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey on_release */
-    onRelease?: () => void;
+    onRelease?: TriggerHandler;
     /** @yamlKey on_click */
-    onClick?: () => void;
+    onClick?: TriggerHandler;
     /** @yamlKey on_double_click */
-    onDoubleClick?: () => void;
+    onDoubleClick?: TriggerHandler;
     /** @yamlKey on_multi_click */
-    onMultiClick?: () => void;
+    onMultiClick?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_state_change */
-    onStateChange?: () => void;
+    onStateChange?: TriggerHandler;
 }
 interface AnalogThresholdProps extends _CoreComponent {
     /**
@@ -12998,7 +13326,7 @@ interface UdpProps {
     /** list of IPv4 addresses: One or more IP addresses to broadcast data to. Defaults to `255.255.255.255` which is the loc... */
     addresses?: Array<unknown>;
     /** @yamlKey on_receive */
-    onReceive?: () => void;
+    onReceive?: TriggerHandler;
     providers?: unknown;
     encryption?: unknown;
     /** @yamlKey ping_pong_enable */

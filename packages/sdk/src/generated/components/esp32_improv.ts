@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _CoreComponent } from "../bases";
 import type { binary_sensor_BinarySensor, esp32_improv_ESP32ImprovComponent, output_BinaryOutput } from "../markers";
 export interface Esp32ImprovIdentifyDurationProps {
@@ -57,27 +57,27 @@ export interface Esp32ImprovProps extends _CoreComponent {
      * [Automation](/automations): An action to be performed when provisioning has completed. See [`on_provisioned`](https:/...
      * @yamlKey on_provisioned
      */
-    onProvisioned?: () => void;
+    onProvisioned?: TriggerHandler;
     /**
      * [Automation](/automations): An action to be performed when the device begins the provisioning process. See [`on_provi...
      * @yamlKey on_provisioning
      */
-    onProvisioning?: () => void;
+    onProvisioning?: TriggerHandler;
     /**
      * [Automation](/automations): An action to be performed when Improv is waiting for authorization and/or upon authorizat...
      * @yamlKey on_start
      */
-    onStart?: () => void;
+    onStart?: TriggerHandler;
     /**
      * [Automation](/automations): An action to be performed when an Improv state change happens. See [`on_state`](https://e...
      * @yamlKey on_state
      */
-    onState?: () => void;
+    onState?: TriggerHandler;
     /**
      * [Automation](/automations): An action to be performed when Improv has stopped. See [`on_stop`](https://esphome.io/com...
      * @yamlKey on_stop
      */
-    onStop?: () => void;
+    onStop?: TriggerHandler;
     /**
      * string: The URL to open after provisioning is complete. Defaults to `https://my.home-assistant.io/redirect/config_flo...
      * @yamlKey next_url

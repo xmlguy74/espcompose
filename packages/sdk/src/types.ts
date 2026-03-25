@@ -16,6 +16,32 @@ export interface EspComposeElement {
 }
 
 // ────────────────────────────────────────────────────────────────────────────
+// Trigger type — typed ESPHome trigger / event handler callbacks
+//
+// ESPHome triggers fire automations when component events occur (e.g.
+// on_press, on_value, on_state). Some triggers provide lambda variables
+// (e.g. `x` with the new sensor value) while others fire with no arguments.
+//
+// Usage:
+//   onPress?: Trigger                        // no variables
+//   onValue?: Trigger<{ x: number }>         // sensor value trigger
+//   onState?: Trigger<{ x: boolean }>        // binary sensor state trigger
+//
+// At compile time, trigger props accept either:
+//   - A named script function:  onPress={toggleLight}
+//   - An inline arrow function: onPress={() => { lightRef.toggle(); }}
+// The compiler transformer rewrites these into ESPHome YAML action lists.
+// ────────────────────────────────────────────────────────────────────────────
+
+/**
+ * An ESPHome trigger / event handler callback.
+ *
+ * `T` describes the variables available inside the trigger's lambda scope.
+ * Use `void` (the default) for triggers that provide no variables.
+ */
+export type TriggerHandler<T = void> = (args: T) => void;
+
+// ────────────────────────────────────────────────────────────────────────────
 // Ref types — typed cross-component ID references
 //
 // Usage:

@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _CoreComponent } from "../bases";
 import type { output_FloatOutput, rtttl_Rtttl, speaker_Speaker } from "../markers";
 export interface RtttlProps extends _CoreComponent {
@@ -17,7 +17,7 @@ export interface RtttlProps extends _CoreComponent {
      * [Automation](/automations): An action to be performed when playback is finished.
      * @yamlKey on_finished_playback
      */
-    onFinishedPlayback?: () => void;
+    onFinishedPlayback?: TriggerHandler;
 }
 declare global {
     namespace JSX {

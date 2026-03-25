@@ -16,12 +16,12 @@
  *      into a `homeassistant.action` YAML block.
  */
 import { Display, ESPCompose, useRef, useHAEntity } from '@esphome/compose';
-import type { EspComposeElement } from '@esphome/compose';
+import type { EspComposeElement, TriggerHandler } from '@esphome/compose';
 
 /** Thin wrapper that adds typed trigger props to <lvgl-button>. */
 function ActionButton(props: {
   x?: number; y?: number; width?: number; height?: number;
-  onRelease?: unknown; children?: EspComposeElement | EspComposeElement[];
+  onRelease?: TriggerHandler; children?: EspComposeElement | EspComposeElement[];
 }) {
   const { onRelease, children, ...rest } = props;
   return (

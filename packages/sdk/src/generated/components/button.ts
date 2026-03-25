@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _CoreComponent, _CoreEntityBase, _CoreMqttCommandComponent, _UartDevice } from "../bases";
 import type { EntityBase, atm90e32_ATM90E32Component, bl0940_BL0940, bl0940_CalibrationResetButton, button_Button, copy_CopyButton, factory_reset_FactoryResetButton, haier_HonClimate, ld2410_LD2410Component, ld2412_LD2412Component, ld2420_LD2420Component, ld2450_LD2450Component, micronova_MicroNova, mqtt_MQTTButtonComponent, output_BinaryOutput, output_OutputButton, restart_RestartButton, safe_mode_SafeModeButton, safe_mode_SafeModeComponent, seeed_mr24hpc1_MR24HPC1Component, seeed_mr60fda2_MR60FDA2Component, shutdown_ShutdownButton, template__TemplateButton, uart_UARTButton, wake_on_lan_WakeOnLanButton, web_server_WebServer } from "../markers";
 interface ButtonWebServerProps {
@@ -61,7 +61,7 @@ interface Atm90e32RunGainCalibrationProps {
     /** @yamlKey device_class */
     deviceClass?: "" | "identify" | "restart" | "update";
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
 }
 interface Atm90e32ClearGainCalibrationPropsAvailabilityProps {
     topic: unknown;
@@ -110,7 +110,7 @@ interface Atm90e32ClearGainCalibrationProps {
     /** @yamlKey device_class */
     deviceClass?: "" | "identify" | "restart" | "update";
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
 }
 interface Atm90e32RunOffsetCalibrationPropsAvailabilityProps {
     topic: unknown;
@@ -159,7 +159,7 @@ interface Atm90e32RunOffsetCalibrationProps {
     /** @yamlKey device_class */
     deviceClass?: "" | "identify" | "restart" | "update";
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
 }
 interface Atm90e32ClearOffsetCalibrationPropsAvailabilityProps {
     topic: unknown;
@@ -208,7 +208,7 @@ interface Atm90e32ClearOffsetCalibrationProps {
     /** @yamlKey device_class */
     deviceClass?: "" | "identify" | "restart" | "update";
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
 }
 interface Atm90e32RunPowerOffsetCalibrationPropsAvailabilityProps {
     topic: unknown;
@@ -257,7 +257,7 @@ interface Atm90e32RunPowerOffsetCalibrationProps {
     /** @yamlKey device_class */
     deviceClass?: "" | "identify" | "restart" | "update";
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
 }
 interface Atm90e32ClearPowerOffsetCalibrationPropsAvailabilityProps {
     topic: unknown;
@@ -306,7 +306,7 @@ interface Atm90e32ClearPowerOffsetCalibrationProps {
     /** @yamlKey device_class */
     deviceClass?: "" | "identify" | "restart" | "update";
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
 }
 interface OutputDurationProps {
     days?: unknown;
@@ -366,7 +366,7 @@ interface HaierSelfCleaningProps {
     /** @yamlKey device_class */
     deviceClass?: "" | "identify" | "restart" | "update";
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
 }
 interface HaierSteriCleaningPropsAvailabilityProps {
     topic: unknown;
@@ -418,7 +418,7 @@ interface HaierSteriCleaningProps {
     /** @yamlKey device_class */
     deviceClass?: "" | "identify" | "restart" | "update";
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
 }
 interface Ld2410FactoryResetPropsAvailabilityProps {
     topic: unknown;
@@ -467,7 +467,7 @@ interface Ld2410FactoryResetProps {
     /** @yamlKey device_class */
     deviceClass?: unknown;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
 }
 interface Ld2410RestartPropsAvailabilityProps {
     topic: unknown;
@@ -516,7 +516,7 @@ interface Ld2410RestartProps {
     /** @yamlKey device_class */
     deviceClass?: unknown;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
 }
 interface Ld2410QueryParamsPropsAvailabilityProps {
     topic: unknown;
@@ -565,7 +565,7 @@ interface Ld2410QueryParamsProps {
     /** @yamlKey device_class */
     deviceClass?: "" | "identify" | "restart" | "update";
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
 }
 interface Ld2412FactoryResetPropsAvailabilityProps {
     topic: unknown;
@@ -614,7 +614,7 @@ interface Ld2412FactoryResetProps {
     /** @yamlKey device_class */
     deviceClass?: unknown;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
 }
 interface Ld2412QueryParamsPropsAvailabilityProps {
     topic: unknown;
@@ -663,7 +663,7 @@ interface Ld2412QueryParamsProps {
     /** @yamlKey device_class */
     deviceClass?: "" | "identify" | "restart" | "update";
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
 }
 interface Ld2412RestartPropsAvailabilityProps {
     topic: unknown;
@@ -712,7 +712,7 @@ interface Ld2412RestartProps {
     /** @yamlKey device_class */
     deviceClass?: unknown;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
 }
 interface Ld2412StartDynamicBackgroundCorrectionPropsAvailabilityProps {
     topic: unknown;
@@ -761,7 +761,7 @@ interface Ld2412StartDynamicBackgroundCorrectionProps {
     /** @yamlKey device_class */
     deviceClass?: "" | "identify" | "restart" | "update";
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
 }
 interface Ld2420ApplyConfigPropsAvailabilityProps {
     topic: unknown;
@@ -810,7 +810,7 @@ interface Ld2420ApplyConfigProps {
     /** @yamlKey device_class */
     deviceClass?: unknown;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
 }
 interface Ld2420RevertConfigPropsAvailabilityProps {
     topic: unknown;
@@ -859,7 +859,7 @@ interface Ld2420RevertConfigProps {
     /** @yamlKey device_class */
     deviceClass?: unknown;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
 }
 interface Ld2420RestartModulePropsAvailabilityProps {
     topic: unknown;
@@ -908,7 +908,7 @@ interface Ld2420RestartModuleProps {
     /** @yamlKey device_class */
     deviceClass?: "" | "identify" | "restart" | "update";
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
 }
 interface Ld2420FactoryResetPropsAvailabilityProps {
     topic: unknown;
@@ -957,7 +957,7 @@ interface Ld2420FactoryResetProps {
     /** @yamlKey device_class */
     deviceClass?: "" | "identify" | "restart" | "update";
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
 }
 interface Ld2450FactoryResetPropsAvailabilityProps {
     topic: unknown;
@@ -1006,7 +1006,7 @@ interface Ld2450FactoryResetProps {
     /** @yamlKey device_class */
     deviceClass?: unknown;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
 }
 interface Ld2450RestartPropsAvailabilityProps {
     topic: unknown;
@@ -1055,7 +1055,7 @@ interface Ld2450RestartProps {
     /** @yamlKey device_class */
     deviceClass?: unknown;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
 }
 interface MicronovaCustomButtonPropsAvailabilityProps {
     topic: unknown;
@@ -1108,7 +1108,7 @@ interface MicronovaCustomButtonProps {
     /** @yamlKey device_class */
     deviceClass?: "" | "identify" | "restart" | "update";
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
     /** @yamlKey micronova_id */
     micronovaId?: RefProp<micronova_MicroNova>;
     /** @yamlKey memory_location */
@@ -1165,7 +1165,7 @@ interface SeeedMr24hpc1RestartProps {
     /** @yamlKey device_class */
     deviceClass?: unknown;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
 }
 interface SeeedMr24hpc1CustomSetEndPropsAvailabilityProps {
     topic: unknown;
@@ -1214,7 +1214,7 @@ interface SeeedMr24hpc1CustomSetEndProps {
     /** @yamlKey device_class */
     deviceClass?: "" | "identify" | "restart" | "update";
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
 }
 interface SeeedMr60fda2GetRadarParametersPropsAvailabilityProps {
     topic: unknown;
@@ -1264,7 +1264,7 @@ interface SeeedMr60fda2GetRadarParametersProps {
     /** @yamlKey device_class */
     deviceClass?: unknown;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
 }
 interface SeeedMr60fda2FactoryResetPropsAvailabilityProps {
     topic: unknown;
@@ -1314,7 +1314,7 @@ interface SeeedMr60fda2FactoryResetProps {
     /** @yamlKey device_class */
     deviceClass?: unknown;
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
 }
 interface ButtonBaseProps extends _CoreEntityBase, _CoreMqttCommandComponent {
     /** @yamlKey web_server */
@@ -1322,7 +1322,7 @@ interface ButtonBaseProps extends _CoreEntityBase, _CoreMqttCommandComponent {
     /** @yamlKey device_class */
     deviceClass?: "" | "identify" | "restart" | "update";
     /** @yamlKey on_press */
-    onPress?: () => void;
+    onPress?: TriggerHandler;
 }
 interface Atm90e32Props {
     /** [ID](/guides/configuration-types#id): The ID of the `atm90e32` sensor defined above. Required if using more than one ... */

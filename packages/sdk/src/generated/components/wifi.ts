@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { wifi_WiFiComponent } from "../markers";
 export interface WifiNetworksPropsManualIpProps {
     /** IPv4 address: The main DNS server to use. */
@@ -158,12 +158,12 @@ export interface WifiProps {
      * [Automation](/automations): An action to be performed when a connection is established.
      * @yamlKey on_connect
      */
-    onConnect?: () => void;
+    onConnect?: TriggerHandler;
     /**
      * [Automation](/automations): An action to be performed when the connection is dropped.
      * @yamlKey on_disconnect
      */
-    onDisconnect?: () => void;
+    onDisconnect?: TriggerHandler;
     /**
      * boolean: For ESP32 only, requests that the WiFi libraries try to allocate memory from PSRAM. Defaults to `false`. Req...
      * @yamlKey use_psram

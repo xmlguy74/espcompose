@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _CoreComponent } from "../bases";
 import type { esp32_ble_ESP32BLE, esp32_ble_beacon_ESP32BLEBeacon } from "../markers";
 export interface Esp32BleBeaconMinIntervalProps {

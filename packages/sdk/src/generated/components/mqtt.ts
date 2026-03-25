@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { mqtt_MQTTClientComponent } from "../markers";
 export interface MqttBirthMessageProps {
     topic: unknown;
@@ -163,22 +163,22 @@ export interface MqttProps {
      * [Automation](/automations): An action to be performed when a connection to the broker is established.
      * @yamlKey on_connect
      */
-    onConnect?: () => void;
+    onConnect?: TriggerHandler;
     /**
      * [Automation](/automations): An action to be performed when the connection to the broker is dropped.
      * @yamlKey on_disconnect
      */
-    onDisconnect?: () => void;
+    onDisconnect?: TriggerHandler;
     /**
      * [Automation](/automations): An action to be performed when a message on a specific MQTT topic is received. See [`on_m...
      * @yamlKey on_message
      */
-    onMessage?: () => void;
+    onMessage?: TriggerHandler;
     /**
      * [Automation](/automations): An action to be performed when a JSON message on a specific MQTT topic is received. See [...
      * @yamlKey on_json_message
      */
-    onJsonMessage?: () => void;
+    onJsonMessage?: TriggerHandler;
     /**
      * bool: Publish `None` instead of `NaN` to handle Unknown/Unavailable sensor states in Home Assistant. Defaults to `fal...
      * @yamlKey publish_nan_as_none

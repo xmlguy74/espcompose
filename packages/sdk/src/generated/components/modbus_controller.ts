@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _CoreComponent } from "../bases";
 import type { modbus_Modbus, modbus_controller_ModbusController } from "../markers";
 export interface ModbusControllerCommandThrottleProps {
@@ -82,17 +82,17 @@ export interface ModbusControllerProps extends _CoreComponent {
      * [Automation](/automations): An automation to perform when a modbus command has been sent. See [`on_command_sent`](htt...
      * @yamlKey on_command_sent
      */
-    onCommandSent?: () => void;
+    onCommandSent?: TriggerHandler;
     /**
      * [Automation](/automations): An automation to perform when a modbus controller goes online. See [`on_online`](https://...
      * @yamlKey on_online
      */
-    onOnline?: () => void;
+    onOnline?: TriggerHandler;
     /**
      * [Automation](/automations): An automation to perform when a modbus controller goes offline. See [`on_offline`](https:...
      * @yamlKey on_offline
      */
-    onOffline?: () => void;
+    onOffline?: TriggerHandler;
     /**
      * [Time](/guides/configuration-types#time): The interval that the sensors should be checked. Defaults to 60 seconds.
      * @yamlKey update_interval

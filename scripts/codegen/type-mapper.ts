@@ -1,7 +1,8 @@
 import ts from 'typescript';
 import type { SchemaConfigVar, SchemaDefinition, SchemaRegistry } from './schema-types.js';
 import { OPTIONAL_FIELD_OVERRIDES, TYPE_OVERRIDES } from './overrides.js';
-import { keyword, typeRef, stringLiteralType, unionType, arrayType, recordType, refPropType, voidFunctionType, propSig, addJsDoc } from './ast-helpers.js';
+import { keyword, typeRef, stringLiteralType, unionType, arrayType, recordType, refPropType, triggerType, propSig, addJsDoc } from './ast-helpers.js';
+import { TRIGGER_REGISTRY } from '../../packages/sdk/src/trigger-registry.js';
 
 // ────────────────────────────────────────────────────────────────────────────
 // Types
@@ -65,6 +66,8 @@ export function buildInterfaceBody(
   markerRefs: Set<string> = new Set(),
   /** Schema registry for resolving `extends` on inline sub-schemas. */
   registry: SchemaRegistry = new Map(),
+  /** ESPHome domain name (e.g. 'binary_sensor') for trigger variable lookup. */
+  domain?: string,
 ): ts.TypeElement[] {
   const members: ts.TypeElement[] = [];
 
@@ -86,7 +89,7 @@ export function buildInterfaceBody(
     }
 
     const typeOverride = TYPE_OVERRIDES.get(varName);
-    const { typeNode: schemaType, required } = resolveConfigVar(varName, varDef, interfaceNamePrefix, acc, markerRefs, registry);
+    const { typeNode: schemaType, required } = resolveConfigVar(varName, varDef, interfaceNamePrefix, acc, markerRefs, registry, domain);
     const typeNode = typeOverride
       ? unionType([schemaType, ...typeOverride.map((v) => stringLiteralType(v))])
       : schemaType;
@@ -137,9 +140,10 @@ function resolveConfigVar(
   acc: InterfaceAccumulator,
   markerRefs: Set<string>,
   registry: SchemaRegistry,
+  domain?: string,
 ): { typeNode: ts.TypeNode; required: boolean } {
   const required = varDef.key === 'Required';
-  const baseType = resolveBaseType(varName, varDef, interfaceNamePrefix, acc, markerRefs, registry);
+  const baseType = resolveBaseType(varName, varDef, interfaceNamePrefix, acc, markerRefs, registry, domain);
   const typeNode = varDef.is_list ? arrayType(baseType) : baseType;
   return { typeNode, required };
 }
@@ -151,6 +155,7 @@ function resolveBaseType(
   acc: InterfaceAccumulator,
   markerRefs: Set<string>,
   registry: SchemaRegistry,
+  domain?: string,
 ): ts.TypeNode {
   switch (varDef.type) {
     case 'string':
@@ -171,7 +176,7 @@ function resolveBaseType(
       if (inlineSchema) {
         const mergedVars = mergeExtends(inlineSchema, registry);
         if (Object.keys(mergedVars).length > 0) {
-          const name = generateNestedInterface(varName, { ...inlineSchema, config_vars: mergedVars }, interfaceNamePrefix, acc, markerRefs, registry);
+          const name = generateNestedInterface(varName, { ...inlineSchema, config_vars: mergedVars }, interfaceNamePrefix, acc, markerRefs, registry, domain);
           return typeRef(name);
         }
       }
@@ -179,8 +184,10 @@ function resolveBaseType(
     }
     case 'pin':
       return typeRef('Pin');
-    case 'trigger':
-      return voidFunctionType();
+    case 'trigger': {
+      const sig = domain ? TRIGGER_REGISTRY[domain]?.[varName] : undefined;
+      return triggerType(sig?.variables);
+    }
     case 'use_id': {
       const cppClass = varDef.use_id_type;
       if (cppClass) {
@@ -208,13 +215,19 @@ function generateNestedInterface(
   acc: InterfaceAccumulator,
   markerRefs: Set<string>,
   registry: SchemaRegistry,
+  domain?: string,
 ): string {
   const interfaceName = `${interfaceNamePrefix}${toPascalCase(toCamelCase(varName))}Props`;
 
   if (acc.some((ni) => ni.name === interfaceName)) return interfaceName;
 
+  // Derive domain from the nested schema's extends chain if not explicitly provided.
+  // This handles cases like haier binary_sensor where nested schemas extend
+  // a platform base (e.g. binary_sensor._BINARY_SENSOR_SCHEMA).
+  const nestedDomain = domain ?? schema.extends?.find(e => e.includes('.'))?.split('.')[0];
+
   const vars = schema.config_vars ?? {};
-  const members = buildInterfaceBody(vars, interfaceName, acc, markerRefs, registry);
+  const members = buildInterfaceBody(vars, interfaceName, acc, markerRefs, registry, nestedDomain);
 
   acc.push({ name: interfaceName, members });
   return interfaceName;

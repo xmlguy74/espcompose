@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _BleClient, _CoreComponent, _CoreEntityBase, _CoreMqttCommandComponent, _HomeassistantHomeAssistantImportControl, _ModbusControllerModbusitembaseschema, _NextionSensorConfigSensorComponent, _PipsolarComponent, _UartDevice } from "../bases";
 import type { Color, EntityBase, at581x_AT581XComponent, at581x_RFSwitch, ble_client_BLEClientSwitch, copy_CopySwitch, dfrobot_sen0395_DfrobotSen0395Component, dfrobot_sen0395_Sen0395LedSwitch, dfrobot_sen0395_Sen0395PowerSwitch, dfrobot_sen0395_Sen0395StartAfterBootSwitch, dfrobot_sen0395_Sen0395UartPresenceSwitch, factory_reset_FactoryResetSwitch, gpio_GPIOSwitch, gree_GreeClimate, haier_HaierClimateBase, hbridge_HBridgeSwitch, homeassistant_HomeassistantSwitch, ld2410_LD2410Component, ld2412_LD2412Component, ld2450_LD2450Component, lvgl_LVGLSwitch, lvgl_LvPseudoButton, micronova_MicroNova, modbus_controller_ModbusSwitch, nextion_NextionSwitch, opentherm_OpenthermHub, output_BinaryOutput, output_OutputSwitch, restart_RestartSwitch, safe_mode_SafeModeComponent, safe_mode_SafeModeSwitch, seeed_mr24hpc1_MR24HPC1Component, shutdown_ShutdownSwitch, switch__Switch, template__TemplateSwitch, tm1638_TM1638Component, tm1638_TM1638SwitchLed, tuya_Tuya, tuya_TuyaSwitch, uart_UARTSwitch, web_server_WebServer, zigbee_ZigbeeComponent, zigbee_ZigbeeSwitch } from "../markers";
 interface SwitchWebServerProps {
@@ -72,11 +72,13 @@ interface GreeTurboProps {
     /** @yamlKey restore_mode */
     restoreMode?: unknown;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_turn_on */
-    onTurnOn?: () => void;
+    onTurnOn?: TriggerHandler;
     /** @yamlKey on_turn_off */
-    onTurnOff?: () => void;
+    onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
     deviceClass?: unknown;
 }
@@ -130,11 +132,13 @@ interface GreeLightProps {
     /** @yamlKey restore_mode */
     restoreMode?: unknown;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_turn_on */
-    onTurnOn?: () => void;
+    onTurnOn?: TriggerHandler;
     /** @yamlKey on_turn_off */
-    onTurnOff?: () => void;
+    onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
     deviceClass?: unknown;
 }
@@ -188,11 +192,13 @@ interface GreeHealthProps {
     /** @yamlKey restore_mode */
     restoreMode?: unknown;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_turn_on */
-    onTurnOn?: () => void;
+    onTurnOn?: TriggerHandler;
     /** @yamlKey on_turn_off */
-    onTurnOff?: () => void;
+    onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
     deviceClass?: unknown;
 }
@@ -246,11 +252,13 @@ interface GreeXfanProps {
     /** @yamlKey restore_mode */
     restoreMode?: unknown;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_turn_on */
-    onTurnOn?: () => void;
+    onTurnOn?: TriggerHandler;
     /** @yamlKey on_turn_off */
-    onTurnOff?: () => void;
+    onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
     deviceClass?: unknown;
 }
@@ -304,11 +312,13 @@ interface HaierDisplayProps {
     /** @yamlKey restore_mode */
     restoreMode?: unknown;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_turn_on */
-    onTurnOn?: () => void;
+    onTurnOn?: TriggerHandler;
     /** @yamlKey on_turn_off */
-    onTurnOff?: () => void;
+    onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
     deviceClass?: "" | "outlet" | "switch";
 }
@@ -365,11 +375,13 @@ interface HaierHealthModeProps {
     /** @yamlKey restore_mode */
     restoreMode?: unknown;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_turn_on */
-    onTurnOn?: () => void;
+    onTurnOn?: TriggerHandler;
     /** @yamlKey on_turn_off */
-    onTurnOff?: () => void;
+    onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
     deviceClass?: "" | "outlet" | "switch";
 }
@@ -423,11 +435,13 @@ interface HaierBeeperProps {
     /** @yamlKey restore_mode */
     restoreMode?: unknown;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_turn_on */
-    onTurnOn?: () => void;
+    onTurnOn?: TriggerHandler;
     /** @yamlKey on_turn_off */
-    onTurnOff?: () => void;
+    onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
     deviceClass?: "" | "outlet" | "switch";
 }
@@ -481,11 +495,13 @@ interface HaierQuietModeProps {
     /** @yamlKey restore_mode */
     restoreMode?: unknown;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_turn_on */
-    onTurnOn?: () => void;
+    onTurnOn?: TriggerHandler;
     /** @yamlKey on_turn_off */
-    onTurnOff?: () => void;
+    onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
     deviceClass?: "" | "outlet" | "switch";
 }
@@ -555,11 +571,13 @@ interface Ld2410EngineeringModeProps {
     /** @yamlKey restore_mode */
     restoreMode?: "RESTORE_DEFAULT_OFF" | "RESTORE_DEFAULT_ON" | "ALWAYS_OFF" | "ALWAYS_ON" | "RESTORE_INVERTED_DEFAULT_OFF" | "RESTORE_INVERTED_DEFAULT_ON" | "DISABLED";
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_turn_on */
-    onTurnOn?: () => void;
+    onTurnOn?: TriggerHandler;
     /** @yamlKey on_turn_off */
-    onTurnOff?: () => void;
+    onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
     deviceClass?: unknown;
 }
@@ -613,11 +631,13 @@ interface Ld2410BluetoothProps {
     /** @yamlKey restore_mode */
     restoreMode?: "RESTORE_DEFAULT_OFF" | "RESTORE_DEFAULT_ON" | "ALWAYS_OFF" | "ALWAYS_ON" | "RESTORE_INVERTED_DEFAULT_OFF" | "RESTORE_INVERTED_DEFAULT_ON" | "DISABLED";
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_turn_on */
-    onTurnOn?: () => void;
+    onTurnOn?: TriggerHandler;
     /** @yamlKey on_turn_off */
-    onTurnOff?: () => void;
+    onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
     deviceClass?: unknown;
 }
@@ -671,11 +691,13 @@ interface Ld2412BluetoothProps {
     /** @yamlKey restore_mode */
     restoreMode?: "RESTORE_DEFAULT_OFF" | "RESTORE_DEFAULT_ON" | "ALWAYS_OFF" | "ALWAYS_ON" | "RESTORE_INVERTED_DEFAULT_OFF" | "RESTORE_INVERTED_DEFAULT_ON" | "DISABLED";
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_turn_on */
-    onTurnOn?: () => void;
+    onTurnOn?: TriggerHandler;
     /** @yamlKey on_turn_off */
-    onTurnOff?: () => void;
+    onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
     deviceClass?: unknown;
 }
@@ -729,11 +751,13 @@ interface Ld2412EngineeringModeProps {
     /** @yamlKey restore_mode */
     restoreMode?: "RESTORE_DEFAULT_OFF" | "RESTORE_DEFAULT_ON" | "ALWAYS_OFF" | "ALWAYS_ON" | "RESTORE_INVERTED_DEFAULT_OFF" | "RESTORE_INVERTED_DEFAULT_ON" | "DISABLED";
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_turn_on */
-    onTurnOn?: () => void;
+    onTurnOn?: TriggerHandler;
     /** @yamlKey on_turn_off */
-    onTurnOff?: () => void;
+    onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
     deviceClass?: unknown;
 }
@@ -787,11 +811,13 @@ interface Ld2450BluetoothProps {
     /** @yamlKey restore_mode */
     restoreMode?: "RESTORE_DEFAULT_OFF" | "RESTORE_DEFAULT_ON" | "ALWAYS_OFF" | "ALWAYS_ON" | "RESTORE_INVERTED_DEFAULT_OFF" | "RESTORE_INVERTED_DEFAULT_ON" | "DISABLED";
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_turn_on */
-    onTurnOn?: () => void;
+    onTurnOn?: TriggerHandler;
     /** @yamlKey on_turn_off */
-    onTurnOff?: () => void;
+    onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
     deviceClass?: unknown;
 }
@@ -845,11 +871,13 @@ interface Ld2450MultiTargetProps {
     /** @yamlKey restore_mode */
     restoreMode?: "RESTORE_DEFAULT_OFF" | "RESTORE_DEFAULT_ON" | "ALWAYS_OFF" | "ALWAYS_ON" | "RESTORE_INVERTED_DEFAULT_OFF" | "RESTORE_INVERTED_DEFAULT_ON" | "DISABLED";
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_turn_on */
-    onTurnOn?: () => void;
+    onTurnOn?: TriggerHandler;
     /** @yamlKey on_turn_off */
-    onTurnOff?: () => void;
+    onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
     deviceClass?: unknown;
 }
@@ -906,11 +934,13 @@ interface MicronovaStoveProps {
     /** @yamlKey restore_mode */
     restoreMode?: "RESTORE_DEFAULT_OFF" | "RESTORE_DEFAULT_ON" | "ALWAYS_OFF" | "ALWAYS_ON" | "RESTORE_INVERTED_DEFAULT_OFF" | "RESTORE_INVERTED_DEFAULT_ON" | "DISABLED";
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_turn_on */
-    onTurnOn?: () => void;
+    onTurnOn?: TriggerHandler;
     /** @yamlKey on_turn_off */
-    onTurnOff?: () => void;
+    onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
     deviceClass?: "" | "outlet" | "switch";
     /** @yamlKey setup_priority */
@@ -982,11 +1012,13 @@ interface OpenthermChEnableProps {
     /** @yamlKey restore_mode */
     restoreMode?: unknown;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_turn_on */
-    onTurnOn?: () => void;
+    onTurnOn?: TriggerHandler;
     /** @yamlKey on_turn_off */
-    onTurnOff?: () => void;
+    onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
     deviceClass?: "" | "outlet" | "switch";
     /** @yamlKey setup_priority */
@@ -1046,11 +1078,13 @@ interface OpenthermDhwEnableProps {
     /** @yamlKey restore_mode */
     restoreMode?: unknown;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_turn_on */
-    onTurnOn?: () => void;
+    onTurnOn?: TriggerHandler;
     /** @yamlKey on_turn_off */
-    onTurnOff?: () => void;
+    onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
     deviceClass?: "" | "outlet" | "switch";
     /** @yamlKey setup_priority */
@@ -1110,11 +1144,13 @@ interface OpenthermCoolingEnableProps {
     /** @yamlKey restore_mode */
     restoreMode?: unknown;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_turn_on */
-    onTurnOn?: () => void;
+    onTurnOn?: TriggerHandler;
     /** @yamlKey on_turn_off */
-    onTurnOff?: () => void;
+    onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
     deviceClass?: "" | "outlet" | "switch";
     /** @yamlKey setup_priority */
@@ -1174,11 +1210,13 @@ interface OpenthermOtcActiveProps {
     /** @yamlKey restore_mode */
     restoreMode?: unknown;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_turn_on */
-    onTurnOn?: () => void;
+    onTurnOn?: TriggerHandler;
     /** @yamlKey on_turn_off */
-    onTurnOff?: () => void;
+    onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
     deviceClass?: "" | "outlet" | "switch";
     /** @yamlKey setup_priority */
@@ -1238,11 +1276,13 @@ interface OpenthermCh2ActiveProps {
     /** @yamlKey restore_mode */
     restoreMode?: unknown;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_turn_on */
-    onTurnOn?: () => void;
+    onTurnOn?: TriggerHandler;
     /** @yamlKey on_turn_off */
-    onTurnOff?: () => void;
+    onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
     deviceClass?: "" | "outlet" | "switch";
     /** @yamlKey setup_priority */
@@ -1302,11 +1342,13 @@ interface OpenthermSummerModeActiveProps {
     /** @yamlKey restore_mode */
     restoreMode?: unknown;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_turn_on */
-    onTurnOn?: () => void;
+    onTurnOn?: TriggerHandler;
     /** @yamlKey on_turn_off */
-    onTurnOff?: () => void;
+    onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
     deviceClass?: "" | "outlet" | "switch";
     /** @yamlKey setup_priority */
@@ -1366,11 +1408,13 @@ interface OpenthermDhwBlockProps {
     /** @yamlKey restore_mode */
     restoreMode?: unknown;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_turn_on */
-    onTurnOn?: () => void;
+    onTurnOn?: TriggerHandler;
     /** @yamlKey on_turn_off */
-    onTurnOff?: () => void;
+    onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
     deviceClass?: "" | "outlet" | "switch";
     /** @yamlKey setup_priority */
@@ -1429,11 +1473,13 @@ interface PipsolarOutputSourcePriorityUtilityProps {
     /** @yamlKey restore_mode */
     restoreMode?: "RESTORE_DEFAULT_OFF" | "RESTORE_DEFAULT_ON" | "ALWAYS_OFF" | "ALWAYS_ON" | "RESTORE_INVERTED_DEFAULT_OFF" | "RESTORE_INVERTED_DEFAULT_ON" | "DISABLED";
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_turn_on */
-    onTurnOn?: () => void;
+    onTurnOn?: TriggerHandler;
     /** @yamlKey on_turn_off */
-    onTurnOff?: () => void;
+    onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
     deviceClass?: "" | "outlet" | "switch";
     /** @yamlKey setup_priority */
@@ -1492,11 +1538,13 @@ interface PipsolarOutputSourcePrioritySolarProps {
     /** @yamlKey restore_mode */
     restoreMode?: "RESTORE_DEFAULT_OFF" | "RESTORE_DEFAULT_ON" | "ALWAYS_OFF" | "ALWAYS_ON" | "RESTORE_INVERTED_DEFAULT_OFF" | "RESTORE_INVERTED_DEFAULT_ON" | "DISABLED";
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_turn_on */
-    onTurnOn?: () => void;
+    onTurnOn?: TriggerHandler;
     /** @yamlKey on_turn_off */
-    onTurnOff?: () => void;
+    onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
     deviceClass?: "" | "outlet" | "switch";
     /** @yamlKey setup_priority */
@@ -1555,11 +1603,13 @@ interface PipsolarOutputSourcePriorityBatteryProps {
     /** @yamlKey restore_mode */
     restoreMode?: "RESTORE_DEFAULT_OFF" | "RESTORE_DEFAULT_ON" | "ALWAYS_OFF" | "ALWAYS_ON" | "RESTORE_INVERTED_DEFAULT_OFF" | "RESTORE_INVERTED_DEFAULT_ON" | "DISABLED";
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_turn_on */
-    onTurnOn?: () => void;
+    onTurnOn?: TriggerHandler;
     /** @yamlKey on_turn_off */
-    onTurnOff?: () => void;
+    onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
     deviceClass?: "" | "outlet" | "switch";
     /** @yamlKey setup_priority */
@@ -1618,11 +1668,13 @@ interface PipsolarOutputSourcePriorityHybridProps {
     /** @yamlKey restore_mode */
     restoreMode?: "RESTORE_DEFAULT_OFF" | "RESTORE_DEFAULT_ON" | "ALWAYS_OFF" | "ALWAYS_ON" | "RESTORE_INVERTED_DEFAULT_OFF" | "RESTORE_INVERTED_DEFAULT_ON" | "DISABLED";
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_turn_on */
-    onTurnOn?: () => void;
+    onTurnOn?: TriggerHandler;
     /** @yamlKey on_turn_off */
-    onTurnOff?: () => void;
+    onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
     deviceClass?: "" | "outlet" | "switch";
     /** @yamlKey setup_priority */
@@ -1681,11 +1733,13 @@ interface PipsolarInputVoltageRangeProps {
     /** @yamlKey restore_mode */
     restoreMode?: "RESTORE_DEFAULT_OFF" | "RESTORE_DEFAULT_ON" | "ALWAYS_OFF" | "ALWAYS_ON" | "RESTORE_INVERTED_DEFAULT_OFF" | "RESTORE_INVERTED_DEFAULT_ON" | "DISABLED";
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_turn_on */
-    onTurnOn?: () => void;
+    onTurnOn?: TriggerHandler;
     /** @yamlKey on_turn_off */
-    onTurnOff?: () => void;
+    onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
     deviceClass?: "" | "outlet" | "switch";
     /** @yamlKey setup_priority */
@@ -1744,11 +1798,13 @@ interface PipsolarPvOkConditionForParallelProps {
     /** @yamlKey restore_mode */
     restoreMode?: "RESTORE_DEFAULT_OFF" | "RESTORE_DEFAULT_ON" | "ALWAYS_OFF" | "ALWAYS_ON" | "RESTORE_INVERTED_DEFAULT_OFF" | "RESTORE_INVERTED_DEFAULT_ON" | "DISABLED";
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_turn_on */
-    onTurnOn?: () => void;
+    onTurnOn?: TriggerHandler;
     /** @yamlKey on_turn_off */
-    onTurnOff?: () => void;
+    onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
     deviceClass?: "" | "outlet" | "switch";
     /** @yamlKey setup_priority */
@@ -1807,11 +1863,13 @@ interface PipsolarPvPowerBalanceProps {
     /** @yamlKey restore_mode */
     restoreMode?: "RESTORE_DEFAULT_OFF" | "RESTORE_DEFAULT_ON" | "ALWAYS_OFF" | "ALWAYS_ON" | "RESTORE_INVERTED_DEFAULT_OFF" | "RESTORE_INVERTED_DEFAULT_ON" | "DISABLED";
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_turn_on */
-    onTurnOn?: () => void;
+    onTurnOn?: TriggerHandler;
     /** @yamlKey on_turn_off */
-    onTurnOff?: () => void;
+    onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
     deviceClass?: "" | "outlet" | "switch";
     /** @yamlKey setup_priority */
@@ -1867,11 +1925,13 @@ interface SeeedMr24hpc1UnderlyingOpenFunctionProps {
     /** @yamlKey restore_mode */
     restoreMode?: "RESTORE_DEFAULT_OFF" | "RESTORE_DEFAULT_ON" | "ALWAYS_OFF" | "ALWAYS_ON" | "RESTORE_INVERTED_DEFAULT_OFF" | "RESTORE_INVERTED_DEFAULT_ON" | "DISABLED";
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_turn_on */
-    onTurnOn?: () => void;
+    onTurnOn?: TriggerHandler;
     /** @yamlKey on_turn_off */
-    onTurnOff?: () => void;
+    onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
     deviceClass?: unknown;
 }
@@ -1898,11 +1958,13 @@ interface SwitchBaseProps extends _CoreEntityBase, _CoreMqttCommandComponent {
     /** @yamlKey restore_mode */
     restoreMode?: "RESTORE_DEFAULT_OFF" | "RESTORE_DEFAULT_ON" | "ALWAYS_OFF" | "ALWAYS_ON" | "RESTORE_INVERTED_DEFAULT_OFF" | "RESTORE_INVERTED_DEFAULT_ON" | "DISABLED";
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler<{
+        x: boolean;
+    }>;
     /** @yamlKey on_turn_on */
-    onTurnOn?: () => void;
+    onTurnOn?: TriggerHandler;
     /** @yamlKey on_turn_off */
-    onTurnOff?: () => void;
+    onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
     deviceClass?: "" | "outlet" | "switch";
 }
@@ -2208,12 +2270,12 @@ interface TemplateProps extends _CoreComponent {
      * [Action](/automations/actions#all-actions): The action that should be performed when the remote (like Home Assistant'...
      * @yamlKey turn_off_action
      */
-    turnOffAction?: () => void;
+    turnOffAction?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): The action that should be performed when the remote (like Home Assistant'...
      * @yamlKey turn_on_action
      */
-    turnOnAction?: () => void;
+    turnOnAction?: TriggerHandler;
 }
 interface Tm1638Props extends _CoreComponent {
     /** @yamlKey tm1638_id */

@@ -629,7 +629,7 @@ function buildStandaloneFileContent(
     return Object.fromEntries(Object.entries(raw).filter(([k]) => !inheritedKeys.has(k)));
   })();
   const members = Object.keys(ownVars).length > 0
-    ? buildInterfaceBody(ownVars, pascalName, nestedInterfaces, markerRefs, registry)
+    ? buildInterfaceBody(ownVars, pascalName, nestedInterfaces, markerRefs, registry, target.name)
     : [];
 
   const mergedVarsForMarker = mergeExtends(rawSchema, registry);
@@ -641,7 +641,7 @@ function buildStandaloneFileContent(
   const statements: ts.Statement[] = [];
 
   // Imports
-  const typesImports = ['ComponentProps', 'Pin', ...(markerRefs.size > 0 ? ['RefProp'] : [])];
+  const typesImports = ['ComponentProps', 'Pin', 'TriggerHandler', ...(markerRefs.size > 0 ? ['RefProp'] : [])];
   statements.push(importTypeDecl(typesImports, '../../types'));
   if (baseImports.size > 0) {
     statements.push(importTypeDecl([...baseImports], '../bases'));
@@ -748,7 +748,7 @@ function buildPlatformFileContent(
     && (Object.keys(platOwnVars).length > 0 || baseExtendsNames.length > 0);
   const baseInterfaceName = `${platformPascal}BaseProps`;
   const baseMembers = Object.keys(platOwnVars).length > 0
-    ? buildInterfaceBody(platOwnVars, platformPascal, allNested, markerRefs, registry)
+    ? buildInterfaceBody(platOwnVars, platformPascal, allNested, markerRefs, registry, platformName)
     : [];
 
   // ── Per-component interfaces ──────────────────────────────────────────────
@@ -802,7 +802,7 @@ function buildPlatformFileContent(
           return Object.fromEntries(Object.entries(raw).filter(([k]) => !inheritedKeys.has(k)));
         })();
         const members = Object.keys(variantOwnVars).length > 0
-          ? buildInterfaceBody(variantOwnVars, variantPascal, allNested, markerRefs, registry)
+          ? buildInterfaceBody(variantOwnVars, variantPascal, allNested, markerRefs, registry, platformName)
           : [];
 
         const variantClass = resolvePlatformMarkerClass(variantDef, platBaseClass);
@@ -847,7 +847,7 @@ function buildPlatformFileContent(
       return Object.fromEntries(Object.entries(raw).filter(([k]) => !inheritedKeys.has(k)));
     })();
     const members = Object.keys(compOwnVars).length > 0
-      ? buildInterfaceBody(compOwnVars, compPascal, allNested, markerRefs, registry)
+      ? buildInterfaceBody(compOwnVars, compPascal, allNested, markerRefs, registry, platformName)
       : [];
 
     const compOwnClass = resolvePlatformMarkerClass(compRawSchema, platBaseClass);
@@ -867,7 +867,7 @@ function buildPlatformFileContent(
   const statements: ts.Statement[] = [];
 
   // Imports
-  const typesImports = ['ComponentProps', 'Pin', ...(markerRefs.size > 0 ? ['RefProp'] : [])];
+  const typesImports = ['ComponentProps', 'Pin', 'TriggerHandler', ...(markerRefs.size > 0 ? ['RefProp'] : [])];
   statements.push(importTypeDecl(typesImports, '../../types'));
   if (baseImports.size > 0) {
     statements.push(importTypeDecl([...baseImports], '../bases'));
@@ -1116,8 +1116,11 @@ function resolveStub(
     if (!ancestorKeys.has(k)) filteredVars[k] = v;
   }
   const prefix = stubName.replace(/^_/, '');
+  // Extract domain from the ref (e.g. "binary_sensor._BINARY_SENSOR_SCHEMA" → "binary_sensor")
+  // for trigger variable type lookup in the trigger registry.
+  const stubDomain = ref.includes('.') ? ref.split('.')[0] : undefined;
   const members = Object.keys(filteredVars).length > 0
-    ? buildInterfaceBody(filteredVars, prefix, acc, markerRefs, registry)
+    ? buildInterfaceBody(filteredVars, prefix, acc, markerRefs, registry, stubDomain)
     : [];
 
   stub.extendsNames = extendsNames;
@@ -1159,7 +1162,7 @@ function buildBasesFileContent(
   const statements: ts.Statement[] = [];
 
   // Imports
-  const typesImports = ['Pin', ...(markerRefs.size > 0 ? ['RefProp'] : [])];
+  const typesImports = ['Pin', 'TriggerHandler', ...(markerRefs.size > 0 ? ['RefProp'] : [])];
   statements.push(importTypeDecl(typesImports, '../types'));
   if (markerRefs.size > 0) {
     statements.push(importTypeDecl([...markerRefs], './markers'));

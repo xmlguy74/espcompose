@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _CoreComponent, _CoreEntityBase, _CoreMqttCommandComponent } from "../bases";
 import type { am43_Am43Component, binary_sensor_BinarySensor, ble_client_BLEClient, copy_CopyCover, cover_Cover, current_based_CurrentBasedCover, endstop_EndstopCover, feedback_FeedbackCover, he60r_HE60rCover, sensor_Sensor, template__TemplateCover, time_based_TimeBasedCover, tormatic_Tormatic, tuya_Tuya, tuya_TuyaCover, uart_UARTComponent, web_server_WebServer } from "../markers";
 interface CoverWebServerProps {
@@ -182,17 +182,17 @@ interface CoverBaseProps extends _CoreEntityBase, _CoreMqttCommandComponent {
     /** @yamlKey tilt_state_topic */
     tiltStateTopic?: unknown;
     /** @yamlKey on_open */
-    onOpen?: () => void;
+    onOpen?: TriggerHandler;
     /** @yamlKey on_opened */
-    onOpened?: () => void;
+    onOpened?: TriggerHandler;
     /** @yamlKey on_closed */
-    onClosed?: () => void;
+    onClosed?: TriggerHandler;
     /** @yamlKey on_closing */
-    onClosing?: () => void;
+    onClosing?: TriggerHandler;
     /** @yamlKey on_opening */
-    onOpening?: () => void;
+    onOpening?: TriggerHandler;
     /** @yamlKey on_idle */
-    onIdle?: () => void;
+    onIdle?: TriggerHandler;
 }
 interface Am43Props extends _CoreComponent {
     /** int: The pin for the device, as set in the app. The default is usually printed on the device. Defaults to `8888`. */
@@ -213,7 +213,7 @@ interface CurrentBasedProps extends _CoreComponent {
      * [Action](/automations/actions#all-actions): The action that should be performed to stop the cover.
      * @yamlKey stop_action
      */
-    stopAction: () => void;
+    stopAction: TriggerHandler;
     /**
      * [ID](/guides/configuration-types#id): The open current sensor.
      * @yamlKey open_sensor
@@ -233,7 +233,7 @@ interface CurrentBasedProps extends _CoreComponent {
      * [Action](/automations/actions#all-actions): The action that should be performed when the remote requests the cover to...
      * @yamlKey open_action
      */
-    openAction: () => void;
+    openAction: TriggerHandler;
     /**
      * [Time](/guides/configuration-types#time): The amount of time it takes the cover to open up from the fully-closed state.
      * @yamlKey open_duration
@@ -258,7 +258,7 @@ interface CurrentBasedProps extends _CoreComponent {
      * [Action](/automations/actions#all-actions): The action that should be performed when the remote requests the cover to...
      * @yamlKey close_action
      */
-    closeAction: () => void;
+    closeAction: TriggerHandler;
     /**
      * [Time](/guides/configuration-types#time): The amount of time it takes the cover to close from the fully-open state.
      * @yamlKey close_duration
@@ -283,7 +283,7 @@ interface CurrentBasedProps extends _CoreComponent {
      * [Action](/automations/actions#all-actions): The action that should be performed when relay malfunction is detected. M...
      * @yamlKey malfunction_action
      */
-    malfunctionAction?: () => void;
+    malfunctionAction?: TriggerHandler;
     /**
      * [Time](/guides/configuration-types#time): The amount of time the current sensing will be disabled when the movement s...
      * @yamlKey start_sensing_delay
@@ -295,7 +295,7 @@ interface EndstopProps extends _CoreComponent {
      * [Action](/automations/actions#all-actions): The action that should be performed when the remote requests the cover to...
      * @yamlKey stop_action
      */
-    stopAction: () => void;
+    stopAction: TriggerHandler;
     /**
      * [ID](/guides/configuration-types#id): The ID of the [Binary Sensor](/components/binary_sensor#config-binary_sensor) t...
      * @yamlKey open_endstop
@@ -305,7 +305,7 @@ interface EndstopProps extends _CoreComponent {
      * [Action](/automations/actions#all-actions): The action that should be performed when the remote requests the cover to...
      * @yamlKey open_action
      */
-    openAction: () => void;
+    openAction: TriggerHandler;
     /**
      * [Time](/guides/configuration-types#time): The amount of time it takes the cover to open up from the fully-closed state.
      * @yamlKey open_duration
@@ -315,7 +315,7 @@ interface EndstopProps extends _CoreComponent {
      * [Action](/automations/actions#all-actions): The action that should be performed when the remote requests the cover to...
      * @yamlKey close_action
      */
-    closeAction: () => void;
+    closeAction: TriggerHandler;
     /**
      * [ID](/guides/configuration-types#id): The ID of the [Binary Sensor](/components/binary_sensor#config-binary_sensor) t...
      * @yamlKey close_endstop
@@ -337,12 +337,12 @@ interface FeedbackProps extends _CoreComponent {
      * [Action](/automations/actions#all-actions): The action that should be performed when the remote requests the cover to...
      * @yamlKey stop_action
      */
-    stopAction: () => void;
+    stopAction: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): The action that should be performed when the remote requests the cover to...
      * @yamlKey open_action
      */
-    openAction: () => void;
+    openAction: TriggerHandler;
     /**
      * [Time](/guides/configuration-types#time): The amount of time it takes the cover to open up from the fully-closed state.
      * @yamlKey open_duration
@@ -367,7 +367,7 @@ interface FeedbackProps extends _CoreComponent {
      * [Action](/automations/actions#all-actions): The action that should be performed when the remote requests the cover to...
      * @yamlKey close_action
      */
-    closeAction: () => void;
+    closeAction: TriggerHandler;
     /**
      * [Time](/guides/configuration-types#time): The amount of time it takes the cover to close from the fully-open state.
      * @yamlKey close_duration
@@ -448,12 +448,12 @@ interface TimeBasedProps extends _CoreComponent {
      * [Action](/automations/actions#all-actions): The action that should be performed to stop the cover when the remote req...
      * @yamlKey stop_action
      */
-    stopAction: () => void;
+    stopAction: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): The action that should be performed when the remote requests the cover to...
      * @yamlKey open_action
      */
-    openAction: () => void;
+    openAction: TriggerHandler;
     /**
      * [Time](/guides/configuration-types#time): The amount of time it takes the cover to open up from the fully-closed state.
      * @yamlKey open_duration
@@ -463,7 +463,7 @@ interface TimeBasedProps extends _CoreComponent {
      * [Action](/automations/actions#all-actions): The action that should be performed when the remote requests the cover to...
      * @yamlKey close_action
      */
-    closeAction: () => void;
+    closeAction: TriggerHandler;
     /**
      * [Time](/guides/configuration-types#time): The amount of time it takes the cover to close from the fully-open state.
      * @yamlKey close_duration
@@ -521,22 +521,22 @@ interface TemplateProps extends _CoreComponent {
      * [Action](/automations/actions#all-actions): The action that should be performed when the remote (like Home Assistant'...
      * @yamlKey open_action
      */
-    openAction?: () => void;
+    openAction?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): The action that should be performed when the remote requests the cover to...
      * @yamlKey close_action
      */
-    closeAction?: () => void;
+    closeAction?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): The action that should be performed when the remote requests the cover to...
      * @yamlKey stop_action
      */
-    stopAction?: () => void;
+    stopAction?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): The action that should be performed when the remote (like Home Assistant'...
      * @yamlKey tilt_action
      */
-    tiltAction?: () => void;
+    tiltAction?: TriggerHandler;
     /**
      * [lambda](/automations/templates#config-lambda): Lambda to be evaluated repeatedly to get the current tilt position of...
      * @yamlKey tilt_lambda
@@ -546,12 +546,12 @@ interface TemplateProps extends _CoreComponent {
      * [Action](/automations/actions#all-actions): The action that should be performed when the remote requests to toggle th...
      * @yamlKey toggle_action
      */
-    toggleAction?: () => void;
+    toggleAction?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): The action that should be performed when the remote (like Home Assistant'...
      * @yamlKey position_action
      */
-    positionAction?: () => void;
+    positionAction?: TriggerHandler;
     /** @yamlKey restore_mode */
     restoreMode?: "NO_RESTORE" | "RESTORE" | "RESTORE_AND_CALL";
 }

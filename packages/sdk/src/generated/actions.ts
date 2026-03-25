@@ -3,6 +3,8 @@
 
 /* eslint-disable */
 
+import type { TriggerHandler } from "../types";
+
 // ── ::esphome::hub75::HUB75Display ───────────────────────────────────
 
 export interface HUB75Display_SetBrightnessParams {
@@ -166,12 +168,12 @@ export interface APIServer_ServiceParams {
 
   *See also: [Native API Component](https://esphome.io/components/api#configuration-variables)* */
   /** @yamlKey on_success */
-  onSuccess?: unknown;
+  onSuccess?: TriggerHandler;
   /** **[Automation](/automations)**: Optional automation to execute when the Home Assistant action call fails. See [Action Response Handling](https://esphome.io/components/api#action-response-handling).
 
   *See also: [Native API Component](https://esphome.io/components/api#configuration-variables)* */
   /** @yamlKey on_error */
-  onError?: unknown;
+  onError?: TriggerHandler;
 }
 
 export interface APIServer_ActionParams {
@@ -207,12 +209,12 @@ export interface APIServer_ActionParams {
 
   *See also: [Native API Component](https://esphome.io/components/api#configuration-variables)* */
   /** @yamlKey on_success */
-  onSuccess?: unknown;
+  onSuccess?: TriggerHandler;
   /** **[Automation](/automations)**: Optional automation to execute when the Home Assistant action call fails. See [Action Response Handling](https://esphome.io/components/api#action-response-handling).
 
   *See also: [Native API Component](https://esphome.io/components/api#configuration-variables)* */
   /** @yamlKey on_error */
-  onError?: unknown;
+  onError?: TriggerHandler;
 }
 
 export interface APIServer_EventParams {
@@ -1445,12 +1447,12 @@ export interface HttpRequestComponent_SendParams {
 
   *See also: [HTTP Request](https://esphome.io/components/http_request#configuration-variables)* */
   /** @yamlKey on_response */
-  onResponse?: unknown;
+  onResponse?: TriggerHandler;
   /** **[Automation](/automations)**: An automation to perform if the request cannot be completed.
 
   *See also: [HTTP Request](https://esphome.io/components/http_request#configuration-variables)* */
   /** @yamlKey on_error */
-  onError?: unknown;
+  onError?: TriggerHandler;
   /** **integer**: The maximum buffer size to be used to store the response. Defaults to `1 kB`.
 
   *See also: [HTTP Request](https://esphome.io/components/http_request#configuration-variables)* */
@@ -1488,12 +1490,12 @@ export interface HttpRequestComponent_PostParams {
 
   *See also: [HTTP Request](https://esphome.io/components/http_request#configuration-variables)* */
   /** @yamlKey on_response */
-  onResponse?: unknown;
+  onResponse?: TriggerHandler;
   /** **[Automation](/automations)**: An automation to perform if the request cannot be completed.
 
   *See also: [HTTP Request](https://esphome.io/components/http_request#configuration-variables)* */
   /** @yamlKey on_error */
-  onError?: unknown;
+  onError?: TriggerHandler;
   /** **integer**: The maximum buffer size to be used to store the response. Defaults to `1 kB`.
 
   *See also: [HTTP Request](https://esphome.io/components/http_request#configuration-variables)* */
@@ -1533,12 +1535,12 @@ export interface HttpRequestComponent_GetParams {
 
   *See also: [HTTP Request](https://esphome.io/components/http_request#configuration-variables)* */
   /** @yamlKey on_response */
-  onResponse?: unknown;
+  onResponse?: TriggerHandler;
   /** **[Automation](/automations)**: An automation to perform if the request cannot be completed.
 
   *See also: [HTTP Request](https://esphome.io/components/http_request#configuration-variables)* */
   /** @yamlKey on_error */
-  onError?: unknown;
+  onError?: TriggerHandler;
   /** **integer**: The maximum buffer size to be used to store the response. Defaults to `1 kB`.
 
   *See also: [HTTP Request](https://esphome.io/components/http_request#configuration-variables)* */

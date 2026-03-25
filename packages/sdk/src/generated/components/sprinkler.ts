@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _CoreComponent } from "../bases";
 import type { sprinkler_Sprinkler, switch__Switch, web_server_WebServer, zigbee_ZigbeeComponent } from "../markers";
 export interface SprinklerAutoAdvanceSwitchPropsAvailabilityProps {
@@ -57,11 +57,11 @@ export interface SprinklerAutoAdvanceSwitchProps {
     /** @yamlKey restore_mode */
     restoreMode?: unknown;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler;
     /** @yamlKey on_turn_on */
-    onTurnOn?: () => void;
+    onTurnOn?: TriggerHandler;
     /** @yamlKey on_turn_off */
-    onTurnOff?: () => void;
+    onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
     deviceClass?: "" | "outlet" | "switch";
 }
@@ -119,11 +119,11 @@ export interface SprinklerMainSwitchProps {
     /** @yamlKey restore_mode */
     restoreMode?: "RESTORE_DEFAULT_OFF" | "RESTORE_DEFAULT_ON" | "ALWAYS_OFF" | "ALWAYS_ON" | "RESTORE_INVERTED_DEFAULT_OFF" | "RESTORE_INVERTED_DEFAULT_ON" | "DISABLED";
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler;
     /** @yamlKey on_turn_on */
-    onTurnOn?: () => void;
+    onTurnOn?: TriggerHandler;
     /** @yamlKey on_turn_off */
-    onTurnOff?: () => void;
+    onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
     deviceClass?: "" | "outlet" | "switch";
 }
@@ -178,11 +178,11 @@ export interface SprinklerQueueEnableSwitchProps {
     /** @yamlKey restore_mode */
     restoreMode?: unknown;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler;
     /** @yamlKey on_turn_on */
-    onTurnOn?: () => void;
+    onTurnOn?: TriggerHandler;
     /** @yamlKey on_turn_off */
-    onTurnOff?: () => void;
+    onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
     deviceClass?: "" | "outlet" | "switch";
 }
@@ -237,11 +237,11 @@ export interface SprinklerReverseSwitchProps {
     /** @yamlKey restore_mode */
     restoreMode?: unknown;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler;
     /** @yamlKey on_turn_on */
-    onTurnOn?: () => void;
+    onTurnOn?: TriggerHandler;
     /** @yamlKey on_turn_off */
-    onTurnOff?: () => void;
+    onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
     deviceClass?: "" | "outlet" | "switch";
 }
@@ -296,11 +296,11 @@ export interface SprinklerStandbySwitchProps {
     /** @yamlKey restore_mode */
     restoreMode?: unknown;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler;
     /** @yamlKey on_turn_on */
-    onTurnOn?: () => void;
+    onTurnOn?: TriggerHandler;
     /** @yamlKey on_turn_off */
-    onTurnOff?: () => void;
+    onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
     deviceClass?: "" | "outlet" | "switch";
 }
@@ -360,9 +360,9 @@ export interface SprinklerMultiplierNumberProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -380,7 +380,7 @@ export interface SprinklerMultiplierNumberProps {
     restoreValue?: boolean;
     step?: unknown;
     /** @yamlKey set_action */
-    setAction?: () => void;
+    setAction?: TriggerHandler;
 }
 export interface SprinklerRepeatNumberPropsAvailabilityProps {
     topic: unknown;
@@ -430,9 +430,9 @@ export interface SprinklerRepeatNumberProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -450,7 +450,7 @@ export interface SprinklerRepeatNumberProps {
     restoreValue?: boolean;
     step?: number;
     /** @yamlKey set_action */
-    setAction?: () => void;
+    setAction?: TriggerHandler;
 }
 export interface SprinklerPumpStartPumpDelayProps {
     days?: unknown;
@@ -551,11 +551,11 @@ export interface SprinklerValvesPropsEnableSwitchProps {
     /** @yamlKey restore_mode */
     restoreMode?: unknown;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler;
     /** @yamlKey on_turn_on */
-    onTurnOn?: () => void;
+    onTurnOn?: TriggerHandler;
     /** @yamlKey on_turn_off */
-    onTurnOff?: () => void;
+    onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
     deviceClass?: "" | "outlet" | "switch";
 }
@@ -615,9 +615,9 @@ export interface SprinklerValvesPropsRunDurationNumberProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: "min" | "s";
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -635,7 +635,7 @@ export interface SprinklerValvesPropsRunDurationNumberProps {
     restoreValue?: boolean;
     step?: number;
     /** @yamlKey set_action */
-    setAction?: () => void;
+    setAction?: TriggerHandler;
 }
 export interface SprinklerValvesPropsValveSwitchPropsAvailabilityProps {
     topic: unknown;
@@ -691,11 +691,11 @@ export interface SprinklerValvesPropsValveSwitchProps {
     /** @yamlKey restore_mode */
     restoreMode?: "RESTORE_DEFAULT_OFF" | "RESTORE_DEFAULT_ON" | "ALWAYS_OFF" | "ALWAYS_ON" | "RESTORE_INVERTED_DEFAULT_OFF" | "RESTORE_INVERTED_DEFAULT_ON" | "DISABLED";
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler;
     /** @yamlKey on_turn_on */
-    onTurnOn?: () => void;
+    onTurnOn?: TriggerHandler;
     /** @yamlKey on_turn_off */
-    onTurnOff?: () => void;
+    onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
     deviceClass?: "" | "outlet" | "switch";
 }

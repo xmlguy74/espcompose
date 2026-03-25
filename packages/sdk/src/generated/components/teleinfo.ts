@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _CoreComponent } from "../bases";
 import type { teleinfo_TeleInfo, uart_UARTComponent } from "../markers";
 export interface TeleinfoProps extends _CoreComponent {

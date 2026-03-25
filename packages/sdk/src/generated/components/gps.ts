@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _CoreComponent } from "../bases";
 import type { gps_GPS, uart_UARTComponent, web_server_WebServer, zigbee_ZigbeeComponent } from "../markers";
 export interface GpsLatitudePropsAvailabilityProps {
@@ -70,11 +70,11 @@ export interface GpsLatitudeProps {
     expireAfter?: GpsLatitudePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler;
 }
 export interface GpsLongitudePropsAvailabilityProps {
     topic: unknown;
@@ -140,11 +140,11 @@ export interface GpsLongitudeProps {
     expireAfter?: GpsLongitudePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler;
 }
 export interface GpsSpeedPropsAvailabilityProps {
     topic: unknown;
@@ -210,11 +210,11 @@ export interface GpsSpeedProps {
     expireAfter?: GpsSpeedPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler;
 }
 export interface GpsCoursePropsAvailabilityProps {
     topic: unknown;
@@ -280,11 +280,11 @@ export interface GpsCourseProps {
     expireAfter?: GpsCoursePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler;
 }
 export interface GpsAltitudePropsAvailabilityProps {
     topic: unknown;
@@ -350,11 +350,11 @@ export interface GpsAltitudeProps {
     expireAfter?: GpsAltitudePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler;
 }
 export interface GpsSatellitesPropsAvailabilityProps {
     topic: unknown;
@@ -420,11 +420,11 @@ export interface GpsSatellitesProps {
     expireAfter?: GpsSatellitesPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler;
 }
 export interface GpsHdopPropsAvailabilityProps {
     topic: unknown;
@@ -490,11 +490,11 @@ export interface GpsHdopProps {
     expireAfter?: GpsHdopPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler;
 }
 export interface GpsProps extends _CoreComponent {
     /** Include the Latitude as a sensor */

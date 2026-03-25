@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _BleClient, _CoreComponent, _CoreEntityBase, _CoreMqttComponent, _HomeassistantHomeAssistantImport, _ModbusControllerModbusitembaseschema, _Msa3xxMsaSensor, _PipsolarComponent, _PylontechComponent, _TeleinfoListener, _UartDevice } from "../bases";
 import type { Color, EntityBase, atm90e32_ATM90E32Component, ble_client_BLETextSensor, ble_scanner_BLEScanner, bme680_bsec_BME680BSECComponent, bme68x_bsec2_BME68xBSEC2Component, copy_CopyTextSensor, daly_bms_DalyBmsComponent, debug_DebugComponent, dlms_meter_DlmsMeterComponent, esp32_ble_tracker_ESP32BLETracker, esphome_dsmr_Dsmr, ezo_pmp_EzoPMP, gdk101_GDK101Component, haier_HonClimate, hlk_fm22x_HlkFm22xComponent, homeassistant_HomeassistantTextSensor, key_collector_KeyCollector, ld2410_LD2410Component, ld2412_LD2412Component, ld2420_LD2420Component, ld2420_LD2420TextSensor, ld2450_LD2450Component, libretiny_LTComponent, micronova_MicroNova, modbus_controller_ModbusTextSensor, mqtt_MQTTClientComponent, mqtt_subscribe_MQTTSubscribeTextSensor, nextion_Nextion, nextion_NextionTextSensor, pylontech_PylontechTextSensor, seeed_mr24hpc1_MR24HPC1Component, sml_Sml, sml_SmlTextSensor, sun_Sun, sun_SunTextSensor, sun_gtil2_SunGTIL2, sy6970_SY6970Component, teleinfo_TeleInfoTextSensor, template__TemplateTextSensor, text_sensor_TextSensor, tuya_Tuya, tuya_TuyaTextSensor, uptime_UptimeTextSensor, version_VersionTextSensor, web_server_WebServer, wireguard_Wireguard, wl_134_Wl134Component } from "../markers";
 interface TextSensorWebServerProps {
@@ -74,9 +74,13 @@ interface EthernetInfoIpAddressPropsAddress0Props {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface EthernetInfoIpAddressPropsAddress1PropsAvailabilityProps {
     topic: unknown;
@@ -123,9 +127,13 @@ interface EthernetInfoIpAddressPropsAddress1Props {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface EthernetInfoIpAddressPropsAddress2PropsAvailabilityProps {
     topic: unknown;
@@ -172,9 +180,13 @@ interface EthernetInfoIpAddressPropsAddress2Props {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface EthernetInfoIpAddressPropsAddress3PropsAvailabilityProps {
     topic: unknown;
@@ -221,9 +233,13 @@ interface EthernetInfoIpAddressPropsAddress3Props {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface EthernetInfoIpAddressPropsAddress4PropsAvailabilityProps {
     topic: unknown;
@@ -270,9 +286,13 @@ interface EthernetInfoIpAddressPropsAddress4Props {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface EthernetInfoIpAddressProps {
     /** string: The name for the sensor. */
@@ -304,9 +324,13 @@ interface EthernetInfoIpAddressProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey address_0 */
     address0?: EthernetInfoIpAddressPropsAddress0Props;
     /** @yamlKey address_1 */
@@ -363,9 +387,13 @@ interface EthernetInfoDnsAddressProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface EthernetInfoMacAddressPropsAvailabilityProps {
     topic: unknown;
@@ -412,9 +440,13 @@ interface EthernetInfoMacAddressProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface OpenthreadInfoIpAddressPropsAvailabilityProps {
     topic: unknown;
@@ -461,9 +493,13 @@ interface OpenthreadInfoIpAddressProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface OpenthreadInfoRolePropsAvailabilityProps {
     topic: unknown;
@@ -510,9 +546,13 @@ interface OpenthreadInfoRoleProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey setup_priority */
     setupPriority?: unknown;
     /** @yamlKey update_interval */
@@ -563,9 +603,13 @@ interface OpenthreadInfoRloc16Props {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey setup_priority */
     setupPriority?: unknown;
     /** @yamlKey update_interval */
@@ -616,9 +660,13 @@ interface OpenthreadInfoExtAddrProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey setup_priority */
     setupPriority?: unknown;
     /** @yamlKey update_interval */
@@ -669,9 +717,13 @@ interface OpenthreadInfoEui64Props {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey setup_priority */
     setupPriority?: unknown;
     /** @yamlKey update_interval */
@@ -722,9 +774,13 @@ interface OpenthreadInfoChannelProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey setup_priority */
     setupPriority?: unknown;
     /** @yamlKey update_interval */
@@ -775,9 +831,13 @@ interface OpenthreadInfoNetworkNameProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey setup_priority */
     setupPriority?: unknown;
     /** @yamlKey update_interval */
@@ -828,9 +888,13 @@ interface OpenthreadInfoNetworkKeyProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey setup_priority */
     setupPriority?: unknown;
     /** @yamlKey update_interval */
@@ -881,9 +945,13 @@ interface OpenthreadInfoPanIdProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey setup_priority */
     setupPriority?: unknown;
     /** @yamlKey update_interval */
@@ -934,9 +1002,13 @@ interface OpenthreadInfoExtPanIdProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey setup_priority */
     setupPriority?: unknown;
     /** @yamlKey update_interval */
@@ -1002,9 +1074,13 @@ interface WifiInfoIpAddressPropsAddress0Props {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface WifiInfoIpAddressPropsAddress1PropsAvailabilityProps {
     topic: unknown;
@@ -1051,9 +1127,13 @@ interface WifiInfoIpAddressPropsAddress1Props {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface WifiInfoIpAddressPropsAddress2PropsAvailabilityProps {
     topic: unknown;
@@ -1100,9 +1180,13 @@ interface WifiInfoIpAddressPropsAddress2Props {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface WifiInfoIpAddressPropsAddress3PropsAvailabilityProps {
     topic: unknown;
@@ -1149,9 +1233,13 @@ interface WifiInfoIpAddressPropsAddress3Props {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface WifiInfoIpAddressPropsAddress4PropsAvailabilityProps {
     topic: unknown;
@@ -1198,9 +1286,13 @@ interface WifiInfoIpAddressPropsAddress4Props {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface WifiInfoIpAddressProps {
     /** string: The name for the sensor. */
@@ -1232,9 +1324,13 @@ interface WifiInfoIpAddressProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey address_0 */
     address0?: WifiInfoIpAddressPropsAddress0Props;
     /** @yamlKey address_1 */
@@ -1291,9 +1387,13 @@ interface WifiInfoScanResultsProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface WifiInfoSsidPropsAvailabilityProps {
     topic: unknown;
@@ -1340,9 +1440,13 @@ interface WifiInfoSsidProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface WifiInfoBssidPropsAvailabilityProps {
     topic: unknown;
@@ -1389,9 +1493,13 @@ interface WifiInfoBssidProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface WifiInfoMacAddressPropsAvailabilityProps {
     topic: unknown;
@@ -1438,9 +1546,13 @@ interface WifiInfoMacAddressProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface WifiInfoDnsAddressPropsAvailabilityProps {
     topic: unknown;
@@ -1487,9 +1599,13 @@ interface WifiInfoDnsAddressProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface WifiInfoPowerSaveModePropsAvailabilityProps {
     topic: unknown;
@@ -1536,9 +1652,13 @@ interface WifiInfoPowerSaveModeProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface Atm90e32PhaseStatusPropsPhaseAPropsAvailabilityProps {
     topic: unknown;
@@ -1587,9 +1707,13 @@ interface Atm90e32PhaseStatusPropsPhaseAProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface Atm90e32PhaseStatusPropsPhaseBPropsAvailabilityProps {
     topic: unknown;
@@ -1638,9 +1762,13 @@ interface Atm90e32PhaseStatusPropsPhaseBProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface Atm90e32PhaseStatusPropsPhaseCPropsAvailabilityProps {
     topic: unknown;
@@ -1689,9 +1817,13 @@ interface Atm90e32PhaseStatusPropsPhaseCProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface Atm90e32PhaseStatusProps {
     /**
@@ -1757,9 +1889,13 @@ interface Atm90e32FrequencyStatusProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface Bme680BsecIaqAccuracyPropsAvailabilityProps {
     topic: unknown;
@@ -1808,9 +1944,13 @@ interface Bme680BsecIaqAccuracyProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface Bme68xBsec2IaqAccuracyPropsAvailabilityProps {
     topic: unknown;
@@ -1859,9 +1999,13 @@ interface Bme68xBsec2IaqAccuracyProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface DalyBmsStatusPropsAvailabilityProps {
     topic: unknown;
@@ -1910,9 +2054,13 @@ interface DalyBmsStatusProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface DebugDevicePropsAvailabilityProps {
     topic: unknown;
@@ -1958,9 +2106,13 @@ interface DebugDeviceProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface DebugResetReasonPropsAvailabilityProps {
     topic: unknown;
@@ -2006,9 +2158,13 @@ interface DebugResetReasonProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface DlmsMeterTimestampPropsAvailabilityProps {
     topic: unknown;
@@ -2058,9 +2214,13 @@ interface DlmsMeterTimestampProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface DlmsMeterMeternumberPropsAvailabilityProps {
     topic: unknown;
@@ -2110,9 +2270,13 @@ interface DlmsMeterMeternumberProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface DsmrIdentificationPropsAvailabilityProps {
     topic: unknown;
@@ -2162,9 +2326,13 @@ interface DsmrIdentificationProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface DsmrP1VersionPropsAvailabilityProps {
     topic: unknown;
@@ -2214,9 +2382,13 @@ interface DsmrP1VersionProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface DsmrP1VersionBePropsAvailabilityProps {
     topic: unknown;
@@ -2266,9 +2438,13 @@ interface DsmrP1VersionBeProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface DsmrTimestampPropsAvailabilityProps {
     topic: unknown;
@@ -2318,9 +2494,13 @@ interface DsmrTimestampProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface DsmrElectricityTariffPropsAvailabilityProps {
     topic: unknown;
@@ -2370,9 +2550,13 @@ interface DsmrElectricityTariffProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface DsmrElectricityFailureLogPropsAvailabilityProps {
     topic: unknown;
@@ -2422,9 +2606,13 @@ interface DsmrElectricityFailureLogProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface DsmrMessageShortPropsAvailabilityProps {
     topic: unknown;
@@ -2474,9 +2662,13 @@ interface DsmrMessageShortProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface DsmrMessageLongPropsAvailabilityProps {
     topic: unknown;
@@ -2526,9 +2718,13 @@ interface DsmrMessageLongProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface DsmrEquipmentIdPropsAvailabilityProps {
     topic: unknown;
@@ -2578,9 +2774,13 @@ interface DsmrEquipmentIdProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface DsmrGasEquipmentIdPropsAvailabilityProps {
     topic: unknown;
@@ -2630,9 +2830,13 @@ interface DsmrGasEquipmentIdProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface DsmrGasEquipmentIdBePropsAvailabilityProps {
     topic: unknown;
@@ -2682,9 +2886,13 @@ interface DsmrGasEquipmentIdBeProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface DsmrThermalEquipmentIdPropsAvailabilityProps {
     topic: unknown;
@@ -2734,9 +2942,13 @@ interface DsmrThermalEquipmentIdProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface DsmrWaterEquipmentIdPropsAvailabilityProps {
     topic: unknown;
@@ -2786,9 +2998,13 @@ interface DsmrWaterEquipmentIdProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface DsmrSubEquipmentIdPropsAvailabilityProps {
     topic: unknown;
@@ -2838,9 +3054,13 @@ interface DsmrSubEquipmentIdProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface DsmrGasDeliveredTextPropsAvailabilityProps {
     topic: unknown;
@@ -2890,9 +3110,13 @@ interface DsmrGasDeliveredTextProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface DsmrFwCoreChecksumPropsAvailabilityProps {
     topic: unknown;
@@ -2942,9 +3166,13 @@ interface DsmrFwCoreChecksumProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface DsmrFwCoreVersionPropsAvailabilityProps {
     topic: unknown;
@@ -2994,9 +3222,13 @@ interface DsmrFwCoreVersionProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface DsmrFwModuleChecksumPropsAvailabilityProps {
     topic: unknown;
@@ -3046,9 +3278,13 @@ interface DsmrFwModuleChecksumProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface DsmrFwModuleVersionPropsAvailabilityProps {
     topic: unknown;
@@ -3098,9 +3334,13 @@ interface DsmrFwModuleVersionProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface DsmrTelegramPropsAvailabilityProps {
     topic: unknown;
@@ -3149,9 +3389,13 @@ interface DsmrTelegramProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface EzoPmpDosingModePropsAvailabilityProps {
     topic: unknown;
@@ -3198,9 +3442,13 @@ interface EzoPmpDosingModeProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface EzoPmpCalibrationStatusPropsAvailabilityProps {
     topic: unknown;
@@ -3247,9 +3495,13 @@ interface EzoPmpCalibrationStatusProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface Gdk101VersionPropsAvailabilityProps {
     topic: unknown;
@@ -3295,9 +3547,13 @@ interface Gdk101VersionProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface HaierCleaningStatusPropsAvailabilityProps {
     topic: unknown;
@@ -3343,9 +3599,13 @@ interface HaierCleaningStatusProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface HaierProtocolVersionPropsAvailabilityProps {
     topic: unknown;
@@ -3391,9 +3651,13 @@ interface HaierProtocolVersionProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface HaierApplianceNamePropsAvailabilityProps {
     topic: unknown;
@@ -3439,9 +3703,13 @@ interface HaierApplianceNameProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface HlkFm22xVersionPropsAvailabilityProps {
     topic: unknown;
@@ -3487,9 +3755,13 @@ interface HlkFm22xVersionProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface HlkFm22xLastFaceNamePropsAvailabilityProps {
     topic: unknown;
@@ -3535,9 +3807,13 @@ interface HlkFm22xLastFaceNameProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface Ld2410VersionPropsAvailabilityProps {
     topic: unknown;
@@ -3583,9 +3859,13 @@ interface Ld2410VersionProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface Ld2410MacAddressPropsAvailabilityProps {
     topic: unknown;
@@ -3631,9 +3911,13 @@ interface Ld2410MacAddressProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface Ld2412VersionPropsAvailabilityProps {
     topic: unknown;
@@ -3679,9 +3963,13 @@ interface Ld2412VersionProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface Ld2412MacAddressPropsAvailabilityProps {
     topic: unknown;
@@ -3727,9 +4015,13 @@ interface Ld2412MacAddressProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface Ld2420FwVersionPropsAvailabilityProps {
     topic: unknown;
@@ -3775,9 +4067,13 @@ interface Ld2420FwVersionProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface Ld2450VersionPropsAvailabilityProps {
     topic: unknown;
@@ -3823,9 +4119,13 @@ interface Ld2450VersionProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface Ld2450MacAddressPropsAvailabilityProps {
     topic: unknown;
@@ -3871,9 +4171,13 @@ interface Ld2450MacAddressProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface Ld2450Target1PropsDirectionPropsAvailabilityProps {
     topic: unknown;
@@ -3919,9 +4223,13 @@ interface Ld2450Target1PropsDirectionProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface Ld2450Target1Props {
     direction?: Ld2450Target1PropsDirectionProps;
@@ -3970,9 +4278,13 @@ interface Ld2450Target2PropsDirectionProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface Ld2450Target2Props {
     direction?: Ld2450Target2PropsDirectionProps;
@@ -4021,9 +4333,13 @@ interface Ld2450Target3PropsDirectionProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface Ld2450Target3Props {
     direction?: Ld2450Target3PropsDirectionProps;
@@ -4072,9 +4388,13 @@ interface LibretinyVersionProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface MicronovaStoveStatePropsAvailabilityProps {
     topic: unknown;
@@ -4124,9 +4444,13 @@ interface MicronovaStoveStateProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey setup_priority */
     setupPriority?: unknown;
     /** @yamlKey micronova_id */
@@ -4185,9 +4509,13 @@ interface Msa3xxOrientationXyProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface Msa3xxOrientationZPropsAvailabilityProps {
     topic: unknown;
@@ -4236,9 +4564,13 @@ interface Msa3xxOrientationZProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface PipsolarDeviceModePropsAvailabilityProps {
     topic: unknown;
@@ -4288,9 +4620,13 @@ interface PipsolarDeviceModeProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface PipsolarLastQpigsPropsAvailabilityProps {
     topic: unknown;
@@ -4340,9 +4676,13 @@ interface PipsolarLastQpigsProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface PipsolarLastQpiriPropsAvailabilityProps {
     topic: unknown;
@@ -4392,9 +4732,13 @@ interface PipsolarLastQpiriProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface PipsolarLastQmodPropsAvailabilityProps {
     topic: unknown;
@@ -4444,9 +4788,13 @@ interface PipsolarLastQmodProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface PipsolarLastQflagPropsAvailabilityProps {
     topic: unknown;
@@ -4496,9 +4844,13 @@ interface PipsolarLastQflagProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface PipsolarLastQpiwsPropsAvailabilityProps {
     topic: unknown;
@@ -4548,9 +4900,13 @@ interface PipsolarLastQpiwsProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface PipsolarLastQtPropsAvailabilityProps {
     topic: unknown;
@@ -4600,9 +4956,13 @@ interface PipsolarLastQtProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface PipsolarLastQmnPropsAvailabilityProps {
     topic: unknown;
@@ -4652,9 +5012,13 @@ interface PipsolarLastQmnProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface PylontechBaseStatePropsAvailabilityProps {
     topic: unknown;
@@ -4704,9 +5068,13 @@ interface PylontechBaseStateProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface PylontechVoltageStatePropsAvailabilityProps {
     topic: unknown;
@@ -4756,9 +5124,13 @@ interface PylontechVoltageStateProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface PylontechCurrentStatePropsAvailabilityProps {
     topic: unknown;
@@ -4808,9 +5180,13 @@ interface PylontechCurrentStateProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface PylontechTemperatureStatePropsAvailabilityProps {
     topic: unknown;
@@ -4860,9 +5236,13 @@ interface PylontechTemperatureStateProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface SeeedMr24hpc1HeartBeatPropsAvailabilityProps {
     topic: unknown;
@@ -4908,9 +5288,13 @@ interface SeeedMr24hpc1HeartBeatProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface SeeedMr24hpc1ProductModelPropsAvailabilityProps {
     topic: unknown;
@@ -4956,9 +5340,13 @@ interface SeeedMr24hpc1ProductModelProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface SeeedMr24hpc1ProductIdPropsAvailabilityProps {
     topic: unknown;
@@ -5004,9 +5392,13 @@ interface SeeedMr24hpc1ProductIdProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface SeeedMr24hpc1HardwareModelPropsAvailabilityProps {
     topic: unknown;
@@ -5052,9 +5444,13 @@ interface SeeedMr24hpc1HardwareModelProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface SeeedMr24hpc1HardwareVersionPropsAvailabilityProps {
     topic: unknown;
@@ -5100,9 +5496,13 @@ interface SeeedMr24hpc1HardwareVersionProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface SeeedMr24hpc1KeepAwayPropsAvailabilityProps {
     topic: unknown;
@@ -5148,9 +5548,13 @@ interface SeeedMr24hpc1KeepAwayProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface SeeedMr24hpc1MotionStatusPropsAvailabilityProps {
     topic: unknown;
@@ -5196,9 +5600,13 @@ interface SeeedMr24hpc1MotionStatusProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface SeeedMr24hpc1CustomModeEndPropsAvailabilityProps {
     topic: unknown;
@@ -5244,9 +5652,13 @@ interface SeeedMr24hpc1CustomModeEndProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface SunGtil2StatePropsAvailabilityProps {
     topic: unknown;
@@ -5297,9 +5709,13 @@ interface SunGtil2StateProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface SunGtil2SerialNumberPropsAvailabilityProps {
     topic: unknown;
@@ -5350,9 +5766,13 @@ interface SunGtil2SerialNumberProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface Sy6970BusStatusPropsAvailabilityProps {
     topic: unknown;
@@ -5402,9 +5822,13 @@ interface Sy6970BusStatusProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface Sy6970ChargeStatusPropsAvailabilityProps {
     topic: unknown;
@@ -5454,9 +5878,13 @@ interface Sy6970ChargeStatusProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface Sy6970NtcStatusPropsAvailabilityProps {
     topic: unknown;
@@ -5506,9 +5934,13 @@ interface Sy6970NtcStatusProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface UptimeFormatProps {
     /** string: The string to use for the days element. Defaults to `d`. */
@@ -5569,9 +6001,13 @@ interface WireguardAddressProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface TextSensorBaseProps extends _CoreEntityBase, _CoreMqttComponent {
     /** @yamlKey web_server */
@@ -5580,9 +6016,13 @@ interface TextSensorBaseProps extends _CoreEntityBase, _CoreMqttComponent {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: string;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: string;
+    }>;
 }
 interface BleScannerProps extends _CoreComponent {
     /** @yamlKey esp32_ble_id */
@@ -5716,7 +6156,7 @@ interface BleClientProps extends _CoreComponent, _BleClient {
     descriptorUuid?: unknown;
     notify?: boolean;
     /** @yamlKey on_notify */
-    onNotify?: () => void;
+    onNotify?: TriggerHandler;
     /** @yamlKey update_interval */
     updateInterval?: unknown;
 }

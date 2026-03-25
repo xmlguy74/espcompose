@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _Canbus } from "../bases";
 import type { esp32_can_ESP32Can, mcp2515_MCP2515, spi_SPIComponent } from "../markers";
 interface Esp32CanTxEnqueueTimeoutProps {

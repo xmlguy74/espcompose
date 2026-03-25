@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin } from "../../types";
+import type { ComponentProps, Pin, TriggerHandler } from "../../types";
 export interface HostProps {
     /**
      * MAC address: A dummy MAC address to use when communicating with HA.

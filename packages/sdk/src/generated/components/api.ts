@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _CoreComponent } from "../bases";
 import type { api_APIServer } from "../markers";
 export interface ApiRebootTimeoutProps {
@@ -20,7 +20,7 @@ export interface ApiServicesProps {
     variables?: Record<string, unknown>;
     /** @yamlKey supports_response */
     supportsResponse?: "none" | "optional" | "only" | "status";
-    then?: () => void;
+    then?: TriggerHandler;
 }
 export interface ApiActionsProps {
     service?: string;
@@ -28,7 +28,7 @@ export interface ApiActionsProps {
     variables?: Record<string, unknown>;
     /** @yamlKey supports_response */
     supportsResponse?: "none" | "optional" | "only" | "status";
-    then?: () => void;
+    then?: TriggerHandler;
 }
 export interface ApiBatchDelayProps {
     days?: unknown;
@@ -75,12 +75,12 @@ export interface ApiProps extends _CoreComponent {
      * [Action](/automations/actions#all-actions): An automation to perform when a client connects to the API. See [`on_clie...
      * @yamlKey on_client_connected
      */
-    onClientConnected?: () => void;
+    onClientConnected?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): An automation to perform when a client disconnects from the API. See [`on...
      * @yamlKey on_client_disconnected
      */
-    onClientDisconnected?: () => void;
+    onClientDisconnected?: TriggerHandler;
     /**
      * int: The maximum number of pending connections in the listen queue. Must be between 1 and 10. Defaults to `1` for ESP...
      * @yamlKey listen_backlog

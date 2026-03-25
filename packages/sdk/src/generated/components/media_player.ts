@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _CoreComponent, _CoreEntityBase } from "../bases";
 import type { i2s_audio_I2SAudioComponent, i2s_audio_I2SAudioMediaPlayer, media_source_MediaSource, speaker_Speaker, speaker_SpeakerMediaPlayer, speaker_source_SpeakerSourceMediaPlayer } from "../markers";
 interface SpeakerAnnouncementPipelineProps {
@@ -80,25 +80,25 @@ interface SpeakerSourceMediaPipelineProps {
 }
 interface MediaPlayerBaseProps extends _CoreEntityBase {
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler;
     /** @yamlKey on_idle */
-    onIdle?: () => void;
+    onIdle?: TriggerHandler;
     /** @yamlKey on_play */
-    onPlay?: () => void;
+    onPlay?: TriggerHandler;
     /** @yamlKey on_pause */
-    onPause?: () => void;
+    onPause?: TriggerHandler;
     /** @yamlKey on_announcement */
-    onAnnouncement?: () => void;
+    onAnnouncement?: TriggerHandler;
     /**
      * [Automation](/automations): An automation to perform when media_player is turned on, implements the `supports_turn_of...
      * @yamlKey on_turn_on
      */
-    onTurnOn?: () => void;
+    onTurnOn?: TriggerHandler;
     /**
      * [Automation](/automations): An automation to perform when media_player is turned off, implements the `supports_turn_o...
      * @yamlKey on_turn_off
      */
-    onTurnOff?: () => void;
+    onTurnOff?: TriggerHandler;
 }
 interface SpeakerProps {
     /**
@@ -152,17 +152,17 @@ interface SpeakerProps {
      * [Automation](/automations): An automation to perform when muted.
      * @yamlKey on_mute
      */
-    onMute?: () => void;
+    onMute?: TriggerHandler;
     /**
      * [Automation](/automations): An automation to perform when unmuted.
      * @yamlKey on_unmute
      */
-    onUnmute?: () => void;
+    onUnmute?: TriggerHandler;
     /**
      * [Automation](/automations): An automation to perform when the volume is changed.
      * @yamlKey on_volume
      */
-    onVolume?: () => void;
+    onVolume?: TriggerHandler;
 }
 interface SpeakerSourceProps extends _CoreComponent {
     /**
@@ -199,17 +199,17 @@ interface SpeakerSourceProps extends _CoreComponent {
      * [Automation](/automations): An automation to perform when muted.
      * @yamlKey on_mute
      */
-    onMute?: () => void;
+    onMute?: TriggerHandler;
     /**
      * [Automation](/automations): An automation to perform when unmuted.
      * @yamlKey on_unmute
      */
-    onUnmute?: () => void;
+    onUnmute?: TriggerHandler;
     /**
      * [Automation](/automations): An automation to perform when the volume is changed.
      * @yamlKey on_volume
      */
-    onVolume?: () => void;
+    onVolume?: TriggerHandler;
 }
 interface I2sAudioInternalProps extends _CoreComponent {
     /** @yamlKey i2s_audio_id */

@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _CoreComponent } from "../bases";
 import type { spi_SPIComponent, sx126x_SX126x } from "../markers";
 export interface Sx126xTcxoDelayProps {
@@ -74,7 +74,7 @@ export interface Sx126xProps extends _CoreComponent {
      * [Automation](/automations): An automation to perform when a packet has been decoded. Variable x of type `std::vector<...
      * @yamlKey on_packet
      */
-    onPacket?: () => void;
+    onPacket?: TriggerHandler;
     /**
      * int: Transmitter power, range is from -3 to 15 dBm when `hw_version` is `sx1261` and from -3 to 22 dBm otherwise.
      * @yamlKey pa_power

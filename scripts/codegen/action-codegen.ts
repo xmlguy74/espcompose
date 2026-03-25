@@ -113,6 +113,8 @@ export function generateActionsFile(input: ActionCodegenInput): string {
   lines.push('');
   lines.push('/* eslint-disable */');
   lines.push('');
+  lines.push('import type { TriggerHandler } from "../types";');
+  lines.push('');
 
   // Track generated interface names for ClassActionMap
   const classInterfaceNames: Array<{ cppClass: string; prefix: string; interfaceName: string }> = [];

@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _CoreComponent, _CoreEntityBase, _CoreMqttCommandComponent, _HomeassistantHomeAssistantImportControl, _ModbusControllerModbusitembaseschema } from "../bases";
 import type { EntityBase, atm90e32_ATM90E32Component, bl0940_BL0940, bl0940_BL0940Number, copy_CopyNumber, homeassistant_HomeassistantNumber, ld2410_LD2410Component, ld2412_LD2412Component, ld2420_LD2420Component, ld2450_LD2450Component, lvgl_LVGLNumber, micronova_MicroNova, modbus_controller_ModbusNumber, number_Number, opentherm_OpenthermHub, seeed_mr24hpc1_MR24HPC1Component, template__TemplateNumber, tuya_Tuya, tuya_TuyaNumber, web_server_WebServer, zigbee_ZigbeeComponent, zigbee_ZigbeeNumber } from "../markers";
 interface NumberWebServerProps {
@@ -61,9 +61,13 @@ interface Atm90e32ReferenceVoltagePropsPhaseAProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: string;
@@ -122,9 +126,13 @@ interface Atm90e32ReferenceVoltagePropsPhaseBProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: string;
@@ -183,9 +191,13 @@ interface Atm90e32ReferenceVoltagePropsPhaseCProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: string;
@@ -261,9 +273,13 @@ interface Atm90e32ReferenceCurrentPropsPhaseAProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: string;
@@ -322,9 +338,13 @@ interface Atm90e32ReferenceCurrentPropsPhaseBProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: string;
@@ -383,9 +403,13 @@ interface Atm90e32ReferenceCurrentPropsPhaseCProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: string;
@@ -462,9 +486,13 @@ interface Bl0940CurrentCalibrationProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: unknown;
@@ -528,9 +556,13 @@ interface Bl0940VoltageCalibrationProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: unknown;
@@ -594,9 +626,13 @@ interface Bl0940PowerCalibrationProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: unknown;
@@ -660,9 +696,13 @@ interface Bl0940EnergyCalibrationProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: unknown;
@@ -725,9 +765,13 @@ interface Ld2410TimeoutProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -781,9 +825,13 @@ interface Ld2410MaxMoveDistanceGateProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -837,9 +885,13 @@ interface Ld2410MaxStillDistanceGateProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -893,9 +945,13 @@ interface Ld2410LightThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -949,9 +1005,13 @@ interface Ld2410G0PropsMoveThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -1005,9 +1065,13 @@ interface Ld2410G0PropsStillThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -1067,9 +1131,13 @@ interface Ld2410G1PropsMoveThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -1123,9 +1191,13 @@ interface Ld2410G1PropsStillThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -1185,9 +1257,13 @@ interface Ld2410G2PropsMoveThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -1241,9 +1317,13 @@ interface Ld2410G2PropsStillThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -1303,9 +1383,13 @@ interface Ld2410G3PropsMoveThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -1359,9 +1443,13 @@ interface Ld2410G3PropsStillThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -1421,9 +1509,13 @@ interface Ld2410G4PropsMoveThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -1477,9 +1569,13 @@ interface Ld2410G4PropsStillThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -1539,9 +1635,13 @@ interface Ld2410G5PropsMoveThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -1595,9 +1695,13 @@ interface Ld2410G5PropsStillThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -1657,9 +1761,13 @@ interface Ld2410G6PropsMoveThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -1713,9 +1821,13 @@ interface Ld2410G6PropsStillThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -1775,9 +1887,13 @@ interface Ld2410G7PropsMoveThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -1831,9 +1947,13 @@ interface Ld2410G7PropsStillThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -1893,9 +2013,13 @@ interface Ld2410G8PropsMoveThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -1949,9 +2073,13 @@ interface Ld2410G8PropsStillThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -2011,9 +2139,13 @@ interface Ld2412LightThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -2067,9 +2199,13 @@ interface Ld2412MaxDistanceGateProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -2123,9 +2259,13 @@ interface Ld2412MinDistanceGateProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -2179,9 +2319,13 @@ interface Ld2412TimeoutProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -2235,9 +2379,13 @@ interface Ld2412Gate0PropsMoveThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -2291,9 +2439,13 @@ interface Ld2412Gate0PropsStillThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -2353,9 +2505,13 @@ interface Ld2412Gate1PropsMoveThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -2409,9 +2565,13 @@ interface Ld2412Gate1PropsStillThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -2471,9 +2631,13 @@ interface Ld2412Gate2PropsMoveThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -2527,9 +2691,13 @@ interface Ld2412Gate2PropsStillThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -2589,9 +2757,13 @@ interface Ld2412Gate3PropsMoveThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -2645,9 +2817,13 @@ interface Ld2412Gate3PropsStillThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -2707,9 +2883,13 @@ interface Ld2412Gate4PropsMoveThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -2763,9 +2943,13 @@ interface Ld2412Gate4PropsStillThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -2825,9 +3009,13 @@ interface Ld2412Gate5PropsMoveThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -2881,9 +3069,13 @@ interface Ld2412Gate5PropsStillThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -2943,9 +3135,13 @@ interface Ld2412Gate6PropsMoveThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -2999,9 +3195,13 @@ interface Ld2412Gate6PropsStillThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -3061,9 +3261,13 @@ interface Ld2412Gate7PropsMoveThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -3117,9 +3321,13 @@ interface Ld2412Gate7PropsStillThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -3179,9 +3387,13 @@ interface Ld2412Gate8PropsMoveThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -3235,9 +3447,13 @@ interface Ld2412Gate8PropsStillThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -3297,9 +3513,13 @@ interface Ld2412Gate9PropsMoveThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -3353,9 +3573,13 @@ interface Ld2412Gate9PropsStillThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -3415,9 +3639,13 @@ interface Ld2412Gate10PropsMoveThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -3471,9 +3699,13 @@ interface Ld2412Gate10PropsStillThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -3533,9 +3765,13 @@ interface Ld2412Gate11PropsMoveThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -3589,9 +3825,13 @@ interface Ld2412Gate11PropsStillThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -3651,9 +3891,13 @@ interface Ld2412Gate12PropsMoveThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -3707,9 +3951,13 @@ interface Ld2412Gate12PropsStillThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -3769,9 +4017,13 @@ interface Ld2412Gate13PropsMoveThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -3825,9 +4077,13 @@ interface Ld2412Gate13PropsStillThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -3887,9 +4143,13 @@ interface Ld2420PresenceTimeoutProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -3943,9 +4203,13 @@ interface Ld2420MinGateDistanceProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -3999,9 +4263,13 @@ interface Ld2420MaxGateDistanceProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -4055,9 +4323,13 @@ interface Ld2420GateSelectProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -4111,9 +4383,13 @@ interface Ld2420StillThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -4167,9 +4443,13 @@ interface Ld2420MoveThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -4223,9 +4503,13 @@ interface Ld2420GateMoveSensitivityProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -4279,9 +4563,13 @@ interface Ld2420GateStillSensitivityProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -4335,9 +4623,13 @@ interface Ld2420Gate0PropsMoveThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -4391,9 +4683,13 @@ interface Ld2420Gate0PropsStillThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -4453,9 +4749,13 @@ interface Ld2420Gate1PropsMoveThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -4509,9 +4809,13 @@ interface Ld2420Gate1PropsStillThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -4571,9 +4875,13 @@ interface Ld2420Gate2PropsMoveThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -4627,9 +4935,13 @@ interface Ld2420Gate2PropsStillThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -4689,9 +5001,13 @@ interface Ld2420Gate3PropsMoveThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -4745,9 +5061,13 @@ interface Ld2420Gate3PropsStillThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -4807,9 +5127,13 @@ interface Ld2420Gate4PropsMoveThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -4863,9 +5187,13 @@ interface Ld2420Gate4PropsStillThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -4925,9 +5253,13 @@ interface Ld2420Gate5PropsMoveThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -4981,9 +5313,13 @@ interface Ld2420Gate5PropsStillThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -5043,9 +5379,13 @@ interface Ld2420Gate6PropsMoveThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -5099,9 +5439,13 @@ interface Ld2420Gate6PropsStillThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -5161,9 +5505,13 @@ interface Ld2420Gate7PropsMoveThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -5217,9 +5565,13 @@ interface Ld2420Gate7PropsStillThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -5279,9 +5631,13 @@ interface Ld2420Gate8PropsMoveThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -5335,9 +5691,13 @@ interface Ld2420Gate8PropsStillThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -5397,9 +5757,13 @@ interface Ld2420Gate9PropsMoveThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -5453,9 +5817,13 @@ interface Ld2420Gate9PropsStillThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -5515,9 +5883,13 @@ interface Ld2420Gate10PropsMoveThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -5571,9 +5943,13 @@ interface Ld2420Gate10PropsStillThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -5633,9 +6009,13 @@ interface Ld2420Gate11PropsMoveThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -5689,9 +6069,13 @@ interface Ld2420Gate11PropsStillThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -5751,9 +6135,13 @@ interface Ld2420Gate12PropsMoveThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -5807,9 +6195,13 @@ interface Ld2420Gate12PropsStillThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -5869,9 +6261,13 @@ interface Ld2420Gate13PropsMoveThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -5925,9 +6321,13 @@ interface Ld2420Gate13PropsStillThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -5987,9 +6387,13 @@ interface Ld2420Gate14PropsMoveThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -6043,9 +6447,13 @@ interface Ld2420Gate14PropsStillThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -6105,9 +6513,13 @@ interface Ld2420Gate15PropsMoveThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -6161,9 +6573,13 @@ interface Ld2420Gate15PropsStillThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -6223,9 +6639,13 @@ interface Ld2450PresenceTimeoutProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -6279,9 +6699,13 @@ interface Ld2450Zone1PropsX1Props {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -6335,9 +6759,13 @@ interface Ld2450Zone1PropsY1Props {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -6391,9 +6819,13 @@ interface Ld2450Zone1PropsX2Props {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -6447,9 +6879,13 @@ interface Ld2450Zone1PropsY2Props {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -6509,9 +6945,13 @@ interface Ld2450Zone2PropsX1Props {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -6565,9 +7005,13 @@ interface Ld2450Zone2PropsY1Props {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -6621,9 +7065,13 @@ interface Ld2450Zone2PropsX2Props {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -6677,9 +7125,13 @@ interface Ld2450Zone2PropsY2Props {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -6739,9 +7191,13 @@ interface Ld2450Zone3PropsX1Props {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -6795,9 +7251,13 @@ interface Ld2450Zone3PropsY1Props {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -6851,9 +7311,13 @@ interface Ld2450Zone3PropsX2Props {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -6907,9 +7371,13 @@ interface Ld2450Zone3PropsY2Props {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -6973,9 +7441,13 @@ interface MicronovaThermostatTemperatureProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -7043,9 +7515,13 @@ interface MicronovaPowerLevelProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -7113,9 +7589,13 @@ interface OpenthermTSetProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -7186,9 +7666,13 @@ interface OpenthermTSetCh2Props {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -7259,9 +7743,13 @@ interface OpenthermCoolingControlProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -7330,9 +7818,13 @@ interface OpenthermTDhwSetProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -7405,9 +7897,13 @@ interface OpenthermMaxTSetProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -7480,9 +7976,13 @@ interface OpenthermTRoomSetProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -7551,9 +8051,13 @@ interface OpenthermTRoomSetCh2Props {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -7622,9 +8126,13 @@ interface OpenthermTRoomProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -7693,9 +8201,13 @@ interface OpenthermMaxRelModLevelProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -7764,9 +8276,13 @@ interface OpenthermOtcHcRatioProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -7835,9 +8351,13 @@ interface SeeedMr24hpc1SensitivityProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -7891,9 +8411,13 @@ interface SeeedMr24hpc1CustomModeProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -7948,9 +8472,13 @@ interface SeeedMr24hpc1ExistenceThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -8005,9 +8533,13 @@ interface SeeedMr24hpc1MotionThresholdProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -8061,9 +8593,13 @@ interface SeeedMr24hpc1MotionTriggerProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -8117,9 +8653,13 @@ interface SeeedMr24hpc1MotionToRestProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -8173,9 +8713,13 @@ interface SeeedMr24hpc1CustomUnmanTimeProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: unknown;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -8196,9 +8740,13 @@ interface NumberBaseProps extends _CoreEntityBase, _CoreMqttCommandComponent {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey unit_of_measurement */
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
@@ -8538,7 +9086,7 @@ interface TemplateProps extends _CoreComponent {
      * [Action](/automations/actions#all-actions): The action that should be performed when the remote (like Home Assistant'...
      * @yamlKey set_action
      */
-    setAction?: () => void;
+    setAction?: TriggerHandler;
     /**
      * float: The value to set the state to on setup if not restored with `restore_value`. Cannot be used with `lambda`. Def...
      * @yamlKey initial_value

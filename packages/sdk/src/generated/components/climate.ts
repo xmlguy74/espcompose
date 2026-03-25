@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _BedjetClient, _CoreComponent, _CoreEntityBase, _CoreMqttCommandComponent, _UponorSmatrixDevice } from "../bases";
 import type { anova_Anova, ballu_BalluClimate, bang_bang_BangBangClimate, bedjet_BedJetClimate, ble_client_BLEClient, climate_ir_lg_LgIrClimate, coolix_CoolixClimate, daikin_DaikinClimate, daikin_arc_DaikinArcClimate, daikin_brc_DaikinBrcClimate, delonghi_DelonghiClimate, emmeti_EmmetiClimate, fujitsu_general_FujitsuGeneralClimate, gree_GreeClimate, haier_HonClimate, haier_Smartair2Climate, heatpumpir_HeatpumpIRClimate, hitachi_ac344_HitachiClimate, hitachi_ac424_HitachiClimate, midea_ac_AirConditioner, midea_ir_MideaIR, mitsubishi_MitsubishiClimate, mqtt_MQTTClimateComponent, noblex_NoblexClimate, output_FloatOutput, pid_PIDClimate, remote_base_RemoteReceiverBase, remote_base_RemoteTransmitterBase, remote_transmitter_RemoteTransmitterComponent, sensor_Sensor, tcl112_Tcl112Climate, thermostat_ThermostatClimate, toshiba_ToshibaClimate, tuya_Tuya, tuya_TuyaClimate, uart_UARTComponent, uponor_smatrix_UponorSmatrixClimate, web_server_WebServer, whirlpool_WhirlpoolClimate, whynter_Whynter, yashima_YashimaClimate, zhlt01_ZHLT01Climate, zigbee_ZigbeeComponent } from "../markers";
 interface ClimateWebServerProps {
@@ -158,11 +158,11 @@ interface MideaOutdoorTemperatureProps {
     expireAfter?: MideaOutdoorTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler;
 }
 interface MideaPowerUsagePropsAvailabilityProps {
     topic: unknown;
@@ -228,11 +228,11 @@ interface MideaPowerUsageProps {
     expireAfter?: MideaPowerUsagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler;
 }
 interface MideaHumiditySetpointPropsAvailabilityProps {
     topic: unknown;
@@ -298,11 +298,11 @@ interface MideaHumiditySetpointProps {
     expireAfter?: MideaHumiditySetpointPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler;
 }
 interface PidDeadbandParametersProps {
     /** @yamlKey threshold_high */
@@ -579,9 +579,9 @@ interface ClimateBaseProps extends _CoreEntityBase, _CoreMqttCommandComponent {
     /** @yamlKey target_humidity_state_topic */
     targetHumidityStateTopic?: unknown;
     /** @yamlKey on_control */
-    onControl?: () => void;
+    onControl?: TriggerHandler;
     /** @yamlKey on_state */
-    onState?: () => void;
+    onState?: TriggerHandler;
 }
 interface AnovaProps extends _CoreComponent {
     /**
@@ -632,17 +632,17 @@ interface BangBangProps extends _CoreComponent {
      * [Action](/automations/actions#all-actions): The action to call when the climate device wants to enter idle mode.
      * @yamlKey idle_action
      */
-    idleAction: () => void;
+    idleAction: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): The action to call when the climate device wants to cooling mode and decr...
      * @yamlKey cool_action
      */
-    coolAction?: () => void;
+    coolAction?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): The action to call when the climate device wants to heating mode and incr...
      * @yamlKey heat_action
      */
-    heatAction?: () => void;
+    heatAction?: TriggerHandler;
     /**
      * Additionally specify target temperature range settings for away mode. Away mode can be used to have a second set of t...
      * @yamlKey away_config
@@ -1000,57 +1000,57 @@ interface ThermostatProps extends _CoreComponent {
      * [Action](/automations/actions#all-actions): The action to call when the climate device should enter its idle state (n...
      * @yamlKey idle_action
      */
-    idleAction: () => void;
+    idleAction: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): The action to call when the climate device should enter cooling mode to d...
      * @yamlKey cool_action
      */
-    coolAction?: () => void;
+    coolAction?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): The action to call when the climate device should activate supplemental c...
      * @yamlKey supplemental_cooling_action
      */
-    supplementalCoolingAction?: () => void;
+    supplementalCoolingAction?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): The action to call when the climate device should perform its drying (deh...
      * @yamlKey dry_action
      */
-    dryAction?: () => void;
+    dryAction?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): The action to call when the climate device should activate its fan only (...
      * @yamlKey fan_only_action
      */
-    fanOnlyAction?: () => void;
+    fanOnlyAction?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): The action to call when the climate device should enter heating mode to i...
      * @yamlKey heat_action
      */
-    heatAction?: () => void;
+    heatAction?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): The action to call when the climate device should activate supplemental h...
      * @yamlKey supplemental_heating_action
      */
-    supplementalHeatingAction?: () => void;
+    supplementalHeatingAction?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): The action to call when the climate device is placed into "auto" mode (it...
      * @yamlKey auto_mode
      */
-    autoMode?: () => void;
+    autoMode?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): The action to call when the climate device is placed into cool mode (it m...
      * @yamlKey cool_mode
      */
-    coolMode?: () => void;
+    coolMode?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): The action to call when the climate device is placed into dry mode (for d...
      * @yamlKey dry_mode
      */
-    dryMode?: () => void;
+    dryMode?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): The action to call when the climate device is placed into fan-only mode (...
      * @yamlKey fan_only_mode
      */
-    fanOnlyMode?: () => void;
+    fanOnlyMode?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions) or boolean: The action to call when the climate device is placed into "hea...
      * @yamlKey heat_cool_mode
@@ -1060,107 +1060,107 @@ interface ThermostatProps extends _CoreComponent {
      * [Action](/automations/actions#all-actions): The action to call when the climate device is placed into heat mode (it m...
      * @yamlKey heat_mode
      */
-    heatMode?: () => void;
+    heatMode?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): The action to call when the climate device is placed into "off" mode (it ...
      * @yamlKey off_mode
      */
-    offMode?: () => void;
+    offMode?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): The action to call when the fan should run continuously.
      * @yamlKey fan_mode_on_action
      */
-    fanModeOnAction?: () => void;
+    fanModeOnAction?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): The action to call when the fan should never run.
      * @yamlKey fan_mode_off_action
      */
-    fanModeOffAction?: () => void;
+    fanModeOffAction?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): The action to call when the fan should be set to "auto" mode (the fan is ...
      * @yamlKey fan_mode_auto_action
      */
-    fanModeAutoAction?: () => void;
+    fanModeAutoAction?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): The action to call when the fan should run at its minimum speed.
      * @yamlKey fan_mode_low_action
      */
-    fanModeLowAction?: () => void;
+    fanModeLowAction?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): The action to call when the fan should run at an intermediate speed.
      * @yamlKey fan_mode_medium_action
      */
-    fanModeMediumAction?: () => void;
+    fanModeMediumAction?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): The action to call when the fan should run at its maximum speed.
      * @yamlKey fan_mode_high_action
      */
-    fanModeHighAction?: () => void;
+    fanModeHighAction?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): The action to call when the fan should direct its airflow at an intermedi...
      * @yamlKey fan_mode_middle_action
      */
-    fanModeMiddleAction?: () => void;
+    fanModeMiddleAction?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): The action to call when the fan should direct its airflow at a specific a...
      * @yamlKey fan_mode_focus_action
      */
-    fanModeFocusAction?: () => void;
+    fanModeFocusAction?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): The action to call when the fan should direct its airflow over a broad area.
      * @yamlKey fan_mode_diffuse_action
      */
-    fanModeDiffuseAction?: () => void;
+    fanModeDiffuseAction?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): The action to call when the fan should run at quiet speed.
      * @yamlKey fan_mode_quiet_action
      */
-    fanModeQuietAction?: () => void;
+    fanModeQuietAction?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): The action to call when the fan should oscillate in horizontal and vertic...
      * @yamlKey swing_both_action
      */
-    swingBothAction?: () => void;
+    swingBothAction?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): The action to call when the fan should oscillate in a horizontal direction.
      * @yamlKey swing_horizontal_action
      */
-    swingHorizontalAction?: () => void;
+    swingHorizontalAction?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): The action to call when the fan should remain in a stationary position.
      * @yamlKey swing_off_action
      */
-    swingOffAction?: () => void;
+    swingOffAction?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): The action to call when the fan should oscillate in a vertical direction.
      * @yamlKey swing_vertical_action
      */
-    swingVerticalAction?: () => void;
+    swingVerticalAction?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): The action to call when the thermostat's target humidity is changed.
      * @yamlKey target_humidity_change_action
      */
-    targetHumidityChangeAction?: () => void;
+    targetHumidityChangeAction?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): The action to call when the thermostat's target temperature(s) is/are cha...
      * @yamlKey target_temperature_change_action
      */
-    targetTemperatureChangeAction?: () => void;
+    targetTemperatureChangeAction?: TriggerHandler;
     /**
      * [Action](/automations/actions#config-action): The action to call when dehumidification is required.
      * @yamlKey humidity_control_dehumidify_action
      */
-    humidityControlDehumidifyAction?: () => void;
+    humidityControlDehumidifyAction?: TriggerHandler;
     /**
      * [Action](/automations/actions#config-action): The action to call when humidification is required.
      * @yamlKey humidity_control_humidify_action
      */
-    humidityControlHumidifyAction?: () => void;
+    humidityControlHumidifyAction?: TriggerHandler;
     /**
      * [Action](/automations/actions#config-action): The action to call when (de)humidification should stop. This action is ...
      * @yamlKey humidity_control_off_action
      */
-    humidityControlOffAction?: () => void;
+    humidityControlOffAction?: TriggerHandler;
     /**
      * float: The maximum humidity differential (above/below the set point) before calling the respective humidity control [...
      * @yamlKey humidity_hysteresis
@@ -1300,7 +1300,7 @@ interface ThermostatProps extends _CoreComponent {
      * (*Optional*, [Action](/automations/actions#all-actions)): The action to call when the preset is changed. This will be...
      * @yamlKey preset_change
      */
-    presetChange?: () => void;
+    presetChange?: TriggerHandler;
 }
 interface ToshibaProps extends _CoreComponent {
     /** @yamlKey supports_cool */
@@ -1400,7 +1400,7 @@ interface HaierSMARTAIR2Props extends _CoreComponent {
      * [Automation](/automations): Automation to perform when status message received from AC. See [`on_status_message` Trig...
      * @yamlKey on_status_message
      */
-    onStatusMessage?: () => void;
+    onStatusMessage?: TriggerHandler;
     /**
      * [ID](/guides/configuration-types#id): ID of the UART port to communicate with AC.
      * @yamlKey uart_id
@@ -1444,7 +1444,7 @@ interface HaierHONProps extends _CoreComponent {
      * [Automation](/automations): Automation to perform when status message received from AC. See [`on_status_message` Trig...
      * @yamlKey on_status_message
      */
-    onStatusMessage?: () => void;
+    onStatusMessage?: TriggerHandler;
     /**
      * [ID](/guides/configuration-types#id): ID of the UART port to communicate with AC.
      * @yamlKey uart_id
@@ -1479,12 +1479,12 @@ interface HaierHONProps extends _CoreComponent {
      * [Automation](/automations): (supported only by hOn) Automation to perform when AC activates a new alarm. See [`on_ala...
      * @yamlKey on_alarm_start
      */
-    onAlarmStart?: () => void;
+    onAlarmStart?: TriggerHandler;
     /**
      * [Automation](/automations): (supported only by hOn) Automation to perform when AC deactivates a new alarm. See [`on_a...
      * @yamlKey on_alarm_end
      */
-    onAlarmEnd?: () => void;
+    onAlarmEnd?: TriggerHandler;
 }
 interface TuyaProps extends _CoreComponent {
     /** @yamlKey tuya_id */

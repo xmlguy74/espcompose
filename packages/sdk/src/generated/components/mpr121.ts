@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _CoreComponent } from "../bases";
 import type { i2c_I2CBus, mpr121_MPR121Component } from "../markers";
 export interface Mpr121Props extends _CoreComponent {

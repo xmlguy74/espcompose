@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _CoreComponent, _I2sAudioSpeakerBase, _Speaker } from "../bases";
 import type { audio_dac_AudioDac, mixer_speaker_MixerSpeaker, resampler_ResamplerSpeaker, speaker_Speaker } from "../markers";
 interface MixerSourceSpeakersPropsBufferDurationProps {

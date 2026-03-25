@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _BedjetClient, _BleClient, _BthomeMithermometerBleDevice, _CoreComponent, _CoreEntityBase, _CoreMqttComponent, _Emc2101Component, _HomeassistantHomeAssistantImport, _ModbusControllerModbusitembaseschema, _Msa3xxMsaSensor, _NextionSensorConfigSensorComponent, _PipsolarComponent, _PylontechComponent, _TeleinfoListener, _UartDevice, _UponorSmatrixDevice } from "../bases";
 import type { EntityBase, a01nyub_A01nyubComponent, a02yyuw_A02yyuwComponent, absolute_humidity_AbsoluteHumidityComponent, adc128s102_ADC128S102, adc128s102_ADC128S102Sensor, adc_ADCSensor, ade7880_ADE7880, ade7953_i2c_AdE7953I2c, ade7953_spi_AdE7953Spi, ads1115_ADS1115Component, ads1115_ADS1115Sensor, ads1118_ADS1118, ads1118_ADS1118Sensor, ags10_AGS10Component, aht10_AHT10Component, airthings_wave_mini_AirthingsWaveMini, airthings_wave_plus_AirthingsWavePlus, alpha3_Alpha3, am2315c_AM2315C, am2320_AM2320Component, am43_Am43, apds9306_APDS9306, apds9960_APDS9960, aqi_AQISensor, as3935_AS3935Component, as5600_AS5600Component, as5600_AS5600Sensor, as7341_AS7341Component, atc_mithermometer_ATCMiThermometer, atm90e26_ATM90E26Component, atm90e32_ATM90E32Component, b_parasite_BParasite, bedjet_BedjetSensor, bh1750_BH1750Sensor, bh1900nux_BH1900NUXSensor, binary_sensor_BinarySensor, binary_sensor_map_BinarySensorMap, bl0906_BL0906, bl0939_BL0939, bl0940_BL0940, bl0942_BL0942, ble_client_BLEClient, ble_client_BLEClientRSSISensor, ble_client_BLESensor, ble_rssi_BLERSSISensor, bme680_BME680Component, bme680_bsec_BME680BSECComponent, bme68x_bsec2_BME68xBSEC2Component, bmi160_BMI160Component, bmp085_BMP085Component, bthome_mithermometer_BTHomeMiThermometer, ccs811_CCS811Component, cd74hc4067_CD74HC4067Component, cd74hc4067_CD74HC4067Sensor, cm1106_CM1106Component, combination_KalmanCombinationComponent, combination_LinearCombinationComponent, combination_MaximumCombinationComponent, combination_MeanCombinationComponent, combination_MedianCombinationComponent, combination_MinimumCombinationComponent, combination_MostRecentCombinationComponent, combination_RangeCombinationComponent, combination_SumCombinationComponent, copy_CopySensor, cs5460a_CS5460AComponent, cse7761_CSE7761Component, cse7766_CSE7766Component, ct_clamp_CTClampSensor, dallas_temp_DallasTemperatureSensor, daly_bms_DalyBmsComponent, debug_DebugComponent, dew_point_DewPointComponent, dht12_DHT12Component, dht_DHT, dlms_meter_DlmsMeterComponent, dps310_DPS310Component, duty_cycle_DutyCycleSensor, duty_time_sensor_DutyTimeSensor, ee895_EE895Component, emc2101_EMC2101Sensor, ens210_ENS210Component, esp32_ble_tracker_ESP32BLETracker, esphome_dsmr_Dsmr, ezo_EZOSensor, ezo_pmp_EzoPMP, fingerprint_grow_FingerprintGrowComponent, fs3000_FS3000Component, gcja5_GCJA5Component, gdk101_GDK101Component, gl_r01_i2c_GLR01I2CComponent, gp2y1010au0f_GP2Y1010AU0FSensor, grove_gas_mc_v2_GroveGasMultichannelV2Component, growatt_solar_GrowattSolar, haier_HonClimate, havells_solar_HavellsSolar, hc8_HC8Component, hdc1080_HDC1080Component, hdc2010_HDC2010Component, hdc302x_HDC302XComponent, hlk_fm22x_HlkFm22xComponent, hlw8012_HLW8012Component, hlw8032_HLW8032Component, hm3301_HM3301Component, hmc5883l_HMC5883LComponent, homeassistant_HomeassistantSensor, honeywell_hih_i2c_HoneywellHIComponent, honeywellabp2_i2c_HONEYWELLABP2Sensor, honeywellabp_HONEYWELLABPSensor, hrxl_maxsonar_wr_HrxlMaxsonarWrComponent, hte501_HTE501Component, htu21d_HTU21DComponent, htu31d_HTU31DComponent, hx711_HX711Sensor, hydreon_rgxx_HydreonRGxxComponent, hyt271_HYT271Component, i2c_I2CBus, iaqcore_IAQCore, ina219_INA219Component, ina226_INA226Component, ina260_INA260Component, ina2xx_i2c_INA2XXI2C, ina2xx_spi_INA2XXSPI, ina3221_INA3221Component, inkbird_ibsth1_mini_InkbirdIbstH1Mini, integration_IntegrationSensor, internal_temperature_InternalTemperatureSensor, jsn_sr04t_Jsnsr04tComponent, kamstrup_kmp_KamstrupKMPComponent, kmeteriso_KMeterISOComponent, kuntze_Kuntze, lc709203f_Lc709203f, ld2410_LD2410Component, ld2412_LD2412Component, ld2420_LD2420Component, ld2420_LD2420Sensor, ld2450_LD2450Component, lm75b_LM75BComponent, lps22_LPS22Component, ltr390_LTR390Component, ltr501_LTRAlsPs501Component, ltr_als_ps_LTRAlsPsComponent, m5stack_8angle_M5Stack8AngleComponent, m5stack_8angle_M5Stack8AngleKnobSensor, max17043_MAX17043Component, max31855_MAX31855Sensor, max31856_MAX31856Sensor, max31865_MAX31865Sensor, max44009_MAX44009Sensor, max6675_MAX6675Sensor, max9611_MAX9611Component, mcp3008_MCP3008, mcp3008_MCP3008Sensor, mcp3204_MCP3204, mcp3204_MCP3204Sensor, mcp3221_MCP3221Sensor, mcp9600_MCP9600Component, mcp9808_MCP9808Sensor, mhz19_MHZ19Component, micronova_MicroNova, microphone_Microphone, mics_4514_MICS4514Component, mlx90393_MLX90393Cls, mlx90614_MLX90614Component, mmc5603_MMC5603Component, mmc5983_MMC5983Component, modbus_Modbus, modbus_controller_ModbusSensor, mopeka_pro_check_MopekaProCheck, mopeka_std_check_MopekaStdCheck, mpl3115a2_MPL3115A2Component, mpu6050_MPU6050Component, mpu6886_MPU6886Component, mqtt_MQTTClientComponent, mqtt_subscribe_MQTTSubscribeSensor, ms5611_MS5611Component, ms8607_MS8607Component, nau7802_NAU7802Sensor, nextion_NextionSensor, npi19_NPI19Component, ntc_NTC, one_wire_OneWireBus, opentherm_OpenthermHub, opt3001_OPT3001Sensor, output_BinaryOutput, packet_transport_PacketTransport, pid_PIDClimate, pid_PIDClimateSensor, pm1006_PM1006Component, pm2005_PM2005Component, pmsa003i_PMSA003IComponent, pmsx003_PMSX003Component, pmwcs3_PMWCS3Component, pulse_counter_PulseCounterSensor, pulse_meter_PulseMeterSensor, pulse_width_PulseWidthSensor, pvvx_mithermometer_PVVXMiThermometer, pylontech_PylontechSensor, pzem004t_PZEM004T, pzemac_PZEMAC, pzemdc_PZEMDC, qmc5883l_QMC5883LComponent, qmp6988_QMP6988Component, radon_eye_rd200_RadonEyeRD200, rd03d_RD03DComponent, resistance_ResistanceSensor, rotary_encoder_RotaryEncoderSensor, ruuvitag_RuuviTag, scd30_SCD30Component, scd4x_SCD4XComponent, sdm_meter_SDMMeter, sdp3x_SDP3XComponent, sds011_SDS011Component, seeed_mr24hpc1_MR24HPC1Component, seeed_mr60bha2_MR60BHA2Component, selec_meter_SelecMeter, sen0321_sensor_Sen0321Sensor, sen21231_sensor_Sen21231Sensor, sen5x_SEN5XComponent, sen6x_SEN6XComponent, senseair_SenseAirComponent, sensor_Sensor, sfa30_SFA30Component, sgp30_SGP30Component, sgp4x_SGP4xComponent, sht3xd_SHT3XDComponent, sht4x_SHT4XComponent, shtcx_SHTCXComponent, sim800l_Sim800LComponent, sm300d2_SM300D2Sensor, sml_Sml, sml_SmlSensor, smt100_SMT100Component, sound_level_SoundLevelComponent, spi_SPIComponent, sps30_SPS30Component, sts3x_STS3XComponent, stts22h_STTS22HComponent, sun_Sun, sun_SunSensor, sun_gtil2_SunGTIL2, sy6970_SY6970Component, t6615_T6615Component, tc74_TC74Component, tcs34725_TCS34725Component, tee501_TEE501Component, teleinfo_TeleInfoSensor, tem3200_TEM3200Component, template__TemplateSensor, thermopro_ble_ThermoProBLE, time_RealTimeClock, tmp102_TMP102Component, tmp1075_TMP1075Sensor, tmp117_TMP117Component, tof10120_TOF10120Sensor, total_daily_energy_TotalDailyEnergy, tsl2561_TSL2561Sensor, tsl2591_TSL2591Component, tuya_Tuya, tuya_TuyaSensor, tx20_Tx20Component, uart_UARTComponent, udp_UDPComponent, ufire_ec_UFireECComponent, ufire_ise_UFireISEComponent, ultrasonic_UltrasonicSensorComponent, uponor_smatrix_UponorSmatrixSensor, uptime_UptimeSecondsSensor, uptime_UptimeTimestampSensor, vbus_DeltaSolBS2009Sensor, vbus_DeltaSolBS2Sensor, vbus_DeltaSolBSPlusSensor, vbus_DeltaSolCS2Sensor, vbus_DeltaSolCSPlusSensor, vbus_DeltaSolCSensor, vbus_VBus, vbus_VBusCustomSensor, veml3235_VEML3235Sensor, veml7700_VEML7700Component, vl53l0x_VL53L0XSensor, voltage_sampler_VoltageSampler, web_server_WebServer, wifi_signal_WiFiSignalSensor, wireguard_Wireguard, wts01_WTS01Sensor, xgzp68xx_XGZP68XXComponent, xiaomi_cgd1_XiaomiCGD1, xiaomi_cgdk2_XiaomiCGDK2, xiaomi_cgg1_XiaomiCGG1, xiaomi_gcls002_XiaomiGCLS002, xiaomi_hhccjcy01_XiaomiHHCCJCY01, xiaomi_hhccjcy10_XiaomiHHCCJCY10, xiaomi_hhccpot002_XiaomiHHCCPOT002, xiaomi_jqjcy01ym_XiaomiJQJCY01YM, xiaomi_lywsd02_XiaomiLYWSD02, xiaomi_lywsd02mmc_XiaomiLYWSD02MMC, xiaomi_lywsd03mmc_XiaomiLYWSD03MMC, xiaomi_lywsdcgq_XiaomiLYWSDCGQ, xiaomi_mhoc303_XiaomiMHOC303, xiaomi_mhoc401_XiaomiMHOC401, xiaomi_miscale_XiaomiMiscale, xiaomi_rtcgq02lm_XiaomiRTCGQ02LM, xiaomi_xmwsdj04mmc_XiaomiXMWSDJ04MMC, zigbee_ZigbeeComponent, zio_ultrasonic_ZioUltrasonicComponent, zyaura_ZyAuraSensor } from "../markers";
 interface SensorWebServerProps {
@@ -87,11 +87,17 @@ interface Ade7880PhaseAPropsVoltageProps {
     expireAfter?: Ade7880PhaseAPropsVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ade7880PhaseAPropsCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -158,11 +164,17 @@ interface Ade7880PhaseAPropsCurrentProps {
     expireAfter?: Ade7880PhaseAPropsCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ade7880PhaseAPropsActivePowerPropsAvailabilityProps {
     topic: unknown;
@@ -229,11 +241,17 @@ interface Ade7880PhaseAPropsActivePowerProps {
     expireAfter?: Ade7880PhaseAPropsActivePowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ade7880PhaseAPropsApparentPowerPropsAvailabilityProps {
     topic: unknown;
@@ -300,11 +318,17 @@ interface Ade7880PhaseAPropsApparentPowerProps {
     expireAfter?: Ade7880PhaseAPropsApparentPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ade7880PhaseAPropsPowerFactorPropsAvailabilityProps {
     topic: unknown;
@@ -371,11 +395,17 @@ interface Ade7880PhaseAPropsPowerFactorProps {
     expireAfter?: Ade7880PhaseAPropsPowerFactorPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ade7880PhaseAPropsForwardActiveEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -442,11 +472,17 @@ interface Ade7880PhaseAPropsForwardActiveEnergyProps {
     expireAfter?: Ade7880PhaseAPropsForwardActiveEnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ade7880PhaseAPropsReverseActiveEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -513,11 +549,17 @@ interface Ade7880PhaseAPropsReverseActiveEnergyProps {
     expireAfter?: Ade7880PhaseAPropsReverseActiveEnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ade7880PhaseAPropsCalibrationProps {
     /**
@@ -641,11 +683,17 @@ interface Ade7880PhaseBPropsVoltageProps {
     expireAfter?: Ade7880PhaseBPropsVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ade7880PhaseBPropsCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -712,11 +760,17 @@ interface Ade7880PhaseBPropsCurrentProps {
     expireAfter?: Ade7880PhaseBPropsCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ade7880PhaseBPropsActivePowerPropsAvailabilityProps {
     topic: unknown;
@@ -783,11 +837,17 @@ interface Ade7880PhaseBPropsActivePowerProps {
     expireAfter?: Ade7880PhaseBPropsActivePowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ade7880PhaseBPropsApparentPowerPropsAvailabilityProps {
     topic: unknown;
@@ -854,11 +914,17 @@ interface Ade7880PhaseBPropsApparentPowerProps {
     expireAfter?: Ade7880PhaseBPropsApparentPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ade7880PhaseBPropsPowerFactorPropsAvailabilityProps {
     topic: unknown;
@@ -925,11 +991,17 @@ interface Ade7880PhaseBPropsPowerFactorProps {
     expireAfter?: Ade7880PhaseBPropsPowerFactorPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ade7880PhaseBPropsForwardActiveEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -996,11 +1068,17 @@ interface Ade7880PhaseBPropsForwardActiveEnergyProps {
     expireAfter?: Ade7880PhaseBPropsForwardActiveEnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ade7880PhaseBPropsReverseActiveEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -1067,11 +1145,17 @@ interface Ade7880PhaseBPropsReverseActiveEnergyProps {
     expireAfter?: Ade7880PhaseBPropsReverseActiveEnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ade7880PhaseBPropsCalibrationProps {
     /**
@@ -1195,11 +1279,17 @@ interface Ade7880PhaseCPropsVoltageProps {
     expireAfter?: Ade7880PhaseCPropsVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ade7880PhaseCPropsCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -1266,11 +1356,17 @@ interface Ade7880PhaseCPropsCurrentProps {
     expireAfter?: Ade7880PhaseCPropsCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ade7880PhaseCPropsActivePowerPropsAvailabilityProps {
     topic: unknown;
@@ -1337,11 +1433,17 @@ interface Ade7880PhaseCPropsActivePowerProps {
     expireAfter?: Ade7880PhaseCPropsActivePowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ade7880PhaseCPropsApparentPowerPropsAvailabilityProps {
     topic: unknown;
@@ -1408,11 +1510,17 @@ interface Ade7880PhaseCPropsApparentPowerProps {
     expireAfter?: Ade7880PhaseCPropsApparentPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ade7880PhaseCPropsPowerFactorPropsAvailabilityProps {
     topic: unknown;
@@ -1479,11 +1587,17 @@ interface Ade7880PhaseCPropsPowerFactorProps {
     expireAfter?: Ade7880PhaseCPropsPowerFactorPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ade7880PhaseCPropsForwardActiveEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -1550,11 +1664,17 @@ interface Ade7880PhaseCPropsForwardActiveEnergyProps {
     expireAfter?: Ade7880PhaseCPropsForwardActiveEnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ade7880PhaseCPropsReverseActiveEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -1621,11 +1741,17 @@ interface Ade7880PhaseCPropsReverseActiveEnergyProps {
     expireAfter?: Ade7880PhaseCPropsReverseActiveEnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ade7880PhaseCPropsCalibrationProps {
     /**
@@ -1749,11 +1875,17 @@ interface Ade7880NeutralPropsCurrentProps {
     expireAfter?: Ade7880NeutralPropsCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ade7880NeutralPropsCalibrationProps {
     /**
@@ -1834,11 +1966,17 @@ interface Ags10TvocProps {
     expireAfter?: Ags10TvocPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ags10VersionPropsAvailabilityProps {
     topic: unknown;
@@ -1904,11 +2042,17 @@ interface Ags10VersionProps {
     expireAfter?: Ags10VersionPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ags10ResistancePropsAvailabilityProps {
     topic: unknown;
@@ -1974,11 +2118,17 @@ interface Ags10ResistanceProps {
     expireAfter?: Ags10ResistancePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Aht10TemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -2045,11 +2195,17 @@ interface Aht10TemperatureProps {
     expireAfter?: Aht10TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Aht10HumidityPropsAvailabilityProps {
     topic: unknown;
@@ -2116,11 +2272,17 @@ interface Aht10HumidityProps {
     expireAfter?: Aht10HumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface AirthingsWavePlusRadonPropsAvailabilityProps {
     topic: unknown;
@@ -2186,11 +2348,17 @@ interface AirthingsWavePlusRadonProps {
     expireAfter?: AirthingsWavePlusRadonPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface AirthingsWavePlusRadonLongTermPropsAvailabilityProps {
     topic: unknown;
@@ -2256,11 +2424,17 @@ interface AirthingsWavePlusRadonLongTermProps {
     expireAfter?: AirthingsWavePlusRadonLongTermPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface AirthingsWavePlusCo2PropsAvailabilityProps {
     topic: unknown;
@@ -2327,11 +2501,17 @@ interface AirthingsWavePlusCo2Props {
     expireAfter?: AirthingsWavePlusCo2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface AirthingsWavePlusIlluminancePropsAvailabilityProps {
     topic: unknown;
@@ -2398,11 +2578,17 @@ interface AirthingsWavePlusIlluminanceProps {
     expireAfter?: AirthingsWavePlusIlluminancePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Alpha3FlowPropsAvailabilityProps {
     topic: unknown;
@@ -2469,11 +2655,17 @@ interface Alpha3FlowProps {
     expireAfter?: Alpha3FlowPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Alpha3HeadPropsAvailabilityProps {
     topic: unknown;
@@ -2540,11 +2732,17 @@ interface Alpha3HeadProps {
     expireAfter?: Alpha3HeadPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Alpha3PowerPropsAvailabilityProps {
     topic: unknown;
@@ -2611,11 +2809,17 @@ interface Alpha3PowerProps {
     expireAfter?: Alpha3PowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Alpha3CurrentPropsAvailabilityProps {
     topic: unknown;
@@ -2682,11 +2886,17 @@ interface Alpha3CurrentProps {
     expireAfter?: Alpha3CurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Alpha3SpeedPropsAvailabilityProps {
     topic: unknown;
@@ -2753,11 +2963,17 @@ interface Alpha3SpeedProps {
     expireAfter?: Alpha3SpeedPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Alpha3VoltagePropsAvailabilityProps {
     topic: unknown;
@@ -2824,11 +3040,17 @@ interface Alpha3VoltageProps {
     expireAfter?: Alpha3VoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Am2315cTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -2895,11 +3117,17 @@ interface Am2315cTemperatureProps {
     expireAfter?: Am2315cTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Am2315cHumidityPropsAvailabilityProps {
     topic: unknown;
@@ -2966,11 +3194,17 @@ interface Am2315cHumidityProps {
     expireAfter?: Am2315cHumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Am2320TemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -3037,11 +3271,17 @@ interface Am2320TemperatureProps {
     expireAfter?: Am2320TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Am2320HumidityPropsAvailabilityProps {
     topic: unknown;
@@ -3108,11 +3348,17 @@ interface Am2320HumidityProps {
     expireAfter?: Am2320HumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface As7341F1PropsAvailabilityProps {
     topic: unknown;
@@ -3178,11 +3424,17 @@ interface As7341F1Props {
     expireAfter?: As7341F1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface As7341F2PropsAvailabilityProps {
     topic: unknown;
@@ -3248,11 +3500,17 @@ interface As7341F2Props {
     expireAfter?: As7341F2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface As7341F3PropsAvailabilityProps {
     topic: unknown;
@@ -3318,11 +3576,17 @@ interface As7341F3Props {
     expireAfter?: As7341F3PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface As7341F4PropsAvailabilityProps {
     topic: unknown;
@@ -3388,11 +3652,17 @@ interface As7341F4Props {
     expireAfter?: As7341F4PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface As7341F5PropsAvailabilityProps {
     topic: unknown;
@@ -3458,11 +3728,17 @@ interface As7341F5Props {
     expireAfter?: As7341F5PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface As7341F6PropsAvailabilityProps {
     topic: unknown;
@@ -3528,11 +3804,17 @@ interface As7341F6Props {
     expireAfter?: As7341F6PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface As7341F7PropsAvailabilityProps {
     topic: unknown;
@@ -3598,11 +3880,17 @@ interface As7341F7Props {
     expireAfter?: As7341F7PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface As7341F8PropsAvailabilityProps {
     topic: unknown;
@@ -3668,11 +3956,17 @@ interface As7341F8Props {
     expireAfter?: As7341F8PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface As7341ClearPropsAvailabilityProps {
     topic: unknown;
@@ -3738,11 +4032,17 @@ interface As7341ClearProps {
     expireAfter?: As7341ClearPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface As7341NirPropsAvailabilityProps {
     topic: unknown;
@@ -3808,11 +4108,17 @@ interface As7341NirProps {
     expireAfter?: As7341NirPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface AtcMithermometerTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -3879,11 +4185,17 @@ interface AtcMithermometerTemperatureProps {
     expireAfter?: AtcMithermometerTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface AtcMithermometerHumidityPropsAvailabilityProps {
     topic: unknown;
@@ -3950,11 +4262,17 @@ interface AtcMithermometerHumidityProps {
     expireAfter?: AtcMithermometerHumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface AtcMithermometerBatteryLevelPropsAvailabilityProps {
     topic: unknown;
@@ -4021,11 +4339,17 @@ interface AtcMithermometerBatteryLevelProps {
     expireAfter?: AtcMithermometerBatteryLevelPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface AtcMithermometerBatteryVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -4092,11 +4416,17 @@ interface AtcMithermometerBatteryVoltageProps {
     expireAfter?: AtcMithermometerBatteryVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface AtcMithermometerSignalStrengthPropsAvailabilityProps {
     topic: unknown;
@@ -4163,11 +4493,17 @@ interface AtcMithermometerSignalStrengthProps {
     expireAfter?: AtcMithermometerSignalStrengthPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e26VoltagePropsAvailabilityProps {
     topic: unknown;
@@ -4234,11 +4570,17 @@ interface Atm90e26VoltageProps {
     expireAfter?: Atm90e26VoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e26CurrentPropsAvailabilityProps {
     topic: unknown;
@@ -4305,11 +4647,17 @@ interface Atm90e26CurrentProps {
     expireAfter?: Atm90e26CurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e26PowerPropsAvailabilityProps {
     topic: unknown;
@@ -4376,11 +4724,17 @@ interface Atm90e26PowerProps {
     expireAfter?: Atm90e26PowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e26ReactivePowerPropsAvailabilityProps {
     topic: unknown;
@@ -4446,11 +4800,17 @@ interface Atm90e26ReactivePowerProps {
     expireAfter?: Atm90e26ReactivePowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e26PowerFactorPropsAvailabilityProps {
     topic: unknown;
@@ -4517,11 +4877,17 @@ interface Atm90e26PowerFactorProps {
     expireAfter?: Atm90e26PowerFactorPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e26ForwardActiveEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -4588,11 +4954,17 @@ interface Atm90e26ForwardActiveEnergyProps {
     expireAfter?: Atm90e26ForwardActiveEnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e26ReverseActiveEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -4659,11 +5031,17 @@ interface Atm90e26ReverseActiveEnergyProps {
     expireAfter?: Atm90e26ReverseActiveEnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e26FrequencyPropsAvailabilityProps {
     topic: unknown;
@@ -4729,11 +5107,17 @@ interface Atm90e26FrequencyProps {
     expireAfter?: Atm90e26FrequencyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface BParasiteTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -4800,11 +5184,17 @@ interface BParasiteTemperatureProps {
     expireAfter?: BParasiteTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface BParasiteHumidityPropsAvailabilityProps {
     topic: unknown;
@@ -4871,11 +5261,17 @@ interface BParasiteHumidityProps {
     expireAfter?: BParasiteHumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface BParasiteBatteryVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -4942,11 +5338,17 @@ interface BParasiteBatteryVoltageProps {
     expireAfter?: BParasiteBatteryVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface BParasiteMoisturePropsAvailabilityProps {
     topic: unknown;
@@ -5013,11 +5415,17 @@ interface BParasiteMoistureProps {
     expireAfter?: BParasiteMoisturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface BParasiteIlluminancePropsAvailabilityProps {
     topic: unknown;
@@ -5084,11 +5492,17 @@ interface BParasiteIlluminanceProps {
     expireAfter?: BParasiteIlluminancePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface BinarySensorMapGroupChannelsProps {
     /**
@@ -5189,11 +5603,17 @@ interface Bl0906FrequencyProps {
     expireAfter?: Bl0906FrequencyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0906TemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -5259,11 +5679,17 @@ interface Bl0906TemperatureProps {
     expireAfter?: Bl0906TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0906VoltagePropsAvailabilityProps {
     topic: unknown;
@@ -5329,11 +5755,17 @@ interface Bl0906VoltageProps {
     expireAfter?: Bl0906VoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0906TotalPowerPropsAvailabilityProps {
     topic: unknown;
@@ -5399,11 +5831,17 @@ interface Bl0906TotalPowerProps {
     expireAfter?: Bl0906TotalPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0906TotalEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -5469,11 +5907,17 @@ interface Bl0906TotalEnergyProps {
     expireAfter?: Bl0906TotalEnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0906Channel1PropsCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -5539,11 +5983,17 @@ interface Bl0906Channel1PropsCurrentProps {
     expireAfter?: Bl0906Channel1PropsCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0906Channel1PropsPowerPropsAvailabilityProps {
     topic: unknown;
@@ -5609,11 +6059,17 @@ interface Bl0906Channel1PropsPowerProps {
     expireAfter?: Bl0906Channel1PropsPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0906Channel1PropsEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -5679,11 +6135,17 @@ interface Bl0906Channel1PropsEnergyProps {
     expireAfter?: Bl0906Channel1PropsEnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0906Channel1Props {
     /** The current value of the channel 1 in amperes. All options from [Sensor](/components/sensor). */
@@ -5757,11 +6219,17 @@ interface Bl0906Channel2PropsCurrentProps {
     expireAfter?: Bl0906Channel2PropsCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0906Channel2PropsPowerPropsAvailabilityProps {
     topic: unknown;
@@ -5827,11 +6295,17 @@ interface Bl0906Channel2PropsPowerProps {
     expireAfter?: Bl0906Channel2PropsPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0906Channel2PropsEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -5897,11 +6371,17 @@ interface Bl0906Channel2PropsEnergyProps {
     expireAfter?: Bl0906Channel2PropsEnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0906Channel2Props {
     /** The current value of the channel 2 in amperes. All options from [Sensor](/components/sensor). */
@@ -5975,11 +6455,17 @@ interface Bl0906Channel3PropsCurrentProps {
     expireAfter?: Bl0906Channel3PropsCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0906Channel3PropsPowerPropsAvailabilityProps {
     topic: unknown;
@@ -6045,11 +6531,17 @@ interface Bl0906Channel3PropsPowerProps {
     expireAfter?: Bl0906Channel3PropsPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0906Channel3PropsEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -6115,11 +6607,17 @@ interface Bl0906Channel3PropsEnergyProps {
     expireAfter?: Bl0906Channel3PropsEnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0906Channel3Props {
     /** The current value of the channel 3 in amperes. All options from [Sensor](/components/sensor). */
@@ -6193,11 +6691,17 @@ interface Bl0906Channel4PropsCurrentProps {
     expireAfter?: Bl0906Channel4PropsCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0906Channel4PropsPowerPropsAvailabilityProps {
     topic: unknown;
@@ -6263,11 +6767,17 @@ interface Bl0906Channel4PropsPowerProps {
     expireAfter?: Bl0906Channel4PropsPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0906Channel4PropsEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -6333,11 +6843,17 @@ interface Bl0906Channel4PropsEnergyProps {
     expireAfter?: Bl0906Channel4PropsEnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0906Channel4Props {
     /** The current value of the channel 4 in amperes. All options from [Sensor](/components/sensor). */
@@ -6411,11 +6927,17 @@ interface Bl0906Channel5PropsCurrentProps {
     expireAfter?: Bl0906Channel5PropsCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0906Channel5PropsPowerPropsAvailabilityProps {
     topic: unknown;
@@ -6481,11 +7003,17 @@ interface Bl0906Channel5PropsPowerProps {
     expireAfter?: Bl0906Channel5PropsPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0906Channel5PropsEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -6551,11 +7079,17 @@ interface Bl0906Channel5PropsEnergyProps {
     expireAfter?: Bl0906Channel5PropsEnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0906Channel5Props {
     /** The current value of the channel 5 in amperes. All options from [Sensor](/components/sensor). */
@@ -6629,11 +7163,17 @@ interface Bl0906Channel6PropsCurrentProps {
     expireAfter?: Bl0906Channel6PropsCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0906Channel6PropsPowerPropsAvailabilityProps {
     topic: unknown;
@@ -6699,11 +7239,17 @@ interface Bl0906Channel6PropsPowerProps {
     expireAfter?: Bl0906Channel6PropsPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0906Channel6PropsEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -6769,11 +7315,17 @@ interface Bl0906Channel6PropsEnergyProps {
     expireAfter?: Bl0906Channel6PropsEnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0906Channel6Props {
     /** The current value of the channel 6 in amperes. All options from [Sensor](/components/sensor). */
@@ -6848,11 +7400,17 @@ interface Bl0939VoltageProps {
     expireAfter?: Bl0939VoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0939Current1PropsAvailabilityProps {
     topic: unknown;
@@ -6919,11 +7477,17 @@ interface Bl0939Current1Props {
     expireAfter?: Bl0939Current1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0939Current2PropsAvailabilityProps {
     topic: unknown;
@@ -6990,11 +7554,17 @@ interface Bl0939Current2Props {
     expireAfter?: Bl0939Current2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0939ActivePower1PropsAvailabilityProps {
     topic: unknown;
@@ -7061,11 +7631,17 @@ interface Bl0939ActivePower1Props {
     expireAfter?: Bl0939ActivePower1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0939ActivePower2PropsAvailabilityProps {
     topic: unknown;
@@ -7132,11 +7708,17 @@ interface Bl0939ActivePower2Props {
     expireAfter?: Bl0939ActivePower2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0939Energy1PropsAvailabilityProps {
     topic: unknown;
@@ -7203,11 +7785,17 @@ interface Bl0939Energy1Props {
     expireAfter?: Bl0939Energy1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0939Energy2PropsAvailabilityProps {
     topic: unknown;
@@ -7274,11 +7862,17 @@ interface Bl0939Energy2Props {
     expireAfter?: Bl0939Energy2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0939EnergyTotalPropsAvailabilityProps {
     topic: unknown;
@@ -7345,11 +7939,17 @@ interface Bl0939EnergyTotalProps {
     expireAfter?: Bl0939EnergyTotalPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0942VoltagePropsAvailabilityProps {
     topic: unknown;
@@ -7416,11 +8016,17 @@ interface Bl0942VoltageProps {
     expireAfter?: Bl0942VoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0942CurrentPropsAvailabilityProps {
     topic: unknown;
@@ -7487,11 +8093,17 @@ interface Bl0942CurrentProps {
     expireAfter?: Bl0942CurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0942PowerPropsAvailabilityProps {
     topic: unknown;
@@ -7558,11 +8170,17 @@ interface Bl0942PowerProps {
     expireAfter?: Bl0942PowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0942EnergyPropsAvailabilityProps {
     topic: unknown;
@@ -7629,11 +8247,17 @@ interface Bl0942EnergyProps {
     expireAfter?: Bl0942EnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0942FrequencyPropsAvailabilityProps {
     topic: unknown;
@@ -7700,11 +8324,17 @@ interface Bl0942FrequencyProps {
     expireAfter?: Bl0942FrequencyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bme680TemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -7771,11 +8401,17 @@ interface Bme680TemperatureProps {
     expireAfter?: Bme680TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** The oversampling parameter for the temperature sensor. See [Oversampling Options](https://esphome.io/components/senso... */
     oversampling?: "NONE" | "1X" | "2X" | "4X" | "8X" | "16X";
 }
@@ -7844,11 +8480,17 @@ interface Bme680PressureProps {
     expireAfter?: Bme680PressurePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** The oversampling parameter for the temperature sensor. See [Oversampling Options](https://esphome.io/components/senso... */
     oversampling?: "NONE" | "1X" | "2X" | "4X" | "8X" | "16X";
 }
@@ -7917,11 +8559,17 @@ interface Bme680HumidityProps {
     expireAfter?: Bme680HumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** The oversampling parameter for the temperature sensor. See [Oversampling Options](https://esphome.io/components/senso... */
     oversampling?: "NONE" | "1X" | "2X" | "4X" | "8X" | "16X";
 }
@@ -7989,11 +8637,17 @@ interface Bme680GasResistanceProps {
     expireAfter?: Bme680GasResistancePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bme680HeaterPropsDurationProps {
     days?: unknown;
@@ -8073,11 +8727,17 @@ interface Bme68xBsec2TemperatureProps {
     expireAfter?: Bme68xBsec2TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /**
      * string: Optional sample rate override for this sensor. Can be `LP` for low power consumption, sampling every 3 second...
      * @yamlKey sample_rate
@@ -8149,11 +8809,17 @@ interface Bme68xBsec2PressureProps {
     expireAfter?: Bme68xBsec2PressurePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /**
      * string: Optional sample rate override for this sensor. Can be `LP` for low power consumption, sampling every 3 second...
      * @yamlKey sample_rate
@@ -8224,11 +8890,17 @@ interface Bme68xBsec2HumidityProps {
     expireAfter?: Bme68xBsec2HumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /**
      * string: Optional sample rate override for this sensor. Can be `LP` for low power consumption, sampling every 3 second...
      * @yamlKey sample_rate
@@ -8299,11 +8971,17 @@ interface Bme68xBsec2GasResistanceProps {
     expireAfter?: Bme68xBsec2GasResistancePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bme68xBsec2IaqPropsAvailabilityProps {
     topic: unknown;
@@ -8369,11 +9047,17 @@ interface Bme68xBsec2IaqProps {
     expireAfter?: Bme68xBsec2IaqPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bme68xBsec2IaqStaticPropsAvailabilityProps {
     topic: unknown;
@@ -8439,11 +9123,17 @@ interface Bme68xBsec2IaqStaticProps {
     expireAfter?: Bme68xBsec2IaqStaticPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bme68xBsec2IaqAccuracyPropsAvailabilityProps {
     topic: unknown;
@@ -8509,11 +9199,17 @@ interface Bme68xBsec2IaqAccuracyProps {
     expireAfter?: Bme68xBsec2IaqAccuracyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bme68xBsec2Co2EquivalentPropsAvailabilityProps {
     topic: unknown;
@@ -8580,11 +9276,17 @@ interface Bme68xBsec2Co2EquivalentProps {
     expireAfter?: Bme68xBsec2Co2EquivalentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bme68xBsec2BreathVocEquivalentPropsAvailabilityProps {
     topic: unknown;
@@ -8651,11 +9353,17 @@ interface Bme68xBsec2BreathVocEquivalentProps {
     expireAfter?: Bme68xBsec2BreathVocEquivalentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bmi160AccelerationXPropsAvailabilityProps {
     topic: unknown;
@@ -8721,11 +9429,17 @@ interface Bmi160AccelerationXProps {
     expireAfter?: Bmi160AccelerationXPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bmi160AccelerationYPropsAvailabilityProps {
     topic: unknown;
@@ -8791,11 +9505,17 @@ interface Bmi160AccelerationYProps {
     expireAfter?: Bmi160AccelerationYPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bmi160AccelerationZPropsAvailabilityProps {
     topic: unknown;
@@ -8861,11 +9581,17 @@ interface Bmi160AccelerationZProps {
     expireAfter?: Bmi160AccelerationZPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bmi160GyroscopeXPropsAvailabilityProps {
     topic: unknown;
@@ -8931,11 +9657,17 @@ interface Bmi160GyroscopeXProps {
     expireAfter?: Bmi160GyroscopeXPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bmi160GyroscopeYPropsAvailabilityProps {
     topic: unknown;
@@ -9001,11 +9733,17 @@ interface Bmi160GyroscopeYProps {
     expireAfter?: Bmi160GyroscopeYPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bmi160GyroscopeZPropsAvailabilityProps {
     topic: unknown;
@@ -9071,11 +9809,17 @@ interface Bmi160GyroscopeZProps {
     expireAfter?: Bmi160GyroscopeZPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bmi160TemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -9142,11 +9886,17 @@ interface Bmi160TemperatureProps {
     expireAfter?: Bmi160TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bmp085TemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -9213,11 +9963,17 @@ interface Bmp085TemperatureProps {
     expireAfter?: Bmp085TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bmp085PressurePropsAvailabilityProps {
     topic: unknown;
@@ -9284,11 +10040,17 @@ interface Bmp085PressureProps {
     expireAfter?: Bmp085PressurePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface BthomeMithermometerTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -9355,11 +10117,17 @@ interface BthomeMithermometerTemperatureProps {
     expireAfter?: BthomeMithermometerTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface BthomeMithermometerHumidityPropsAvailabilityProps {
     topic: unknown;
@@ -9426,11 +10194,17 @@ interface BthomeMithermometerHumidityProps {
     expireAfter?: BthomeMithermometerHumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface BthomeMithermometerBatteryLevelPropsAvailabilityProps {
     topic: unknown;
@@ -9497,11 +10271,17 @@ interface BthomeMithermometerBatteryLevelProps {
     expireAfter?: BthomeMithermometerBatteryLevelPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface BthomeMithermometerBatteryVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -9567,11 +10347,17 @@ interface BthomeMithermometerBatteryVoltageProps {
     expireAfter?: BthomeMithermometerBatteryVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface BthomeMithermometerSignalStrengthPropsAvailabilityProps {
     topic: unknown;
@@ -9638,11 +10424,17 @@ interface BthomeMithermometerSignalStrengthProps {
     expireAfter?: BthomeMithermometerSignalStrengthPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ccs811Eco2PropsAvailabilityProps {
     topic: unknown;
@@ -9708,11 +10500,17 @@ interface Ccs811Eco2Props {
     expireAfter?: Ccs811Eco2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ccs811TvocPropsAvailabilityProps {
     topic: unknown;
@@ -9778,11 +10576,17 @@ interface Ccs811TvocProps {
     expireAfter?: Ccs811TvocPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ccs811VersionPropsAvailabilityProps {
     topic: unknown;
@@ -9831,9 +10635,13 @@ interface Ccs811VersionProps {
     deviceClass?: "date" | "" | "timestamp";
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Cm1106Co2PropsAvailabilityProps {
     topic: unknown;
@@ -9899,11 +10707,17 @@ interface Cm1106Co2Props {
     expireAfter?: Cm1106Co2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface CombinationKalmanSourcesProps {
     /** [ID](/guides/configuration-types#id) of a [Sensor](/components/sensor/): The sensor id that is used as sample source. */
@@ -9976,11 +10790,17 @@ interface CombinationKalmanStdDevProps {
     expireAfter?: CombinationKalmanStdDevPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface CombinationLinearSourcesProps {
     /** [ID](/guides/configuration-types#id) of a [Sensor](/components/sensor/): The sensor id that is used as sample source. */
@@ -10082,11 +10902,17 @@ interface Cs5460aVoltageProps {
     expireAfter?: Cs5460aVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Cs5460aCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -10153,11 +10979,17 @@ interface Cs5460aCurrentProps {
     expireAfter?: Cs5460aCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Cs5460aPowerPropsAvailabilityProps {
     topic: unknown;
@@ -10224,11 +11056,17 @@ interface Cs5460aPowerProps {
     expireAfter?: Cs5460aPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Cse7761VoltagePropsAvailabilityProps {
     topic: unknown;
@@ -10295,11 +11133,17 @@ interface Cse7761VoltageProps {
     expireAfter?: Cse7761VoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Cse7761Current1PropsAvailabilityProps {
     topic: unknown;
@@ -10366,11 +11210,17 @@ interface Cse7761Current1Props {
     expireAfter?: Cse7761Current1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Cse7761Current2PropsAvailabilityProps {
     topic: unknown;
@@ -10437,11 +11287,17 @@ interface Cse7761Current2Props {
     expireAfter?: Cse7761Current2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Cse7761ActivePower1PropsAvailabilityProps {
     topic: unknown;
@@ -10508,11 +11364,17 @@ interface Cse7761ActivePower1Props {
     expireAfter?: Cse7761ActivePower1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Cse7761ActivePower2PropsAvailabilityProps {
     topic: unknown;
@@ -10579,11 +11441,17 @@ interface Cse7761ActivePower2Props {
     expireAfter?: Cse7761ActivePower2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Cse7766VoltagePropsAvailabilityProps {
     topic: unknown;
@@ -10650,11 +11518,17 @@ interface Cse7766VoltageProps {
     expireAfter?: Cse7766VoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Cse7766CurrentPropsAvailabilityProps {
     topic: unknown;
@@ -10721,11 +11595,17 @@ interface Cse7766CurrentProps {
     expireAfter?: Cse7766CurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Cse7766PowerPropsAvailabilityProps {
     topic: unknown;
@@ -10792,11 +11672,17 @@ interface Cse7766PowerProps {
     expireAfter?: Cse7766PowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Cse7766EnergyPropsAvailabilityProps {
     topic: unknown;
@@ -10863,11 +11749,17 @@ interface Cse7766EnergyProps {
     expireAfter?: Cse7766EnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Cse7766ApparentPowerPropsAvailabilityProps {
     topic: unknown;
@@ -10934,11 +11826,17 @@ interface Cse7766ApparentPowerProps {
     expireAfter?: Cse7766ApparentPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Cse7766ReactivePowerPropsAvailabilityProps {
     topic: unknown;
@@ -11005,11 +11903,17 @@ interface Cse7766ReactivePowerProps {
     expireAfter?: Cse7766ReactivePowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Cse7766PowerFactorPropsAvailabilityProps {
     topic: unknown;
@@ -11076,11 +11980,17 @@ interface Cse7766PowerFactorProps {
     expireAfter?: Cse7766PowerFactorPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface CtClampSampleDurationProps {
     days?: unknown;
@@ -11155,11 +12065,17 @@ interface DhtTemperatureProps {
     expireAfter?: DhtTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DhtHumidityPropsAvailabilityProps {
     topic: unknown;
@@ -11226,11 +12142,17 @@ interface DhtHumidityProps {
     expireAfter?: DhtHumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Dht12TemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -11297,11 +12219,17 @@ interface Dht12TemperatureProps {
     expireAfter?: Dht12TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Dht12HumidityPropsAvailabilityProps {
     topic: unknown;
@@ -11368,11 +12296,17 @@ interface Dht12HumidityProps {
     expireAfter?: Dht12HumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Dps310TemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -11438,11 +12372,17 @@ interface Dps310TemperatureProps {
     expireAfter?: Dps310TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Dps310PressurePropsAvailabilityProps {
     topic: unknown;
@@ -11508,11 +12448,17 @@ interface Dps310PressureProps {
     expireAfter?: Dps310PressurePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DutyTimeLastTimePropsAvailabilityProps {
     topic: unknown;
@@ -11578,11 +12524,17 @@ interface DutyTimeLastTimeProps {
     expireAfter?: DutyTimeLastTimePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ee895TemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -11649,11 +12601,17 @@ interface Ee895TemperatureProps {
     expireAfter?: Ee895TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ee895Co2PropsAvailabilityProps {
     topic: unknown;
@@ -11719,11 +12677,17 @@ interface Ee895Co2Props {
     expireAfter?: Ee895Co2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ee895PressurePropsAvailabilityProps {
     topic: unknown;
@@ -11790,11 +12754,17 @@ interface Ee895PressureProps {
     expireAfter?: Ee895PressurePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ens210TemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -11861,11 +12831,17 @@ interface Ens210TemperatureProps {
     expireAfter?: Ens210TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ens210HumidityPropsAvailabilityProps {
     topic: unknown;
@@ -11932,11 +12908,17 @@ interface Ens210HumidityProps {
     expireAfter?: Ens210HumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Gcja5Pm10PropsAvailabilityProps {
     topic: unknown;
@@ -12002,11 +12984,17 @@ interface Gcja5Pm10Props {
     expireAfter?: Gcja5Pm10PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Gcja5Pm25PropsAvailabilityProps {
     topic: unknown;
@@ -12072,11 +13060,17 @@ interface Gcja5Pm25Props {
     expireAfter?: Gcja5Pm25PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Gcja5Pm100PropsAvailabilityProps {
     topic: unknown;
@@ -12142,11 +13136,17 @@ interface Gcja5Pm100Props {
     expireAfter?: Gcja5Pm100PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Gcja5Pmc03PropsAvailabilityProps {
     topic: unknown;
@@ -12212,11 +13212,17 @@ interface Gcja5Pmc03Props {
     expireAfter?: Gcja5Pmc03PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Gcja5Pmc05PropsAvailabilityProps {
     topic: unknown;
@@ -12282,11 +13288,17 @@ interface Gcja5Pmc05Props {
     expireAfter?: Gcja5Pmc05PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Gcja5Pmc10PropsAvailabilityProps {
     topic: unknown;
@@ -12352,11 +13364,17 @@ interface Gcja5Pmc10Props {
     expireAfter?: Gcja5Pmc10PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Gcja5Pmc25PropsAvailabilityProps {
     topic: unknown;
@@ -12422,11 +13440,17 @@ interface Gcja5Pmc25Props {
     expireAfter?: Gcja5Pmc25PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Gcja5Pmc50PropsAvailabilityProps {
     topic: unknown;
@@ -12492,11 +13516,17 @@ interface Gcja5Pmc50Props {
     expireAfter?: Gcja5Pmc50PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Gcja5Pmc100PropsAvailabilityProps {
     topic: unknown;
@@ -12562,11 +13592,17 @@ interface Gcja5Pmc100Props {
     expireAfter?: Gcja5Pmc100PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface GroveGasMcV2TvocPropsAvailabilityProps {
     topic: unknown;
@@ -12632,11 +13668,17 @@ interface GroveGasMcV2TvocProps {
     expireAfter?: GroveGasMcV2TvocPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface GroveGasMcV2CarbonMonoxidePropsAvailabilityProps {
     topic: unknown;
@@ -12702,11 +13744,17 @@ interface GroveGasMcV2CarbonMonoxideProps {
     expireAfter?: GroveGasMcV2CarbonMonoxidePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface GroveGasMcV2NitrogenDioxidePropsAvailabilityProps {
     topic: unknown;
@@ -12772,11 +13820,17 @@ interface GroveGasMcV2NitrogenDioxideProps {
     expireAfter?: GroveGasMcV2NitrogenDioxidePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface GroveGasMcV2EthanolPropsAvailabilityProps {
     topic: unknown;
@@ -12842,11 +13896,17 @@ interface GroveGasMcV2EthanolProps {
     expireAfter?: GroveGasMcV2EthanolPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface GrowattSolarPhaseAPropsVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -12913,11 +13973,17 @@ interface GrowattSolarPhaseAPropsVoltageProps {
     expireAfter?: GrowattSolarPhaseAPropsVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface GrowattSolarPhaseAPropsCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -12984,11 +14050,17 @@ interface GrowattSolarPhaseAPropsCurrentProps {
     expireAfter?: GrowattSolarPhaseAPropsCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface GrowattSolarPhaseAPropsActivePowerPropsAvailabilityProps {
     topic: unknown;
@@ -13055,11 +14127,17 @@ interface GrowattSolarPhaseAPropsActivePowerProps {
     expireAfter?: GrowattSolarPhaseAPropsActivePowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface GrowattSolarPhaseAProps {
     /** Use the voltage value of the sensor in volts. All options from [Sensor](/components/sensor). */
@@ -13137,11 +14215,17 @@ interface GrowattSolarPhaseBPropsVoltageProps {
     expireAfter?: GrowattSolarPhaseBPropsVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface GrowattSolarPhaseBPropsCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -13208,11 +14292,17 @@ interface GrowattSolarPhaseBPropsCurrentProps {
     expireAfter?: GrowattSolarPhaseBPropsCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface GrowattSolarPhaseBPropsActivePowerPropsAvailabilityProps {
     topic: unknown;
@@ -13279,11 +14369,17 @@ interface GrowattSolarPhaseBPropsActivePowerProps {
     expireAfter?: GrowattSolarPhaseBPropsActivePowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface GrowattSolarPhaseBProps {
     /** Use the voltage value of the sensor in volts. All options from [Sensor](/components/sensor). */
@@ -13361,11 +14457,17 @@ interface GrowattSolarPhaseCPropsVoltageProps {
     expireAfter?: GrowattSolarPhaseCPropsVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface GrowattSolarPhaseCPropsCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -13432,11 +14534,17 @@ interface GrowattSolarPhaseCPropsCurrentProps {
     expireAfter?: GrowattSolarPhaseCPropsCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface GrowattSolarPhaseCPropsActivePowerPropsAvailabilityProps {
     topic: unknown;
@@ -13503,11 +14611,17 @@ interface GrowattSolarPhaseCPropsActivePowerProps {
     expireAfter?: GrowattSolarPhaseCPropsActivePowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface GrowattSolarPhaseCProps {
     /** Use the voltage value of the sensor in volts. All options from [Sensor](/components/sensor). */
@@ -13585,11 +14699,17 @@ interface GrowattSolarPv1PropsVoltageProps {
     expireAfter?: GrowattSolarPv1PropsVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface GrowattSolarPv1PropsCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -13656,11 +14776,17 @@ interface GrowattSolarPv1PropsCurrentProps {
     expireAfter?: GrowattSolarPv1PropsCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface GrowattSolarPv1PropsActivePowerPropsAvailabilityProps {
     topic: unknown;
@@ -13727,11 +14853,17 @@ interface GrowattSolarPv1PropsActivePowerProps {
     expireAfter?: GrowattSolarPv1PropsActivePowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface GrowattSolarPv1Props {
     /** Use the voltage value of the sensor in volts. All options from [Sensor](/components/sensor). */
@@ -13809,11 +14941,17 @@ interface GrowattSolarPv2PropsVoltageProps {
     expireAfter?: GrowattSolarPv2PropsVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface GrowattSolarPv2PropsCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -13880,11 +15018,17 @@ interface GrowattSolarPv2PropsCurrentProps {
     expireAfter?: GrowattSolarPv2PropsCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface GrowattSolarPv2PropsActivePowerPropsAvailabilityProps {
     topic: unknown;
@@ -13951,11 +15095,17 @@ interface GrowattSolarPv2PropsActivePowerProps {
     expireAfter?: GrowattSolarPv2PropsActivePowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface GrowattSolarPv2Props {
     /** Use the voltage value of the sensor in volts. All options from [Sensor](/components/sensor). */
@@ -14033,11 +15183,17 @@ interface GrowattSolarInverterStatusProps {
     expireAfter?: GrowattSolarInverterStatusPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface GrowattSolarFrequencyPropsAvailabilityProps {
     topic: unknown;
@@ -14103,11 +15259,17 @@ interface GrowattSolarFrequencyProps {
     expireAfter?: GrowattSolarFrequencyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface GrowattSolarActivePowerPropsAvailabilityProps {
     topic: unknown;
@@ -14174,11 +15336,17 @@ interface GrowattSolarActivePowerProps {
     expireAfter?: GrowattSolarActivePowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface GrowattSolarPvActivePowerPropsAvailabilityProps {
     topic: unknown;
@@ -14245,11 +15413,17 @@ interface GrowattSolarPvActivePowerProps {
     expireAfter?: GrowattSolarPvActivePowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface GrowattSolarEnergyProductionDayPropsAvailabilityProps {
     topic: unknown;
@@ -14316,11 +15490,17 @@ interface GrowattSolarEnergyProductionDayProps {
     expireAfter?: GrowattSolarEnergyProductionDayPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface GrowattSolarTotalEnergyProductionPropsAvailabilityProps {
     topic: unknown;
@@ -14387,11 +15567,17 @@ interface GrowattSolarTotalEnergyProductionProps {
     expireAfter?: GrowattSolarTotalEnergyProductionPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface GrowattSolarInverterModuleTempPropsAvailabilityProps {
     topic: unknown;
@@ -14458,11 +15644,17 @@ interface GrowattSolarInverterModuleTempProps {
     expireAfter?: GrowattSolarInverterModuleTempPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HavellsSolarPhaseAPropsVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -14529,11 +15721,17 @@ interface HavellsSolarPhaseAPropsVoltageProps {
     expireAfter?: HavellsSolarPhaseAPropsVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HavellsSolarPhaseAPropsCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -14600,11 +15798,17 @@ interface HavellsSolarPhaseAPropsCurrentProps {
     expireAfter?: HavellsSolarPhaseAPropsCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HavellsSolarPhaseAProps {
     /** Use the voltage value of the sensor in volts. All options from [Sensor](/components/sensor). */
@@ -14677,11 +15881,17 @@ interface HavellsSolarPhaseBPropsVoltageProps {
     expireAfter?: HavellsSolarPhaseBPropsVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HavellsSolarPhaseBPropsCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -14748,11 +15958,17 @@ interface HavellsSolarPhaseBPropsCurrentProps {
     expireAfter?: HavellsSolarPhaseBPropsCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HavellsSolarPhaseBProps {
     /** Use the voltage value of the sensor in volts. All options from [Sensor](/components/sensor). */
@@ -14825,11 +16041,17 @@ interface HavellsSolarPhaseCPropsVoltageProps {
     expireAfter?: HavellsSolarPhaseCPropsVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HavellsSolarPhaseCPropsCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -14896,11 +16118,17 @@ interface HavellsSolarPhaseCPropsCurrentProps {
     expireAfter?: HavellsSolarPhaseCPropsCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HavellsSolarPhaseCProps {
     /** Use the voltage value of the sensor in volts. All options from [Sensor](/components/sensor). */
@@ -14973,11 +16201,17 @@ interface HavellsSolarPv1PropsVoltageProps {
     expireAfter?: HavellsSolarPv1PropsVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HavellsSolarPv1PropsCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -15044,11 +16278,17 @@ interface HavellsSolarPv1PropsCurrentProps {
     expireAfter?: HavellsSolarPv1PropsCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HavellsSolarPv1PropsActivePowerPropsAvailabilityProps {
     topic: unknown;
@@ -15115,11 +16355,17 @@ interface HavellsSolarPv1PropsActivePowerProps {
     expireAfter?: HavellsSolarPv1PropsActivePowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HavellsSolarPv1PropsVoltageSampledBySecondaryCpuPropsAvailabilityProps {
     topic: unknown;
@@ -15186,11 +16432,17 @@ interface HavellsSolarPv1PropsVoltageSampledBySecondaryCpuProps {
     expireAfter?: HavellsSolarPv1PropsVoltageSampledBySecondaryCpuPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HavellsSolarPv1PropsInsulationOfPToGroundPropsAvailabilityProps {
     topic: unknown;
@@ -15257,11 +16509,17 @@ interface HavellsSolarPv1PropsInsulationOfPToGroundProps {
     expireAfter?: HavellsSolarPv1PropsInsulationOfPToGroundPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HavellsSolarPv1Props {
     /** Use the voltage value of the sensor in volts. All options from [Sensor](/components/sensor). */
@@ -15349,11 +16607,17 @@ interface HavellsSolarPv2PropsVoltageProps {
     expireAfter?: HavellsSolarPv2PropsVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HavellsSolarPv2PropsCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -15420,11 +16684,17 @@ interface HavellsSolarPv2PropsCurrentProps {
     expireAfter?: HavellsSolarPv2PropsCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HavellsSolarPv2PropsActivePowerPropsAvailabilityProps {
     topic: unknown;
@@ -15491,11 +16761,17 @@ interface HavellsSolarPv2PropsActivePowerProps {
     expireAfter?: HavellsSolarPv2PropsActivePowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HavellsSolarPv2PropsVoltageSampledBySecondaryCpuPropsAvailabilityProps {
     topic: unknown;
@@ -15562,11 +16838,17 @@ interface HavellsSolarPv2PropsVoltageSampledBySecondaryCpuProps {
     expireAfter?: HavellsSolarPv2PropsVoltageSampledBySecondaryCpuPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HavellsSolarPv2PropsInsulationOfPToGroundPropsAvailabilityProps {
     topic: unknown;
@@ -15633,11 +16915,17 @@ interface HavellsSolarPv2PropsInsulationOfPToGroundProps {
     expireAfter?: HavellsSolarPv2PropsInsulationOfPToGroundPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HavellsSolarPv2Props {
     /** Use the voltage value of the sensor in volts. All options from [Sensor](/components/sensor). */
@@ -15724,11 +17012,17 @@ interface HavellsSolarFrequencyProps {
     expireAfter?: HavellsSolarFrequencyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HavellsSolarActivePowerPropsAvailabilityProps {
     topic: unknown;
@@ -15795,11 +17089,17 @@ interface HavellsSolarActivePowerProps {
     expireAfter?: HavellsSolarActivePowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HavellsSolarReactivePowerPropsAvailabilityProps {
     topic: unknown;
@@ -15866,11 +17166,17 @@ interface HavellsSolarReactivePowerProps {
     expireAfter?: HavellsSolarReactivePowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HavellsSolarEnergyProductionDayPropsAvailabilityProps {
     topic: unknown;
@@ -15937,11 +17243,17 @@ interface HavellsSolarEnergyProductionDayProps {
     expireAfter?: HavellsSolarEnergyProductionDayPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HavellsSolarTotalEnergyProductionPropsAvailabilityProps {
     topic: unknown;
@@ -16008,11 +17320,17 @@ interface HavellsSolarTotalEnergyProductionProps {
     expireAfter?: HavellsSolarTotalEnergyProductionPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HavellsSolarTotalGenerationTimePropsAvailabilityProps {
     topic: unknown;
@@ -16079,11 +17397,17 @@ interface HavellsSolarTotalGenerationTimeProps {
     expireAfter?: HavellsSolarTotalGenerationTimePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HavellsSolarTodayGenerationTimePropsAvailabilityProps {
     topic: unknown;
@@ -16150,11 +17474,17 @@ interface HavellsSolarTodayGenerationTimeProps {
     expireAfter?: HavellsSolarTodayGenerationTimePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HavellsSolarInverterModuleTempPropsAvailabilityProps {
     topic: unknown;
@@ -16221,11 +17551,17 @@ interface HavellsSolarInverterModuleTempProps {
     expireAfter?: HavellsSolarInverterModuleTempPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HavellsSolarInverterInnerTempPropsAvailabilityProps {
     topic: unknown;
@@ -16292,11 +17628,17 @@ interface HavellsSolarInverterInnerTempProps {
     expireAfter?: HavellsSolarInverterInnerTempPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HavellsSolarInverterBusVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -16363,11 +17705,17 @@ interface HavellsSolarInverterBusVoltageProps {
     expireAfter?: HavellsSolarInverterBusVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HavellsSolarInsulationOfPvNToGroundPropsAvailabilityProps {
     topic: unknown;
@@ -16434,11 +17782,17 @@ interface HavellsSolarInsulationOfPvNToGroundProps {
     expireAfter?: HavellsSolarInsulationOfPvNToGroundPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HavellsSolarGfciValuePropsAvailabilityProps {
     topic: unknown;
@@ -16505,11 +17859,17 @@ interface HavellsSolarGfciValueProps {
     expireAfter?: HavellsSolarGfciValuePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HavellsSolarDciOfRPropsAvailabilityProps {
     topic: unknown;
@@ -16576,11 +17936,17 @@ interface HavellsSolarDciOfRProps {
     expireAfter?: HavellsSolarDciOfRPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HavellsSolarDciOfSPropsAvailabilityProps {
     topic: unknown;
@@ -16647,11 +18013,17 @@ interface HavellsSolarDciOfSProps {
     expireAfter?: HavellsSolarDciOfSPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HavellsSolarDciOfTPropsAvailabilityProps {
     topic: unknown;
@@ -16718,11 +18090,17 @@ interface HavellsSolarDciOfTProps {
     expireAfter?: HavellsSolarDciOfTPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Hc8Co2PropsAvailabilityProps {
     topic: unknown;
@@ -16788,11 +18166,17 @@ interface Hc8Co2Props {
     expireAfter?: Hc8Co2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Hc8WarmupTimeProps {
     days?: unknown;
@@ -16867,11 +18251,17 @@ interface Hdc1080TemperatureProps {
     expireAfter?: Hdc1080TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Hdc1080HumidityPropsAvailabilityProps {
     topic: unknown;
@@ -16938,11 +18328,17 @@ interface Hdc1080HumidityProps {
     expireAfter?: Hdc1080HumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Hdc2010TemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -17009,11 +18405,17 @@ interface Hdc2010TemperatureProps {
     expireAfter?: Hdc2010TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Hdc2010HumidityPropsAvailabilityProps {
     topic: unknown;
@@ -17080,11 +18482,17 @@ interface Hdc2010HumidityProps {
     expireAfter?: Hdc2010HumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Hdc302xTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -17151,11 +18559,17 @@ interface Hdc302xTemperatureProps {
     expireAfter?: Hdc302xTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Hdc302xHumidityPropsAvailabilityProps {
     topic: unknown;
@@ -17222,11 +18636,17 @@ interface Hdc302xHumidityProps {
     expireAfter?: Hdc302xHumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Hlw8012VoltagePropsAvailabilityProps {
     topic: unknown;
@@ -17293,11 +18713,17 @@ interface Hlw8012VoltageProps {
     expireAfter?: Hlw8012VoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Hlw8012CurrentPropsAvailabilityProps {
     topic: unknown;
@@ -17364,11 +18790,17 @@ interface Hlw8012CurrentProps {
     expireAfter?: Hlw8012CurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Hlw8012PowerPropsAvailabilityProps {
     topic: unknown;
@@ -17435,11 +18867,17 @@ interface Hlw8012PowerProps {
     expireAfter?: Hlw8012PowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Hlw8012EnergyPropsAvailabilityProps {
     topic: unknown;
@@ -17506,11 +18944,17 @@ interface Hlw8012EnergyProps {
     expireAfter?: Hlw8012EnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Hlw8032VoltagePropsAvailabilityProps {
     topic: unknown;
@@ -17577,11 +19021,17 @@ interface Hlw8032VoltageProps {
     expireAfter?: Hlw8032VoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Hlw8032CurrentPropsAvailabilityProps {
     topic: unknown;
@@ -17648,11 +19098,17 @@ interface Hlw8032CurrentProps {
     expireAfter?: Hlw8032CurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Hlw8032PowerPropsAvailabilityProps {
     topic: unknown;
@@ -17719,11 +19175,17 @@ interface Hlw8032PowerProps {
     expireAfter?: Hlw8032PowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Hlw8032ApparentPowerPropsAvailabilityProps {
     topic: unknown;
@@ -17790,11 +19252,17 @@ interface Hlw8032ApparentPowerProps {
     expireAfter?: Hlw8032ApparentPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Hlw8032PowerFactorPropsAvailabilityProps {
     topic: unknown;
@@ -17861,11 +19329,17 @@ interface Hlw8032PowerFactorProps {
     expireAfter?: Hlw8032PowerFactorPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Hm3301Pm10PropsAvailabilityProps {
     topic: unknown;
@@ -17931,11 +19405,17 @@ interface Hm3301Pm10Props {
     expireAfter?: Hm3301Pm10PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Hm3301Pm25PropsAvailabilityProps {
     topic: unknown;
@@ -18001,11 +19481,17 @@ interface Hm3301Pm25Props {
     expireAfter?: Hm3301Pm25PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Hm3301Pm100PropsAvailabilityProps {
     topic: unknown;
@@ -18071,11 +19557,17 @@ interface Hm3301Pm100Props {
     expireAfter?: Hm3301Pm100PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Hm3301AqiPropsAvailabilityProps {
     topic: unknown;
@@ -18141,11 +19633,17 @@ interface Hm3301AqiProps {
     expireAfter?: Hm3301AqiPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey calculation_type */
     calculationType: "CAQI" | "AQI";
 }
@@ -18213,11 +19711,17 @@ interface Hmc5883lFieldStrengthXProps {
     expireAfter?: Hmc5883lFieldStrengthXPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Hmc5883lFieldStrengthYPropsAvailabilityProps {
     topic: unknown;
@@ -18283,11 +19787,17 @@ interface Hmc5883lFieldStrengthYProps {
     expireAfter?: Hmc5883lFieldStrengthYPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Hmc5883lFieldStrengthZPropsAvailabilityProps {
     topic: unknown;
@@ -18353,11 +19863,17 @@ interface Hmc5883lFieldStrengthZProps {
     expireAfter?: Hmc5883lFieldStrengthZPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Hmc5883lHeadingPropsAvailabilityProps {
     topic: unknown;
@@ -18423,11 +19939,17 @@ interface Hmc5883lHeadingProps {
     expireAfter?: Hmc5883lHeadingPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HoneywellHihI2cTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -18494,11 +20016,17 @@ interface HoneywellHihI2cTemperatureProps {
     expireAfter?: HoneywellHihI2cTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HoneywellHihI2cHumidityPropsAvailabilityProps {
     topic: unknown;
@@ -18565,11 +20093,17 @@ interface HoneywellHihI2cHumidityProps {
     expireAfter?: HoneywellHihI2cHumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HoneywellabpPressurePropsAvailabilityProps {
     topic: unknown;
@@ -18636,11 +20170,17 @@ interface HoneywellabpPressureProps {
     expireAfter?: HoneywellabpPressurePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /**
      * int or float: Minimum pressure for the pressure sensor, default unit `psi`.
      * @yamlKey min_pressure
@@ -18717,11 +20257,17 @@ interface HoneywellabpTemperatureProps {
     expireAfter?: HoneywellabpTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Honeywellabp2I2cPressurePropsAvailabilityProps {
     topic: unknown;
@@ -18788,11 +20334,17 @@ interface Honeywellabp2I2cPressureProps {
     expireAfter?: Honeywellabp2I2cPressurePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /**
      * int or float: Minimum pressure for the pressure sensor.
      * @yamlKey min_pressure
@@ -18874,11 +20426,17 @@ interface Honeywellabp2I2cTemperatureProps {
     expireAfter?: Honeywellabp2I2cTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Hte501TemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -18945,11 +20503,17 @@ interface Hte501TemperatureProps {
     expireAfter?: Hte501TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Hte501HumidityPropsAvailabilityProps {
     topic: unknown;
@@ -19016,11 +20580,17 @@ interface Hte501HumidityProps {
     expireAfter?: Hte501HumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Htu21dTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -19087,11 +20657,17 @@ interface Htu21dTemperatureProps {
     expireAfter?: Htu21dTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Htu21dHumidityPropsAvailabilityProps {
     topic: unknown;
@@ -19158,11 +20734,17 @@ interface Htu21dHumidityProps {
     expireAfter?: Htu21dHumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Htu21dHeaterPropsAvailabilityProps {
     topic: unknown;
@@ -19229,11 +20811,17 @@ interface Htu21dHeaterProps {
     expireAfter?: Htu21dHeaterPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Htu31dTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -19300,11 +20888,17 @@ interface Htu31dTemperatureProps {
     expireAfter?: Htu31dTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Htu31dHumidityPropsAvailabilityProps {
     topic: unknown;
@@ -19371,11 +20965,17 @@ interface Htu31dHumidityProps {
     expireAfter?: Htu31dHumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Hyt271TemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -19442,11 +21042,17 @@ interface Hyt271TemperatureProps {
     expireAfter?: Hyt271TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Hyt271HumidityPropsAvailabilityProps {
     topic: unknown;
@@ -19513,11 +21119,17 @@ interface Hyt271HumidityProps {
     expireAfter?: Hyt271HumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface IaqcoreCo2PropsAvailabilityProps {
     topic: unknown;
@@ -19584,11 +21196,17 @@ interface IaqcoreCo2Props {
     expireAfter?: IaqcoreCo2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface IaqcoreTvocPropsAvailabilityProps {
     topic: unknown;
@@ -19655,11 +21273,17 @@ interface IaqcoreTvocProps {
     expireAfter?: IaqcoreTvocPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ina219BusVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -19726,11 +21350,17 @@ interface Ina219BusVoltageProps {
     expireAfter?: Ina219BusVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ina219ShuntVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -19797,11 +21427,17 @@ interface Ina219ShuntVoltageProps {
     expireAfter?: Ina219ShuntVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ina219CurrentPropsAvailabilityProps {
     topic: unknown;
@@ -19868,11 +21504,17 @@ interface Ina219CurrentProps {
     expireAfter?: Ina219CurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ina219PowerPropsAvailabilityProps {
     topic: unknown;
@@ -19939,11 +21581,17 @@ interface Ina219PowerProps {
     expireAfter?: Ina219PowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ina226BusVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -20010,11 +21658,17 @@ interface Ina226BusVoltageProps {
     expireAfter?: Ina226BusVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ina226ShuntVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -20081,11 +21735,17 @@ interface Ina226ShuntVoltageProps {
     expireAfter?: Ina226ShuntVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ina226CurrentPropsAvailabilityProps {
     topic: unknown;
@@ -20152,11 +21812,17 @@ interface Ina226CurrentProps {
     expireAfter?: Ina226CurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ina226PowerPropsAvailabilityProps {
     topic: unknown;
@@ -20223,11 +21889,17 @@ interface Ina226PowerProps {
     expireAfter?: Ina226PowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ina226AdcTimeProps {
     /** [Time](/guides/configuration-types#time): ADC conversion time for Bus Voltage */
@@ -20300,11 +21972,17 @@ interface Ina260BusVoltageProps {
     expireAfter?: Ina260BusVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ina260CurrentPropsAvailabilityProps {
     topic: unknown;
@@ -20371,11 +22049,17 @@ interface Ina260CurrentProps {
     expireAfter?: Ina260CurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ina260PowerPropsAvailabilityProps {
     topic: unknown;
@@ -20442,11 +22126,17 @@ interface Ina260PowerProps {
     expireAfter?: Ina260PowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ina3221Channel1PropsBusVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -20513,11 +22203,17 @@ interface Ina3221Channel1PropsBusVoltageProps {
     expireAfter?: Ina3221Channel1PropsBusVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ina3221Channel1PropsShuntVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -20584,11 +22280,17 @@ interface Ina3221Channel1PropsShuntVoltageProps {
     expireAfter?: Ina3221Channel1PropsShuntVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ina3221Channel1PropsCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -20655,11 +22357,17 @@ interface Ina3221Channel1PropsCurrentProps {
     expireAfter?: Ina3221Channel1PropsCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ina3221Channel1PropsPowerPropsAvailabilityProps {
     topic: unknown;
@@ -20726,11 +22434,17 @@ interface Ina3221Channel1PropsPowerProps {
     expireAfter?: Ina3221Channel1PropsPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ina3221Channel1Props {
     /**
@@ -20818,11 +22532,17 @@ interface Ina3221Channel2PropsBusVoltageProps {
     expireAfter?: Ina3221Channel2PropsBusVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ina3221Channel2PropsShuntVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -20889,11 +22609,17 @@ interface Ina3221Channel2PropsShuntVoltageProps {
     expireAfter?: Ina3221Channel2PropsShuntVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ina3221Channel2PropsCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -20960,11 +22686,17 @@ interface Ina3221Channel2PropsCurrentProps {
     expireAfter?: Ina3221Channel2PropsCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ina3221Channel2PropsPowerPropsAvailabilityProps {
     topic: unknown;
@@ -21031,11 +22763,17 @@ interface Ina3221Channel2PropsPowerProps {
     expireAfter?: Ina3221Channel2PropsPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ina3221Channel2Props {
     /**
@@ -21123,11 +22861,17 @@ interface Ina3221Channel3PropsBusVoltageProps {
     expireAfter?: Ina3221Channel3PropsBusVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ina3221Channel3PropsShuntVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -21194,11 +22938,17 @@ interface Ina3221Channel3PropsShuntVoltageProps {
     expireAfter?: Ina3221Channel3PropsShuntVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ina3221Channel3PropsCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -21265,11 +23015,17 @@ interface Ina3221Channel3PropsCurrentProps {
     expireAfter?: Ina3221Channel3PropsCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ina3221Channel3PropsPowerPropsAvailabilityProps {
     topic: unknown;
@@ -21336,11 +23092,17 @@ interface Ina3221Channel3PropsPowerProps {
     expireAfter?: Ina3221Channel3PropsPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ina3221Channel3Props {
     /**
@@ -21428,11 +23190,17 @@ interface InkbirdIbsth1MiniTemperatureProps {
     expireAfter?: InkbirdIbsth1MiniTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface InkbirdIbsth1MiniExternalTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -21499,11 +23267,17 @@ interface InkbirdIbsth1MiniExternalTemperatureProps {
     expireAfter?: InkbirdIbsth1MiniExternalTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface InkbirdIbsth1MiniHumidityPropsAvailabilityProps {
     topic: unknown;
@@ -21570,11 +23344,17 @@ interface InkbirdIbsth1MiniHumidityProps {
     expireAfter?: InkbirdIbsth1MiniHumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface InkbirdIbsth1MiniBatteryLevelPropsAvailabilityProps {
     topic: unknown;
@@ -21641,11 +23421,17 @@ interface InkbirdIbsth1MiniBatteryLevelProps {
     expireAfter?: InkbirdIbsth1MiniBatteryLevelPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface KamstrupKmpHeatEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -21712,11 +23498,17 @@ interface KamstrupKmpHeatEnergyProps {
     expireAfter?: KamstrupKmpHeatEnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface KamstrupKmpPowerPropsAvailabilityProps {
     topic: unknown;
@@ -21783,11 +23575,17 @@ interface KamstrupKmpPowerProps {
     expireAfter?: KamstrupKmpPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface KamstrupKmpTemp1PropsAvailabilityProps {
     topic: unknown;
@@ -21854,11 +23652,17 @@ interface KamstrupKmpTemp1Props {
     expireAfter?: KamstrupKmpTemp1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface KamstrupKmpTemp2PropsAvailabilityProps {
     topic: unknown;
@@ -21925,11 +23729,17 @@ interface KamstrupKmpTemp2Props {
     expireAfter?: KamstrupKmpTemp2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface KamstrupKmpTempDiffPropsAvailabilityProps {
     topic: unknown;
@@ -21996,11 +23806,17 @@ interface KamstrupKmpTempDiffProps {
     expireAfter?: KamstrupKmpTempDiffPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface KamstrupKmpFlowPropsAvailabilityProps {
     topic: unknown;
@@ -22067,11 +23883,17 @@ interface KamstrupKmpFlowProps {
     expireAfter?: KamstrupKmpFlowPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface KamstrupKmpVolumePropsAvailabilityProps {
     topic: unknown;
@@ -22138,11 +23960,17 @@ interface KamstrupKmpVolumeProps {
     expireAfter?: KamstrupKmpVolumePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface KamstrupKmpCustomPropsAvailabilityProps {
     topic: unknown;
@@ -22209,11 +24037,17 @@ interface KamstrupKmpCustomProps {
     expireAfter?: KamstrupKmpCustomPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** 2-byte hex: The KMP command code (e.g. 0x003C). */
     command: unknown;
 }
@@ -22282,11 +24116,17 @@ interface KmeterisoTemperatureProps {
     expireAfter?: KmeterisoTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface KmeterisoInternalTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -22353,11 +24193,17 @@ interface KmeterisoInternalTemperatureProps {
     expireAfter?: KmeterisoInternalTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface KuntzePhPropsAvailabilityProps {
     topic: unknown;
@@ -22423,11 +24269,17 @@ interface KuntzePhProps {
     expireAfter?: KuntzePhPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface KuntzeTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -22493,11 +24345,17 @@ interface KuntzeTemperatureProps {
     expireAfter?: KuntzeTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface KuntzeDis1PropsAvailabilityProps {
     topic: unknown;
@@ -22563,11 +24421,17 @@ interface KuntzeDis1Props {
     expireAfter?: KuntzeDis1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface KuntzeDis2PropsAvailabilityProps {
     topic: unknown;
@@ -22633,11 +24497,17 @@ interface KuntzeDis2Props {
     expireAfter?: KuntzeDis2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface KuntzeRedoxPropsAvailabilityProps {
     topic: unknown;
@@ -22703,11 +24573,17 @@ interface KuntzeRedoxProps {
     expireAfter?: KuntzeRedoxPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface KuntzeEcPropsAvailabilityProps {
     topic: unknown;
@@ -22773,11 +24649,17 @@ interface KuntzeEcProps {
     expireAfter?: KuntzeEcPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface KuntzeOciPropsAvailabilityProps {
     topic: unknown;
@@ -22843,11 +24725,17 @@ interface KuntzeOciProps {
     expireAfter?: KuntzeOciPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Lc709203fBatteryVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -22914,11 +24802,17 @@ interface Lc709203fBatteryVoltageProps {
     expireAfter?: Lc709203fBatteryVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Lc709203fBatteryLevelPropsAvailabilityProps {
     topic: unknown;
@@ -22985,11 +24879,17 @@ interface Lc709203fBatteryLevelProps {
     expireAfter?: Lc709203fBatteryLevelPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Lc709203fTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -23056,11 +24956,17 @@ interface Lc709203fTemperatureProps {
     expireAfter?: Lc709203fTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /**
      * The B-constant of the thermistor you are using.
      * @yamlKey b_constant
@@ -23131,11 +25037,17 @@ interface Lps22TemperatureProps {
     expireAfter?: Lps22TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Lps22PressurePropsAvailabilityProps {
     topic: unknown;
@@ -23202,11 +25114,17 @@ interface Lps22PressureProps {
     expireAfter?: Lps22PressurePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ltr390LightPropsAvailabilityProps {
     topic: unknown;
@@ -23272,11 +25190,17 @@ interface Ltr390LightProps {
     expireAfter?: Ltr390LightPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ltr390AmbientLightPropsAvailabilityProps {
     topic: unknown;
@@ -23342,11 +25266,17 @@ interface Ltr390AmbientLightProps {
     expireAfter?: Ltr390AmbientLightPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ltr390UvIndexPropsAvailabilityProps {
     topic: unknown;
@@ -23412,11 +25342,17 @@ interface Ltr390UvIndexProps {
     expireAfter?: Ltr390UvIndexPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ltr390UvPropsAvailabilityProps {
     topic: unknown;
@@ -23482,11 +25418,17 @@ interface Ltr390UvProps {
     expireAfter?: Ltr390UvPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ltr390GainProps {
     /** @yamlKey ambient_light */
@@ -23570,11 +25512,17 @@ interface Ltr501AmbientLightProps {
     expireAfter?: Ltr501AmbientLightPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ltr501InfraredCountsPropsAvailabilityProps {
     topic: unknown;
@@ -23640,11 +25588,17 @@ interface Ltr501InfraredCountsProps {
     expireAfter?: Ltr501InfraredCountsPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ltr501FullSpectrumCountsPropsAvailabilityProps {
     topic: unknown;
@@ -23710,11 +25664,17 @@ interface Ltr501FullSpectrumCountsProps {
     expireAfter?: Ltr501FullSpectrumCountsPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ltr501PsCountsPropsAvailabilityProps {
     topic: unknown;
@@ -23780,11 +25740,17 @@ interface Ltr501PsCountsProps {
     expireAfter?: Ltr501PsCountsPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ltr501ActualGainPropsAvailabilityProps {
     topic: unknown;
@@ -23850,11 +25816,17 @@ interface Ltr501ActualGainProps {
     expireAfter?: Ltr501ActualGainPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ltr501ActualIntegrationTimePropsAvailabilityProps {
     topic: unknown;
@@ -23920,11 +25892,17 @@ interface Ltr501ActualIntegrationTimeProps {
     expireAfter?: Ltr501ActualIntegrationTimePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface LtrAlsPsPsCooldownProps {
     days?: unknown;
@@ -23998,11 +25976,17 @@ interface LtrAlsPsAmbientLightProps {
     expireAfter?: LtrAlsPsAmbientLightPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface LtrAlsPsInfraredCountsPropsAvailabilityProps {
     topic: unknown;
@@ -24068,11 +26052,17 @@ interface LtrAlsPsInfraredCountsProps {
     expireAfter?: LtrAlsPsInfraredCountsPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface LtrAlsPsFullSpectrumCountsPropsAvailabilityProps {
     topic: unknown;
@@ -24138,11 +26128,17 @@ interface LtrAlsPsFullSpectrumCountsProps {
     expireAfter?: LtrAlsPsFullSpectrumCountsPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface LtrAlsPsPsCountsPropsAvailabilityProps {
     topic: unknown;
@@ -24208,11 +26204,17 @@ interface LtrAlsPsPsCountsProps {
     expireAfter?: LtrAlsPsPsCountsPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface LtrAlsPsActualGainPropsAvailabilityProps {
     topic: unknown;
@@ -24278,11 +26280,17 @@ interface LtrAlsPsActualGainProps {
     expireAfter?: LtrAlsPsActualGainPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface LtrAlsPsActualIntegrationTimePropsAvailabilityProps {
     topic: unknown;
@@ -24348,11 +26356,17 @@ interface LtrAlsPsActualIntegrationTimeProps {
     expireAfter?: LtrAlsPsActualIntegrationTimePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Max17043BatteryVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -24419,11 +26433,17 @@ interface Max17043BatteryVoltageProps {
     expireAfter?: Max17043BatteryVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Max17043BatteryLevelPropsAvailabilityProps {
     topic: unknown;
@@ -24490,11 +26510,17 @@ interface Max17043BatteryLevelProps {
     expireAfter?: Max17043BatteryLevelPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Max31855ReferenceTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -24561,11 +26587,17 @@ interface Max31855ReferenceTemperatureProps {
     expireAfter?: Max31855ReferenceTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Max9611VoltagePropsAvailabilityProps {
     topic: unknown;
@@ -24632,11 +26664,17 @@ interface Max9611VoltageProps {
     expireAfter?: Max9611VoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Max9611CurrentPropsAvailabilityProps {
     topic: unknown;
@@ -24703,11 +26741,17 @@ interface Max9611CurrentProps {
     expireAfter?: Max9611CurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Max9611PowerPropsAvailabilityProps {
     topic: unknown;
@@ -24774,11 +26818,17 @@ interface Max9611PowerProps {
     expireAfter?: Max9611PowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Max9611TemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -24845,11 +26895,17 @@ interface Max9611TemperatureProps {
     expireAfter?: Max9611TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Mcp9600HotJunctionPropsAvailabilityProps {
     topic: unknown;
@@ -24916,11 +26972,17 @@ interface Mcp9600HotJunctionProps {
     expireAfter?: Mcp9600HotJunctionPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Mcp9600ColdJunctionPropsAvailabilityProps {
     topic: unknown;
@@ -24987,11 +27049,17 @@ interface Mcp9600ColdJunctionProps {
     expireAfter?: Mcp9600ColdJunctionPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Mhz19Co2PropsAvailabilityProps {
     topic: unknown;
@@ -25057,11 +27125,17 @@ interface Mhz19Co2Props {
     expireAfter?: Mhz19Co2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Mhz19TemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -25128,11 +27202,17 @@ interface Mhz19TemperatureProps {
     expireAfter?: Mhz19TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Mhz19WarmupTimeProps {
     days?: unknown;
@@ -25207,11 +27287,17 @@ interface Mics4514CarbonMonoxideProps {
     expireAfter?: Mics4514CarbonMonoxidePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Mics4514MethanePropsAvailabilityProps {
     topic: unknown;
@@ -25278,11 +27364,17 @@ interface Mics4514MethaneProps {
     expireAfter?: Mics4514MethanePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Mics4514EthanolPropsAvailabilityProps {
     topic: unknown;
@@ -25349,11 +27441,17 @@ interface Mics4514EthanolProps {
     expireAfter?: Mics4514EthanolPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Mics4514HydrogenPropsAvailabilityProps {
     topic: unknown;
@@ -25420,11 +27518,17 @@ interface Mics4514HydrogenProps {
     expireAfter?: Mics4514HydrogenPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Mics4514AmmoniaPropsAvailabilityProps {
     topic: unknown;
@@ -25491,11 +27595,17 @@ interface Mics4514AmmoniaProps {
     expireAfter?: Mics4514AmmoniaPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Mics4514NitrogenDioxidePropsAvailabilityProps {
     topic: unknown;
@@ -25562,11 +27672,17 @@ interface Mics4514NitrogenDioxideProps {
     expireAfter?: Mics4514NitrogenDioxidePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Mlx90393XAxisPropsAvailabilityProps {
     topic: unknown;
@@ -25632,11 +27748,17 @@ interface Mlx90393XAxisProps {
     expireAfter?: Mlx90393XAxisPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** int: Specify which part of the full 19-bit value to read. Defaults to `DIV_4`. Must be one of: */
     resolution?: "DIV_8" | "DIV_4" | "DIV_2" | "DIV_1";
 }
@@ -25704,11 +27826,17 @@ interface Mlx90393YAxisProps {
     expireAfter?: Mlx90393YAxisPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** int: Specify which part of the full 19-bit value to read. Defaults to `DIV_4`. Must be one of: */
     resolution?: "DIV_8" | "DIV_4" | "DIV_2" | "DIV_1";
 }
@@ -25776,11 +27904,17 @@ interface Mlx90393ZAxisProps {
     expireAfter?: Mlx90393ZAxisPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** int: Specify which part of the full 19-bit value to read. Defaults to `DIV_4`. Must be one of: */
     resolution?: "DIV_8" | "DIV_4" | "DIV_2" | "DIV_1";
 }
@@ -25848,11 +27982,17 @@ interface Mlx90393TemperatureProps {
     expireAfter?: Mlx90393TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** int: On-chip oversampling for the temperature sensor. Defaults to `0`. Must be between `0` and `3`. */
     oversampling?: number;
 }
@@ -25921,11 +28061,17 @@ interface Mlx90614AmbientProps {
     expireAfter?: Mlx90614AmbientPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Mlx90614ObjectPropsAvailabilityProps {
     topic: unknown;
@@ -25992,11 +28138,17 @@ interface Mlx90614ObjectProps {
     expireAfter?: Mlx90614ObjectPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** Emissivity coefficient is the measure of an object's ability to emit infrared energy compared to a theoretical perfec... */
     emissivity?: unknown;
 }
@@ -26064,11 +28216,17 @@ interface Mmc5603FieldStrengthXProps {
     expireAfter?: Mmc5603FieldStrengthXPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Mmc5603FieldStrengthYPropsAvailabilityProps {
     topic: unknown;
@@ -26134,11 +28292,17 @@ interface Mmc5603FieldStrengthYProps {
     expireAfter?: Mmc5603FieldStrengthYPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Mmc5603FieldStrengthZPropsAvailabilityProps {
     topic: unknown;
@@ -26204,11 +28368,17 @@ interface Mmc5603FieldStrengthZProps {
     expireAfter?: Mmc5603FieldStrengthZPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Mmc5603HeadingPropsAvailabilityProps {
     topic: unknown;
@@ -26274,11 +28444,17 @@ interface Mmc5603HeadingProps {
     expireAfter?: Mmc5603HeadingPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Mmc5983FieldStrengthXPropsAvailabilityProps {
     topic: unknown;
@@ -26344,11 +28520,17 @@ interface Mmc5983FieldStrengthXProps {
     expireAfter?: Mmc5983FieldStrengthXPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Mmc5983FieldStrengthYPropsAvailabilityProps {
     topic: unknown;
@@ -26414,11 +28596,17 @@ interface Mmc5983FieldStrengthYProps {
     expireAfter?: Mmc5983FieldStrengthYPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Mmc5983FieldStrengthZPropsAvailabilityProps {
     topic: unknown;
@@ -26484,11 +28672,17 @@ interface Mmc5983FieldStrengthZProps {
     expireAfter?: Mmc5983FieldStrengthZPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface MopekaProCheckTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -26554,11 +28748,17 @@ interface MopekaProCheckTemperatureProps {
     expireAfter?: MopekaProCheckTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface MopekaProCheckLevelPropsAvailabilityProps {
     topic: unknown;
@@ -26624,11 +28824,17 @@ interface MopekaProCheckLevelProps {
     expireAfter?: MopekaProCheckLevelPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface MopekaProCheckDistancePropsAvailabilityProps {
     topic: unknown;
@@ -26694,11 +28900,17 @@ interface MopekaProCheckDistanceProps {
     expireAfter?: MopekaProCheckDistancePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface MopekaProCheckBatteryLevelPropsAvailabilityProps {
     topic: unknown;
@@ -26765,11 +28977,17 @@ interface MopekaProCheckBatteryLevelProps {
     expireAfter?: MopekaProCheckBatteryLevelPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface MopekaProCheckSignalQualityPropsAvailabilityProps {
     topic: unknown;
@@ -26835,11 +29053,17 @@ interface MopekaProCheckSignalQualityProps {
     expireAfter?: MopekaProCheckSignalQualityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface MopekaProCheckIgnoredReadsPropsAvailabilityProps {
     topic: unknown;
@@ -26905,11 +29129,17 @@ interface MopekaProCheckIgnoredReadsProps {
     expireAfter?: MopekaProCheckIgnoredReadsPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface MopekaStdCheckTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -26975,11 +29205,17 @@ interface MopekaStdCheckTemperatureProps {
     expireAfter?: MopekaStdCheckTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface MopekaStdCheckLevelPropsAvailabilityProps {
     topic: unknown;
@@ -27045,11 +29281,17 @@ interface MopekaStdCheckLevelProps {
     expireAfter?: MopekaStdCheckLevelPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface MopekaStdCheckDistancePropsAvailabilityProps {
     topic: unknown;
@@ -27115,11 +29357,17 @@ interface MopekaStdCheckDistanceProps {
     expireAfter?: MopekaStdCheckDistancePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface MopekaStdCheckBatteryLevelPropsAvailabilityProps {
     topic: unknown;
@@ -27186,11 +29434,17 @@ interface MopekaStdCheckBatteryLevelProps {
     expireAfter?: MopekaStdCheckBatteryLevelPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Mpl3115a2PressurePropsAvailabilityProps {
     topic: unknown;
@@ -27257,11 +29511,17 @@ interface Mpl3115a2PressureProps {
     expireAfter?: Mpl3115a2PressurePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Mpl3115a2AltitudePropsAvailabilityProps {
     topic: unknown;
@@ -27328,11 +29588,17 @@ interface Mpl3115a2AltitudeProps {
     expireAfter?: Mpl3115a2AltitudePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Mpl3115a2TemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -27399,11 +29665,17 @@ interface Mpl3115a2TemperatureProps {
     expireAfter?: Mpl3115a2TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Mpu6050AccelXPropsAvailabilityProps {
     topic: unknown;
@@ -27469,11 +29741,17 @@ interface Mpu6050AccelXProps {
     expireAfter?: Mpu6050AccelXPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Mpu6050AccelYPropsAvailabilityProps {
     topic: unknown;
@@ -27539,11 +29817,17 @@ interface Mpu6050AccelYProps {
     expireAfter?: Mpu6050AccelYPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Mpu6050AccelZPropsAvailabilityProps {
     topic: unknown;
@@ -27609,11 +29893,17 @@ interface Mpu6050AccelZProps {
     expireAfter?: Mpu6050AccelZPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Mpu6050GyroXPropsAvailabilityProps {
     topic: unknown;
@@ -27679,11 +29969,17 @@ interface Mpu6050GyroXProps {
     expireAfter?: Mpu6050GyroXPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Mpu6050GyroYPropsAvailabilityProps {
     topic: unknown;
@@ -27749,11 +30045,17 @@ interface Mpu6050GyroYProps {
     expireAfter?: Mpu6050GyroYPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Mpu6050GyroZPropsAvailabilityProps {
     topic: unknown;
@@ -27819,11 +30121,17 @@ interface Mpu6050GyroZProps {
     expireAfter?: Mpu6050GyroZPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Mpu6050TemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -27890,11 +30198,17 @@ interface Mpu6050TemperatureProps {
     expireAfter?: Mpu6050TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Mpu6886AccelXPropsAvailabilityProps {
     topic: unknown;
@@ -27960,11 +30274,17 @@ interface Mpu6886AccelXProps {
     expireAfter?: Mpu6886AccelXPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Mpu6886AccelYPropsAvailabilityProps {
     topic: unknown;
@@ -28030,11 +30350,17 @@ interface Mpu6886AccelYProps {
     expireAfter?: Mpu6886AccelYPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Mpu6886AccelZPropsAvailabilityProps {
     topic: unknown;
@@ -28100,11 +30426,17 @@ interface Mpu6886AccelZProps {
     expireAfter?: Mpu6886AccelZPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Mpu6886GyroXPropsAvailabilityProps {
     topic: unknown;
@@ -28170,11 +30502,17 @@ interface Mpu6886GyroXProps {
     expireAfter?: Mpu6886GyroXPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Mpu6886GyroYPropsAvailabilityProps {
     topic: unknown;
@@ -28240,11 +30578,17 @@ interface Mpu6886GyroYProps {
     expireAfter?: Mpu6886GyroYPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Mpu6886GyroZPropsAvailabilityProps {
     topic: unknown;
@@ -28310,11 +30654,17 @@ interface Mpu6886GyroZProps {
     expireAfter?: Mpu6886GyroZPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Mpu6886TemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -28381,11 +30731,17 @@ interface Mpu6886TemperatureProps {
     expireAfter?: Mpu6886TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ms5611TemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -28452,11 +30808,17 @@ interface Ms5611TemperatureProps {
     expireAfter?: Ms5611TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ms5611PressurePropsAvailabilityProps {
     topic: unknown;
@@ -28522,11 +30884,17 @@ interface Ms5611PressureProps {
     expireAfter?: Ms5611PressurePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ms8607TemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -28593,11 +30961,17 @@ interface Ms8607TemperatureProps {
     expireAfter?: Ms8607TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ms8607PressurePropsAvailabilityProps {
     topic: unknown;
@@ -28664,11 +31038,17 @@ interface Ms8607PressureProps {
     expireAfter?: Ms8607PressurePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ms8607HumidityPropsAvailabilityProps {
     topic: unknown;
@@ -28735,11 +31115,17 @@ interface Ms8607HumidityProps {
     expireAfter?: Ms8607HumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /**
      * [ID](/guides/configuration-types#id): Manually specify the ID of the [I²C Component](/components/i2c) if your configu...
      * @yamlKey i2c_id
@@ -28813,11 +31199,17 @@ interface Npi19TemperatureProps {
     expireAfter?: Npi19TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Npi19RawPressurePropsAvailabilityProps {
     topic: unknown;
@@ -28884,11 +31276,17 @@ interface Npi19RawPressureProps {
     expireAfter?: Npi19RawPressurePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Pm1006Pm25PropsAvailabilityProps {
     topic: unknown;
@@ -28954,11 +31352,17 @@ interface Pm1006Pm25Props {
     expireAfter?: Pm1006Pm25PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Pm2005Pm10PropsAvailabilityProps {
     topic: unknown;
@@ -29024,11 +31428,17 @@ interface Pm2005Pm10Props {
     expireAfter?: Pm2005Pm10PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Pm2005Pm25PropsAvailabilityProps {
     topic: unknown;
@@ -29094,11 +31504,17 @@ interface Pm2005Pm25Props {
     expireAfter?: Pm2005Pm25PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Pm2005Pm100PropsAvailabilityProps {
     topic: unknown;
@@ -29164,11 +31580,17 @@ interface Pm2005Pm100Props {
     expireAfter?: Pm2005Pm100PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Pmsa003iPm10PropsAvailabilityProps {
     topic: unknown;
@@ -29234,11 +31656,17 @@ interface Pmsa003iPm10Props {
     expireAfter?: Pmsa003iPm10PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Pmsa003iPm25PropsAvailabilityProps {
     topic: unknown;
@@ -29304,11 +31732,17 @@ interface Pmsa003iPm25Props {
     expireAfter?: Pmsa003iPm25PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Pmsa003iPm100PropsAvailabilityProps {
     topic: unknown;
@@ -29374,11 +31808,17 @@ interface Pmsa003iPm100Props {
     expireAfter?: Pmsa003iPm100PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Pmsa003iPmc03PropsAvailabilityProps {
     topic: unknown;
@@ -29444,11 +31884,17 @@ interface Pmsa003iPmc03Props {
     expireAfter?: Pmsa003iPmc03PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Pmsa003iPmc05PropsAvailabilityProps {
     topic: unknown;
@@ -29514,11 +31960,17 @@ interface Pmsa003iPmc05Props {
     expireAfter?: Pmsa003iPmc05PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Pmsa003iPmc10PropsAvailabilityProps {
     topic: unknown;
@@ -29584,11 +32036,17 @@ interface Pmsa003iPmc10Props {
     expireAfter?: Pmsa003iPmc10PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Pmsa003iPmc25PropsAvailabilityProps {
     topic: unknown;
@@ -29654,11 +32112,17 @@ interface Pmsa003iPmc25Props {
     expireAfter?: Pmsa003iPmc25PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Pmsa003iPmc50PropsAvailabilityProps {
     topic: unknown;
@@ -29724,11 +32188,17 @@ interface Pmsa003iPmc50Props {
     expireAfter?: Pmsa003iPmc50PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Pmsa003iPmc100PropsAvailabilityProps {
     topic: unknown;
@@ -29794,11 +32264,17 @@ interface Pmsa003iPmc100Props {
     expireAfter?: Pmsa003iPmc100PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Pmsx003Pm10StdPropsAvailabilityProps {
     topic: unknown;
@@ -29864,11 +32340,17 @@ interface Pmsx003Pm10StdProps {
     expireAfter?: Pmsx003Pm10StdPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Pmsx003Pm25StdPropsAvailabilityProps {
     topic: unknown;
@@ -29934,11 +32416,17 @@ interface Pmsx003Pm25StdProps {
     expireAfter?: Pmsx003Pm25StdPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Pmsx003Pm100StdPropsAvailabilityProps {
     topic: unknown;
@@ -30004,11 +32492,17 @@ interface Pmsx003Pm100StdProps {
     expireAfter?: Pmsx003Pm100StdPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Pmsx003Pm10PropsAvailabilityProps {
     topic: unknown;
@@ -30074,11 +32568,17 @@ interface Pmsx003Pm10Props {
     expireAfter?: Pmsx003Pm10PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Pmsx003Pm25PropsAvailabilityProps {
     topic: unknown;
@@ -30144,11 +32644,17 @@ interface Pmsx003Pm25Props {
     expireAfter?: Pmsx003Pm25PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Pmsx003Pm100PropsAvailabilityProps {
     topic: unknown;
@@ -30214,11 +32720,17 @@ interface Pmsx003Pm100Props {
     expireAfter?: Pmsx003Pm100PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Pmsx003Pm03umPropsAvailabilityProps {
     topic: unknown;
@@ -30284,11 +32796,17 @@ interface Pmsx003Pm03umProps {
     expireAfter?: Pmsx003Pm03umPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Pmsx003Pm05umPropsAvailabilityProps {
     topic: unknown;
@@ -30354,11 +32872,17 @@ interface Pmsx003Pm05umProps {
     expireAfter?: Pmsx003Pm05umPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Pmsx003Pm10umPropsAvailabilityProps {
     topic: unknown;
@@ -30424,11 +32948,17 @@ interface Pmsx003Pm10umProps {
     expireAfter?: Pmsx003Pm10umPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Pmsx003Pm25umPropsAvailabilityProps {
     topic: unknown;
@@ -30494,11 +33024,17 @@ interface Pmsx003Pm25umProps {
     expireAfter?: Pmsx003Pm25umPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Pmsx003Pm50umPropsAvailabilityProps {
     topic: unknown;
@@ -30564,11 +33100,17 @@ interface Pmsx003Pm50umProps {
     expireAfter?: Pmsx003Pm50umPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Pmsx003Pm100umPropsAvailabilityProps {
     topic: unknown;
@@ -30634,11 +33176,17 @@ interface Pmsx003Pm100umProps {
     expireAfter?: Pmsx003Pm100umPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Pmsx003FormaldehydePropsAvailabilityProps {
     topic: unknown;
@@ -30704,11 +33252,17 @@ interface Pmsx003FormaldehydeProps {
     expireAfter?: Pmsx003FormaldehydePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Pmsx003TemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -30775,11 +33329,17 @@ interface Pmsx003TemperatureProps {
     expireAfter?: Pmsx003TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Pmsx003HumidityPropsAvailabilityProps {
     topic: unknown;
@@ -30846,11 +33406,17 @@ interface Pmsx003HumidityProps {
     expireAfter?: Pmsx003HumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Pmwcs3E25PropsAvailabilityProps {
     topic: unknown;
@@ -30916,11 +33482,17 @@ interface Pmwcs3E25Props {
     expireAfter?: Pmwcs3E25PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Pmwcs3EcPropsAvailabilityProps {
     topic: unknown;
@@ -30986,11 +33558,17 @@ interface Pmwcs3EcProps {
     expireAfter?: Pmwcs3EcPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Pmwcs3TemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -31056,11 +33634,17 @@ interface Pmwcs3TemperatureProps {
     expireAfter?: Pmwcs3TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Pmwcs3VwcPropsAvailabilityProps {
     topic: unknown;
@@ -31126,11 +33710,17 @@ interface Pmwcs3VwcProps {
     expireAfter?: Pmwcs3VwcPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PulseCounterCountModeProps {
     /**
@@ -31216,11 +33806,17 @@ interface PulseCounterTotalProps {
     expireAfter?: PulseCounterTotalPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PulseMeterTotalPropsAvailabilityProps {
     topic: unknown;
@@ -31286,11 +33882,17 @@ interface PulseMeterTotalProps {
     expireAfter?: PulseMeterTotalPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Pzem004tVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -31357,11 +33959,17 @@ interface Pzem004tVoltageProps {
     expireAfter?: Pzem004tVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Pzem004tCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -31428,11 +34036,17 @@ interface Pzem004tCurrentProps {
     expireAfter?: Pzem004tCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Pzem004tPowerPropsAvailabilityProps {
     topic: unknown;
@@ -31499,11 +34113,17 @@ interface Pzem004tPowerProps {
     expireAfter?: Pzem004tPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Pzem004tEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -31570,11 +34190,17 @@ interface Pzem004tEnergyProps {
     expireAfter?: Pzem004tEnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PzemacVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -31641,11 +34267,17 @@ interface PzemacVoltageProps {
     expireAfter?: PzemacVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PzemacCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -31712,11 +34344,17 @@ interface PzemacCurrentProps {
     expireAfter?: PzemacCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PzemacPowerPropsAvailabilityProps {
     topic: unknown;
@@ -31783,11 +34421,17 @@ interface PzemacPowerProps {
     expireAfter?: PzemacPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PzemacEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -31854,11 +34498,17 @@ interface PzemacEnergyProps {
     expireAfter?: PzemacEnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PzemacFrequencyPropsAvailabilityProps {
     topic: unknown;
@@ -31924,11 +34574,17 @@ interface PzemacFrequencyProps {
     expireAfter?: PzemacFrequencyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PzemacPowerFactorPropsAvailabilityProps {
     topic: unknown;
@@ -31995,11 +34651,17 @@ interface PzemacPowerFactorProps {
     expireAfter?: PzemacPowerFactorPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PzemdcVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -32066,11 +34728,17 @@ interface PzemdcVoltageProps {
     expireAfter?: PzemdcVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PzemdcCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -32137,11 +34805,17 @@ interface PzemdcCurrentProps {
     expireAfter?: PzemdcCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PzemdcPowerPropsAvailabilityProps {
     topic: unknown;
@@ -32208,11 +34882,17 @@ interface PzemdcPowerProps {
     expireAfter?: PzemdcPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PzemdcEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -32279,11 +34959,17 @@ interface PzemdcEnergyProps {
     expireAfter?: PzemdcEnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Qmc5883lFieldStrengthXPropsAvailabilityProps {
     topic: unknown;
@@ -32349,11 +35035,17 @@ interface Qmc5883lFieldStrengthXProps {
     expireAfter?: Qmc5883lFieldStrengthXPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Qmc5883lFieldStrengthYPropsAvailabilityProps {
     topic: unknown;
@@ -32419,11 +35111,17 @@ interface Qmc5883lFieldStrengthYProps {
     expireAfter?: Qmc5883lFieldStrengthYPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Qmc5883lFieldStrengthZPropsAvailabilityProps {
     topic: unknown;
@@ -32489,11 +35187,17 @@ interface Qmc5883lFieldStrengthZProps {
     expireAfter?: Qmc5883lFieldStrengthZPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Qmc5883lHeadingPropsAvailabilityProps {
     topic: unknown;
@@ -32559,11 +35263,17 @@ interface Qmc5883lHeadingProps {
     expireAfter?: Qmc5883lHeadingPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Qmc5883lTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -32630,11 +35340,17 @@ interface Qmc5883lTemperatureProps {
     expireAfter?: Qmc5883lTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Qmp6988TemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -32701,11 +35417,17 @@ interface Qmp6988TemperatureProps {
     expireAfter?: Qmp6988TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** The oversampling parameter for the temperature sensor. See [Oversampling Options](https://esphome.io/components/senso... */
     oversampling?: "NONE" | "1X" | "2X" | "4X" | "8X" | "16X" | "32X" | "64X";
 }
@@ -32774,11 +35496,17 @@ interface Qmp6988PressureProps {
     expireAfter?: Qmp6988PressurePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** The oversampling parameter for the temperature sensor. See [Oversampling Options](https://esphome.io/components/senso... */
     oversampling?: "NONE" | "1X" | "2X" | "4X" | "8X" | "16X" | "32X" | "64X";
 }
@@ -32846,11 +35574,17 @@ interface RadonEyeRd200RadonProps {
     expireAfter?: RadonEyeRd200RadonPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface RadonEyeRd200RadonLongTermPropsAvailabilityProps {
     topic: unknown;
@@ -32916,11 +35650,17 @@ interface RadonEyeRd200RadonLongTermProps {
     expireAfter?: RadonEyeRd200RadonLongTermPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface RuuvitagTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -32987,11 +35727,17 @@ interface RuuvitagTemperatureProps {
     expireAfter?: RuuvitagTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface RuuvitagHumidityPropsAvailabilityProps {
     topic: unknown;
@@ -33058,11 +35804,17 @@ interface RuuvitagHumidityProps {
     expireAfter?: RuuvitagHumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface RuuvitagPressurePropsAvailabilityProps {
     topic: unknown;
@@ -33129,11 +35881,17 @@ interface RuuvitagPressureProps {
     expireAfter?: RuuvitagPressurePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface RuuvitagAccelerationPropsAvailabilityProps {
     topic: unknown;
@@ -33199,11 +35957,17 @@ interface RuuvitagAccelerationProps {
     expireAfter?: RuuvitagAccelerationPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface RuuvitagAccelerationXPropsAvailabilityProps {
     topic: unknown;
@@ -33269,11 +36033,17 @@ interface RuuvitagAccelerationXProps {
     expireAfter?: RuuvitagAccelerationXPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface RuuvitagAccelerationYPropsAvailabilityProps {
     topic: unknown;
@@ -33339,11 +36109,17 @@ interface RuuvitagAccelerationYProps {
     expireAfter?: RuuvitagAccelerationYPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface RuuvitagAccelerationZPropsAvailabilityProps {
     topic: unknown;
@@ -33409,11 +36185,17 @@ interface RuuvitagAccelerationZProps {
     expireAfter?: RuuvitagAccelerationZPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface RuuvitagBatteryVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -33480,11 +36262,17 @@ interface RuuvitagBatteryVoltageProps {
     expireAfter?: RuuvitagBatteryVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface RuuvitagTxPowerPropsAvailabilityProps {
     topic: unknown;
@@ -33551,11 +36339,17 @@ interface RuuvitagTxPowerProps {
     expireAfter?: RuuvitagTxPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface RuuvitagMovementCounterPropsAvailabilityProps {
     topic: unknown;
@@ -33621,11 +36415,17 @@ interface RuuvitagMovementCounterProps {
     expireAfter?: RuuvitagMovementCounterPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface RuuvitagMeasurementSequenceNumberPropsAvailabilityProps {
     topic: unknown;
@@ -33691,11 +36491,17 @@ interface RuuvitagMeasurementSequenceNumberProps {
     expireAfter?: RuuvitagMeasurementSequenceNumberPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Scd30Co2PropsAvailabilityProps {
     topic: unknown;
@@ -33761,11 +36567,17 @@ interface Scd30Co2Props {
     expireAfter?: Scd30Co2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Scd30TemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -33832,11 +36644,17 @@ interface Scd30TemperatureProps {
     expireAfter?: Scd30TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Scd30HumidityPropsAvailabilityProps {
     topic: unknown;
@@ -33903,11 +36721,17 @@ interface Scd30HumidityProps {
     expireAfter?: Scd30HumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Scd30UpdateIntervalProps {
     days?: unknown;
@@ -33981,11 +36805,17 @@ interface Scd4xCo2Props {
     expireAfter?: Scd4xCo2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Scd4xTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -34051,11 +36881,17 @@ interface Scd4xTemperatureProps {
     expireAfter?: Scd4xTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Scd4xHumidityPropsAvailabilityProps {
     topic: unknown;
@@ -34121,11 +36957,17 @@ interface Scd4xHumidityProps {
     expireAfter?: Scd4xHumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SdmMeterPhaseAPropsVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -34192,11 +37034,17 @@ interface SdmMeterPhaseAPropsVoltageProps {
     expireAfter?: SdmMeterPhaseAPropsVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SdmMeterPhaseAPropsCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -34263,11 +37111,17 @@ interface SdmMeterPhaseAPropsCurrentProps {
     expireAfter?: SdmMeterPhaseAPropsCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SdmMeterPhaseAPropsActivePowerPropsAvailabilityProps {
     topic: unknown;
@@ -34334,11 +37188,17 @@ interface SdmMeterPhaseAPropsActivePowerProps {
     expireAfter?: SdmMeterPhaseAPropsActivePowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SdmMeterPhaseAPropsApparentPowerPropsAvailabilityProps {
     topic: unknown;
@@ -34405,11 +37265,17 @@ interface SdmMeterPhaseAPropsApparentPowerProps {
     expireAfter?: SdmMeterPhaseAPropsApparentPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SdmMeterPhaseAPropsReactivePowerPropsAvailabilityProps {
     topic: unknown;
@@ -34476,11 +37342,17 @@ interface SdmMeterPhaseAPropsReactivePowerProps {
     expireAfter?: SdmMeterPhaseAPropsReactivePowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SdmMeterPhaseAPropsPowerFactorPropsAvailabilityProps {
     topic: unknown;
@@ -34547,11 +37419,17 @@ interface SdmMeterPhaseAPropsPowerFactorProps {
     expireAfter?: SdmMeterPhaseAPropsPowerFactorPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SdmMeterPhaseAPropsPhaseAnglePropsAvailabilityProps {
     topic: unknown;
@@ -34617,11 +37495,17 @@ interface SdmMeterPhaseAPropsPhaseAngleProps {
     expireAfter?: SdmMeterPhaseAPropsPhaseAnglePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SdmMeterPhaseAProps {
     /** Use the voltage value of the sensor in volts (V). All options from [Sensor](/components/sensor). */
@@ -34719,11 +37603,17 @@ interface SdmMeterPhaseBPropsVoltageProps {
     expireAfter?: SdmMeterPhaseBPropsVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SdmMeterPhaseBPropsCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -34790,11 +37680,17 @@ interface SdmMeterPhaseBPropsCurrentProps {
     expireAfter?: SdmMeterPhaseBPropsCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SdmMeterPhaseBPropsActivePowerPropsAvailabilityProps {
     topic: unknown;
@@ -34861,11 +37757,17 @@ interface SdmMeterPhaseBPropsActivePowerProps {
     expireAfter?: SdmMeterPhaseBPropsActivePowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SdmMeterPhaseBPropsApparentPowerPropsAvailabilityProps {
     topic: unknown;
@@ -34932,11 +37834,17 @@ interface SdmMeterPhaseBPropsApparentPowerProps {
     expireAfter?: SdmMeterPhaseBPropsApparentPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SdmMeterPhaseBPropsReactivePowerPropsAvailabilityProps {
     topic: unknown;
@@ -35003,11 +37911,17 @@ interface SdmMeterPhaseBPropsReactivePowerProps {
     expireAfter?: SdmMeterPhaseBPropsReactivePowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SdmMeterPhaseBPropsPowerFactorPropsAvailabilityProps {
     topic: unknown;
@@ -35074,11 +37988,17 @@ interface SdmMeterPhaseBPropsPowerFactorProps {
     expireAfter?: SdmMeterPhaseBPropsPowerFactorPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SdmMeterPhaseBPropsPhaseAnglePropsAvailabilityProps {
     topic: unknown;
@@ -35144,11 +38064,17 @@ interface SdmMeterPhaseBPropsPhaseAngleProps {
     expireAfter?: SdmMeterPhaseBPropsPhaseAnglePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SdmMeterPhaseBProps {
     /** Use the voltage value of the sensor in volts (V). All options from [Sensor](/components/sensor). */
@@ -35246,11 +38172,17 @@ interface SdmMeterPhaseCPropsVoltageProps {
     expireAfter?: SdmMeterPhaseCPropsVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SdmMeterPhaseCPropsCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -35317,11 +38249,17 @@ interface SdmMeterPhaseCPropsCurrentProps {
     expireAfter?: SdmMeterPhaseCPropsCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SdmMeterPhaseCPropsActivePowerPropsAvailabilityProps {
     topic: unknown;
@@ -35388,11 +38326,17 @@ interface SdmMeterPhaseCPropsActivePowerProps {
     expireAfter?: SdmMeterPhaseCPropsActivePowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SdmMeterPhaseCPropsApparentPowerPropsAvailabilityProps {
     topic: unknown;
@@ -35459,11 +38403,17 @@ interface SdmMeterPhaseCPropsApparentPowerProps {
     expireAfter?: SdmMeterPhaseCPropsApparentPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SdmMeterPhaseCPropsReactivePowerPropsAvailabilityProps {
     topic: unknown;
@@ -35530,11 +38480,17 @@ interface SdmMeterPhaseCPropsReactivePowerProps {
     expireAfter?: SdmMeterPhaseCPropsReactivePowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SdmMeterPhaseCPropsPowerFactorPropsAvailabilityProps {
     topic: unknown;
@@ -35601,11 +38557,17 @@ interface SdmMeterPhaseCPropsPowerFactorProps {
     expireAfter?: SdmMeterPhaseCPropsPowerFactorPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SdmMeterPhaseCPropsPhaseAnglePropsAvailabilityProps {
     topic: unknown;
@@ -35671,11 +38633,17 @@ interface SdmMeterPhaseCPropsPhaseAngleProps {
     expireAfter?: SdmMeterPhaseCPropsPhaseAnglePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SdmMeterPhaseCProps {
     /** Use the voltage value of the sensor in volts (V). All options from [Sensor](/components/sensor). */
@@ -35772,11 +38740,17 @@ interface SdmMeterFrequencyProps {
     expireAfter?: SdmMeterFrequencyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SdmMeterTotalPowerPropsAvailabilityProps {
     topic: unknown;
@@ -35843,11 +38817,17 @@ interface SdmMeterTotalPowerProps {
     expireAfter?: SdmMeterTotalPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SdmMeterImportActiveEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -35914,11 +38894,17 @@ interface SdmMeterImportActiveEnergyProps {
     expireAfter?: SdmMeterImportActiveEnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SdmMeterExportActiveEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -35985,11 +38971,17 @@ interface SdmMeterExportActiveEnergyProps {
     expireAfter?: SdmMeterExportActiveEnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SdmMeterImportReactiveEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -36056,11 +39048,17 @@ interface SdmMeterImportReactiveEnergyProps {
     expireAfter?: SdmMeterImportReactiveEnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SdmMeterExportReactiveEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -36127,11 +39125,17 @@ interface SdmMeterExportReactiveEnergyProps {
     expireAfter?: SdmMeterExportReactiveEnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sds011Pm25PropsAvailabilityProps {
     topic: unknown;
@@ -36197,11 +39201,17 @@ interface Sds011Pm25Props {
     expireAfter?: Sds011Pm25PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sds011Pm100PropsAvailabilityProps {
     topic: unknown;
@@ -36267,11 +39277,17 @@ interface Sds011Pm100Props {
     expireAfter?: Sds011Pm100PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sds011UpdateIntervalProps {
     days?: unknown;
@@ -36346,11 +39362,17 @@ interface SelecMeterTotalActiveEnergyProps {
     expireAfter?: SelecMeterTotalActiveEnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SelecMeterImportActiveEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -36417,11 +39439,17 @@ interface SelecMeterImportActiveEnergyProps {
     expireAfter?: SelecMeterImportActiveEnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SelecMeterExportActiveEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -36488,11 +39516,17 @@ interface SelecMeterExportActiveEnergyProps {
     expireAfter?: SelecMeterExportActiveEnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SelecMeterTotalReactiveEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -36559,11 +39593,17 @@ interface SelecMeterTotalReactiveEnergyProps {
     expireAfter?: SelecMeterTotalReactiveEnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SelecMeterImportReactiveEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -36630,11 +39670,17 @@ interface SelecMeterImportReactiveEnergyProps {
     expireAfter?: SelecMeterImportReactiveEnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SelecMeterExportReactiveEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -36701,11 +39747,17 @@ interface SelecMeterExportReactiveEnergyProps {
     expireAfter?: SelecMeterExportReactiveEnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SelecMeterApparentEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -36772,11 +39824,17 @@ interface SelecMeterApparentEnergyProps {
     expireAfter?: SelecMeterApparentEnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SelecMeterActivePowerPropsAvailabilityProps {
     topic: unknown;
@@ -36843,11 +39901,17 @@ interface SelecMeterActivePowerProps {
     expireAfter?: SelecMeterActivePowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SelecMeterReactivePowerPropsAvailabilityProps {
     topic: unknown;
@@ -36914,11 +39978,17 @@ interface SelecMeterReactivePowerProps {
     expireAfter?: SelecMeterReactivePowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SelecMeterApparentPowerPropsAvailabilityProps {
     topic: unknown;
@@ -36985,11 +40055,17 @@ interface SelecMeterApparentPowerProps {
     expireAfter?: SelecMeterApparentPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SelecMeterVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -37056,11 +40132,17 @@ interface SelecMeterVoltageProps {
     expireAfter?: SelecMeterVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SelecMeterCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -37127,11 +40209,17 @@ interface SelecMeterCurrentProps {
     expireAfter?: SelecMeterCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SelecMeterPowerFactorPropsAvailabilityProps {
     topic: unknown;
@@ -37198,11 +40286,17 @@ interface SelecMeterPowerFactorProps {
     expireAfter?: SelecMeterPowerFactorPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SelecMeterFrequencyPropsAvailabilityProps {
     topic: unknown;
@@ -37268,11 +40362,17 @@ interface SelecMeterFrequencyProps {
     expireAfter?: SelecMeterFrequencyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SelecMeterMaximumDemandActivePowerPropsAvailabilityProps {
     topic: unknown;
@@ -37339,11 +40439,17 @@ interface SelecMeterMaximumDemandActivePowerProps {
     expireAfter?: SelecMeterMaximumDemandActivePowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SelecMeterMaximumDemandReactivePowerPropsAvailabilityProps {
     topic: unknown;
@@ -37410,11 +40516,17 @@ interface SelecMeterMaximumDemandReactivePowerProps {
     expireAfter?: SelecMeterMaximumDemandReactivePowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SelecMeterMaximumDemandApparentPowerPropsAvailabilityProps {
     topic: unknown;
@@ -37481,11 +40593,17 @@ interface SelecMeterMaximumDemandApparentPowerProps {
     expireAfter?: SelecMeterMaximumDemandApparentPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sen5xPm10PropsAvailabilityProps {
     topic: unknown;
@@ -37551,11 +40669,17 @@ interface Sen5xPm10Props {
     expireAfter?: Sen5xPm10PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sen5xPm25PropsAvailabilityProps {
     topic: unknown;
@@ -37621,11 +40745,17 @@ interface Sen5xPm25Props {
     expireAfter?: Sen5xPm25PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sen5xPm40PropsAvailabilityProps {
     topic: unknown;
@@ -37691,11 +40821,17 @@ interface Sen5xPm40Props {
     expireAfter?: Sen5xPm40PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sen5xPm100PropsAvailabilityProps {
     topic: unknown;
@@ -37761,11 +40897,17 @@ interface Sen5xPm100Props {
     expireAfter?: Sen5xPm100PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sen5xVocPropsAvailabilityProps {
     topic: unknown;
@@ -37863,11 +41005,17 @@ interface Sen5xVocProps {
     expireAfter?: Sen5xVocPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /**
      * The VOC algorithm can be customized by tuning 6 different parameters. For more details see [Engineering Guidelines fo...
      * @yamlKey algorithm_tuning
@@ -37970,11 +41118,17 @@ interface Sen5xNoxProps {
     expireAfter?: Sen5xNoxPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /**
      * The NOx algorithm can be customized by tuning 5 different parameters. For more details see [Engineering Guidelines fo...
      * @yamlKey algorithm_tuning
@@ -38045,11 +41199,17 @@ interface Sen5xTemperatureProps {
     expireAfter?: Sen5xTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sen5xHumidityPropsAvailabilityProps {
     topic: unknown;
@@ -38115,11 +41275,17 @@ interface Sen5xHumidityProps {
     expireAfter?: Sen5xHumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sen5xTemperatureCompensationProps {
     /** Temperature offset [°C]. Defaults to `0` */
@@ -38199,11 +41365,17 @@ interface Sen6xPm10Props {
     expireAfter?: Sen6xPm10PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sen6xPm25PropsAvailabilityProps {
     topic: unknown;
@@ -38269,11 +41441,17 @@ interface Sen6xPm25Props {
     expireAfter?: Sen6xPm25PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sen6xPm40PropsAvailabilityProps {
     topic: unknown;
@@ -38339,11 +41517,17 @@ interface Sen6xPm40Props {
     expireAfter?: Sen6xPm40PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sen6xPm100PropsAvailabilityProps {
     topic: unknown;
@@ -38409,11 +41593,17 @@ interface Sen6xPm100Props {
     expireAfter?: Sen6xPm100PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sen6xTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -38479,11 +41669,17 @@ interface Sen6xTemperatureProps {
     expireAfter?: Sen6xTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sen6xHumidityPropsAvailabilityProps {
     topic: unknown;
@@ -38549,11 +41745,17 @@ interface Sen6xHumidityProps {
     expireAfter?: Sen6xHumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sen6xVocPropsAvailabilityProps {
     topic: unknown;
@@ -38619,11 +41821,17 @@ interface Sen6xVocProps {
     expireAfter?: Sen6xVocPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sen6xNoxPropsAvailabilityProps {
     topic: unknown;
@@ -38689,11 +41897,17 @@ interface Sen6xNoxProps {
     expireAfter?: Sen6xNoxPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sen6xCo2PropsAvailabilityProps {
     topic: unknown;
@@ -38759,11 +41973,17 @@ interface Sen6xCo2Props {
     expireAfter?: Sen6xCo2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sen6xFormaldehydePropsAvailabilityProps {
     topic: unknown;
@@ -38829,11 +42049,17 @@ interface Sen6xFormaldehydeProps {
     expireAfter?: Sen6xFormaldehydePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SenseairCo2PropsAvailabilityProps {
     topic: unknown;
@@ -38899,11 +42125,17 @@ interface SenseairCo2Props {
     expireAfter?: SenseairCo2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sfa30FormaldehydePropsAvailabilityProps {
     topic: unknown;
@@ -38969,11 +42201,17 @@ interface Sfa30FormaldehydeProps {
     expireAfter?: Sfa30FormaldehydePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sfa30HumidityPropsAvailabilityProps {
     topic: unknown;
@@ -39039,11 +42277,17 @@ interface Sfa30HumidityProps {
     expireAfter?: Sfa30HumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sfa30TemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -39109,11 +42353,17 @@ interface Sfa30TemperatureProps {
     expireAfter?: Sfa30TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sgp30Eco2PropsAvailabilityProps {
     topic: unknown;
@@ -39179,11 +42429,17 @@ interface Sgp30Eco2Props {
     expireAfter?: Sgp30Eco2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sgp30TvocPropsAvailabilityProps {
     topic: unknown;
@@ -39249,11 +42505,17 @@ interface Sgp30TvocProps {
     expireAfter?: Sgp30TvocPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sgp30Eco2BaselinePropsAvailabilityProps {
     topic: unknown;
@@ -39319,11 +42581,17 @@ interface Sgp30Eco2BaselineProps {
     expireAfter?: Sgp30Eco2BaselinePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sgp30TvocBaselinePropsAvailabilityProps {
     topic: unknown;
@@ -39389,11 +42657,17 @@ interface Sgp30TvocBaselineProps {
     expireAfter?: Sgp30TvocBaselinePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sgp30BaselineProps {
     /**
@@ -39515,11 +42789,17 @@ interface Sgp4xVocProps {
     expireAfter?: Sgp4xVocPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /**
      * The NOx algorithm can be customized by tuning 5 different parameters.For more details see [Engineering Guidelines for...
      * @yamlKey algorithm_tuning
@@ -39622,11 +42902,17 @@ interface Sgp4xNoxProps {
     expireAfter?: Sgp4xNoxPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /**
      * The NOx algorithm can be customized by tuning 5 different parameters.For more details see [Engineering Guidelines for...
      * @yamlKey algorithm_tuning
@@ -39710,11 +42996,17 @@ interface Sht3xdTemperatureProps {
     expireAfter?: Sht3xdTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sht3xdHumidityPropsAvailabilityProps {
     topic: unknown;
@@ -39781,11 +43073,17 @@ interface Sht3xdHumidityProps {
     expireAfter?: Sht3xdHumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sht4xTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -39851,11 +43149,17 @@ interface Sht4xTemperatureProps {
     expireAfter?: Sht4xTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sht4xHumidityPropsAvailabilityProps {
     topic: unknown;
@@ -39921,11 +43225,17 @@ interface Sht4xHumidityProps {
     expireAfter?: Sht4xHumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface ShtcxTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -39992,11 +43302,17 @@ interface ShtcxTemperatureProps {
     expireAfter?: ShtcxTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface ShtcxHumidityPropsAvailabilityProps {
     topic: unknown;
@@ -40063,11 +43379,17 @@ interface ShtcxHumidityProps {
     expireAfter?: ShtcxHumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sm300d2Co2PropsAvailabilityProps {
     topic: unknown;
@@ -40133,11 +43455,17 @@ interface Sm300d2Co2Props {
     expireAfter?: Sm300d2Co2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sm300d2FormaldehydePropsAvailabilityProps {
     topic: unknown;
@@ -40203,11 +43531,17 @@ interface Sm300d2FormaldehydeProps {
     expireAfter?: Sm300d2FormaldehydePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sm300d2TvocPropsAvailabilityProps {
     topic: unknown;
@@ -40273,11 +43607,17 @@ interface Sm300d2TvocProps {
     expireAfter?: Sm300d2TvocPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sm300d2Pm25PropsAvailabilityProps {
     topic: unknown;
@@ -40343,11 +43683,17 @@ interface Sm300d2Pm25Props {
     expireAfter?: Sm300d2Pm25PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sm300d2Pm100PropsAvailabilityProps {
     topic: unknown;
@@ -40413,11 +43759,17 @@ interface Sm300d2Pm100Props {
     expireAfter?: Sm300d2Pm100PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sm300d2TemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -40484,11 +43836,17 @@ interface Sm300d2TemperatureProps {
     expireAfter?: Sm300d2TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sm300d2HumidityPropsAvailabilityProps {
     topic: unknown;
@@ -40555,11 +43913,17 @@ interface Sm300d2HumidityProps {
     expireAfter?: Sm300d2HumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Smt100CountsPropsAvailabilityProps {
     topic: unknown;
@@ -40626,11 +43990,17 @@ interface Smt100CountsProps {
     expireAfter?: Smt100CountsPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Smt100PermittivityPropsAvailabilityProps {
     topic: unknown;
@@ -40697,11 +44067,17 @@ interface Smt100PermittivityProps {
     expireAfter?: Smt100PermittivityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Smt100TemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -40768,11 +44144,17 @@ interface Smt100TemperatureProps {
     expireAfter?: Smt100TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Smt100MoisturePropsAvailabilityProps {
     topic: unknown;
@@ -40838,11 +44220,17 @@ interface Smt100MoistureProps {
     expireAfter?: Smt100MoisturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Smt100VoltagePropsAvailabilityProps {
     topic: unknown;
@@ -40909,11 +44297,17 @@ interface Smt100VoltageProps {
     expireAfter?: Smt100VoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SoundLevelMeasurementDurationProps {
     days?: unknown;
@@ -40996,11 +44390,17 @@ interface SoundLevelPeakProps {
     expireAfter?: SoundLevelPeakPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SoundLevelRmsPropsAvailabilityProps {
     topic: unknown;
@@ -41067,11 +44467,17 @@ interface SoundLevelRmsProps {
     expireAfter?: SoundLevelRmsPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sps30Pm10PropsAvailabilityProps {
     topic: unknown;
@@ -41137,11 +44543,17 @@ interface Sps30Pm10Props {
     expireAfter?: Sps30Pm10PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sps30Pm25PropsAvailabilityProps {
     topic: unknown;
@@ -41207,11 +44619,17 @@ interface Sps30Pm25Props {
     expireAfter?: Sps30Pm25PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sps30Pm40PropsAvailabilityProps {
     topic: unknown;
@@ -41277,11 +44695,17 @@ interface Sps30Pm40Props {
     expireAfter?: Sps30Pm40PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sps30Pm100PropsAvailabilityProps {
     topic: unknown;
@@ -41347,11 +44771,17 @@ interface Sps30Pm100Props {
     expireAfter?: Sps30Pm100PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sps30Pmc05PropsAvailabilityProps {
     topic: unknown;
@@ -41417,11 +44847,17 @@ interface Sps30Pmc05Props {
     expireAfter?: Sps30Pmc05PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sps30Pmc10PropsAvailabilityProps {
     topic: unknown;
@@ -41487,11 +44923,17 @@ interface Sps30Pmc10Props {
     expireAfter?: Sps30Pmc10PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sps30Pmc25PropsAvailabilityProps {
     topic: unknown;
@@ -41557,11 +44999,17 @@ interface Sps30Pmc25Props {
     expireAfter?: Sps30Pmc25PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sps30Pmc40PropsAvailabilityProps {
     topic: unknown;
@@ -41627,11 +45075,17 @@ interface Sps30Pmc40Props {
     expireAfter?: Sps30Pmc40PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sps30Pmc100PropsAvailabilityProps {
     topic: unknown;
@@ -41697,11 +45151,17 @@ interface Sps30Pmc100Props {
     expireAfter?: Sps30Pmc100PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sps30PmSizePropsAvailabilityProps {
     topic: unknown;
@@ -41767,11 +45227,17 @@ interface Sps30PmSizeProps {
     expireAfter?: Sps30PmSizePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface T6615Co2PropsAvailabilityProps {
     topic: unknown;
@@ -41838,11 +45304,17 @@ interface T6615Co2Props {
     expireAfter?: T6615Co2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Tcs34725RedChannelPropsAvailabilityProps {
     topic: unknown;
@@ -41908,11 +45380,17 @@ interface Tcs34725RedChannelProps {
     expireAfter?: Tcs34725RedChannelPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Tcs34725GreenChannelPropsAvailabilityProps {
     topic: unknown;
@@ -41978,11 +45456,17 @@ interface Tcs34725GreenChannelProps {
     expireAfter?: Tcs34725GreenChannelPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Tcs34725BlueChannelPropsAvailabilityProps {
     topic: unknown;
@@ -42048,11 +45532,17 @@ interface Tcs34725BlueChannelProps {
     expireAfter?: Tcs34725BlueChannelPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Tcs34725ClearChannelPropsAvailabilityProps {
     topic: unknown;
@@ -42118,11 +45608,17 @@ interface Tcs34725ClearChannelProps {
     expireAfter?: Tcs34725ClearChannelPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Tcs34725IlluminancePropsAvailabilityProps {
     topic: unknown;
@@ -42189,11 +45685,17 @@ interface Tcs34725IlluminanceProps {
     expireAfter?: Tcs34725IlluminancePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Tcs34725ColorTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -42259,11 +45761,17 @@ interface Tcs34725ColorTemperatureProps {
     expireAfter?: Tcs34725ColorTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Tem3200TemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -42330,11 +45838,17 @@ interface Tem3200TemperatureProps {
     expireAfter?: Tem3200TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Tem3200RawPressurePropsAvailabilityProps {
     topic: unknown;
@@ -42401,11 +45915,17 @@ interface Tem3200RawPressureProps {
     expireAfter?: Tem3200RawPressurePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface ThermoproBleTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -42472,11 +45992,17 @@ interface ThermoproBleTemperatureProps {
     expireAfter?: ThermoproBleTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface ThermoproBleExternalTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -42543,11 +46069,17 @@ interface ThermoproBleExternalTemperatureProps {
     expireAfter?: ThermoproBleExternalTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface ThermoproBleHumidityPropsAvailabilityProps {
     topic: unknown;
@@ -42614,11 +46146,17 @@ interface ThermoproBleHumidityProps {
     expireAfter?: ThermoproBleHumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface ThermoproBleBatteryLevelPropsAvailabilityProps {
     topic: unknown;
@@ -42685,11 +46223,17 @@ interface ThermoproBleBatteryLevelProps {
     expireAfter?: ThermoproBleBatteryLevelPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface ThermoproBleSignalStrengthPropsAvailabilityProps {
     topic: unknown;
@@ -42756,11 +46300,17 @@ interface ThermoproBleSignalStrengthProps {
     expireAfter?: ThermoproBleSignalStrengthPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Tmp1075AlertProps {
     /**
@@ -42847,11 +46397,17 @@ interface Tsl2591InfraredProps {
     expireAfter?: Tsl2591InfraredPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Tsl2591VisiblePropsAvailabilityProps {
     topic: unknown;
@@ -42917,11 +46473,17 @@ interface Tsl2591VisibleProps {
     expireAfter?: Tsl2591VisiblePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Tsl2591FullSpectrumPropsAvailabilityProps {
     topic: unknown;
@@ -42987,11 +46549,17 @@ interface Tsl2591FullSpectrumProps {
     expireAfter?: Tsl2591FullSpectrumPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Tsl2591CalculatedLuxPropsAvailabilityProps {
     topic: unknown;
@@ -43057,11 +46625,17 @@ interface Tsl2591CalculatedLuxProps {
     expireAfter?: Tsl2591CalculatedLuxPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Tsl2591ActualGainPropsAvailabilityProps {
     topic: unknown;
@@ -43127,11 +46701,17 @@ interface Tsl2591ActualGainProps {
     expireAfter?: Tsl2591ActualGainPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Tx20WindSpeedPropsAvailabilityProps {
     topic: unknown;
@@ -43197,11 +46777,17 @@ interface Tx20WindSpeedProps {
     expireAfter?: Tx20WindSpeedPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Tx20WindDirectionDegreesPropsAvailabilityProps {
     topic: unknown;
@@ -43267,11 +46853,17 @@ interface Tx20WindDirectionDegreesProps {
     expireAfter?: Tx20WindDirectionDegreesPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface UfireEcTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -43338,11 +46930,17 @@ interface UfireEcTemperatureProps {
     expireAfter?: UfireEcTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface UfireEcEcPropsAvailabilityProps {
     topic: unknown;
@@ -43408,11 +47006,17 @@ interface UfireEcEcProps {
     expireAfter?: UfireEcEcPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface UfireIseTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -43479,11 +47083,17 @@ interface UfireIseTemperatureProps {
     expireAfter?: UfireIseTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface UfireIsePhPropsAvailabilityProps {
     topic: unknown;
@@ -43549,11 +47159,17 @@ interface UfireIsePhProps {
     expireAfter?: UfireIsePhPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface UltrasonicPulseTimeProps {
     days?: unknown;
@@ -43627,11 +47243,17 @@ interface Veml7700AmbientLightProps {
     expireAfter?: Veml7700AmbientLightPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Veml7700AmbientLightCountsPropsAvailabilityProps {
     topic: unknown;
@@ -43697,11 +47319,17 @@ interface Veml7700AmbientLightCountsProps {
     expireAfter?: Veml7700AmbientLightCountsPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Veml7700FullSpectrumPropsAvailabilityProps {
     topic: unknown;
@@ -43767,11 +47395,17 @@ interface Veml7700FullSpectrumProps {
     expireAfter?: Veml7700FullSpectrumPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Veml7700FullSpectrumCountsPropsAvailabilityProps {
     topic: unknown;
@@ -43837,11 +47471,17 @@ interface Veml7700FullSpectrumCountsProps {
     expireAfter?: Veml7700FullSpectrumCountsPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Veml7700InfraredPropsAvailabilityProps {
     topic: unknown;
@@ -43907,11 +47547,17 @@ interface Veml7700InfraredProps {
     expireAfter?: Veml7700InfraredPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Veml7700ActualGainPropsAvailabilityProps {
     topic: unknown;
@@ -43977,11 +47623,17 @@ interface Veml7700ActualGainProps {
     expireAfter?: Veml7700ActualGainPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Veml7700ActualIntegrationTimePropsAvailabilityProps {
     topic: unknown;
@@ -44047,11 +47699,17 @@ interface Veml7700ActualIntegrationTimeProps {
     expireAfter?: Veml7700ActualIntegrationTimePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Vl53l0xTimingBudgetProps {
     days?: unknown;
@@ -44126,11 +47784,17 @@ interface Xgzp68xxPressureProps {
     expireAfter?: Xgzp68xxPressurePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** One of `256x`, `512x`, `1024x`, `2048x`, `4096x`, `8192x`, `16384x`, `32768x`. It is not possible to disable oversamp... */
     oversampling?: "256X" | "512X" | "1024X" | "2048X" | "4096X" | "8192X" | "16384X" | "32768X";
 }
@@ -44199,11 +47863,17 @@ interface Xgzp68xxTemperatureProps {
     expireAfter?: Xgzp68xxTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiCgd1TemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -44270,11 +47940,17 @@ interface XiaomiCgd1TemperatureProps {
     expireAfter?: XiaomiCgd1TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiCgd1HumidityPropsAvailabilityProps {
     topic: unknown;
@@ -44341,11 +48017,17 @@ interface XiaomiCgd1HumidityProps {
     expireAfter?: XiaomiCgd1HumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiCgd1BatteryLevelPropsAvailabilityProps {
     topic: unknown;
@@ -44412,11 +48094,17 @@ interface XiaomiCgd1BatteryLevelProps {
     expireAfter?: XiaomiCgd1BatteryLevelPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiCgdk2TemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -44483,11 +48171,17 @@ interface XiaomiCgdk2TemperatureProps {
     expireAfter?: XiaomiCgdk2TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiCgdk2HumidityPropsAvailabilityProps {
     topic: unknown;
@@ -44554,11 +48248,17 @@ interface XiaomiCgdk2HumidityProps {
     expireAfter?: XiaomiCgdk2HumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiCgdk2BatteryLevelPropsAvailabilityProps {
     topic: unknown;
@@ -44625,11 +48325,17 @@ interface XiaomiCgdk2BatteryLevelProps {
     expireAfter?: XiaomiCgdk2BatteryLevelPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiCgg1TemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -44696,11 +48402,17 @@ interface XiaomiCgg1TemperatureProps {
     expireAfter?: XiaomiCgg1TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiCgg1HumidityPropsAvailabilityProps {
     topic: unknown;
@@ -44767,11 +48479,17 @@ interface XiaomiCgg1HumidityProps {
     expireAfter?: XiaomiCgg1HumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiCgg1BatteryLevelPropsAvailabilityProps {
     topic: unknown;
@@ -44838,11 +48556,17 @@ interface XiaomiCgg1BatteryLevelProps {
     expireAfter?: XiaomiCgg1BatteryLevelPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiGcls002TemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -44909,11 +48633,17 @@ interface XiaomiGcls002TemperatureProps {
     expireAfter?: XiaomiGcls002TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiGcls002MoisturePropsAvailabilityProps {
     topic: unknown;
@@ -44979,11 +48709,17 @@ interface XiaomiGcls002MoistureProps {
     expireAfter?: XiaomiGcls002MoisturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiGcls002IlluminancePropsAvailabilityProps {
     topic: unknown;
@@ -45050,11 +48786,17 @@ interface XiaomiGcls002IlluminanceProps {
     expireAfter?: XiaomiGcls002IlluminancePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiGcls002ConductivityPropsAvailabilityProps {
     topic: unknown;
@@ -45120,11 +48862,17 @@ interface XiaomiGcls002ConductivityProps {
     expireAfter?: XiaomiGcls002ConductivityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiHhccjcy01TemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -45191,11 +48939,17 @@ interface XiaomiHhccjcy01TemperatureProps {
     expireAfter?: XiaomiHhccjcy01TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiHhccjcy01MoisturePropsAvailabilityProps {
     topic: unknown;
@@ -45261,11 +49015,17 @@ interface XiaomiHhccjcy01MoistureProps {
     expireAfter?: XiaomiHhccjcy01MoisturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiHhccjcy01IlluminancePropsAvailabilityProps {
     topic: unknown;
@@ -45332,11 +49092,17 @@ interface XiaomiHhccjcy01IlluminanceProps {
     expireAfter?: XiaomiHhccjcy01IlluminancePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiHhccjcy01ConductivityPropsAvailabilityProps {
     topic: unknown;
@@ -45402,11 +49168,17 @@ interface XiaomiHhccjcy01ConductivityProps {
     expireAfter?: XiaomiHhccjcy01ConductivityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiHhccjcy01BatteryLevelPropsAvailabilityProps {
     topic: unknown;
@@ -45473,11 +49245,17 @@ interface XiaomiHhccjcy01BatteryLevelProps {
     expireAfter?: XiaomiHhccjcy01BatteryLevelPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiHhccjcy10TemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -45544,11 +49322,17 @@ interface XiaomiHhccjcy10TemperatureProps {
     expireAfter?: XiaomiHhccjcy10TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiHhccjcy10MoisturePropsAvailabilityProps {
     topic: unknown;
@@ -45614,11 +49398,17 @@ interface XiaomiHhccjcy10MoistureProps {
     expireAfter?: XiaomiHhccjcy10MoisturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiHhccjcy10IlluminancePropsAvailabilityProps {
     topic: unknown;
@@ -45685,11 +49475,17 @@ interface XiaomiHhccjcy10IlluminanceProps {
     expireAfter?: XiaomiHhccjcy10IlluminancePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiHhccjcy10ConductivityPropsAvailabilityProps {
     topic: unknown;
@@ -45755,11 +49551,17 @@ interface XiaomiHhccjcy10ConductivityProps {
     expireAfter?: XiaomiHhccjcy10ConductivityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiHhccjcy10BatteryLevelPropsAvailabilityProps {
     topic: unknown;
@@ -45826,11 +49628,17 @@ interface XiaomiHhccjcy10BatteryLevelProps {
     expireAfter?: XiaomiHhccjcy10BatteryLevelPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiHhccpot002MoisturePropsAvailabilityProps {
     topic: unknown;
@@ -45896,11 +49704,17 @@ interface XiaomiHhccpot002MoistureProps {
     expireAfter?: XiaomiHhccpot002MoisturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiHhccpot002ConductivityPropsAvailabilityProps {
     topic: unknown;
@@ -45966,11 +49780,17 @@ interface XiaomiHhccpot002ConductivityProps {
     expireAfter?: XiaomiHhccpot002ConductivityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiJqjcy01ymTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -46037,11 +49857,17 @@ interface XiaomiJqjcy01ymTemperatureProps {
     expireAfter?: XiaomiJqjcy01ymTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiJqjcy01ymHumidityPropsAvailabilityProps {
     topic: unknown;
@@ -46108,11 +49934,17 @@ interface XiaomiJqjcy01ymHumidityProps {
     expireAfter?: XiaomiJqjcy01ymHumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiJqjcy01ymFormaldehydePropsAvailabilityProps {
     topic: unknown;
@@ -46178,11 +50010,17 @@ interface XiaomiJqjcy01ymFormaldehydeProps {
     expireAfter?: XiaomiJqjcy01ymFormaldehydePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiJqjcy01ymBatteryLevelPropsAvailabilityProps {
     topic: unknown;
@@ -46249,11 +50087,17 @@ interface XiaomiJqjcy01ymBatteryLevelProps {
     expireAfter?: XiaomiJqjcy01ymBatteryLevelPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiLywsd02TemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -46320,11 +50164,17 @@ interface XiaomiLywsd02TemperatureProps {
     expireAfter?: XiaomiLywsd02TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiLywsd02HumidityPropsAvailabilityProps {
     topic: unknown;
@@ -46391,11 +50241,17 @@ interface XiaomiLywsd02HumidityProps {
     expireAfter?: XiaomiLywsd02HumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiLywsd02BatteryLevelPropsAvailabilityProps {
     topic: unknown;
@@ -46462,11 +50318,17 @@ interface XiaomiLywsd02BatteryLevelProps {
     expireAfter?: XiaomiLywsd02BatteryLevelPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiLywsd02mmcTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -46533,11 +50395,17 @@ interface XiaomiLywsd02mmcTemperatureProps {
     expireAfter?: XiaomiLywsd02mmcTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiLywsd02mmcHumidityPropsAvailabilityProps {
     topic: unknown;
@@ -46604,11 +50472,17 @@ interface XiaomiLywsd02mmcHumidityProps {
     expireAfter?: XiaomiLywsd02mmcHumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiLywsd02mmcBatteryLevelPropsAvailabilityProps {
     topic: unknown;
@@ -46675,11 +50549,17 @@ interface XiaomiLywsd02mmcBatteryLevelProps {
     expireAfter?: XiaomiLywsd02mmcBatteryLevelPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiLywsd03mmcTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -46746,11 +50626,17 @@ interface XiaomiLywsd03mmcTemperatureProps {
     expireAfter?: XiaomiLywsd03mmcTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiLywsd03mmcHumidityPropsAvailabilityProps {
     topic: unknown;
@@ -46817,11 +50703,17 @@ interface XiaomiLywsd03mmcHumidityProps {
     expireAfter?: XiaomiLywsd03mmcHumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiLywsd03mmcBatteryLevelPropsAvailabilityProps {
     topic: unknown;
@@ -46888,11 +50780,17 @@ interface XiaomiLywsd03mmcBatteryLevelProps {
     expireAfter?: XiaomiLywsd03mmcBatteryLevelPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiLywsdcgqTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -46959,11 +50857,17 @@ interface XiaomiLywsdcgqTemperatureProps {
     expireAfter?: XiaomiLywsdcgqTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiLywsdcgqHumidityPropsAvailabilityProps {
     topic: unknown;
@@ -47030,11 +50934,17 @@ interface XiaomiLywsdcgqHumidityProps {
     expireAfter?: XiaomiLywsdcgqHumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiLywsdcgqBatteryLevelPropsAvailabilityProps {
     topic: unknown;
@@ -47101,11 +51011,17 @@ interface XiaomiLywsdcgqBatteryLevelProps {
     expireAfter?: XiaomiLywsdcgqBatteryLevelPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiMhoc303TemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -47172,11 +51088,17 @@ interface XiaomiMhoc303TemperatureProps {
     expireAfter?: XiaomiMhoc303TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiMhoc303HumidityPropsAvailabilityProps {
     topic: unknown;
@@ -47243,11 +51165,17 @@ interface XiaomiMhoc303HumidityProps {
     expireAfter?: XiaomiMhoc303HumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiMhoc303BatteryLevelPropsAvailabilityProps {
     topic: unknown;
@@ -47314,11 +51242,17 @@ interface XiaomiMhoc303BatteryLevelProps {
     expireAfter?: XiaomiMhoc303BatteryLevelPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiMhoc401TemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -47385,11 +51319,17 @@ interface XiaomiMhoc401TemperatureProps {
     expireAfter?: XiaomiMhoc401TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiMhoc401HumidityPropsAvailabilityProps {
     topic: unknown;
@@ -47456,11 +51396,17 @@ interface XiaomiMhoc401HumidityProps {
     expireAfter?: XiaomiMhoc401HumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiMhoc401BatteryLevelPropsAvailabilityProps {
     topic: unknown;
@@ -47527,11 +51473,17 @@ interface XiaomiMhoc401BatteryLevelProps {
     expireAfter?: XiaomiMhoc401BatteryLevelPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiMiscaleWeightPropsAvailabilityProps {
     topic: unknown;
@@ -47597,11 +51549,17 @@ interface XiaomiMiscaleWeightProps {
     expireAfter?: XiaomiMiscaleWeightPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiMiscaleImpedancePropsAvailabilityProps {
     topic: unknown;
@@ -47667,11 +51625,17 @@ interface XiaomiMiscaleImpedanceProps {
     expireAfter?: XiaomiMiscaleImpedancePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiXmwsdj04mmcTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -47738,11 +51702,17 @@ interface XiaomiXmwsdj04mmcTemperatureProps {
     expireAfter?: XiaomiXmwsdj04mmcTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiXmwsdj04mmcHumidityPropsAvailabilityProps {
     topic: unknown;
@@ -47809,11 +51779,17 @@ interface XiaomiXmwsdj04mmcHumidityProps {
     expireAfter?: XiaomiXmwsdj04mmcHumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiXmwsdj04mmcBatteryLevelPropsAvailabilityProps {
     topic: unknown;
@@ -47880,11 +51856,17 @@ interface XiaomiXmwsdj04mmcBatteryLevelProps {
     expireAfter?: XiaomiXmwsdj04mmcBatteryLevelPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface ZyauraCo2PropsAvailabilityProps {
     topic: unknown;
@@ -47950,11 +51932,17 @@ interface ZyauraCo2Props {
     expireAfter?: ZyauraCo2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface ZyauraTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -48021,11 +52009,17 @@ interface ZyauraTemperatureProps {
     expireAfter?: ZyauraTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface ZyauraHumidityPropsAvailabilityProps {
     topic: unknown;
@@ -48092,11 +52086,17 @@ interface ZyauraHumidityProps {
     expireAfter?: ZyauraHumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Am43BatteryLevelPropsAvailabilityProps {
     topic: unknown;
@@ -48163,11 +52163,17 @@ interface Am43BatteryLevelProps {
     expireAfter?: Am43BatteryLevelPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Am43IlluminancePropsAvailabilityProps {
     topic: unknown;
@@ -48233,11 +52239,17 @@ interface Am43IlluminanceProps {
     expireAfter?: Am43IlluminancePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface As3935DistancePropsAvailabilityProps {
     topic: unknown;
@@ -48303,11 +52315,17 @@ interface As3935DistanceProps {
     expireAfter?: As3935DistancePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface As3935LightningEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -48373,11 +52391,17 @@ interface As3935LightningEnergyProps {
     expireAfter?: As3935LightningEnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface As5600RawPositionPropsAvailabilityProps {
     topic: unknown;
@@ -48443,11 +52467,17 @@ interface As5600RawPositionProps {
     expireAfter?: As5600RawPositionPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface As5600GainPropsAvailabilityProps {
     topic: unknown;
@@ -48514,11 +52544,17 @@ interface As5600GainProps {
     expireAfter?: As5600GainPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface As5600MagnitudePropsAvailabilityProps {
     topic: unknown;
@@ -48584,11 +52620,17 @@ interface As5600MagnitudeProps {
     expireAfter?: As5600MagnitudePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface As5600StatusPropsAvailabilityProps {
     topic: unknown;
@@ -48654,11 +52696,17 @@ interface As5600StatusProps {
     expireAfter?: As5600StatusPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e32PhaseAPropsVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -48725,11 +52773,17 @@ interface Atm90e32PhaseAPropsVoltageProps {
     expireAfter?: Atm90e32PhaseAPropsVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e32PhaseAPropsCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -48796,11 +52850,17 @@ interface Atm90e32PhaseAPropsCurrentProps {
     expireAfter?: Atm90e32PhaseAPropsCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e32PhaseAPropsPowerPropsAvailabilityProps {
     topic: unknown;
@@ -48867,11 +52927,17 @@ interface Atm90e32PhaseAPropsPowerProps {
     expireAfter?: Atm90e32PhaseAPropsPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e32PhaseAPropsReactivePowerPropsAvailabilityProps {
     topic: unknown;
@@ -48937,11 +53003,17 @@ interface Atm90e32PhaseAPropsReactivePowerProps {
     expireAfter?: Atm90e32PhaseAPropsReactivePowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e32PhaseAPropsApparentPowerPropsAvailabilityProps {
     topic: unknown;
@@ -49008,11 +53080,17 @@ interface Atm90e32PhaseAPropsApparentPowerProps {
     expireAfter?: Atm90e32PhaseAPropsApparentPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e32PhaseAPropsPowerFactorPropsAvailabilityProps {
     topic: unknown;
@@ -49079,11 +53157,17 @@ interface Atm90e32PhaseAPropsPowerFactorProps {
     expireAfter?: Atm90e32PhaseAPropsPowerFactorPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e32PhaseAPropsForwardActiveEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -49150,11 +53234,17 @@ interface Atm90e32PhaseAPropsForwardActiveEnergyProps {
     expireAfter?: Atm90e32PhaseAPropsForwardActiveEnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e32PhaseAPropsReverseActiveEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -49221,11 +53311,17 @@ interface Atm90e32PhaseAPropsReverseActiveEnergyProps {
     expireAfter?: Atm90e32PhaseAPropsReverseActiveEnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e32PhaseAPropsPhaseAnglePropsAvailabilityProps {
     topic: unknown;
@@ -49292,11 +53388,17 @@ interface Atm90e32PhaseAPropsPhaseAngleProps {
     expireAfter?: Atm90e32PhaseAPropsPhaseAnglePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e32PhaseAPropsHarmonicPowerPropsAvailabilityProps {
     topic: unknown;
@@ -49363,11 +53465,17 @@ interface Atm90e32PhaseAPropsHarmonicPowerProps {
     expireAfter?: Atm90e32PhaseAPropsHarmonicPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e32PhaseAPropsPeakCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -49434,11 +53542,17 @@ interface Atm90e32PhaseAPropsPeakCurrentProps {
     expireAfter?: Atm90e32PhaseAPropsPeakCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e32PhaseAProps {
     /** Use the voltage value of this phase in volts (RMS). All options from [Sensor](/components/sensor). */
@@ -49583,11 +53697,17 @@ interface Atm90e32PhaseBPropsVoltageProps {
     expireAfter?: Atm90e32PhaseBPropsVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e32PhaseBPropsCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -49654,11 +53774,17 @@ interface Atm90e32PhaseBPropsCurrentProps {
     expireAfter?: Atm90e32PhaseBPropsCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e32PhaseBPropsPowerPropsAvailabilityProps {
     topic: unknown;
@@ -49725,11 +53851,17 @@ interface Atm90e32PhaseBPropsPowerProps {
     expireAfter?: Atm90e32PhaseBPropsPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e32PhaseBPropsReactivePowerPropsAvailabilityProps {
     topic: unknown;
@@ -49795,11 +53927,17 @@ interface Atm90e32PhaseBPropsReactivePowerProps {
     expireAfter?: Atm90e32PhaseBPropsReactivePowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e32PhaseBPropsApparentPowerPropsAvailabilityProps {
     topic: unknown;
@@ -49866,11 +54004,17 @@ interface Atm90e32PhaseBPropsApparentPowerProps {
     expireAfter?: Atm90e32PhaseBPropsApparentPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e32PhaseBPropsPowerFactorPropsAvailabilityProps {
     topic: unknown;
@@ -49937,11 +54081,17 @@ interface Atm90e32PhaseBPropsPowerFactorProps {
     expireAfter?: Atm90e32PhaseBPropsPowerFactorPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e32PhaseBPropsForwardActiveEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -50008,11 +54158,17 @@ interface Atm90e32PhaseBPropsForwardActiveEnergyProps {
     expireAfter?: Atm90e32PhaseBPropsForwardActiveEnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e32PhaseBPropsReverseActiveEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -50079,11 +54235,17 @@ interface Atm90e32PhaseBPropsReverseActiveEnergyProps {
     expireAfter?: Atm90e32PhaseBPropsReverseActiveEnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e32PhaseBPropsPhaseAnglePropsAvailabilityProps {
     topic: unknown;
@@ -50150,11 +54312,17 @@ interface Atm90e32PhaseBPropsPhaseAngleProps {
     expireAfter?: Atm90e32PhaseBPropsPhaseAnglePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e32PhaseBPropsHarmonicPowerPropsAvailabilityProps {
     topic: unknown;
@@ -50221,11 +54389,17 @@ interface Atm90e32PhaseBPropsHarmonicPowerProps {
     expireAfter?: Atm90e32PhaseBPropsHarmonicPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e32PhaseBPropsPeakCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -50292,11 +54466,17 @@ interface Atm90e32PhaseBPropsPeakCurrentProps {
     expireAfter?: Atm90e32PhaseBPropsPeakCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e32PhaseBProps {
     /** Use the voltage value of this phase in volts (RMS). All options from [Sensor](/components/sensor). */
@@ -50441,11 +54621,17 @@ interface Atm90e32PhaseCPropsVoltageProps {
     expireAfter?: Atm90e32PhaseCPropsVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e32PhaseCPropsCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -50512,11 +54698,17 @@ interface Atm90e32PhaseCPropsCurrentProps {
     expireAfter?: Atm90e32PhaseCPropsCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e32PhaseCPropsPowerPropsAvailabilityProps {
     topic: unknown;
@@ -50583,11 +54775,17 @@ interface Atm90e32PhaseCPropsPowerProps {
     expireAfter?: Atm90e32PhaseCPropsPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e32PhaseCPropsReactivePowerPropsAvailabilityProps {
     topic: unknown;
@@ -50653,11 +54851,17 @@ interface Atm90e32PhaseCPropsReactivePowerProps {
     expireAfter?: Atm90e32PhaseCPropsReactivePowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e32PhaseCPropsApparentPowerPropsAvailabilityProps {
     topic: unknown;
@@ -50724,11 +54928,17 @@ interface Atm90e32PhaseCPropsApparentPowerProps {
     expireAfter?: Atm90e32PhaseCPropsApparentPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e32PhaseCPropsPowerFactorPropsAvailabilityProps {
     topic: unknown;
@@ -50795,11 +55005,17 @@ interface Atm90e32PhaseCPropsPowerFactorProps {
     expireAfter?: Atm90e32PhaseCPropsPowerFactorPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e32PhaseCPropsForwardActiveEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -50866,11 +55082,17 @@ interface Atm90e32PhaseCPropsForwardActiveEnergyProps {
     expireAfter?: Atm90e32PhaseCPropsForwardActiveEnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e32PhaseCPropsReverseActiveEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -50937,11 +55159,17 @@ interface Atm90e32PhaseCPropsReverseActiveEnergyProps {
     expireAfter?: Atm90e32PhaseCPropsReverseActiveEnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e32PhaseCPropsPhaseAnglePropsAvailabilityProps {
     topic: unknown;
@@ -51008,11 +55236,17 @@ interface Atm90e32PhaseCPropsPhaseAngleProps {
     expireAfter?: Atm90e32PhaseCPropsPhaseAnglePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e32PhaseCPropsHarmonicPowerPropsAvailabilityProps {
     topic: unknown;
@@ -51079,11 +55313,17 @@ interface Atm90e32PhaseCPropsHarmonicPowerProps {
     expireAfter?: Atm90e32PhaseCPropsHarmonicPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e32PhaseCPropsPeakCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -51150,11 +55390,17 @@ interface Atm90e32PhaseCPropsPeakCurrentProps {
     expireAfter?: Atm90e32PhaseCPropsPeakCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e32PhaseCProps {
     /** Use the voltage value of this phase in volts (RMS). All options from [Sensor](/components/sensor). */
@@ -51298,11 +55544,17 @@ interface Atm90e32FrequencyProps {
     expireAfter?: Atm90e32FrequencyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Atm90e32ChipTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -51369,11 +55621,17 @@ interface Atm90e32ChipTemperatureProps {
     expireAfter?: Atm90e32ChipTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface BedjetOutletTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -51440,11 +55698,17 @@ interface BedjetOutletTemperatureProps {
     expireAfter?: BedjetOutletTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface BedjetAmbientTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -51511,11 +55775,17 @@ interface BedjetAmbientTemperatureProps {
     expireAfter?: BedjetAmbientTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0940VoltagePropsAvailabilityProps {
     topic: unknown;
@@ -51582,11 +55852,17 @@ interface Bl0940VoltageProps {
     expireAfter?: Bl0940VoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0940CurrentPropsAvailabilityProps {
     topic: unknown;
@@ -51653,11 +55929,17 @@ interface Bl0940CurrentProps {
     expireAfter?: Bl0940CurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0940PowerPropsAvailabilityProps {
     topic: unknown;
@@ -51724,11 +56006,17 @@ interface Bl0940PowerProps {
     expireAfter?: Bl0940PowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0940EnergyPropsAvailabilityProps {
     topic: unknown;
@@ -51795,11 +56083,17 @@ interface Bl0940EnergyProps {
     expireAfter?: Bl0940EnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0940InternalTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -51866,11 +56160,17 @@ interface Bl0940InternalTemperatureProps {
     expireAfter?: Bl0940InternalTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bl0940ExternalTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -51937,11 +56237,17 @@ interface Bl0940ExternalTemperatureProps {
     expireAfter?: Bl0940ExternalTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bme680BsecTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -52007,11 +56313,17 @@ interface Bme680BsecTemperatureProps {
     expireAfter?: Bme680BsecTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey sample_rate */
     sampleRate?: "LP" | "ULP";
 }
@@ -52080,11 +56392,17 @@ interface Bme680BsecPressureProps {
     expireAfter?: Bme680BsecPressurePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey sample_rate */
     sampleRate?: "LP" | "ULP";
 }
@@ -52152,11 +56470,17 @@ interface Bme680BsecHumidityProps {
     expireAfter?: Bme680BsecHumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey sample_rate */
     sampleRate?: "LP" | "ULP";
 }
@@ -52224,11 +56548,17 @@ interface Bme680BsecGasResistanceProps {
     expireAfter?: Bme680BsecGasResistancePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bme680BsecIaqPropsAvailabilityProps {
     topic: unknown;
@@ -52294,11 +56624,17 @@ interface Bme680BsecIaqProps {
     expireAfter?: Bme680BsecIaqPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bme680BsecIaqAccuracyPropsAvailabilityProps {
     topic: unknown;
@@ -52364,11 +56700,17 @@ interface Bme680BsecIaqAccuracyProps {
     expireAfter?: Bme680BsecIaqAccuracyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bme680BsecCo2EquivalentPropsAvailabilityProps {
     topic: unknown;
@@ -52435,11 +56777,17 @@ interface Bme680BsecCo2EquivalentProps {
     expireAfter?: Bme680BsecCo2EquivalentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Bme680BsecBreathVocEquivalentPropsAvailabilityProps {
     topic: unknown;
@@ -52506,11 +56854,17 @@ interface Bme680BsecBreathVocEquivalentProps {
     expireAfter?: Bme680BsecBreathVocEquivalentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DalyBmsVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -52576,11 +56930,17 @@ interface DalyBmsVoltageProps {
     expireAfter?: DalyBmsVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DalyBmsCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -52646,11 +57006,17 @@ interface DalyBmsCurrentProps {
     expireAfter?: DalyBmsCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DalyBmsBatteryLevelPropsAvailabilityProps {
     topic: unknown;
@@ -52716,11 +57082,17 @@ interface DalyBmsBatteryLevelProps {
     expireAfter?: DalyBmsBatteryLevelPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DalyBmsMaxCellVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -52786,11 +57158,17 @@ interface DalyBmsMaxCellVoltageProps {
     expireAfter?: DalyBmsMaxCellVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DalyBmsMaxCellVoltageNumberPropsAvailabilityProps {
     topic: unknown;
@@ -52856,11 +57234,17 @@ interface DalyBmsMaxCellVoltageNumberProps {
     expireAfter?: DalyBmsMaxCellVoltageNumberPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DalyBmsMinCellVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -52926,11 +57310,17 @@ interface DalyBmsMinCellVoltageProps {
     expireAfter?: DalyBmsMinCellVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DalyBmsMinCellVoltageNumberPropsAvailabilityProps {
     topic: unknown;
@@ -52996,11 +57386,17 @@ interface DalyBmsMinCellVoltageNumberProps {
     expireAfter?: DalyBmsMinCellVoltageNumberPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DalyBmsMaxTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -53066,11 +57462,17 @@ interface DalyBmsMaxTemperatureProps {
     expireAfter?: DalyBmsMaxTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DalyBmsMaxTemperatureProbeNumberPropsAvailabilityProps {
     topic: unknown;
@@ -53136,11 +57538,17 @@ interface DalyBmsMaxTemperatureProbeNumberProps {
     expireAfter?: DalyBmsMaxTemperatureProbeNumberPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DalyBmsMinTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -53206,11 +57614,17 @@ interface DalyBmsMinTemperatureProps {
     expireAfter?: DalyBmsMinTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DalyBmsMinTemperatureProbeNumberPropsAvailabilityProps {
     topic: unknown;
@@ -53276,11 +57690,17 @@ interface DalyBmsMinTemperatureProbeNumberProps {
     expireAfter?: DalyBmsMinTemperatureProbeNumberPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DalyBmsRemainingCapacityPropsAvailabilityProps {
     topic: unknown;
@@ -53346,11 +57766,17 @@ interface DalyBmsRemainingCapacityProps {
     expireAfter?: DalyBmsRemainingCapacityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DalyBmsCellsNumberPropsAvailabilityProps {
     topic: unknown;
@@ -53416,11 +57842,17 @@ interface DalyBmsCellsNumberProps {
     expireAfter?: DalyBmsCellsNumberPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DalyBmsTemperature1PropsAvailabilityProps {
     topic: unknown;
@@ -53486,11 +57918,17 @@ interface DalyBmsTemperature1Props {
     expireAfter?: DalyBmsTemperature1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DalyBmsTemperature2PropsAvailabilityProps {
     topic: unknown;
@@ -53556,11 +57994,17 @@ interface DalyBmsTemperature2Props {
     expireAfter?: DalyBmsTemperature2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DalyBmsCell1VoltagePropsAvailabilityProps {
     topic: unknown;
@@ -53626,11 +58070,17 @@ interface DalyBmsCell1VoltageProps {
     expireAfter?: DalyBmsCell1VoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DalyBmsCell2VoltagePropsAvailabilityProps {
     topic: unknown;
@@ -53696,11 +58146,17 @@ interface DalyBmsCell2VoltageProps {
     expireAfter?: DalyBmsCell2VoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DalyBmsCell3VoltagePropsAvailabilityProps {
     topic: unknown;
@@ -53766,11 +58222,17 @@ interface DalyBmsCell3VoltageProps {
     expireAfter?: DalyBmsCell3VoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DalyBmsCell4VoltagePropsAvailabilityProps {
     topic: unknown;
@@ -53836,11 +58298,17 @@ interface DalyBmsCell4VoltageProps {
     expireAfter?: DalyBmsCell4VoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DalyBmsCell5VoltagePropsAvailabilityProps {
     topic: unknown;
@@ -53906,11 +58374,17 @@ interface DalyBmsCell5VoltageProps {
     expireAfter?: DalyBmsCell5VoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DalyBmsCell6VoltagePropsAvailabilityProps {
     topic: unknown;
@@ -53976,11 +58450,17 @@ interface DalyBmsCell6VoltageProps {
     expireAfter?: DalyBmsCell6VoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DalyBmsCell7VoltagePropsAvailabilityProps {
     topic: unknown;
@@ -54046,11 +58526,17 @@ interface DalyBmsCell7VoltageProps {
     expireAfter?: DalyBmsCell7VoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DalyBmsCell8VoltagePropsAvailabilityProps {
     topic: unknown;
@@ -54116,11 +58602,17 @@ interface DalyBmsCell8VoltageProps {
     expireAfter?: DalyBmsCell8VoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DalyBmsCell9VoltagePropsAvailabilityProps {
     topic: unknown;
@@ -54186,11 +58678,17 @@ interface DalyBmsCell9VoltageProps {
     expireAfter?: DalyBmsCell9VoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DalyBmsCell10VoltagePropsAvailabilityProps {
     topic: unknown;
@@ -54256,11 +58754,17 @@ interface DalyBmsCell10VoltageProps {
     expireAfter?: DalyBmsCell10VoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DalyBmsCell11VoltagePropsAvailabilityProps {
     topic: unknown;
@@ -54326,11 +58830,17 @@ interface DalyBmsCell11VoltageProps {
     expireAfter?: DalyBmsCell11VoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DalyBmsCell12VoltagePropsAvailabilityProps {
     topic: unknown;
@@ -54396,11 +58906,17 @@ interface DalyBmsCell12VoltageProps {
     expireAfter?: DalyBmsCell12VoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DalyBmsCell13VoltagePropsAvailabilityProps {
     topic: unknown;
@@ -54466,11 +58982,17 @@ interface DalyBmsCell13VoltageProps {
     expireAfter?: DalyBmsCell13VoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DalyBmsCell14VoltagePropsAvailabilityProps {
     topic: unknown;
@@ -54536,11 +59058,17 @@ interface DalyBmsCell14VoltageProps {
     expireAfter?: DalyBmsCell14VoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DalyBmsCell15VoltagePropsAvailabilityProps {
     topic: unknown;
@@ -54606,11 +59134,17 @@ interface DalyBmsCell15VoltageProps {
     expireAfter?: DalyBmsCell15VoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DalyBmsCell16VoltagePropsAvailabilityProps {
     topic: unknown;
@@ -54676,11 +59210,17 @@ interface DalyBmsCell16VoltageProps {
     expireAfter?: DalyBmsCell16VoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DalyBmsCell17VoltagePropsAvailabilityProps {
     topic: unknown;
@@ -54746,11 +59286,17 @@ interface DalyBmsCell17VoltageProps {
     expireAfter?: DalyBmsCell17VoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DalyBmsCell18VoltagePropsAvailabilityProps {
     topic: unknown;
@@ -54816,11 +59362,17 @@ interface DalyBmsCell18VoltageProps {
     expireAfter?: DalyBmsCell18VoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DebugFreePropsAvailabilityProps {
     topic: unknown;
@@ -54886,11 +59438,17 @@ interface DebugFreeProps {
     expireAfter?: DebugFreePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DebugBlockPropsAvailabilityProps {
     topic: unknown;
@@ -54956,11 +59514,17 @@ interface DebugBlockProps {
     expireAfter?: DebugBlockPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DebugFragmentationPropsAvailabilityProps {
     topic: unknown;
@@ -55026,11 +59590,17 @@ interface DebugFragmentationProps {
     expireAfter?: DebugFragmentationPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DebugMinFreePropsAvailabilityProps {
     topic: unknown;
@@ -55096,11 +59666,17 @@ interface DebugMinFreeProps {
     expireAfter?: DebugMinFreePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DebugLoopTimePropsAvailabilityProps {
     topic: unknown;
@@ -55166,11 +59742,17 @@ interface DebugLoopTimeProps {
     expireAfter?: DebugLoopTimePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DebugPsramPropsAvailabilityProps {
     topic: unknown;
@@ -55236,11 +59818,17 @@ interface DebugPsramProps {
     expireAfter?: DebugPsramPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DebugCpuFrequencyPropsAvailabilityProps {
     topic: unknown;
@@ -55306,11 +59894,17 @@ interface DebugCpuFrequencyProps {
     expireAfter?: DebugCpuFrequencyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DlmsMeterVoltageL1PropsAvailabilityProps {
     topic: unknown;
@@ -55377,11 +59971,17 @@ interface DlmsMeterVoltageL1Props {
     expireAfter?: DlmsMeterVoltageL1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DlmsMeterVoltageL2PropsAvailabilityProps {
     topic: unknown;
@@ -55448,11 +60048,17 @@ interface DlmsMeterVoltageL2Props {
     expireAfter?: DlmsMeterVoltageL2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DlmsMeterVoltageL3PropsAvailabilityProps {
     topic: unknown;
@@ -55519,11 +60125,17 @@ interface DlmsMeterVoltageL3Props {
     expireAfter?: DlmsMeterVoltageL3PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DlmsMeterCurrentL1PropsAvailabilityProps {
     topic: unknown;
@@ -55590,11 +60202,17 @@ interface DlmsMeterCurrentL1Props {
     expireAfter?: DlmsMeterCurrentL1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DlmsMeterCurrentL2PropsAvailabilityProps {
     topic: unknown;
@@ -55661,11 +60279,17 @@ interface DlmsMeterCurrentL2Props {
     expireAfter?: DlmsMeterCurrentL2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DlmsMeterCurrentL3PropsAvailabilityProps {
     topic: unknown;
@@ -55732,11 +60356,17 @@ interface DlmsMeterCurrentL3Props {
     expireAfter?: DlmsMeterCurrentL3PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DlmsMeterActivePowerPlusPropsAvailabilityProps {
     topic: unknown;
@@ -55803,11 +60433,17 @@ interface DlmsMeterActivePowerPlusProps {
     expireAfter?: DlmsMeterActivePowerPlusPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DlmsMeterActivePowerMinusPropsAvailabilityProps {
     topic: unknown;
@@ -55874,11 +60510,17 @@ interface DlmsMeterActivePowerMinusProps {
     expireAfter?: DlmsMeterActivePowerMinusPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DlmsMeterActiveEnergyPlusPropsAvailabilityProps {
     topic: unknown;
@@ -55945,11 +60587,17 @@ interface DlmsMeterActiveEnergyPlusProps {
     expireAfter?: DlmsMeterActiveEnergyPlusPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DlmsMeterActiveEnergyMinusPropsAvailabilityProps {
     topic: unknown;
@@ -56016,11 +60664,17 @@ interface DlmsMeterActiveEnergyMinusProps {
     expireAfter?: DlmsMeterActiveEnergyMinusPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DlmsMeterReactiveEnergyPlusPropsAvailabilityProps {
     topic: unknown;
@@ -56087,11 +60741,17 @@ interface DlmsMeterReactiveEnergyPlusProps {
     expireAfter?: DlmsMeterReactiveEnergyPlusPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DlmsMeterReactiveEnergyMinusPropsAvailabilityProps {
     topic: unknown;
@@ -56158,11 +60818,17 @@ interface DlmsMeterReactiveEnergyMinusProps {
     expireAfter?: DlmsMeterReactiveEnergyMinusPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DlmsMeterPowerFactorPropsAvailabilityProps {
     topic: unknown;
@@ -56229,11 +60895,17 @@ interface DlmsMeterPowerFactorProps {
     expireAfter?: DlmsMeterPowerFactorPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrEnergyDeliveredLuxPropsAvailabilityProps {
     topic: unknown;
@@ -56300,11 +60972,17 @@ interface DsmrEnergyDeliveredLuxProps {
     expireAfter?: DsmrEnergyDeliveredLuxPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrEnergyDeliveredTariff1PropsAvailabilityProps {
     topic: unknown;
@@ -56371,11 +61049,17 @@ interface DsmrEnergyDeliveredTariff1Props {
     expireAfter?: DsmrEnergyDeliveredTariff1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrEnergyDeliveredTariff2PropsAvailabilityProps {
     topic: unknown;
@@ -56442,11 +61126,17 @@ interface DsmrEnergyDeliveredTariff2Props {
     expireAfter?: DsmrEnergyDeliveredTariff2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrEnergyDeliveredTariff3PropsAvailabilityProps {
     topic: unknown;
@@ -56513,11 +61203,17 @@ interface DsmrEnergyDeliveredTariff3Props {
     expireAfter?: DsmrEnergyDeliveredTariff3PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrEnergyDeliveredTariff4PropsAvailabilityProps {
     topic: unknown;
@@ -56584,11 +61280,17 @@ interface DsmrEnergyDeliveredTariff4Props {
     expireAfter?: DsmrEnergyDeliveredTariff4PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrEnergyReturnedLuxPropsAvailabilityProps {
     topic: unknown;
@@ -56655,11 +61357,17 @@ interface DsmrEnergyReturnedLuxProps {
     expireAfter?: DsmrEnergyReturnedLuxPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrEnergyReturnedTariff1PropsAvailabilityProps {
     topic: unknown;
@@ -56726,11 +61434,17 @@ interface DsmrEnergyReturnedTariff1Props {
     expireAfter?: DsmrEnergyReturnedTariff1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrEnergyReturnedTariff2PropsAvailabilityProps {
     topic: unknown;
@@ -56797,11 +61511,17 @@ interface DsmrEnergyReturnedTariff2Props {
     expireAfter?: DsmrEnergyReturnedTariff2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrEnergyReturnedTariff3PropsAvailabilityProps {
     topic: unknown;
@@ -56868,11 +61588,17 @@ interface DsmrEnergyReturnedTariff3Props {
     expireAfter?: DsmrEnergyReturnedTariff3PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrEnergyReturnedTariff4PropsAvailabilityProps {
     topic: unknown;
@@ -56939,11 +61665,17 @@ interface DsmrEnergyReturnedTariff4Props {
     expireAfter?: DsmrEnergyReturnedTariff4PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrEnergyDeliveredTariff1ChPropsAvailabilityProps {
     topic: unknown;
@@ -57010,11 +61742,17 @@ interface DsmrEnergyDeliveredTariff1ChProps {
     expireAfter?: DsmrEnergyDeliveredTariff1ChPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrEnergyDeliveredTariff2ChPropsAvailabilityProps {
     topic: unknown;
@@ -57081,11 +61819,17 @@ interface DsmrEnergyDeliveredTariff2ChProps {
     expireAfter?: DsmrEnergyDeliveredTariff2ChPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrEnergyReturnedTariff1ChPropsAvailabilityProps {
     topic: unknown;
@@ -57152,11 +61896,17 @@ interface DsmrEnergyReturnedTariff1ChProps {
     expireAfter?: DsmrEnergyReturnedTariff1ChPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrEnergyReturnedTariff2ChPropsAvailabilityProps {
     topic: unknown;
@@ -57223,11 +61973,17 @@ interface DsmrEnergyReturnedTariff2ChProps {
     expireAfter?: DsmrEnergyReturnedTariff2ChPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrTotalImportedEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -57294,11 +62050,17 @@ interface DsmrTotalImportedEnergyProps {
     expireAfter?: DsmrTotalImportedEnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrReactiveEnergyDeliveredTariff1PropsAvailabilityProps {
     topic: unknown;
@@ -57365,11 +62127,17 @@ interface DsmrReactiveEnergyDeliveredTariff1Props {
     expireAfter?: DsmrReactiveEnergyDeliveredTariff1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrReactiveEnergyDeliveredTariff2PropsAvailabilityProps {
     topic: unknown;
@@ -57436,11 +62204,17 @@ interface DsmrReactiveEnergyDeliveredTariff2Props {
     expireAfter?: DsmrReactiveEnergyDeliveredTariff2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrReactiveEnergyDeliveredTariff3PropsAvailabilityProps {
     topic: unknown;
@@ -57507,11 +62281,17 @@ interface DsmrReactiveEnergyDeliveredTariff3Props {
     expireAfter?: DsmrReactiveEnergyDeliveredTariff3PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrReactiveEnergyDeliveredTariff4PropsAvailabilityProps {
     topic: unknown;
@@ -57578,11 +62358,17 @@ interface DsmrReactiveEnergyDeliveredTariff4Props {
     expireAfter?: DsmrReactiveEnergyDeliveredTariff4PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrTotalExportedEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -57649,11 +62435,17 @@ interface DsmrTotalExportedEnergyProps {
     expireAfter?: DsmrTotalExportedEnergyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrReactiveEnergyReturnedTariff1PropsAvailabilityProps {
     topic: unknown;
@@ -57720,11 +62512,17 @@ interface DsmrReactiveEnergyReturnedTariff1Props {
     expireAfter?: DsmrReactiveEnergyReturnedTariff1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrReactiveEnergyReturnedTariff2PropsAvailabilityProps {
     topic: unknown;
@@ -57791,11 +62589,17 @@ interface DsmrReactiveEnergyReturnedTariff2Props {
     expireAfter?: DsmrReactiveEnergyReturnedTariff2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrReactiveEnergyReturnedTariff3PropsAvailabilityProps {
     topic: unknown;
@@ -57862,11 +62666,17 @@ interface DsmrReactiveEnergyReturnedTariff3Props {
     expireAfter?: DsmrReactiveEnergyReturnedTariff3PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrReactiveEnergyReturnedTariff4PropsAvailabilityProps {
     topic: unknown;
@@ -57933,11 +62743,17 @@ interface DsmrReactiveEnergyReturnedTariff4Props {
     expireAfter?: DsmrReactiveEnergyReturnedTariff4PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrPowerDeliveredPropsAvailabilityProps {
     topic: unknown;
@@ -58004,11 +62820,17 @@ interface DsmrPowerDeliveredProps {
     expireAfter?: DsmrPowerDeliveredPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrPowerReturnedPropsAvailabilityProps {
     topic: unknown;
@@ -58075,11 +62897,17 @@ interface DsmrPowerReturnedProps {
     expireAfter?: DsmrPowerReturnedPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrPowerDeliveredChPropsAvailabilityProps {
     topic: unknown;
@@ -58146,11 +62974,17 @@ interface DsmrPowerDeliveredChProps {
     expireAfter?: DsmrPowerDeliveredChPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrPowerReturnedChPropsAvailabilityProps {
     topic: unknown;
@@ -58217,11 +63051,17 @@ interface DsmrPowerReturnedChProps {
     expireAfter?: DsmrPowerReturnedChPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrReactivePowerDeliveredPropsAvailabilityProps {
     topic: unknown;
@@ -58288,11 +63128,17 @@ interface DsmrReactivePowerDeliveredProps {
     expireAfter?: DsmrReactivePowerDeliveredPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrReactivePowerReturnedPropsAvailabilityProps {
     topic: unknown;
@@ -58359,11 +63205,17 @@ interface DsmrReactivePowerReturnedProps {
     expireAfter?: DsmrReactivePowerReturnedPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrElectricityThresholdPropsAvailabilityProps {
     topic: unknown;
@@ -58430,11 +63282,17 @@ interface DsmrElectricityThresholdProps {
     expireAfter?: DsmrElectricityThresholdPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrElectricitySwitchPositionPropsAvailabilityProps {
     topic: unknown;
@@ -58501,11 +63359,17 @@ interface DsmrElectricitySwitchPositionProps {
     expireAfter?: DsmrElectricitySwitchPositionPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrElectricityFailuresPropsAvailabilityProps {
     topic: unknown;
@@ -58572,11 +63436,17 @@ interface DsmrElectricityFailuresProps {
     expireAfter?: DsmrElectricityFailuresPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrElectricityLongFailuresPropsAvailabilityProps {
     topic: unknown;
@@ -58643,11 +63513,17 @@ interface DsmrElectricityLongFailuresProps {
     expireAfter?: DsmrElectricityLongFailuresPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrElectricitySagsL1PropsAvailabilityProps {
     topic: unknown;
@@ -58714,11 +63590,17 @@ interface DsmrElectricitySagsL1Props {
     expireAfter?: DsmrElectricitySagsL1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrElectricitySagsL2PropsAvailabilityProps {
     topic: unknown;
@@ -58785,11 +63667,17 @@ interface DsmrElectricitySagsL2Props {
     expireAfter?: DsmrElectricitySagsL2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrElectricitySagsL3PropsAvailabilityProps {
     topic: unknown;
@@ -58856,11 +63744,17 @@ interface DsmrElectricitySagsL3Props {
     expireAfter?: DsmrElectricitySagsL3PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrElectricitySwellsL1PropsAvailabilityProps {
     topic: unknown;
@@ -58927,11 +63821,17 @@ interface DsmrElectricitySwellsL1Props {
     expireAfter?: DsmrElectricitySwellsL1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrElectricitySwellsL2PropsAvailabilityProps {
     topic: unknown;
@@ -58998,11 +63898,17 @@ interface DsmrElectricitySwellsL2Props {
     expireAfter?: DsmrElectricitySwellsL2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrElectricitySwellsL3PropsAvailabilityProps {
     topic: unknown;
@@ -59069,11 +63975,17 @@ interface DsmrElectricitySwellsL3Props {
     expireAfter?: DsmrElectricitySwellsL3PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrVoltageSagTimeL1PropsAvailabilityProps {
     topic: unknown;
@@ -59140,11 +64052,17 @@ interface DsmrVoltageSagTimeL1Props {
     expireAfter?: DsmrVoltageSagTimeL1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrVoltageSagTimeL2PropsAvailabilityProps {
     topic: unknown;
@@ -59211,11 +64129,17 @@ interface DsmrVoltageSagTimeL2Props {
     expireAfter?: DsmrVoltageSagTimeL2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrVoltageSagTimeL3PropsAvailabilityProps {
     topic: unknown;
@@ -59282,11 +64206,17 @@ interface DsmrVoltageSagTimeL3Props {
     expireAfter?: DsmrVoltageSagTimeL3PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrVoltageSagL1PropsAvailabilityProps {
     topic: unknown;
@@ -59353,11 +64283,17 @@ interface DsmrVoltageSagL1Props {
     expireAfter?: DsmrVoltageSagL1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrVoltageSagL2PropsAvailabilityProps {
     topic: unknown;
@@ -59424,11 +64360,17 @@ interface DsmrVoltageSagL2Props {
     expireAfter?: DsmrVoltageSagL2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrVoltageSagL3PropsAvailabilityProps {
     topic: unknown;
@@ -59495,11 +64437,17 @@ interface DsmrVoltageSagL3Props {
     expireAfter?: DsmrVoltageSagL3PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrVoltageSwellTimeL1PropsAvailabilityProps {
     topic: unknown;
@@ -59566,11 +64514,17 @@ interface DsmrVoltageSwellTimeL1Props {
     expireAfter?: DsmrVoltageSwellTimeL1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrVoltageSwellTimeL2PropsAvailabilityProps {
     topic: unknown;
@@ -59637,11 +64591,17 @@ interface DsmrVoltageSwellTimeL2Props {
     expireAfter?: DsmrVoltageSwellTimeL2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrVoltageSwellTimeL3PropsAvailabilityProps {
     topic: unknown;
@@ -59708,11 +64668,17 @@ interface DsmrVoltageSwellTimeL3Props {
     expireAfter?: DsmrVoltageSwellTimeL3PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrVoltageSwellL1PropsAvailabilityProps {
     topic: unknown;
@@ -59779,11 +64745,17 @@ interface DsmrVoltageSwellL1Props {
     expireAfter?: DsmrVoltageSwellL1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrVoltageSwellL2PropsAvailabilityProps {
     topic: unknown;
@@ -59850,11 +64822,17 @@ interface DsmrVoltageSwellL2Props {
     expireAfter?: DsmrVoltageSwellL2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrVoltageSwellL3PropsAvailabilityProps {
     topic: unknown;
@@ -59921,11 +64899,17 @@ interface DsmrVoltageSwellL3Props {
     expireAfter?: DsmrVoltageSwellL3PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrCurrentL1PropsAvailabilityProps {
     topic: unknown;
@@ -59992,11 +64976,17 @@ interface DsmrCurrentL1Props {
     expireAfter?: DsmrCurrentL1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrCurrentL2PropsAvailabilityProps {
     topic: unknown;
@@ -60063,11 +65053,17 @@ interface DsmrCurrentL2Props {
     expireAfter?: DsmrCurrentL2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrCurrentL3PropsAvailabilityProps {
     topic: unknown;
@@ -60134,11 +65130,17 @@ interface DsmrCurrentL3Props {
     expireAfter?: DsmrCurrentL3PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -60205,11 +65207,17 @@ interface DsmrCurrentProps {
     expireAfter?: DsmrCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrCurrentNPropsAvailabilityProps {
     topic: unknown;
@@ -60276,11 +65284,17 @@ interface DsmrCurrentNProps {
     expireAfter?: DsmrCurrentNPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrCurrentSumPropsAvailabilityProps {
     topic: unknown;
@@ -60347,11 +65361,17 @@ interface DsmrCurrentSumProps {
     expireAfter?: DsmrCurrentSumPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrCurrentFuseL1PropsAvailabilityProps {
     topic: unknown;
@@ -60418,11 +65438,17 @@ interface DsmrCurrentFuseL1Props {
     expireAfter?: DsmrCurrentFuseL1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrCurrentFuseL2PropsAvailabilityProps {
     topic: unknown;
@@ -60489,11 +65515,17 @@ interface DsmrCurrentFuseL2Props {
     expireAfter?: DsmrCurrentFuseL2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrCurrentFuseL3PropsAvailabilityProps {
     topic: unknown;
@@ -60560,11 +65592,17 @@ interface DsmrCurrentFuseL3Props {
     expireAfter?: DsmrCurrentFuseL3PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrPowerDeliveredL1PropsAvailabilityProps {
     topic: unknown;
@@ -60631,11 +65669,17 @@ interface DsmrPowerDeliveredL1Props {
     expireAfter?: DsmrPowerDeliveredL1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrPowerDeliveredL2PropsAvailabilityProps {
     topic: unknown;
@@ -60702,11 +65746,17 @@ interface DsmrPowerDeliveredL2Props {
     expireAfter?: DsmrPowerDeliveredL2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrPowerDeliveredL3PropsAvailabilityProps {
     topic: unknown;
@@ -60773,11 +65823,17 @@ interface DsmrPowerDeliveredL3Props {
     expireAfter?: DsmrPowerDeliveredL3PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrPowerReturnedL1PropsAvailabilityProps {
     topic: unknown;
@@ -60844,11 +65900,17 @@ interface DsmrPowerReturnedL1Props {
     expireAfter?: DsmrPowerReturnedL1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrPowerReturnedL2PropsAvailabilityProps {
     topic: unknown;
@@ -60915,11 +65977,17 @@ interface DsmrPowerReturnedL2Props {
     expireAfter?: DsmrPowerReturnedL2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrPowerReturnedL3PropsAvailabilityProps {
     topic: unknown;
@@ -60986,11 +66054,17 @@ interface DsmrPowerReturnedL3Props {
     expireAfter?: DsmrPowerReturnedL3PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrReactivePowerDeliveredL1PropsAvailabilityProps {
     topic: unknown;
@@ -61057,11 +66131,17 @@ interface DsmrReactivePowerDeliveredL1Props {
     expireAfter?: DsmrReactivePowerDeliveredL1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrReactivePowerDeliveredL2PropsAvailabilityProps {
     topic: unknown;
@@ -61128,11 +66208,17 @@ interface DsmrReactivePowerDeliveredL2Props {
     expireAfter?: DsmrReactivePowerDeliveredL2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrReactivePowerDeliveredL3PropsAvailabilityProps {
     topic: unknown;
@@ -61199,11 +66285,17 @@ interface DsmrReactivePowerDeliveredL3Props {
     expireAfter?: DsmrReactivePowerDeliveredL3PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrReactivePowerReturnedL1PropsAvailabilityProps {
     topic: unknown;
@@ -61270,11 +66362,17 @@ interface DsmrReactivePowerReturnedL1Props {
     expireAfter?: DsmrReactivePowerReturnedL1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrReactivePowerReturnedL2PropsAvailabilityProps {
     topic: unknown;
@@ -61341,11 +66439,17 @@ interface DsmrReactivePowerReturnedL2Props {
     expireAfter?: DsmrReactivePowerReturnedL2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrReactivePowerReturnedL3PropsAvailabilityProps {
     topic: unknown;
@@ -61412,11 +66516,17 @@ interface DsmrReactivePowerReturnedL3Props {
     expireAfter?: DsmrReactivePowerReturnedL3PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrVoltageL1PropsAvailabilityProps {
     topic: unknown;
@@ -61483,11 +66593,17 @@ interface DsmrVoltageL1Props {
     expireAfter?: DsmrVoltageL1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrVoltageL2PropsAvailabilityProps {
     topic: unknown;
@@ -61554,11 +66670,17 @@ interface DsmrVoltageL2Props {
     expireAfter?: DsmrVoltageL2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrVoltageL3PropsAvailabilityProps {
     topic: unknown;
@@ -61625,11 +66747,17 @@ interface DsmrVoltageL3Props {
     expireAfter?: DsmrVoltageL3PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrVoltageAvgL1PropsAvailabilityProps {
     topic: unknown;
@@ -61696,11 +66824,17 @@ interface DsmrVoltageAvgL1Props {
     expireAfter?: DsmrVoltageAvgL1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrVoltageAvgL2PropsAvailabilityProps {
     topic: unknown;
@@ -61767,11 +66901,17 @@ interface DsmrVoltageAvgL2Props {
     expireAfter?: DsmrVoltageAvgL2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrVoltageAvgL3PropsAvailabilityProps {
     topic: unknown;
@@ -61838,11 +66978,17 @@ interface DsmrVoltageAvgL3Props {
     expireAfter?: DsmrVoltageAvgL3PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -61909,11 +67055,17 @@ interface DsmrVoltageProps {
     expireAfter?: DsmrVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrFrequencyPropsAvailabilityProps {
     topic: unknown;
@@ -61980,11 +67132,17 @@ interface DsmrFrequencyProps {
     expireAfter?: DsmrFrequencyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrAbsPowerPropsAvailabilityProps {
     topic: unknown;
@@ -62051,11 +67209,17 @@ interface DsmrAbsPowerProps {
     expireAfter?: DsmrAbsPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrGasDeliveredPropsAvailabilityProps {
     topic: unknown;
@@ -62122,11 +67286,17 @@ interface DsmrGasDeliveredProps {
     expireAfter?: DsmrGasDeliveredPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrGasDeliveredBePropsAvailabilityProps {
     topic: unknown;
@@ -62193,11 +67363,17 @@ interface DsmrGasDeliveredBeProps {
     expireAfter?: DsmrGasDeliveredBePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrWaterDeliveredPropsAvailabilityProps {
     topic: unknown;
@@ -62264,11 +67440,17 @@ interface DsmrWaterDeliveredProps {
     expireAfter?: DsmrWaterDeliveredPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrThermalDeliveredPropsAvailabilityProps {
     topic: unknown;
@@ -62335,11 +67517,17 @@ interface DsmrThermalDeliveredProps {
     expireAfter?: DsmrThermalDeliveredPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrSubDeliveredPropsAvailabilityProps {
     topic: unknown;
@@ -62406,11 +67594,17 @@ interface DsmrSubDeliveredProps {
     expireAfter?: DsmrSubDeliveredPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrGasDeviceTypePropsAvailabilityProps {
     topic: unknown;
@@ -62477,11 +67671,17 @@ interface DsmrGasDeviceTypeProps {
     expireAfter?: DsmrGasDeviceTypePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrGasValvePositionPropsAvailabilityProps {
     topic: unknown;
@@ -62548,11 +67748,17 @@ interface DsmrGasValvePositionProps {
     expireAfter?: DsmrGasValvePositionPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrThermalDeviceTypePropsAvailabilityProps {
     topic: unknown;
@@ -62619,11 +67825,17 @@ interface DsmrThermalDeviceTypeProps {
     expireAfter?: DsmrThermalDeviceTypePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrThermalValvePositionPropsAvailabilityProps {
     topic: unknown;
@@ -62690,11 +67902,17 @@ interface DsmrThermalValvePositionProps {
     expireAfter?: DsmrThermalValvePositionPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrWaterDeviceTypePropsAvailabilityProps {
     topic: unknown;
@@ -62761,11 +67979,17 @@ interface DsmrWaterDeviceTypeProps {
     expireAfter?: DsmrWaterDeviceTypePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrWaterValvePositionPropsAvailabilityProps {
     topic: unknown;
@@ -62832,11 +68056,17 @@ interface DsmrWaterValvePositionProps {
     expireAfter?: DsmrWaterValvePositionPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrSubDeviceTypePropsAvailabilityProps {
     topic: unknown;
@@ -62903,11 +68133,17 @@ interface DsmrSubDeviceTypeProps {
     expireAfter?: DsmrSubDeviceTypePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrSubValvePositionPropsAvailabilityProps {
     topic: unknown;
@@ -62974,11 +68210,17 @@ interface DsmrSubValvePositionProps {
     expireAfter?: DsmrSubValvePositionPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrApparentDeliveryPowerPropsAvailabilityProps {
     topic: unknown;
@@ -63045,11 +68287,17 @@ interface DsmrApparentDeliveryPowerProps {
     expireAfter?: DsmrApparentDeliveryPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrApparentDeliveryPowerL1PropsAvailabilityProps {
     topic: unknown;
@@ -63116,11 +68364,17 @@ interface DsmrApparentDeliveryPowerL1Props {
     expireAfter?: DsmrApparentDeliveryPowerL1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrApparentDeliveryPowerL2PropsAvailabilityProps {
     topic: unknown;
@@ -63187,11 +68441,17 @@ interface DsmrApparentDeliveryPowerL2Props {
     expireAfter?: DsmrApparentDeliveryPowerL2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrApparentDeliveryPowerL3PropsAvailabilityProps {
     topic: unknown;
@@ -63258,11 +68518,17 @@ interface DsmrApparentDeliveryPowerL3Props {
     expireAfter?: DsmrApparentDeliveryPowerL3PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrApparentReturnPowerPropsAvailabilityProps {
     topic: unknown;
@@ -63329,11 +68595,17 @@ interface DsmrApparentReturnPowerProps {
     expireAfter?: DsmrApparentReturnPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrApparentReturnPowerL1PropsAvailabilityProps {
     topic: unknown;
@@ -63400,11 +68672,17 @@ interface DsmrApparentReturnPowerL1Props {
     expireAfter?: DsmrApparentReturnPowerL1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrApparentReturnPowerL2PropsAvailabilityProps {
     topic: unknown;
@@ -63471,11 +68749,17 @@ interface DsmrApparentReturnPowerL2Props {
     expireAfter?: DsmrApparentReturnPowerL2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrApparentReturnPowerL3PropsAvailabilityProps {
     topic: unknown;
@@ -63542,11 +68826,17 @@ interface DsmrApparentReturnPowerL3Props {
     expireAfter?: DsmrApparentReturnPowerL3PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrActiveDemandPowerPropsAvailabilityProps {
     topic: unknown;
@@ -63613,11 +68903,17 @@ interface DsmrActiveDemandPowerProps {
     expireAfter?: DsmrActiveDemandPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrActiveDemandAbsPropsAvailabilityProps {
     topic: unknown;
@@ -63684,11 +68980,17 @@ interface DsmrActiveDemandAbsProps {
     expireAfter?: DsmrActiveDemandAbsPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrActiveEnergyImportCurrentAverageDemandPropsAvailabilityProps {
     topic: unknown;
@@ -63755,11 +69057,17 @@ interface DsmrActiveEnergyImportCurrentAverageDemandProps {
     expireAfter?: DsmrActiveEnergyImportCurrentAverageDemandPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrActiveEnergyExportCurrentAverageDemandPropsAvailabilityProps {
     topic: unknown;
@@ -63826,11 +69134,17 @@ interface DsmrActiveEnergyExportCurrentAverageDemandProps {
     expireAfter?: DsmrActiveEnergyExportCurrentAverageDemandPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrReactiveEnergyImportCurrentAverageDemandPropsAvailabilityProps {
     topic: unknown;
@@ -63897,11 +69211,17 @@ interface DsmrReactiveEnergyImportCurrentAverageDemandProps {
     expireAfter?: DsmrReactiveEnergyImportCurrentAverageDemandPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrReactiveEnergyExportCurrentAverageDemandPropsAvailabilityProps {
     topic: unknown;
@@ -63968,11 +69288,17 @@ interface DsmrReactiveEnergyExportCurrentAverageDemandProps {
     expireAfter?: DsmrReactiveEnergyExportCurrentAverageDemandPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrApparentEnergyImportCurrentAverageDemandPropsAvailabilityProps {
     topic: unknown;
@@ -64039,11 +69365,17 @@ interface DsmrApparentEnergyImportCurrentAverageDemandProps {
     expireAfter?: DsmrApparentEnergyImportCurrentAverageDemandPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrApparentEnergyExportCurrentAverageDemandPropsAvailabilityProps {
     topic: unknown;
@@ -64110,11 +69442,17 @@ interface DsmrApparentEnergyExportCurrentAverageDemandProps {
     expireAfter?: DsmrApparentEnergyExportCurrentAverageDemandPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrActiveEnergyImportLastCompletedDemandPropsAvailabilityProps {
     topic: unknown;
@@ -64181,11 +69519,17 @@ interface DsmrActiveEnergyImportLastCompletedDemandProps {
     expireAfter?: DsmrActiveEnergyImportLastCompletedDemandPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrActiveEnergyExportLastCompletedDemandPropsAvailabilityProps {
     topic: unknown;
@@ -64252,11 +69596,17 @@ interface DsmrActiveEnergyExportLastCompletedDemandProps {
     expireAfter?: DsmrActiveEnergyExportLastCompletedDemandPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrReactiveEnergyImportLastCompletedDemandPropsAvailabilityProps {
     topic: unknown;
@@ -64323,11 +69673,17 @@ interface DsmrReactiveEnergyImportLastCompletedDemandProps {
     expireAfter?: DsmrReactiveEnergyImportLastCompletedDemandPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrReactiveEnergyExportLastCompletedDemandPropsAvailabilityProps {
     topic: unknown;
@@ -64394,11 +69750,17 @@ interface DsmrReactiveEnergyExportLastCompletedDemandProps {
     expireAfter?: DsmrReactiveEnergyExportLastCompletedDemandPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrApparentEnergyImportLastCompletedDemandPropsAvailabilityProps {
     topic: unknown;
@@ -64465,11 +69827,17 @@ interface DsmrApparentEnergyImportLastCompletedDemandProps {
     expireAfter?: DsmrApparentEnergyImportLastCompletedDemandPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrApparentEnergyExportLastCompletedDemandPropsAvailabilityProps {
     topic: unknown;
@@ -64536,11 +69904,17 @@ interface DsmrApparentEnergyExportLastCompletedDemandProps {
     expireAfter?: DsmrApparentEnergyExportLastCompletedDemandPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrActiveEnergyImportMaximumDemandRunningMonthPropsAvailabilityProps {
     topic: unknown;
@@ -64607,11 +69981,17 @@ interface DsmrActiveEnergyImportMaximumDemandRunningMonthProps {
     expireAfter?: DsmrActiveEnergyImportMaximumDemandRunningMonthPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface DsmrActiveEnergyImportMaximumDemandLast13MonthsPropsAvailabilityProps {
     topic: unknown;
@@ -64678,11 +70058,17 @@ interface DsmrActiveEnergyImportMaximumDemandLast13MonthsProps {
     expireAfter?: DsmrActiveEnergyImportMaximumDemandLast13MonthsPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Emc2101InternalTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -64749,11 +70135,17 @@ interface Emc2101InternalTemperatureProps {
     expireAfter?: Emc2101InternalTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Emc2101ExternalTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -64820,11 +70212,17 @@ interface Emc2101ExternalTemperatureProps {
     expireAfter?: Emc2101ExternalTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Emc2101SpeedPropsAvailabilityProps {
     topic: unknown;
@@ -64890,11 +70288,17 @@ interface Emc2101SpeedProps {
     expireAfter?: Emc2101SpeedPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Emc2101DutyCyclePropsAvailabilityProps {
     topic: unknown;
@@ -64960,11 +70364,17 @@ interface Emc2101DutyCycleProps {
     expireAfter?: Emc2101DutyCyclePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface EzoPmpCurrentVolumeDosedPropsAvailabilityProps {
     topic: unknown;
@@ -65031,11 +70441,17 @@ interface EzoPmpCurrentVolumeDosedProps {
     expireAfter?: EzoPmpCurrentVolumeDosedPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface EzoPmpLastVolumeRequestedPropsAvailabilityProps {
     topic: unknown;
@@ -65102,11 +70518,17 @@ interface EzoPmpLastVolumeRequestedProps {
     expireAfter?: EzoPmpLastVolumeRequestedPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface EzoPmpMaxFlowRatePropsAvailabilityProps {
     topic: unknown;
@@ -65173,11 +70595,17 @@ interface EzoPmpMaxFlowRateProps {
     expireAfter?: EzoPmpMaxFlowRatePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface EzoPmpTotalVolumeDosedPropsAvailabilityProps {
     topic: unknown;
@@ -65244,11 +70672,17 @@ interface EzoPmpTotalVolumeDosedProps {
     expireAfter?: EzoPmpTotalVolumeDosedPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface EzoPmpAbsoluteTotalVolumeDosedPropsAvailabilityProps {
     topic: unknown;
@@ -65315,11 +70749,17 @@ interface EzoPmpAbsoluteTotalVolumeDosedProps {
     expireAfter?: EzoPmpAbsoluteTotalVolumeDosedPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface EzoPmpPumpVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -65386,11 +70826,17 @@ interface EzoPmpPumpVoltageProps {
     expireAfter?: EzoPmpPumpVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface FingerprintGrowFingerprintCountPropsAvailabilityProps {
     topic: unknown;
@@ -65456,11 +70902,17 @@ interface FingerprintGrowFingerprintCountProps {
     expireAfter?: FingerprintGrowFingerprintCountPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface FingerprintGrowStatusPropsAvailabilityProps {
     topic: unknown;
@@ -65527,11 +70979,17 @@ interface FingerprintGrowStatusProps {
     expireAfter?: FingerprintGrowStatusPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface FingerprintGrowCapacityPropsAvailabilityProps {
     topic: unknown;
@@ -65597,11 +71055,17 @@ interface FingerprintGrowCapacityProps {
     expireAfter?: FingerprintGrowCapacityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface FingerprintGrowSecurityLevelPropsAvailabilityProps {
     topic: unknown;
@@ -65667,11 +71131,17 @@ interface FingerprintGrowSecurityLevelProps {
     expireAfter?: FingerprintGrowSecurityLevelPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface FingerprintGrowLastFingerIdPropsAvailabilityProps {
     topic: unknown;
@@ -65737,11 +71207,17 @@ interface FingerprintGrowLastFingerIdProps {
     expireAfter?: FingerprintGrowLastFingerIdPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface FingerprintGrowLastConfidencePropsAvailabilityProps {
     topic: unknown;
@@ -65807,11 +71283,17 @@ interface FingerprintGrowLastConfidenceProps {
     expireAfter?: FingerprintGrowLastConfidencePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Gdk101RadiationDosePer1mPropsAvailabilityProps {
     topic: unknown;
@@ -65877,11 +71359,17 @@ interface Gdk101RadiationDosePer1mProps {
     expireAfter?: Gdk101RadiationDosePer1mPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Gdk101RadiationDosePer10mPropsAvailabilityProps {
     topic: unknown;
@@ -65947,11 +71435,17 @@ interface Gdk101RadiationDosePer10mProps {
     expireAfter?: Gdk101RadiationDosePer10mPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Gdk101StatusPropsAvailabilityProps {
     topic: unknown;
@@ -66018,11 +71512,17 @@ interface Gdk101StatusProps {
     expireAfter?: Gdk101StatusPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Gdk101MeasurementDurationPropsAvailabilityProps {
     topic: unknown;
@@ -66088,11 +71588,17 @@ interface Gdk101MeasurementDurationProps {
     expireAfter?: Gdk101MeasurementDurationPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HaierCompressorCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -66158,11 +71664,17 @@ interface HaierCompressorCurrentProps {
     expireAfter?: HaierCompressorCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HaierCompressorFrequencyPropsAvailabilityProps {
     topic: unknown;
@@ -66228,11 +71740,17 @@ interface HaierCompressorFrequencyProps {
     expireAfter?: HaierCompressorFrequencyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HaierExpansionValveOpenDegreePropsAvailabilityProps {
     topic: unknown;
@@ -66298,11 +71816,17 @@ interface HaierExpansionValveOpenDegreeProps {
     expireAfter?: HaierExpansionValveOpenDegreePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HaierHumidityPropsAvailabilityProps {
     topic: unknown;
@@ -66368,11 +71892,17 @@ interface HaierHumidityProps {
     expireAfter?: HaierHumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HaierIndoorCoilTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -66438,11 +71968,17 @@ interface HaierIndoorCoilTemperatureProps {
     expireAfter?: HaierIndoorCoilTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HaierOutdoorCoilTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -66508,11 +72044,17 @@ interface HaierOutdoorCoilTemperatureProps {
     expireAfter?: HaierOutdoorCoilTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HaierOutdoorDefrostTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -66578,11 +72120,17 @@ interface HaierOutdoorDefrostTemperatureProps {
     expireAfter?: HaierOutdoorDefrostTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HaierOutdoorInAirTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -66648,11 +72196,17 @@ interface HaierOutdoorInAirTemperatureProps {
     expireAfter?: HaierOutdoorInAirTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HaierOutdoorOutAirTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -66718,11 +72272,17 @@ interface HaierOutdoorOutAirTemperatureProps {
     expireAfter?: HaierOutdoorOutAirTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HaierOutdoorTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -66788,11 +72348,17 @@ interface HaierOutdoorTemperatureProps {
     expireAfter?: HaierOutdoorTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HaierPowerPropsAvailabilityProps {
     topic: unknown;
@@ -66858,11 +72424,17 @@ interface HaierPowerProps {
     expireAfter?: HaierPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HlkFm22xFaceCountPropsAvailabilityProps {
     topic: unknown;
@@ -66928,11 +72500,17 @@ interface HlkFm22xFaceCountProps {
     expireAfter?: HlkFm22xFaceCountPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HlkFm22xStatusPropsAvailabilityProps {
     topic: unknown;
@@ -66999,11 +72577,17 @@ interface HlkFm22xStatusProps {
     expireAfter?: HlkFm22xStatusPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HlkFm22xLastFaceIdPropsAvailabilityProps {
     topic: unknown;
@@ -67069,11 +72653,17 @@ interface HlkFm22xLastFaceIdProps {
     expireAfter?: HlkFm22xLastFaceIdPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HydreonRgxxAccPropsAvailabilityProps {
     topic: unknown;
@@ -67140,11 +72730,17 @@ interface HydreonRgxxAccProps {
     expireAfter?: HydreonRgxxAccPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HydreonRgxxEventAccPropsAvailabilityProps {
     topic: unknown;
@@ -67211,11 +72807,17 @@ interface HydreonRgxxEventAccProps {
     expireAfter?: HydreonRgxxEventAccPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HydreonRgxxTotalAccPropsAvailabilityProps {
     topic: unknown;
@@ -67282,11 +72884,17 @@ interface HydreonRgxxTotalAccProps {
     expireAfter?: HydreonRgxxTotalAccPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HydreonRgxxRIntPropsAvailabilityProps {
     topic: unknown;
@@ -67353,11 +72961,17 @@ interface HydreonRgxxRIntProps {
     expireAfter?: HydreonRgxxRIntPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HydreonRgxxMoisturePropsAvailabilityProps {
     topic: unknown;
@@ -67423,11 +73037,17 @@ interface HydreonRgxxMoistureProps {
     expireAfter?: HydreonRgxxMoisturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface HydreonRgxxTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -67493,11 +73113,17 @@ interface HydreonRgxxTemperatureProps {
     expireAfter?: HydreonRgxxTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2410MovingDistancePropsAvailabilityProps {
     topic: unknown;
@@ -67563,11 +73189,17 @@ interface Ld2410MovingDistanceProps {
     expireAfter?: Ld2410MovingDistancePropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2410StillDistancePropsAvailabilityProps {
     topic: unknown;
@@ -67633,11 +73265,17 @@ interface Ld2410StillDistanceProps {
     expireAfter?: Ld2410StillDistancePropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2410MovingEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -67703,11 +73341,17 @@ interface Ld2410MovingEnergyProps {
     expireAfter?: Ld2410MovingEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2410StillEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -67773,11 +73417,17 @@ interface Ld2410StillEnergyProps {
     expireAfter?: Ld2410StillEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2410LightPropsAvailabilityProps {
     topic: unknown;
@@ -67843,11 +73493,17 @@ interface Ld2410LightProps {
     expireAfter?: Ld2410LightPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2410DetectionDistancePropsAvailabilityProps {
     topic: unknown;
@@ -67913,11 +73569,17 @@ interface Ld2410DetectionDistanceProps {
     expireAfter?: Ld2410DetectionDistancePropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2410G0PropsMoveEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -67983,11 +73645,17 @@ interface Ld2410G0PropsMoveEnergyProps {
     expireAfter?: Ld2410G0PropsMoveEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2410G0PropsStillEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -68053,11 +73721,17 @@ interface Ld2410G0PropsStillEnergyProps {
     expireAfter?: Ld2410G0PropsStillEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2410G0Props {
     /** @yamlKey move_energy */
@@ -68129,11 +73803,17 @@ interface Ld2410G1PropsMoveEnergyProps {
     expireAfter?: Ld2410G1PropsMoveEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2410G1PropsStillEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -68199,11 +73879,17 @@ interface Ld2410G1PropsStillEnergyProps {
     expireAfter?: Ld2410G1PropsStillEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2410G1Props {
     /** @yamlKey move_energy */
@@ -68275,11 +73961,17 @@ interface Ld2410G2PropsMoveEnergyProps {
     expireAfter?: Ld2410G2PropsMoveEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2410G2PropsStillEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -68345,11 +74037,17 @@ interface Ld2410G2PropsStillEnergyProps {
     expireAfter?: Ld2410G2PropsStillEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2410G2Props {
     /** @yamlKey move_energy */
@@ -68421,11 +74119,17 @@ interface Ld2410G3PropsMoveEnergyProps {
     expireAfter?: Ld2410G3PropsMoveEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2410G3PropsStillEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -68491,11 +74195,17 @@ interface Ld2410G3PropsStillEnergyProps {
     expireAfter?: Ld2410G3PropsStillEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2410G3Props {
     /** @yamlKey move_energy */
@@ -68567,11 +74277,17 @@ interface Ld2410G4PropsMoveEnergyProps {
     expireAfter?: Ld2410G4PropsMoveEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2410G4PropsStillEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -68637,11 +74353,17 @@ interface Ld2410G4PropsStillEnergyProps {
     expireAfter?: Ld2410G4PropsStillEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2410G4Props {
     /** @yamlKey move_energy */
@@ -68713,11 +74435,17 @@ interface Ld2410G5PropsMoveEnergyProps {
     expireAfter?: Ld2410G5PropsMoveEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2410G5PropsStillEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -68783,11 +74511,17 @@ interface Ld2410G5PropsStillEnergyProps {
     expireAfter?: Ld2410G5PropsStillEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2410G5Props {
     /** @yamlKey move_energy */
@@ -68859,11 +74593,17 @@ interface Ld2410G6PropsMoveEnergyProps {
     expireAfter?: Ld2410G6PropsMoveEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2410G6PropsStillEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -68929,11 +74669,17 @@ interface Ld2410G6PropsStillEnergyProps {
     expireAfter?: Ld2410G6PropsStillEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2410G6Props {
     /** @yamlKey move_energy */
@@ -69005,11 +74751,17 @@ interface Ld2410G7PropsMoveEnergyProps {
     expireAfter?: Ld2410G7PropsMoveEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2410G7PropsStillEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -69075,11 +74827,17 @@ interface Ld2410G7PropsStillEnergyProps {
     expireAfter?: Ld2410G7PropsStillEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2410G7Props {
     /** @yamlKey move_energy */
@@ -69151,11 +74909,17 @@ interface Ld2410G8PropsMoveEnergyProps {
     expireAfter?: Ld2410G8PropsMoveEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2410G8PropsStillEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -69221,11 +74985,17 @@ interface Ld2410G8PropsStillEnergyProps {
     expireAfter?: Ld2410G8PropsStillEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2410G8Props {
     /** @yamlKey move_energy */
@@ -69297,11 +75067,17 @@ interface Ld2412DetectionDistanceProps {
     expireAfter?: Ld2412DetectionDistancePropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2412LightPropsAvailabilityProps {
     topic: unknown;
@@ -69367,11 +75143,17 @@ interface Ld2412LightProps {
     expireAfter?: Ld2412LightPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2412MovingDistancePropsAvailabilityProps {
     topic: unknown;
@@ -69437,11 +75219,17 @@ interface Ld2412MovingDistanceProps {
     expireAfter?: Ld2412MovingDistancePropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2412MovingEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -69507,11 +75295,17 @@ interface Ld2412MovingEnergyProps {
     expireAfter?: Ld2412MovingEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2412StillDistancePropsAvailabilityProps {
     topic: unknown;
@@ -69577,11 +75371,17 @@ interface Ld2412StillDistanceProps {
     expireAfter?: Ld2412StillDistancePropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2412StillEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -69647,11 +75447,17 @@ interface Ld2412StillEnergyProps {
     expireAfter?: Ld2412StillEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2412Gate0PropsMoveEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -69717,11 +75523,17 @@ interface Ld2412Gate0PropsMoveEnergyProps {
     expireAfter?: Ld2412Gate0PropsMoveEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2412Gate0PropsStillEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -69787,11 +75599,17 @@ interface Ld2412Gate0PropsStillEnergyProps {
     expireAfter?: Ld2412Gate0PropsStillEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2412Gate0Props {
     /** @yamlKey move_energy */
@@ -69863,11 +75681,17 @@ interface Ld2412Gate1PropsMoveEnergyProps {
     expireAfter?: Ld2412Gate1PropsMoveEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2412Gate1PropsStillEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -69933,11 +75757,17 @@ interface Ld2412Gate1PropsStillEnergyProps {
     expireAfter?: Ld2412Gate1PropsStillEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2412Gate1Props {
     /** @yamlKey move_energy */
@@ -70009,11 +75839,17 @@ interface Ld2412Gate2PropsMoveEnergyProps {
     expireAfter?: Ld2412Gate2PropsMoveEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2412Gate2PropsStillEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -70079,11 +75915,17 @@ interface Ld2412Gate2PropsStillEnergyProps {
     expireAfter?: Ld2412Gate2PropsStillEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2412Gate2Props {
     /** @yamlKey move_energy */
@@ -70155,11 +75997,17 @@ interface Ld2412Gate3PropsMoveEnergyProps {
     expireAfter?: Ld2412Gate3PropsMoveEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2412Gate3PropsStillEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -70225,11 +76073,17 @@ interface Ld2412Gate3PropsStillEnergyProps {
     expireAfter?: Ld2412Gate3PropsStillEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2412Gate3Props {
     /** @yamlKey move_energy */
@@ -70301,11 +76155,17 @@ interface Ld2412Gate4PropsMoveEnergyProps {
     expireAfter?: Ld2412Gate4PropsMoveEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2412Gate4PropsStillEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -70371,11 +76231,17 @@ interface Ld2412Gate4PropsStillEnergyProps {
     expireAfter?: Ld2412Gate4PropsStillEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2412Gate4Props {
     /** @yamlKey move_energy */
@@ -70447,11 +76313,17 @@ interface Ld2412Gate5PropsMoveEnergyProps {
     expireAfter?: Ld2412Gate5PropsMoveEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2412Gate5PropsStillEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -70517,11 +76389,17 @@ interface Ld2412Gate5PropsStillEnergyProps {
     expireAfter?: Ld2412Gate5PropsStillEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2412Gate5Props {
     /** @yamlKey move_energy */
@@ -70593,11 +76471,17 @@ interface Ld2412Gate6PropsMoveEnergyProps {
     expireAfter?: Ld2412Gate6PropsMoveEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2412Gate6PropsStillEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -70663,11 +76547,17 @@ interface Ld2412Gate6PropsStillEnergyProps {
     expireAfter?: Ld2412Gate6PropsStillEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2412Gate6Props {
     /** @yamlKey move_energy */
@@ -70739,11 +76629,17 @@ interface Ld2412Gate7PropsMoveEnergyProps {
     expireAfter?: Ld2412Gate7PropsMoveEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2412Gate7PropsStillEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -70809,11 +76705,17 @@ interface Ld2412Gate7PropsStillEnergyProps {
     expireAfter?: Ld2412Gate7PropsStillEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2412Gate7Props {
     /** @yamlKey move_energy */
@@ -70885,11 +76787,17 @@ interface Ld2412Gate8PropsMoveEnergyProps {
     expireAfter?: Ld2412Gate8PropsMoveEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2412Gate8PropsStillEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -70955,11 +76863,17 @@ interface Ld2412Gate8PropsStillEnergyProps {
     expireAfter?: Ld2412Gate8PropsStillEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2412Gate8Props {
     /** @yamlKey move_energy */
@@ -71031,11 +76945,17 @@ interface Ld2412Gate9PropsMoveEnergyProps {
     expireAfter?: Ld2412Gate9PropsMoveEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2412Gate9PropsStillEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -71101,11 +77021,17 @@ interface Ld2412Gate9PropsStillEnergyProps {
     expireAfter?: Ld2412Gate9PropsStillEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2412Gate9Props {
     /** @yamlKey move_energy */
@@ -71177,11 +77103,17 @@ interface Ld2412Gate10PropsMoveEnergyProps {
     expireAfter?: Ld2412Gate10PropsMoveEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2412Gate10PropsStillEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -71247,11 +77179,17 @@ interface Ld2412Gate10PropsStillEnergyProps {
     expireAfter?: Ld2412Gate10PropsStillEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2412Gate10Props {
     /** @yamlKey move_energy */
@@ -71323,11 +77261,17 @@ interface Ld2412Gate11PropsMoveEnergyProps {
     expireAfter?: Ld2412Gate11PropsMoveEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2412Gate11PropsStillEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -71393,11 +77337,17 @@ interface Ld2412Gate11PropsStillEnergyProps {
     expireAfter?: Ld2412Gate11PropsStillEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2412Gate11Props {
     /** @yamlKey move_energy */
@@ -71469,11 +77419,17 @@ interface Ld2412Gate12PropsMoveEnergyProps {
     expireAfter?: Ld2412Gate12PropsMoveEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2412Gate12PropsStillEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -71539,11 +77495,17 @@ interface Ld2412Gate12PropsStillEnergyProps {
     expireAfter?: Ld2412Gate12PropsStillEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2412Gate12Props {
     /** @yamlKey move_energy */
@@ -71615,11 +77577,17 @@ interface Ld2412Gate13PropsMoveEnergyProps {
     expireAfter?: Ld2412Gate13PropsMoveEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2412Gate13PropsStillEnergyPropsAvailabilityProps {
     topic: unknown;
@@ -71685,11 +77653,17 @@ interface Ld2412Gate13PropsStillEnergyProps {
     expireAfter?: Ld2412Gate13PropsStillEnergyPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2412Gate13Props {
     /** @yamlKey move_energy */
@@ -71762,11 +77736,17 @@ interface Ld2420MovingDistanceProps {
     expireAfter?: Ld2420MovingDistancePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2450TargetCountPropsAvailabilityProps {
     topic: unknown;
@@ -71832,11 +77812,17 @@ interface Ld2450TargetCountProps {
     expireAfter?: Ld2450TargetCountPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2450StillTargetCountPropsAvailabilityProps {
     topic: unknown;
@@ -71902,11 +77888,17 @@ interface Ld2450StillTargetCountProps {
     expireAfter?: Ld2450StillTargetCountPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2450MovingTargetCountPropsAvailabilityProps {
     topic: unknown;
@@ -71972,11 +77964,17 @@ interface Ld2450MovingTargetCountProps {
     expireAfter?: Ld2450MovingTargetCountPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2450Target1PropsXPropsAvailabilityProps {
     topic: unknown;
@@ -72042,11 +78040,17 @@ interface Ld2450Target1PropsXProps {
     expireAfter?: Ld2450Target1PropsXPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2450Target1PropsYPropsAvailabilityProps {
     topic: unknown;
@@ -72112,11 +78116,17 @@ interface Ld2450Target1PropsYProps {
     expireAfter?: Ld2450Target1PropsYPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2450Target1PropsSpeedPropsAvailabilityProps {
     topic: unknown;
@@ -72182,11 +78192,17 @@ interface Ld2450Target1PropsSpeedProps {
     expireAfter?: Ld2450Target1PropsSpeedPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2450Target1PropsAnglePropsAvailabilityProps {
     topic: unknown;
@@ -72252,11 +78268,17 @@ interface Ld2450Target1PropsAngleProps {
     expireAfter?: Ld2450Target1PropsAnglePropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2450Target1PropsDistancePropsAvailabilityProps {
     topic: unknown;
@@ -72322,11 +78344,17 @@ interface Ld2450Target1PropsDistanceProps {
     expireAfter?: Ld2450Target1PropsDistancePropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2450Target1PropsResolutionPropsAvailabilityProps {
     topic: unknown;
@@ -72392,11 +78420,17 @@ interface Ld2450Target1PropsResolutionProps {
     expireAfter?: Ld2450Target1PropsResolutionPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2450Target1Props {
     x?: Ld2450Target1PropsXProps;
@@ -72470,11 +78504,17 @@ interface Ld2450Target2PropsXProps {
     expireAfter?: Ld2450Target2PropsXPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2450Target2PropsYPropsAvailabilityProps {
     topic: unknown;
@@ -72540,11 +78580,17 @@ interface Ld2450Target2PropsYProps {
     expireAfter?: Ld2450Target2PropsYPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2450Target2PropsSpeedPropsAvailabilityProps {
     topic: unknown;
@@ -72610,11 +78656,17 @@ interface Ld2450Target2PropsSpeedProps {
     expireAfter?: Ld2450Target2PropsSpeedPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2450Target2PropsAnglePropsAvailabilityProps {
     topic: unknown;
@@ -72680,11 +78732,17 @@ interface Ld2450Target2PropsAngleProps {
     expireAfter?: Ld2450Target2PropsAnglePropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2450Target2PropsDistancePropsAvailabilityProps {
     topic: unknown;
@@ -72750,11 +78808,17 @@ interface Ld2450Target2PropsDistanceProps {
     expireAfter?: Ld2450Target2PropsDistancePropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2450Target2PropsResolutionPropsAvailabilityProps {
     topic: unknown;
@@ -72820,11 +78884,17 @@ interface Ld2450Target2PropsResolutionProps {
     expireAfter?: Ld2450Target2PropsResolutionPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2450Target2Props {
     x?: Ld2450Target2PropsXProps;
@@ -72898,11 +78968,17 @@ interface Ld2450Target3PropsXProps {
     expireAfter?: Ld2450Target3PropsXPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2450Target3PropsYPropsAvailabilityProps {
     topic: unknown;
@@ -72968,11 +79044,17 @@ interface Ld2450Target3PropsYProps {
     expireAfter?: Ld2450Target3PropsYPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2450Target3PropsSpeedPropsAvailabilityProps {
     topic: unknown;
@@ -73038,11 +79120,17 @@ interface Ld2450Target3PropsSpeedProps {
     expireAfter?: Ld2450Target3PropsSpeedPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2450Target3PropsAnglePropsAvailabilityProps {
     topic: unknown;
@@ -73108,11 +79196,17 @@ interface Ld2450Target3PropsAngleProps {
     expireAfter?: Ld2450Target3PropsAnglePropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2450Target3PropsDistancePropsAvailabilityProps {
     topic: unknown;
@@ -73178,11 +79272,17 @@ interface Ld2450Target3PropsDistanceProps {
     expireAfter?: Ld2450Target3PropsDistancePropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2450Target3PropsResolutionPropsAvailabilityProps {
     topic: unknown;
@@ -73248,11 +79348,17 @@ interface Ld2450Target3PropsResolutionProps {
     expireAfter?: Ld2450Target3PropsResolutionPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2450Target3Props {
     x?: Ld2450Target3PropsXProps;
@@ -73326,11 +79432,17 @@ interface Ld2450Zone1PropsTargetCountProps {
     expireAfter?: Ld2450Zone1PropsTargetCountPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2450Zone1PropsStillTargetCountPropsAvailabilityProps {
     topic: unknown;
@@ -73396,11 +79508,17 @@ interface Ld2450Zone1PropsStillTargetCountProps {
     expireAfter?: Ld2450Zone1PropsStillTargetCountPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2450Zone1PropsMovingTargetCountPropsAvailabilityProps {
     topic: unknown;
@@ -73466,11 +79584,17 @@ interface Ld2450Zone1PropsMovingTargetCountProps {
     expireAfter?: Ld2450Zone1PropsMovingTargetCountPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2450Zone1Props {
     /** @yamlKey target_count */
@@ -73544,11 +79668,17 @@ interface Ld2450Zone2PropsTargetCountProps {
     expireAfter?: Ld2450Zone2PropsTargetCountPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2450Zone2PropsStillTargetCountPropsAvailabilityProps {
     topic: unknown;
@@ -73614,11 +79744,17 @@ interface Ld2450Zone2PropsStillTargetCountProps {
     expireAfter?: Ld2450Zone2PropsStillTargetCountPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2450Zone2PropsMovingTargetCountPropsAvailabilityProps {
     topic: unknown;
@@ -73684,11 +79820,17 @@ interface Ld2450Zone2PropsMovingTargetCountProps {
     expireAfter?: Ld2450Zone2PropsMovingTargetCountPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2450Zone2Props {
     /** @yamlKey target_count */
@@ -73762,11 +79904,17 @@ interface Ld2450Zone3PropsTargetCountProps {
     expireAfter?: Ld2450Zone3PropsTargetCountPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2450Zone3PropsStillTargetCountPropsAvailabilityProps {
     topic: unknown;
@@ -73832,11 +79980,17 @@ interface Ld2450Zone3PropsStillTargetCountProps {
     expireAfter?: Ld2450Zone3PropsStillTargetCountPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2450Zone3PropsMovingTargetCountPropsAvailabilityProps {
     topic: unknown;
@@ -73902,11 +80056,17 @@ interface Ld2450Zone3PropsMovingTargetCountProps {
     expireAfter?: Ld2450Zone3PropsMovingTargetCountPropsExpireAfterProps;
     filters?: unknown;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Ld2450Zone3Props {
     /** @yamlKey target_count */
@@ -73981,11 +80141,17 @@ interface MicronovaRoomTemperatureProps {
     expireAfter?: MicronovaRoomTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey setup_priority */
     setupPriority?: unknown;
     /** @yamlKey micronova_id */
@@ -74062,11 +80228,17 @@ interface MicronovaFumesTemperatureProps {
     expireAfter?: MicronovaFumesTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey setup_priority */
     setupPriority?: unknown;
     /** @yamlKey micronova_id */
@@ -74143,11 +80315,17 @@ interface MicronovaStovePowerProps {
     expireAfter?: MicronovaStovePowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey setup_priority */
     setupPriority?: unknown;
     /** @yamlKey micronova_id */
@@ -74224,11 +80402,17 @@ interface MicronovaFanSpeedProps {
     expireAfter?: MicronovaFanSpeedPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey setup_priority */
     setupPriority?: unknown;
     /** @yamlKey micronova_id */
@@ -74307,11 +80491,17 @@ interface MicronovaWaterTemperatureProps {
     expireAfter?: MicronovaWaterTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey setup_priority */
     setupPriority?: unknown;
     /** @yamlKey micronova_id */
@@ -74388,11 +80578,17 @@ interface MicronovaWaterPressureProps {
     expireAfter?: MicronovaWaterPressurePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey setup_priority */
     setupPriority?: unknown;
     /** @yamlKey micronova_id */
@@ -74469,11 +80665,17 @@ interface MicronovaMemoryAddressSensorProps {
     expireAfter?: MicronovaMemoryAddressSensorPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey setup_priority */
     setupPriority?: unknown;
     /** @yamlKey micronova_id */
@@ -74549,11 +80751,17 @@ interface Msa3xxAccelerationXProps {
     expireAfter?: Msa3xxAccelerationXPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Msa3xxAccelerationYPropsAvailabilityProps {
     topic: unknown;
@@ -74619,11 +80827,17 @@ interface Msa3xxAccelerationYProps {
     expireAfter?: Msa3xxAccelerationYPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Msa3xxAccelerationZPropsAvailabilityProps {
     topic: unknown;
@@ -74689,11 +80903,17 @@ interface Msa3xxAccelerationZProps {
     expireAfter?: Msa3xxAccelerationZPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface OpenthermRelModLevelPropsAvailabilityProps {
     topic: unknown;
@@ -74759,11 +80979,17 @@ interface OpenthermRelModLevelProps {
     expireAfter?: OpenthermRelModLevelPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey data_type */
     dataType?: "u8_hb" | "s8_hb" | "u16" | "u8_lb_60" | "s16" | "s8_lb" | "f88" | "u8_hb_60" | "u8_lb";
 }
@@ -74832,11 +81058,17 @@ interface OpenthermChPressureProps {
     expireAfter?: OpenthermChPressurePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey data_type */
     dataType?: "u8_hb" | "s8_hb" | "u16" | "u8_lb_60" | "s16" | "s8_lb" | "f88" | "u8_hb_60" | "u8_lb";
 }
@@ -74904,11 +81136,17 @@ interface OpenthermDhwFlowRateProps {
     expireAfter?: OpenthermDhwFlowRatePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey data_type */
     dataType?: "u8_hb" | "s8_hb" | "u16" | "u8_lb_60" | "s16" | "s8_lb" | "f88" | "u8_hb_60" | "u8_lb";
 }
@@ -74977,11 +81215,17 @@ interface OpenthermTBoilerProps {
     expireAfter?: OpenthermTBoilerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey data_type */
     dataType?: "u8_hb" | "s8_hb" | "u16" | "u8_lb_60" | "s16" | "s8_lb" | "f88" | "u8_hb_60" | "u8_lb";
 }
@@ -75050,11 +81294,17 @@ interface OpenthermTDhwProps {
     expireAfter?: OpenthermTDhwPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey data_type */
     dataType?: "u8_hb" | "s8_hb" | "u16" | "u8_lb_60" | "s16" | "s8_lb" | "f88" | "u8_hb_60" | "u8_lb";
 }
@@ -75123,11 +81373,17 @@ interface OpenthermTOutsideProps {
     expireAfter?: OpenthermTOutsidePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey data_type */
     dataType?: "u8_hb" | "s8_hb" | "u16" | "u8_lb_60" | "s16" | "s8_lb" | "f88" | "u8_hb_60" | "u8_lb";
 }
@@ -75196,11 +81452,17 @@ interface OpenthermTRetProps {
     expireAfter?: OpenthermTRetPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey data_type */
     dataType?: "u8_hb" | "s8_hb" | "u16" | "u8_lb_60" | "s16" | "s8_lb" | "f88" | "u8_hb_60" | "u8_lb";
 }
@@ -75269,11 +81531,17 @@ interface OpenthermTStorageProps {
     expireAfter?: OpenthermTStoragePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey data_type */
     dataType?: "u8_hb" | "s8_hb" | "u16" | "u8_lb_60" | "s16" | "s8_lb" | "f88" | "u8_hb_60" | "u8_lb";
 }
@@ -75342,11 +81610,17 @@ interface OpenthermTCollectorProps {
     expireAfter?: OpenthermTCollectorPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey data_type */
     dataType?: "u8_hb" | "s8_hb" | "u16" | "u8_lb_60" | "s16" | "s8_lb" | "f88" | "u8_hb_60" | "u8_lb";
 }
@@ -75415,11 +81689,17 @@ interface OpenthermTFlowCh2Props {
     expireAfter?: OpenthermTFlowCh2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey data_type */
     dataType?: "u8_hb" | "s8_hb" | "u16" | "u8_lb_60" | "s16" | "s8_lb" | "f88" | "u8_hb_60" | "u8_lb";
 }
@@ -75488,11 +81768,17 @@ interface OpenthermTDhw2Props {
     expireAfter?: OpenthermTDhw2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey data_type */
     dataType?: "u8_hb" | "s8_hb" | "u16" | "u8_lb_60" | "s16" | "s8_lb" | "f88" | "u8_hb_60" | "u8_lb";
 }
@@ -75561,11 +81847,17 @@ interface OpenthermTExhaustProps {
     expireAfter?: OpenthermTExhaustPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey data_type */
     dataType?: "u8_hb" | "s8_hb" | "u16" | "u8_lb_60" | "s16" | "s8_lb" | "f88" | "u8_hb_60" | "u8_lb";
 }
@@ -75633,11 +81925,17 @@ interface OpenthermFanSpeedProps {
     expireAfter?: OpenthermFanSpeedPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey data_type */
     dataType?: "u8_hb" | "s8_hb" | "u16" | "u8_lb_60" | "s16" | "s8_lb" | "f88" | "u8_hb_60" | "u8_lb";
 }
@@ -75705,11 +82003,17 @@ interface OpenthermFanSpeedSetpointProps {
     expireAfter?: OpenthermFanSpeedSetpointPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey data_type */
     dataType?: "u8_hb" | "s8_hb" | "u16" | "u8_lb_60" | "s16" | "s8_lb" | "f88" | "u8_hb_60" | "u8_lb";
 }
@@ -75778,11 +82082,17 @@ interface OpenthermFlameCurrentProps {
     expireAfter?: OpenthermFlameCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey data_type */
     dataType?: "u8_hb" | "s8_hb" | "u16" | "u8_lb_60" | "s16" | "s8_lb" | "f88" | "u8_hb_60" | "u8_lb";
 }
@@ -75850,11 +82160,17 @@ interface OpenthermBurnerStartsProps {
     expireAfter?: OpenthermBurnerStartsPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey data_type */
     dataType?: "u8_hb" | "s8_hb" | "u16" | "u8_lb_60" | "s16" | "s8_lb" | "f88" | "u8_hb_60" | "u8_lb";
 }
@@ -75922,11 +82238,17 @@ interface OpenthermChPumpStartsProps {
     expireAfter?: OpenthermChPumpStartsPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey data_type */
     dataType?: "u8_hb" | "s8_hb" | "u16" | "u8_lb_60" | "s16" | "s8_lb" | "f88" | "u8_hb_60" | "u8_lb";
 }
@@ -75994,11 +82316,17 @@ interface OpenthermDhwPumpValveStartsProps {
     expireAfter?: OpenthermDhwPumpValveStartsPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey data_type */
     dataType?: "u8_hb" | "s8_hb" | "u16" | "u8_lb_60" | "s16" | "s8_lb" | "f88" | "u8_hb_60" | "u8_lb";
 }
@@ -76066,11 +82394,17 @@ interface OpenthermDhwBurnerStartsProps {
     expireAfter?: OpenthermDhwBurnerStartsPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey data_type */
     dataType?: "u8_hb" | "s8_hb" | "u16" | "u8_lb_60" | "s16" | "s8_lb" | "f88" | "u8_hb_60" | "u8_lb";
 }
@@ -76138,11 +82472,17 @@ interface OpenthermBurnerOperationHoursProps {
     expireAfter?: OpenthermBurnerOperationHoursPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey data_type */
     dataType?: "u8_hb" | "s8_hb" | "u16" | "u8_lb_60" | "s16" | "s8_lb" | "f88" | "u8_hb_60" | "u8_lb";
 }
@@ -76210,11 +82550,17 @@ interface OpenthermChPumpOperationHoursProps {
     expireAfter?: OpenthermChPumpOperationHoursPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey data_type */
     dataType?: "u8_hb" | "s8_hb" | "u16" | "u8_lb_60" | "s16" | "s8_lb" | "f88" | "u8_hb_60" | "u8_lb";
 }
@@ -76282,11 +82628,17 @@ interface OpenthermDhwPumpValveOperationHoursProps {
     expireAfter?: OpenthermDhwPumpValveOperationHoursPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey data_type */
     dataType?: "u8_hb" | "s8_hb" | "u16" | "u8_lb_60" | "s16" | "s8_lb" | "f88" | "u8_hb_60" | "u8_lb";
 }
@@ -76354,11 +82706,17 @@ interface OpenthermDhwBurnerOperationHoursProps {
     expireAfter?: OpenthermDhwBurnerOperationHoursPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey data_type */
     dataType?: "u8_hb" | "s8_hb" | "u16" | "u8_lb_60" | "s16" | "s8_lb" | "f88" | "u8_hb_60" | "u8_lb";
 }
@@ -76427,11 +82785,17 @@ interface OpenthermTDhwSetUbProps {
     expireAfter?: OpenthermTDhwSetUbPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey data_type */
     dataType?: "u8_hb" | "s8_hb" | "u16" | "u8_lb_60" | "s16" | "s8_lb" | "f88" | "u8_hb_60" | "u8_lb";
 }
@@ -76500,11 +82864,17 @@ interface OpenthermTDhwSetLbProps {
     expireAfter?: OpenthermTDhwSetLbPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey data_type */
     dataType?: "u8_hb" | "s8_hb" | "u16" | "u8_lb_60" | "s16" | "s8_lb" | "f88" | "u8_hb_60" | "u8_lb";
 }
@@ -76573,11 +82943,17 @@ interface OpenthermMaxTSetUbProps {
     expireAfter?: OpenthermMaxTSetUbPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey data_type */
     dataType?: "u8_hb" | "s8_hb" | "u16" | "u8_lb_60" | "s16" | "s8_lb" | "f88" | "u8_hb_60" | "u8_lb";
 }
@@ -76646,11 +83022,17 @@ interface OpenthermMaxTSetLbProps {
     expireAfter?: OpenthermMaxTSetLbPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey data_type */
     dataType?: "u8_hb" | "s8_hb" | "u16" | "u8_lb_60" | "s16" | "s8_lb" | "f88" | "u8_hb_60" | "u8_lb";
 }
@@ -76719,11 +83101,17 @@ interface OpenthermTDhwSetProps {
     expireAfter?: OpenthermTDhwSetPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey data_type */
     dataType?: "u8_hb" | "s8_hb" | "u16" | "u8_lb_60" | "s16" | "s8_lb" | "f88" | "u8_hb_60" | "u8_lb";
 }
@@ -76792,11 +83180,17 @@ interface OpenthermMaxTSetProps {
     expireAfter?: OpenthermMaxTSetPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey data_type */
     dataType?: "u8_hb" | "s8_hb" | "u16" | "u8_lb_60" | "s16" | "s8_lb" | "f88" | "u8_hb_60" | "u8_lb";
 }
@@ -76865,11 +83259,17 @@ interface OpenthermOemFaultCodeProps {
     expireAfter?: OpenthermOemFaultCodePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey data_type */
     dataType?: "u8_hb" | "s8_hb" | "u16" | "u8_lb_60" | "s16" | "s8_lb" | "f88" | "u8_hb_60" | "u8_lb";
 }
@@ -76938,11 +83338,17 @@ interface OpenthermOemDiagnosticCodeProps {
     expireAfter?: OpenthermOemDiagnosticCodePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey data_type */
     dataType?: "u8_hb" | "s8_hb" | "u16" | "u8_lb_60" | "s16" | "s8_lb" | "f88" | "u8_hb_60" | "u8_lb";
 }
@@ -77011,11 +83417,17 @@ interface OpenthermMaxCapacityProps {
     expireAfter?: OpenthermMaxCapacityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey data_type */
     dataType?: "u8_hb" | "s8_hb" | "u16" | "u8_lb_60" | "s16" | "s8_lb" | "f88" | "u8_hb_60" | "u8_lb";
 }
@@ -77083,11 +83495,17 @@ interface OpenthermMinModLevelProps {
     expireAfter?: OpenthermMinModLevelPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey data_type */
     dataType?: "u8_hb" | "s8_hb" | "u16" | "u8_lb_60" | "s16" | "s8_lb" | "f88" | "u8_hb_60" | "u8_lb";
 }
@@ -77156,11 +83574,17 @@ interface OpenthermOpenthermVersionDeviceProps {
     expireAfter?: OpenthermOpenthermVersionDevicePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey data_type */
     dataType?: "u8_hb" | "s8_hb" | "u16" | "u8_lb_60" | "s16" | "s8_lb" | "f88" | "u8_hb_60" | "u8_lb";
 }
@@ -77229,11 +83653,17 @@ interface OpenthermDeviceTypeProps {
     expireAfter?: OpenthermDeviceTypePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey data_type */
     dataType?: "u8_hb" | "s8_hb" | "u16" | "u8_lb_60" | "s16" | "s8_lb" | "f88" | "u8_hb_60" | "u8_lb";
 }
@@ -77302,11 +83732,17 @@ interface OpenthermDeviceVersionProps {
     expireAfter?: OpenthermDeviceVersionPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey data_type */
     dataType?: "u8_hb" | "s8_hb" | "u16" | "u8_lb_60" | "s16" | "s8_lb" | "f88" | "u8_hb_60" | "u8_lb";
 }
@@ -77375,11 +83811,17 @@ interface OpenthermDeviceIdProps {
     expireAfter?: OpenthermDeviceIdPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey data_type */
     dataType?: "u8_hb" | "s8_hb" | "u16" | "u8_lb_60" | "s16" | "s8_lb" | "f88" | "u8_hb_60" | "u8_lb";
 }
@@ -77448,11 +83890,17 @@ interface OpenthermOtcHcRatioUbProps {
     expireAfter?: OpenthermOtcHcRatioUbPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey data_type */
     dataType?: "u8_hb" | "s8_hb" | "u16" | "u8_lb_60" | "s16" | "s8_lb" | "f88" | "u8_hb_60" | "u8_lb";
 }
@@ -77521,11 +83969,17 @@ interface OpenthermOtcHcRatioLbProps {
     expireAfter?: OpenthermOtcHcRatioLbPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey data_type */
     dataType?: "u8_hb" | "s8_hb" | "u16" | "u8_lb_60" | "s16" | "s8_lb" | "f88" | "u8_hb_60" | "u8_lb";
 }
@@ -77594,11 +84048,17 @@ interface PipsolarGridRatingVoltageProps {
     expireAfter?: PipsolarGridRatingVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarGridRatingCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -77665,11 +84125,17 @@ interface PipsolarGridRatingCurrentProps {
     expireAfter?: PipsolarGridRatingCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarAcOutputRatingVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -77736,11 +84202,17 @@ interface PipsolarAcOutputRatingVoltageProps {
     expireAfter?: PipsolarAcOutputRatingVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarAcOutputRatingFrequencyPropsAvailabilityProps {
     topic: unknown;
@@ -77806,11 +84278,17 @@ interface PipsolarAcOutputRatingFrequencyProps {
     expireAfter?: PipsolarAcOutputRatingFrequencyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarAcOutputRatingCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -77877,11 +84355,17 @@ interface PipsolarAcOutputRatingCurrentProps {
     expireAfter?: PipsolarAcOutputRatingCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarAcOutputRatingApparentPowerPropsAvailabilityProps {
     topic: unknown;
@@ -77948,11 +84432,17 @@ interface PipsolarAcOutputRatingApparentPowerProps {
     expireAfter?: PipsolarAcOutputRatingApparentPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarAcOutputRatingActivePowerPropsAvailabilityProps {
     topic: unknown;
@@ -78019,11 +84509,17 @@ interface PipsolarAcOutputRatingActivePowerProps {
     expireAfter?: PipsolarAcOutputRatingActivePowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarBatteryRatingVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -78090,11 +84586,17 @@ interface PipsolarBatteryRatingVoltageProps {
     expireAfter?: PipsolarBatteryRatingVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarBatteryRechargeVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -78161,11 +84663,17 @@ interface PipsolarBatteryRechargeVoltageProps {
     expireAfter?: PipsolarBatteryRechargeVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarBatteryUnderVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -78232,11 +84740,17 @@ interface PipsolarBatteryUnderVoltageProps {
     expireAfter?: PipsolarBatteryUnderVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarBatteryBulkVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -78303,11 +84817,17 @@ interface PipsolarBatteryBulkVoltageProps {
     expireAfter?: PipsolarBatteryBulkVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarBatteryFloatVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -78374,11 +84894,17 @@ interface PipsolarBatteryFloatVoltageProps {
     expireAfter?: PipsolarBatteryFloatVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarBatteryTypePropsAvailabilityProps {
     topic: unknown;
@@ -78445,11 +84971,17 @@ interface PipsolarBatteryTypeProps {
     expireAfter?: PipsolarBatteryTypePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarCurrentMaxAcChargingCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -78516,11 +85048,17 @@ interface PipsolarCurrentMaxAcChargingCurrentProps {
     expireAfter?: PipsolarCurrentMaxAcChargingCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarCurrentMaxChargingCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -78587,11 +85125,17 @@ interface PipsolarCurrentMaxChargingCurrentProps {
     expireAfter?: PipsolarCurrentMaxChargingCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarInputVoltageRangePropsAvailabilityProps {
     topic: unknown;
@@ -78658,11 +85202,17 @@ interface PipsolarInputVoltageRangeProps {
     expireAfter?: PipsolarInputVoltageRangePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarOutputSourcePriorityPropsAvailabilityProps {
     topic: unknown;
@@ -78729,11 +85279,17 @@ interface PipsolarOutputSourcePriorityProps {
     expireAfter?: PipsolarOutputSourcePriorityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarChargerSourcePriorityPropsAvailabilityProps {
     topic: unknown;
@@ -78800,11 +85356,17 @@ interface PipsolarChargerSourcePriorityProps {
     expireAfter?: PipsolarChargerSourcePriorityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarParallelMaxNumPropsAvailabilityProps {
     topic: unknown;
@@ -78871,11 +85433,17 @@ interface PipsolarParallelMaxNumProps {
     expireAfter?: PipsolarParallelMaxNumPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarMachineTypePropsAvailabilityProps {
     topic: unknown;
@@ -78942,11 +85510,17 @@ interface PipsolarMachineTypeProps {
     expireAfter?: PipsolarMachineTypePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarTopologyPropsAvailabilityProps {
     topic: unknown;
@@ -79013,11 +85587,17 @@ interface PipsolarTopologyProps {
     expireAfter?: PipsolarTopologyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarOutputModePropsAvailabilityProps {
     topic: unknown;
@@ -79084,11 +85664,17 @@ interface PipsolarOutputModeProps {
     expireAfter?: PipsolarOutputModePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarBatteryRedischargeVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -79155,11 +85741,17 @@ interface PipsolarBatteryRedischargeVoltageProps {
     expireAfter?: PipsolarBatteryRedischargeVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarPvOkConditionForParallelPropsAvailabilityProps {
     topic: unknown;
@@ -79226,11 +85818,17 @@ interface PipsolarPvOkConditionForParallelProps {
     expireAfter?: PipsolarPvOkConditionForParallelPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarPvPowerBalancePropsAvailabilityProps {
     topic: unknown;
@@ -79297,11 +85895,17 @@ interface PipsolarPvPowerBalanceProps {
     expireAfter?: PipsolarPvPowerBalancePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarGridVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -79368,11 +85972,17 @@ interface PipsolarGridVoltageProps {
     expireAfter?: PipsolarGridVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarGridFrequencyPropsAvailabilityProps {
     topic: unknown;
@@ -79438,11 +86048,17 @@ interface PipsolarGridFrequencyProps {
     expireAfter?: PipsolarGridFrequencyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarAcOutputVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -79509,11 +86125,17 @@ interface PipsolarAcOutputVoltageProps {
     expireAfter?: PipsolarAcOutputVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarAcOutputFrequencyPropsAvailabilityProps {
     topic: unknown;
@@ -79579,11 +86201,17 @@ interface PipsolarAcOutputFrequencyProps {
     expireAfter?: PipsolarAcOutputFrequencyPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarAcOutputApparentPowerPropsAvailabilityProps {
     topic: unknown;
@@ -79650,11 +86278,17 @@ interface PipsolarAcOutputApparentPowerProps {
     expireAfter?: PipsolarAcOutputApparentPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarAcOutputActivePowerPropsAvailabilityProps {
     topic: unknown;
@@ -79721,11 +86355,17 @@ interface PipsolarAcOutputActivePowerProps {
     expireAfter?: PipsolarAcOutputActivePowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarOutputLoadPercentPropsAvailabilityProps {
     topic: unknown;
@@ -79791,11 +86431,17 @@ interface PipsolarOutputLoadPercentProps {
     expireAfter?: PipsolarOutputLoadPercentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarBusVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -79861,11 +86507,17 @@ interface PipsolarBusVoltageProps {
     expireAfter?: PipsolarBusVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarBatteryVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -79931,11 +86583,17 @@ interface PipsolarBatteryVoltageProps {
     expireAfter?: PipsolarBatteryVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarBatteryChargingCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -80001,11 +86659,17 @@ interface PipsolarBatteryChargingCurrentProps {
     expireAfter?: PipsolarBatteryChargingCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarBatteryCapacityPercentPropsAvailabilityProps {
     topic: unknown;
@@ -80072,11 +86736,17 @@ interface PipsolarBatteryCapacityPercentProps {
     expireAfter?: PipsolarBatteryCapacityPercentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarInverterHeatSinkTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -80143,11 +86813,17 @@ interface PipsolarInverterHeatSinkTemperatureProps {
     expireAfter?: PipsolarInverterHeatSinkTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarPvInputCurrentForBatteryPropsAvailabilityProps {
     topic: unknown;
@@ -80213,11 +86889,17 @@ interface PipsolarPvInputCurrentForBatteryProps {
     expireAfter?: PipsolarPvInputCurrentForBatteryPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarPvInputVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -80283,11 +86965,17 @@ interface PipsolarPvInputVoltageProps {
     expireAfter?: PipsolarPvInputVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarBatteryVoltageSccPropsAvailabilityProps {
     topic: unknown;
@@ -80354,11 +87042,17 @@ interface PipsolarBatteryVoltageSccProps {
     expireAfter?: PipsolarBatteryVoltageSccPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarBatteryDischargeCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -80424,11 +87118,17 @@ interface PipsolarBatteryDischargeCurrentProps {
     expireAfter?: PipsolarBatteryDischargeCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarBatteryVoltageOffsetForFansOnPropsAvailabilityProps {
     topic: unknown;
@@ -80495,11 +87195,17 @@ interface PipsolarBatteryVoltageOffsetForFansOnProps {
     expireAfter?: PipsolarBatteryVoltageOffsetForFansOnPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarEepromVersionPropsAvailabilityProps {
     topic: unknown;
@@ -80566,11 +87272,17 @@ interface PipsolarEepromVersionProps {
     expireAfter?: PipsolarEepromVersionPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PipsolarPvChargingPowerPropsAvailabilityProps {
     topic: unknown;
@@ -80636,11 +87348,17 @@ interface PipsolarPvChargingPowerProps {
     expireAfter?: PipsolarPvChargingPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PvvxMithermometerTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -80707,11 +87425,17 @@ interface PvvxMithermometerTemperatureProps {
     expireAfter?: PvvxMithermometerTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PvvxMithermometerHumidityPropsAvailabilityProps {
     topic: unknown;
@@ -80778,11 +87502,17 @@ interface PvvxMithermometerHumidityProps {
     expireAfter?: PvvxMithermometerHumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PvvxMithermometerBatteryLevelPropsAvailabilityProps {
     topic: unknown;
@@ -80849,11 +87579,17 @@ interface PvvxMithermometerBatteryLevelProps {
     expireAfter?: PvvxMithermometerBatteryLevelPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PvvxMithermometerBatteryVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -80920,11 +87656,17 @@ interface PvvxMithermometerBatteryVoltageProps {
     expireAfter?: PvvxMithermometerBatteryVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PvvxMithermometerSignalStrengthPropsAvailabilityProps {
     topic: unknown;
@@ -80991,11 +87733,17 @@ interface PvvxMithermometerSignalStrengthProps {
     expireAfter?: PvvxMithermometerSignalStrengthPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PylontechVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -81062,11 +87810,17 @@ interface PylontechVoltageProps {
     expireAfter?: PylontechVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PylontechCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -81133,11 +87887,17 @@ interface PylontechCurrentProps {
     expireAfter?: PylontechCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PylontechTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -81204,11 +87964,17 @@ interface PylontechTemperatureProps {
     expireAfter?: PylontechTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PylontechTemperatureLowPropsAvailabilityProps {
     topic: unknown;
@@ -81275,11 +88041,17 @@ interface PylontechTemperatureLowProps {
     expireAfter?: PylontechTemperatureLowPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PylontechTemperatureHighPropsAvailabilityProps {
     topic: unknown;
@@ -81346,11 +88118,17 @@ interface PylontechTemperatureHighProps {
     expireAfter?: PylontechTemperatureHighPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PylontechVoltageLowPropsAvailabilityProps {
     topic: unknown;
@@ -81417,11 +88195,17 @@ interface PylontechVoltageLowProps {
     expireAfter?: PylontechVoltageLowPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PylontechVoltageHighPropsAvailabilityProps {
     topic: unknown;
@@ -81488,11 +88272,17 @@ interface PylontechVoltageHighProps {
     expireAfter?: PylontechVoltageHighPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PylontechCoulombPropsAvailabilityProps {
     topic: unknown;
@@ -81559,11 +88349,17 @@ interface PylontechCoulombProps {
     expireAfter?: PylontechCoulombPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface PylontechMosTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -81630,11 +88426,17 @@ interface PylontechMosTemperatureProps {
     expireAfter?: PylontechMosTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Rd03dTargetCountPropsAvailabilityProps {
     topic: unknown;
@@ -81701,11 +88503,17 @@ interface Rd03dTargetCountProps {
     expireAfter?: Rd03dTargetCountPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Rd03dTarget1PropsXPropsAvailabilityProps {
     topic: unknown;
@@ -81772,11 +88580,17 @@ interface Rd03dTarget1PropsXProps {
     expireAfter?: Rd03dTarget1PropsXPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Rd03dTarget1PropsYPropsAvailabilityProps {
     topic: unknown;
@@ -81843,11 +88657,17 @@ interface Rd03dTarget1PropsYProps {
     expireAfter?: Rd03dTarget1PropsYPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Rd03dTarget1PropsSpeedPropsAvailabilityProps {
     topic: unknown;
@@ -81914,11 +88734,17 @@ interface Rd03dTarget1PropsSpeedProps {
     expireAfter?: Rd03dTarget1PropsSpeedPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Rd03dTarget1PropsDistancePropsAvailabilityProps {
     topic: unknown;
@@ -81985,11 +88811,17 @@ interface Rd03dTarget1PropsDistanceProps {
     expireAfter?: Rd03dTarget1PropsDistancePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Rd03dTarget1PropsResolutionPropsAvailabilityProps {
     topic: unknown;
@@ -82056,11 +88888,17 @@ interface Rd03dTarget1PropsResolutionProps {
     expireAfter?: Rd03dTarget1PropsResolutionPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Rd03dTarget1PropsAnglePropsAvailabilityProps {
     topic: unknown;
@@ -82127,11 +88965,17 @@ interface Rd03dTarget1PropsAngleProps {
     expireAfter?: Rd03dTarget1PropsAnglePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Rd03dTarget1Props {
     x?: Rd03dTarget1PropsXProps;
@@ -82206,11 +89050,17 @@ interface Rd03dTarget2PropsXProps {
     expireAfter?: Rd03dTarget2PropsXPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Rd03dTarget2PropsYPropsAvailabilityProps {
     topic: unknown;
@@ -82277,11 +89127,17 @@ interface Rd03dTarget2PropsYProps {
     expireAfter?: Rd03dTarget2PropsYPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Rd03dTarget2PropsSpeedPropsAvailabilityProps {
     topic: unknown;
@@ -82348,11 +89204,17 @@ interface Rd03dTarget2PropsSpeedProps {
     expireAfter?: Rd03dTarget2PropsSpeedPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Rd03dTarget2PropsDistancePropsAvailabilityProps {
     topic: unknown;
@@ -82419,11 +89281,17 @@ interface Rd03dTarget2PropsDistanceProps {
     expireAfter?: Rd03dTarget2PropsDistancePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Rd03dTarget2PropsResolutionPropsAvailabilityProps {
     topic: unknown;
@@ -82490,11 +89358,17 @@ interface Rd03dTarget2PropsResolutionProps {
     expireAfter?: Rd03dTarget2PropsResolutionPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Rd03dTarget2PropsAnglePropsAvailabilityProps {
     topic: unknown;
@@ -82561,11 +89435,17 @@ interface Rd03dTarget2PropsAngleProps {
     expireAfter?: Rd03dTarget2PropsAnglePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Rd03dTarget2Props {
     x?: Rd03dTarget2PropsXProps;
@@ -82640,11 +89520,17 @@ interface Rd03dTarget3PropsXProps {
     expireAfter?: Rd03dTarget3PropsXPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Rd03dTarget3PropsYPropsAvailabilityProps {
     topic: unknown;
@@ -82711,11 +89597,17 @@ interface Rd03dTarget3PropsYProps {
     expireAfter?: Rd03dTarget3PropsYPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Rd03dTarget3PropsSpeedPropsAvailabilityProps {
     topic: unknown;
@@ -82782,11 +89674,17 @@ interface Rd03dTarget3PropsSpeedProps {
     expireAfter?: Rd03dTarget3PropsSpeedPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Rd03dTarget3PropsDistancePropsAvailabilityProps {
     topic: unknown;
@@ -82853,11 +89751,17 @@ interface Rd03dTarget3PropsDistanceProps {
     expireAfter?: Rd03dTarget3PropsDistancePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Rd03dTarget3PropsResolutionPropsAvailabilityProps {
     topic: unknown;
@@ -82924,11 +89828,17 @@ interface Rd03dTarget3PropsResolutionProps {
     expireAfter?: Rd03dTarget3PropsResolutionPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Rd03dTarget3PropsAnglePropsAvailabilityProps {
     topic: unknown;
@@ -82995,11 +89905,17 @@ interface Rd03dTarget3PropsAngleProps {
     expireAfter?: Rd03dTarget3PropsAnglePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Rd03dTarget3Props {
     x?: Rd03dTarget3PropsXProps;
@@ -83073,11 +89989,17 @@ interface SeeedMr24hpc1CustomPresenceOfDetectionProps {
     expireAfter?: SeeedMr24hpc1CustomPresenceOfDetectionPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SeeedMr24hpc1MovementSignsPropsAvailabilityProps {
     topic: unknown;
@@ -83143,11 +90065,17 @@ interface SeeedMr24hpc1MovementSignsProps {
     expireAfter?: SeeedMr24hpc1MovementSignsPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SeeedMr24hpc1CustomMotionDistancePropsAvailabilityProps {
     topic: unknown;
@@ -83213,11 +90141,17 @@ interface SeeedMr24hpc1CustomMotionDistanceProps {
     expireAfter?: SeeedMr24hpc1CustomMotionDistancePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SeeedMr24hpc1CustomSpatialStaticValuePropsAvailabilityProps {
     topic: unknown;
@@ -83283,11 +90217,17 @@ interface SeeedMr24hpc1CustomSpatialStaticValueProps {
     expireAfter?: SeeedMr24hpc1CustomSpatialStaticValuePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SeeedMr24hpc1CustomSpatialMotionValuePropsAvailabilityProps {
     topic: unknown;
@@ -83353,11 +90293,17 @@ interface SeeedMr24hpc1CustomSpatialMotionValueProps {
     expireAfter?: SeeedMr24hpc1CustomSpatialMotionValuePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SeeedMr24hpc1CustomMotionSpeedPropsAvailabilityProps {
     topic: unknown;
@@ -83423,11 +90369,17 @@ interface SeeedMr24hpc1CustomMotionSpeedProps {
     expireAfter?: SeeedMr24hpc1CustomMotionSpeedPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SeeedMr24hpc1CustomModeNumPropsAvailabilityProps {
     topic: unknown;
@@ -83493,11 +90445,17 @@ interface SeeedMr24hpc1CustomModeNumProps {
     expireAfter?: SeeedMr24hpc1CustomModeNumPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SeeedMr60bha2BreathRatePropsAvailabilityProps {
     topic: unknown;
@@ -83563,11 +90521,17 @@ interface SeeedMr60bha2BreathRateProps {
     expireAfter?: SeeedMr60bha2BreathRatePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SeeedMr60bha2HeartRatePropsAvailabilityProps {
     topic: unknown;
@@ -83633,11 +90597,17 @@ interface SeeedMr60bha2HeartRateProps {
     expireAfter?: SeeedMr60bha2HeartRatePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SeeedMr60bha2DistancePropsAvailabilityProps {
     topic: unknown;
@@ -83703,11 +90673,17 @@ interface SeeedMr60bha2DistanceProps {
     expireAfter?: SeeedMr60bha2DistancePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SeeedMr60bha2NumTargetsPropsAvailabilityProps {
     topic: unknown;
@@ -83773,11 +90749,17 @@ interface SeeedMr60bha2NumTargetsProps {
     expireAfter?: SeeedMr60bha2NumTargetsPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sim800lRssiPropsAvailabilityProps {
     topic: unknown;
@@ -83844,11 +90826,17 @@ interface Sim800lRssiProps {
     expireAfter?: Sim800lRssiPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SunGtil2AcVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -83914,11 +90902,17 @@ interface SunGtil2AcVoltageProps {
     expireAfter?: SunGtil2AcVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SunGtil2DcVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -83984,11 +90978,17 @@ interface SunGtil2DcVoltageProps {
     expireAfter?: SunGtil2DcVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SunGtil2AcPowerPropsAvailabilityProps {
     topic: unknown;
@@ -84054,11 +91054,17 @@ interface SunGtil2AcPowerProps {
     expireAfter?: SunGtil2AcPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SunGtil2DcPowerPropsAvailabilityProps {
     topic: unknown;
@@ -84124,11 +91130,17 @@ interface SunGtil2DcPowerProps {
     expireAfter?: SunGtil2DcPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SunGtil2LimiterPowerPropsAvailabilityProps {
     topic: unknown;
@@ -84194,11 +91206,17 @@ interface SunGtil2LimiterPowerProps {
     expireAfter?: SunGtil2LimiterPowerPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SunGtil2TemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -84264,11 +91282,17 @@ interface SunGtil2TemperatureProps {
     expireAfter?: SunGtil2TemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sy6970VbusVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -84335,11 +91359,17 @@ interface Sy6970VbusVoltageProps {
     expireAfter?: Sy6970VbusVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sy6970BatteryVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -84406,11 +91436,17 @@ interface Sy6970BatteryVoltageProps {
     expireAfter?: Sy6970BatteryVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sy6970SystemVoltagePropsAvailabilityProps {
     topic: unknown;
@@ -84477,11 +91513,17 @@ interface Sy6970SystemVoltageProps {
     expireAfter?: Sy6970SystemVoltagePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sy6970ChargeCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -84548,11 +91590,17 @@ interface Sy6970ChargeCurrentProps {
     expireAfter?: Sy6970ChargeCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface Sy6970PrechargeCurrentPropsAvailabilityProps {
     topic: unknown;
@@ -84619,11 +91667,17 @@ interface Sy6970PrechargeCurrentProps {
     expireAfter?: Sy6970PrechargeCurrentPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface UponorSmatrixTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -84690,11 +91744,17 @@ interface UponorSmatrixTemperatureProps {
     expireAfter?: UponorSmatrixTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface UponorSmatrixExternalTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -84761,11 +91821,17 @@ interface UponorSmatrixExternalTemperatureProps {
     expireAfter?: UponorSmatrixExternalTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface UponorSmatrixHumidityPropsAvailabilityProps {
     topic: unknown;
@@ -84832,11 +91898,17 @@ interface UponorSmatrixHumidityProps {
     expireAfter?: UponorSmatrixHumidityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface UponorSmatrixTargetTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -84903,11 +91975,17 @@ interface UponorSmatrixTargetTemperatureProps {
     expireAfter?: UponorSmatrixTargetTemperaturePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolBsPlusTemperature1PropsAvailabilityProps {
     topic: unknown;
@@ -84973,11 +92051,17 @@ interface VbusDeltasolBsPlusTemperature1Props {
     expireAfter?: VbusDeltasolBsPlusTemperature1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolBsPlusTemperature2PropsAvailabilityProps {
     topic: unknown;
@@ -85043,11 +92127,17 @@ interface VbusDeltasolBsPlusTemperature2Props {
     expireAfter?: VbusDeltasolBsPlusTemperature2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolBsPlusTemperature3PropsAvailabilityProps {
     topic: unknown;
@@ -85113,11 +92203,17 @@ interface VbusDeltasolBsPlusTemperature3Props {
     expireAfter?: VbusDeltasolBsPlusTemperature3PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolBsPlusTemperature4PropsAvailabilityProps {
     topic: unknown;
@@ -85183,11 +92279,17 @@ interface VbusDeltasolBsPlusTemperature4Props {
     expireAfter?: VbusDeltasolBsPlusTemperature4PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolBsPlusPumpSpeed1PropsAvailabilityProps {
     topic: unknown;
@@ -85253,11 +92355,17 @@ interface VbusDeltasolBsPlusPumpSpeed1Props {
     expireAfter?: VbusDeltasolBsPlusPumpSpeed1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolBsPlusPumpSpeed2PropsAvailabilityProps {
     topic: unknown;
@@ -85323,11 +92431,17 @@ interface VbusDeltasolBsPlusPumpSpeed2Props {
     expireAfter?: VbusDeltasolBsPlusPumpSpeed2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolBsPlusOperatingHours1PropsAvailabilityProps {
     topic: unknown;
@@ -85393,11 +92507,17 @@ interface VbusDeltasolBsPlusOperatingHours1Props {
     expireAfter?: VbusDeltasolBsPlusOperatingHours1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolBsPlusOperatingHours2PropsAvailabilityProps {
     topic: unknown;
@@ -85463,11 +92583,17 @@ interface VbusDeltasolBsPlusOperatingHours2Props {
     expireAfter?: VbusDeltasolBsPlusOperatingHours2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolBsPlusHeatQuantityPropsAvailabilityProps {
     topic: unknown;
@@ -85533,11 +92659,17 @@ interface VbusDeltasolBsPlusHeatQuantityProps {
     expireAfter?: VbusDeltasolBsPlusHeatQuantityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolBsPlusTimePropsAvailabilityProps {
     topic: unknown;
@@ -85603,11 +92735,17 @@ interface VbusDeltasolBsPlusTimeProps {
     expireAfter?: VbusDeltasolBsPlusTimePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolBsPlusVersionPropsAvailabilityProps {
     topic: unknown;
@@ -85674,11 +92812,17 @@ interface VbusDeltasolBsPlusVersionProps {
     expireAfter?: VbusDeltasolBsPlusVersionPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolBs2009Temperature1PropsAvailabilityProps {
     topic: unknown;
@@ -85744,11 +92888,17 @@ interface VbusDeltasolBs2009Temperature1Props {
     expireAfter?: VbusDeltasolBs2009Temperature1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolBs2009Temperature2PropsAvailabilityProps {
     topic: unknown;
@@ -85814,11 +92964,17 @@ interface VbusDeltasolBs2009Temperature2Props {
     expireAfter?: VbusDeltasolBs2009Temperature2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolBs2009Temperature3PropsAvailabilityProps {
     topic: unknown;
@@ -85884,11 +93040,17 @@ interface VbusDeltasolBs2009Temperature3Props {
     expireAfter?: VbusDeltasolBs2009Temperature3PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolBs2009Temperature4PropsAvailabilityProps {
     topic: unknown;
@@ -85954,11 +93116,17 @@ interface VbusDeltasolBs2009Temperature4Props {
     expireAfter?: VbusDeltasolBs2009Temperature4PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolBs2009PumpSpeed1PropsAvailabilityProps {
     topic: unknown;
@@ -86024,11 +93192,17 @@ interface VbusDeltasolBs2009PumpSpeed1Props {
     expireAfter?: VbusDeltasolBs2009PumpSpeed1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolBs2009PumpSpeed2PropsAvailabilityProps {
     topic: unknown;
@@ -86094,11 +93268,17 @@ interface VbusDeltasolBs2009PumpSpeed2Props {
     expireAfter?: VbusDeltasolBs2009PumpSpeed2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolBs2009OperatingHours1PropsAvailabilityProps {
     topic: unknown;
@@ -86164,11 +93344,17 @@ interface VbusDeltasolBs2009OperatingHours1Props {
     expireAfter?: VbusDeltasolBs2009OperatingHours1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolBs2009OperatingHours2PropsAvailabilityProps {
     topic: unknown;
@@ -86234,11 +93420,17 @@ interface VbusDeltasolBs2009OperatingHours2Props {
     expireAfter?: VbusDeltasolBs2009OperatingHours2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolBs2009HeatQuantityPropsAvailabilityProps {
     topic: unknown;
@@ -86304,11 +93496,17 @@ interface VbusDeltasolBs2009HeatQuantityProps {
     expireAfter?: VbusDeltasolBs2009HeatQuantityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolBs2009TimePropsAvailabilityProps {
     topic: unknown;
@@ -86374,11 +93572,17 @@ interface VbusDeltasolBs2009TimeProps {
     expireAfter?: VbusDeltasolBs2009TimePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolBs2009VersionPropsAvailabilityProps {
     topic: unknown;
@@ -86445,11 +93649,17 @@ interface VbusDeltasolBs2009VersionProps {
     expireAfter?: VbusDeltasolBs2009VersionPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolBs2Temperature1PropsAvailabilityProps {
     topic: unknown;
@@ -86515,11 +93725,17 @@ interface VbusDeltasolBs2Temperature1Props {
     expireAfter?: VbusDeltasolBs2Temperature1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolBs2Temperature2PropsAvailabilityProps {
     topic: unknown;
@@ -86585,11 +93801,17 @@ interface VbusDeltasolBs2Temperature2Props {
     expireAfter?: VbusDeltasolBs2Temperature2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolBs2Temperature3PropsAvailabilityProps {
     topic: unknown;
@@ -86655,11 +93877,17 @@ interface VbusDeltasolBs2Temperature3Props {
     expireAfter?: VbusDeltasolBs2Temperature3PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolBs2Temperature4PropsAvailabilityProps {
     topic: unknown;
@@ -86725,11 +93953,17 @@ interface VbusDeltasolBs2Temperature4Props {
     expireAfter?: VbusDeltasolBs2Temperature4PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolBs2PumpSpeed1PropsAvailabilityProps {
     topic: unknown;
@@ -86795,11 +94029,17 @@ interface VbusDeltasolBs2PumpSpeed1Props {
     expireAfter?: VbusDeltasolBs2PumpSpeed1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolBs2PumpSpeed2PropsAvailabilityProps {
     topic: unknown;
@@ -86865,11 +94105,17 @@ interface VbusDeltasolBs2PumpSpeed2Props {
     expireAfter?: VbusDeltasolBs2PumpSpeed2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolBs2OperatingHours1PropsAvailabilityProps {
     topic: unknown;
@@ -86935,11 +94181,17 @@ interface VbusDeltasolBs2OperatingHours1Props {
     expireAfter?: VbusDeltasolBs2OperatingHours1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolBs2OperatingHours2PropsAvailabilityProps {
     topic: unknown;
@@ -87005,11 +94257,17 @@ interface VbusDeltasolBs2OperatingHours2Props {
     expireAfter?: VbusDeltasolBs2OperatingHours2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolBs2HeatQuantityPropsAvailabilityProps {
     topic: unknown;
@@ -87075,11 +94333,17 @@ interface VbusDeltasolBs2HeatQuantityProps {
     expireAfter?: VbusDeltasolBs2HeatQuantityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolBs2VersionPropsAvailabilityProps {
     topic: unknown;
@@ -87146,11 +94410,17 @@ interface VbusDeltasolBs2VersionProps {
     expireAfter?: VbusDeltasolBs2VersionPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolCTemperature1PropsAvailabilityProps {
     topic: unknown;
@@ -87216,11 +94486,17 @@ interface VbusDeltasolCTemperature1Props {
     expireAfter?: VbusDeltasolCTemperature1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolCTemperature2PropsAvailabilityProps {
     topic: unknown;
@@ -87286,11 +94562,17 @@ interface VbusDeltasolCTemperature2Props {
     expireAfter?: VbusDeltasolCTemperature2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolCTemperature3PropsAvailabilityProps {
     topic: unknown;
@@ -87356,11 +94638,17 @@ interface VbusDeltasolCTemperature3Props {
     expireAfter?: VbusDeltasolCTemperature3PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolCTemperature4PropsAvailabilityProps {
     topic: unknown;
@@ -87426,11 +94714,17 @@ interface VbusDeltasolCTemperature4Props {
     expireAfter?: VbusDeltasolCTemperature4PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolCPumpSpeed1PropsAvailabilityProps {
     topic: unknown;
@@ -87496,11 +94790,17 @@ interface VbusDeltasolCPumpSpeed1Props {
     expireAfter?: VbusDeltasolCPumpSpeed1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolCPumpSpeed2PropsAvailabilityProps {
     topic: unknown;
@@ -87566,11 +94866,17 @@ interface VbusDeltasolCPumpSpeed2Props {
     expireAfter?: VbusDeltasolCPumpSpeed2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolCOperatingHours1PropsAvailabilityProps {
     topic: unknown;
@@ -87636,11 +94942,17 @@ interface VbusDeltasolCOperatingHours1Props {
     expireAfter?: VbusDeltasolCOperatingHours1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolCOperatingHours2PropsAvailabilityProps {
     topic: unknown;
@@ -87706,11 +95018,17 @@ interface VbusDeltasolCOperatingHours2Props {
     expireAfter?: VbusDeltasolCOperatingHours2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolCHeatQuantityPropsAvailabilityProps {
     topic: unknown;
@@ -87776,11 +95094,17 @@ interface VbusDeltasolCHeatQuantityProps {
     expireAfter?: VbusDeltasolCHeatQuantityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolCTimePropsAvailabilityProps {
     topic: unknown;
@@ -87846,11 +95170,17 @@ interface VbusDeltasolCTimeProps {
     expireAfter?: VbusDeltasolCTimePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolCs2Temperature1PropsAvailabilityProps {
     topic: unknown;
@@ -87916,11 +95246,17 @@ interface VbusDeltasolCs2Temperature1Props {
     expireAfter?: VbusDeltasolCs2Temperature1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolCs2Temperature2PropsAvailabilityProps {
     topic: unknown;
@@ -87986,11 +95322,17 @@ interface VbusDeltasolCs2Temperature2Props {
     expireAfter?: VbusDeltasolCs2Temperature2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolCs2Temperature3PropsAvailabilityProps {
     topic: unknown;
@@ -88056,11 +95398,17 @@ interface VbusDeltasolCs2Temperature3Props {
     expireAfter?: VbusDeltasolCs2Temperature3PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolCs2Temperature4PropsAvailabilityProps {
     topic: unknown;
@@ -88126,11 +95474,17 @@ interface VbusDeltasolCs2Temperature4Props {
     expireAfter?: VbusDeltasolCs2Temperature4PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolCs2PumpSpeedPropsAvailabilityProps {
     topic: unknown;
@@ -88196,11 +95550,17 @@ interface VbusDeltasolCs2PumpSpeedProps {
     expireAfter?: VbusDeltasolCs2PumpSpeedPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolCs2OperatingHoursPropsAvailabilityProps {
     topic: unknown;
@@ -88266,11 +95626,17 @@ interface VbusDeltasolCs2OperatingHoursProps {
     expireAfter?: VbusDeltasolCs2OperatingHoursPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolCs2HeatQuantityPropsAvailabilityProps {
     topic: unknown;
@@ -88336,11 +95702,17 @@ interface VbusDeltasolCs2HeatQuantityProps {
     expireAfter?: VbusDeltasolCs2HeatQuantityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolCs2VersionPropsAvailabilityProps {
     topic: unknown;
@@ -88407,11 +95779,17 @@ interface VbusDeltasolCs2VersionProps {
     expireAfter?: VbusDeltasolCs2VersionPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolCsPlusTemperature1PropsAvailabilityProps {
     topic: unknown;
@@ -88477,11 +95855,17 @@ interface VbusDeltasolCsPlusTemperature1Props {
     expireAfter?: VbusDeltasolCsPlusTemperature1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolCsPlusTemperature2PropsAvailabilityProps {
     topic: unknown;
@@ -88547,11 +95931,17 @@ interface VbusDeltasolCsPlusTemperature2Props {
     expireAfter?: VbusDeltasolCsPlusTemperature2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolCsPlusTemperature3PropsAvailabilityProps {
     topic: unknown;
@@ -88617,11 +96007,17 @@ interface VbusDeltasolCsPlusTemperature3Props {
     expireAfter?: VbusDeltasolCsPlusTemperature3PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolCsPlusTemperature4PropsAvailabilityProps {
     topic: unknown;
@@ -88687,11 +96083,17 @@ interface VbusDeltasolCsPlusTemperature4Props {
     expireAfter?: VbusDeltasolCsPlusTemperature4PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolCsPlusTemperature5PropsAvailabilityProps {
     topic: unknown;
@@ -88757,11 +96159,17 @@ interface VbusDeltasolCsPlusTemperature5Props {
     expireAfter?: VbusDeltasolCsPlusTemperature5PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolCsPlusPumpSpeed1PropsAvailabilityProps {
     topic: unknown;
@@ -88827,11 +96235,17 @@ interface VbusDeltasolCsPlusPumpSpeed1Props {
     expireAfter?: VbusDeltasolCsPlusPumpSpeed1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolCsPlusPumpSpeed2PropsAvailabilityProps {
     topic: unknown;
@@ -88897,11 +96311,17 @@ interface VbusDeltasolCsPlusPumpSpeed2Props {
     expireAfter?: VbusDeltasolCsPlusPumpSpeed2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolCsPlusOperatingHours1PropsAvailabilityProps {
     topic: unknown;
@@ -88967,11 +96387,17 @@ interface VbusDeltasolCsPlusOperatingHours1Props {
     expireAfter?: VbusDeltasolCsPlusOperatingHours1PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolCsPlusOperatingHours2PropsAvailabilityProps {
     topic: unknown;
@@ -89037,11 +96463,17 @@ interface VbusDeltasolCsPlusOperatingHours2Props {
     expireAfter?: VbusDeltasolCsPlusOperatingHours2PropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolCsPlusHeatQuantityPropsAvailabilityProps {
     topic: unknown;
@@ -89107,11 +96539,17 @@ interface VbusDeltasolCsPlusHeatQuantityProps {
     expireAfter?: VbusDeltasolCsPlusHeatQuantityPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolCsPlusTimePropsAvailabilityProps {
     topic: unknown;
@@ -89177,11 +96615,17 @@ interface VbusDeltasolCsPlusTimeProps {
     expireAfter?: VbusDeltasolCsPlusTimePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolCsPlusVersionPropsAvailabilityProps {
     topic: unknown;
@@ -89248,11 +96692,17 @@ interface VbusDeltasolCsPlusVersionProps {
     expireAfter?: VbusDeltasolCsPlusVersionPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusDeltasolCsPlusFlowRatePropsAvailabilityProps {
     topic: unknown;
@@ -89319,11 +96769,17 @@ interface VbusDeltasolCsPlusFlowRateProps {
     expireAfter?: VbusDeltasolCsPlusFlowRatePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface VbusCustomSensorsPropsAvailabilityProps {
     topic: unknown;
@@ -89390,11 +96846,17 @@ interface VbusCustomSensorsProps {
     expireAfter?: VbusCustomSensorsPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
     lambda: unknown;
 }
 interface WireguardLatestHandshakePropsAvailabilityProps {
@@ -89462,11 +96924,17 @@ interface WireguardLatestHandshakeProps {
     expireAfter?: WireguardLatestHandshakePropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface XiaomiRtcgq02lmBatteryLevelPropsAvailabilityProps {
     topic: unknown;
@@ -89533,11 +97001,17 @@ interface XiaomiRtcgq02lmBatteryLevelProps {
     expireAfter?: XiaomiRtcgq02lmBatteryLevelPropsExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface SensorBaseProps extends _CoreEntityBase, _CoreMqttComponent {
     /** @yamlKey web_server */
@@ -89560,11 +97034,17 @@ interface SensorBaseProps extends _CoreEntityBase, _CoreMqttComponent {
     expireAfter?: SensorExpireAfterProps;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
-    onValue?: () => void;
+    onValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_raw_value */
-    onRawValue?: () => void;
+    onRawValue?: TriggerHandler<{
+        x: number;
+    }>;
     /** @yamlKey on_value_range */
-    onValueRange?: () => void;
+    onValueRange?: TriggerHandler<{
+        x: number;
+    }>;
 }
 interface A01nyubProps {
     /** @yamlKey unit_of_measurement */
@@ -90788,32 +98268,32 @@ interface EzoProps extends _CoreComponent {
      * [Action](/automations/actions#all-actions): Triggered when the result of `get_custom()` is ready. The result is provi...
      * @yamlKey on_custom
      */
-    onCustom?: () => void;
+    onCustom?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): Triggered when the result of `get_calibration()` is ready. The result is ...
      * @yamlKey on_calibration
      */
-    onCalibration?: () => void;
+    onCalibration?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): Triggered when the result of `get_slope()` is ready. The result is provid...
      * @yamlKey on_slope
      */
-    onSlope?: () => void;
+    onSlope?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): Triggered when the result of `get_t()` is ready. The result is provided a...
      * @yamlKey on_t
      */
-    onT?: () => void;
+    onT?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): Triggered when the result of `get_device_information()` is ready. The res...
      * @yamlKey on_device_information
      */
-    onDeviceInformation?: () => void;
+    onDeviceInformation?: TriggerHandler;
     /**
      * [Action](/automations/actions#all-actions): Triggered when the result of `get_led_state()` is ready. The LED state is...
      * @yamlKey on_led
      */
-    onLed?: () => void;
+    onLed?: TriggerHandler;
     /**
      * [Time](/guides/configuration-types#time): The interval to check the sensor. Defaults to `60s`.
      * @yamlKey update_interval
@@ -91941,12 +99421,12 @@ interface Ltr501Props extends _CoreComponent {
      * Actions to perform when the proximity sensor is triggered on object getting closer.
      * @yamlKey on_ps_high_threshold
      */
-    onPsHighThreshold?: () => void;
+    onPsHighThreshold?: TriggerHandler;
     /**
      * Actions to perform when the proximity sensor is triggered on object getting further away.
      * @yamlKey on_ps_low_threshold
      */
-    onPsLowThreshold?: () => void;
+    onPsLowThreshold?: TriggerHandler;
     /**
      * Illuminance of ambient light, close to human eye spectre, lx.
      * @yamlKey ambient_light
@@ -92029,12 +99509,12 @@ interface LtrAlsPsProps extends _CoreComponent {
      * Actions to perform when the proximity sensor is triggered on object getting closer.
      * @yamlKey on_ps_high_threshold
      */
-    onPsHighThreshold?: () => void;
+    onPsHighThreshold?: TriggerHandler;
     /**
      * Actions to perform when the proximity sensor is triggered on object getting further away.
      * @yamlKey on_ps_low_threshold
      */
-    onPsLowThreshold?: () => void;
+    onPsLowThreshold?: TriggerHandler;
     /**
      * Illuminance of ambient light, close to human eye spectre, lx.
      * @yamlKey ambient_light
@@ -93313,12 +100793,12 @@ interface RotaryEncoderProps extends _CoreComponent {
      * [Automation](/automations): Actions to be performed when the knob is turned clockwise. See [`on_clockwise` and `on_an...
      * @yamlKey on_clockwise
      */
-    onClockwise?: () => void;
+    onClockwise?: TriggerHandler;
     /**
      * [Automation](/automations): Actions to be performed when the knob is turned anticlockwise. See [`on_clockwise` and `o...
      * @yamlKey on_anticlockwise
      */
-    onAnticlockwise?: () => void;
+    onAnticlockwise?: TriggerHandler;
 }
 interface RuuvitagProps extends _BthomeMithermometerBleDevice, _CoreComponent {
     /**
@@ -95308,7 +102788,7 @@ interface BleClientCharacteristicProps extends _CoreComponent, _BleClient {
     lambda?: unknown;
     notify?: boolean;
     /** @yamlKey on_notify */
-    onNotify?: () => void;
+    onNotify?: TriggerHandler;
 }
 interface BleClientRssiProps extends _CoreComponent, _BleClient {
     /** @yamlKey unit_of_measurement */
@@ -96822,7 +104302,7 @@ interface UdpProps {
     /** list of IPv4 addresses: One or more IP addresses to broadcast data to. Defaults to `255.255.255.255` which is the loc... */
     addresses?: Array<unknown>;
     /** @yamlKey on_receive */
-    onReceive?: () => void;
+    onReceive?: TriggerHandler;
     providers?: unknown;
     encryption?: unknown;
     /** @yamlKey ping_pong_enable */

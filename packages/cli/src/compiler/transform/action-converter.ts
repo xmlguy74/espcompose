@@ -75,6 +75,17 @@ export class RefTokenMarker {
   constructor(public readonly varName: string) {}
 }
 
+/**
+ * Marker that instructs the AST emitter to spread the result of a call
+ * expression into the action array instead of emitting a single action.
+ *
+ * Used for calls like `applyTheme(darkTheme)` where the function returns
+ * an array of actions that should be inlined into the trigger's action list.
+ */
+export class ActionSpreadMarker {
+  constructor(public readonly callNode: ts.CallExpression) {}
+}
+
 export interface ConverterContext {
   /** Names of top-level function declarations in the user's source file. */
   knownScripts: Set<string>;
@@ -335,6 +346,15 @@ function convertCall(
     return convertDelay(call, ctx, constMap);
   }
 
+  // applyTheme(theme) → spread into action array
+  if (ts.isIdentifier(callee) && callee.text === 'applyTheme') {
+    if (call.arguments.length !== 1) {
+      ctx.errors.push({ message: 'applyTheme() requires exactly one theme argument.', node: call });
+      return null;
+    }
+    return new ActionSpreadMarker(call);
+  }
+
   // logger.log(message, level?)
   if (
     ts.isPropertyAccessExpression(callee) &&
@@ -370,7 +390,7 @@ function convertCall(
   }
 
   ctx.errors.push({
-    message: `Call to '${callee.getText()}' is not supported inside scripts. Only delay(), logger.log(), ref.action(), haEntity.action(), and other script functions can be called.`,
+    message: `Call to '${callee.getText()}' is not supported inside scripts. Only delay(), logger.log(), applyTheme(), ref.action(), haEntity.action(), and other script functions can be called.`,
     node: call,
   });
   return null;

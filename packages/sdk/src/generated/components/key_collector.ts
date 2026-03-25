@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _CoreComponent } from "../bases";
 import type { key_collector_KeyCollector, key_provider_KeyProvider } from "../markers";
 export interface KeyCollectorTimeoutProps {
@@ -64,17 +64,17 @@ export interface KeyCollectorProps extends _CoreComponent {
      * [Automation](/automations): An automation to perform when keys are pressed. The current key sequence is placed in a `...
      * @yamlKey on_progress
      */
-    onProgress?: () => void;
+    onProgress?: TriggerHandler;
     /**
      * [Automation](/automations): An automation to perform when the key sequence has been finished (eg. `max_length` has be...
      * @yamlKey on_result
      */
-    onResult?: () => void;
+    onResult?: TriggerHandler;
     /**
      * [Automation](/automations): An automation to perform if the timeout happens. The current key sequence is placed in a ...
      * @yamlKey on_timeout
      */
-    onTimeout?: () => void;
+    onTimeout?: TriggerHandler;
     /** [Time](/guides/configuration-types#time): Timeout after which to cancel building the key sequence. */
     timeout?: KeyCollectorTimeoutProps;
     /**
