@@ -5,6 +5,7 @@ import { createRequire } from 'module';
 import ts from 'typescript';
 import { ESLint } from 'eslint';
 import { applyTransform } from './transform/index.js';
+import { injectReactiveBindings } from './reactive-injector.js';
 
 export interface CompileOptions {
   /** Absolute path to the TSX/TS entry file. */
@@ -235,32 +236,44 @@ async function execute(bundleFile: string, outFile: string): Promise<void> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const cjsSDK = (_require('@esphome/compose') as any).ESPCompose;
 
-  // Wrap the bundle load in a script scope.  useScript hook calls fire during
-  // module evaluation (when JSX prop values like `onPress={greet()}` are
-  // computed), so the scope only needs to be active during `_require(bundleFile)`.
-  const { result: mod, scripts } = cjsSDK.withScriptScope(() => {
-    return _require(bundleFile) as { default?: unknown };
+  // Clear HA entity binding cache for a fresh render pass.
+  cjsSDK.clearHAEntityCache();
+
+  // Wrap the bundle load and render in both a script scope and a reactive scope.
+  // - useHAEntity() calls fire during module evaluation (inside withScriptScope)
+  //   and register HA entities in the reactive scope.
+  // - Expression<T> props are detected during render() and register reactive
+  //   bindings in the reactive scope.
+  const { result: reactiveResult, bindings, entities } = cjsSDK.withReactiveScope(() => {
+    const { result: mod, scripts } = cjsSDK.withScriptScope(() => {
+      return _require(bundleFile) as { default?: unknown };
+    });
+
+    const rootElement = mod.default;
+
+    if (rootElement == null) {
+      throw new Error(
+        `Entry module does not have a default export. ` +
+          `Make sure your TSX file exports a default ESPCompose element tree.`
+      );
+    }
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const config = cjsSDK.render(rootElement as any) as Record<string, unknown>;
+
+    // Prepend any registered scripts as a top-level `script:` section.
+    const withScripts: Record<string, unknown> =
+      scripts.length > 0
+        ? { ...config, script: scripts }
+        : config;
+
+    return withScripts;
   });
 
-  const rootElement = mod.default;
+  // Inject reactive bindings: auto-generated HA sensor imports + trigger wiring
+  const finalConfig = injectReactiveBindings(reactiveResult, bindings, entities);
 
-  if (rootElement == null) {
-    throw new Error(
-      `Entry module does not have a default export. ` +
-        `Make sure your TSX file exports a default ESPCompose element tree.`
-    );
-  }
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const config = cjsSDK.render(rootElement as any) as Record<string, unknown>;
-
-  // Prepend any registered scripts as a top-level `script:` section.
-  const withScripts: Record<string, unknown> =
-    scripts.length > 0
-      ? { ...config, script: scripts }
-      : config;
-
-  const yamlOutput = cjsSDK.toYAML(withScripts);
+  const yamlOutput = cjsSDK.toYAML(finalConfig);
 
   fs.mkdirSync(path.dirname(outFile), { recursive: true });
   fs.writeFileSync(outFile, yamlOutput, 'utf8');

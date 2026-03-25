@@ -2,6 +2,9 @@ import type { Context } from './hooks/useContext';
 import type {
   InferActions,
 } from './generated/actions';
+import type { InferReactiveProperties } from './reactive-properties';
+import { REACTIVE_PROPERTY_MAP } from './reactive-properties';
+import { Expression } from './expression';
 
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -57,7 +60,7 @@ interface BaseRef<T = unknown> {
  * Uses intersection-based InferActions<T> so derived markers inherit all
  * ancestor actions (e.g. FloatOutput gets BinaryOutput + FloatOutput methods).
  */
-export type Ref<T = unknown> = BaseRef<T> & InferActions<T>;
+export type Ref<T = unknown> = BaseRef<T> & InferActions<T> & InferReactiveProperties<T>;
 
 /**
  * Prop-side ref type — accepts any `Ref<U>` whose marker `U` is a structural
@@ -85,15 +88,33 @@ export class RefHandle<T = unknown> implements BaseRef<T> {
     // sufficient for a single device config file.
     this._token = `r_${Math.random().toString(36).slice(2, 11)}`;
 
-    // Return a Proxy that intercepts property access for action methods.
-    // Any property not on the RefHandle prototype returns a no-op function,
-    // preventing runtime errors when action methods are called.
-    // The compiler transformer rewrites these calls at compile time.
+    // Return a Proxy that intercepts property access for action methods
+    // and reactive property accessors.
+    // - Action methods: any property not on RefHandle prototype returns a no-op
+    //   function (the compiler transformer rewrites these at compile time).
+    // - Reactive properties: known property names (value, isOn, brightness, etc.)
+    //   return Expression<T> instances configured for the appropriate source
+    //   domain and trigger type.
     return new Proxy(this, {
       get(target, prop, receiver) {
         if (prop in target || typeof prop === 'symbol') {
           return Reflect.get(target, prop, receiver);
         }
+
+        // Check reactive property map — return Expression if matched.
+        if (typeof prop === 'string') {
+          const reactiveConfig = REACTIVE_PROPERTY_MAP[prop];
+          if (reactiveConfig) {
+            return new Expression({
+              sourceId: target._token,
+              property: reactiveConfig.property,
+              triggerType: reactiveConfig.triggerType,
+              sourceDomain: reactiveConfig.sourceDomain,
+            });
+          }
+        }
+
+        // Fallback: action method no-op.
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         return function actionMarker(..._args: unknown[]): void {
           // No-op at runtime. The compiler transformer rewrites these calls.
