@@ -55,7 +55,7 @@ export function injectReactiveBindings(
   // lvgl widget update actions for that source's bindings.
   const bindingsBySource = groupBindingsBySource(bindings);
 
-  for (const [sourceKey, sourceBindings] of bindingsBySource) {
+  for (const [, sourceBindings] of bindingsBySource) {
     const { sourceId, triggerType, sourceDomain } = sourceBindings[0].expression;
 
     // Build the trigger actions — one lvgl.widget.update per binding

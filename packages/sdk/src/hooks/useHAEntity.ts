@@ -205,6 +205,7 @@ function createActionProxy<T extends object>(binding: T, entityId: string, domai
       const val = Reflect.get(target, prop, receiver);
       if (typeof val === 'function') {
         // Attach metadata for the compiler's action converter.
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const marker = function actionMarker(..._args: unknown[]): void {
           // No-op at runtime. The compiler transformer rewrites these calls.
         };
