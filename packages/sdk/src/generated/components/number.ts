@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
+import type { ComponentProps, Pin, RefProp, TimePeriod, TriggerHandler } from "../../types";
 import type { _CoreComponent, _CoreEntityBase, _CoreMqttCommandComponent, _HomeassistantHomeAssistantImportControl, _ModbusControllerModbusitembaseschema } from "../bases";
 import type { EntityBase, atm90e32_ATM90E32Component, bl0940_BL0940, bl0940_BL0940Number, copy_CopyNumber, homeassistant_HomeassistantNumber, ld2410_LD2410Component, ld2412_LD2412Component, ld2420_LD2420Component, ld2450_LD2450Component, lvgl_LVGLNumber, micronova_MicroNova, modbus_controller_ModbusNumber, number_Number, opentherm_OpenthermHub, seeed_mr24hpc1_MR24HPC1Component, template__TemplateNumber, tuya_Tuya, tuya_TuyaNumber, web_server_WebServer, zigbee_ZigbeeComponent, zigbee_ZigbeeNumber } from "../markers";
 interface NumberWebServerProps {
@@ -31,7 +31,7 @@ interface Atm90e32ReferenceVoltagePropsPhaseAPropsWebServerProps {
 }
 interface Atm90e32ReferenceVoltagePropsPhaseAProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -39,9 +39,13 @@ interface Atm90e32ReferenceVoltagePropsPhaseAProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -69,7 +73,7 @@ interface Atm90e32ReferenceVoltagePropsPhaseAProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: string;
     /** @yamlKey device_class */
     deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
@@ -96,7 +100,7 @@ interface Atm90e32ReferenceVoltagePropsPhaseBPropsWebServerProps {
 }
 interface Atm90e32ReferenceVoltagePropsPhaseBProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -104,9 +108,13 @@ interface Atm90e32ReferenceVoltagePropsPhaseBProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -134,7 +142,7 @@ interface Atm90e32ReferenceVoltagePropsPhaseBProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: string;
     /** @yamlKey device_class */
     deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
@@ -161,7 +169,7 @@ interface Atm90e32ReferenceVoltagePropsPhaseCPropsWebServerProps {
 }
 interface Atm90e32ReferenceVoltagePropsPhaseCProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -169,9 +177,13 @@ interface Atm90e32ReferenceVoltagePropsPhaseCProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -199,7 +211,7 @@ interface Atm90e32ReferenceVoltagePropsPhaseCProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: string;
     /** @yamlKey device_class */
     deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
@@ -243,7 +255,7 @@ interface Atm90e32ReferenceCurrentPropsPhaseAPropsWebServerProps {
 }
 interface Atm90e32ReferenceCurrentPropsPhaseAProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -251,9 +263,13 @@ interface Atm90e32ReferenceCurrentPropsPhaseAProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -281,7 +297,7 @@ interface Atm90e32ReferenceCurrentPropsPhaseAProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: string;
     /** @yamlKey device_class */
     deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
@@ -308,7 +324,7 @@ interface Atm90e32ReferenceCurrentPropsPhaseBPropsWebServerProps {
 }
 interface Atm90e32ReferenceCurrentPropsPhaseBProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -316,9 +332,13 @@ interface Atm90e32ReferenceCurrentPropsPhaseBProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -346,7 +366,7 @@ interface Atm90e32ReferenceCurrentPropsPhaseBProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: string;
     /** @yamlKey device_class */
     deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
@@ -373,7 +393,7 @@ interface Atm90e32ReferenceCurrentPropsPhaseCPropsWebServerProps {
 }
 interface Atm90e32ReferenceCurrentPropsPhaseCProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -381,9 +401,13 @@ interface Atm90e32ReferenceCurrentPropsPhaseCProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -411,7 +435,7 @@ interface Atm90e32ReferenceCurrentPropsPhaseCProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: string;
     /** @yamlKey device_class */
     deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
@@ -455,7 +479,7 @@ interface Bl0940CurrentCalibrationPropsWebServerProps {
 }
 interface Bl0940CurrentCalibrationProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -464,9 +488,12 @@ interface Bl0940CurrentCalibrationProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -494,8 +521,8 @@ interface Bl0940CurrentCalibrationProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
-    mode?: unknown;
+    unitOfMeasurement?: string;
+    mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
     deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
     /** @yamlKey setup_priority */
@@ -504,7 +531,7 @@ interface Bl0940CurrentCalibrationProps {
     maxValue?: unknown;
     /** @yamlKey min_value */
     minValue?: unknown;
-    step?: unknown;
+    step?: number;
     /** @yamlKey restore_value */
     restoreValue?: boolean;
 }
@@ -525,7 +552,7 @@ interface Bl0940VoltageCalibrationPropsWebServerProps {
 }
 interface Bl0940VoltageCalibrationProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -534,9 +561,12 @@ interface Bl0940VoltageCalibrationProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -564,8 +594,8 @@ interface Bl0940VoltageCalibrationProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
-    mode?: unknown;
+    unitOfMeasurement?: string;
+    mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
     deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
     /** @yamlKey setup_priority */
@@ -574,7 +604,7 @@ interface Bl0940VoltageCalibrationProps {
     maxValue?: unknown;
     /** @yamlKey min_value */
     minValue?: unknown;
-    step?: unknown;
+    step?: number;
     /** @yamlKey restore_value */
     restoreValue?: boolean;
 }
@@ -595,7 +625,7 @@ interface Bl0940PowerCalibrationPropsWebServerProps {
 }
 interface Bl0940PowerCalibrationProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -604,9 +634,12 @@ interface Bl0940PowerCalibrationProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -634,8 +667,8 @@ interface Bl0940PowerCalibrationProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
-    mode?: unknown;
+    unitOfMeasurement?: string;
+    mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
     deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
     /** @yamlKey setup_priority */
@@ -644,7 +677,7 @@ interface Bl0940PowerCalibrationProps {
     maxValue?: unknown;
     /** @yamlKey min_value */
     minValue?: unknown;
-    step?: unknown;
+    step?: number;
     /** @yamlKey restore_value */
     restoreValue?: boolean;
 }
@@ -665,7 +698,7 @@ interface Bl0940EnergyCalibrationPropsWebServerProps {
 }
 interface Bl0940EnergyCalibrationProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -674,9 +707,12 @@ interface Bl0940EnergyCalibrationProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -704,8 +740,8 @@ interface Bl0940EnergyCalibrationProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
-    mode?: unknown;
+    unitOfMeasurement?: string;
+    mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
     deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
     /** @yamlKey setup_priority */
@@ -714,249 +750,9 @@ interface Bl0940EnergyCalibrationProps {
     maxValue?: unknown;
     /** @yamlKey min_value */
     minValue?: unknown;
-    step?: unknown;
+    step?: number;
     /** @yamlKey restore_value */
     restoreValue?: boolean;
-}
-interface Ld2410TimeoutPropsAvailabilityProps {
-    topic: unknown;
-    /** @yamlKey payload_available */
-    payloadAvailable?: unknown;
-    /** @yamlKey payload_not_available */
-    payloadNotAvailable?: unknown;
-}
-interface Ld2410TimeoutPropsWebServerProps {
-    /** @yamlKey web_server_id */
-    webServerId?: RefProp<web_server_WebServer>;
-    /** @yamlKey sorting_weight */
-    sortingWeight?: unknown;
-    /** @yamlKey sorting_group_id */
-    sortingGroupId?: number;
-}
-interface Ld2410TimeoutProps {
-    /** string: The name for the sensor. */
-    name?: unknown;
-    /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
-    internal?: boolean;
-    /**
-     * boolean: If true, then this entity should not be added to any client's frontend, (usually Home Assistant) without the...
-     * @yamlKey disabled_by_default
-     */
-    disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
-    /** @yamlKey device_id */
-    deviceId?: unknown;
-    qos?: unknown;
-    retain?: boolean;
-    discovery?: boolean;
-    /** @yamlKey subscribe_qos */
-    subscribeQos?: unknown;
-    /** @yamlKey state_topic */
-    stateTopic?: unknown;
-    availability?: Ld2410TimeoutPropsAvailabilityProps;
-    /** @yamlKey command_topic */
-    commandTopic?: unknown;
-    /** @yamlKey command_retain */
-    commandRetain?: boolean;
-    /** @yamlKey web_server */
-    webServer?: Ld2410TimeoutPropsWebServerProps;
-    /** @yamlKey zigbee_id */
-    zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
-    /** @yamlKey on_value */
-    onValue?: TriggerHandler<{
-        x: number;
-    }>;
-    /** @yamlKey on_value_range */
-    onValueRange?: TriggerHandler<{
-        x: number;
-    }>;
-    /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
-    mode?: "AUTO" | "BOX" | "SLIDER";
-    /** @yamlKey device_class */
-    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
-}
-interface Ld2410MaxMoveDistanceGatePropsAvailabilityProps {
-    topic: unknown;
-    /** @yamlKey payload_available */
-    payloadAvailable?: unknown;
-    /** @yamlKey payload_not_available */
-    payloadNotAvailable?: unknown;
-}
-interface Ld2410MaxMoveDistanceGatePropsWebServerProps {
-    /** @yamlKey web_server_id */
-    webServerId?: RefProp<web_server_WebServer>;
-    /** @yamlKey sorting_weight */
-    sortingWeight?: unknown;
-    /** @yamlKey sorting_group_id */
-    sortingGroupId?: number;
-}
-interface Ld2410MaxMoveDistanceGateProps {
-    /** string: The name for the sensor. */
-    name?: unknown;
-    /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
-    internal?: boolean;
-    /**
-     * boolean: If true, then this entity should not be added to any client's frontend, (usually Home Assistant) without the...
-     * @yamlKey disabled_by_default
-     */
-    disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
-    /** @yamlKey device_id */
-    deviceId?: unknown;
-    qos?: unknown;
-    retain?: boolean;
-    discovery?: boolean;
-    /** @yamlKey subscribe_qos */
-    subscribeQos?: unknown;
-    /** @yamlKey state_topic */
-    stateTopic?: unknown;
-    availability?: Ld2410MaxMoveDistanceGatePropsAvailabilityProps;
-    /** @yamlKey command_topic */
-    commandTopic?: unknown;
-    /** @yamlKey command_retain */
-    commandRetain?: boolean;
-    /** @yamlKey web_server */
-    webServer?: Ld2410MaxMoveDistanceGatePropsWebServerProps;
-    /** @yamlKey zigbee_id */
-    zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
-    /** @yamlKey on_value */
-    onValue?: TriggerHandler<{
-        x: number;
-    }>;
-    /** @yamlKey on_value_range */
-    onValueRange?: TriggerHandler<{
-        x: number;
-    }>;
-    /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: string;
-    mode?: "AUTO" | "BOX" | "SLIDER";
-    /** @yamlKey device_class */
-    deviceClass?: unknown;
-}
-interface Ld2410MaxStillDistanceGatePropsAvailabilityProps {
-    topic: unknown;
-    /** @yamlKey payload_available */
-    payloadAvailable?: unknown;
-    /** @yamlKey payload_not_available */
-    payloadNotAvailable?: unknown;
-}
-interface Ld2410MaxStillDistanceGatePropsWebServerProps {
-    /** @yamlKey web_server_id */
-    webServerId?: RefProp<web_server_WebServer>;
-    /** @yamlKey sorting_weight */
-    sortingWeight?: unknown;
-    /** @yamlKey sorting_group_id */
-    sortingGroupId?: number;
-}
-interface Ld2410MaxStillDistanceGateProps {
-    /** string: The name for the sensor. */
-    name?: unknown;
-    /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
-    internal?: boolean;
-    /**
-     * boolean: If true, then this entity should not be added to any client's frontend, (usually Home Assistant) without the...
-     * @yamlKey disabled_by_default
-     */
-    disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
-    /** @yamlKey device_id */
-    deviceId?: unknown;
-    qos?: unknown;
-    retain?: boolean;
-    discovery?: boolean;
-    /** @yamlKey subscribe_qos */
-    subscribeQos?: unknown;
-    /** @yamlKey state_topic */
-    stateTopic?: unknown;
-    availability?: Ld2410MaxStillDistanceGatePropsAvailabilityProps;
-    /** @yamlKey command_topic */
-    commandTopic?: unknown;
-    /** @yamlKey command_retain */
-    commandRetain?: boolean;
-    /** @yamlKey web_server */
-    webServer?: Ld2410MaxStillDistanceGatePropsWebServerProps;
-    /** @yamlKey zigbee_id */
-    zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
-    /** @yamlKey on_value */
-    onValue?: TriggerHandler<{
-        x: number;
-    }>;
-    /** @yamlKey on_value_range */
-    onValueRange?: TriggerHandler<{
-        x: number;
-    }>;
-    /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: string;
-    mode?: "AUTO" | "BOX" | "SLIDER";
-    /** @yamlKey device_class */
-    deviceClass?: unknown;
-}
-interface Ld2410LightThresholdPropsAvailabilityProps {
-    topic: unknown;
-    /** @yamlKey payload_available */
-    payloadAvailable?: unknown;
-    /** @yamlKey payload_not_available */
-    payloadNotAvailable?: unknown;
-}
-interface Ld2410LightThresholdPropsWebServerProps {
-    /** @yamlKey web_server_id */
-    webServerId?: RefProp<web_server_WebServer>;
-    /** @yamlKey sorting_weight */
-    sortingWeight?: unknown;
-    /** @yamlKey sorting_group_id */
-    sortingGroupId?: number;
-}
-interface Ld2410LightThresholdProps {
-    /** string: The name for the sensor. */
-    name?: unknown;
-    /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
-    internal?: boolean;
-    /**
-     * boolean: If true, then this entity should not be added to any client's frontend, (usually Home Assistant) without the...
-     * @yamlKey disabled_by_default
-     */
-    disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
-    /** @yamlKey device_id */
-    deviceId?: unknown;
-    qos?: unknown;
-    retain?: boolean;
-    discovery?: boolean;
-    /** @yamlKey subscribe_qos */
-    subscribeQos?: unknown;
-    /** @yamlKey state_topic */
-    stateTopic?: unknown;
-    availability?: Ld2410LightThresholdPropsAvailabilityProps;
-    /** @yamlKey command_topic */
-    commandTopic?: unknown;
-    /** @yamlKey command_retain */
-    commandRetain?: boolean;
-    /** @yamlKey web_server */
-    webServer?: Ld2410LightThresholdPropsWebServerProps;
-    /** @yamlKey zigbee_id */
-    zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
-    /** @yamlKey on_value */
-    onValue?: TriggerHandler<{
-        x: number;
-    }>;
-    /** @yamlKey on_value_range */
-    onValueRange?: TriggerHandler<{
-        x: number;
-    }>;
-    /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: string;
-    mode?: "AUTO" | "BOX" | "SLIDER";
-    /** @yamlKey device_class */
-    deviceClass?: unknown;
 }
 interface Ld2410G0PropsMoveThresholdPropsAvailabilityProps {
     topic: unknown;
@@ -975,7 +771,7 @@ interface Ld2410G0PropsMoveThresholdPropsWebServerProps {
 }
 interface Ld2410G0PropsMoveThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -983,9 +779,13 @@ interface Ld2410G0PropsMoveThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1013,10 +813,10 @@ interface Ld2410G0PropsMoveThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2410G0PropsStillThresholdPropsAvailabilityProps {
     topic: unknown;
@@ -1035,7 +835,7 @@ interface Ld2410G0PropsStillThresholdPropsWebServerProps {
 }
 interface Ld2410G0PropsStillThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1043,9 +843,13 @@ interface Ld2410G0PropsStillThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1073,10 +877,10 @@ interface Ld2410G0PropsStillThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2410G0Props {
     /** @yamlKey move_threshold */
@@ -1101,7 +905,7 @@ interface Ld2410G1PropsMoveThresholdPropsWebServerProps {
 }
 interface Ld2410G1PropsMoveThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1109,9 +913,13 @@ interface Ld2410G1PropsMoveThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1139,10 +947,10 @@ interface Ld2410G1PropsMoveThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2410G1PropsStillThresholdPropsAvailabilityProps {
     topic: unknown;
@@ -1161,7 +969,7 @@ interface Ld2410G1PropsStillThresholdPropsWebServerProps {
 }
 interface Ld2410G1PropsStillThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1169,9 +977,13 @@ interface Ld2410G1PropsStillThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1199,10 +1011,10 @@ interface Ld2410G1PropsStillThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2410G1Props {
     /** @yamlKey move_threshold */
@@ -1227,7 +1039,7 @@ interface Ld2410G2PropsMoveThresholdPropsWebServerProps {
 }
 interface Ld2410G2PropsMoveThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1235,9 +1047,13 @@ interface Ld2410G2PropsMoveThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1265,10 +1081,10 @@ interface Ld2410G2PropsMoveThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2410G2PropsStillThresholdPropsAvailabilityProps {
     topic: unknown;
@@ -1287,7 +1103,7 @@ interface Ld2410G2PropsStillThresholdPropsWebServerProps {
 }
 interface Ld2410G2PropsStillThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1295,9 +1111,13 @@ interface Ld2410G2PropsStillThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1325,10 +1145,10 @@ interface Ld2410G2PropsStillThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2410G2Props {
     /** @yamlKey move_threshold */
@@ -1353,7 +1173,7 @@ interface Ld2410G3PropsMoveThresholdPropsWebServerProps {
 }
 interface Ld2410G3PropsMoveThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1361,9 +1181,13 @@ interface Ld2410G3PropsMoveThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1391,10 +1215,10 @@ interface Ld2410G3PropsMoveThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2410G3PropsStillThresholdPropsAvailabilityProps {
     topic: unknown;
@@ -1413,7 +1237,7 @@ interface Ld2410G3PropsStillThresholdPropsWebServerProps {
 }
 interface Ld2410G3PropsStillThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1421,9 +1245,13 @@ interface Ld2410G3PropsStillThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1451,10 +1279,10 @@ interface Ld2410G3PropsStillThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2410G3Props {
     /** @yamlKey move_threshold */
@@ -1479,7 +1307,7 @@ interface Ld2410G4PropsMoveThresholdPropsWebServerProps {
 }
 interface Ld2410G4PropsMoveThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1487,9 +1315,13 @@ interface Ld2410G4PropsMoveThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1517,10 +1349,10 @@ interface Ld2410G4PropsMoveThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2410G4PropsStillThresholdPropsAvailabilityProps {
     topic: unknown;
@@ -1539,7 +1371,7 @@ interface Ld2410G4PropsStillThresholdPropsWebServerProps {
 }
 interface Ld2410G4PropsStillThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1547,9 +1379,13 @@ interface Ld2410G4PropsStillThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1577,10 +1413,10 @@ interface Ld2410G4PropsStillThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2410G4Props {
     /** @yamlKey move_threshold */
@@ -1605,7 +1441,7 @@ interface Ld2410G5PropsMoveThresholdPropsWebServerProps {
 }
 interface Ld2410G5PropsMoveThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1613,9 +1449,13 @@ interface Ld2410G5PropsMoveThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1643,10 +1483,10 @@ interface Ld2410G5PropsMoveThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2410G5PropsStillThresholdPropsAvailabilityProps {
     topic: unknown;
@@ -1665,7 +1505,7 @@ interface Ld2410G5PropsStillThresholdPropsWebServerProps {
 }
 interface Ld2410G5PropsStillThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1673,9 +1513,13 @@ interface Ld2410G5PropsStillThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1703,10 +1547,10 @@ interface Ld2410G5PropsStillThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2410G5Props {
     /** @yamlKey move_threshold */
@@ -1731,7 +1575,7 @@ interface Ld2410G6PropsMoveThresholdPropsWebServerProps {
 }
 interface Ld2410G6PropsMoveThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1739,9 +1583,13 @@ interface Ld2410G6PropsMoveThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1769,10 +1617,10 @@ interface Ld2410G6PropsMoveThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2410G6PropsStillThresholdPropsAvailabilityProps {
     topic: unknown;
@@ -1791,7 +1639,7 @@ interface Ld2410G6PropsStillThresholdPropsWebServerProps {
 }
 interface Ld2410G6PropsStillThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1799,9 +1647,13 @@ interface Ld2410G6PropsStillThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1829,10 +1681,10 @@ interface Ld2410G6PropsStillThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2410G6Props {
     /** @yamlKey move_threshold */
@@ -1857,7 +1709,7 @@ interface Ld2410G7PropsMoveThresholdPropsWebServerProps {
 }
 interface Ld2410G7PropsMoveThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1865,9 +1717,13 @@ interface Ld2410G7PropsMoveThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1895,10 +1751,10 @@ interface Ld2410G7PropsMoveThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2410G7PropsStillThresholdPropsAvailabilityProps {
     topic: unknown;
@@ -1917,7 +1773,7 @@ interface Ld2410G7PropsStillThresholdPropsWebServerProps {
 }
 interface Ld2410G7PropsStillThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1925,9 +1781,13 @@ interface Ld2410G7PropsStillThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1955,10 +1815,10 @@ interface Ld2410G7PropsStillThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2410G7Props {
     /** @yamlKey move_threshold */
@@ -1983,7 +1843,7 @@ interface Ld2410G8PropsMoveThresholdPropsWebServerProps {
 }
 interface Ld2410G8PropsMoveThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1991,9 +1851,13 @@ interface Ld2410G8PropsMoveThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -2021,10 +1885,10 @@ interface Ld2410G8PropsMoveThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2410G8PropsStillThresholdPropsAvailabilityProps {
     topic: unknown;
@@ -2043,7 +1907,7 @@ interface Ld2410G8PropsStillThresholdPropsWebServerProps {
 }
 interface Ld2410G8PropsStillThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -2051,9 +1915,13 @@ interface Ld2410G8PropsStillThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -2081,256 +1949,16 @@ interface Ld2410G8PropsStillThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2410G8Props {
     /** @yamlKey move_threshold */
     moveThreshold: Ld2410G8PropsMoveThresholdProps;
     /** @yamlKey still_threshold */
     stillThreshold: Ld2410G8PropsStillThresholdProps;
-}
-interface Ld2412LightThresholdPropsAvailabilityProps {
-    topic: unknown;
-    /** @yamlKey payload_available */
-    payloadAvailable?: unknown;
-    /** @yamlKey payload_not_available */
-    payloadNotAvailable?: unknown;
-}
-interface Ld2412LightThresholdPropsWebServerProps {
-    /** @yamlKey web_server_id */
-    webServerId?: RefProp<web_server_WebServer>;
-    /** @yamlKey sorting_weight */
-    sortingWeight?: unknown;
-    /** @yamlKey sorting_group_id */
-    sortingGroupId?: number;
-}
-interface Ld2412LightThresholdProps {
-    /** string: The name for the sensor. */
-    name?: unknown;
-    /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
-    internal?: boolean;
-    /**
-     * boolean: If true, then this entity should not be added to any client's frontend, (usually Home Assistant) without the...
-     * @yamlKey disabled_by_default
-     */
-    disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
-    /** @yamlKey device_id */
-    deviceId?: unknown;
-    qos?: unknown;
-    retain?: boolean;
-    discovery?: boolean;
-    /** @yamlKey subscribe_qos */
-    subscribeQos?: unknown;
-    /** @yamlKey state_topic */
-    stateTopic?: unknown;
-    availability?: Ld2412LightThresholdPropsAvailabilityProps;
-    /** @yamlKey command_topic */
-    commandTopic?: unknown;
-    /** @yamlKey command_retain */
-    commandRetain?: boolean;
-    /** @yamlKey web_server */
-    webServer?: Ld2412LightThresholdPropsWebServerProps;
-    /** @yamlKey zigbee_id */
-    zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
-    /** @yamlKey on_value */
-    onValue?: TriggerHandler<{
-        x: number;
-    }>;
-    /** @yamlKey on_value_range */
-    onValueRange?: TriggerHandler<{
-        x: number;
-    }>;
-    /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: string;
-    mode?: "AUTO" | "BOX" | "SLIDER";
-    /** @yamlKey device_class */
-    deviceClass?: unknown;
-}
-interface Ld2412MaxDistanceGatePropsAvailabilityProps {
-    topic: unknown;
-    /** @yamlKey payload_available */
-    payloadAvailable?: unknown;
-    /** @yamlKey payload_not_available */
-    payloadNotAvailable?: unknown;
-}
-interface Ld2412MaxDistanceGatePropsWebServerProps {
-    /** @yamlKey web_server_id */
-    webServerId?: RefProp<web_server_WebServer>;
-    /** @yamlKey sorting_weight */
-    sortingWeight?: unknown;
-    /** @yamlKey sorting_group_id */
-    sortingGroupId?: number;
-}
-interface Ld2412MaxDistanceGateProps {
-    /** string: The name for the sensor. */
-    name?: unknown;
-    /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
-    internal?: boolean;
-    /**
-     * boolean: If true, then this entity should not be added to any client's frontend, (usually Home Assistant) without the...
-     * @yamlKey disabled_by_default
-     */
-    disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
-    /** @yamlKey device_id */
-    deviceId?: unknown;
-    qos?: unknown;
-    retain?: boolean;
-    discovery?: boolean;
-    /** @yamlKey subscribe_qos */
-    subscribeQos?: unknown;
-    /** @yamlKey state_topic */
-    stateTopic?: unknown;
-    availability?: Ld2412MaxDistanceGatePropsAvailabilityProps;
-    /** @yamlKey command_topic */
-    commandTopic?: unknown;
-    /** @yamlKey command_retain */
-    commandRetain?: boolean;
-    /** @yamlKey web_server */
-    webServer?: Ld2412MaxDistanceGatePropsWebServerProps;
-    /** @yamlKey zigbee_id */
-    zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
-    /** @yamlKey on_value */
-    onValue?: TriggerHandler<{
-        x: number;
-    }>;
-    /** @yamlKey on_value_range */
-    onValueRange?: TriggerHandler<{
-        x: number;
-    }>;
-    /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: string;
-    mode?: "AUTO" | "BOX" | "SLIDER";
-    /** @yamlKey device_class */
-    deviceClass?: unknown;
-}
-interface Ld2412MinDistanceGatePropsAvailabilityProps {
-    topic: unknown;
-    /** @yamlKey payload_available */
-    payloadAvailable?: unknown;
-    /** @yamlKey payload_not_available */
-    payloadNotAvailable?: unknown;
-}
-interface Ld2412MinDistanceGatePropsWebServerProps {
-    /** @yamlKey web_server_id */
-    webServerId?: RefProp<web_server_WebServer>;
-    /** @yamlKey sorting_weight */
-    sortingWeight?: unknown;
-    /** @yamlKey sorting_group_id */
-    sortingGroupId?: number;
-}
-interface Ld2412MinDistanceGateProps {
-    /** string: The name for the sensor. */
-    name?: unknown;
-    /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
-    internal?: boolean;
-    /**
-     * boolean: If true, then this entity should not be added to any client's frontend, (usually Home Assistant) without the...
-     * @yamlKey disabled_by_default
-     */
-    disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
-    /** @yamlKey device_id */
-    deviceId?: unknown;
-    qos?: unknown;
-    retain?: boolean;
-    discovery?: boolean;
-    /** @yamlKey subscribe_qos */
-    subscribeQos?: unknown;
-    /** @yamlKey state_topic */
-    stateTopic?: unknown;
-    availability?: Ld2412MinDistanceGatePropsAvailabilityProps;
-    /** @yamlKey command_topic */
-    commandTopic?: unknown;
-    /** @yamlKey command_retain */
-    commandRetain?: boolean;
-    /** @yamlKey web_server */
-    webServer?: Ld2412MinDistanceGatePropsWebServerProps;
-    /** @yamlKey zigbee_id */
-    zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
-    /** @yamlKey on_value */
-    onValue?: TriggerHandler<{
-        x: number;
-    }>;
-    /** @yamlKey on_value_range */
-    onValueRange?: TriggerHandler<{
-        x: number;
-    }>;
-    /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: string;
-    mode?: "AUTO" | "BOX" | "SLIDER";
-    /** @yamlKey device_class */
-    deviceClass?: unknown;
-}
-interface Ld2412TimeoutPropsAvailabilityProps {
-    topic: unknown;
-    /** @yamlKey payload_available */
-    payloadAvailable?: unknown;
-    /** @yamlKey payload_not_available */
-    payloadNotAvailable?: unknown;
-}
-interface Ld2412TimeoutPropsWebServerProps {
-    /** @yamlKey web_server_id */
-    webServerId?: RefProp<web_server_WebServer>;
-    /** @yamlKey sorting_weight */
-    sortingWeight?: unknown;
-    /** @yamlKey sorting_group_id */
-    sortingGroupId?: number;
-}
-interface Ld2412TimeoutProps {
-    /** string: The name for the sensor. */
-    name?: unknown;
-    /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
-    internal?: boolean;
-    /**
-     * boolean: If true, then this entity should not be added to any client's frontend, (usually Home Assistant) without the...
-     * @yamlKey disabled_by_default
-     */
-    disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
-    /** @yamlKey device_id */
-    deviceId?: unknown;
-    qos?: unknown;
-    retain?: boolean;
-    discovery?: boolean;
-    /** @yamlKey subscribe_qos */
-    subscribeQos?: unknown;
-    /** @yamlKey state_topic */
-    stateTopic?: unknown;
-    availability?: Ld2412TimeoutPropsAvailabilityProps;
-    /** @yamlKey command_topic */
-    commandTopic?: unknown;
-    /** @yamlKey command_retain */
-    commandRetain?: boolean;
-    /** @yamlKey web_server */
-    webServer?: Ld2412TimeoutPropsWebServerProps;
-    /** @yamlKey zigbee_id */
-    zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
-    /** @yamlKey on_value */
-    onValue?: TriggerHandler<{
-        x: number;
-    }>;
-    /** @yamlKey on_value_range */
-    onValueRange?: TriggerHandler<{
-        x: number;
-    }>;
-    /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
-    mode?: "AUTO" | "BOX" | "SLIDER";
-    /** @yamlKey device_class */
-    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2412Gate0PropsMoveThresholdPropsAvailabilityProps {
     topic: unknown;
@@ -2349,7 +1977,7 @@ interface Ld2412Gate0PropsMoveThresholdPropsWebServerProps {
 }
 interface Ld2412Gate0PropsMoveThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -2357,9 +1985,13 @@ interface Ld2412Gate0PropsMoveThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -2387,10 +2019,10 @@ interface Ld2412Gate0PropsMoveThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2412Gate0PropsStillThresholdPropsAvailabilityProps {
     topic: unknown;
@@ -2409,7 +2041,7 @@ interface Ld2412Gate0PropsStillThresholdPropsWebServerProps {
 }
 interface Ld2412Gate0PropsStillThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -2417,9 +2049,13 @@ interface Ld2412Gate0PropsStillThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -2447,10 +2083,10 @@ interface Ld2412Gate0PropsStillThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2412Gate0Props {
     /** @yamlKey move_threshold */
@@ -2475,7 +2111,7 @@ interface Ld2412Gate1PropsMoveThresholdPropsWebServerProps {
 }
 interface Ld2412Gate1PropsMoveThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -2483,9 +2119,13 @@ interface Ld2412Gate1PropsMoveThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -2513,10 +2153,10 @@ interface Ld2412Gate1PropsMoveThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2412Gate1PropsStillThresholdPropsAvailabilityProps {
     topic: unknown;
@@ -2535,7 +2175,7 @@ interface Ld2412Gate1PropsStillThresholdPropsWebServerProps {
 }
 interface Ld2412Gate1PropsStillThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -2543,9 +2183,13 @@ interface Ld2412Gate1PropsStillThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -2573,10 +2217,10 @@ interface Ld2412Gate1PropsStillThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2412Gate1Props {
     /** @yamlKey move_threshold */
@@ -2601,7 +2245,7 @@ interface Ld2412Gate2PropsMoveThresholdPropsWebServerProps {
 }
 interface Ld2412Gate2PropsMoveThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -2609,9 +2253,13 @@ interface Ld2412Gate2PropsMoveThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -2639,10 +2287,10 @@ interface Ld2412Gate2PropsMoveThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2412Gate2PropsStillThresholdPropsAvailabilityProps {
     topic: unknown;
@@ -2661,7 +2309,7 @@ interface Ld2412Gate2PropsStillThresholdPropsWebServerProps {
 }
 interface Ld2412Gate2PropsStillThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -2669,9 +2317,13 @@ interface Ld2412Gate2PropsStillThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -2699,10 +2351,10 @@ interface Ld2412Gate2PropsStillThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2412Gate2Props {
     /** @yamlKey move_threshold */
@@ -2727,7 +2379,7 @@ interface Ld2412Gate3PropsMoveThresholdPropsWebServerProps {
 }
 interface Ld2412Gate3PropsMoveThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -2735,9 +2387,13 @@ interface Ld2412Gate3PropsMoveThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -2765,10 +2421,10 @@ interface Ld2412Gate3PropsMoveThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2412Gate3PropsStillThresholdPropsAvailabilityProps {
     topic: unknown;
@@ -2787,7 +2443,7 @@ interface Ld2412Gate3PropsStillThresholdPropsWebServerProps {
 }
 interface Ld2412Gate3PropsStillThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -2795,9 +2451,13 @@ interface Ld2412Gate3PropsStillThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -2825,10 +2485,10 @@ interface Ld2412Gate3PropsStillThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2412Gate3Props {
     /** @yamlKey move_threshold */
@@ -2853,7 +2513,7 @@ interface Ld2412Gate4PropsMoveThresholdPropsWebServerProps {
 }
 interface Ld2412Gate4PropsMoveThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -2861,9 +2521,13 @@ interface Ld2412Gate4PropsMoveThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -2891,10 +2555,10 @@ interface Ld2412Gate4PropsMoveThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2412Gate4PropsStillThresholdPropsAvailabilityProps {
     topic: unknown;
@@ -2913,7 +2577,7 @@ interface Ld2412Gate4PropsStillThresholdPropsWebServerProps {
 }
 interface Ld2412Gate4PropsStillThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -2921,9 +2585,13 @@ interface Ld2412Gate4PropsStillThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -2951,10 +2619,10 @@ interface Ld2412Gate4PropsStillThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2412Gate4Props {
     /** @yamlKey move_threshold */
@@ -2979,7 +2647,7 @@ interface Ld2412Gate5PropsMoveThresholdPropsWebServerProps {
 }
 interface Ld2412Gate5PropsMoveThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -2987,9 +2655,13 @@ interface Ld2412Gate5PropsMoveThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -3017,10 +2689,10 @@ interface Ld2412Gate5PropsMoveThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2412Gate5PropsStillThresholdPropsAvailabilityProps {
     topic: unknown;
@@ -3039,7 +2711,7 @@ interface Ld2412Gate5PropsStillThresholdPropsWebServerProps {
 }
 interface Ld2412Gate5PropsStillThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -3047,9 +2719,13 @@ interface Ld2412Gate5PropsStillThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -3077,10 +2753,10 @@ interface Ld2412Gate5PropsStillThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2412Gate5Props {
     /** @yamlKey move_threshold */
@@ -3105,7 +2781,7 @@ interface Ld2412Gate6PropsMoveThresholdPropsWebServerProps {
 }
 interface Ld2412Gate6PropsMoveThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -3113,9 +2789,13 @@ interface Ld2412Gate6PropsMoveThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -3143,10 +2823,10 @@ interface Ld2412Gate6PropsMoveThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2412Gate6PropsStillThresholdPropsAvailabilityProps {
     topic: unknown;
@@ -3165,7 +2845,7 @@ interface Ld2412Gate6PropsStillThresholdPropsWebServerProps {
 }
 interface Ld2412Gate6PropsStillThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -3173,9 +2853,13 @@ interface Ld2412Gate6PropsStillThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -3203,10 +2887,10 @@ interface Ld2412Gate6PropsStillThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2412Gate6Props {
     /** @yamlKey move_threshold */
@@ -3231,7 +2915,7 @@ interface Ld2412Gate7PropsMoveThresholdPropsWebServerProps {
 }
 interface Ld2412Gate7PropsMoveThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -3239,9 +2923,13 @@ interface Ld2412Gate7PropsMoveThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -3269,10 +2957,10 @@ interface Ld2412Gate7PropsMoveThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2412Gate7PropsStillThresholdPropsAvailabilityProps {
     topic: unknown;
@@ -3291,7 +2979,7 @@ interface Ld2412Gate7PropsStillThresholdPropsWebServerProps {
 }
 interface Ld2412Gate7PropsStillThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -3299,9 +2987,13 @@ interface Ld2412Gate7PropsStillThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -3329,10 +3021,10 @@ interface Ld2412Gate7PropsStillThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2412Gate7Props {
     /** @yamlKey move_threshold */
@@ -3357,7 +3049,7 @@ interface Ld2412Gate8PropsMoveThresholdPropsWebServerProps {
 }
 interface Ld2412Gate8PropsMoveThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -3365,9 +3057,13 @@ interface Ld2412Gate8PropsMoveThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -3395,10 +3091,10 @@ interface Ld2412Gate8PropsMoveThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2412Gate8PropsStillThresholdPropsAvailabilityProps {
     topic: unknown;
@@ -3417,7 +3113,7 @@ interface Ld2412Gate8PropsStillThresholdPropsWebServerProps {
 }
 interface Ld2412Gate8PropsStillThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -3425,9 +3121,13 @@ interface Ld2412Gate8PropsStillThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -3455,10 +3155,10 @@ interface Ld2412Gate8PropsStillThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2412Gate8Props {
     /** @yamlKey move_threshold */
@@ -3483,7 +3183,7 @@ interface Ld2412Gate9PropsMoveThresholdPropsWebServerProps {
 }
 interface Ld2412Gate9PropsMoveThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -3491,9 +3191,13 @@ interface Ld2412Gate9PropsMoveThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -3521,10 +3225,10 @@ interface Ld2412Gate9PropsMoveThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2412Gate9PropsStillThresholdPropsAvailabilityProps {
     topic: unknown;
@@ -3543,7 +3247,7 @@ interface Ld2412Gate9PropsStillThresholdPropsWebServerProps {
 }
 interface Ld2412Gate9PropsStillThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -3551,9 +3255,13 @@ interface Ld2412Gate9PropsStillThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -3581,10 +3289,10 @@ interface Ld2412Gate9PropsStillThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2412Gate9Props {
     /** @yamlKey move_threshold */
@@ -3609,7 +3317,7 @@ interface Ld2412Gate10PropsMoveThresholdPropsWebServerProps {
 }
 interface Ld2412Gate10PropsMoveThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -3617,9 +3325,13 @@ interface Ld2412Gate10PropsMoveThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -3647,10 +3359,10 @@ interface Ld2412Gate10PropsMoveThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2412Gate10PropsStillThresholdPropsAvailabilityProps {
     topic: unknown;
@@ -3669,7 +3381,7 @@ interface Ld2412Gate10PropsStillThresholdPropsWebServerProps {
 }
 interface Ld2412Gate10PropsStillThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -3677,9 +3389,13 @@ interface Ld2412Gate10PropsStillThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -3707,10 +3423,10 @@ interface Ld2412Gate10PropsStillThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2412Gate10Props {
     /** @yamlKey move_threshold */
@@ -3735,7 +3451,7 @@ interface Ld2412Gate11PropsMoveThresholdPropsWebServerProps {
 }
 interface Ld2412Gate11PropsMoveThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -3743,9 +3459,13 @@ interface Ld2412Gate11PropsMoveThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -3773,10 +3493,10 @@ interface Ld2412Gate11PropsMoveThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2412Gate11PropsStillThresholdPropsAvailabilityProps {
     topic: unknown;
@@ -3795,7 +3515,7 @@ interface Ld2412Gate11PropsStillThresholdPropsWebServerProps {
 }
 interface Ld2412Gate11PropsStillThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -3803,9 +3523,13 @@ interface Ld2412Gate11PropsStillThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -3833,10 +3557,10 @@ interface Ld2412Gate11PropsStillThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2412Gate11Props {
     /** @yamlKey move_threshold */
@@ -3861,7 +3585,7 @@ interface Ld2412Gate12PropsMoveThresholdPropsWebServerProps {
 }
 interface Ld2412Gate12PropsMoveThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -3869,9 +3593,13 @@ interface Ld2412Gate12PropsMoveThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -3899,10 +3627,10 @@ interface Ld2412Gate12PropsMoveThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2412Gate12PropsStillThresholdPropsAvailabilityProps {
     topic: unknown;
@@ -3921,7 +3649,7 @@ interface Ld2412Gate12PropsStillThresholdPropsWebServerProps {
 }
 interface Ld2412Gate12PropsStillThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -3929,9 +3657,13 @@ interface Ld2412Gate12PropsStillThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -3959,10 +3691,10 @@ interface Ld2412Gate12PropsStillThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2412Gate12Props {
     /** @yamlKey move_threshold */
@@ -3987,7 +3719,7 @@ interface Ld2412Gate13PropsMoveThresholdPropsWebServerProps {
 }
 interface Ld2412Gate13PropsMoveThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -3995,9 +3727,13 @@ interface Ld2412Gate13PropsMoveThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -4025,10 +3761,10 @@ interface Ld2412Gate13PropsMoveThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2412Gate13PropsStillThresholdPropsAvailabilityProps {
     topic: unknown;
@@ -4047,7 +3783,7 @@ interface Ld2412Gate13PropsStillThresholdPropsWebServerProps {
 }
 interface Ld2412Gate13PropsStillThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -4055,9 +3791,13 @@ interface Ld2412Gate13PropsStillThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -4085,10 +3825,10 @@ interface Ld2412Gate13PropsStillThresholdProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2412Gate13Props {
     /** @yamlKey move_threshold */
@@ -4113,7 +3853,7 @@ interface Ld2420PresenceTimeoutPropsWebServerProps {
 }
 interface Ld2420PresenceTimeoutProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -4121,9 +3861,13 @@ interface Ld2420PresenceTimeoutProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -4151,7 +3895,7 @@ interface Ld2420PresenceTimeoutProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
     deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
@@ -4173,7 +3917,7 @@ interface Ld2420MinGateDistancePropsWebServerProps {
 }
 interface Ld2420MinGateDistanceProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -4181,9 +3925,13 @@ interface Ld2420MinGateDistanceProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -4214,7 +3962,7 @@ interface Ld2420MinGateDistanceProps {
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2420MaxGateDistancePropsAvailabilityProps {
     topic: unknown;
@@ -4233,7 +3981,7 @@ interface Ld2420MaxGateDistancePropsWebServerProps {
 }
 interface Ld2420MaxGateDistanceProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -4241,9 +3989,13 @@ interface Ld2420MaxGateDistanceProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -4274,7 +4026,7 @@ interface Ld2420MaxGateDistanceProps {
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2420GateSelectPropsAvailabilityProps {
     topic: unknown;
@@ -4293,7 +4045,7 @@ interface Ld2420GateSelectPropsWebServerProps {
 }
 interface Ld2420GateSelectProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -4301,9 +4053,13 @@ interface Ld2420GateSelectProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -4334,7 +4090,7 @@ interface Ld2420GateSelectProps {
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2420StillThresholdPropsAvailabilityProps {
     topic: unknown;
@@ -4353,7 +4109,7 @@ interface Ld2420StillThresholdPropsWebServerProps {
 }
 interface Ld2420StillThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -4361,9 +4117,13 @@ interface Ld2420StillThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -4413,7 +4173,7 @@ interface Ld2420MoveThresholdPropsWebServerProps {
 }
 interface Ld2420MoveThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -4421,9 +4181,13 @@ interface Ld2420MoveThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -4473,7 +4237,7 @@ interface Ld2420GateMoveSensitivityPropsWebServerProps {
 }
 interface Ld2420GateMoveSensitivityProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -4481,9 +4245,13 @@ interface Ld2420GateMoveSensitivityProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -4514,7 +4282,7 @@ interface Ld2420GateMoveSensitivityProps {
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2420GateStillSensitivityPropsAvailabilityProps {
     topic: unknown;
@@ -4533,7 +4301,7 @@ interface Ld2420GateStillSensitivityPropsWebServerProps {
 }
 interface Ld2420GateStillSensitivityProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -4541,9 +4309,13 @@ interface Ld2420GateStillSensitivityProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -4574,7 +4346,7 @@ interface Ld2420GateStillSensitivityProps {
     unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2420Gate0PropsMoveThresholdPropsAvailabilityProps {
     topic: unknown;
@@ -4593,7 +4365,7 @@ interface Ld2420Gate0PropsMoveThresholdPropsWebServerProps {
 }
 interface Ld2420Gate0PropsMoveThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -4601,9 +4373,13 @@ interface Ld2420Gate0PropsMoveThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -4653,7 +4429,7 @@ interface Ld2420Gate0PropsStillThresholdPropsWebServerProps {
 }
 interface Ld2420Gate0PropsStillThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -4661,9 +4437,13 @@ interface Ld2420Gate0PropsStillThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -4719,7 +4499,7 @@ interface Ld2420Gate1PropsMoveThresholdPropsWebServerProps {
 }
 interface Ld2420Gate1PropsMoveThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -4727,9 +4507,13 @@ interface Ld2420Gate1PropsMoveThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -4779,7 +4563,7 @@ interface Ld2420Gate1PropsStillThresholdPropsWebServerProps {
 }
 interface Ld2420Gate1PropsStillThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -4787,9 +4571,13 @@ interface Ld2420Gate1PropsStillThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -4845,7 +4633,7 @@ interface Ld2420Gate2PropsMoveThresholdPropsWebServerProps {
 }
 interface Ld2420Gate2PropsMoveThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -4853,9 +4641,13 @@ interface Ld2420Gate2PropsMoveThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -4905,7 +4697,7 @@ interface Ld2420Gate2PropsStillThresholdPropsWebServerProps {
 }
 interface Ld2420Gate2PropsStillThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -4913,9 +4705,13 @@ interface Ld2420Gate2PropsStillThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -4971,7 +4767,7 @@ interface Ld2420Gate3PropsMoveThresholdPropsWebServerProps {
 }
 interface Ld2420Gate3PropsMoveThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -4979,9 +4775,13 @@ interface Ld2420Gate3PropsMoveThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -5031,7 +4831,7 @@ interface Ld2420Gate3PropsStillThresholdPropsWebServerProps {
 }
 interface Ld2420Gate3PropsStillThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -5039,9 +4839,13 @@ interface Ld2420Gate3PropsStillThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -5097,7 +4901,7 @@ interface Ld2420Gate4PropsMoveThresholdPropsWebServerProps {
 }
 interface Ld2420Gate4PropsMoveThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -5105,9 +4909,13 @@ interface Ld2420Gate4PropsMoveThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -5157,7 +4965,7 @@ interface Ld2420Gate4PropsStillThresholdPropsWebServerProps {
 }
 interface Ld2420Gate4PropsStillThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -5165,9 +4973,13 @@ interface Ld2420Gate4PropsStillThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -5223,7 +5035,7 @@ interface Ld2420Gate5PropsMoveThresholdPropsWebServerProps {
 }
 interface Ld2420Gate5PropsMoveThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -5231,9 +5043,13 @@ interface Ld2420Gate5PropsMoveThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -5283,7 +5099,7 @@ interface Ld2420Gate5PropsStillThresholdPropsWebServerProps {
 }
 interface Ld2420Gate5PropsStillThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -5291,9 +5107,13 @@ interface Ld2420Gate5PropsStillThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -5349,7 +5169,7 @@ interface Ld2420Gate6PropsMoveThresholdPropsWebServerProps {
 }
 interface Ld2420Gate6PropsMoveThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -5357,9 +5177,13 @@ interface Ld2420Gate6PropsMoveThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -5409,7 +5233,7 @@ interface Ld2420Gate6PropsStillThresholdPropsWebServerProps {
 }
 interface Ld2420Gate6PropsStillThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -5417,9 +5241,13 @@ interface Ld2420Gate6PropsStillThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -5475,7 +5303,7 @@ interface Ld2420Gate7PropsMoveThresholdPropsWebServerProps {
 }
 interface Ld2420Gate7PropsMoveThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -5483,9 +5311,13 @@ interface Ld2420Gate7PropsMoveThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -5535,7 +5367,7 @@ interface Ld2420Gate7PropsStillThresholdPropsWebServerProps {
 }
 interface Ld2420Gate7PropsStillThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -5543,9 +5375,13 @@ interface Ld2420Gate7PropsStillThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -5601,7 +5437,7 @@ interface Ld2420Gate8PropsMoveThresholdPropsWebServerProps {
 }
 interface Ld2420Gate8PropsMoveThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -5609,9 +5445,13 @@ interface Ld2420Gate8PropsMoveThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -5661,7 +5501,7 @@ interface Ld2420Gate8PropsStillThresholdPropsWebServerProps {
 }
 interface Ld2420Gate8PropsStillThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -5669,9 +5509,13 @@ interface Ld2420Gate8PropsStillThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -5727,7 +5571,7 @@ interface Ld2420Gate9PropsMoveThresholdPropsWebServerProps {
 }
 interface Ld2420Gate9PropsMoveThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -5735,9 +5579,13 @@ interface Ld2420Gate9PropsMoveThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -5787,7 +5635,7 @@ interface Ld2420Gate9PropsStillThresholdPropsWebServerProps {
 }
 interface Ld2420Gate9PropsStillThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -5795,9 +5643,13 @@ interface Ld2420Gate9PropsStillThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -5853,7 +5705,7 @@ interface Ld2420Gate10PropsMoveThresholdPropsWebServerProps {
 }
 interface Ld2420Gate10PropsMoveThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -5861,9 +5713,13 @@ interface Ld2420Gate10PropsMoveThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -5913,7 +5769,7 @@ interface Ld2420Gate10PropsStillThresholdPropsWebServerProps {
 }
 interface Ld2420Gate10PropsStillThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -5921,9 +5777,13 @@ interface Ld2420Gate10PropsStillThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -5979,7 +5839,7 @@ interface Ld2420Gate11PropsMoveThresholdPropsWebServerProps {
 }
 interface Ld2420Gate11PropsMoveThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -5987,9 +5847,13 @@ interface Ld2420Gate11PropsMoveThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -6039,7 +5903,7 @@ interface Ld2420Gate11PropsStillThresholdPropsWebServerProps {
 }
 interface Ld2420Gate11PropsStillThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -6047,9 +5911,13 @@ interface Ld2420Gate11PropsStillThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -6105,7 +5973,7 @@ interface Ld2420Gate12PropsMoveThresholdPropsWebServerProps {
 }
 interface Ld2420Gate12PropsMoveThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -6113,9 +5981,13 @@ interface Ld2420Gate12PropsMoveThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -6165,7 +6037,7 @@ interface Ld2420Gate12PropsStillThresholdPropsWebServerProps {
 }
 interface Ld2420Gate12PropsStillThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -6173,9 +6045,13 @@ interface Ld2420Gate12PropsStillThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -6231,7 +6107,7 @@ interface Ld2420Gate13PropsMoveThresholdPropsWebServerProps {
 }
 interface Ld2420Gate13PropsMoveThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -6239,9 +6115,13 @@ interface Ld2420Gate13PropsMoveThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -6291,7 +6171,7 @@ interface Ld2420Gate13PropsStillThresholdPropsWebServerProps {
 }
 interface Ld2420Gate13PropsStillThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -6299,9 +6179,13 @@ interface Ld2420Gate13PropsStillThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -6357,7 +6241,7 @@ interface Ld2420Gate14PropsMoveThresholdPropsWebServerProps {
 }
 interface Ld2420Gate14PropsMoveThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -6365,9 +6249,13 @@ interface Ld2420Gate14PropsMoveThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -6417,7 +6305,7 @@ interface Ld2420Gate14PropsStillThresholdPropsWebServerProps {
 }
 interface Ld2420Gate14PropsStillThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -6425,9 +6313,13 @@ interface Ld2420Gate14PropsStillThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -6483,7 +6375,7 @@ interface Ld2420Gate15PropsMoveThresholdPropsWebServerProps {
 }
 interface Ld2420Gate15PropsMoveThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -6491,9 +6383,13 @@ interface Ld2420Gate15PropsMoveThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -6543,7 +6439,7 @@ interface Ld2420Gate15PropsStillThresholdPropsWebServerProps {
 }
 interface Ld2420Gate15PropsStillThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -6551,9 +6447,13 @@ interface Ld2420Gate15PropsStillThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -6592,66 +6492,6 @@ interface Ld2420Gate15Props {
     /** @yamlKey still_threshold */
     stillThreshold: Ld2420Gate15PropsStillThresholdProps;
 }
-interface Ld2450PresenceTimeoutPropsAvailabilityProps {
-    topic: unknown;
-    /** @yamlKey payload_available */
-    payloadAvailable?: unknown;
-    /** @yamlKey payload_not_available */
-    payloadNotAvailable?: unknown;
-}
-interface Ld2450PresenceTimeoutPropsWebServerProps {
-    /** @yamlKey web_server_id */
-    webServerId?: RefProp<web_server_WebServer>;
-    /** @yamlKey sorting_weight */
-    sortingWeight?: unknown;
-    /** @yamlKey sorting_group_id */
-    sortingGroupId?: number;
-}
-interface Ld2450PresenceTimeoutProps {
-    /** string: The name for the sensor. */
-    name?: unknown;
-    /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
-    internal?: boolean;
-    /**
-     * boolean: If true, then this entity should not be added to any client's frontend, (usually Home Assistant) without the...
-     * @yamlKey disabled_by_default
-     */
-    disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
-    /** @yamlKey device_id */
-    deviceId?: unknown;
-    qos?: unknown;
-    retain?: boolean;
-    discovery?: boolean;
-    /** @yamlKey subscribe_qos */
-    subscribeQos?: unknown;
-    /** @yamlKey state_topic */
-    stateTopic?: unknown;
-    availability?: Ld2450PresenceTimeoutPropsAvailabilityProps;
-    /** @yamlKey command_topic */
-    commandTopic?: unknown;
-    /** @yamlKey command_retain */
-    commandRetain?: boolean;
-    /** @yamlKey web_server */
-    webServer?: Ld2450PresenceTimeoutPropsWebServerProps;
-    /** @yamlKey zigbee_id */
-    zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
-    /** @yamlKey on_value */
-    onValue?: TriggerHandler<{
-        x: number;
-    }>;
-    /** @yamlKey on_value_range */
-    onValueRange?: TriggerHandler<{
-        x: number;
-    }>;
-    /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
-    mode?: "AUTO" | "BOX" | "SLIDER";
-    /** @yamlKey device_class */
-    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
-}
 interface Ld2450Zone1PropsX1PropsAvailabilityProps {
     topic: unknown;
     /** @yamlKey payload_available */
@@ -6669,7 +6509,7 @@ interface Ld2450Zone1PropsX1PropsWebServerProps {
 }
 interface Ld2450Zone1PropsX1Props {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -6677,9 +6517,13 @@ interface Ld2450Zone1PropsX1Props {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -6707,10 +6551,10 @@ interface Ld2450Zone1PropsX1Props {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2450Zone1PropsY1PropsAvailabilityProps {
     topic: unknown;
@@ -6729,7 +6573,7 @@ interface Ld2450Zone1PropsY1PropsWebServerProps {
 }
 interface Ld2450Zone1PropsY1Props {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -6737,9 +6581,13 @@ interface Ld2450Zone1PropsY1Props {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -6767,10 +6615,10 @@ interface Ld2450Zone1PropsY1Props {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2450Zone1PropsX2PropsAvailabilityProps {
     topic: unknown;
@@ -6789,7 +6637,7 @@ interface Ld2450Zone1PropsX2PropsWebServerProps {
 }
 interface Ld2450Zone1PropsX2Props {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -6797,9 +6645,13 @@ interface Ld2450Zone1PropsX2Props {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -6827,10 +6679,10 @@ interface Ld2450Zone1PropsX2Props {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2450Zone1PropsY2PropsAvailabilityProps {
     topic: unknown;
@@ -6849,7 +6701,7 @@ interface Ld2450Zone1PropsY2PropsWebServerProps {
 }
 interface Ld2450Zone1PropsY2Props {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -6857,9 +6709,13 @@ interface Ld2450Zone1PropsY2Props {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -6887,10 +6743,10 @@ interface Ld2450Zone1PropsY2Props {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2450Zone1Props {
     x1: Ld2450Zone1PropsX1Props;
@@ -6915,7 +6771,7 @@ interface Ld2450Zone2PropsX1PropsWebServerProps {
 }
 interface Ld2450Zone2PropsX1Props {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -6923,9 +6779,13 @@ interface Ld2450Zone2PropsX1Props {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -6953,10 +6813,10 @@ interface Ld2450Zone2PropsX1Props {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2450Zone2PropsY1PropsAvailabilityProps {
     topic: unknown;
@@ -6975,7 +6835,7 @@ interface Ld2450Zone2PropsY1PropsWebServerProps {
 }
 interface Ld2450Zone2PropsY1Props {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -6983,9 +6843,13 @@ interface Ld2450Zone2PropsY1Props {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -7013,10 +6877,10 @@ interface Ld2450Zone2PropsY1Props {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2450Zone2PropsX2PropsAvailabilityProps {
     topic: unknown;
@@ -7035,7 +6899,7 @@ interface Ld2450Zone2PropsX2PropsWebServerProps {
 }
 interface Ld2450Zone2PropsX2Props {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -7043,9 +6907,13 @@ interface Ld2450Zone2PropsX2Props {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -7073,10 +6941,10 @@ interface Ld2450Zone2PropsX2Props {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2450Zone2PropsY2PropsAvailabilityProps {
     topic: unknown;
@@ -7095,7 +6963,7 @@ interface Ld2450Zone2PropsY2PropsWebServerProps {
 }
 interface Ld2450Zone2PropsY2Props {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -7103,9 +6971,13 @@ interface Ld2450Zone2PropsY2Props {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -7133,10 +7005,10 @@ interface Ld2450Zone2PropsY2Props {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2450Zone2Props {
     x1: Ld2450Zone2PropsX1Props;
@@ -7161,7 +7033,7 @@ interface Ld2450Zone3PropsX1PropsWebServerProps {
 }
 interface Ld2450Zone3PropsX1Props {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -7169,9 +7041,13 @@ interface Ld2450Zone3PropsX1Props {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -7199,10 +7075,10 @@ interface Ld2450Zone3PropsX1Props {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2450Zone3PropsY1PropsAvailabilityProps {
     topic: unknown;
@@ -7221,7 +7097,7 @@ interface Ld2450Zone3PropsY1PropsWebServerProps {
 }
 interface Ld2450Zone3PropsY1Props {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -7229,9 +7105,13 @@ interface Ld2450Zone3PropsY1Props {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -7259,10 +7139,10 @@ interface Ld2450Zone3PropsY1Props {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2450Zone3PropsX2PropsAvailabilityProps {
     topic: unknown;
@@ -7281,7 +7161,7 @@ interface Ld2450Zone3PropsX2PropsWebServerProps {
 }
 interface Ld2450Zone3PropsX2Props {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -7289,9 +7169,13 @@ interface Ld2450Zone3PropsX2Props {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -7319,10 +7203,10 @@ interface Ld2450Zone3PropsX2Props {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2450Zone3PropsY2PropsAvailabilityProps {
     topic: unknown;
@@ -7341,7 +7225,7 @@ interface Ld2450Zone3PropsY2PropsWebServerProps {
 }
 interface Ld2450Zone3PropsY2Props {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -7349,9 +7233,13 @@ interface Ld2450Zone3PropsY2Props {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -7379,10 +7267,10 @@ interface Ld2450Zone3PropsY2Props {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface Ld2450Zone3Props {
     x1: Ld2450Zone3PropsX1Props;
@@ -7407,7 +7295,7 @@ interface MicronovaThermostatTemperaturePropsWebServerProps {
 }
 interface MicronovaThermostatTemperatureProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -7416,12 +7304,12 @@ interface MicronovaThermostatTemperatureProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -7449,10 +7337,10 @@ interface MicronovaThermostatTemperatureProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
     /** @yamlKey setup_priority */
     setupPriority?: unknown;
     /** @yamlKey micronova_id */
@@ -7482,7 +7370,7 @@ interface MicronovaPowerLevelPropsWebServerProps {
 }
 interface MicronovaPowerLevelProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -7490,12 +7378,13 @@ interface MicronovaPowerLevelProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -7555,7 +7444,7 @@ interface OpenthermTSetPropsWebServerProps {
 }
 interface OpenthermTSetProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -7564,12 +7453,12 @@ interface OpenthermTSetProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -7597,7 +7486,7 @@ interface OpenthermTSetProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
     deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
@@ -7632,7 +7521,7 @@ interface OpenthermTSetCh2PropsWebServerProps {
 }
 interface OpenthermTSetCh2Props {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -7641,12 +7530,12 @@ interface OpenthermTSetCh2Props {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -7674,7 +7563,7 @@ interface OpenthermTSetCh2Props {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
     deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
@@ -7709,7 +7598,7 @@ interface OpenthermCoolingControlPropsWebServerProps {
 }
 interface OpenthermCoolingControlProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -7718,12 +7607,12 @@ interface OpenthermCoolingControlProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -7751,7 +7640,7 @@ interface OpenthermCoolingControlProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
     deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
@@ -7784,7 +7673,7 @@ interface OpenthermTDhwSetPropsWebServerProps {
 }
 interface OpenthermTDhwSetProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -7793,12 +7682,12 @@ interface OpenthermTDhwSetProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -7826,7 +7715,7 @@ interface OpenthermTDhwSetProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
     deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
@@ -7863,7 +7752,7 @@ interface OpenthermMaxTSetPropsWebServerProps {
 }
 interface OpenthermMaxTSetProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -7872,12 +7761,12 @@ interface OpenthermMaxTSetProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -7905,7 +7794,7 @@ interface OpenthermMaxTSetProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
     deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
@@ -7942,7 +7831,7 @@ interface OpenthermTRoomSetPropsWebServerProps {
 }
 interface OpenthermTRoomSetProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -7951,12 +7840,12 @@ interface OpenthermTRoomSetProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -7984,7 +7873,7 @@ interface OpenthermTRoomSetProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
     deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
@@ -8017,7 +7906,7 @@ interface OpenthermTRoomSetCh2PropsWebServerProps {
 }
 interface OpenthermTRoomSetCh2Props {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -8026,12 +7915,12 @@ interface OpenthermTRoomSetCh2Props {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -8059,7 +7948,7 @@ interface OpenthermTRoomSetCh2Props {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
     deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
@@ -8092,7 +7981,7 @@ interface OpenthermTRoomPropsWebServerProps {
 }
 interface OpenthermTRoomProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -8101,12 +7990,12 @@ interface OpenthermTRoomProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -8134,7 +8023,7 @@ interface OpenthermTRoomProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
     deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
@@ -8167,7 +8056,7 @@ interface OpenthermMaxRelModLevelPropsWebServerProps {
 }
 interface OpenthermMaxRelModLevelProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -8176,12 +8065,12 @@ interface OpenthermMaxRelModLevelProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -8209,7 +8098,7 @@ interface OpenthermMaxRelModLevelProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
     deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
@@ -8242,7 +8131,7 @@ interface OpenthermOtcHcRatioPropsWebServerProps {
 }
 interface OpenthermOtcHcRatioProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -8251,12 +8140,12 @@ interface OpenthermOtcHcRatioProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -8284,7 +8173,7 @@ interface OpenthermOtcHcRatioProps {
         x: number;
     }>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     mode?: "AUTO" | "BOX" | "SLIDER";
     /** @yamlKey device_class */
     deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
@@ -8303,428 +8192,6 @@ interface OpenthermOtcHcRatioProps {
     autoMinValue?: boolean;
     /** @yamlKey auto_max_value */
     autoMaxValue?: boolean;
-}
-interface SeeedMr24hpc1SensitivityPropsAvailabilityProps {
-    topic: unknown;
-    /** @yamlKey payload_available */
-    payloadAvailable?: unknown;
-    /** @yamlKey payload_not_available */
-    payloadNotAvailable?: unknown;
-}
-interface SeeedMr24hpc1SensitivityPropsWebServerProps {
-    /** @yamlKey web_server_id */
-    webServerId?: RefProp<web_server_WebServer>;
-    /** @yamlKey sorting_weight */
-    sortingWeight?: unknown;
-    /** @yamlKey sorting_group_id */
-    sortingGroupId?: number;
-}
-interface SeeedMr24hpc1SensitivityProps {
-    /** string: The name for the sensor. */
-    name?: unknown;
-    /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
-    internal?: boolean;
-    /**
-     * boolean: If true, then this entity should not be added to any client's frontend, (usually Home Assistant) without the...
-     * @yamlKey disabled_by_default
-     */
-    disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
-    /** @yamlKey device_id */
-    deviceId?: unknown;
-    qos?: unknown;
-    retain?: boolean;
-    discovery?: boolean;
-    /** @yamlKey subscribe_qos */
-    subscribeQos?: unknown;
-    /** @yamlKey state_topic */
-    stateTopic?: unknown;
-    availability?: SeeedMr24hpc1SensitivityPropsAvailabilityProps;
-    /** @yamlKey command_topic */
-    commandTopic?: unknown;
-    /** @yamlKey command_retain */
-    commandRetain?: boolean;
-    /** @yamlKey web_server */
-    webServer?: SeeedMr24hpc1SensitivityPropsWebServerProps;
-    /** @yamlKey zigbee_id */
-    zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
-    /** @yamlKey on_value */
-    onValue?: TriggerHandler<{
-        x: number;
-    }>;
-    /** @yamlKey on_value_range */
-    onValueRange?: TriggerHandler<{
-        x: number;
-    }>;
-    /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: string;
-    mode?: "AUTO" | "BOX" | "SLIDER";
-    /** @yamlKey device_class */
-    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
-}
-interface SeeedMr24hpc1CustomModePropsAvailabilityProps {
-    topic: unknown;
-    /** @yamlKey payload_available */
-    payloadAvailable?: unknown;
-    /** @yamlKey payload_not_available */
-    payloadNotAvailable?: unknown;
-}
-interface SeeedMr24hpc1CustomModePropsWebServerProps {
-    /** @yamlKey web_server_id */
-    webServerId?: RefProp<web_server_WebServer>;
-    /** @yamlKey sorting_weight */
-    sortingWeight?: unknown;
-    /** @yamlKey sorting_group_id */
-    sortingGroupId?: number;
-}
-interface SeeedMr24hpc1CustomModeProps {
-    /** string: The name for the sensor. */
-    name?: unknown;
-    /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
-    internal?: boolean;
-    /**
-     * boolean: If true, then this entity should not be added to any client's frontend, (usually Home Assistant) without the...
-     * @yamlKey disabled_by_default
-     */
-    disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
-    /** @yamlKey device_id */
-    deviceId?: unknown;
-    qos?: unknown;
-    retain?: boolean;
-    discovery?: boolean;
-    /** @yamlKey subscribe_qos */
-    subscribeQos?: unknown;
-    /** @yamlKey state_topic */
-    stateTopic?: unknown;
-    availability?: SeeedMr24hpc1CustomModePropsAvailabilityProps;
-    /** @yamlKey command_topic */
-    commandTopic?: unknown;
-    /** @yamlKey command_retain */
-    commandRetain?: boolean;
-    /** @yamlKey web_server */
-    webServer?: SeeedMr24hpc1CustomModePropsWebServerProps;
-    /** @yamlKey zigbee_id */
-    zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
-    /** @yamlKey on_value */
-    onValue?: TriggerHandler<{
-        x: number;
-    }>;
-    /** @yamlKey on_value_range */
-    onValueRange?: TriggerHandler<{
-        x: number;
-    }>;
-    /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: string;
-    mode?: "AUTO" | "BOX" | "SLIDER";
-    /** @yamlKey device_class */
-    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
-}
-interface SeeedMr24hpc1ExistenceThresholdPropsAvailabilityProps {
-    topic: unknown;
-    /** @yamlKey payload_available */
-    payloadAvailable?: unknown;
-    /** @yamlKey payload_not_available */
-    payloadNotAvailable?: unknown;
-}
-interface SeeedMr24hpc1ExistenceThresholdPropsWebServerProps {
-    /** @yamlKey web_server_id */
-    webServerId?: RefProp<web_server_WebServer>;
-    /** @yamlKey sorting_weight */
-    sortingWeight?: unknown;
-    /** @yamlKey sorting_group_id */
-    sortingGroupId?: number;
-}
-interface SeeedMr24hpc1ExistenceThresholdProps {
-    /** string: The name for the sensor. */
-    name?: unknown;
-    /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
-    internal?: boolean;
-    /**
-     * boolean: If true, then this entity should not be added to any client's frontend, (usually Home Assistant) without the...
-     * @yamlKey disabled_by_default
-     */
-    disabledByDefault?: boolean;
-    /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
-    /** @yamlKey device_id */
-    deviceId?: unknown;
-    qos?: unknown;
-    retain?: boolean;
-    discovery?: boolean;
-    /** @yamlKey subscribe_qos */
-    subscribeQos?: unknown;
-    /** @yamlKey state_topic */
-    stateTopic?: unknown;
-    availability?: SeeedMr24hpc1ExistenceThresholdPropsAvailabilityProps;
-    /** @yamlKey command_topic */
-    commandTopic?: unknown;
-    /** @yamlKey command_retain */
-    commandRetain?: boolean;
-    /** @yamlKey web_server */
-    webServer?: SeeedMr24hpc1ExistenceThresholdPropsWebServerProps;
-    /** @yamlKey zigbee_id */
-    zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
-    /** @yamlKey on_value */
-    onValue?: TriggerHandler<{
-        x: number;
-    }>;
-    /** @yamlKey on_value_range */
-    onValueRange?: TriggerHandler<{
-        x: number;
-    }>;
-    /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: string;
-    mode?: "AUTO" | "BOX" | "SLIDER";
-    /** @yamlKey device_class */
-    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
-}
-interface SeeedMr24hpc1MotionThresholdPropsAvailabilityProps {
-    topic: unknown;
-    /** @yamlKey payload_available */
-    payloadAvailable?: unknown;
-    /** @yamlKey payload_not_available */
-    payloadNotAvailable?: unknown;
-}
-interface SeeedMr24hpc1MotionThresholdPropsWebServerProps {
-    /** @yamlKey web_server_id */
-    webServerId?: RefProp<web_server_WebServer>;
-    /** @yamlKey sorting_weight */
-    sortingWeight?: unknown;
-    /** @yamlKey sorting_group_id */
-    sortingGroupId?: number;
-}
-interface SeeedMr24hpc1MotionThresholdProps {
-    /** string: The name for the sensor. */
-    name?: unknown;
-    /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
-    internal?: boolean;
-    /**
-     * boolean: If true, then this entity should not be added to any client's frontend, (usually Home Assistant) without the...
-     * @yamlKey disabled_by_default
-     */
-    disabledByDefault?: boolean;
-    /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
-    /** @yamlKey device_id */
-    deviceId?: unknown;
-    qos?: unknown;
-    retain?: boolean;
-    discovery?: boolean;
-    /** @yamlKey subscribe_qos */
-    subscribeQos?: unknown;
-    /** @yamlKey state_topic */
-    stateTopic?: unknown;
-    availability?: SeeedMr24hpc1MotionThresholdPropsAvailabilityProps;
-    /** @yamlKey command_topic */
-    commandTopic?: unknown;
-    /** @yamlKey command_retain */
-    commandRetain?: boolean;
-    /** @yamlKey web_server */
-    webServer?: SeeedMr24hpc1MotionThresholdPropsWebServerProps;
-    /** @yamlKey zigbee_id */
-    zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
-    /** @yamlKey on_value */
-    onValue?: TriggerHandler<{
-        x: number;
-    }>;
-    /** @yamlKey on_value_range */
-    onValueRange?: TriggerHandler<{
-        x: number;
-    }>;
-    /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: string;
-    mode?: "AUTO" | "BOX" | "SLIDER";
-    /** @yamlKey device_class */
-    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
-}
-interface SeeedMr24hpc1MotionTriggerPropsAvailabilityProps {
-    topic: unknown;
-    /** @yamlKey payload_available */
-    payloadAvailable?: unknown;
-    /** @yamlKey payload_not_available */
-    payloadNotAvailable?: unknown;
-}
-interface SeeedMr24hpc1MotionTriggerPropsWebServerProps {
-    /** @yamlKey web_server_id */
-    webServerId?: RefProp<web_server_WebServer>;
-    /** @yamlKey sorting_weight */
-    sortingWeight?: unknown;
-    /** @yamlKey sorting_group_id */
-    sortingGroupId?: number;
-}
-interface SeeedMr24hpc1MotionTriggerProps {
-    /** string: The name for the sensor. */
-    name?: unknown;
-    /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
-    internal?: boolean;
-    /**
-     * boolean: If true, then this entity should not be added to any client's frontend, (usually Home Assistant) without the...
-     * @yamlKey disabled_by_default
-     */
-    disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
-    /** @yamlKey device_id */
-    deviceId?: unknown;
-    qos?: unknown;
-    retain?: boolean;
-    discovery?: boolean;
-    /** @yamlKey subscribe_qos */
-    subscribeQos?: unknown;
-    /** @yamlKey state_topic */
-    stateTopic?: unknown;
-    availability?: SeeedMr24hpc1MotionTriggerPropsAvailabilityProps;
-    /** @yamlKey command_topic */
-    commandTopic?: unknown;
-    /** @yamlKey command_retain */
-    commandRetain?: boolean;
-    /** @yamlKey web_server */
-    webServer?: SeeedMr24hpc1MotionTriggerPropsWebServerProps;
-    /** @yamlKey zigbee_id */
-    zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
-    /** @yamlKey on_value */
-    onValue?: TriggerHandler<{
-        x: number;
-    }>;
-    /** @yamlKey on_value_range */
-    onValueRange?: TriggerHandler<{
-        x: number;
-    }>;
-    /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
-    mode?: "AUTO" | "BOX" | "SLIDER";
-    /** @yamlKey device_class */
-    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
-}
-interface SeeedMr24hpc1MotionToRestPropsAvailabilityProps {
-    topic: unknown;
-    /** @yamlKey payload_available */
-    payloadAvailable?: unknown;
-    /** @yamlKey payload_not_available */
-    payloadNotAvailable?: unknown;
-}
-interface SeeedMr24hpc1MotionToRestPropsWebServerProps {
-    /** @yamlKey web_server_id */
-    webServerId?: RefProp<web_server_WebServer>;
-    /** @yamlKey sorting_weight */
-    sortingWeight?: unknown;
-    /** @yamlKey sorting_group_id */
-    sortingGroupId?: number;
-}
-interface SeeedMr24hpc1MotionToRestProps {
-    /** string: The name for the sensor. */
-    name?: unknown;
-    /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
-    internal?: boolean;
-    /**
-     * boolean: If true, then this entity should not be added to any client's frontend, (usually Home Assistant) without the...
-     * @yamlKey disabled_by_default
-     */
-    disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
-    /** @yamlKey device_id */
-    deviceId?: unknown;
-    qos?: unknown;
-    retain?: boolean;
-    discovery?: boolean;
-    /** @yamlKey subscribe_qos */
-    subscribeQos?: unknown;
-    /** @yamlKey state_topic */
-    stateTopic?: unknown;
-    availability?: SeeedMr24hpc1MotionToRestPropsAvailabilityProps;
-    /** @yamlKey command_topic */
-    commandTopic?: unknown;
-    /** @yamlKey command_retain */
-    commandRetain?: boolean;
-    /** @yamlKey web_server */
-    webServer?: SeeedMr24hpc1MotionToRestPropsWebServerProps;
-    /** @yamlKey zigbee_id */
-    zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
-    /** @yamlKey on_value */
-    onValue?: TriggerHandler<{
-        x: number;
-    }>;
-    /** @yamlKey on_value_range */
-    onValueRange?: TriggerHandler<{
-        x: number;
-    }>;
-    /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
-    mode?: "AUTO" | "BOX" | "SLIDER";
-    /** @yamlKey device_class */
-    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
-}
-interface SeeedMr24hpc1CustomUnmanTimePropsAvailabilityProps {
-    topic: unknown;
-    /** @yamlKey payload_available */
-    payloadAvailable?: unknown;
-    /** @yamlKey payload_not_available */
-    payloadNotAvailable?: unknown;
-}
-interface SeeedMr24hpc1CustomUnmanTimePropsWebServerProps {
-    /** @yamlKey web_server_id */
-    webServerId?: RefProp<web_server_WebServer>;
-    /** @yamlKey sorting_weight */
-    sortingWeight?: unknown;
-    /** @yamlKey sorting_group_id */
-    sortingGroupId?: number;
-}
-interface SeeedMr24hpc1CustomUnmanTimeProps {
-    /** string: The name for the sensor. */
-    name?: unknown;
-    /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
-    internal?: boolean;
-    /**
-     * boolean: If true, then this entity should not be added to any client's frontend, (usually Home Assistant) without the...
-     * @yamlKey disabled_by_default
-     */
-    disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
-    /** @yamlKey device_id */
-    deviceId?: unknown;
-    qos?: unknown;
-    retain?: boolean;
-    discovery?: boolean;
-    /** @yamlKey subscribe_qos */
-    subscribeQos?: unknown;
-    /** @yamlKey state_topic */
-    stateTopic?: unknown;
-    availability?: SeeedMr24hpc1CustomUnmanTimePropsAvailabilityProps;
-    /** @yamlKey command_topic */
-    commandTopic?: unknown;
-    /** @yamlKey command_retain */
-    commandRetain?: boolean;
-    /** @yamlKey web_server */
-    webServer?: SeeedMr24hpc1CustomUnmanTimePropsWebServerProps;
-    /** @yamlKey zigbee_id */
-    zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
-    /** @yamlKey on_value */
-    onValue?: TriggerHandler<{
-        x: number;
-    }>;
-    /** @yamlKey on_value_range */
-    onValueRange?: TriggerHandler<{
-        x: number;
-    }>;
-    /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
-    mode?: "AUTO" | "BOX" | "SLIDER";
-    /** @yamlKey device_class */
-    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
 }
 interface TuyaDatapointHiddenProps {
     /** @yamlKey datapoint_type */
@@ -8807,22 +8274,22 @@ interface Ld2410Props {
      */
     ld2410Id?: RefProp<ld2410_LD2410Component>;
     /** int: Time in seconds during which presence state will stay present after leaving. Defaults to `5s` All options from [... */
-    timeout?: Ld2410TimeoutProps;
+    timeout?: number;
     /**
      * int: Maximum distance gate for movement detection. Value between `2` and `8` inclusive. Defaults to `8`. All options ...
      * @yamlKey max_move_distance_gate
      */
-    maxMoveDistanceGate?: Ld2410MaxMoveDistanceGateProps;
+    maxMoveDistanceGate?: number;
     /**
      * int: Maximum distance gate for still detection. Value between `2` and `8` inclusive. Defaults to `8`. All options fro...
      * @yamlKey max_still_distance_gate
      */
-    maxStillDistanceGate?: Ld2410MaxStillDistanceGateProps;
+    maxStillDistanceGate?: number;
     /**
      * int: Sets the light threshold for the [light function](https://esphome.io/components/sensor/ld2410#ld2410-light-funct...
      * @yamlKey light_threshold
      */
-    lightThreshold?: Ld2410LightThresholdProps;
+    lightThreshold?: number;
     g0?: Ld2410G0Props;
     g1?: Ld2410G1Props;
     g2?: Ld2410G2Props;
@@ -8843,19 +8310,19 @@ interface Ld2412Props {
      * int: Threshold for the light to activate the OUT pin of the sensor. All options from [Number](/components/number#conf...
      * @yamlKey light_threshold
      */
-    lightThreshold?: Ld2412LightThresholdProps;
+    lightThreshold?: number;
     /**
      * int: Maximum distance gate for still detection. Value between `2` and `13` inclusive. Defaults to `13`. All options f...
      * @yamlKey max_distance_gate
      */
-    maxDistanceGate?: Ld2412MaxDistanceGateProps;
+    maxDistanceGate?: number;
     /**
      * int: Maximum distance gate for movement detection. Value between `1` and `12` inclusive. Defaults to `1`. All options...
      * @yamlKey min_distance_gate
      */
-    minDistanceGate?: Ld2412MinDistanceGateProps;
+    minDistanceGate?: number;
     /** int: Time in seconds for which the presence state will remain after presence is no longer detected. Defaults to `5s`.... */
-    timeout?: Ld2412TimeoutProps;
+    timeout?: number;
     /** @yamlKey gate_0 */
     gate0?: Ld2412Gate0Props;
     /** @yamlKey gate_1 */
@@ -8965,7 +8432,7 @@ interface Ld2450Props {
      * int: The duration, in seconds, for which the [presence states](https://esphome.io/components/sensor/ld2450#ld2450-bin...
      * @yamlKey presence_timeout
      */
-    presenceTimeout: Ld2450PresenceTimeoutProps;
+    presenceTimeout: number;
     /** @yamlKey zone_1 */
     zone1?: Ld2450Zone1Props;
     /** @yamlKey zone_2 */
@@ -9000,7 +8467,7 @@ interface ModbusControllerProps extends _ModbusControllerModbusitembaseschema {
     maxValue?: unknown;
     /** @yamlKey min_value */
     minValue?: unknown;
-    step?: unknown;
+    step?: number;
     multiply?: unknown;
     /** @yamlKey use_write_multiple */
     useWriteMultiple?: boolean;
@@ -9033,51 +8500,51 @@ interface SeeedMr24hpc1Props {
     /** @yamlKey mr24hpc1_id */
     mr24hpc1Id?: RefProp<seeed_mr24hpc1_MR24HPC1Component>;
     /** int: Valid only in [standard mode](https://esphome.io/components/seeed_mr24hpc1#seeed_mr24hpc1-standard_mode). Used t... */
-    sensitivity?: SeeedMr24hpc1SensitivityProps;
+    sensitivity?: number;
     /**
      * int: Settings and go to the Custom Mode option. Some of the function modules can only be set up in Custom Mode. There...
      * @yamlKey custom_mode
      */
-    customMode?: SeeedMr24hpc1CustomModeProps;
+    customMode?: number;
     /**
      * int: Valid only in [custom mode settings](https://esphome.io/components/seeed_mr24hpc1#seeed_mr24hpc1-custom_mode). T...
      * @yamlKey existence_threshold
      */
-    existenceThreshold?: SeeedMr24hpc1ExistenceThresholdProps;
+    existenceThreshold?: number;
     /**
      * int: Valid only in [custom mode settings](https://esphome.io/components/seeed_mr24hpc1#seeed_mr24hpc1-custom_mode). T...
      * @yamlKey motion_threshold
      */
-    motionThreshold?: SeeedMr24hpc1MotionThresholdProps;
+    motionThreshold?: number;
     /**
      * int: Valid only in [custom mode settings](https://esphome.io/components/seeed_mr24hpc1#seeed_mr24hpc1-custom_mode). U...
      * @yamlKey motion_trigger
      */
-    motionTrigger?: SeeedMr24hpc1MotionTriggerProps;
+    motionTrigger?: number;
     /**
      * int: Valid only in [custom mode settings](https://esphome.io/components/seeed_mr24hpc1#seeed_mr24hpc1-custom_mode). S...
      * @yamlKey motion_to_rest
      */
-    motionToRest?: SeeedMr24hpc1MotionToRestProps;
+    motionToRest?: number;
     /**
      * int: Valid only in [custom mode settings](https://esphome.io/components/seeed_mr24hpc1#seeed_mr24hpc1-custom_mode). S...
      * @yamlKey custom_unman_time
      */
-    customUnmanTime?: SeeedMr24hpc1CustomUnmanTimeProps;
+    customUnmanTime?: number;
 }
 interface TemplateProps extends _CoreComponent {
     /**
      * float: The maximum value this number can be.
      * @yamlKey max_value
      */
-    maxValue: unknown;
+    maxValue: number;
     /**
      * float: The minimum value this number can be.
      * @yamlKey min_value
      */
-    minValue: unknown;
+    minValue: number;
     /** float: The granularity with which the number can be set. */
-    step: unknown;
+    step: number;
     /** [lambda](/automations/templates#config-lambda): Lambda to be evaluated every update interval to get the current value... */
     lambda?: unknown;
     /** boolean: Whether to operate in optimistic mode - when in this mode, any command sent to the template number will imme... */
@@ -9091,7 +8558,7 @@ interface TemplateProps extends _CoreComponent {
      * float: The value to set the state to on setup if not restored with `restore_value`. Cannot be used with `lambda`. Def...
      * @yamlKey initial_value
      */
-    initialValue?: unknown;
+    initialValue?: number;
     /**
      * boolean: Saves and loads the state to RTC/Flash. Cannot be used with `lambda`. Defaults to `false`.
      * @yamlKey restore_value
@@ -9101,7 +8568,7 @@ interface TemplateProps extends _CoreComponent {
      * [Time](/guides/configuration-types#time): The interval on which to update the number by executing the `lambda`. Defau...
      * @yamlKey update_interval
      */
-    updateInterval?: unknown;
+    updateInterval?: TimePeriod;
 }
 interface TuyaProps extends _CoreComponent {
     /** @yamlKey tuya_id */
@@ -9112,7 +8579,7 @@ interface TuyaProps extends _CoreComponent {
     maxValue: unknown;
     /** @yamlKey min_value */
     minValue: unknown;
-    step: unknown;
+    step: number;
     multiply?: unknown;
     /** @yamlKey datapoint_hidden */
     datapointHidden?: TuyaDatapointHiddenProps;

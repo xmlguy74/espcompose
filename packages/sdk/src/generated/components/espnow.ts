@@ -8,7 +8,7 @@ import type { _CoreComponent } from "../bases";
 import type { espnow_ESPNowComponent } from "../markers";
 export interface EspnowProps extends _CoreComponent {
     /** int: The Wi-Fi channel that the esp-now communication will use to send/receive data packets. Cannot be set when the [... */
-    channel?: unknown;
+    channel?: number;
     /**
      * boolean: Enable the esp-now component on boot. Defaults to `true`.
      * @yamlKey enable_on_boot

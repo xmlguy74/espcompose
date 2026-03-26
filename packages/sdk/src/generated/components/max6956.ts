@@ -23,7 +23,7 @@ export interface Max6956Props extends _CoreComponent {
      */
     i2cId?: RefProp<i2c_I2CBus>;
     /** int: The I²C address of the driver. Defaults to `0x40`. */
-    address?: unknown;
+    address?: number;
 }
 declare global {
     namespace JSX {

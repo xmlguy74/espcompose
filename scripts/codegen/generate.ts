@@ -129,6 +129,35 @@ const SCHEMAS_DIR = path.resolve(__dirname, '../../.cache/schemas');
 const GENERATED_DIR = path.resolve(__dirname, '../../packages/sdk/src/generated');
 const COMPONENTS_DIR = path.join(GENERATED_DIR, 'components');
 
+function nodeUsesTypeRef(node: ts.Node, typeName: string): boolean {
+  if (ts.isTypeReferenceNode(node) && ts.isIdentifier(node.typeName) && node.typeName.text === typeName) {
+    return true;
+  }
+  let found = false;
+  ts.forEachChild(node, (child) => {
+    if (!found && nodeUsesTypeRef(child, typeName)) found = true;
+  });
+  return found;
+}
+
+function membersUseTypeRef(members: ts.TypeElement[], typeName: string): boolean {
+  return members.some((m) => nodeUsesTypeRef(m, typeName));
+}
+
+function nestedInterfacesUseTypeRef(nested: InterfaceAccumulator, typeName: string): boolean {
+  return nested.some((ni) => membersUseTypeRef(ni.members, typeName));
+}
+
+const SPECIAL_PROP_TYPES = ['TimePeriod', 'MACAddress', 'IPv4Address'] as const;
+
+function collectSpecialPropTypesFromMembers(members: ts.TypeElement[]): string[] {
+  return SPECIAL_PROP_TYPES.filter((typeName) => membersUseTypeRef(members, typeName));
+}
+
+function collectSpecialPropTypesFromNested(nested: InterfaceAccumulator): string[] {
+  return SPECIAL_PROP_TYPES.filter((typeName) => nestedInterfacesUseTypeRef(nested, typeName));
+}
+
 // ────────────────────────────────────────────────────────────────────────────
 // Types
 // ────────────────────────────────────────────────────────────────────────────
@@ -631,6 +660,10 @@ function buildStandaloneFileContent(
   const members = Object.keys(ownVars).length > 0
     ? buildInterfaceBody(ownVars, pascalName, nestedInterfaces, markerRefs, registry, target.name)
     : [];
+  const specialTypes = [...new Set([
+    ...collectSpecialPropTypesFromMembers(members),
+    ...collectSpecialPropTypesFromNested(nestedInterfaces),
+  ])];
 
   const mergedVarsForMarker = mergeExtends(rawSchema, registry);
   const ownClass = findOwnClass(mergedVarsForMarker);
@@ -641,7 +674,13 @@ function buildStandaloneFileContent(
   const statements: ts.Statement[] = [];
 
   // Imports
-  const typesImports = ['ComponentProps', 'Pin', 'TriggerHandler', ...(markerRefs.size > 0 ? ['RefProp'] : [])];
+  const typesImports = [
+    'ComponentProps',
+    'Pin',
+    ...specialTypes,
+    'TriggerHandler',
+    ...(markerRefs.size > 0 ? ['RefProp'] : []),
+  ];
   statements.push(importTypeDecl(typesImports, '../../types'));
   if (baseImports.size > 0) {
     statements.push(importTypeDecl([...baseImports], '../bases'));
@@ -737,7 +776,20 @@ function buildPlatformFileContent(
       }
     }
   }
-  const platOwnVars = platRawSchema?.config_vars ?? {};
+  const platOwnVars = (() => {
+    const raw = platRawSchema?.config_vars ?? {};
+    if (!platRawSchema || baseExtendsNames.length === 0) return raw;
+
+    const inheritedKeys = new Set<string>();
+    for (const baseRef of platRawSchema.extends ?? []) {
+      const refDef = registry.get(baseRef);
+      if (refDef) {
+        for (const key of Object.keys(mergeExtends(refDef, registry))) inheritedKeys.add(key);
+      }
+    }
+
+    return Object.fromEntries(Object.entries(raw).filter(([key]) => !inheritedKeys.has(key)));
+  })();
   // Compute the platform base class once — used as fallback for per-component markers.
   // Check own config_vars first to avoid the mergeExtends Object.assign overwrite bug.
   const platBaseClass = platRawSchema
@@ -863,11 +915,23 @@ function buildPlatformFileContent(
     });
   }
 
+  const specialTypes = [...new Set([
+    ...collectSpecialPropTypesFromMembers(baseMembers),
+    ...componentInterfaces.flatMap((ci) => collectSpecialPropTypesFromMembers(ci.members)),
+    ...collectSpecialPropTypesFromNested(allNested),
+  ])];
+
   // ── Build AST statements ──────────────────────────────────────────────────
   const statements: ts.Statement[] = [];
 
   // Imports
-  const typesImports = ['ComponentProps', 'Pin', 'TriggerHandler', ...(markerRefs.size > 0 ? ['RefProp'] : [])];
+  const typesImports = [
+    'ComponentProps',
+    'Pin',
+    ...specialTypes,
+    'TriggerHandler',
+    ...(markerRefs.size > 0 ? ['RefProp'] : []),
+  ];
   statements.push(importTypeDecl(typesImports, '../../types'));
   if (baseImports.size > 0) {
     statements.push(importTypeDecl([...baseImports], '../bases'));
@@ -1161,8 +1225,13 @@ function buildBasesFileContent(
 ): string {
   const statements: ts.Statement[] = [];
 
+  const specialTypes = [...new Set([
+    ...[...globalStubs.values()].flatMap((stub) => collectSpecialPropTypesFromMembers(stub.members)),
+    ...collectSpecialPropTypesFromNested(nestedInterfaces),
+  ])];
+
   // Imports
-  const typesImports = ['Pin', 'TriggerHandler', ...(markerRefs.size > 0 ? ['RefProp'] : [])];
+  const typesImports = ['Pin', ...specialTypes, 'TriggerHandler', ...(markerRefs.size > 0 ? ['RefProp'] : [])];
   statements.push(importTypeDecl(typesImports, '../types'));
   if (markerRefs.size > 0) {
     statements.push(importTypeDecl([...markerRefs], './markers'));

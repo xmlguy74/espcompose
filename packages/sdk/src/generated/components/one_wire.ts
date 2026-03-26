@@ -23,7 +23,7 @@ interface Ds2484Props extends _CoreComponent {
      */
     i2cId?: RefProp<i2c_I2CBus>;
     /** int: The I²C address of the device. Defaults to `0x18`. */
-    address?: unknown;
+    address?: number;
 }
 interface GpioProps extends _CoreComponent {
     /** number: The pin which will be use for bus communication. Note that 1-wire is a bi-directional bus so the selected GPI... */

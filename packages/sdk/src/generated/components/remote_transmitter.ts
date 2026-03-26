@@ -13,12 +13,12 @@ export interface RemoteTransmitterProps extends _CoreComponent {
      * int: How much of the time the remote is on. For example, infrared protocols modulate the signal using a carrier signa...
      * @yamlKey carrier_duty_percent
      */
-    carrierDutyPercent: unknown;
+    carrierDutyPercent: number;
     /**
      * int: The clock resolution used by the RMT peripheral in Hz. Defaults to `1000000`.
      * @yamlKey clock_resolution
      */
-    clockResolution?: unknown;
+    clockResolution?: number;
     /**
      * boolean: Overrides the default end of transmit level. Defaults to `false` unless `pin` is set to inverted or open-drain.
      * @yamlKey eot_level

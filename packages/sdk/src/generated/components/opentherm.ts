@@ -74,7 +74,7 @@ export interface OpenthermProps extends _CoreComponent {
      * float: Version of OpenTherm implemented by controller
      * @yamlKey opentherm_version_controller
      */
-    openthermVersionController?: unknown;
+    openthermVersionController?: number;
     /**
      * byte [0-255]: Controller configuration
      * @yamlKey controller_configuration

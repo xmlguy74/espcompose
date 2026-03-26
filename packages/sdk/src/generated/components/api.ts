@@ -3,17 +3,9 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
+import type { ComponentProps, Pin, RefProp, TimePeriod, TriggerHandler } from "../../types";
 import type { _CoreComponent } from "../bases";
 import type { api_APIServer } from "../markers";
-export interface ApiRebootTimeoutProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
 export interface ApiServicesProps {
     service?: string;
     action?: string;
@@ -30,14 +22,6 @@ export interface ApiActionsProps {
     supportsResponse?: "none" | "optional" | "only" | "status";
     then?: TriggerHandler;
 }
-export interface ApiBatchDelayProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
 export interface ApiProps extends _CoreComponent {
     /** int: The port to run the API server on. Defaults to `6053`. */
     port?: number;
@@ -45,7 +29,7 @@ export interface ApiProps extends _CoreComponent {
      * [Time](/guides/configuration-types#time): The amount of time to wait before rebooting when no client connects to the ...
      * @yamlKey reboot_timeout
      */
-    rebootTimeout?: ApiRebootTimeoutProps;
+    rebootTimeout?: TimePeriod;
     services?: ApiServicesProps;
     /** list: A list of user-defined actions. See [User-defined Actions](https://esphome.io/components/api#api-device-actions). */
     actions?: ApiActionsProps;
@@ -55,7 +39,7 @@ export interface ApiProps extends _CoreComponent {
      * [Time](/guides/configuration-types#time): The delay time for batching multiple state update messages together to redu...
      * @yamlKey batch_delay
      */
-    batchDelay?: ApiBatchDelayProps;
+    batchDelay?: TimePeriod;
     /**
      * boolean: Enable compilation of custom API services for external components that use the C++ `CustomAPIDevice` class. ...
      * @yamlKey custom_services

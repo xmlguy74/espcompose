@@ -10,7 +10,7 @@ export interface ImprovSerialProps {
      * url: A URL that can be used to forward the user to after setting credentials with improv.
      * @yamlKey next_url
      */
-    nextUrl?: unknown;
+    nextUrl?: string;
 }
 declare global {
     namespace JSX {

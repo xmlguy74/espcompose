@@ -31,7 +31,7 @@ export interface LoggerProps extends _CoreComponent {
      * string: The Hardware UART to use for logging. The default varies depending on
      * @yamlKey hardware_uart
      */
-    hardwareUart?: unknown;
+    hardwareUart?: string;
     /** string: The global log level. Any log message */
     level?: "NONE" | "ERROR" | "WARN" | "INFO" | "DEBUG" | "VERBOSE" | "VERY_VERBOSE";
     /** mapping: Manually set the log level for a */

@@ -42,7 +42,7 @@ export interface Esp32BleServerServicesPropsCharacteristicsPropsDescriptorsProps
     endianness?: "LITTLE" | "BIG";
 }
 export interface Esp32BleServerServicesPropsCharacteristicsPropsDescriptorsProps {
-    uuid: unknown;
+    uuid: number;
     read?: boolean;
     write?: boolean;
     /** @yamlKey on_write */
@@ -59,7 +59,7 @@ export interface Esp32BleServerServicesPropsCharacteristicsPropsDescriptionProps
     endianness?: "LITTLE" | "BIG";
 }
 export interface Esp32BleServerServicesPropsCharacteristicsProps {
-    uuid: unknown;
+    uuid: number;
     value?: Esp32BleServerServicesPropsCharacteristicsPropsValueProps;
     descriptors?: Array<Esp32BleServerServicesPropsCharacteristicsPropsDescriptorsProps>;
     /** @yamlKey on_write */
@@ -74,7 +74,7 @@ export interface Esp32BleServerServicesPropsCharacteristicsProps {
     writeNoResponse?: boolean;
 }
 export interface Esp32BleServerServicesProps {
-    uuid: unknown;
+    uuid: number;
     advertise?: boolean;
     characteristics?: Array<Esp32BleServerServicesPropsCharacteristicsProps>;
 }
@@ -96,7 +96,7 @@ export interface Esp32BleServerProps extends _CoreComponent {
      * list of bytes: The manufacturer-specific data to include in the advertising packet. Should be a list of bytes, where ...
      * @yamlKey manufacturer_data
      */
-    manufacturerData?: unknown;
+    manufacturerData?: Array<number>;
     /**
      * int: The maximum number of simultaneous BLE client connections the server will accept. When set to a value greater th...
      * @yamlKey max_clients

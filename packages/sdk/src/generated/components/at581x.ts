@@ -12,7 +12,7 @@ export interface At581xProps extends _CoreComponent {
      * @yamlKey i2c_id
      */
     i2cId?: RefProp<i2c_I2CBus>;
-    address?: unknown;
+    address?: number;
 }
 declare global {
     namespace JSX {

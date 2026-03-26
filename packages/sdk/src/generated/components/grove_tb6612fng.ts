@@ -10,7 +10,7 @@ export interface GroveTb6612fngProps extends _CoreComponent {
     /** @yamlKey i2c_id */
     i2cId?: RefProp<i2c_I2CBus>;
     /** int: The I²C address of the driver. Defaults to `0x14`. */
-    address?: unknown;
+    address?: number;
 }
 declare global {
     namespace JSX {

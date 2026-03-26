@@ -10,7 +10,7 @@ export interface Mcp3204Props {
      * float: The reference voltage. Defaults to `3.3V`.
      * @yamlKey reference_voltage
      */
-    referenceVoltage?: unknown;
+    referenceVoltage?: number;
     /** @yamlKey spi_id */
     spiId?: RefProp<spi_SPIComponent>;
     /** @yamlKey data_rate */

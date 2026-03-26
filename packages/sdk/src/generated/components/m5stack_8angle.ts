@@ -12,7 +12,7 @@ export interface M5stack8angleProps {
      */
     i2cId?: RefProp<i2c_I2CBus>;
     /** int: Manually specify the I²C address of the device. Defaults to `0x43`. */
-    address?: unknown;
+    address?: number;
 }
 declare global {
     namespace JSX {

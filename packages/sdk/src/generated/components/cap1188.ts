@@ -25,7 +25,7 @@ export interface Cap1188Props extends _CoreComponent {
     /** @yamlKey i2c_id */
     i2cId?: RefProp<i2c_I2CBus>;
     /** int: The I²C address of the sensor. Defaults to `0x29`. */
-    address?: unknown;
+    address?: number;
 }
 declare global {
     namespace JSX {

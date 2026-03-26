@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
+import type { ComponentProps, Pin, RefProp, TimePeriod, TriggerHandler } from "../../types";
 import type { _CoreComponent } from "../bases";
 import type { media_player_MediaPlayer, micro_wake_word_MicroWakeWord, microphone_Microphone, speaker_Speaker, voice_assistant_VoiceAssistant } from "../markers";
 export interface VoiceAssistantMicrophoneProps {
@@ -13,14 +13,6 @@ export interface VoiceAssistantMicrophoneProps {
     channels?: Array<number>;
     /** @yamlKey gain_factor */
     gainFactor?: number;
-}
-export interface VoiceAssistantConversationTimeoutProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
 }
 export interface VoiceAssistantProps extends _CoreComponent {
     /** [Microphone Source Configuration](/components/microphone#config-microphone-source): The [microphone](/components/micr... */
@@ -56,12 +48,12 @@ export interface VoiceAssistantProps extends _CoreComponent {
      * [Time](/guides/configuration-types#time): How long to wait before resetting the `conversation_id` sent to the voice a...
      * @yamlKey conversation_timeout
      */
-    conversationTimeout?: VoiceAssistantConversationTimeoutProps;
+    conversationTimeout?: TimePeriod;
     /**
      * float: Volume multiplier to apply to the assist pipeline. Must be larger than 0. Defaults to 1 (disabled).
      * @yamlKey volume_multiplier
      */
-    volumeMultiplier?: unknown;
+    volumeMultiplier?: number;
     /**
      * [Automation](/automations): An automation to perform when the voice assistant microphone starts listening.
      * @yamlKey on_listening

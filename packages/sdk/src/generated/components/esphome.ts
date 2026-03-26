@@ -31,7 +31,7 @@ export interface EsphomeProps {
      * string: This name is sent to the frontend and used by Home Assistant as the integration and device name. It also gets...
      * @yamlKey friendly_name
      */
-    friendlyName?: unknown;
+    friendlyName?: string;
     /** string or [Area Configuration](https://esphome.io/components/esphome#esphome-area): The area configuration for this d... */
     area?: unknown;
     /** string: Additional text information about this node. Only for display in UI. */
@@ -91,7 +91,7 @@ export interface EsphomeProps {
      * string: The minimum ESPHome version required to compile this configuration. See [Minimum ESPHome version](https://esp...
      * @yamlKey min_version
      */
-    minVersion?: unknown;
+    minVersion?: string;
     /**
      * int: The maximum number of simultaneous compile processes to run. Defaults to the number of cores of the CPU which is...
      * @yamlKey compile_process_limit

@@ -10,7 +10,7 @@ export interface OnlineImageProps extends _CoreComponent {
     /** The format that the image is encoded with. */
     format: "BMP" | "JPEG" | "PNG" | "JPG";
     /** string: If set, this will resize the image to fit inside the given dimensions `WIDTHxHEIGHT` and preserve the aspect ... */
-    resize?: unknown;
+    resize?: string;
     /** Specifies how to encode image internally. */
     type: unknown;
     /**
@@ -25,7 +25,7 @@ export interface OnlineImageProps extends _CoreComponent {
     /** @yamlKey http_request_id */
     httpRequestId?: RefProp<http_request_HttpRequestComponent>;
     /** url: The URL where the image will be downloaded from. */
-    url: unknown;
+    url: string;
     /**
      * int: Explicitly specify the size of the buffer where the image chunks are being downloaded while decoding. The defaul...
      * @yamlKey buffer_size
@@ -50,7 +50,7 @@ export interface OnlineImageProps extends _CoreComponent {
      * int: Redownload the image when the specified time has elapsed. Defaults to `never` (i.e. the update component action ...
      * @yamlKey update_interval
      */
-    updateInterval?: unknown;
+    updateInterval?: number;
 }
 declare global {
     namespace JSX {

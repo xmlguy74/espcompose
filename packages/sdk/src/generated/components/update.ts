@@ -21,8 +21,6 @@ interface UpdateBaseProps extends _CoreEntityBase, _CoreMqttCommandComponent {
     deviceClass?: "" | "firmware";
     /** @yamlKey on_update_available */
     onUpdateAvailable?: TriggerHandler;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
 }
 interface Esp32HostedEmbeddedProps extends _Esp32HostedUpdateBase {
     path: unknown;

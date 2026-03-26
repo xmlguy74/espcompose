@@ -10,35 +10,35 @@ interface Bm8563Props extends _Time, _CoreComponent {
     /** @yamlKey i2c_id */
     i2cId?: RefProp<i2c_I2CBus>;
     /** int: Manually specify the I²C address of the RTC. Defaults to `0x51`. */
-    address?: unknown;
+    address?: number;
 }
 interface Ds1307Props extends _Time {
     /** @yamlKey i2c_id */
     i2cId?: RefProp<i2c_I2CBus>;
     /** int: Manually specify the I²C address of the RTC. Defaults to `0x68`. */
-    address?: unknown;
+    address?: number;
 }
 interface Pcf85063Props extends _Time {
     /** @yamlKey i2c_id */
     i2cId?: RefProp<i2c_I2CBus>;
     /** int: Manually specify the I²C address of the RTC. Defaults to `0x51`. */
-    address?: unknown;
+    address?: number;
 }
 interface Pcf8563Props extends _Time {
     /** @yamlKey i2c_id */
     i2cId?: RefProp<i2c_I2CBus>;
     /** int: Manually specify the I²C address of the RTC. Defaults to `0xA3`. */
-    address?: unknown;
+    address?: number;
 }
 interface Rx8130Props extends _Time {
     /** @yamlKey i2c_id */
     i2cId?: RefProp<i2c_I2CBus>;
     /** int: Manually specify the I²C address of the RTC. Defaults to `0x32`. */
-    address?: unknown;
+    address?: number;
 }
 interface SntpProps extends _Time, _CoreComponent {
     /** list of strings: Choose up to 3 NTP servers that are used for the clock source. Defaults to `0.pool.ntp.org`, `1.pool... */
-    servers?: Array<unknown>;
+    servers?: Array<string>;
 }
 interface GpsProps extends _Time, _CoreComponent {
     /** @yamlKey gps_id */

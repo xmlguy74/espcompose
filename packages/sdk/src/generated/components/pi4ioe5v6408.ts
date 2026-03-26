@@ -12,7 +12,7 @@ export interface Pi4ioe5v6408Props extends _CoreComponent {
     /** @yamlKey i2c_id */
     i2cId?: RefProp<i2c_I2CBus>;
     /** int: The I²C address of the device. Defaults to `0x43`. */
-    address?: unknown;
+    address?: number;
 }
 declare global {
     namespace JSX {

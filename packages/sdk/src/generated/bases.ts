@@ -6,22 +6,22 @@
 
 /* eslint-disable */
 
-import type { Pin, RefProp, TriggerHandler } from "../types";
+import type { IPv4Address, MACAddress, Pin, RefProp, TimePeriod, TriggerHandler } from "../types";
 import type { Color, audio_dac_AudioDac, bedjet_BedJetHub, binary_sensor_BinarySensor, ble_client_BLEClient, display_Display, emc2101_Emc2101Component, esp32_ble_tracker_ESP32BLETracker, i2s_audio_I2SAudioComponent, modbus_controller_ModbusController, msa3xx_MSA3xxComponent, nextion_Nextion, packet_transport_PacketTransport, pipsolar_Pipsolar, power_supply_PowerSupply, pylontech_PylontechComponent, sensor_Sensor, spi_QuadSPIComponent, teleinfo_TeleInfo, time_RealTimeClock, uart_UARTComponent, udp_UDPComponent, uponor_smatrix_UponorSmatrixComponent, web_server_WebServer, zigbee_ZigbeeComponent } from "./markers";
 export interface EthernetBaseManualIpProps {
     /**
      * IPv4 address: The static IP of your node.
      * @yamlKey static_ip
      */
-    staticIp: unknown;
+    staticIp: IPv4Address;
     /** IPv4 address: The gateway of the local network. */
-    gateway: unknown;
+    gateway: IPv4Address;
     /** IPv4 address: The subnet of the local network. */
-    subnet: unknown;
+    subnet: IPv4Address;
     /** IPv4 address: The main DNS server to use. */
-    dns1?: unknown;
+    dns1?: IPv4Address;
     /** IPv4 address: The backup DNS server to use. */
-    dns2?: unknown;
+    dns2?: IPv4Address;
 }
 export interface EthernetRmiiClkProps {
     mode: "CLK_EXT_IN" | "CLK_OUT";
@@ -37,14 +37,6 @@ export interface EthernetRmiiPhyRegistersProps {
      * @yamlKey page_id
      */
     pageId?: unknown;
-}
-export interface EthernetSpiPollingIntervalProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
 }
 export interface Bk72xxConfigFrameworkProps {
     version?: string;
@@ -121,14 +113,6 @@ export interface TouchscreenTransformProps {
      */
     mirrorY?: boolean;
 }
-export interface TouchscreenTouchTimeoutProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
 export interface TouchscreenCalibrationProps {
     /**
      * int: The raw value corresponding to the left
@@ -192,19 +176,19 @@ export interface DisplayFullDisplayPagesProps {
 }
 export interface QspiDbiDisplayBaseDimensionsProps {
     /** int: Specifies width of display. */
-    width: unknown;
+    width: number;
     /** int: Specifies height of display in pixels. */
-    height: unknown;
+    height: number;
     /**
      * int: Specify an offset for the y-direction of the display. Default is 0.
      * @yamlKey offset_height
      */
-    offsetHeight?: unknown;
+    offsetHeight?: number;
     /**
      * int: Specify an offset for the x-direction of the display, typically used when a display is smaller than the maximum ...
      * @yamlKey offset_width
      */
-    offsetWidth?: unknown;
+    offsetWidth?: number;
 }
 export interface FanWebServerProps {
     /** @yamlKey web_server_id */
@@ -241,22 +225,6 @@ export interface LightInitialStateProps {
     /** @yamlKey warm_white */
     warmWhite?: unknown;
 }
-export interface LightBrightnessOnlyLightDefaultTransitionLengthProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
-export interface LightBrightnessOnlyLightFlashTransitionLengthProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
 export interface SensorWebServerProps {
     /** @yamlKey web_server_id */
     webServerId?: RefProp<web_server_WebServer>;
@@ -264,22 +232,6 @@ export interface SensorWebServerProps {
     sortingWeight?: unknown;
     /** @yamlKey sorting_group_id */
     sortingGroupId?: number;
-}
-export interface SensorExpireAfterProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
-export interface I2sAudioSpeakerBaseBufferDurationProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
 }
 export interface TextSensorWebServerProps {
     /** @yamlKey web_server_id */
@@ -323,14 +275,6 @@ export interface NumberWebServerProps {
 }
 export interface PacketTransportEncryptionEncryptionProps {
     key: string;
-}
-export interface PacketTransportTransportPingPongRecycleTimeProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
 }
 export interface PacketTransportTransportSensorsProps {
     id: RefProp<sensor_Sensor>;
@@ -454,7 +398,7 @@ export interface _As3935 {
 //  core.ENTITY_BASE_SCHEMA
 export interface _CoreEntityBase {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -463,12 +407,12 @@ export interface _CoreEntityBase {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
 }
@@ -511,7 +455,7 @@ export interface _EthernetBase extends _CoreComponent {
      */
     manualIp?: EthernetBaseManualIpProps;
     /** string: Set the domain of the node hostname used for uploading. For example, if it's set to `.local`, all uploads wil... */
-    domain?: unknown;
+    domain?: string;
     /**
      * string: Manually override what address to use to connect to the ESP. Defaults to auto-generated value. For example, i...
      * @yamlKey use_address
@@ -521,7 +465,7 @@ export interface _EthernetBase extends _CoreComponent {
      * MAC Address: Set the MAC address of the ethernet interface.
      * @yamlKey mac_address
      */
-    macAddress?: unknown;
+    macAddress?: MACAddress;
     /**
      * [Automation](/automations): An action to be performed when a connection is established.
      * @yamlKey on_connect
@@ -574,7 +518,7 @@ export interface _EthernetSpi extends _EthernetBase {
      * [Time](/guides/configuration-types#time): If `interrupt_pin` is not set, set the time interval for periodic polling. ...
      * @yamlKey polling_interval
      */
-    pollingInterval?: EthernetSpiPollingIntervalProps;
+    pollingInterval?: TimePeriod;
 }
 //  bk72xx.CONFIG_SCHEMA
 export interface _Bk72xxConfig {
@@ -607,12 +551,12 @@ export interface _Msa3xxCommon extends _CoreComponent {
      * [Time](/guides/configuration-types#time): The interval for updating acceleration sensors. Defaults to `10s`.
      * @yamlKey update_interval
      */
-    updateInterval?: unknown;
+    updateInterval?: TimePeriod;
 }
 //  packages.PACKAGE_SCHEMA
 export interface _PackagesPackage {
     /** string: The URL for the repository. */
-    url: unknown;
+    url: string;
     /** string: Base common path of included files. */
     path?: string;
     /** string: Username to be used for authentication, if required. */
@@ -623,7 +567,7 @@ export interface _PackagesPackage {
     /** List of files to include. Can be one of: */
     files?: Array<PackagesPackageFilesProps>;
     /** string: The Git ref(erence) to be used when pulling content from the repository. */
-    ref?: unknown;
+    ref?: string;
     /** [Time](/guides/configuration-types#time): The interval at which the content from the repository should be refreshed. */
     refresh?: string;
 }
@@ -645,7 +589,7 @@ export interface _Pn532 extends _CoreComponent {
      * [Time](/guides/configuration-types#time): The duration of each scan on the PN532. This affects the duration that the ...
      * @yamlKey update_interval
      */
-    updateInterval?: unknown;
+    updateInterval?: TimePeriod;
 }
 //  rc522.RC522_SCHEMA
 export interface _Rc522 extends _CoreComponent {
@@ -668,7 +612,7 @@ export interface _Rc522 extends _CoreComponent {
      * [Time](/guides/configuration-types#time): The duration of each scan on the RC522. This affects the duration that the ...
      * @yamlKey update_interval
      */
-    updateInterval?: unknown;
+    updateInterval?: TimePeriod;
 }
 //  sn74hc595._COMMON_SCHEMA
 export interface _Sn74hc595Common {
@@ -777,7 +721,7 @@ export interface _HomeassistantHomeAssistantImport {
      * string: The entity ID to import from Home Assistant.
      * @yamlKey entity_id
      */
-    entityId: unknown;
+    entityId: string;
     /** string: The name of the state attribute to import from the specified entity. The entity state is used when this optio... */
     attribute?: string;
     internal?: boolean;
@@ -805,19 +749,19 @@ export interface _NextionBinarySensorConfigBinarySensor {
      * string: The name of the Nextion component.
      * @yamlKey component_name
      */
-    componentName?: unknown;
+    componentName?: string;
     /**
      * string: The name of the Nextion variable. Any value over `0` is considered to be on
      * @yamlKey variable_name
      */
-    variableName?: unknown;
+    variableName?: string;
 }
 //  packet_transport.binary_sensor.STATUS_SENSOR_SCHEMA
 export interface _PacketTransportBinarySensorStatusSensor extends _BinarySensor {
     /** @yamlKey transport_id */
     transportId?: RefProp<packet_transport_PacketTransport>;
     /** string: The name of the provider node. */
-    provider: unknown;
+    provider: string;
 }
 //  touchscreen.TOUCHSCREEN_SCHEMA
 export interface _Touchscreen extends _CoreComponent {
@@ -829,7 +773,7 @@ export interface _Touchscreen extends _CoreComponent {
      * [Time](/guides/configuration-types#time): A timeout for touchscreens that do not report the end of touch. The default...
      * @yamlKey touch_timeout
      */
-    touchTimeout?: TouchscreenTouchTimeoutProps;
+    touchTimeout?: TimePeriod;
     /** Some touchscreens require calibration on a per-device basis. */
     calibration?: TouchscreenCalibrationProps;
     /**
@@ -851,7 +795,7 @@ export interface _Touchscreen extends _CoreComponent {
      * [Time](/guides/configuration-types#time): The touchscreen polling interval - used only if an interrupt pin is not in ...
      * @yamlKey update_interval
      */
-    updateInterval?: unknown;
+    updateInterval?: TimePeriod;
 }
 //  modbus_controller.ModbusItemBaseSchema
 export interface _ModbusControllerModbusitembaseschema {
@@ -859,11 +803,11 @@ export interface _ModbusControllerModbusitembaseschema {
     modbusControllerId?: RefProp<modbus_controller_ModbusController>;
     address?: number;
     /** @yamlKey custom_command */
-    customCommand?: Array<unknown>;
+    customCommand?: Array<number>;
     offset?: number;
     /** @yamlKey byte_offset */
     byteOffset?: number;
-    bitmask?: unknown;
+    bitmask?: number;
     /** @yamlKey skip_updates */
     skipUpdates?: number;
     /** @yamlKey force_new_range */
@@ -970,7 +914,7 @@ export interface _UponorSmatrixDevice {
      */
     uponorSmatrixId?: RefProp<uponor_smatrix_UponorSmatrixComponent>;
     /** int: The 32 bit device address of the thermostat. See [Getting started](https://esphome.io/components/uponor_smatrix#... */
-    address: unknown;
+    address: number;
 }
 //  cover._COVER_SCHEMA
 export interface _Cover extends _CoreEntityBase, _CoreMqttCommandComponent {
@@ -1013,7 +957,7 @@ export interface _DisplayFullDisplay extends _DisplayBasicDisplay {
      * boolean: If the display should be cleared before each update. Defaults to `true` if a lambda or pages are configured,...
      * @yamlKey auto_clear_enabled
      */
-    autoClearEnabled?: unknown;
+    autoClearEnabled?: boolean;
     /** @yamlKey show_test_card */
     showTestCard?: boolean;
 }
@@ -1025,7 +969,7 @@ export interface _DisplayBasicDisplay extends _CoreComponent {
      * [Time](/guides/configuration-types#time): The interval to re-draw the screen. Defaults to `5s`.
      * @yamlKey update_interval
      */
-    updateInterval?: unknown;
+    updateInterval?: TimePeriod;
 }
 //  ble_client.BLE_CLIENT_SCHEMA
 export interface _BleClient {
@@ -1067,7 +1011,7 @@ export interface _QspiDbiDisplayBase extends _DisplayFullDisplay {
      * int: Set the data rate of the SPI interface to the display. One of `80MHz`, `40MHz`, `20MHz`, `10MHz` (default), `5MH...
      * @yamlKey data_rate
      */
-    dataRate?: unknown;
+    dataRate?: number;
     /**
      * Set the mode for the SPI interface to the display. Default is `MODE0`.
      * @yamlKey spi_mode
@@ -1131,11 +1075,11 @@ export interface _LightRgbLight extends _LightBrightnessOnlyLight {
 //  light.BRIGHTNESS_ONLY_LIGHT_SCHEMA
 export interface _LightBrightnessOnlyLight extends _Light {
     /** @yamlKey gamma_correct */
-    gammaCorrect?: unknown;
+    gammaCorrect?: number;
     /** @yamlKey default_transition_length */
-    defaultTransitionLength?: LightBrightnessOnlyLightDefaultTransitionLengthProps;
+    defaultTransitionLength?: TimePeriod;
     /** @yamlKey flash_transition_length */
-    flashTransitionLength?: LightBrightnessOnlyLightFlashTransitionLengthProps;
+    flashTransitionLength?: TimePeriod;
     effects?: unknown;
 }
 //  light.LIGHT_SCHEMA
@@ -1247,7 +1191,7 @@ export interface _Sensor extends _CoreEntityBase, _CoreMqttComponent {
     /** @yamlKey force_update */
     forceUpdate?: boolean;
     /** @yamlKey expire_after */
-    expireAfter?: SensorExpireAfterProps;
+    expireAfter?: TimePeriod;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
     onValue?: TriggerHandler<{
@@ -1318,7 +1262,7 @@ export interface _I2sAudioSpeakerBase extends _Speaker, _CoreComponent {
     /** @yamlKey mclk_multiple */
     mclkMultiple?: "128" | "256" | "384" | "512";
     /** @yamlKey buffer_duration */
-    bufferDuration?: I2sAudioSpeakerBaseBufferDurationProps;
+    bufferDuration?: TimePeriod;
     timeout?: "never";
 }
 //  stepper.STEPPER_SCHEMA
@@ -1327,11 +1271,11 @@ export interface _Stepper {
      * float: The maximum speed in `steps/s` (steps per seconds) to drive the stepper at. Note most steppers can't step prop...
      * @yamlKey max_speed
      */
-    maxSpeed: unknown;
+    maxSpeed: number;
     /** float: The acceleration in `steps/s^2` (steps per seconds squared) to use when starting to move. The default is `inf`... */
-    acceleration?: unknown;
+    acceleration?: number;
     /** float: The same as `acceleration`, but for when the motor is decelerating shortly before reaching the set position. D... */
-    deceleration?: unknown;
+    deceleration?: number;
 }
 //  text_sensor._TEXT_SENSOR_SCHEMA
 export interface _TextSensor extends _CoreEntityBase, _CoreMqttComponent {
@@ -1352,7 +1296,7 @@ export interface _TextSensor extends _CoreEntityBase, _CoreMqttComponent {
 //  time.TIME_SCHEMA
 export interface _Time extends _CoreComponent {
     /** string: Manually tell ESPHome what time zone to use with [this format](https://www.gnu.org/software/libc/manual/html_... */
-    timezone?: unknown;
+    timezone?: string;
     /**
      * [Automation](/automations): Automation to run at specific intervals using a cron-like syntax. See [`on_time` Trigger]...
      * @yamlKey on_time
@@ -1367,7 +1311,7 @@ export interface _Time extends _CoreComponent {
      * [Time](/guides/configuration-types#time): How often to synchronize the device time from the source. Defaults to `15min`.
      * @yamlKey update_interval
      */
-    updateInterval?: unknown;
+    updateInterval?: TimePeriod;
 }
 //  datetime._DATETIME_SCHEMA
 export interface _Datetime extends _CoreEntityBase, _CoreMqttCommandComponent {
@@ -1398,7 +1342,7 @@ export interface _TemplateDatetime_Base extends _CoreComponent {
      * [Time](/guides/configuration-types#time): The interval on which to update the datetime by executing the `lambda`. Def...
      * @yamlKey update_interval
      */
-    updateInterval?: unknown;
+    updateInterval?: TimePeriod;
 }
 //  event._EVENT_SCHEMA
 export interface _Event extends _CoreEntityBase, _CoreMqttComponent {
@@ -1477,7 +1421,7 @@ export interface _HomeassistantHomeAssistantImportControl {
      * string: The entity ID to import / control from Home Assistant.
      * @yamlKey entity_id
      */
-    entityId: unknown;
+    entityId: string;
     internal?: boolean;
 }
 //  packet_transport.TRANSPORT_SCHEMA
@@ -1489,7 +1433,7 @@ export interface _PacketTransportTransport extends _CoreComponent, _PacketTransp
     /** @yamlKey ping_pong_enable */
     pingPongEnable?: boolean;
     /** @yamlKey ping_pong_recycle_time */
-    pingPongRecycleTime?: PacketTransportTransportPingPongRecycleTimeProps;
+    pingPongRecycleTime?: TimePeriod;
     sensors?: Array<PacketTransportTransportSensorsProps>;
     /** @yamlKey binary_sensors */
     binarySensors?: Array<PacketTransportTransportBinarySensorsProps>;

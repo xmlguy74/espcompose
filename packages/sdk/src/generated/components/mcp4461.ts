@@ -30,7 +30,7 @@ export interface Mcp4461Props extends _CoreComponent {
     /** @yamlKey i2c_id */
     i2cId?: RefProp<i2c_I2CBus>;
     /** int: Manually specify the I2C address of the digipot. Defaults to `0x2C`. */
-    address?: unknown;
+    address?: number;
 }
 declare global {
     namespace JSX {

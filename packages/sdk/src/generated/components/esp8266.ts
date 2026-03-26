@@ -13,7 +13,7 @@ export interface Esp8266FrameworkProps {
      * string: The version of the [platformio/espressif8266](https://github.com/platformio/platform-espressif8266/releases/)...
      * @yamlKey platform_version
      */
-    platformVersion?: unknown;
+    platformVersion?: string;
 }
 export interface Esp8266Props {
     /** string: The PlatformIO board ID that should be used. Choose the appropriate board from [this list](https://registry.p... */

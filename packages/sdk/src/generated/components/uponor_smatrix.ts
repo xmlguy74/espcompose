@@ -16,7 +16,7 @@ export interface UponorSmatrixProps extends _CoreComponent, _UartDevice {
      * int: The 32 bit device address of the thermostat that keeps the system time. This will be automatically detected from...
      * @yamlKey time_device_address
      */
-    timeDeviceAddress?: unknown;
+    timeDeviceAddress?: number;
 }
 declare global {
     namespace JSX {

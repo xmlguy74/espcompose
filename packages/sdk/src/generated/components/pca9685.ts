@@ -22,7 +22,7 @@ export interface Pca9685Props extends _CoreComponent {
     /** @yamlKey i2c_id */
     i2cId?: RefProp<i2c_I2CBus>;
     /** int: The I²C address of the driver. */
-    address?: unknown;
+    address?: number;
 }
 declare global {
     namespace JSX {

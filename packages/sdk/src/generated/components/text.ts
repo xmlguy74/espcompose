@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
+import type { ComponentProps, Pin, RefProp, TimePeriod, TriggerHandler } from "../../types";
 import type { _CoreComponent, _CoreEntityBase, _CoreMqttComponent } from "../bases";
 import type { copy_CopyText, lvgl_LVGLText, template__TemplateText, text_Text, web_server_WebServer } from "../markers";
 interface TextWebServerProps {
@@ -66,7 +66,7 @@ interface TemplateProps extends _CoreComponent {
      * [Time](/guides/configuration-types#time): The interval on which to update the text by executing the `lambda`. Default...
      * @yamlKey update_interval
      */
-    updateInterval?: unknown;
+    updateInterval?: TimePeriod;
 }
 export type TextProps = (TextBaseProps & {
     platform: "copy";

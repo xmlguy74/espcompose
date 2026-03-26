@@ -12,7 +12,7 @@ export interface Pcf8574Props extends _CoreComponent {
     /** @yamlKey i2c_id */
     i2cId?: RefProp<i2c_I2CBus>;
     /** int: The I²C address of the driver. Defaults to `0x21`. */
-    address?: unknown;
+    address?: number;
 }
 declare global {
     namespace JSX {

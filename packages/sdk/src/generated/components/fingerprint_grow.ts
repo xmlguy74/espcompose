@@ -3,17 +3,9 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
+import type { ComponentProps, Pin, RefProp, TimePeriod, TriggerHandler } from "../../types";
 import type { _CoreComponent } from "../bases";
 import type { fingerprint_grow_FingerprintGrowComponent, uart_UARTComponent } from "../markers";
-export interface FingerprintGrowIdlePeriodToSleepProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
 export interface FingerprintGrowProps extends _CoreComponent {
     /**
      * [Pin Schema](/guides/configuration-types#pin-schema): Pin connected to the reader's finger detection signal (WAKEUP) ...
@@ -29,7 +21,7 @@ export interface FingerprintGrowProps extends _CoreComponent {
      * [Time](/guides/configuration-types#time): The sensor idle period to wait before powering it off (sleep). Defaults to ...
      * @yamlKey idle_period_to_sleep
      */
-    idlePeriodToSleep?: FingerprintGrowIdlePeriodToSleepProps;
+    idlePeriodToSleep?: TimePeriod;
     /** int: Password to use for authentication. Defaults to `0x00`. */
     password?: number;
     /**

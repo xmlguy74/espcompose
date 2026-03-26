@@ -15,7 +15,7 @@ export interface Ads1115Props extends _CoreComponent {
     /** @yamlKey i2c_id */
     i2cId?: RefProp<i2c_I2CBus>;
     /** int: The i²c address of the sensor. See [I²C Addresses](https://esphome.io/components/sensor/ads1115#ads1115_i2c_addr... */
-    address: unknown;
+    address: number;
 }
 declare global {
     namespace JSX {

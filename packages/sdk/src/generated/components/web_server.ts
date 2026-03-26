@@ -19,7 +19,7 @@ export interface WebServerSortingGroupsProps {
      * float: A float representing the weight of the group. A group with a smaller
      * @yamlKey sorting_weight
      */
-    sortingWeight?: unknown;
+    sortingWeight?: number;
 }
 export interface WebServerProps extends _CoreComponent {
     /** int: The port the web server should open its socket on. */

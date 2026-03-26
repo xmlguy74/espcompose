@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
+import type { ComponentProps, IPv4Address, MACAddress, Pin, RefProp, TimePeriod, TriggerHandler } from "../../types";
 import type { _BthomeMithermometerBleDevice, _CoreComponent, _CoreEntityBase, _CoreMqttComponent, _HomeassistantHomeAssistantImport, _ModbusControllerModbusitembaseschema, _Msa3xxMsaSensor, _NextionBinarySensorConfigBinarySensor, _PacketTransportBinarySensorStatusSensor, _PipsolarComponent, _Touchscreen } from "../bases";
 import type { EntityBase, analog_threshold_AnalogThresholdBinarySensor, apds9960_APDS9960, as3935_AS3935Component, binary_sensor_BinarySensor, ble_presence_BLEPresenceDevice, cap1188_CAP1188Channel, cap1188_CAP1188Component, copy_CopyBinarySensor, cst226_CST226Button, cst226_CST226Touchscreen, cst816_CST816Touchscreen, daly_bms_DalyBmsComponent, dfrobot_sen0395_DfrobotSen0395Component, display_DisplayPage, esp32_ble_tracker_ESP32BLETracker, esp32_touch_ESP32TouchBinarySensor, esp32_touch_ESP32TouchComponent, ezo_pmp_EzoPMP, fingerprint_grow_FingerprintGrowComponent, gdk101_GDK101Component, gpio_GPIOBinarySensor, gt911_GT911Button, gt911_GT911Touchscreen, haier_HonClimate, hlk_fm22x_HlkFm22xComponent, homeassistant_HomeassistantBinarySensor, hydreon_rgxx_HydreonRGxxBinaryComponent, hydreon_rgxx_HydreonRGxxComponent, i2c_I2CBus, ld2410_LD2410Component, ld2412_LD2412Component, ld2420_LD2420BinarySensor, ld2420_LD2420Component, ld2450_LD2450Component, lvgl_LvPseudoButton, m5stack_8angle_M5Stack8AngleComponent, m5stack_8angle_M5Stack8AngleSwitchBinarySensor, matrix_keypad_MatrixKeypad, matrix_keypad_MatrixKeypadBinarySensor, modbus_controller_ModbusBinarySensor, mpr121_MPR121BinarySensor, mpr121_MPR121Component, nextion_NextionBinarySensor, nfc_NfcTagBinarySensor, nfc_Nfcc, opentherm_OpenthermHub, packet_transport_PacketTransport, pn532_PN532, pn532_PN532BinarySensor, qwiic_pir_QwiicPIRComponent, rc522_RC522, rc522_RC522BinarySensor, rd03d_RD03DComponent, rdm6300_RDM6300BinarySensor, rdm6300_RDM6300Component, remote_base_RemoteReceiverBase, sdl_Sdl, seeed_mr24hpc1_MR24HPC1Component, seeed_mr60bha2_MR60BHA2Component, seeed_mr60fda2_MR60FDA2Component, sensor_Sensor, sim800l_Sim800LComponent, status_StatusBinarySensor, switch__Switch, switch__SwitchBinarySensor, sx1509_SX1509BinarySensor, sx1509_SX1509Component, sy6970_SY6970Component, template__TemplateBinarySensor, tm1637_TM1637Display, tm1637_TM1637Key, tm1638_TM1638Component, tm1638_TM1638Key, touchscreen_Touchscreen, touchscreen_TouchscreenBinarySensor, tt21100_TT21100Button, tt21100_TT21100Touchscreen, ttp229_bsf_TTP229BSFChannel, ttp229_bsf_TTP229BSFComponent, ttp229_lsf_TTP229Channel, ttp229_lsf_TTP229LSFComponent, tuya_Tuya, tuya_TuyaBinarySensor, udp_UDPComponent, vbus_DeltaSolBS2009BSensor, vbus_DeltaSolBS2BSensor, vbus_DeltaSolBSPlusBSensor, vbus_DeltaSolCBSensor, vbus_DeltaSolCS2BSensor, vbus_DeltaSolCSPlusBSensor, vbus_VBus, vbus_VBusCustomBSensor, web_server_WebServer, wireguard_Wireguard, xiaomi_cgpr1_XiaomiCGPR1, xiaomi_mjyd02yla_XiaomiMJYD02YLA, xiaomi_mue4094rt_XiaomiMUE4094RT, xiaomi_rtcgq02lm_XiaomiRTCGQ02LM, xiaomi_wx08zm_XiaomiWX08ZM, zigbee_ZigbeeComponent } from "../markers";
 interface BinarySensorWebServerProps {
@@ -13,20 +13,6 @@ interface BinarySensorWebServerProps {
     sortingWeight?: unknown;
     /** @yamlKey sorting_group_id */
     sortingGroupId?: number;
-}
-interface AnalogThresholdThresholdProps {
-    /** float: Upper threshold, that needs to be crossed to transition from `low` to `high` states. */
-    upper: unknown;
-    /** float: Lower threshold, that needs to be crossed to transition from `high` to `low` states. */
-    lower: unknown;
-}
-interface BlePresenceTimeoutProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
 }
 interface HaierOutdoorFanStatusPropsAvailabilityProps {
     topic: unknown;
@@ -45,7 +31,7 @@ interface HaierOutdoorFanStatusPropsWebServerProps {
 }
 interface HaierOutdoorFanStatusProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -53,9 +39,13 @@ interface HaierOutdoorFanStatusProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -111,7 +101,7 @@ interface HaierDefrostStatusPropsWebServerProps {
 }
 interface HaierDefrostStatusProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -119,9 +109,13 @@ interface HaierDefrostStatusProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -177,7 +171,7 @@ interface HaierCompressorStatusPropsWebServerProps {
 }
 interface HaierCompressorStatusProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -185,9 +179,13 @@ interface HaierCompressorStatusProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -243,7 +241,7 @@ interface HaierIndoorFanStatusPropsWebServerProps {
 }
 interface HaierIndoorFanStatusProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -251,9 +249,13 @@ interface HaierIndoorFanStatusProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -309,7 +311,7 @@ interface HaierFourWayValveStatusPropsWebServerProps {
 }
 interface HaierFourWayValveStatusProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -317,9 +319,13 @@ interface HaierFourWayValveStatusProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -375,7 +381,7 @@ interface HaierIndoorElectricHeatingStatusPropsWebServerProps {
 }
 interface HaierIndoorElectricHeatingStatusProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -383,9 +389,13 @@ interface HaierIndoorElectricHeatingStatusProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -441,7 +451,7 @@ interface HydreonRgxxTooColdPropsWebServerProps {
 }
 interface HydreonRgxxTooColdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -450,12 +460,12 @@ interface HydreonRgxxTooColdProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -475,7 +485,7 @@ interface HydreonRgxxTooColdProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -511,7 +521,7 @@ interface HydreonRgxxLensBadPropsWebServerProps {
 }
 interface HydreonRgxxLensBadProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -520,12 +530,12 @@ interface HydreonRgxxLensBadProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -545,7 +555,7 @@ interface HydreonRgxxLensBadProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -581,7 +591,7 @@ interface HydreonRgxxEmSatPropsWebServerProps {
 }
 interface HydreonRgxxEmSatProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -590,12 +600,12 @@ interface HydreonRgxxEmSatProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -615,7 +625,7 @@ interface HydreonRgxxEmSatProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -634,14 +644,6 @@ interface HydreonRgxxEmSatProps {
     /** @yamlKey on_state_change */
     onStateChange?: TriggerHandler;
 }
-interface QwiicPirDebounceProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
 interface XiaomiCgpr1BatteryLevelPropsAvailabilityProps {
     topic: unknown;
     /** @yamlKey payload_available */
@@ -657,17 +659,9 @@ interface XiaomiCgpr1BatteryLevelPropsWebServerProps {
     /** @yamlKey sorting_group_id */
     sortingGroupId?: number;
 }
-interface XiaomiCgpr1BatteryLevelPropsExpireAfterProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
 interface XiaomiCgpr1BatteryLevelProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -676,9 +670,12 @@ interface XiaomiCgpr1BatteryLevelProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -694,17 +691,17 @@ interface XiaomiCgpr1BatteryLevelProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     /** @yamlKey accuracy_decimals */
-    accuracyDecimals?: unknown;
+    accuracyDecimals?: number;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "date" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "timestamp" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
     /** @yamlKey state_class */
     stateClass?: "" | "measurement" | "total_increasing" | "total" | "measurement_angle";
     /** @yamlKey force_update */
     forceUpdate?: boolean;
     /** @yamlKey expire_after */
-    expireAfter?: XiaomiCgpr1BatteryLevelPropsExpireAfterProps;
+    expireAfter?: TimePeriod;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
     onValue?: TriggerHandler;
@@ -728,17 +725,9 @@ interface XiaomiCgpr1IdleTimePropsWebServerProps {
     /** @yamlKey sorting_group_id */
     sortingGroupId?: number;
 }
-interface XiaomiCgpr1IdleTimePropsExpireAfterProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
 interface XiaomiCgpr1IdleTimeProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -746,9 +735,13 @@ interface XiaomiCgpr1IdleTimeProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -764,9 +757,9 @@ interface XiaomiCgpr1IdleTimeProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     /** @yamlKey accuracy_decimals */
-    accuracyDecimals?: unknown;
+    accuracyDecimals?: number;
     /** @yamlKey device_class */
     deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "date" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "timestamp" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
     /** @yamlKey state_class */
@@ -774,7 +767,7 @@ interface XiaomiCgpr1IdleTimeProps {
     /** @yamlKey force_update */
     forceUpdate?: boolean;
     /** @yamlKey expire_after */
-    expireAfter?: XiaomiCgpr1IdleTimePropsExpireAfterProps;
+    expireAfter?: TimePeriod;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
     onValue?: TriggerHandler;
@@ -798,17 +791,9 @@ interface XiaomiCgpr1IlluminancePropsWebServerProps {
     /** @yamlKey sorting_group_id */
     sortingGroupId?: number;
 }
-interface XiaomiCgpr1IlluminancePropsExpireAfterProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
 interface XiaomiCgpr1IlluminanceProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -817,9 +802,12 @@ interface XiaomiCgpr1IlluminanceProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -835,17 +823,17 @@ interface XiaomiCgpr1IlluminanceProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     /** @yamlKey accuracy_decimals */
-    accuracyDecimals?: unknown;
+    accuracyDecimals?: number;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "date" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "timestamp" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
     /** @yamlKey state_class */
     stateClass?: "" | "measurement" | "total_increasing" | "total" | "measurement_angle";
     /** @yamlKey force_update */
     forceUpdate?: boolean;
     /** @yamlKey expire_after */
-    expireAfter?: XiaomiCgpr1IlluminancePropsExpireAfterProps;
+    expireAfter?: TimePeriod;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
     onValue?: TriggerHandler;
@@ -869,17 +857,9 @@ interface XiaomiMjyd02ylaIdleTimePropsWebServerProps {
     /** @yamlKey sorting_group_id */
     sortingGroupId?: number;
 }
-interface XiaomiMjyd02ylaIdleTimePropsExpireAfterProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
 interface XiaomiMjyd02ylaIdleTimeProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -887,9 +867,13 @@ interface XiaomiMjyd02ylaIdleTimeProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -905,9 +889,9 @@ interface XiaomiMjyd02ylaIdleTimeProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     /** @yamlKey accuracy_decimals */
-    accuracyDecimals?: unknown;
+    accuracyDecimals?: number;
     /** @yamlKey device_class */
     deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "date" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "timestamp" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
     /** @yamlKey state_class */
@@ -915,7 +899,7 @@ interface XiaomiMjyd02ylaIdleTimeProps {
     /** @yamlKey force_update */
     forceUpdate?: boolean;
     /** @yamlKey expire_after */
-    expireAfter?: XiaomiMjyd02ylaIdleTimePropsExpireAfterProps;
+    expireAfter?: TimePeriod;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
     onValue?: TriggerHandler;
@@ -939,17 +923,9 @@ interface XiaomiMjyd02ylaBatteryLevelPropsWebServerProps {
     /** @yamlKey sorting_group_id */
     sortingGroupId?: number;
 }
-interface XiaomiMjyd02ylaBatteryLevelPropsExpireAfterProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
 interface XiaomiMjyd02ylaBatteryLevelProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -958,9 +934,12 @@ interface XiaomiMjyd02ylaBatteryLevelProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -976,17 +955,17 @@ interface XiaomiMjyd02ylaBatteryLevelProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     /** @yamlKey accuracy_decimals */
-    accuracyDecimals?: unknown;
+    accuracyDecimals?: number;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "date" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "timestamp" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
     /** @yamlKey state_class */
-    stateClass?: unknown;
+    stateClass?: "" | "measurement" | "total_increasing" | "total" | "measurement_angle";
     /** @yamlKey force_update */
     forceUpdate?: boolean;
     /** @yamlKey expire_after */
-    expireAfter?: XiaomiMjyd02ylaBatteryLevelPropsExpireAfterProps;
+    expireAfter?: TimePeriod;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
     onValue?: TriggerHandler;
@@ -1010,17 +989,9 @@ interface XiaomiMjyd02ylaIlluminancePropsWebServerProps {
     /** @yamlKey sorting_group_id */
     sortingGroupId?: number;
 }
-interface XiaomiMjyd02ylaIlluminancePropsExpireAfterProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
 interface XiaomiMjyd02ylaIlluminanceProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1029,9 +1000,12 @@ interface XiaomiMjyd02ylaIlluminanceProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1047,17 +1021,17 @@ interface XiaomiMjyd02ylaIlluminanceProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     /** @yamlKey accuracy_decimals */
-    accuracyDecimals?: unknown;
+    accuracyDecimals?: number;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "date" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "timestamp" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
     /** @yamlKey state_class */
-    stateClass?: unknown;
+    stateClass?: "" | "measurement" | "total_increasing" | "total" | "measurement_angle";
     /** @yamlKey force_update */
     forceUpdate?: boolean;
     /** @yamlKey expire_after */
-    expireAfter?: XiaomiMjyd02ylaIlluminancePropsExpireAfterProps;
+    expireAfter?: TimePeriod;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
     onValue?: TriggerHandler;
@@ -1083,7 +1057,7 @@ interface XiaomiMjyd02ylaLightPropsWebServerProps {
 }
 interface XiaomiMjyd02ylaLightProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1092,12 +1066,12 @@ interface XiaomiMjyd02ylaLightProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1117,7 +1091,7 @@ interface XiaomiMjyd02ylaLightProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -1136,14 +1110,6 @@ interface XiaomiMjyd02ylaLightProps {
     /** @yamlKey on_state_change */
     onStateChange?: TriggerHandler;
 }
-interface XiaomiMue4094rtTimeoutProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
 interface XiaomiWx08zmTabletPropsAvailabilityProps {
     topic: unknown;
     /** @yamlKey payload_available */
@@ -1159,17 +1125,9 @@ interface XiaomiWx08zmTabletPropsWebServerProps {
     /** @yamlKey sorting_group_id */
     sortingGroupId?: number;
 }
-interface XiaomiWx08zmTabletPropsExpireAfterProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
 interface XiaomiWx08zmTabletProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1177,9 +1135,13 @@ interface XiaomiWx08zmTabletProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1195,17 +1157,17 @@ interface XiaomiWx08zmTabletProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     /** @yamlKey accuracy_decimals */
-    accuracyDecimals?: unknown;
+    accuracyDecimals?: number;
     /** @yamlKey device_class */
     deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "date" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "timestamp" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
     /** @yamlKey state_class */
-    stateClass?: unknown;
+    stateClass?: "" | "measurement" | "total_increasing" | "total" | "measurement_angle";
     /** @yamlKey force_update */
     forceUpdate?: boolean;
     /** @yamlKey expire_after */
-    expireAfter?: XiaomiWx08zmTabletPropsExpireAfterProps;
+    expireAfter?: TimePeriod;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
     onValue?: TriggerHandler;
@@ -1229,17 +1191,9 @@ interface XiaomiWx08zmBatteryLevelPropsWebServerProps {
     /** @yamlKey sorting_group_id */
     sortingGroupId?: number;
 }
-interface XiaomiWx08zmBatteryLevelPropsExpireAfterProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
 interface XiaomiWx08zmBatteryLevelProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1248,9 +1202,12 @@ interface XiaomiWx08zmBatteryLevelProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1266,17 +1223,17 @@ interface XiaomiWx08zmBatteryLevelProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     /** @yamlKey accuracy_decimals */
-    accuracyDecimals?: unknown;
+    accuracyDecimals?: number;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "date" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "timestamp" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
     /** @yamlKey state_class */
-    stateClass?: unknown;
+    stateClass?: "" | "measurement" | "total_increasing" | "total" | "measurement_angle";
     /** @yamlKey force_update */
     forceUpdate?: boolean;
     /** @yamlKey expire_after */
-    expireAfter?: XiaomiWx08zmBatteryLevelPropsExpireAfterProps;
+    expireAfter?: TimePeriod;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
     onValue?: TriggerHandler;
@@ -1302,7 +1259,7 @@ interface DalyBmsChargingMosEnabledPropsWebServerProps {
 }
 interface DalyBmsChargingMosEnabledProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1311,12 +1268,12 @@ interface DalyBmsChargingMosEnabledProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1372,7 +1329,7 @@ interface DalyBmsDischargingMosEnabledPropsWebServerProps {
 }
 interface DalyBmsDischargingMosEnabledProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1381,12 +1338,12 @@ interface DalyBmsDischargingMosEnabledProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1442,7 +1399,7 @@ interface EzoPmpPumpStatePropsWebServerProps {
 }
 interface EzoPmpPumpStateProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1451,9 +1408,12 @@ interface EzoPmpPumpStateProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1473,7 +1433,7 @@ interface EzoPmpPumpStateProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -1509,7 +1469,7 @@ interface EzoPmpIsPausedPropsWebServerProps {
 }
 interface EzoPmpIsPausedProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1518,9 +1478,12 @@ interface EzoPmpIsPausedProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1540,7 +1503,7 @@ interface EzoPmpIsPausedProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -1576,7 +1539,7 @@ interface Gdk101VibrationsPropsWebServerProps {
 }
 interface Gdk101VibrationsProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1584,9 +1547,13 @@ interface Gdk101VibrationsProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1606,7 +1573,7 @@ interface Gdk101VibrationsProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -1642,7 +1609,7 @@ interface Ld2410HasTargetPropsWebServerProps {
 }
 interface Ld2410HasTargetProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1650,12 +1617,13 @@ interface Ld2410HasTargetProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1675,8 +1643,8 @@ interface Ld2410HasTargetProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
-    filters?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
+    filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
     /** @yamlKey on_release */
@@ -1711,7 +1679,7 @@ interface Ld2410HasMovingTargetPropsWebServerProps {
 }
 interface Ld2410HasMovingTargetProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1719,12 +1687,13 @@ interface Ld2410HasMovingTargetProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1744,8 +1713,8 @@ interface Ld2410HasMovingTargetProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
-    filters?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
+    filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
     /** @yamlKey on_release */
@@ -1780,7 +1749,7 @@ interface Ld2410HasStillTargetPropsWebServerProps {
 }
 interface Ld2410HasStillTargetProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1788,12 +1757,13 @@ interface Ld2410HasStillTargetProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1813,8 +1783,8 @@ interface Ld2410HasStillTargetProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
-    filters?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
+    filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
     /** @yamlKey on_release */
@@ -1849,7 +1819,7 @@ interface Ld2410OutPinPresenceStatusPropsWebServerProps {
 }
 interface Ld2410OutPinPresenceStatusProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1857,9 +1827,13 @@ interface Ld2410OutPinPresenceStatusProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1879,8 +1853,8 @@ interface Ld2410OutPinPresenceStatusProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
-    filters?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
+    filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
     /** @yamlKey on_release */
@@ -1915,7 +1889,7 @@ interface Ld2412DynamicBackgroundCorrectionStatusPropsWebServerProps {
 }
 interface Ld2412DynamicBackgroundCorrectionStatusProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1923,9 +1897,13 @@ interface Ld2412DynamicBackgroundCorrectionStatusProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1945,7 +1923,7 @@ interface Ld2412DynamicBackgroundCorrectionStatusProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -1981,7 +1959,7 @@ interface Ld2412HasTargetPropsWebServerProps {
 }
 interface Ld2412HasTargetProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1989,12 +1967,13 @@ interface Ld2412HasTargetProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -2014,8 +1993,8 @@ interface Ld2412HasTargetProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
-    filters?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
+    filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
     /** @yamlKey on_release */
@@ -2050,7 +2029,7 @@ interface Ld2412HasMovingTargetPropsWebServerProps {
 }
 interface Ld2412HasMovingTargetProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -2058,12 +2037,13 @@ interface Ld2412HasMovingTargetProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -2083,8 +2063,8 @@ interface Ld2412HasMovingTargetProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
-    filters?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
+    filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
     /** @yamlKey on_release */
@@ -2119,7 +2099,7 @@ interface Ld2412HasStillTargetPropsWebServerProps {
 }
 interface Ld2412HasStillTargetProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -2127,12 +2107,13 @@ interface Ld2412HasStillTargetProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -2152,8 +2133,8 @@ interface Ld2412HasStillTargetProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
-    filters?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
+    filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
     /** @yamlKey on_release */
@@ -2188,7 +2169,7 @@ interface Ld2420HasTargetPropsWebServerProps {
 }
 interface Ld2420HasTargetProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -2197,12 +2178,12 @@ interface Ld2420HasTargetProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -2222,7 +2203,7 @@ interface Ld2420HasTargetProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -2258,7 +2239,7 @@ interface Ld2450HasTargetPropsWebServerProps {
 }
 interface Ld2450HasTargetProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -2266,12 +2247,13 @@ interface Ld2450HasTargetProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -2291,8 +2273,8 @@ interface Ld2450HasTargetProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
-    filters?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
+    filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
     /** @yamlKey on_release */
@@ -2327,7 +2309,7 @@ interface Ld2450HasMovingTargetPropsWebServerProps {
 }
 interface Ld2450HasMovingTargetProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -2335,12 +2317,13 @@ interface Ld2450HasMovingTargetProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -2360,8 +2343,8 @@ interface Ld2450HasMovingTargetProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
-    filters?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
+    filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
     /** @yamlKey on_release */
@@ -2396,7 +2379,7 @@ interface Ld2450HasStillTargetPropsWebServerProps {
 }
 interface Ld2450HasStillTargetProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -2404,12 +2387,13 @@ interface Ld2450HasStillTargetProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -2429,8 +2413,8 @@ interface Ld2450HasStillTargetProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
-    filters?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
+    filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
     /** @yamlKey on_release */
@@ -2465,7 +2449,7 @@ interface Msa3xxTapPropsWebServerProps {
 }
 interface Msa3xxTapProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -2473,12 +2457,13 @@ interface Msa3xxTapProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -2498,7 +2483,7 @@ interface Msa3xxTapProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -2534,7 +2519,7 @@ interface Msa3xxDoubleTapPropsWebServerProps {
 }
 interface Msa3xxDoubleTapProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -2542,12 +2527,13 @@ interface Msa3xxDoubleTapProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -2567,7 +2553,7 @@ interface Msa3xxDoubleTapProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -2603,7 +2589,7 @@ interface Msa3xxActivePropsWebServerProps {
 }
 interface Msa3xxActiveProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -2611,12 +2597,13 @@ interface Msa3xxActiveProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -2636,7 +2623,7 @@ interface Msa3xxActiveProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -2672,7 +2659,7 @@ interface OpenthermFaultIndicationPropsWebServerProps {
 }
 interface OpenthermFaultIndicationProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -2681,12 +2668,12 @@ interface OpenthermFaultIndicationProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -2706,7 +2693,7 @@ interface OpenthermFaultIndicationProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -2742,7 +2729,7 @@ interface OpenthermChActivePropsWebServerProps {
 }
 interface OpenthermChActiveProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -2750,12 +2737,13 @@ interface OpenthermChActiveProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -2775,7 +2763,7 @@ interface OpenthermChActiveProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -2811,7 +2799,7 @@ interface OpenthermDhwActivePropsWebServerProps {
 }
 interface OpenthermDhwActiveProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -2819,12 +2807,13 @@ interface OpenthermDhwActiveProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -2844,7 +2833,7 @@ interface OpenthermDhwActiveProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -2880,7 +2869,7 @@ interface OpenthermFlameOnPropsWebServerProps {
 }
 interface OpenthermFlameOnProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -2888,12 +2877,13 @@ interface OpenthermFlameOnProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -2913,7 +2903,7 @@ interface OpenthermFlameOnProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -2949,7 +2939,7 @@ interface OpenthermCoolingActivePropsWebServerProps {
 }
 interface OpenthermCoolingActiveProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -2958,12 +2948,12 @@ interface OpenthermCoolingActiveProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -2983,7 +2973,7 @@ interface OpenthermCoolingActiveProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -3019,7 +3009,7 @@ interface OpenthermCh2ActivePropsWebServerProps {
 }
 interface OpenthermCh2ActiveProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -3027,12 +3017,13 @@ interface OpenthermCh2ActiveProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -3052,7 +3043,7 @@ interface OpenthermCh2ActiveProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -3088,7 +3079,7 @@ interface OpenthermDiagnosticIndicationPropsWebServerProps {
 }
 interface OpenthermDiagnosticIndicationProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -3097,12 +3088,12 @@ interface OpenthermDiagnosticIndicationProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -3122,7 +3113,7 @@ interface OpenthermDiagnosticIndicationProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -3158,7 +3149,7 @@ interface OpenthermElectricityProductionPropsWebServerProps {
 }
 interface OpenthermElectricityProductionProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -3167,12 +3158,12 @@ interface OpenthermElectricityProductionProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -3192,7 +3183,7 @@ interface OpenthermElectricityProductionProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -3228,7 +3219,7 @@ interface OpenthermDhwPresentPropsWebServerProps {
 }
 interface OpenthermDhwPresentProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -3237,12 +3228,12 @@ interface OpenthermDhwPresentProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -3298,7 +3289,7 @@ interface OpenthermControlTypeOnOffPropsWebServerProps {
 }
 interface OpenthermControlTypeOnOffProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -3307,12 +3298,12 @@ interface OpenthermControlTypeOnOffProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -3368,7 +3359,7 @@ interface OpenthermCoolingSupportedPropsWebServerProps {
 }
 interface OpenthermCoolingSupportedProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -3377,12 +3368,12 @@ interface OpenthermCoolingSupportedProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -3438,7 +3429,7 @@ interface OpenthermDhwStorageTankPropsWebServerProps {
 }
 interface OpenthermDhwStorageTankProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -3447,12 +3438,12 @@ interface OpenthermDhwStorageTankProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -3508,7 +3499,7 @@ interface OpenthermControllerPumpControlAllowedPropsWebServerProps {
 }
 interface OpenthermControllerPumpControlAllowedProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -3517,12 +3508,12 @@ interface OpenthermControllerPumpControlAllowedProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -3578,7 +3569,7 @@ interface OpenthermCh2PresentPropsWebServerProps {
 }
 interface OpenthermCh2PresentProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -3587,12 +3578,12 @@ interface OpenthermCh2PresentProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -3648,7 +3639,7 @@ interface OpenthermWaterFillingPropsWebServerProps {
 }
 interface OpenthermWaterFillingProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -3657,12 +3648,12 @@ interface OpenthermWaterFillingProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -3718,7 +3709,7 @@ interface OpenthermHeatModePropsWebServerProps {
 }
 interface OpenthermHeatModeProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -3727,12 +3718,12 @@ interface OpenthermHeatModeProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -3788,7 +3779,7 @@ interface OpenthermDhwSetpointTransferEnabledPropsWebServerProps {
 }
 interface OpenthermDhwSetpointTransferEnabledProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -3797,12 +3788,12 @@ interface OpenthermDhwSetpointTransferEnabledProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -3858,7 +3849,7 @@ interface OpenthermMaxChSetpointTransferEnabledPropsWebServerProps {
 }
 interface OpenthermMaxChSetpointTransferEnabledProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -3867,12 +3858,12 @@ interface OpenthermMaxChSetpointTransferEnabledProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -3928,7 +3919,7 @@ interface OpenthermDhwSetpointRwPropsWebServerProps {
 }
 interface OpenthermDhwSetpointRwProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -3937,12 +3928,12 @@ interface OpenthermDhwSetpointRwProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -3998,7 +3989,7 @@ interface OpenthermMaxChSetpointRwPropsWebServerProps {
 }
 interface OpenthermMaxChSetpointRwProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -4007,12 +3998,12 @@ interface OpenthermMaxChSetpointRwProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -4068,7 +4059,7 @@ interface OpenthermServiceRequestPropsWebServerProps {
 }
 interface OpenthermServiceRequestProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -4077,12 +4068,12 @@ interface OpenthermServiceRequestProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -4102,7 +4093,7 @@ interface OpenthermServiceRequestProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -4138,7 +4129,7 @@ interface OpenthermLockoutResetPropsWebServerProps {
 }
 interface OpenthermLockoutResetProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -4147,12 +4138,12 @@ interface OpenthermLockoutResetProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -4172,7 +4163,7 @@ interface OpenthermLockoutResetProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -4208,7 +4199,7 @@ interface OpenthermLowWaterPressurePropsWebServerProps {
 }
 interface OpenthermLowWaterPressureProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -4217,12 +4208,12 @@ interface OpenthermLowWaterPressureProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -4242,7 +4233,7 @@ interface OpenthermLowWaterPressureProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -4278,7 +4269,7 @@ interface OpenthermFlameFaultPropsWebServerProps {
 }
 interface OpenthermFlameFaultProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -4287,12 +4278,12 @@ interface OpenthermFlameFaultProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -4312,7 +4303,7 @@ interface OpenthermFlameFaultProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -4348,7 +4339,7 @@ interface OpenthermAirPressureFaultPropsWebServerProps {
 }
 interface OpenthermAirPressureFaultProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -4357,12 +4348,12 @@ interface OpenthermAirPressureFaultProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -4382,7 +4373,7 @@ interface OpenthermAirPressureFaultProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -4418,7 +4409,7 @@ interface OpenthermWaterOverTempPropsWebServerProps {
 }
 interface OpenthermWaterOverTempProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -4427,12 +4418,12 @@ interface OpenthermWaterOverTempProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -4452,7 +4443,7 @@ interface OpenthermWaterOverTempProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -4488,7 +4479,7 @@ interface PipsolarAddSbuPriorityVersionPropsWebServerProps {
 }
 interface PipsolarAddSbuPriorityVersionProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -4497,12 +4488,12 @@ interface PipsolarAddSbuPriorityVersionProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -4558,7 +4549,7 @@ interface PipsolarConfigurationStatusPropsWebServerProps {
 }
 interface PipsolarConfigurationStatusProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -4567,12 +4558,12 @@ interface PipsolarConfigurationStatusProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -4628,7 +4619,7 @@ interface PipsolarSccFirmwareVersionPropsWebServerProps {
 }
 interface PipsolarSccFirmwareVersionProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -4637,12 +4628,12 @@ interface PipsolarSccFirmwareVersionProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -4698,7 +4689,7 @@ interface PipsolarLoadStatusPropsWebServerProps {
 }
 interface PipsolarLoadStatusProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -4707,12 +4698,12 @@ interface PipsolarLoadStatusProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -4768,7 +4759,7 @@ interface PipsolarBatteryVoltageToSteadyWhileChargingPropsWebServerProps {
 }
 interface PipsolarBatteryVoltageToSteadyWhileChargingProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -4777,12 +4768,12 @@ interface PipsolarBatteryVoltageToSteadyWhileChargingProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -4838,7 +4829,7 @@ interface PipsolarChargingStatusPropsWebServerProps {
 }
 interface PipsolarChargingStatusProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -4847,12 +4838,12 @@ interface PipsolarChargingStatusProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -4908,7 +4899,7 @@ interface PipsolarSccChargingStatusPropsWebServerProps {
 }
 interface PipsolarSccChargingStatusProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -4917,12 +4908,12 @@ interface PipsolarSccChargingStatusProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -4978,7 +4969,7 @@ interface PipsolarAcChargingStatusPropsWebServerProps {
 }
 interface PipsolarAcChargingStatusProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -4987,12 +4978,12 @@ interface PipsolarAcChargingStatusProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -5048,7 +5039,7 @@ interface PipsolarChargingToFloatingModePropsWebServerProps {
 }
 interface PipsolarChargingToFloatingModeProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -5057,12 +5048,12 @@ interface PipsolarChargingToFloatingModeProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -5118,7 +5109,7 @@ interface PipsolarSwitchOnPropsWebServerProps {
 }
 interface PipsolarSwitchOnProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -5127,12 +5118,12 @@ interface PipsolarSwitchOnProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -5188,7 +5179,7 @@ interface PipsolarDustproofInstalledPropsWebServerProps {
 }
 interface PipsolarDustproofInstalledProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -5197,12 +5188,12 @@ interface PipsolarDustproofInstalledProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -5258,7 +5249,7 @@ interface PipsolarSilenceBuzzerOpenBuzzerPropsWebServerProps {
 }
 interface PipsolarSilenceBuzzerOpenBuzzerProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -5267,12 +5258,12 @@ interface PipsolarSilenceBuzzerOpenBuzzerProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -5328,7 +5319,7 @@ interface PipsolarOverloadBypassFunctionPropsWebServerProps {
 }
 interface PipsolarOverloadBypassFunctionProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -5337,12 +5328,12 @@ interface PipsolarOverloadBypassFunctionProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -5398,7 +5389,7 @@ interface PipsolarLcdEscapeToDefaultPropsWebServerProps {
 }
 interface PipsolarLcdEscapeToDefaultProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -5407,12 +5398,12 @@ interface PipsolarLcdEscapeToDefaultProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -5468,7 +5459,7 @@ interface PipsolarOverloadRestartFunctionPropsWebServerProps {
 }
 interface PipsolarOverloadRestartFunctionProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -5477,12 +5468,12 @@ interface PipsolarOverloadRestartFunctionProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -5538,7 +5529,7 @@ interface PipsolarOverTemperatureRestartFunctionPropsWebServerProps {
 }
 interface PipsolarOverTemperatureRestartFunctionProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -5547,12 +5538,12 @@ interface PipsolarOverTemperatureRestartFunctionProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -5608,7 +5599,7 @@ interface PipsolarBacklightOnPropsWebServerProps {
 }
 interface PipsolarBacklightOnProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -5617,12 +5608,12 @@ interface PipsolarBacklightOnProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -5678,7 +5669,7 @@ interface PipsolarAlarmOnWhenPrimarySourceInterruptPropsWebServerProps {
 }
 interface PipsolarAlarmOnWhenPrimarySourceInterruptProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -5687,12 +5678,12 @@ interface PipsolarAlarmOnWhenPrimarySourceInterruptProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -5748,7 +5739,7 @@ interface PipsolarFaultCodeRecordPropsWebServerProps {
 }
 interface PipsolarFaultCodeRecordProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -5757,12 +5748,12 @@ interface PipsolarFaultCodeRecordProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -5818,7 +5809,7 @@ interface PipsolarPowerSavingPropsWebServerProps {
 }
 interface PipsolarPowerSavingProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -5827,12 +5818,12 @@ interface PipsolarPowerSavingProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -5888,7 +5879,7 @@ interface PipsolarWarningsPresentPropsWebServerProps {
 }
 interface PipsolarWarningsPresentProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -5897,12 +5888,12 @@ interface PipsolarWarningsPresentProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -5958,7 +5949,7 @@ interface PipsolarFaultsPresentPropsWebServerProps {
 }
 interface PipsolarFaultsPresentProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -5967,12 +5958,12 @@ interface PipsolarFaultsPresentProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -6028,7 +6019,7 @@ interface PipsolarWarningPowerLossPropsWebServerProps {
 }
 interface PipsolarWarningPowerLossProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -6037,12 +6028,12 @@ interface PipsolarWarningPowerLossProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -6098,7 +6089,7 @@ interface PipsolarFaultInverterFaultPropsWebServerProps {
 }
 interface PipsolarFaultInverterFaultProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -6107,12 +6098,12 @@ interface PipsolarFaultInverterFaultProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -6168,7 +6159,7 @@ interface PipsolarFaultBusOverPropsWebServerProps {
 }
 interface PipsolarFaultBusOverProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -6177,12 +6168,12 @@ interface PipsolarFaultBusOverProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -6238,7 +6229,7 @@ interface PipsolarFaultBusUnderPropsWebServerProps {
 }
 interface PipsolarFaultBusUnderProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -6247,12 +6238,12 @@ interface PipsolarFaultBusUnderProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -6308,7 +6299,7 @@ interface PipsolarFaultBusSoftFailPropsWebServerProps {
 }
 interface PipsolarFaultBusSoftFailProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -6317,12 +6308,12 @@ interface PipsolarFaultBusSoftFailProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -6378,7 +6369,7 @@ interface PipsolarWarningLineFailPropsWebServerProps {
 }
 interface PipsolarWarningLineFailProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -6387,12 +6378,12 @@ interface PipsolarWarningLineFailProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -6448,7 +6439,7 @@ interface PipsolarFaultOpvshortPropsWebServerProps {
 }
 interface PipsolarFaultOpvshortProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -6457,12 +6448,12 @@ interface PipsolarFaultOpvshortProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -6518,7 +6509,7 @@ interface PipsolarFaultInverterVoltageTooLowPropsWebServerProps {
 }
 interface PipsolarFaultInverterVoltageTooLowProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -6527,12 +6518,12 @@ interface PipsolarFaultInverterVoltageTooLowProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -6588,7 +6579,7 @@ interface PipsolarFaultInverterVoltageTooHighPropsWebServerProps {
 }
 interface PipsolarFaultInverterVoltageTooHighProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -6597,12 +6588,12 @@ interface PipsolarFaultInverterVoltageTooHighProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -6658,7 +6649,7 @@ interface PipsolarWarningOverTemperaturePropsWebServerProps {
 }
 interface PipsolarWarningOverTemperatureProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -6667,12 +6658,12 @@ interface PipsolarWarningOverTemperatureProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -6728,7 +6719,7 @@ interface PipsolarWarningFanLockPropsWebServerProps {
 }
 interface PipsolarWarningFanLockProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -6737,12 +6728,12 @@ interface PipsolarWarningFanLockProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -6798,7 +6789,7 @@ interface PipsolarWarningBatteryVoltageHighPropsWebServerProps {
 }
 interface PipsolarWarningBatteryVoltageHighProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -6807,12 +6798,12 @@ interface PipsolarWarningBatteryVoltageHighProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -6868,7 +6859,7 @@ interface PipsolarWarningBatteryLowAlarmPropsWebServerProps {
 }
 interface PipsolarWarningBatteryLowAlarmProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -6877,12 +6868,12 @@ interface PipsolarWarningBatteryLowAlarmProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -6938,7 +6929,7 @@ interface PipsolarWarningBatteryUnderShutdownPropsWebServerProps {
 }
 interface PipsolarWarningBatteryUnderShutdownProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -6947,12 +6938,12 @@ interface PipsolarWarningBatteryUnderShutdownProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -7008,7 +6999,7 @@ interface PipsolarWarningBatteryDeratingPropsWebServerProps {
 }
 interface PipsolarWarningBatteryDeratingProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -7017,12 +7008,12 @@ interface PipsolarWarningBatteryDeratingProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -7078,7 +7069,7 @@ interface PipsolarWarningOverLoadPropsWebServerProps {
 }
 interface PipsolarWarningOverLoadProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -7087,12 +7078,12 @@ interface PipsolarWarningOverLoadProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -7148,7 +7139,7 @@ interface PipsolarWarningEepromFailedPropsWebServerProps {
 }
 interface PipsolarWarningEepromFailedProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -7157,12 +7148,12 @@ interface PipsolarWarningEepromFailedProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -7218,7 +7209,7 @@ interface PipsolarFaultInverterOverCurrentPropsWebServerProps {
 }
 interface PipsolarFaultInverterOverCurrentProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -7227,12 +7218,12 @@ interface PipsolarFaultInverterOverCurrentProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -7288,7 +7279,7 @@ interface PipsolarFaultInverterSoftFailedPropsWebServerProps {
 }
 interface PipsolarFaultInverterSoftFailedProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -7297,12 +7288,12 @@ interface PipsolarFaultInverterSoftFailedProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -7358,7 +7349,7 @@ interface PipsolarFaultSelfTestFailedPropsWebServerProps {
 }
 interface PipsolarFaultSelfTestFailedProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -7367,12 +7358,12 @@ interface PipsolarFaultSelfTestFailedProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -7428,7 +7419,7 @@ interface PipsolarFaultOpDcVoltageOverPropsWebServerProps {
 }
 interface PipsolarFaultOpDcVoltageOverProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -7437,12 +7428,12 @@ interface PipsolarFaultOpDcVoltageOverProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -7498,7 +7489,7 @@ interface PipsolarFaultBatteryOpenPropsWebServerProps {
 }
 interface PipsolarFaultBatteryOpenProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -7507,12 +7498,12 @@ interface PipsolarFaultBatteryOpenProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -7568,7 +7559,7 @@ interface PipsolarFaultCurrentSensorFailedPropsWebServerProps {
 }
 interface PipsolarFaultCurrentSensorFailedProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -7577,12 +7568,12 @@ interface PipsolarFaultCurrentSensorFailedProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -7638,7 +7629,7 @@ interface PipsolarFaultBatteryShortPropsWebServerProps {
 }
 interface PipsolarFaultBatteryShortProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -7647,12 +7638,12 @@ interface PipsolarFaultBatteryShortProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -7708,7 +7699,7 @@ interface PipsolarWarningPowerLimitPropsWebServerProps {
 }
 interface PipsolarWarningPowerLimitProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -7717,12 +7708,12 @@ interface PipsolarWarningPowerLimitProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -7778,7 +7769,7 @@ interface PipsolarWarningPvVoltageHighPropsWebServerProps {
 }
 interface PipsolarWarningPvVoltageHighProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -7787,12 +7778,12 @@ interface PipsolarWarningPvVoltageHighProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -7848,7 +7839,7 @@ interface PipsolarFaultMpptOverloadPropsWebServerProps {
 }
 interface PipsolarFaultMpptOverloadProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -7857,12 +7848,12 @@ interface PipsolarFaultMpptOverloadProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -7918,7 +7909,7 @@ interface PipsolarWarningMpptOverloadPropsWebServerProps {
 }
 interface PipsolarWarningMpptOverloadProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -7927,12 +7918,12 @@ interface PipsolarWarningMpptOverloadProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -7988,7 +7979,7 @@ interface PipsolarWarningBatteryTooLowToChargePropsWebServerProps {
 }
 interface PipsolarWarningBatteryTooLowToChargeProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -7997,12 +7988,12 @@ interface PipsolarWarningBatteryTooLowToChargeProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -8058,7 +8049,7 @@ interface PipsolarFaultDcDcOverCurrentPropsWebServerProps {
 }
 interface PipsolarFaultDcDcOverCurrentProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -8067,12 +8058,12 @@ interface PipsolarFaultDcDcOverCurrentProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -8128,7 +8119,7 @@ interface PipsolarFaultCodePropsWebServerProps {
 }
 interface PipsolarFaultCodeProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -8137,12 +8128,12 @@ interface PipsolarFaultCodeProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -8198,7 +8189,7 @@ interface PipsolarWarningLowPvEnergyPropsWebServerProps {
 }
 interface PipsolarWarningLowPvEnergyProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -8207,12 +8198,12 @@ interface PipsolarWarningLowPvEnergyProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -8268,7 +8259,7 @@ interface PipsolarWarningHighAcInputDuringBusSoftStartPropsWebServerProps {
 }
 interface PipsolarWarningHighAcInputDuringBusSoftStartProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -8277,12 +8268,12 @@ interface PipsolarWarningHighAcInputDuringBusSoftStartProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -8338,7 +8329,7 @@ interface PipsolarWarningBatteryEqualizationPropsWebServerProps {
 }
 interface PipsolarWarningBatteryEqualizationProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -8347,12 +8338,12 @@ interface PipsolarWarningBatteryEqualizationProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -8408,7 +8399,7 @@ interface Rd03dTargetPropsWebServerProps {
 }
 interface Rd03dTargetProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -8417,12 +8408,12 @@ interface Rd03dTargetProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -8442,7 +8433,7 @@ interface Rd03dTargetProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -8478,7 +8469,7 @@ interface Rd03dTarget1PropsWebServerProps {
 }
 interface Rd03dTarget1Props {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -8487,12 +8478,12 @@ interface Rd03dTarget1Props {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -8512,7 +8503,7 @@ interface Rd03dTarget1Props {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -8548,7 +8539,7 @@ interface Rd03dTarget2PropsWebServerProps {
 }
 interface Rd03dTarget2Props {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -8557,12 +8548,12 @@ interface Rd03dTarget2Props {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -8582,7 +8573,7 @@ interface Rd03dTarget2Props {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -8618,7 +8609,7 @@ interface Rd03dTarget3PropsWebServerProps {
 }
 interface Rd03dTarget3Props {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -8627,12 +8618,12 @@ interface Rd03dTarget3Props {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -8652,7 +8643,7 @@ interface Rd03dTarget3Props {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -8673,15 +8664,15 @@ interface Rd03dTarget3Props {
 }
 interface RemoteReceiverBeo4Props {
     /** int: The 8-bit source to trigger on, e.g. 0x00=video, 0x01=audio,..., see dumper output for more info. */
-    source: unknown;
+    source: number;
     /** int: The 8-bit command to listen for, e.g. 0x00=number0, 0x0C=standby,..., see dumper output for more info. */
-    command: unknown;
+    command: number;
     /** @yamlKey command_repeats */
     commandRepeats?: number;
 }
 interface RemoteReceiverByronsxProps {
     /** int: The 8-bit ID code to trigger on, see dumper output for more info. */
-    address: unknown;
+    address: number;
     /** int: The 4-bit command to listen for. If omitted, will match on any command. */
     command?: "1" | "2" | "3" | "5" | "6" | "9" | "13" | "14" | "16";
 }
@@ -8699,27 +8690,27 @@ interface RemoteReceiverDishProps {
 }
 interface RemoteReceiverDooyaProps {
     /** int: The 24-bit ID code to trigger on. */
-    id: unknown;
+    id: number;
     /** int: The 8-bit channel to listen for. */
-    channel: unknown;
+    channel: number;
     /** int: The 4-bit button to listen for. */
-    button: unknown;
+    button: number;
     /** int: The 4-bit check to listen for. Includes an indication that a button is being held down. */
-    check: unknown;
+    check: number;
 }
 interface RemoteReceiverDysonProps {
     /** int: The 16-bit code to trigger on, e.g. 0x1200=power, 0x1215=fan++,0x122a=swing..., see dumper output for more info. */
-    code: unknown;
+    code: number;
     /** int: The 8-bit rolling index [0..3], to be increased with every transmit, see dumper output for more info. */
-    index?: unknown;
+    index?: number;
 }
 interface RemoteReceiverJvcProps {
     /** int: The JVC code to trigger on, see dumper output for more info. */
-    data: unknown;
+    data: number;
 }
 interface RemoteReceiverLgProps {
     /** int: The LG code to trigger on, see dumper output for more info. */
-    data: unknown;
+    data: number;
     /** int: The number of bits of the remote code. Defaults to `28`. */
     nbits?: "28" | "32";
 }
@@ -8728,23 +8719,23 @@ interface RemoteReceiverMagiquestProps {
      * int: The MagiQuest wand ID to trigger on, see dumper output for more info.
      * @yamlKey wand_id
      */
-    wandId: unknown;
+    wandId: number;
     /** int: The magnitude of swishes and swirls of the wand. If omitted, will match on any activation of the wand. */
-    magnitude?: unknown;
+    magnitude?: number;
 }
 interface RemoteReceiverKeeloqProps {
     /** int: The 32-bit ID code to trigger on, see dumper output for more info. */
-    address: unknown;
+    address: number;
     code: unknown;
     /** int: The 8-bit switch/command to listen for. If omitted, will match on any command/button. */
-    command?: unknown;
+    command?: number;
     level?: boolean;
 }
 interface RemoteReceiverNecProps {
     /** int: The address to trigger on, see dumper output for more info. */
-    address: unknown;
+    address: number;
     /** int: The NEC command to listen for. */
-    command: unknown;
+    command: number;
     /** @yamlKey command_repeats */
     commandRepeats?: number;
 }
@@ -8753,9 +8744,9 @@ interface RemoteReceiverPioneerProps {
      * int: The remote control code to trigger on, see dumper output for more details.
      * @yamlKey rc_code_1
      */
-    rcCode1: unknown;
+    rcCode1: number;
     /** @yamlKey rc_code_2 */
-    rcCode2?: unknown;
+    rcCode2?: number;
 }
 interface RemoteReceiverProntoProps {
     /** string: The code to listen for, see [transmitter description](/components/remote_transmitter#remote_transmitter-trans... */
@@ -8769,17 +8760,17 @@ interface RemoteReceiverGoboxProps {
 }
 interface RemoteReceiverRoombaProps {
     /** int: The Roomba code to trigger on, see dumper output for more info. */
-    data: unknown;
+    data: number;
 }
 interface RemoteReceiverSonyProps {
     /** int: The Sony code to trigger on, see dumper output for more info. */
-    data: unknown;
+    data: number;
     /** int: The number of bits of the remote code. Defaults to `12`. */
     nbits?: "12" | "15" | "20";
 }
 interface RemoteReceiverSymphonyProps {
     /** int: The Symphony code to trigger on, see dumper output for more info. */
-    data: unknown;
+    data: number;
     /** int: The number of bits of the remote code. Typical values: `8`, `12`, or `16`. */
     nbits: number;
     /** @yamlKey command_repeats */
@@ -8791,35 +8782,35 @@ interface RemoteReceiverRawProps {
 }
 interface RemoteReceiverDraytonProps {
     /** int: The 16-bit ID code to trigger on, see dumper output for more info. */
-    address: unknown;
+    address: number;
     /** int: The 7-bit switch/channel to listen for. */
-    channel: unknown;
+    channel: number;
     /** int: The 5-bit command to listen for. */
-    command: unknown;
+    command: number;
 }
 interface RemoteReceiverRc5Props {
     /** int: The address to trigger on, see dumper output for more info. */
-    address: unknown;
+    address: number;
     /** int: The RC5 command to listen for. */
-    command: unknown;
+    command: number;
 }
 interface RemoteReceiverRc6Props {
     /** int: The address to trigger on, see dumper output for more info. */
-    address: unknown;
+    address: number;
     /** int: The RC6 command to listen for. */
-    command: unknown;
+    command: number;
 }
 interface RemoteReceiverRcSwitchRawProps {
     /** string: The remote code to listen for, copy this from the dumper output. To ignore a bit in the received data, use `x... */
-    code: unknown;
+    code: string;
     /** The RC Switch protocol to use, see [RC Switch Protocol](/components/remote_transmitter#remote_transmitter-rc_switch-p... */
     protocol?: Record<string, unknown>;
 }
 interface RemoteReceiverRcSwitchTypeAProps {
     /** string: The group, binary string. */
-    group: unknown;
+    group: string;
     /** string: The device in the group, binary string. */
-    device: unknown;
+    device: string;
     /** boolean: The on/off state to trigger on. */
     state: boolean;
     /** The RC Switch protocol to use, see [RC Switch Protocol](/components/remote_transmitter#remote_transmitter-rc_switch-p... */
@@ -8847,18 +8838,10 @@ interface RemoteReceiverRcSwitchTypeCProps {
     /** The RC Switch protocol to use, see [RC Switch Protocol](/components/remote_transmitter#remote_transmitter-rc_switch-p... */
     protocol?: Record<string, unknown>;
 }
-interface RemoteReceiverRcSwitchTypeDPropsRepeatPropsWaitTimeProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
 interface RemoteReceiverRcSwitchTypeDPropsRepeatProps {
     times: number;
     /** @yamlKey wait_time */
-    waitTime?: RemoteReceiverRcSwitchTypeDPropsRepeatPropsWaitTimeProps;
+    waitTime?: TimePeriod;
 }
 interface RemoteReceiverRcSwitchTypeDProps {
     /** int: The group. Range is 1 to 4. */
@@ -8873,45 +8856,45 @@ interface RemoteReceiverRcSwitchTypeDProps {
 }
 interface RemoteReceiverSamsungProps {
     /** int: The data to trigger on, see dumper output for more info. */
-    data: unknown;
+    data: number;
     /** int: The number of bits of the remote code. Defaults to `32`. */
     nbits?: number;
 }
 interface RemoteReceiverSamsung36Props {
     /** int: The address to trigger on, see dumper output for more info. */
-    address: unknown;
+    address: number;
     /** int: The command. */
-    command: unknown;
+    command: number;
 }
 interface RemoteReceiverToshibaAcProps {
     /**
      * int: The remote control code to trigger on, see dumper output for more details.
      * @yamlKey rc_code_1
      */
-    rcCode1: unknown;
+    rcCode1: number;
     /**
      * int: The second part of the remote control code to trigger on, see dumper output for more details.
      * @yamlKey rc_code_2
      */
-    rcCode2?: unknown;
+    rcCode2?: number;
 }
 interface RemoteReceiverPanasonicProps {
     /** int: The address to trigger on, see dumper output for more info. */
-    address: unknown;
+    address: number;
     /** int: The command. */
-    command: unknown;
+    command: number;
 }
 interface RemoteReceiverNexaProps {
     /** int: The Nexa device code to trigger on, see dumper output for more info. */
-    device: unknown;
+    device: number;
     /** int: The Nexa group code to trigger on, see dumper output for more info. */
-    group: unknown;
+    group: number;
     /** int: The Nexa state code to trigger on, see dumper output for more info. */
-    state: unknown;
+    state: number;
     /** int: The Nexa channel code to trigger on, see dumper output for more info. */
-    channel: unknown;
+    channel: number;
     /** int: The Nexa level code to trigger on, see dumper output for more info. */
-    level: unknown;
+    level: number;
 }
 interface RemoteReceiverMideaProps {
     /** 5-bytes list: The code to listen for, see [transmitter description](/components/remote_transmitter#remote_transmitter... */
@@ -8919,7 +8902,7 @@ interface RemoteReceiverMideaProps {
 }
 interface RemoteReceiverAehaProps {
     /** int: The address to trigger on, see dumper output for more info. */
-    address: unknown;
+    address: number;
     /** 3-35 bytes list: The code to listen for, see [transmitter description](/components/remote_transmitter#remote_transmit... */
     data: unknown;
 }
@@ -8932,12 +8915,12 @@ interface RemoteReceiverAbbwelcomeProps {
      * int: The source address to trigger on.
      * @yamlKey source_address
      */
-    sourceAddress: unknown;
+    sourceAddress: number;
     /**
      * int: The destination address to trigger on.
      * @yamlKey destination_address
      */
-    destinationAddress: unknown;
+    destinationAddress: number;
     /** boolean: `true` if the message was re-transmitted. Defaults to `false`. */
     retransmission?: boolean;
     /**
@@ -8949,12 +8932,12 @@ interface RemoteReceiverAbbwelcomeProps {
      * int: The message type to trigger on.
      * @yamlKey message_type
      */
-    messageType: unknown;
+    messageType: number;
     /**
      * int: The random message ID to trigger on, see dumper output for more info. Defaults to any ID.
      * @yamlKey message_id
      */
-    messageId?: unknown;
+    messageId?: number;
     /** 0-7 bytes list: The code to listen for. Usually you only need to copy this directly from the dumper output. Defaults ... */
     data?: unknown;
 }
@@ -8967,14 +8950,14 @@ interface RemoteReceiverTotoProps {
      * int: The first 4-bit Toto code (usually a command parameter) to trigger on. Range is 0 to 0xF.
      * @yamlKey rc_code_1
      */
-    rcCode1?: unknown;
+    rcCode1?: number;
     /**
      * int: The second 4-bit Toto code (usually a command parameter) to trigger on. Range is 0 to 0xF.
      * @yamlKey rc_code_2
      */
-    rcCode2?: unknown;
+    rcCode2?: number;
     /** int: The 1-byte Toto command code to trigger on. Range is 0 to 0xFF. */
-    command: unknown;
+    command: number;
 }
 interface SeeedMr24hpc1HasTargetPropsAvailabilityProps {
     topic: unknown;
@@ -8993,7 +8976,7 @@ interface SeeedMr24hpc1HasTargetPropsWebServerProps {
 }
 interface SeeedMr24hpc1HasTargetProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -9001,12 +8984,13 @@ interface SeeedMr24hpc1HasTargetProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -9026,7 +9010,7 @@ interface SeeedMr24hpc1HasTargetProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -9062,7 +9046,7 @@ interface SeeedMr60bha2HasTargetPropsWebServerProps {
 }
 interface SeeedMr60bha2HasTargetProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -9070,12 +9054,13 @@ interface SeeedMr60bha2HasTargetProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -9095,7 +9080,7 @@ interface SeeedMr60bha2HasTargetProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -9131,7 +9116,7 @@ interface SeeedMr60fda2PeopleExistPropsWebServerProps {
 }
 interface SeeedMr60fda2PeopleExistProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -9139,12 +9124,13 @@ interface SeeedMr60fda2PeopleExistProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -9164,7 +9150,7 @@ interface SeeedMr60fda2PeopleExistProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -9200,7 +9186,7 @@ interface SeeedMr60fda2FallDetectedPropsWebServerProps {
 }
 interface SeeedMr60fda2FallDetectedProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -9208,12 +9194,13 @@ interface SeeedMr60fda2FallDetectedProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -9233,7 +9220,7 @@ interface SeeedMr60fda2FallDetectedProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -9269,7 +9256,7 @@ interface Sim800lRegisteredPropsWebServerProps {
 }
 interface Sim800lRegisteredProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -9278,9 +9265,12 @@ interface Sim800lRegisteredProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -9300,7 +9290,7 @@ interface Sim800lRegisteredProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -9336,7 +9326,7 @@ interface Sy6970VbusConnectedPropsWebServerProps {
 }
 interface Sy6970VbusConnectedProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -9345,12 +9335,12 @@ interface Sy6970VbusConnectedProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -9370,7 +9360,7 @@ interface Sy6970VbusConnectedProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -9406,7 +9396,7 @@ interface Sy6970ChargingPropsWebServerProps {
 }
 interface Sy6970ChargingProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -9415,12 +9405,12 @@ interface Sy6970ChargingProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -9440,7 +9430,7 @@ interface Sy6970ChargingProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -9476,7 +9466,7 @@ interface Sy6970ChargeDonePropsWebServerProps {
 }
 interface Sy6970ChargeDoneProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -9485,12 +9475,12 @@ interface Sy6970ChargeDoneProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -9510,7 +9500,7 @@ interface Sy6970ChargeDoneProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -9546,7 +9536,7 @@ interface VbusDeltasolBsPlusRelay1PropsWebServerProps {
 }
 interface VbusDeltasolBsPlusRelay1Props {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -9555,12 +9545,12 @@ interface VbusDeltasolBsPlusRelay1Props {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -9616,7 +9606,7 @@ interface VbusDeltasolBsPlusRelay2PropsWebServerProps {
 }
 interface VbusDeltasolBsPlusRelay2Props {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -9625,12 +9615,12 @@ interface VbusDeltasolBsPlusRelay2Props {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -9686,7 +9676,7 @@ interface VbusDeltasolBsPlusSensor1ErrorPropsWebServerProps {
 }
 interface VbusDeltasolBsPlusSensor1ErrorProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -9695,9 +9685,12 @@ interface VbusDeltasolBsPlusSensor1ErrorProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -9717,7 +9710,7 @@ interface VbusDeltasolBsPlusSensor1ErrorProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -9753,7 +9746,7 @@ interface VbusDeltasolBsPlusSensor2ErrorPropsWebServerProps {
 }
 interface VbusDeltasolBsPlusSensor2ErrorProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -9762,9 +9755,12 @@ interface VbusDeltasolBsPlusSensor2ErrorProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -9784,7 +9780,7 @@ interface VbusDeltasolBsPlusSensor2ErrorProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -9820,7 +9816,7 @@ interface VbusDeltasolBsPlusSensor3ErrorPropsWebServerProps {
 }
 interface VbusDeltasolBsPlusSensor3ErrorProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -9829,9 +9825,12 @@ interface VbusDeltasolBsPlusSensor3ErrorProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -9851,7 +9850,7 @@ interface VbusDeltasolBsPlusSensor3ErrorProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -9887,7 +9886,7 @@ interface VbusDeltasolBsPlusSensor4ErrorPropsWebServerProps {
 }
 interface VbusDeltasolBsPlusSensor4ErrorProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -9896,9 +9895,12 @@ interface VbusDeltasolBsPlusSensor4ErrorProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -9918,7 +9920,7 @@ interface VbusDeltasolBsPlusSensor4ErrorProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -9954,7 +9956,7 @@ interface VbusDeltasolBsPlusCollectorMaxPropsWebServerProps {
 }
 interface VbusDeltasolBsPlusCollectorMaxProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -9963,9 +9965,12 @@ interface VbusDeltasolBsPlusCollectorMaxProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -10021,7 +10026,7 @@ interface VbusDeltasolBsPlusCollectorMinPropsWebServerProps {
 }
 interface VbusDeltasolBsPlusCollectorMinProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -10030,9 +10035,12 @@ interface VbusDeltasolBsPlusCollectorMinProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -10088,7 +10096,7 @@ interface VbusDeltasolBsPlusCollectorFrostPropsWebServerProps {
 }
 interface VbusDeltasolBsPlusCollectorFrostProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -10097,9 +10105,12 @@ interface VbusDeltasolBsPlusCollectorFrostProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -10155,7 +10166,7 @@ interface VbusDeltasolBsPlusTubeCollectorPropsWebServerProps {
 }
 interface VbusDeltasolBsPlusTubeCollectorProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -10164,9 +10175,12 @@ interface VbusDeltasolBsPlusTubeCollectorProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -10222,7 +10236,7 @@ interface VbusDeltasolBsPlusRecoolingPropsWebServerProps {
 }
 interface VbusDeltasolBsPlusRecoolingProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -10231,9 +10245,12 @@ interface VbusDeltasolBsPlusRecoolingProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -10289,7 +10306,7 @@ interface VbusDeltasolBsPlusHqmPropsWebServerProps {
 }
 interface VbusDeltasolBsPlusHqmProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -10298,9 +10315,12 @@ interface VbusDeltasolBsPlusHqmProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -10356,7 +10376,7 @@ interface VbusDeltasolBs2009Sensor1ErrorPropsWebServerProps {
 }
 interface VbusDeltasolBs2009Sensor1ErrorProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -10365,9 +10385,12 @@ interface VbusDeltasolBs2009Sensor1ErrorProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -10387,7 +10410,7 @@ interface VbusDeltasolBs2009Sensor1ErrorProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -10423,7 +10446,7 @@ interface VbusDeltasolBs2009Sensor2ErrorPropsWebServerProps {
 }
 interface VbusDeltasolBs2009Sensor2ErrorProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -10432,9 +10455,12 @@ interface VbusDeltasolBs2009Sensor2ErrorProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -10454,7 +10480,7 @@ interface VbusDeltasolBs2009Sensor2ErrorProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -10490,7 +10516,7 @@ interface VbusDeltasolBs2009Sensor3ErrorPropsWebServerProps {
 }
 interface VbusDeltasolBs2009Sensor3ErrorProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -10499,9 +10525,12 @@ interface VbusDeltasolBs2009Sensor3ErrorProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -10521,7 +10550,7 @@ interface VbusDeltasolBs2009Sensor3ErrorProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -10557,7 +10586,7 @@ interface VbusDeltasolBs2009Sensor4ErrorPropsWebServerProps {
 }
 interface VbusDeltasolBs2009Sensor4ErrorProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -10566,9 +10595,12 @@ interface VbusDeltasolBs2009Sensor4ErrorProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -10588,7 +10620,7 @@ interface VbusDeltasolBs2009Sensor4ErrorProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -10624,7 +10656,7 @@ interface VbusDeltasolBs2009FrostProtectionActivePropsWebServerProps {
 }
 interface VbusDeltasolBs2009FrostProtectionActiveProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -10633,9 +10665,12 @@ interface VbusDeltasolBs2009FrostProtectionActiveProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -10691,7 +10726,7 @@ interface VbusDeltasolBs2Sensor1ErrorPropsWebServerProps {
 }
 interface VbusDeltasolBs2Sensor1ErrorProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -10700,9 +10735,12 @@ interface VbusDeltasolBs2Sensor1ErrorProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -10722,7 +10760,7 @@ interface VbusDeltasolBs2Sensor1ErrorProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -10758,7 +10796,7 @@ interface VbusDeltasolBs2Sensor2ErrorPropsWebServerProps {
 }
 interface VbusDeltasolBs2Sensor2ErrorProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -10767,9 +10805,12 @@ interface VbusDeltasolBs2Sensor2ErrorProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -10789,7 +10830,7 @@ interface VbusDeltasolBs2Sensor2ErrorProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -10825,7 +10866,7 @@ interface VbusDeltasolBs2Sensor3ErrorPropsWebServerProps {
 }
 interface VbusDeltasolBs2Sensor3ErrorProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -10834,9 +10875,12 @@ interface VbusDeltasolBs2Sensor3ErrorProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -10856,7 +10900,7 @@ interface VbusDeltasolBs2Sensor3ErrorProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -10892,7 +10936,7 @@ interface VbusDeltasolBs2Sensor4ErrorPropsWebServerProps {
 }
 interface VbusDeltasolBs2Sensor4ErrorProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -10901,9 +10945,12 @@ interface VbusDeltasolBs2Sensor4ErrorProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -10923,7 +10970,7 @@ interface VbusDeltasolBs2Sensor4ErrorProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -10959,7 +11006,7 @@ interface VbusDeltasolCSensor1ErrorPropsWebServerProps {
 }
 interface VbusDeltasolCSensor1ErrorProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -10968,9 +11015,12 @@ interface VbusDeltasolCSensor1ErrorProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -10990,7 +11040,7 @@ interface VbusDeltasolCSensor1ErrorProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -11026,7 +11076,7 @@ interface VbusDeltasolCSensor2ErrorPropsWebServerProps {
 }
 interface VbusDeltasolCSensor2ErrorProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -11035,9 +11085,12 @@ interface VbusDeltasolCSensor2ErrorProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -11057,7 +11110,7 @@ interface VbusDeltasolCSensor2ErrorProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -11093,7 +11146,7 @@ interface VbusDeltasolCSensor3ErrorPropsWebServerProps {
 }
 interface VbusDeltasolCSensor3ErrorProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -11102,9 +11155,12 @@ interface VbusDeltasolCSensor3ErrorProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -11124,7 +11180,7 @@ interface VbusDeltasolCSensor3ErrorProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -11160,7 +11216,7 @@ interface VbusDeltasolCSensor4ErrorPropsWebServerProps {
 }
 interface VbusDeltasolCSensor4ErrorProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -11169,9 +11225,12 @@ interface VbusDeltasolCSensor4ErrorProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -11191,7 +11250,7 @@ interface VbusDeltasolCSensor4ErrorProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -11227,7 +11286,7 @@ interface VbusDeltasolCs2Sensor1ErrorPropsWebServerProps {
 }
 interface VbusDeltasolCs2Sensor1ErrorProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -11236,9 +11295,12 @@ interface VbusDeltasolCs2Sensor1ErrorProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -11258,7 +11320,7 @@ interface VbusDeltasolCs2Sensor1ErrorProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -11294,7 +11356,7 @@ interface VbusDeltasolCs2Sensor2ErrorPropsWebServerProps {
 }
 interface VbusDeltasolCs2Sensor2ErrorProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -11303,9 +11365,12 @@ interface VbusDeltasolCs2Sensor2ErrorProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -11325,7 +11390,7 @@ interface VbusDeltasolCs2Sensor2ErrorProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -11361,7 +11426,7 @@ interface VbusDeltasolCs2Sensor3ErrorPropsWebServerProps {
 }
 interface VbusDeltasolCs2Sensor3ErrorProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -11370,9 +11435,12 @@ interface VbusDeltasolCs2Sensor3ErrorProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -11392,7 +11460,7 @@ interface VbusDeltasolCs2Sensor3ErrorProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -11428,7 +11496,7 @@ interface VbusDeltasolCs2Sensor4ErrorPropsWebServerProps {
 }
 interface VbusDeltasolCs2Sensor4ErrorProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -11437,9 +11505,12 @@ interface VbusDeltasolCs2Sensor4ErrorProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -11459,7 +11530,7 @@ interface VbusDeltasolCs2Sensor4ErrorProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -11495,7 +11566,7 @@ interface VbusDeltasolCsPlusSensor1ErrorPropsWebServerProps {
 }
 interface VbusDeltasolCsPlusSensor1ErrorProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -11504,9 +11575,12 @@ interface VbusDeltasolCsPlusSensor1ErrorProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -11526,7 +11600,7 @@ interface VbusDeltasolCsPlusSensor1ErrorProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -11562,7 +11636,7 @@ interface VbusDeltasolCsPlusSensor2ErrorPropsWebServerProps {
 }
 interface VbusDeltasolCsPlusSensor2ErrorProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -11571,9 +11645,12 @@ interface VbusDeltasolCsPlusSensor2ErrorProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -11593,7 +11670,7 @@ interface VbusDeltasolCsPlusSensor2ErrorProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -11629,7 +11706,7 @@ interface VbusDeltasolCsPlusSensor3ErrorPropsWebServerProps {
 }
 interface VbusDeltasolCsPlusSensor3ErrorProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -11638,9 +11715,12 @@ interface VbusDeltasolCsPlusSensor3ErrorProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -11660,7 +11740,7 @@ interface VbusDeltasolCsPlusSensor3ErrorProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -11696,7 +11776,7 @@ interface VbusDeltasolCsPlusSensor4ErrorPropsWebServerProps {
 }
 interface VbusDeltasolCsPlusSensor4ErrorProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -11705,9 +11785,12 @@ interface VbusDeltasolCsPlusSensor4ErrorProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -11727,7 +11810,7 @@ interface VbusDeltasolCsPlusSensor4ErrorProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -11763,7 +11846,7 @@ interface VbusCustomBinarySensorsPropsWebServerProps {
 }
 interface VbusCustomBinarySensorsProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -11772,12 +11855,12 @@ interface VbusCustomBinarySensorsProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -11834,7 +11917,7 @@ interface WireguardStatusPropsWebServerProps {
 }
 interface WireguardStatusProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -11843,12 +11926,12 @@ interface WireguardStatusProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -11868,7 +11951,7 @@ interface WireguardStatusProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -11904,7 +11987,7 @@ interface WireguardEnabledPropsWebServerProps {
 }
 interface WireguardEnabledProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -11913,9 +11996,12 @@ interface WireguardEnabledProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -11969,17 +12055,9 @@ interface XiaomiRtcgq02lmMotionPropsWebServerProps {
     /** @yamlKey sorting_group_id */
     sortingGroupId?: number;
 }
-interface XiaomiRtcgq02lmMotionPropsTimeoutProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
 interface XiaomiRtcgq02lmMotionProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -11988,12 +12066,12 @@ interface XiaomiRtcgq02lmMotionProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -12013,7 +12091,7 @@ interface XiaomiRtcgq02lmMotionProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -12031,7 +12109,7 @@ interface XiaomiRtcgq02lmMotionProps {
     }>;
     /** @yamlKey on_state_change */
     onStateChange?: TriggerHandler;
-    timeout?: XiaomiRtcgq02lmMotionPropsTimeoutProps;
+    timeout?: TimePeriod;
 }
 interface XiaomiRtcgq02lmLightPropsAvailabilityProps {
     topic: unknown;
@@ -12050,7 +12128,7 @@ interface XiaomiRtcgq02lmLightPropsWebServerProps {
 }
 interface XiaomiRtcgq02lmLightProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -12059,12 +12137,12 @@ interface XiaomiRtcgq02lmLightProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -12084,7 +12162,7 @@ interface XiaomiRtcgq02lmLightProps {
     /** @yamlKey trigger_on_initial_state */
     triggerOnInitialState?: boolean;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "battery" | "battery_charging" | "carbon_monoxide" | "cold" | "connectivity" | "door" | "" | "garage_door" | "gas" | "heat" | "light" | "lock" | "moisture" | "motion" | "moving" | "occupancy" | "opening" | "plug" | "power" | "presence" | "problem" | "running" | "safety" | "smoke" | "sound" | "tamper" | "update" | "vibration" | "window";
     filters?: Array<unknown>;
     /** @yamlKey on_press */
     onPress?: TriggerHandler;
@@ -12118,17 +12196,9 @@ interface XiaomiRtcgq02lmButtonPropsWebServerProps {
     /** @yamlKey sorting_group_id */
     sortingGroupId?: number;
 }
-interface XiaomiRtcgq02lmButtonPropsTimeoutProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
 interface XiaomiRtcgq02lmButtonProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -12137,12 +12207,12 @@ interface XiaomiRtcgq02lmButtonProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -12180,7 +12250,7 @@ interface XiaomiRtcgq02lmButtonProps {
     }>;
     /** @yamlKey on_state_change */
     onStateChange?: TriggerHandler;
-    timeout?: XiaomiRtcgq02lmButtonPropsTimeoutProps;
+    timeout?: TimePeriod;
 }
 interface BinarySensorBaseProps extends _CoreEntityBase, _CoreMqttComponent {
     /** @yamlKey web_server */
@@ -12218,7 +12288,7 @@ interface AnalogThresholdProps extends _CoreComponent {
      */
     sensorId: RefProp<sensor_Sensor>;
     /** float: Configures the reference for comparison. Accepts either a shorthand */
-    threshold: AnalogThresholdThresholdProps;
+    threshold: number;
 }
 interface As3935Props {
     /** @yamlKey as3935_id */
@@ -12229,14 +12299,14 @@ interface BlePresenceProps extends _CoreComponent {
      * MAC Address: The MAC address to track for this
      * @yamlKey mac_address
      */
-    macAddress?: unknown;
+    macAddress?: MACAddress;
     /** 16 byte hex string: The Identity Resolving Key (IRK) to track for this */
     irk?: unknown;
     /**
      * string: 16 bit, 32 bit, or 128 bit BLE Service UUID
      * @yamlKey service_uuid
      */
-    serviceUuid?: unknown;
+    serviceUuid?: string;
     /**
      * int: The iBeacon major identifier of the beacon that needs
      * @yamlKey ibeacon_major
@@ -12251,9 +12321,9 @@ interface BlePresenceProps extends _CoreComponent {
      * string: The [universally unique identifier](https://en.wikipedia.org/wiki/Universally_unique_identifier)
      * @yamlKey ibeacon_uuid
      */
-    ibeaconUuid?: unknown;
+    ibeaconUuid?: string;
     /** [Time](/guides/configuration-types#time): The delay after last detecting the device before publishing not present state. */
-    timeout?: BlePresenceTimeoutProps;
+    timeout?: TimePeriod;
     /**
      * int: at which minimum RSSI level would the component report the device be present.
      * @yamlKey min_rssi
@@ -12375,7 +12445,7 @@ interface NextionProps extends _NextionBinarySensorConfigBinarySensor, _CoreComp
      * [Time](/guides/configuration-types#time): The duration to update the sensor. If using a [Nextion Custom Binary Sensor...
      * @yamlKey update_interval
      */
-    updateInterval?: unknown;
+    updateInterval?: TimePeriod;
 }
 interface NfcProps extends _CoreComponent {
     /** @yamlKey nfcc_id */
@@ -12391,7 +12461,7 @@ interface NfcProps extends _CoreComponent {
      */
     tagId?: string;
     /** string: The unique ID of the NFC tag. This is a hyphen-separated list of hexadecimal values. For example: `74-10-37-9... */
-    uid?: unknown;
+    uid?: string;
 }
 interface PacketTransportDataProps {
     /** @yamlKey transport_id */
@@ -12402,7 +12472,7 @@ interface PacketTransportDataProps {
      */
     remoteId?: string;
     /** string: The name of the provider node. */
-    provider: unknown;
+    provider: string;
 }
 interface PacketTransportStatusProps extends _PacketTransportBinarySensorStatusSensor {
 }
@@ -12410,7 +12480,7 @@ interface QwiicPirProps extends _CoreComponent {
     /** @yamlKey device_class */
     deviceClass?: unknown;
     /** [Time](/guides/configuration-types#time): Only valid when using `NATIVE` debounce mode. Configures the debounce time ... */
-    debounce?: QwiicPirDebounceProps;
+    debounce?: TimePeriod;
     /**
      * enum: How the component debounces the motion sensor's signal. Must be one of `HYBRID`, `NATIVE`, or `RAW`. See [Debou...
      * @yamlKey debounce_mode
@@ -12418,7 +12488,7 @@ interface QwiicPirProps extends _CoreComponent {
     debounceMode?: "RAW" | "NATIVE" | "HYBRID";
     /** @yamlKey i2c_id */
     i2cId?: RefProp<i2c_I2CBus>;
-    address?: unknown;
+    address?: number;
 }
 interface Rc522Props {
     /** @yamlKey rc522_id */
@@ -12441,7 +12511,7 @@ interface StatusProps extends _CoreComponent {
      * [Time](/guides/configuration-types#time): The interval to check the connection status. Defaults to `1s`.
      * @yamlKey update_interval
      */
-    updateInterval?: unknown;
+    updateInterval?: TimePeriod;
 }
 interface SwitchProps extends _CoreComponent {
     /**
@@ -12520,7 +12590,7 @@ interface XiaomiMue4094rtProps extends _BthomeMithermometerBleDevice, _CoreCompo
     deviceClass?: unknown;
     /** @yamlKey mac_address */
     macAddress: unknown;
-    timeout?: XiaomiMue4094rtTimeoutProps;
+    timeout?: TimePeriod;
 }
 interface XiaomiWx08zmProps extends _BthomeMithermometerBleDevice, _CoreComponent {
     /** @yamlKey mac_address */
@@ -12564,7 +12634,7 @@ interface Cst816Props extends _Touchscreen {
     skipProbe?: boolean;
     /** @yamlKey i2c_id */
     i2cId?: RefProp<i2c_I2CBus>;
-    address?: unknown;
+    address?: number;
 }
 interface DalyBmsProps extends _CoreComponent {
     /** @yamlKey bms_daly_id */
@@ -13322,7 +13392,7 @@ interface UdpProps {
      * IPv4 address: Changes to multicast, adding an address to listen to. Defaults to no multicast address, just local netw...
      * @yamlKey listen_address
      */
-    listenAddress?: unknown;
+    listenAddress?: IPv4Address;
     /** list of IPv4 addresses: One or more IP addresses to broadcast data to. Defaults to `255.255.255.255` which is the loc... */
     addresses?: Array<unknown>;
     /** @yamlKey on_receive */

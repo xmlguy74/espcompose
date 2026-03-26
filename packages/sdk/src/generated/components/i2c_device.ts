@@ -9,7 +9,7 @@ export interface I2cDeviceProps {
     /** @yamlKey i2c_id */
     i2cId?: RefProp<i2c_I2CBus>;
     /** int: I²C address of the device. */
-    address: unknown;
+    address: number;
 }
 declare global {
     namespace JSX {

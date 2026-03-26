@@ -29,7 +29,7 @@ export interface Emc2101Props extends _CoreComponent {
     /** @yamlKey i2c_id */
     i2cId?: RefProp<i2c_I2CBus>;
     /** int: Manually specify the I²C address of the sensor. Defaults to `0x4C`. */
-    address?: unknown;
+    address?: number;
 }
 declare global {
     namespace JSX {

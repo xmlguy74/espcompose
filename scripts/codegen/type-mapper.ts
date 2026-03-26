@@ -2,6 +2,7 @@ import ts from 'typescript';
 import type { SchemaConfigVar, SchemaDefinition, SchemaRegistry } from './schema-types.js';
 import { OPTIONAL_FIELD_OVERRIDES, TYPE_OVERRIDES } from './overrides.js';
 import { keyword, typeRef, stringLiteralType, unionType, arrayType, recordType, refPropType, triggerType, propSig, addJsDoc } from './ast-helpers.js';
+import { inferDocTypeString } from './doc-type-inference.js';
 import { TRIGGER_REGISTRY } from '../../packages/sdk/src/trigger-registry.js';
 
 // ────────────────────────────────────────────────────────────────────────────
@@ -129,6 +130,35 @@ export const CPP_PRIMITIVE_TO_TS = new Map<string, string>([
   ['std::string', 'string'],
 ]);
 
+const TIME_PERIOD_UNITS = new Set([
+  'days',
+  'hours',
+  'minutes',
+  'seconds',
+  'milliseconds',
+  'microseconds',
+]);
+
+/**
+ * Maps ESPHome `data_type` constraint names to TypeScript primitive types.
+ * Used as a last-resort fallback when neither `type` nor a docs marker is present.
+ */
+export const DATA_TYPE_TO_TS = new Map<string, 'number' | 'string' | 'boolean'>([
+  ['uint8_t', 'number'],
+  ['uint16_t', 'number'],
+  ['uint32_t', 'number'],
+  ['hex_uint8_t', 'number'],
+  ['hex_uint16_t', 'number'],
+  ['hex_uint32_t', 'number'],
+  ['positive_int', 'number'],
+  ['positive_not_null_int', 'number'],
+  ['positive_float', 'number'],
+  ['zero_to_one_float', 'number'],
+  ['port', 'number'],
+  ['device_address', 'number'],
+  ['output', 'number'],
+]);
+
 // ────────────────────────────────────────────────────────────────────────────
 // Internal helpers
 // ────────────────────────────────────────────────────────────────────────────
@@ -172,9 +202,13 @@ function resolveBaseType(
         : keyword('string');
     }
     case 'schema': {
+      const docType = inferUntypedType(varDef.docs, varDef.is_list === true);
+      if (docType) return docType;
+
       const inlineSchema = varDef.schema;
       if (inlineSchema) {
         const mergedVars = mergeExtends(inlineSchema, registry);
+        if (isTimePeriodSchema(mergedVars)) return typeRef('TimePeriod');
         if (Object.keys(mergedVars).length > 0) {
           const name = generateNestedInterface(varName, { ...inlineSchema, config_vars: mergedVars }, interfaceNamePrefix, acc, markerRefs, registry, domain);
           return typeRef(name);
@@ -204,8 +238,99 @@ function resolveBaseType(
       return typeRef('RefProp', [keyword('unknown')]);
     }
     default:
+      if (varDef.type == null) {
+        const inferred = inferUntypedType(varDef.docs, varDef.is_list === true);
+        if (inferred) return inferred;
+        const fromDataType = varDef.data_type ? DATA_TYPE_TO_TS.get(varDef.data_type) : undefined;
+        if (fromDataType) return keyword(fromDataType);
+      }
       return keyword('unknown');
   }
+}
+
+function isTimePeriodSchema(vars: Record<string, SchemaConfigVar>): boolean {
+  const keys = Object.keys(vars);
+  if (keys.length === 0) return false;
+  return keys.every((k) => TIME_PERIOD_UNITS.has(k));
+}
+
+function inferUntypedType(docs?: string, isList = false): ts.TypeNode | null {
+  const inferred = inferDocTypeString(docs);
+  switch (inferred) {
+    case 'string':
+      return keyword('string');
+    case 'string[]':
+      return isList ? keyword('string') : arrayType(keyword('string'));
+    case 'number':
+      return keyword('number');
+    case 'boolean':
+      return keyword('boolean');
+    case 'TriggerHandler':
+      return typeRef('TriggerHandler');
+    case 'TriggerHandler | boolean':
+      return unionType([typeRef('TriggerHandler'), keyword('boolean')]);
+    case 'TimePeriod':
+      return typeRef('TimePeriod');
+    case 'MACAddress':
+      return typeRef('MACAddress');
+    case 'IPv4Address':
+      return typeRef('IPv4Address');
+    case 'number[]':
+      return isList ? keyword('number') : arrayType(keyword('number'));
+    case 'string | number[]':
+      return unionType([keyword('string'), arrayType(keyword('number'))]);
+    case 'string | string[]':
+      return unionType([keyword('string'), arrayType(keyword('string'))]);
+    default:
+      return null;
+  }
+}
+
+function mergeConfigVarDef(base: SchemaConfigVar, override: SchemaConfigVar): SchemaConfigVar {
+  const merged: SchemaConfigVar = { ...base, ...override };
+
+  if (base.values || override.values) {
+    merged.values = { ...(base.values ?? {}), ...(override.values ?? {}) };
+  }
+
+  if (base.schema || override.schema) {
+    merged.schema = mergeSchemaDefinition(base.schema, override.schema);
+  }
+
+  return merged;
+}
+
+function mergeConfigVarMaps(
+  base: Record<string, SchemaConfigVar>,
+  override: Record<string, SchemaConfigVar>,
+): Record<string, SchemaConfigVar> {
+  const merged: Record<string, SchemaConfigVar> = { ...base };
+  for (const [k, v] of Object.entries(override)) {
+    merged[k] = merged[k] ? mergeConfigVarDef(merged[k], v) : v;
+  }
+  return merged;
+}
+
+function mergeSchemaDefinition(
+  base: SchemaDefinition | undefined,
+  override: SchemaDefinition | undefined,
+): SchemaDefinition | undefined {
+  if (!base && !override) return undefined;
+  if (!base) return override;
+  if (!override) return base;
+
+  const merged: SchemaDefinition = { ...base, ...override };
+
+  if (base.config_vars || override.config_vars) {
+    merged.config_vars = mergeConfigVarMaps(base.config_vars ?? {}, override.config_vars ?? {});
+  }
+
+  if (base.extends || override.extends) {
+    const combined = [...(base.extends ?? []), ...(override.extends ?? [])];
+    merged.extends = [...new Set(combined)];
+  }
+
+  return merged;
 }
 
 function generateNestedInterface(
@@ -249,10 +374,9 @@ export function mergeExtends(
     const refDef = registry.get(ref);
     if (!refDef) continue;
     const inherited = mergeExtends(refDef, registry, _visited);
-    Object.assign(merged, inherited);
+    Object.assign(merged, mergeConfigVarMaps(merged, inherited));
   }
-  Object.assign(merged, schema.config_vars ?? {});
-  return merged;
+  return mergeConfigVarMaps(merged, schema.config_vars ?? {});
 }
 
 function resolveStringMapValueType(varDef: SchemaConfigVar): ts.TypeNode {

@@ -3,46 +3,30 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
+import type { ComponentProps, Pin, RefProp, TimePeriod, TriggerHandler } from "../../types";
 import type { _CoreComponent } from "../bases";
 import type { remote_receiver_RemoteReceiverComponent } from "../markers";
-export interface RemoteReceiverFilterProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
-export interface RemoteReceiverIdleProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
 export interface RemoteReceiverProps extends _CoreComponent {
     /** [Pin](/guides/configuration-types#pin): The pin to receive the remote signal on. */
     pin: Pin;
     /** list: Decode and dump these remote codes in the logs (at log.level=DEBUG). Set to `all` to dump all available codecs: */
     dump?: unknown;
     /** int: The percentage or time that the remote signal lengths can deviate in the decoding process. Defaults to `25%`. */
-    tolerance?: unknown;
+    tolerance?: number;
     /**
      * int: The size of the internal buffer for storing the remote codes. Defaults to `10kB` on the ESP32 and `1kB` on the E...
      * @yamlKey buffer_size
      */
-    bufferSize?: unknown;
+    bufferSize?: number;
     /** [Time](/guides/configuration-types#time): Filter any pulses that are shorter than this. Useful for removing glitches ... */
-    filter?: RemoteReceiverFilterProps;
+    filter?: TimePeriod;
     /**
      * int: The clock resolution used by the RMT peripheral in Hz. Defaults to `1000000`.
      * @yamlKey clock_resolution
      */
-    clockResolution?: unknown;
+    clockResolution?: number;
     /** [Time](/guides/configuration-types#time): The amount of time that a signal should remain stable/unchanged for it to b... */
-    idle?: RemoteReceiverIdleProps;
+    idle?: TimePeriod;
     /**
      * int: When `use_dma` is enabled, this sets the size of the driver's internal DMA buffer. When DMA is disabled, it spec...
      * @yamlKey rmt_symbols
@@ -67,7 +51,7 @@ export interface RemoteReceiverProps extends _CoreComponent {
      * int: The carrier duty cycle for signal demodulation in the RMT peripheral in Hz. Defaults to `100`.
      * @yamlKey carrier_duty_percent
      */
-    carrierDutyPercent?: unknown;
+    carrierDutyPercent?: number;
     /**
      * int: The carrier frequency for signal demodulation in the RMT peripheral in Hz. Defaults to `0Hz` (carrier demodulati...
      * @yamlKey carrier_frequency

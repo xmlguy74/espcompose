@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
+import type { ComponentProps, Pin, RefProp, TimePeriod, TriggerHandler } from "../../types";
 import type { _CoreComponent, _CoreEntityBase, _CoreMqttCommandComponent } from "../bases";
 import type { EntityBase, copy_CopySelect, es8388_ES8388, ld2410_LD2410Component, ld2412_LD2412Component, ld2420_LD2420Component, ld2450_LD2450Component, logger_Logger, logger_LoggerLevelSelect, lvgl_LVGLSelect, modbus_controller_ModbusController, modbus_controller_ModbusSelect, seeed_mr24hpc1_MR24HPC1Component, seeed_mr60fda2_MR60FDA2Component, select_Select, template__TemplateSelect, tuya_Tuya, tuya_TuyaSelect, web_server_WebServer } from "../markers";
 interface SelectWebServerProps {
@@ -31,7 +31,7 @@ interface Es8388DacOutputPropsWebServerProps {
 }
 interface Es8388DacOutputProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -39,9 +39,13 @@ interface Es8388DacOutputProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -80,7 +84,7 @@ interface Es8388AdcInputMicPropsWebServerProps {
 }
 interface Es8388AdcInputMicProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -88,9 +92,13 @@ interface Es8388AdcInputMicProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -129,7 +137,7 @@ interface Ld2410DistanceResolutionPropsWebServerProps {
 }
 interface Ld2410DistanceResolutionProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -137,9 +145,13 @@ interface Ld2410DistanceResolutionProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -178,7 +190,7 @@ interface Ld2410LightFunctionPropsWebServerProps {
 }
 interface Ld2410LightFunctionProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -186,9 +198,13 @@ interface Ld2410LightFunctionProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -227,7 +243,7 @@ interface Ld2410OutPinLevelPropsWebServerProps {
 }
 interface Ld2410OutPinLevelProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -235,9 +251,13 @@ interface Ld2410OutPinLevelProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -276,7 +296,7 @@ interface Ld2410BaudRatePropsWebServerProps {
 }
 interface Ld2410BaudRateProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -284,9 +304,13 @@ interface Ld2410BaudRateProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -325,7 +349,7 @@ interface Ld2412BaudRatePropsWebServerProps {
 }
 interface Ld2412BaudRateProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -333,9 +357,13 @@ interface Ld2412BaudRateProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -374,7 +402,7 @@ interface Ld2412DistanceResolutionPropsWebServerProps {
 }
 interface Ld2412DistanceResolutionProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -382,9 +410,13 @@ interface Ld2412DistanceResolutionProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -423,7 +455,7 @@ interface Ld2412LightFunctionPropsWebServerProps {
 }
 interface Ld2412LightFunctionProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -431,9 +463,13 @@ interface Ld2412LightFunctionProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -472,7 +508,7 @@ interface Ld2412OutPinLevelPropsWebServerProps {
 }
 interface Ld2412OutPinLevelProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -480,9 +516,13 @@ interface Ld2412OutPinLevelProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -521,7 +561,7 @@ interface Ld2420OperatingModePropsWebServerProps {
 }
 interface Ld2420OperatingModeProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -530,9 +570,12 @@ interface Ld2420OperatingModeProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -571,7 +614,7 @@ interface Ld2450BaudRatePropsWebServerProps {
 }
 interface Ld2450BaudRateProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -579,9 +622,13 @@ interface Ld2450BaudRateProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -620,7 +667,7 @@ interface Ld2450ZoneTypePropsWebServerProps {
 }
 interface Ld2450ZoneTypeProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -628,9 +675,13 @@ interface Ld2450ZoneTypeProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -669,7 +720,7 @@ interface SeeedMr24hpc1SceneModePropsWebServerProps {
 }
 interface SeeedMr24hpc1SceneModeProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -677,9 +728,13 @@ interface SeeedMr24hpc1SceneModeProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -718,7 +773,7 @@ interface SeeedMr24hpc1UnmanTimePropsWebServerProps {
 }
 interface SeeedMr24hpc1UnmanTimeProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -726,9 +781,13 @@ interface SeeedMr24hpc1UnmanTimeProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -767,7 +826,7 @@ interface SeeedMr24hpc1ExistenceBoundaryPropsWebServerProps {
 }
 interface SeeedMr24hpc1ExistenceBoundaryProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -776,9 +835,12 @@ interface SeeedMr24hpc1ExistenceBoundaryProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -817,7 +879,7 @@ interface SeeedMr24hpc1MotionBoundaryPropsWebServerProps {
 }
 interface SeeedMr24hpc1MotionBoundaryProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -826,9 +888,12 @@ interface SeeedMr24hpc1MotionBoundaryProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -867,7 +932,7 @@ interface SeeedMr60fda2InstallHeightPropsWebServerProps {
 }
 interface SeeedMr60fda2InstallHeightProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -875,9 +940,13 @@ interface SeeedMr60fda2InstallHeightProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -916,7 +985,7 @@ interface SeeedMr60fda2HeightThresholdPropsWebServerProps {
 }
 interface SeeedMr60fda2HeightThresholdProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -924,9 +993,13 @@ interface SeeedMr60fda2HeightThresholdProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -965,7 +1038,7 @@ interface SeeedMr60fda2SensitivityPropsWebServerProps {
 }
 interface SeeedMr60fda2SensitivityProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -974,9 +1047,12 @@ interface SeeedMr60fda2SensitivityProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1209,7 +1285,7 @@ interface TemplateProps extends _CoreComponent {
      * [Time](/guides/configuration-types#time): The interval on which to update the select by executing the `lambda`. Defau...
      * @yamlKey update_interval
      */
-    updateInterval?: unknown;
+    updateInterval?: TimePeriod;
 }
 interface TuyaProps extends _CoreComponent {
     /** @yamlKey tuya_id */

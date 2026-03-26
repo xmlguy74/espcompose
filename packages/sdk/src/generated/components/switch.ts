@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
+import type { ComponentProps, Pin, RefProp, TimePeriod, TriggerHandler } from "../../types";
 import type { _BleClient, _CoreComponent, _CoreEntityBase, _CoreMqttCommandComponent, _HomeassistantHomeAssistantImportControl, _ModbusControllerModbusitembaseschema, _NextionSensorConfigSensorComponent, _PipsolarComponent, _UartDevice } from "../bases";
 import type { Color, EntityBase, at581x_AT581XComponent, at581x_RFSwitch, ble_client_BLEClientSwitch, copy_CopySwitch, dfrobot_sen0395_DfrobotSen0395Component, dfrobot_sen0395_Sen0395LedSwitch, dfrobot_sen0395_Sen0395PowerSwitch, dfrobot_sen0395_Sen0395StartAfterBootSwitch, dfrobot_sen0395_Sen0395UartPresenceSwitch, factory_reset_FactoryResetSwitch, gpio_GPIOSwitch, gree_GreeClimate, haier_HaierClimateBase, hbridge_HBridgeSwitch, homeassistant_HomeassistantSwitch, ld2410_LD2410Component, ld2412_LD2412Component, ld2450_LD2450Component, lvgl_LVGLSwitch, lvgl_LvPseudoButton, micronova_MicroNova, modbus_controller_ModbusSwitch, nextion_NextionSwitch, opentherm_OpenthermHub, output_BinaryOutput, output_OutputSwitch, restart_RestartSwitch, safe_mode_SafeModeComponent, safe_mode_SafeModeSwitch, seeed_mr24hpc1_MR24HPC1Component, shutdown_ShutdownSwitch, switch__Switch, template__TemplateSwitch, tm1638_TM1638Component, tm1638_TM1638SwitchLed, tuya_Tuya, tuya_TuyaSwitch, uart_UARTSwitch, web_server_WebServer, zigbee_ZigbeeComponent, zigbee_ZigbeeSwitch } from "../markers";
 interface SwitchWebServerProps {
@@ -13,14 +13,6 @@ interface SwitchWebServerProps {
     sortingWeight?: unknown;
     /** @yamlKey sorting_group_id */
     sortingGroupId?: number;
-}
-interface GpioInterlockWaitTimeProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
 }
 interface GreeTurboPropsAvailabilityProps {
     topic: unknown;
@@ -39,7 +31,7 @@ interface GreeTurboPropsWebServerProps {
 }
 interface GreeTurboProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -47,9 +39,13 @@ interface GreeTurboProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -70,7 +66,7 @@ interface GreeTurboProps {
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     inverted?: boolean;
     /** @yamlKey restore_mode */
-    restoreMode?: unknown;
+    restoreMode?: "RESTORE_DEFAULT_OFF" | "RESTORE_DEFAULT_ON" | "ALWAYS_OFF" | "ALWAYS_ON" | "RESTORE_INVERTED_DEFAULT_OFF" | "RESTORE_INVERTED_DEFAULT_ON" | "DISABLED";
     /** @yamlKey on_state */
     onState?: TriggerHandler<{
         x: boolean;
@@ -80,7 +76,7 @@ interface GreeTurboProps {
     /** @yamlKey on_turn_off */
     onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "" | "outlet" | "switch";
 }
 interface GreeLightPropsAvailabilityProps {
     topic: unknown;
@@ -99,7 +95,7 @@ interface GreeLightPropsWebServerProps {
 }
 interface GreeLightProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -107,9 +103,13 @@ interface GreeLightProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -130,7 +130,7 @@ interface GreeLightProps {
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     inverted?: boolean;
     /** @yamlKey restore_mode */
-    restoreMode?: unknown;
+    restoreMode?: "RESTORE_DEFAULT_OFF" | "RESTORE_DEFAULT_ON" | "ALWAYS_OFF" | "ALWAYS_ON" | "RESTORE_INVERTED_DEFAULT_OFF" | "RESTORE_INVERTED_DEFAULT_ON" | "DISABLED";
     /** @yamlKey on_state */
     onState?: TriggerHandler<{
         x: boolean;
@@ -140,7 +140,7 @@ interface GreeLightProps {
     /** @yamlKey on_turn_off */
     onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "" | "outlet" | "switch";
 }
 interface GreeHealthPropsAvailabilityProps {
     topic: unknown;
@@ -159,7 +159,7 @@ interface GreeHealthPropsWebServerProps {
 }
 interface GreeHealthProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -167,9 +167,13 @@ interface GreeHealthProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -190,7 +194,7 @@ interface GreeHealthProps {
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     inverted?: boolean;
     /** @yamlKey restore_mode */
-    restoreMode?: unknown;
+    restoreMode?: "RESTORE_DEFAULT_OFF" | "RESTORE_DEFAULT_ON" | "ALWAYS_OFF" | "ALWAYS_ON" | "RESTORE_INVERTED_DEFAULT_OFF" | "RESTORE_INVERTED_DEFAULT_ON" | "DISABLED";
     /** @yamlKey on_state */
     onState?: TriggerHandler<{
         x: boolean;
@@ -200,7 +204,7 @@ interface GreeHealthProps {
     /** @yamlKey on_turn_off */
     onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "" | "outlet" | "switch";
 }
 interface GreeXfanPropsAvailabilityProps {
     topic: unknown;
@@ -219,7 +223,7 @@ interface GreeXfanPropsWebServerProps {
 }
 interface GreeXfanProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -227,9 +231,13 @@ interface GreeXfanProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -250,7 +258,7 @@ interface GreeXfanProps {
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     inverted?: boolean;
     /** @yamlKey restore_mode */
-    restoreMode?: unknown;
+    restoreMode?: "RESTORE_DEFAULT_OFF" | "RESTORE_DEFAULT_ON" | "ALWAYS_OFF" | "ALWAYS_ON" | "RESTORE_INVERTED_DEFAULT_OFF" | "RESTORE_INVERTED_DEFAULT_ON" | "DISABLED";
     /** @yamlKey on_state */
     onState?: TriggerHandler<{
         x: boolean;
@@ -260,7 +268,7 @@ interface GreeXfanProps {
     /** @yamlKey on_turn_off */
     onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "" | "outlet" | "switch";
 }
 interface HaierDisplayPropsAvailabilityProps {
     topic: unknown;
@@ -279,7 +287,7 @@ interface HaierDisplayPropsWebServerProps {
 }
 interface HaierDisplayProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -287,9 +295,13 @@ interface HaierDisplayProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -310,7 +322,7 @@ interface HaierDisplayProps {
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     inverted?: boolean;
     /** @yamlKey restore_mode */
-    restoreMode?: unknown;
+    restoreMode?: "RESTORE_DEFAULT_OFF" | "RESTORE_DEFAULT_ON" | "ALWAYS_OFF" | "ALWAYS_ON" | "RESTORE_INVERTED_DEFAULT_OFF" | "RESTORE_INVERTED_DEFAULT_ON" | "DISABLED";
     /** @yamlKey on_state */
     onState?: TriggerHandler<{
         x: boolean;
@@ -339,7 +351,7 @@ interface HaierHealthModePropsWebServerProps {
 }
 interface HaierHealthModeProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -347,12 +359,13 @@ interface HaierHealthModeProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -373,7 +386,7 @@ interface HaierHealthModeProps {
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     inverted?: boolean;
     /** @yamlKey restore_mode */
-    restoreMode?: unknown;
+    restoreMode?: "RESTORE_DEFAULT_OFF" | "RESTORE_DEFAULT_ON" | "ALWAYS_OFF" | "ALWAYS_ON" | "RESTORE_INVERTED_DEFAULT_OFF" | "RESTORE_INVERTED_DEFAULT_ON" | "DISABLED";
     /** @yamlKey on_state */
     onState?: TriggerHandler<{
         x: boolean;
@@ -402,7 +415,7 @@ interface HaierBeeperPropsWebServerProps {
 }
 interface HaierBeeperProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -410,9 +423,13 @@ interface HaierBeeperProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -433,7 +450,7 @@ interface HaierBeeperProps {
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     inverted?: boolean;
     /** @yamlKey restore_mode */
-    restoreMode?: unknown;
+    restoreMode?: "RESTORE_DEFAULT_OFF" | "RESTORE_DEFAULT_ON" | "ALWAYS_OFF" | "ALWAYS_ON" | "RESTORE_INVERTED_DEFAULT_OFF" | "RESTORE_INVERTED_DEFAULT_ON" | "DISABLED";
     /** @yamlKey on_state */
     onState?: TriggerHandler<{
         x: boolean;
@@ -462,7 +479,7 @@ interface HaierQuietModePropsWebServerProps {
 }
 interface HaierQuietModeProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -470,9 +487,13 @@ interface HaierQuietModeProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -493,7 +514,7 @@ interface HaierQuietModeProps {
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     inverted?: boolean;
     /** @yamlKey restore_mode */
-    restoreMode?: unknown;
+    restoreMode?: "RESTORE_DEFAULT_OFF" | "RESTORE_DEFAULT_ON" | "ALWAYS_OFF" | "ALWAYS_ON" | "RESTORE_INVERTED_DEFAULT_OFF" | "RESTORE_INVERTED_DEFAULT_ON" | "DISABLED";
     /** @yamlKey on_state */
     onState?: TriggerHandler<{
         x: boolean;
@@ -504,22 +525,6 @@ interface HaierQuietModeProps {
     onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
     deviceClass?: "" | "outlet" | "switch";
-}
-interface HbridgePulseLengthProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
-interface HbridgeWaitTimeProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
 }
 interface Ld2410EngineeringModePropsAvailabilityProps {
     topic: unknown;
@@ -538,7 +543,7 @@ interface Ld2410EngineeringModePropsWebServerProps {
 }
 interface Ld2410EngineeringModeProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -546,9 +551,13 @@ interface Ld2410EngineeringModeProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -579,7 +588,7 @@ interface Ld2410EngineeringModeProps {
     /** @yamlKey on_turn_off */
     onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "" | "outlet" | "switch";
 }
 interface Ld2410BluetoothPropsAvailabilityProps {
     topic: unknown;
@@ -598,7 +607,7 @@ interface Ld2410BluetoothPropsWebServerProps {
 }
 interface Ld2410BluetoothProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -606,9 +615,13 @@ interface Ld2410BluetoothProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -639,7 +652,7 @@ interface Ld2410BluetoothProps {
     /** @yamlKey on_turn_off */
     onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "" | "outlet" | "switch";
 }
 interface Ld2412BluetoothPropsAvailabilityProps {
     topic: unknown;
@@ -658,7 +671,7 @@ interface Ld2412BluetoothPropsWebServerProps {
 }
 interface Ld2412BluetoothProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -666,9 +679,13 @@ interface Ld2412BluetoothProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -699,7 +716,7 @@ interface Ld2412BluetoothProps {
     /** @yamlKey on_turn_off */
     onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "" | "outlet" | "switch";
 }
 interface Ld2412EngineeringModePropsAvailabilityProps {
     topic: unknown;
@@ -718,7 +735,7 @@ interface Ld2412EngineeringModePropsWebServerProps {
 }
 interface Ld2412EngineeringModeProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -726,9 +743,13 @@ interface Ld2412EngineeringModeProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -759,7 +780,7 @@ interface Ld2412EngineeringModeProps {
     /** @yamlKey on_turn_off */
     onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "" | "outlet" | "switch";
 }
 interface Ld2450BluetoothPropsAvailabilityProps {
     topic: unknown;
@@ -778,7 +799,7 @@ interface Ld2450BluetoothPropsWebServerProps {
 }
 interface Ld2450BluetoothProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -786,9 +807,13 @@ interface Ld2450BluetoothProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -819,7 +844,7 @@ interface Ld2450BluetoothProps {
     /** @yamlKey on_turn_off */
     onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "" | "outlet" | "switch";
 }
 interface Ld2450MultiTargetPropsAvailabilityProps {
     topic: unknown;
@@ -838,7 +863,7 @@ interface Ld2450MultiTargetPropsWebServerProps {
 }
 interface Ld2450MultiTargetProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -846,9 +871,13 @@ interface Ld2450MultiTargetProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -879,7 +908,7 @@ interface Ld2450MultiTargetProps {
     /** @yamlKey on_turn_off */
     onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "" | "outlet" | "switch";
 }
 interface MicronovaStovePropsAvailabilityProps {
     topic: unknown;
@@ -898,7 +927,7 @@ interface MicronovaStovePropsWebServerProps {
 }
 interface MicronovaStoveProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -906,12 +935,13 @@ interface MicronovaStoveProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -975,7 +1005,7 @@ interface OpenthermChEnablePropsWebServerProps {
 }
 interface OpenthermChEnableProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -984,12 +1014,12 @@ interface OpenthermChEnableProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1010,7 +1040,7 @@ interface OpenthermChEnableProps {
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     inverted?: boolean;
     /** @yamlKey restore_mode */
-    restoreMode?: unknown;
+    restoreMode?: "RESTORE_DEFAULT_OFF" | "RESTORE_DEFAULT_ON" | "ALWAYS_OFF" | "ALWAYS_ON" | "RESTORE_INVERTED_DEFAULT_OFF" | "RESTORE_INVERTED_DEFAULT_ON" | "DISABLED";
     /** @yamlKey on_state */
     onState?: TriggerHandler<{
         x: boolean;
@@ -1041,7 +1071,7 @@ interface OpenthermDhwEnablePropsWebServerProps {
 }
 interface OpenthermDhwEnableProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1050,12 +1080,12 @@ interface OpenthermDhwEnableProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1076,7 +1106,7 @@ interface OpenthermDhwEnableProps {
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     inverted?: boolean;
     /** @yamlKey restore_mode */
-    restoreMode?: unknown;
+    restoreMode?: "RESTORE_DEFAULT_OFF" | "RESTORE_DEFAULT_ON" | "ALWAYS_OFF" | "ALWAYS_ON" | "RESTORE_INVERTED_DEFAULT_OFF" | "RESTORE_INVERTED_DEFAULT_ON" | "DISABLED";
     /** @yamlKey on_state */
     onState?: TriggerHandler<{
         x: boolean;
@@ -1107,7 +1137,7 @@ interface OpenthermCoolingEnablePropsWebServerProps {
 }
 interface OpenthermCoolingEnableProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1116,12 +1146,12 @@ interface OpenthermCoolingEnableProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1142,7 +1172,7 @@ interface OpenthermCoolingEnableProps {
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     inverted?: boolean;
     /** @yamlKey restore_mode */
-    restoreMode?: unknown;
+    restoreMode?: "RESTORE_DEFAULT_OFF" | "RESTORE_DEFAULT_ON" | "ALWAYS_OFF" | "ALWAYS_ON" | "RESTORE_INVERTED_DEFAULT_OFF" | "RESTORE_INVERTED_DEFAULT_ON" | "DISABLED";
     /** @yamlKey on_state */
     onState?: TriggerHandler<{
         x: boolean;
@@ -1173,7 +1203,7 @@ interface OpenthermOtcActivePropsWebServerProps {
 }
 interface OpenthermOtcActiveProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1182,12 +1212,12 @@ interface OpenthermOtcActiveProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1208,7 +1238,7 @@ interface OpenthermOtcActiveProps {
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     inverted?: boolean;
     /** @yamlKey restore_mode */
-    restoreMode?: unknown;
+    restoreMode?: "RESTORE_DEFAULT_OFF" | "RESTORE_DEFAULT_ON" | "ALWAYS_OFF" | "ALWAYS_ON" | "RESTORE_INVERTED_DEFAULT_OFF" | "RESTORE_INVERTED_DEFAULT_ON" | "DISABLED";
     /** @yamlKey on_state */
     onState?: TriggerHandler<{
         x: boolean;
@@ -1239,7 +1269,7 @@ interface OpenthermCh2ActivePropsWebServerProps {
 }
 interface OpenthermCh2ActiveProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1248,12 +1278,12 @@ interface OpenthermCh2ActiveProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1274,7 +1304,7 @@ interface OpenthermCh2ActiveProps {
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     inverted?: boolean;
     /** @yamlKey restore_mode */
-    restoreMode?: unknown;
+    restoreMode?: "RESTORE_DEFAULT_OFF" | "RESTORE_DEFAULT_ON" | "ALWAYS_OFF" | "ALWAYS_ON" | "RESTORE_INVERTED_DEFAULT_OFF" | "RESTORE_INVERTED_DEFAULT_ON" | "DISABLED";
     /** @yamlKey on_state */
     onState?: TriggerHandler<{
         x: boolean;
@@ -1305,7 +1335,7 @@ interface OpenthermSummerModeActivePropsWebServerProps {
 }
 interface OpenthermSummerModeActiveProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1314,12 +1344,12 @@ interface OpenthermSummerModeActiveProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1340,7 +1370,7 @@ interface OpenthermSummerModeActiveProps {
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     inverted?: boolean;
     /** @yamlKey restore_mode */
-    restoreMode?: unknown;
+    restoreMode?: "RESTORE_DEFAULT_OFF" | "RESTORE_DEFAULT_ON" | "ALWAYS_OFF" | "ALWAYS_ON" | "RESTORE_INVERTED_DEFAULT_OFF" | "RESTORE_INVERTED_DEFAULT_ON" | "DISABLED";
     /** @yamlKey on_state */
     onState?: TriggerHandler<{
         x: boolean;
@@ -1371,7 +1401,7 @@ interface OpenthermDhwBlockPropsWebServerProps {
 }
 interface OpenthermDhwBlockProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1380,12 +1410,12 @@ interface OpenthermDhwBlockProps {
      */
     disabledByDefault?: boolean;
     /** icon: Manually set the icon to use for the light in the frontend. */
-    icon?: unknown;
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1406,7 +1436,7 @@ interface OpenthermDhwBlockProps {
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     inverted?: boolean;
     /** @yamlKey restore_mode */
-    restoreMode?: unknown;
+    restoreMode?: "RESTORE_DEFAULT_OFF" | "RESTORE_DEFAULT_ON" | "ALWAYS_OFF" | "ALWAYS_ON" | "RESTORE_INVERTED_DEFAULT_OFF" | "RESTORE_INVERTED_DEFAULT_ON" | "DISABLED";
     /** @yamlKey on_state */
     onState?: TriggerHandler<{
         x: boolean;
@@ -1437,7 +1467,7 @@ interface PipsolarOutputSourcePriorityUtilityPropsWebServerProps {
 }
 interface PipsolarOutputSourcePriorityUtilityProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1445,12 +1475,13 @@ interface PipsolarOutputSourcePriorityUtilityProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1502,7 +1533,7 @@ interface PipsolarOutputSourcePrioritySolarPropsWebServerProps {
 }
 interface PipsolarOutputSourcePrioritySolarProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1510,12 +1541,13 @@ interface PipsolarOutputSourcePrioritySolarProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1567,7 +1599,7 @@ interface PipsolarOutputSourcePriorityBatteryPropsWebServerProps {
 }
 interface PipsolarOutputSourcePriorityBatteryProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1575,12 +1607,13 @@ interface PipsolarOutputSourcePriorityBatteryProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1632,7 +1665,7 @@ interface PipsolarOutputSourcePriorityHybridPropsWebServerProps {
 }
 interface PipsolarOutputSourcePriorityHybridProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1640,12 +1673,13 @@ interface PipsolarOutputSourcePriorityHybridProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1697,7 +1731,7 @@ interface PipsolarInputVoltageRangePropsWebServerProps {
 }
 interface PipsolarInputVoltageRangeProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1705,12 +1739,13 @@ interface PipsolarInputVoltageRangeProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1762,7 +1797,7 @@ interface PipsolarPvOkConditionForParallelPropsWebServerProps {
 }
 interface PipsolarPvOkConditionForParallelProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1770,12 +1805,13 @@ interface PipsolarPvOkConditionForParallelProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1827,7 +1863,7 @@ interface PipsolarPvPowerBalancePropsWebServerProps {
 }
 interface PipsolarPvPowerBalanceProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1835,12 +1871,13 @@ interface PipsolarPvPowerBalanceProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
     /**
      * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
      * @yamlKey entity_category
      */
-    entityCategory?: unknown;
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1892,7 +1929,7 @@ interface SeeedMr24hpc1UnderlyingOpenFunctionPropsWebServerProps {
 }
 interface SeeedMr24hpc1UnderlyingOpenFunctionProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -1900,9 +1937,13 @@ interface SeeedMr24hpc1UnderlyingOpenFunctionProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -1933,21 +1974,13 @@ interface SeeedMr24hpc1UnderlyingOpenFunctionProps {
     /** @yamlKey on_turn_off */
     onTurnOff?: TriggerHandler;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "" | "outlet" | "switch";
 }
 interface UartDataProps {
     /** @yamlKey turn_off */
     turnOff?: unknown;
     /** @yamlKey turn_on */
     turnOn?: unknown;
-}
-interface UartSendEveryProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
 }
 interface SwitchBaseProps extends _CoreEntityBase, _CoreMqttCommandComponent {
     /** @yamlKey web_server */
@@ -2038,7 +2071,7 @@ interface GpioProps extends _CoreComponent {
      * [Time](/guides/configuration-types#time): For interlocking mode, set how long to wait after other items in an interlo...
      * @yamlKey interlock_wait_time
      */
-    interlockWaitTime?: GpioInterlockWaitTimeProps;
+    interlockWaitTime?: TimePeriod;
 }
 interface GreeProps {
     /** @yamlKey gree_id */
@@ -2084,12 +2117,12 @@ interface HbridgeProps extends _CoreComponent {
      * [Time](/guides/configuration-types#time): The length in milliseconds of the pulse sent on `on_pin` and `off_pin` to c...
      * @yamlKey pulse_length
      */
-    pulseLength?: HbridgePulseLengthProps;
+    pulseLength?: TimePeriod;
     /**
      * [Time](/guides/configuration-types#time): The time in milliseconds to delay between pulses on `off_pin` and `on_pin`....
      * @yamlKey wait_time
      */
-    waitTime?: HbridgeWaitTimeProps;
+    waitTime?: TimePeriod;
     /** boolean: Whether to operate in optimistic mode - when in this mode, any command sent to the switch will immediately u... */
     optimistic?: boolean;
 }
@@ -2159,7 +2192,7 @@ interface NextionProps extends _NextionSensorConfigSensorComponent {
      * [Time](/guides/configuration-types#time): The duration to update the sensor. If using a [Nextion Custom Switch Protoc...
      * @yamlKey update_interval
      */
-    updateInterval?: unknown;
+    updateInterval?: TimePeriod;
     /**
      * [Color](/components/display#config-color): The foreground color when pressed
      * @yamlKey foreground_pressed_color
@@ -2291,7 +2324,7 @@ interface TuyaProps extends _CoreComponent {
 interface UartProps extends _UartDevice, _CoreComponent {
     data: UartDataProps;
     /** @yamlKey send_every */
-    sendEvery?: UartSendEveryProps;
+    sendEvery?: TimePeriod;
 }
 export type SwitchProps = (SwitchBaseProps & {
     platform: "at581x";

@@ -98,7 +98,7 @@ export interface Sx127xProps extends _CoreComponent {
      * float: When receiving OOK `rx_floor` should be set appropriately for your environment. If set too high (ie closer to ...
      * @yamlKey rx_floor
      */
-    rxFloor?: unknown;
+    rxFloor?: number;
     /**
      * bool: Start the receiver automatically on boot or after transmitting.
      * @yamlKey rx_start
@@ -115,7 +115,7 @@ export interface Sx127xProps extends _CoreComponent {
      * list: Synchronization bytes, list of 1 to 8 bytes, found after the preamble and before the payload.
      * @yamlKey sync_value
      */
-    syncValue?: Array<unknown>;
+    syncValue?: Array<number>;
     /** @yamlKey spi_id */
     spiId?: RefProp<spi_SPIComponent>;
     /** @yamlKey data_rate */

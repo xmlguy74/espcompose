@@ -40,7 +40,7 @@ interface SpeakerMediaPipelineProps {
 }
 interface SpeakerFilesProps {
     /** string: Path to audio file. Can be a local file path or a URL. */
-    file: unknown;
+    file: string;
 }
 interface SpeakerSourceAnnouncementPipelineProps {
     /** [ID](/guides/configuration-types#id): The [speaker](/components/speaker/) to output the audio. */
@@ -132,22 +132,22 @@ interface SpeakerProps {
      * percentage: Increment amount that the `media_player.volume_up` and `media_player.volume_down` actions will increase o...
      * @yamlKey volume_increment
      */
-    volumeIncrement?: unknown;
+    volumeIncrement?: number;
     /**
      * percentage: The default volume that mediaplayer uses for first boot where a volume has not been previously saved. Def...
      * @yamlKey volume_initial
      */
-    volumeInitial?: unknown;
+    volumeInitial?: number;
     /**
      * percentage: The maximum volume allowed. Defaults to `100%`.
      * @yamlKey volume_max
      */
-    volumeMax?: unknown;
+    volumeMax?: number;
     /**
      * percentage: The minimum volume allowed. Defaults to `0%`.
      * @yamlKey volume_min
      */
-    volumeMin?: unknown;
+    volumeMin?: number;
     /**
      * [Automation](/automations): An automation to perform when muted.
      * @yamlKey on_mute
@@ -169,22 +169,22 @@ interface SpeakerSourceProps extends _CoreComponent {
      * percentage: Increment amount that the `media_player.volume_up` and `media_player.volume_down` actions will increase o...
      * @yamlKey volume_increment
      */
-    volumeIncrement?: unknown;
+    volumeIncrement?: number;
     /**
      * percentage: The default volume used on first boot when no volume has been previously saved. Defaults to `50%`.
      * @yamlKey volume_initial
      */
-    volumeInitial?: unknown;
+    volumeInitial?: number;
     /**
      * percentage: The maximum volume allowed. Defaults to `100%`.
      * @yamlKey volume_max
      */
-    volumeMax?: unknown;
+    volumeMax?: number;
     /**
      * percentage: The minimum volume allowed. Defaults to `0%`.
      * @yamlKey volume_min
      */
-    volumeMin?: unknown;
+    volumeMin?: number;
     /**
      * Pipeline Schema: Configuration settings for the announcement pipeline. Same options as `media_pipeline`. Must use a d...
      * @yamlKey announcement_pipeline

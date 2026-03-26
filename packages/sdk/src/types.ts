@@ -41,6 +41,27 @@ export interface EspComposeElement {
  */
 export type TriggerHandler<T = void> = (args: T) => void;
 
+/**
+ * ESPHome time period value.
+ *
+ * Accepts shorthand strings ("500ms", "5min", "never") or a decomposed
+ * object form used by many ESPHome schemas.
+ */
+export type TimePeriod = string | {
+  days?: number;
+  hours?: number;
+  minutes?: number;
+  seconds?: number;
+  milliseconds?: number;
+  microseconds?: number;
+};
+
+/** Basic MAC address shape, e.g. "AA:BB:CC:DD:EE:FF". */
+export type MACAddress = `${string}:${string}:${string}:${string}:${string}:${string}`;
+
+/** Basic IPv4 shape, e.g. "192.168.1.10". */
+export type IPv4Address = `${number}.${number}.${number}.${number}`;
+
 // ────────────────────────────────────────────────────────────────────────────
 // Ref types — typed cross-component ID references
 //

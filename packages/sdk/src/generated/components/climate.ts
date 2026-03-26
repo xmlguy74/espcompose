@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
+import type { ComponentProps, Pin, RefProp, TimePeriod, TriggerHandler } from "../../types";
 import type { _BedjetClient, _CoreComponent, _CoreEntityBase, _CoreMqttCommandComponent, _UponorSmatrixDevice } from "../bases";
 import type { anova_Anova, ballu_BalluClimate, bang_bang_BangBangClimate, bedjet_BedJetClimate, ble_client_BLEClient, climate_ir_lg_LgIrClimate, coolix_CoolixClimate, daikin_DaikinClimate, daikin_arc_DaikinArcClimate, daikin_brc_DaikinBrcClimate, delonghi_DelonghiClimate, emmeti_EmmetiClimate, fujitsu_general_FujitsuGeneralClimate, gree_GreeClimate, haier_HonClimate, haier_Smartair2Climate, heatpumpir_HeatpumpIRClimate, hitachi_ac344_HitachiClimate, hitachi_ac424_HitachiClimate, midea_ac_AirConditioner, midea_ir_MideaIR, mitsubishi_MitsubishiClimate, mqtt_MQTTClimateComponent, noblex_NoblexClimate, output_FloatOutput, pid_PIDClimate, remote_base_RemoteReceiverBase, remote_base_RemoteTransmitterBase, remote_transmitter_RemoteTransmitterComponent, sensor_Sensor, tcl112_Tcl112Climate, thermostat_ThermostatClimate, toshiba_ToshibaClimate, tuya_Tuya, tuya_TuyaClimate, uart_UARTComponent, uponor_smatrix_UponorSmatrixClimate, web_server_WebServer, whirlpool_WhirlpoolClimate, whynter_Whynter, yashima_YashimaClimate, zhlt01_ZHLT01Climate, zigbee_ZigbeeComponent } from "../markers";
 interface ClimateWebServerProps {
@@ -31,68 +31,12 @@ interface BangBangAwayConfigProps {
      * float: The default low target temperature for the control algorithm during away mode.
      * @yamlKey default_target_temperature_low
      */
-    defaultTargetTemperatureLow: unknown;
+    defaultTargetTemperatureLow: number;
     /**
      * float: The default high target temperature for the control algorithm during away mode.
      * @yamlKey default_target_temperature_high
      */
-    defaultTargetTemperatureHigh: unknown;
-}
-interface ClimateIrLgHeaderHighProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
-interface ClimateIrLgHeaderLowProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
-interface ClimateIrLgBitHighProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
-interface ClimateIrLgBitOneLowProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
-interface ClimateIrLgBitZeroLowProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
-interface MideaPeriodProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
-interface MideaTimeoutProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
+    defaultTargetTemperatureHigh: number;
 }
 interface MideaOutdoorTemperaturePropsAvailabilityProps {
     topic: unknown;
@@ -109,17 +53,9 @@ interface MideaOutdoorTemperaturePropsWebServerProps {
     /** @yamlKey sorting_group_id */
     sortingGroupId?: number;
 }
-interface MideaOutdoorTemperaturePropsExpireAfterProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
 interface MideaOutdoorTemperatureProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -127,9 +63,13 @@ interface MideaOutdoorTemperatureProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -145,17 +85,17 @@ interface MideaOutdoorTemperatureProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     /** @yamlKey accuracy_decimals */
-    accuracyDecimals?: unknown;
+    accuracyDecimals?: number;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "date" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "timestamp" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
     /** @yamlKey state_class */
-    stateClass?: unknown;
+    stateClass?: "" | "measurement" | "total_increasing" | "total" | "measurement_angle";
     /** @yamlKey force_update */
     forceUpdate?: boolean;
     /** @yamlKey expire_after */
-    expireAfter?: MideaOutdoorTemperaturePropsExpireAfterProps;
+    expireAfter?: TimePeriod;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
     onValue?: TriggerHandler;
@@ -179,17 +119,9 @@ interface MideaPowerUsagePropsWebServerProps {
     /** @yamlKey sorting_group_id */
     sortingGroupId?: number;
 }
-interface MideaPowerUsagePropsExpireAfterProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
 interface MideaPowerUsageProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -197,9 +129,13 @@ interface MideaPowerUsageProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -215,17 +151,17 @@ interface MideaPowerUsageProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     /** @yamlKey accuracy_decimals */
-    accuracyDecimals?: unknown;
+    accuracyDecimals?: number;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "date" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "timestamp" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
     /** @yamlKey state_class */
-    stateClass?: unknown;
+    stateClass?: "" | "measurement" | "total_increasing" | "total" | "measurement_angle";
     /** @yamlKey force_update */
     forceUpdate?: boolean;
     /** @yamlKey expire_after */
-    expireAfter?: MideaPowerUsagePropsExpireAfterProps;
+    expireAfter?: TimePeriod;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
     onValue?: TriggerHandler;
@@ -249,17 +185,9 @@ interface MideaHumiditySetpointPropsWebServerProps {
     /** @yamlKey sorting_group_id */
     sortingGroupId?: number;
 }
-interface MideaHumiditySetpointPropsExpireAfterProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
 interface MideaHumiditySetpointProps {
     /** string: The name for the sensor. */
-    name?: unknown;
+    name?: string;
     /** boolean: Whether the sensor should be exposed via API (e.g. to Home Assistant.) Defaults to `true` if name is not set... */
     internal?: boolean;
     /**
@@ -267,9 +195,13 @@ interface MideaHumiditySetpointProps {
      * @yamlKey disabled_by_default
      */
     disabledByDefault?: boolean;
-    icon?: unknown;
-    /** @yamlKey entity_category */
-    entityCategory?: unknown;
+    /** icon: Manually set the icon to use for the light in the frontend. */
+    icon?: string;
+    /**
+     * string: The category of the entity. See [this list](https://developers.home-assistant.io/docs/core/entity/#generic-pr...
+     * @yamlKey entity_category
+     */
+    entityCategory?: string;
     /** @yamlKey device_id */
     deviceId?: unknown;
     qos?: unknown;
@@ -285,17 +217,17 @@ interface MideaHumiditySetpointProps {
     /** @yamlKey zigbee_id */
     zigbeeId?: RefProp<zigbee_ZigbeeComponent>;
     /** @yamlKey unit_of_measurement */
-    unitOfMeasurement?: unknown;
+    unitOfMeasurement?: string;
     /** @yamlKey accuracy_decimals */
-    accuracyDecimals?: unknown;
+    accuracyDecimals?: number;
     /** @yamlKey device_class */
-    deviceClass?: unknown;
+    deviceClass?: "absolute_humidity" | "apparent_power" | "aqi" | "area" | "atmospheric_pressure" | "battery" | "blood_glucose_concentration" | "carbon_dioxide" | "carbon_monoxide" | "conductivity" | "current" | "data_rate" | "data_size" | "date" | "distance" | "duration" | "" | "energy" | "energy_distance" | "energy_storage" | "frequency" | "gas" | "humidity" | "illuminance" | "irradiance" | "moisture" | "monetary" | "nitrogen_dioxide" | "nitrogen_monoxide" | "nitrous_oxide" | "ozone" | "ph" | "pm1" | "pm10" | "pm25" | "pm4" | "power" | "power_factor" | "precipitation" | "precipitation_intensity" | "pressure" | "reactive_energy" | "reactive_power" | "signal_strength" | "sound_pressure" | "speed" | "sulphur_dioxide" | "temperature" | "temperature_delta" | "timestamp" | "volatile_organic_compounds" | "volatile_organic_compounds_parts" | "voltage" | "volume" | "volume_flow_rate" | "volume_storage" | "water" | "weight" | "wind_direction" | "wind_speed";
     /** @yamlKey state_class */
-    stateClass?: unknown;
+    stateClass?: "" | "measurement" | "total_increasing" | "total" | "measurement_angle";
     /** @yamlKey force_update */
     forceUpdate?: boolean;
     /** @yamlKey expire_after */
-    expireAfter?: MideaHumiditySetpointPropsExpireAfterProps;
+    expireAfter?: TimePeriod;
     filters?: Array<unknown>;
     /** @yamlKey on_value */
     onValue?: TriggerHandler;
@@ -313,17 +245,17 @@ interface PidDeadbandParametersProps {
      * float: Set the `kp` gain when inside the deadband. Defaults to `0`.
      * @yamlKey kp_multiplier
      */
-    kpMultiplier?: unknown;
+    kpMultiplier?: number;
     /**
      * float: Set the `ki` gain when inside the deadband. Defaults to `0`.
      * @yamlKey ki_multiplier
      */
-    kiMultiplier?: unknown;
+    kiMultiplier?: number;
     /**
      * float: Set the `kd` gain when inside the deadband. Recommended this is set to `0`. Defaults to `0`.
      * @yamlKey kd_multiplier
      */
-    kdMultiplier?: unknown;
+    kdMultiplier?: number;
     /**
      * int: Typically when inside the deadband the PID Controller has reached a state of equilibrium, so it advantageous to ...
      * @yamlKey deadband_output_averaging_samples
@@ -332,26 +264,26 @@ interface PidDeadbandParametersProps {
 }
 interface PidControlParametersProps {
     /** float: The factor for the proportional term of the PID controller. */
-    kp: unknown;
+    kp: number;
     /** float: The factor for the integral term of the PID controller. Defaults to `0`. */
-    ki?: unknown;
+    ki?: number;
     /** float: The factor for the derivative term of the PID controller. Defaults to `0`. */
-    kd?: unknown;
+    kd?: number;
     /**
      * float: Set the initial output, by priming the integral term. This is useful for when your system is rebooted and you ...
      * @yamlKey starting_integral_term
      */
-    startingIntegralTerm?: unknown;
+    startingIntegralTerm?: number;
     /**
      * float: The minimum value of the integral term multiplied by `ki` to prevent windup. Defaults to `-1`.
      * @yamlKey min_integral
      */
-    minIntegral?: unknown;
+    minIntegral?: number;
     /**
      * float: The maximum value of the integral term multiplied by `ki` to prevent windup. Defaults to `1`.
      * @yamlKey max_integral
      */
-    maxIntegral?: unknown;
+    maxIntegral?: number;
     /**
      * int: average the derivative term over this many samples. Many controllers don't use the derivative term because it is...
      * @yamlKey derivative_averaging_samples
@@ -362,86 +294,6 @@ interface PidControlParametersProps {
      * @yamlKey output_averaging_samples
      */
     outputAveragingSamples?: number;
-}
-interface ThermostatMaxCoolingRunTimeProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
-interface ThermostatMaxHeatingRunTimeProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
-interface ThermostatMinCoolingOffTimeProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
-interface ThermostatMinCoolingRunTimeProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
-interface ThermostatMinFanModeSwitchingTimeProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
-interface ThermostatMinFanningOffTimeProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
-interface ThermostatMinFanningRunTimeProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
-interface ThermostatMinHeatingOffTimeProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
-interface ThermostatMinHeatingRunTimeProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
-interface ThermostatMinIdleTimeProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
 }
 interface ThermostatAwayConfigProps {
     /** @yamlKey default_target_temperature_high */
@@ -458,12 +310,12 @@ interface ThermostatPresetProps {
      * float: The default high target temperature when switching to this preset.
      * @yamlKey default_target_temperature_high
      */
-    defaultTargetTemperatureHigh?: unknown;
+    defaultTargetTemperatureHigh?: number;
     /**
      * float: The default low target temperature when switching to this preset
      * @yamlKey default_target_temperature_low
      */
-    defaultTargetTemperatureLow?: unknown;
+    defaultTargetTemperatureLow?: number;
     /**
      * climate fan mode: The fan mode the thermostat should switch to when this preset is activated. If not specified, the t...
      * @yamlKey fan_mode
@@ -474,22 +326,6 @@ interface ThermostatPresetProps {
      * @yamlKey swing_mode
      */
     swingMode?: "OFF" | "BOTH" | "VERTICAL" | "HORIZONTAL";
-}
-interface HaierSMARTAIR2AnswerTimeoutProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
-}
-interface HaierHONAnswerTimeoutProps {
-    days?: unknown;
-    hours?: unknown;
-    minutes?: unknown;
-    seconds?: unknown;
-    milliseconds?: unknown;
-    microseconds?: unknown;
 }
 interface TuyaActiveStateProps {
     datapoint: number;
@@ -622,12 +458,12 @@ interface BangBangProps extends _CoreComponent {
      * float: The default low target temperature for the control algorithm. This can be dynamically set in the frontend later.
      * @yamlKey default_target_temperature_low
      */
-    defaultTargetTemperatureLow: unknown;
+    defaultTargetTemperatureLow: number;
     /**
      * float: The default high target temperature for the control algorithm. This can be dynamically set in the frontend later.
      * @yamlKey default_target_temperature_high
      */
-    defaultTargetTemperatureHigh: unknown;
+    defaultTargetTemperatureHigh: number;
     /**
      * [Action](/automations/actions#all-actions): The action to call when the climate device wants to enter idle mode.
      * @yamlKey idle_action
@@ -662,15 +498,15 @@ interface ClimateIrLgProps extends _CoreComponent {
     /** @yamlKey receiver_id */
     receiverId?: RefProp<remote_base_RemoteReceiverBase>;
     /** @yamlKey header_high */
-    headerHigh?: ClimateIrLgHeaderHighProps;
+    headerHigh?: TimePeriod;
     /** @yamlKey header_low */
-    headerLow?: ClimateIrLgHeaderLowProps;
+    headerLow?: TimePeriod;
     /** @yamlKey bit_high */
-    bitHigh?: ClimateIrLgBitHighProps;
+    bitHigh?: TimePeriod;
     /** @yamlKey bit_one_low */
-    bitOneLow?: ClimateIrLgBitOneLowProps;
+    bitOneLow?: TimePeriod;
     /** @yamlKey bit_zero_low */
-    bitZeroLow?: ClimateIrLgBitZeroLowProps;
+    bitZeroLow?: TimePeriod;
 }
 interface CoolixProps extends _CoreComponent {
     /** @yamlKey supports_cool */
@@ -829,9 +665,9 @@ interface HitachiAc424Props extends _CoreComponent {
 }
 interface MideaProps extends _CoreComponent {
     /** [Time](/guides/configuration-types#time): Minimal period between requests to the appliance. Defaults to `1s`. */
-    period?: MideaPeriodProps;
+    period?: TimePeriod;
     /** [Time](/guides/configuration-types#time): Request response timeout until next request attempt. Defaults to `2s`. */
-    timeout?: MideaTimeoutProps;
+    timeout?: TimePeriod;
     /**
      * int: Number of request attempts between 1 and 5 inclusive. Defaults to `3`.
      * @yamlKey num_attempts
@@ -955,7 +791,7 @@ interface PidProps {
      * float: The default target temperature (setpoint) for the control algorithm. This can be dynamically set in the fronte...
      * @yamlKey default_target_temperature
      */
-    defaultTargetTemperature: unknown;
+    defaultTargetTemperature: number;
     /**
      * [ID](/guides/configuration-types#id): The ID of a [float output](/components/output#config-output) that decreases the...
      * @yamlKey cool_output
@@ -1055,7 +891,7 @@ interface ThermostatProps extends _CoreComponent {
      * [Action](/automations/actions#all-actions) or boolean: The action to call when the climate device is placed into "hea...
      * @yamlKey heat_cool_mode
      */
-    heatCoolMode?: unknown;
+    heatCoolMode?: TriggerHandler | boolean;
     /**
      * [Action](/automations/actions#all-actions): The action to call when the climate device is placed into heat mode (it m...
      * @yamlKey heat_mode
@@ -1165,7 +1001,7 @@ interface ThermostatProps extends _CoreComponent {
      * float: The maximum humidity differential (above/below the set point) before calling the respective humidity control [...
      * @yamlKey humidity_hysteresis
      */
-    humidityHysteresis?: unknown;
+    humidityHysteresis?: number;
     /** @yamlKey default_mode */
     defaultMode?: unknown;
     /**
@@ -1181,87 +1017,87 @@ interface ThermostatProps extends _CoreComponent {
      * float: For dual-point/dual-function systems, the minimum required temperature difference between the heat and cool se...
      * @yamlKey set_point_minimum_differential
      */
-    setPointMinimumDifferential?: unknown;
+    setPointMinimumDifferential?: number;
     /**
      * float: The minimum temperature differential (temperature above the set point) before calling the cooling [action](/au...
      * @yamlKey cool_deadband
      */
-    coolDeadband?: unknown;
+    coolDeadband?: number;
     /**
      * float: The minimum temperature differential (cooling beyond the set point) before calling the idle [action](/automati...
      * @yamlKey cool_overrun
      */
-    coolOverrun?: unknown;
+    coolOverrun?: number;
     /**
      * float: The minimum temperature differential (temperature below the set point) before calling the heating [action](/au...
      * @yamlKey heat_deadband
      */
-    heatDeadband?: unknown;
+    heatDeadband?: number;
     /**
      * float: The minimum temperature differential (heating beyond the set point) before calling the idle [action](/automati...
      * @yamlKey heat_overrun
      */
-    heatOverrun?: unknown;
+    heatOverrun?: number;
     /**
      * [Time](/guides/configuration-types#time): Duration after which `supplemental_cooling_action` will be called when cool...
      * @yamlKey max_cooling_run_time
      */
-    maxCoolingRunTime?: ThermostatMaxCoolingRunTimeProps;
+    maxCoolingRunTime?: TimePeriod;
     /**
      * [Time](/guides/configuration-types#time): Duration after which `supplemental_heating_action` will be called when heat...
      * @yamlKey max_heating_run_time
      */
-    maxHeatingRunTime?: ThermostatMaxHeatingRunTimeProps;
+    maxHeatingRunTime?: TimePeriod;
     /**
      * [Time](/guides/configuration-types#time): Minimum duration the cooling action must be disengaged before it may be eng...
      * @yamlKey min_cooling_off_time
      */
-    minCoolingOffTime?: ThermostatMinCoolingOffTimeProps;
+    minCoolingOffTime?: TimePeriod;
     /**
      * [Time](/guides/configuration-types#time): Minimum duration the cooling action must be engaged before it may be diseng...
      * @yamlKey min_cooling_run_time
      */
-    minCoolingRunTime?: ThermostatMinCoolingRunTimeProps;
+    minCoolingRunTime?: TimePeriod;
     /**
      * [Time](/guides/configuration-types#time): Minimum duration any given fan mode must be active before it may be changed.
      * @yamlKey min_fan_mode_switching_time
      */
-    minFanModeSwitchingTime?: ThermostatMinFanModeSwitchingTimeProps;
+    minFanModeSwitchingTime?: TimePeriod;
     /**
      * [Time](/guides/configuration-types#time): Minimum duration the fanning action must be disengaged before it may be eng...
      * @yamlKey min_fanning_off_time
      */
-    minFanningOffTime?: ThermostatMinFanningOffTimeProps;
+    minFanningOffTime?: TimePeriod;
     /**
      * [Time](/guides/configuration-types#time): Minimum duration the fanning action must be engaged before it may be diseng...
      * @yamlKey min_fanning_run_time
      */
-    minFanningRunTime?: ThermostatMinFanningRunTimeProps;
+    minFanningRunTime?: TimePeriod;
     /**
      * [Time](/guides/configuration-types#time): Minimum duration the heating action must be disengaged before it may be eng...
      * @yamlKey min_heating_off_time
      */
-    minHeatingOffTime?: ThermostatMinHeatingOffTimeProps;
+    minHeatingOffTime?: TimePeriod;
     /**
      * [Time](/guides/configuration-types#time): Minimum duration the heating action must be engaged before it may be diseng...
      * @yamlKey min_heating_run_time
      */
-    minHeatingRunTime?: ThermostatMinHeatingRunTimeProps;
+    minHeatingRunTime?: TimePeriod;
     /**
      * [Time](/guides/configuration-types#time): Minimum duration the idle action must be active before calling another clim...
      * @yamlKey min_idle_time
      */
-    minIdleTime: ThermostatMinIdleTimeProps;
+    minIdleTime: TimePeriod;
     /**
      * float: When the temperature difference between the upper set point and the current temperature exceeds this value, `s...
      * @yamlKey supplemental_cooling_delta
      */
-    supplementalCoolingDelta?: unknown;
+    supplementalCoolingDelta?: number;
     /**
      * float: When the temperature difference between the lower set point and the current temperature exceeds this value, `s...
      * @yamlKey supplemental_heating_delta
      */
-    supplementalHeatingDelta?: unknown;
+    supplementalHeatingDelta?: number;
     /**
      * boolean: If set to `true`, the `fan_only_action` will share the same delay timer used for all `fan_mode` actions. The...
      * @yamlKey fan_only_action_uses_fan_mode_timer
@@ -1395,7 +1231,7 @@ interface HaierSMARTAIR2Props extends _CoreComponent {
      * [Time](/guides/configuration-types#time): Responce timeout. The default value is `200ms`.
      * @yamlKey answer_timeout
      */
-    answerTimeout?: HaierSMARTAIR2AnswerTimeoutProps;
+    answerTimeout?: TimePeriod;
     /**
      * [Automation](/automations): Automation to perform when status message received from AC. See [`on_status_message` Trig...
      * @yamlKey on_status_message
@@ -1439,7 +1275,7 @@ interface HaierHONProps extends _CoreComponent {
      * [Time](/guides/configuration-types#time): Responce timeout. The default value is `200ms`.
      * @yamlKey answer_timeout
      */
-    answerTimeout?: HaierHONAnswerTimeoutProps;
+    answerTimeout?: TimePeriod;
     /**
      * [Automation](/automations): Automation to perform when status message received from AC. See [`on_status_message` Trig...
      * @yamlKey on_status_message
@@ -1506,11 +1342,11 @@ interface TuyaProps extends _CoreComponent {
     /** @yamlKey current_temperature_datapoint */
     currentTemperatureDatapoint?: number;
     /** @yamlKey temperature_multiplier */
-    temperatureMultiplier?: unknown;
+    temperatureMultiplier?: number;
     /** @yamlKey current_temperature_multiplier */
-    currentTemperatureMultiplier?: unknown;
+    currentTemperatureMultiplier?: number;
     /** @yamlKey target_temperature_multiplier */
-    targetTemperatureMultiplier?: unknown;
+    targetTemperatureMultiplier?: number;
     /** @yamlKey reports_fahrenheit */
     reportsFahrenheit?: boolean;
     preset?: TuyaPresetProps;

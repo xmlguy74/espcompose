@@ -13,7 +13,7 @@ interface Aic3204Props extends _CoreComponent {
      */
     i2cId?: RefProp<i2c_I2CBus>;
     /** int: The I²C address of the driver. Defaults to `0x18`. */
-    address?: unknown;
+    address?: number;
 }
 interface Es8156Props extends _CoreComponent {
     /**
@@ -22,7 +22,7 @@ interface Es8156Props extends _CoreComponent {
      */
     i2cId?: RefProp<i2c_I2CBus>;
     /** int: The I²C address of the driver. Defaults to `0x18`. */
-    address?: unknown;
+    address?: number;
 }
 interface Es8311Props extends _CoreComponent {
     /**
@@ -56,7 +56,7 @@ interface Es8311Props extends _CoreComponent {
      */
     i2cId?: RefProp<i2c_I2CBus>;
     /** int: The I²C address of the driver. Defaults to `0x18`. */
-    address?: unknown;
+    address?: number;
 }
 interface Es8388Props extends _CoreComponent {
     /**
@@ -65,7 +65,7 @@ interface Es8388Props extends _CoreComponent {
      */
     i2cId?: RefProp<i2c_I2CBus>;
     /** int: The I²C address of the driver. Defaults to `0x10`. */
-    address?: unknown;
+    address?: number;
 }
 export type AudioDacProps = ({
     platform: "aic3204";

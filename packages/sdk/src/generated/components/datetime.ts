@@ -28,7 +28,7 @@ interface TemplateDATEProps extends _TemplateDatetime_Base {
      * string: The value to set the state to on setup if not restored with `restore_value`. Can be one of:
      * @yamlKey initial_value
      */
-    initialValue?: unknown;
+    initialValue?: string;
 }
 interface TemplateTIMEProps extends _TemplateDatetime_Base {
     type?: "TIME";
@@ -38,7 +38,7 @@ interface TemplateTIMEProps extends _TemplateDatetime_Base {
      * string: The value to set the state to on setup if not restored with `restore_value`. Can be one of:
      * @yamlKey initial_value
      */
-    initialValue?: unknown;
+    initialValue?: string;
 }
 interface TemplateDATETIMEProps extends _TemplateDatetime_Base {
     type?: "DATETIME";
@@ -48,7 +48,7 @@ interface TemplateDATETIMEProps extends _TemplateDatetime_Base {
      * string: The value to set the state to on setup if not restored with `restore_value`. Can be one of:
      * @yamlKey initial_value
      */
-    initialValue?: unknown;
+    initialValue?: string;
 }
 export type DatetimeProps = (DatetimeBaseProps & {
     platform: "template";
