@@ -14,7 +14,12 @@
 // There is NO user-facing lambda action.
 // ────────────────────────────────────────────────────────────────────────────
 
-import { createLambdaScalar } from '@esphome/compose';
+// ── JSON-safe lambda marker ─────────────────────────────────────────────
+// Lowered actions are embedded in source via JSON.stringify (in the script
+// transformer), so we use a plain marker object instead of a YAML Scalar.
+// The serialiser restores these to !lambda scalars at consumption time.
+export interface LambdaMarker { __lambda__: string }
+function lambdaMarker(code: string): LambdaMarker { return { __lambda__: code }; }
 
 // ── Action Nodes ───────────────────────────────────────────────────────────
 
@@ -236,7 +241,7 @@ function lowerParam(param: IRActionParam): unknown {
     case 'literal':
       return param.value;
     case 'trigger_var':
-      return createLambdaScalar(`return ${param.varName};`);
+      return lambdaMarker(`return ${param.varName};`);
   }
 }
 
@@ -264,7 +269,7 @@ function lowerConfig(config: IRActionConfig): unknown {
 function lowerCondition(condition: IRCondition): unknown {
   switch (condition.kind) {
     case 'lambda':
-      return createLambdaScalar(`return ${condition.expression};`);
+      return lambdaMarker(`return ${condition.expression};`);
     case 'native':
       return { [condition.conditionKey]: lowerConfig(condition.config) };
   }
@@ -281,11 +286,29 @@ function lowerAction(action: IRAction): unknown {
     case 'ha_service': {
       const serviceConfig: Record<string, unknown> = { action: action.action };
       if (action.data) {
-        const data: Record<string, unknown> = {};
+        const staticData: Record<string, unknown> = {};
+        const templateData: Record<string, string> = {};
+        const variables: Record<string, unknown> = {};
+
         for (const [key, param] of Object.entries(action.data)) {
-          data[key] = lowerParam(param);
+          if (param.kind === 'trigger_var') {
+            // Dynamic value: use variables + data_template
+            variables[param.varName] = lambdaMarker(`return ${param.varName};`);
+            templateData[key] = `{{ ${param.varName} }}`;
+          } else {
+            staticData[key] = lowerParam(param);
+          }
         }
-        serviceConfig.data = data;
+
+        if (Object.keys(staticData).length > 0) {
+          serviceConfig.data = staticData;
+        }
+        if (Object.keys(templateData).length > 0) {
+          serviceConfig.data_template = templateData;
+        }
+        if (Object.keys(variables).length > 0) {
+          serviceConfig.variables = variables;
+        }
       }
       return { 'homeassistant.action': serviceConfig };
     }
@@ -346,7 +369,7 @@ function lowerAction(action: IRAction): unknown {
       return { 'script.stop': { id: action.scriptId } };
 
     case 'internal_lambda':
-      return { lambda: createLambdaScalar(action.code) };
+      return { lambda: lambdaMarker(action.code) };
   }
 }
 

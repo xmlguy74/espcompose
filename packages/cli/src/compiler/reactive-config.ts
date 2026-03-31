@@ -255,6 +255,7 @@ export function buildRuntimeConfig(
     widgetBindings,
     themeMemos: themeMemos.length > 0 ? themeMemos : undefined,
     themeDefaultIndex: themeData?.defaultIndex,
+    themeNames: themeData && themeData.themeNames.length > 0 ? themeData.themeNames : undefined,
     fontNames: fontNames.size > 0 ? Array.from(fontNames) : undefined,
     triggerFunctions: compiledTriggers && compiledTriggers.length > 0 ? compiledTriggers : undefined,
   };

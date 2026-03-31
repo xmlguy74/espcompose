@@ -463,12 +463,15 @@ function compileHAAction(
   const snakeMethod = camelToSnake(methodName);
   const action = `${entity.domain}.${snakeMethod}`;
 
-  // Extract data from optional object argument
-  let data: Record<string, IRActionParam> | undefined;
+  // Always include entity_id so HA knows which entity to target
+  const data: Record<string, IRActionParam> = {
+    entity_id: { kind: 'literal', value: entity.entityId },
+  };
+
+  // Extract additional data from optional object argument
   if (call.arguments.length > 0) {
     const arg = call.arguments[0];
     if (ts.isObjectLiteralExpression(arg)) {
-      data = {};
       for (const prop of arg.properties) {
         if (ts.isPropertyAssignment(prop) && ts.isIdentifier(prop.name)) {
           const paramValue = compileActionParam(prop.initializer, ctx);
