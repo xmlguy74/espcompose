@@ -1,11 +1,13 @@
-import { Display, Ref, useHAEntity, useScript, delay, theme } from "@esphome/compose";
+import { Display, Image, Ref, useHAEntity, useScript, delay, theme } from "@esphome/compose";
 import {
     Button, Card, HStack, Screen, SliderField, SwitchField, Text, VStack,
     ThemeProvider, darkTheme, lightTheme,
 } from "@esphome/compose-ui";
+import { MyButton, MyImageButton } from "./button";
 
 type UIProps = {
     display: Ref<Display>,
+    buttonBg?: Ref<Image>,
 }
 
 export const UI = (props: UIProps) => {
@@ -45,12 +47,13 @@ export const UI = (props: UIProps) => {
                         <Card>
                             <HStack>
                                 <lvgl-label text={officeLight.stateText} />
-                                <Button
+                                <MyButton
                                     text={officeLight.isOn ? "Office Off" : "Office On"}
                                     onPress={() => { officeLight.toggle(); }}
                                 />
-                                <Button
+                                <MyImageButton
                                     text={officeLight.isOn ? "Office Off" : "Office On"}
+                                    bgImage={props.buttonBg}
                                     onPress={async () => {
                                         officeLight.toggle();
                                         await myScript();  //valid only because we know that myScript is from createScript. We can't just call any random function.
