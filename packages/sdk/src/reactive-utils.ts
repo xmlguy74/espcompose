@@ -7,7 +7,6 @@
 // ────────────────────────────────────────────────────────────────────────────
 
 import { ReactiveNode, isReactiveNode } from './reactive-node';
-import type { ExpressionDependency } from './reactive-node';
 import { useMemo } from './hooks/useMemo';
 import { _reactive } from './_reactive';
 
