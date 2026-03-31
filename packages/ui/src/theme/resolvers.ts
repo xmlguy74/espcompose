@@ -9,7 +9,7 @@
  * value is returned directly (no reactive overhead).
  */
 
-import { useReactiveTheme, isReactiveNode, _reactive } from '@esphome/compose';
+import { useReactiveTheme, isReactiveNode, useRawMemo } from '@esphome/compose';
 import type { ReactiveNode, Signal } from '@esphome/compose';
 import type {
   SpacingToken,
@@ -127,7 +127,7 @@ export function resolveFont(def: {
     ...(szReactive ? (def.fontSize as unknown as ReactiveNode<number>).dependencies : []),
   ];
 
-  return _reactive.derivedMemo<string>({
+  return useRawMemo<string>({
     cppExpression: `resolve_font(${famExpr}, ${szExpr})`,
     cppReturnType: 'const lv_font_t*',
     dependencies: deps,

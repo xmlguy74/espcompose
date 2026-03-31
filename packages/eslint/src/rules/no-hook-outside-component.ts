@@ -24,6 +24,7 @@ const HOOK_NAMES = new Set([
   'useScript',
   'useRef',
   'useMemo',
+  'useRawMemo',
   'useEffect',
 ]);
 

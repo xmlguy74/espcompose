@@ -18,10 +18,43 @@
 //   <button onPress={() => { myScript.stop(); }} />              // stop running
 // ────────────────────────────────────────────────────────────────────────────
 
-import { ScriptDefinition, findInScope, registerInScope } from './useScope';
+import { createContext, useContext, withContext } from './useContext';
+import { setCurrentHookPath } from './useState';
+import { findInScope, registerInScope } from './useScope';
+import type { ScopeFrame } from './useScope';
 import { resolveRefBindingsInActions } from '../serialize';
 import { assertPhase } from '../phase';
 import type { ACTION_BRAND } from '../types';
+
+// ── Script-scope types & context ───────────────────────────────────────────
+
+export interface ScriptDefinition {
+  id: string;
+  then: unknown[];
+}
+
+const scriptScopeContext = createContext<ScopeFrame<ScriptDefinition>>({ value: {} });
+
+/**
+ * Establishes a script scope frame and runs `fn` inside it.
+ * Returns the function's result together with all ScriptDefinitions that were
+ * registered via useScript() during the call.
+ *
+ * Called by the compiler's execute phase to wrap bundle evaluation.
+ */
+export function withScriptScope<T>(fn: () => T): { result: T; scripts: ScriptDefinition[] } {
+  const prev = useContext(scriptScopeContext);
+  const scopeFrame: ScopeFrame<ScriptDefinition> = { next: prev, value: {} };
+
+  setCurrentHookPath('espcompose_script_render');
+  try {
+    const result = withContext(scriptScopeContext, scopeFrame, fn);
+    const scripts = Object.values(scopeFrame.value).map((e) => e.def);
+    return { result, scripts };
+  } finally {
+    setCurrentHookPath(null);
+  }
+}
 
 /**
  * Handle returned by useScript() for interacting with a named ESPHome script.
@@ -79,8 +112,8 @@ export function useScript(
   }
 
   // Register in scope (deduplication)
-  if (!findInScope(scriptDef.id)) {
-    registerInScope(scriptDef.id, { def: scriptDef });
+  if (!findInScope(scriptScopeContext, scriptDef.id)) {
+    registerInScope(scriptScopeContext, scriptDef.id, { def: scriptDef });
   }
 
   return createScriptHandle(scriptDef.id);

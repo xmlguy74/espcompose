@@ -80,6 +80,9 @@ export type { ScriptHandle } from './hooks/useScript';
 // useMemo — reactive memoization hook (user-facing, must be called from component body)
 export { useMemo } from './hooks/useMemo';
 
+// useRawMemo — explicit C++ memo construction (user-facing, must be called from component body)
+export { useRawMemo } from './hooks/useRawMemo';
+
 // ReactiveNode — unified reactive value abstraction
 export {
   ReactiveNode,

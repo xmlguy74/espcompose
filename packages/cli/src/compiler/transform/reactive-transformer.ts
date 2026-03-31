@@ -138,8 +138,8 @@ function isMemoCall(expr: ts.Expression): expr is ts.CallExpression {
 function isReactiveSkipCall(expr: ts.Expression): boolean {
   if (!ts.isCallExpression(expr)) return false;
   const callee = expr.expression;
-  // useEffect(...)
-  if (ts.isIdentifier(callee) && callee.text === 'useEffect') return true;
+  // useEffect(...), useRawMemo(...)
+  if (ts.isIdentifier(callee) && (callee.text === 'useEffect' || callee.text === 'useRawMemo')) return true;
   // resolveBindProp(...), reactiveIsNaN(...)
   if (ts.isIdentifier(callee) && (callee.text === 'resolveBindProp' || callee.text === 'reactiveIsNaN')) return true;
   if (ts.isPropertyAccessExpression(callee)) {
