@@ -3,13 +3,13 @@
 //
 // Tracks which compilation phase is currently active so that SDK APIs can
 // assert they are called in the correct context. The compiler sets the phase
-// during execution; SDK functions like build.run() and bind.haEntity() check
-// it and throw a clear error if called in the wrong phase.
+// during execution; SDK hooks like useHAEntity(), useScript(), useRef(),
+// and useMemo() check it and throw a clear error if called outside render.
 //
 // Phases:
 //   'idle'   — no compilation in progress
 //   'module' — user module is being evaluated (build.run allowed)
-//   'render' — JSX tree is being rendered (bind.* allowed)
+//   'render' — JSX tree is being rendered (hooks allowed)
 // ────────────────────────────────────────────────────────────────────────────
 
 export type Phase = 'idle' | 'module' | 'render';

@@ -2,7 +2,7 @@
  * ESLint rule: @esphome/compose-eslint/no-unsupported-trigger-body
  *
  * Detects arrow functions assigned to TriggerHandler-typed JSX props (or
- * createScript bodies) and validates their statement-level contents. Reports
+ * useScript/createScript bodies) and validates their statement-level contents. Reports
  * constructs that have no ESPHome action equivalent before the compiler
  * runs, giving users earlier and more actionable feedback.
  *
@@ -111,7 +111,7 @@ export default createRule<[], MessageIds>({
     /**
      * Check if a function node is a trigger handler body:
      * - Arrow function as JSX attribute value
-     * - Arrow function as first argument to createScript()
+     * - Arrow function as first argument to useScript() or createScript()
      */
     function isTriggerHandlerContext(
       node: TSESTree.ArrowFunctionExpression | TSESTree.FunctionExpression,
@@ -127,10 +127,10 @@ export default createRule<[], MessageIds>({
         }
       }
 
-      // createScript(() => { ... })
+      // useScript(() => { ... }) or createScript(() => { ... })
       if (parent.type === 'CallExpression') {
         const callee = parent.callee;
-        if (callee.type === 'Identifier' && callee.name === 'createScript') {
+        if (callee.type === 'Identifier' && (callee.name === 'useScript' || callee.name === 'createScript')) {
           return true;
         }
       }

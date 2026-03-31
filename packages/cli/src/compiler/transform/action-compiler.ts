@@ -59,12 +59,12 @@ export interface ActionCompileResult {
 
 export interface ActionCompilerContext {
   checker: ts.TypeChecker;
-  /** Map of local variable name → HA entity info (from importHAEntity calls). */
-  haEntities: Map<string, HAEntityInfo>;
-  /** Map of createScript variable name → script ID. */
-  scriptHandles: Map<string, string>;
-  /** Map of useRef variable name → element tag (e.g. 'light', 'switch'). */
-  refTags: Map<string, string>;
+  /** Map of declaration symbol → HA entity info (scope-aware). */
+  haEntities: Map<ts.Symbol, HAEntityInfo>;
+  /** Map of declaration symbol → script ID (scope-aware). */
+  scriptHandles: Map<ts.Symbol, string>;
+  /** Map of declaration symbol → element tag (scope-aware). */
+  refTags: Map<ts.Symbol, string>;
   /** Name of the trigger args parameter (e.g. 'args'), empty if no parameter. */
   triggerParamName: string;
   /** Source file path for diagnostics. */
@@ -75,15 +75,25 @@ export interface ActionCompilerContext {
   triggerVars: Set<string>;
 }
 
+/** Resolve a ts.Symbol-keyed map entry from an identifier node. */
+function lookupBySymbol<T>(
+  map: Map<ts.Symbol, T>,
+  node: ts.Identifier,
+  checker: ts.TypeChecker,
+): T | undefined {
+  const sym = checker.getSymbolAtLocation(node);
+  return sym ? map.get(sym) : undefined;
+}
+
 /**
  * Compile a trigger handler arrow function body to an IR action tree.
  */
 export function compileActionBody(
   callback: ts.ArrowFunction | ts.FunctionExpression,
   checker: ts.TypeChecker,
-  haEntities: Map<string, HAEntityInfo>,
-  scriptHandles: Map<string, string>,
-  refTags: Map<string, string>,
+  haEntities: Map<ts.Symbol, HAEntityInfo>,
+  scriptHandles: Map<ts.Symbol, string>,
+  refTags: Map<ts.Symbol, string>,
   filePath: string,
 ): ActionCompileResult {
   const ctx: ActionCompilerContext = {
@@ -332,11 +342,12 @@ function compileActionCall(
   // ref.method(args) — component action
   if (ts.isPropertyAccessExpression(call.expression) &&
       ts.isIdentifier(call.expression.expression)) {
-    const objName = call.expression.expression.text;
+    const objNode = call.expression.expression;
+    const objName = objNode.text;
     const methodName = call.expression.name.text;
 
     // scriptHandle.execute() / scriptHandle.stop()
-    const scriptId = ctx.scriptHandles.get(objName);
+    const scriptId = lookupBySymbol(ctx.scriptHandles, objNode, ctx.checker);
     if (scriptId) {
       if (methodName === 'execute') return [irScriptExecute(scriptId)];
       if (methodName === 'stop') return [irScriptStop(scriptId)];
@@ -345,20 +356,21 @@ function compileActionCall(
     }
 
     // HA entity action
-    const haEntity = ctx.haEntities.get(objName);
+    const haEntity = lookupBySymbol(ctx.haEntities, objNode, ctx.checker);
     if (haEntity) {
       return compileHAAction(call, haEntity, methodName, ctx);
     }
 
     // Component ref action
-    if (ctx.refTags.has(objName)) {
-      return compileRefAction(call, objName, methodName, ctx);
+    const refTag = lookupBySymbol(ctx.refTags, objNode, ctx.checker);
+    if (refTag !== undefined) {
+      return compileRefAction(call, objName, refTag, methodName, ctx);
     }
 
     // Check if it's a ref by type (fallback for refs not in refTags map)
-    const type = ctx.checker.getTypeAtLocation(call.expression.expression);
+    const type = ctx.checker.getTypeAtLocation(objNode);
     if (hasRefBrand(type)) {
-      return compileRefAction(call, objName, methodName, ctx);
+      return compileRefAction(call, objName, undefined, methodName, ctx);
     }
   }
 
@@ -377,7 +389,7 @@ function compileActionCall(
 
   // scriptHandle() without await — fire and forget
   if (ts.isIdentifier(call.expression)) {
-    const scriptId = ctx.scriptHandles.get(call.expression.text);
+    const scriptId = lookupBySymbol(ctx.scriptHandles, call.expression, ctx.checker);
     if (scriptId) {
       return [irScriptExecute(scriptId)];
     }
@@ -473,11 +485,10 @@ function compileHAAction(
 function compileRefAction(
   call: ts.CallExpression,
   refName: string,
+  tag: string | undefined,
   methodName: string,
   ctx: ActionCompilerContext,
 ): IRAction[] | null {
-  // Try to resolve the YAML action key from the ref's tag
-  const tag = ctx.refTags.get(refName);
   const snakeMethod = camelToSnake(methodName);
   const actionKey = tag ? `${tag}.${snakeMethod}` : snakeMethod;
 
@@ -724,7 +735,7 @@ function resolveScriptCall(
   ctx: ActionCompilerContext,
 ): string | null {
   if (ts.isIdentifier(call.expression)) {
-    return ctx.scriptHandles.get(call.expression.text) ?? null;
+    return lookupBySymbol(ctx.scriptHandles, call.expression, ctx.checker) ?? null;
   }
   return null;
 }

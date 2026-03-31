@@ -20,28 +20,28 @@ ruleTester.run('no-node-in-reactive', rule, {
     {
       name: 'Non-Node identifiers in reactive context',
       code: `
-        const status = bind.memo(() => light.isOn() ? 'ON' : 'OFF');
+        const status = useMemo(() => light.isOn() ? 'ON' : 'OFF');
       `,
     },
     {
       name: 'process as property name (not global)',
       code: `
-        const x = bind.memo(() => obj.process);
+        const x = useMemo(() => obj.process);
       `,
     },
   ],
   invalid: [
     {
-      name: 'process in bind.memo()',
+      name: 'process in useMemo()',
       code: `
-        const name = bind.memo(() => process.env.NAME);
+        const name = useMemo(() => process.env.NAME);
       `,
       errors: [{ messageId: 'nodeInReactive' }],
     },
     {
-      name: 'require in bind.effect()',
+      name: 'require in useEffect()',
       code: `
-        bind.effect(() => {
+        useEffect(() => {
           const fs = require('fs');
         });
       `,
@@ -55,9 +55,9 @@ ruleTester.run('no-node-in-reactive', rule, {
       errors: [{ messageId: 'nodeInReactive' }],
     },
     {
-      name: 'Buffer in bind.memo()',
+      name: 'Buffer in useMemo()',
       code: `
-        const data = bind.memo(() => Buffer.from('test'));
+        const data = useMemo(() => Buffer.from('test'));
       `,
       errors: [{ messageId: 'nodeInReactive' }],
     },

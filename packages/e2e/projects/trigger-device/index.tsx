@@ -5,28 +5,28 @@
  * actions, createScript() triggers, and bare arrow functions for anonymous triggers.
  * Ref actions are resolved at compile time via the action tree compiler.
  */
-import { defineProject, delay, logger, useRef, createScript } from '@esphome/compose';
+import { defineProject, delay, logger, useRef, useScript } from '@esphome/compose';
 import type { output_FloatOutput, light_LightOutput, switch__Switch } from '@esphome/compose';
 
-const lightRef = useRef<light_LightOutput>();
-const switchRef = useRef<switch__Switch>();
-const outputRef = useRef<output_FloatOutput>();
+function App() {
+  const lightRef = useRef<light_LightOutput>();
+  const switchRef = useRef<switch__Switch>();
+  const outputRef = useRef<output_FloatOutput>();
 
-/** Named script: toggleAll — toggles both the light and switch, with a delay between. */
-const toggleAll = createScript(async () => {
-  lightRef.toggle();
-  await delay(200);
-  switchRef.toggle();
-});
+  /** Named script: toggleAll — toggles both the light and switch, with a delay between. */
+  const toggleAll = useScript(async () => {
+    lightRef.toggle();
+    await delay(200);
+    switchRef.toggle();
+  });
 
-/** Named script: dimLight — turns the light on at half brightness. */
-const dimLight = createScript(async () => {
-  lightRef.turnOn({ brightness: 0.5 });
-  logger.log('Light dimmed to 50%');
-});
+  /** Named script: dimLight — turns the light on at half brightness. */
+  const dimLight = useScript(async () => {
+    lightRef.turnOn({ brightness: 0.5 });
+    logger.log('Light dimmed to 50%');
+  });
 
-export default defineProject({
-  device: (
+  return (
     <esphome name="trigger-device" comment="Device demonstrating automation API">
       <esp32 board="esp32dev" framework={{ type: 'esp-idf' }} />
       <wifi ssid="HomeWifi" password="s3cr3t!!" />
@@ -48,5 +48,9 @@ export default defineProject({
         onDoubleClick={async () => { await dimLight(); }}
       />
     </esphome>
-  ),
+  );
+}
+
+export default defineProject({
+  device: <App />,
 });

@@ -7,7 +7,7 @@
  */
 
 import type { EspComposeElement, TriggerHandler, BindProp } from '@esphome/compose';
-import { createIntentComponent, LVGL_INTENTS, bind } from '@esphome/compose';
+import { createIntentComponent, LVGL_INTENTS, useMemo } from '@esphome/compose';
 import { resolveSize, resolveTypography, resolveFont, resolveStatus } from '../theme/resolvers';
 import type { StatusToken, SizeToken } from '../theme/types';
 
@@ -67,8 +67,8 @@ export const Button = createIntentComponent(
 
     // Width: derived from reactive paddingX if no override.
     // The compiler transform (espcompose transform-lib) compiles this to
-    // bind.__slotted() with a C++ template at library build time.
-    const width = props.width ?? bind.memo(() => dims.paddingX * 2 + 80);
+    // _reactive.slotted() with a C++ template at library build time.
+    const width = props.width ?? useMemo(() => dims.paddingX * 2 + 80);
     const height = props.height ?? dims.height;
 
     // State-variant and extension props stay untyped (not representable in JSX)

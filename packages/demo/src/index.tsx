@@ -3,10 +3,10 @@ import { Display, defineProject, useRef } from '@esphome/compose';
 import { UI } from './lvgl';
 import { Waveshare_ESP32P4_WIFI6_Touch_LCD_10_1 } from './hardware';
 
-const display = useRef<Display>();
+function App() {
+  const display = useRef<Display>();
 
-export default defineProject({
-  device: (
+  return (
     <esphome
       name="espcompose-demo"
       comment="An ESPHome Compose device"
@@ -30,5 +30,9 @@ export default defineProject({
       <UI display={display} />
 
     </esphome>
-  ),
+  );
+}
+
+export default defineProject({
+  device: <App />,
 });

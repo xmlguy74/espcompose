@@ -1,7 +1,7 @@
 /**
  * E2E fixture: uncompiled-lib-device
  *
- * Imports a fake pre-built library that uses bind.memo() + bind.haEntity()
+ * Imports a fake pre-built library that uses useMemo() + useHAEntity()
  * WITHOUT being run through `espcompose transform-lib`. The compiler should
  * detect the uncompiled reactive expressions and throw a clear error.
  */

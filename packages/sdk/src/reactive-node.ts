@@ -11,8 +11,8 @@
 //
 // Kinds:
 //   - 'expression': single-source binding (e.g. officeLight.isOn)
-//   - 'memo':       derived value from one or more sources (bind.memo())
-//   - 'effect':     side-effect callback (bind.effect())
+//   - 'memo':       derived value from one or more sources (useMemo())
+//   - 'effect':     side-effect callback (useEffect())
 // ────────────────────────────────────────────────────────────────────────────
 
 import { getTriggerSignature } from './trigger-registry';
@@ -52,7 +52,7 @@ declare const REACTIVE_NODE_BRAND: unique symbol;
 // it as assignable to T, so expressions like `signal ? "A" : "B"` type-check
 // naturally. At runtime, the value is still a ReactiveNode instance — the
 // brand is erased. The compiler detects Signal-typed sub-expressions in JSX
-// attributes and auto-wraps them in bind.memo().
+// attributes and auto-wraps them in useMemo().
 // ────────────────────────────────────────────────────────────────────────────
 
 declare const SIGNAL_BRAND: unique symbol;

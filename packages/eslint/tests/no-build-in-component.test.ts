@@ -20,7 +20,7 @@ ruleTester.run('no-build-in-component', rule, {
       name: 'other member calls inside components are fine',
       code: `
         function App() {
-          const x = bind.haEntity('light.kitchen');
+          const x = useHAEntity('light.kitchen');
           return <div />;
         }
       `,

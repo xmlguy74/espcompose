@@ -44,7 +44,7 @@ export function registerInScope(id: string, entry: { def: ScriptDefinition }): v
 /**
  * Establishes a script scope frame and runs `fn` inside it.
  * Returns the function's result together with all ScriptDefinitions that were
- * registered via createScript() during the call.
+ * registered via useScript() during the call.
  *
  * Called by the compiler's execute phase to wrap bundle evaluation.
  */

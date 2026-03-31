@@ -7,7 +7,7 @@
 //      during serialization. Each binding records: target element ID,
 //      target element type, target prop name, and the Expression.
 //
-//   2. HAEntityRegistrations — HA entities requested via bind.haEntity().
+//   2. HAEntityRegistrations — HA entities requested via useHAEntity().
 //      Each registration records: entity_id, domain, sensor type, and
 //      the auto-generated ESPHome component ID.
 //

@@ -48,14 +48,14 @@ export interface DependencyInfo {
 
 export interface ExprCompilerContext {
   checker: ts.TypeChecker;
-  /** Map of local variable name → HA entity info (from importHAEntity calls). */
-  haEntities: Map<string, HAEntityInfo>;
+  /** Map of declaration symbol → HA entity info (scope-aware lookup). */
+  haEntities: Map<ts.Symbol, HAEntityInfo>;
   /** Collected dependencies during expression compilation. */
   dependencies: Map<string, DependencyInfo>;
   /**
    * Slot tracking for unresolvable Signal<T> subexpressions.
    * Each slot maps to the original AST expression that will be passed
-   * as a runtime argument to bind.__slotted().
+   * as a runtime argument to _reactive.slotted().
    */
   slots: { expr: ts.Expression; slotIndex: number }[];
 }
@@ -297,9 +297,10 @@ function compilePropertyAccess(
 
   // Check if this property access is on a known HA entity variable
   if (ts.isIdentifier(node.expression)) {
-    const varName = node.expression.text;
-    const entity = ctx.haEntities.get(varName);
+    const sym = ctx.checker.getSymbolAtLocation(node.expression);
+    const entity = sym ? ctx.haEntities.get(sym) : undefined;
     if (entity) {
+      const varName = node.expression.text;
       const signalInfo = resolveSignalProperty(varName, propName, entity);
       if (signalInfo) {
         // Register this dependency
@@ -642,32 +643,36 @@ const MATH_MAP: Record<string, string> = {
 // ────────────────────────────────────────────────────────────────────────────
 
 /**
- * Walk the file looking for `const x = importHAEntity('entity.id')` or
- * `const x = bind.haEntity('entity.id')` patterns.
- * Records the variable name → entity mapping.
+ * Walk the file looking for `const x = useHAEntity('entity.id')` patterns.
+ * Records the declaration symbol → entity mapping for scope-aware lookup.
+ *
+ * When a checker is provided, uses ts.Symbol keys for scope-safe resolution.
+ * Falls back to variable name keys (string) when checker is unavailable.
  */
 export function scanForHAEntities(
   node: ts.Node,
-  haEntities: Map<string, HAEntityInfo>,
+  haEntities: Map<ts.Symbol, HAEntityInfo>,
+  checker?: ts.TypeChecker,
 ): void {
   if (ts.isVariableDeclaration(node) && node.initializer && ts.isIdentifier(node.name)) {
     const init = node.initializer;
     if (ts.isCallExpression(init)) {
       const callee = init.expression;
-      // Match: importHAEntity('light.office') or bind.haEntity('light.office')
-      const isImportHAEntity = ts.isIdentifier(callee) && callee.text === 'importHAEntity';
-      const isBindHAEntity = ts.isPropertyAccessExpression(callee) &&
-        ts.isIdentifier(callee.expression) && callee.expression.text === 'bind' &&
-        callee.name.text === 'haEntity';
+      const isUseHAEntity = ts.isIdentifier(callee) && callee.text === 'useHAEntity';
 
-      if ((isImportHAEntity || isBindHAEntity) &&
+      if (isUseHAEntity &&
           init.arguments.length >= 1 && ts.isStringLiteral(init.arguments[0])) {
         const entityId = init.arguments[0].text;
         const dotIdx = entityId.indexOf('.');
         const domain = dotIdx >= 0 ? entityId.slice(0, dotIdx) : entityId;
-        haEntities.set(node.name.text, { entityId, domain });
+
+        // Use ts.Symbol for scope-safe keying when checker is available
+        const sym = checker?.getSymbolAtLocation(node.name);
+        if (sym) {
+          haEntities.set(sym, { entityId, domain });
+        }
       }
     }
   }
-  ts.forEachChild(node, child => scanForHAEntities(child, haEntities));
+  ts.forEachChild(node, child => scanForHAEntities(child, haEntities, checker));
 }

@@ -11,35 +11,35 @@ describe('no-untracked-signal', () => {
       {
         name: 'direct passthrough in JSX attribute',
         code: `
-          const light = importHAEntity('light.office');
+          const light = useHAEntity('light.office');
           <label text={light.stateText} />;
         `,
       },
       {
         name: 'ternary with Signal in JSX attribute (auto-transformed)',
         code: `
-          const light = importHAEntity('light.office');
+          const light = useHAEntity('light.office');
           <label text={light.isOn ? "On" : "Off"} />;
         `,
       },
       {
-        name: 'Signal inside bind.memo',
+        name: 'Signal inside useMemo',
         code: `
-          const light = importHAEntity('light.office');
-          const status = bind.memo(() => light.isOn ? "On" : "Off");
+          const light = useHAEntity('light.office');
+          const status = useMemo(() => light.isOn ? "On" : "Off");
         `,
       },
       {
-        name: 'Signal inside bind.effect',
+        name: 'Signal inside useEffect',
         code: `
-          const light = importHAEntity('light.office');
-          bind.effect(() => { console.log(light.isOn); });
+          const light = useHAEntity('light.office');
+          useEffect(() => { console.log(light.isOn); });
         `,
       },
       {
         name: 'non-signal property access (actions like toggle)',
         code: `
-          const light = importHAEntity('light.office');
+          const light = useHAEntity('light.office');
           const toggle = light.toggle;
         `,
       },
@@ -51,10 +51,10 @@ describe('no-untracked-signal', () => {
         `,
       },
       {
-        name: 'bind.haEntity with Signal inside bind.memo',
+        name: 'useHAEntity with Signal inside useMemo',
         code: `
-          const sensor = bind.haEntity('sensor.temp');
-          const temp = bind.memo(() => sensor.value > 72 ? "Hot" : "Cold");
+          const sensor = useHAEntity('sensor.temp');
+          const temp = useMemo(() => sensor.value > 72 ? "Hot" : "Cold");
         `,
       },
     ],
@@ -62,7 +62,7 @@ describe('no-untracked-signal', () => {
       {
         name: 'Signal extracted to variable at module level',
         code: `
-          const light = importHAEntity('light.office');
+          const light = useHAEntity('light.office');
           const status = light.isOn ? "On" : "Off";
         `,
         errors: [{ messageId: 'untrackedSignal', data: { prop: '.isOn' } }],
@@ -70,15 +70,15 @@ describe('no-untracked-signal', () => {
       {
         name: 'Signal value assigned to variable',
         code: `
-          const sensor = importHAEntity('sensor.temp');
+          const sensor = useHAEntity('sensor.temp');
           const temp = sensor.value;
         `,
         errors: [{ messageId: 'untrackedSignal', data: { prop: '.value' } }],
       },
       {
-        name: 'bind.haEntity Signal extracted to variable',
+        name: 'useHAEntity Signal extracted to variable',
         code: `
-          const light = bind.haEntity('light.office');
+          const light = useHAEntity('light.office');
           const current = light.brightness;
         `,
         errors: [{ messageId: 'untrackedSignal', data: { prop: '.brightness' } }],
@@ -86,7 +86,7 @@ describe('no-untracked-signal', () => {
       {
         name: 'multiple Signal accesses outside context',
         code: `
-          const light = importHAEntity('light.office');
+          const light = useHAEntity('light.office');
           const a = light.isOn;
           const b = light.stateText;
         `,
@@ -104,13 +104,13 @@ describe('no-untracked-signal', () => {
   typedTester.run('no-untracked-signal (type-aware)', rule, {
     valid: [
       {
-        name: 'Signal in bind.memo — type-aware',
+        name: 'Signal in useMemo — type-aware',
         filename: 'test.tsx',
         code: `
           import type { Signal } from '@esphome/compose';
-          import { bind } from '@esphome/compose';
+          import { useMemo } from '@esphome/compose';
           declare const paddingX: Signal<number>;
-          const width = bind.memo(() => paddingX * 2 + 80);
+          const width = useMemo(() => paddingX * 2 + 80);
         `,
       },
       {
@@ -141,13 +141,13 @@ describe('no-untracked-signal', () => {
         `,
       },
       {
-        name: 'Signal inside bind.effect — type-aware',
+        name: 'Signal inside useEffect — type-aware',
         filename: 'test.tsx',
         code: `
           import type { Signal } from '@esphome/compose';
-          import { bind } from '@esphome/compose';
+          import { useEffect } from '@esphome/compose';
           declare const temp: Signal<number>;
-          bind.effect(() => { console.log(temp > 72); });
+          useEffect(() => { console.log(temp > 72); });
         `,
       },
     ],

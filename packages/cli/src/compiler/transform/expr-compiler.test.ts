@@ -65,7 +65,7 @@ function parseExpr(code: string): { node: ts.Expression; checker: ts.TypeChecker
 
 function createReactiveCtx(
   checker: ts.TypeChecker,
-  haEntities?: Map<string, HAEntityInfo>,
+  haEntities?: Map<ts.Symbol, HAEntityInfo>,
 ): ExprCompilerContext {
   return {
     checker,
@@ -73,6 +73,28 @@ function createReactiveCtx(
     dependencies: new Map(),
     slots: [],
   };
+}
+
+/**
+ * Create a TS program from a source string and return the source file + checker.
+ * Useful for tests that need symbol resolution (e.g. scanForHAEntities).
+ */
+function parseSource(source: string): { sourceFile: ts.SourceFile; checker: ts.TypeChecker } {
+  const fileName = 'scan-test.tsx';
+  const sf = ts.createSourceFile(fileName, source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+  const host = ts.createCompilerHost({});
+  const originalGetSourceFile = host.getSourceFile;
+  host.getSourceFile = (name, ...args) => {
+    if (name === fileName) return sf;
+    return originalGetSourceFile.call(host, name, ...args);
+  };
+  const program = ts.createProgram([fileName], {
+    target: ts.ScriptTarget.Latest,
+    jsx: ts.JsxEmit.ReactJSX,
+    strict: false,
+    noEmit: true,
+  }, host);
+  return { sourceFile: sf, checker: program.getTypeChecker() };
 }
 
 // ────────────────────────────────────────────────────────────────────────────
@@ -267,30 +289,30 @@ describe('expr-compiler', () => {
   });
 
   describe('scanForHAEntities', () => {
-    it('scans importHAEntity calls', () => {
-      const source = `const light = importHAEntity('light.office');`;
-      const sf = ts.createSourceFile('test.tsx', source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
-      const haEntities = new Map<string, HAEntityInfo>();
-      scanForHAEntities(sf, haEntities);
-      expect(haEntities.get('light')).toEqual({ entityId: 'light.office', domain: 'light' });
-    });
+    /** Helper: get entity info by variable name from a symbol-keyed map. */
+    function getByName(map: Map<ts.Symbol, HAEntityInfo>, name: string): HAEntityInfo | undefined {
+      for (const [sym, info] of map) {
+        if (sym.name === name) return info;
+      }
+      return undefined;
+    }
 
-    it('scans bind.haEntity calls', () => {
-      const source = `const temp = bind.haEntity('sensor.temperature');`;
-      const sf = ts.createSourceFile('test.tsx', source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
-      const haEntities = new Map<string, HAEntityInfo>();
-      scanForHAEntities(sf, haEntities);
-      expect(haEntities.get('temp')).toEqual({ entityId: 'sensor.temperature', domain: 'sensor' });
+    it('scans useHAEntity calls', () => {
+      const source = `const lamp = useHAEntity('light.desk');`;
+      const { sourceFile, checker } = parseSource(source);
+      const haEntities = new Map<ts.Symbol, HAEntityInfo>();
+      scanForHAEntities(sourceFile, haEntities, checker);
+      expect(getByName(haEntities, 'lamp')).toEqual({ entityId: 'light.desk', domain: 'light' });
     });
 
     it('scans multiple declarations', () => {
       const source = `
-        const a = importHAEntity('light.kitchen');
-        const b = bind.haEntity('sensor.temp');
+        const a = useHAEntity('light.kitchen');
+        const b = useHAEntity('sensor.temp');
       `;
-      const sf = ts.createSourceFile('test.tsx', source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
-      const haEntities = new Map<string, HAEntityInfo>();
-      scanForHAEntities(sf, haEntities);
+      const { sourceFile, checker } = parseSource(source);
+      const haEntities = new Map<ts.Symbol, HAEntityInfo>();
+      scanForHAEntities(sourceFile, haEntities, checker);
       expect(haEntities.size).toBe(2);
     });
   });
@@ -298,9 +320,7 @@ describe('expr-compiler', () => {
   describe('HA entity property resolution', () => {
     it('resolves isOn property', () => {
       const { node, checker } = parseExpr('true ? "a" : "b"');
-      const haEntities = new Map<string, HAEntityInfo>([
-        ['light', { entityId: 'light.office', domain: 'light' }],
-      ]);
+      const haEntities = new Map<ts.Symbol, HAEntityInfo>();
       const ctx = createReactiveCtx(checker, haEntities);
       const result = translateReactiveExpr(node, ctx);
       expect(result).not.toBeNull();

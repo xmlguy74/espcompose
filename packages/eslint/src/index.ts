@@ -14,6 +14,7 @@ import noNodeInReactive from './rules/no-node-in-reactive';
 import requireDefineProject from './rules/require-define-project';
 import noUntrackedSignal from './rules/no-untracked-signal';
 import noUnsupportedTriggerBody from './rules/no-unsupported-trigger-body';
+import noHookOutsideComponent from './rules/no-hook-outside-component';
 
 const plugin: ESLint.Plugin = {
   meta: {
@@ -35,6 +36,8 @@ const plugin: ESLint.Plugin = {
     'no-untracked-signal': noUntrackedSignal as any,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     'no-unsupported-trigger-body': noUnsupportedTriggerBody as any,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    'no-hook-outside-component': noHookOutsideComponent as any,
   },
 };
 

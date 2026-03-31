@@ -1,12 +1,14 @@
 // ────────────────────────────────────────────────────────────────────────────
-// createScript — declares named ESPHome scripts
+// useScript — declares named ESPHome scripts
 //
 // Accepts an async arrow function whose body is compiled by the action tree
 // compiler into ESPHome actions. Returns a ScriptHandle for calling the
 // script from trigger handlers.
 //
+// Must be called inside a function component body (render phase).
+//
 // Usage:
-//   const myScript = createScript(async () => {
+//   const myScript = useScript(async () => {
 //     await delay(1000);
 //     lightRef.toggle();
 //   });
@@ -18,10 +20,11 @@
 
 import { ScriptDefinition, findInScope, registerInScope } from './useScope';
 import { resolveRefBindingsInActions } from '../serialize';
+import { assertPhase } from '../phase';
 import type { ACTION_BRAND } from '../types';
 
 /**
- * Handle returned by createScript() for interacting with a named ESPHome script.
+ * Handle returned by useScript() for interacting with a named ESPHome script.
  *
  * Callable as a function: `await myScript()` = script.execute + script.wait
  */
@@ -51,10 +54,14 @@ export interface CompiledScriptMeta {
  * The async arrow function body is compiled at build time by the action
  * tree compiler. The compiled actions are injected as metadata by the
  * transformer via Object.assign(__compiledScript, __refBindings).
+ *
+ * Must be called inside a function component body (render phase).
  */
-export function createScript(
+export function useScript(
   fn: () => Promise<void>,
 ): ScriptHandle {
+  assertPhase('render', 'useScript()');
+
   let scriptDef: ScriptDefinition;
 
   const body = fn as ((...args: unknown[]) => unknown) & { __compiledScript?: CompiledScriptMeta; __refBindings?: Record<string, unknown> };

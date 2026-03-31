@@ -2,7 +2,7 @@
  * ESLint rule: @esphome/compose-eslint/no-untracked-signal
  *
  * Warns when a reactive Signal<T> value is used in a variable assignment
- * outside of a reactive context (bind.memo, bind.effect, or a
+ * outside of a reactive context (useMemo, useEffect, or a
  * JSX attribute expression).
  *
  * The compiler's auto-reactive transform only detects Signal<T> usage
@@ -13,8 +13,8 @@
  *   1. **Type-aware** (when TypeScript parser services are available):
  *      Detects ANY expression typed as Signal<T> — works for HA entities,
  *      theme resolvers, and arbitrary library functions that return Signals.
- *   2. **Heuristic fallback** (no type info): Tracks importHAEntity() /
- *      bind.haEntity() variables and checks known property names.
+ *   2. **Heuristic fallback** (no type info): Tracks useHAEntity()
+ *      variables and checks known property names.
  *
  * BAD (reactivity lost — value is computed eagerly):
  *   const w = dims.paddingX * 2 + 80;          // dims.paddingX is Signal<number>
@@ -23,8 +23,8 @@
  * GOOD (compiler auto-wraps the reactive expression):
  *   <label text={officeLight.isOn ? "A" : "B"} />
  *
- * GOOD (explicitly wrapped in bind.memo):
- *   const w = bind.memo(() => dims.paddingX * 2 + 80);
+ * GOOD (explicitly wrapped in useMemo):
+ *   const w = useMemo(() => dims.paddingX * 2 + 80);
  */
 
 import { ESLintUtils } from '@typescript-eslint/utils';
@@ -92,15 +92,15 @@ export default createRule<[], MessageIds>({
     type: 'problem',
     docs: {
       description:
-        'Disallow accessing reactive Signal properties outside of a reactive context (bind.memo, JSX attribute, etc.)',
+        'Disallow accessing reactive Signal properties outside of a reactive context (useMemo, JSX attribute, etc.)',
     },
     messages: {
       untrackedSignal:
         'Reactive property "{{prop}}" accessed outside of a reactive context. ' +
-        'Move this expression into a JSX attribute (auto-transformed) or wrap it in bind.memo().',
+        'Move this expression into a JSX attribute (auto-transformed) or wrap it in useMemo().',
       untrackedSignalType:
         'Signal value "{{prop}}" used outside of a reactive context. ' +
-        'Wrap this expression in bind.memo() or move it into a JSX attribute.',
+        'Wrap this expression in useMemo() or move it into a JSX attribute.',
     },
     schema: [],
   },
@@ -109,7 +109,7 @@ export default createRule<[], MessageIds>({
     // Track variables that hold HA entity bindings (heuristic mode)
     const entityVars = new Set<string>();
 
-    // Track nested reactive context depth (bind.memo, bind.effect, etc.)
+    // Track nested reactive context depth (useMemo, useEffect, etc.)
     let reactiveDepth = 0;
 
     // Try to get TypeScript type checker for type-aware detection
@@ -135,16 +135,7 @@ export default createRule<[], MessageIds>({
 
     function isEntityCreation(node: TSESTree.CallExpression): boolean {
       const callee = node.callee;
-      if (callee.type === 'Identifier' && callee.name === 'importHAEntity') {
-        return true;
-      }
-      if (
-        callee.type === 'MemberExpression' &&
-        callee.object.type === 'Identifier' &&
-        callee.object.name === 'bind' &&
-        callee.property.type === 'Identifier' &&
-        callee.property.name === 'haEntity'
-      ) {
+      if (callee.type === 'Identifier' && callee.name === 'useHAEntity') {
         return true;
       }
       return false;
@@ -153,14 +144,10 @@ export default createRule<[], MessageIds>({
     function isReactiveCall(node: TSESTree.CallExpression): boolean {
       const callee = node.callee;
       if (
-        callee.type === 'MemberExpression' &&
-        callee.object.type === 'Identifier' &&
-        callee.object.name === 'bind' &&
-        callee.property.type === 'Identifier'
+        callee.type === 'Identifier' &&
+        (callee.name === 'useMemo' || callee.name === 'useEffect')
       ) {
-        return ['memo', 'effect', 'isNaN', 'derivedMemo'].includes(
-          callee.property.name,
-        );
+        return true;
       }
       return false;
     }

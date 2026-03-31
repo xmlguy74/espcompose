@@ -59,9 +59,26 @@ export type { EmbedKind } from './embed';
 export { defineProject, isProjectDefinition } from './project';
 export type { ProjectDefinition, DefineProjectOptions } from './project';
 
-// bind — device-reactive data binding
-export { bind } from './bind';
-export type { BindProp, HAEntityBinding, HAEntityBindingMap } from './bind';
+// _reactive — compiler-internal reactive plumbing (not public API)
+export { _reactive } from './_reactive';
+
+// Reactive utilities (user-facing)
+export { resolveBindProp, reactiveIsNaN } from './reactive-utils';
+export type { BindProp } from './reactive-utils';
+export type { HAEntityBinding, HAEntityBindingMap } from './ha-bindings';
+
+// useEffect — reactive side-effect hook (user-facing, must be called from component body)
+export { useEffect } from './hooks/useEffect';
+
+// useHAEntity — HA entity hook (user-facing, must be called from component body)
+export { useHAEntity } from './hooks/useHAEntity';
+
+// useScript — named ESPHome script hook (user-facing, must be called from component body)
+export { useScript } from './hooks/useScript';
+export type { ScriptHandle } from './hooks/useScript';
+
+// useMemo — reactive memoization hook (user-facing, must be called from component body)
+export { useMemo } from './hooks/useMemo';
 
 // ReactiveNode — unified reactive value abstraction
 export {
@@ -84,7 +101,7 @@ export {
   clearIncludes,
 } from './device';
 
-// Action primitives for trigger handler / createScript() bodies
+// Action primitives for trigger handler / useScript() bodies
 export { delay, waitUntil, logger } from './actions';
 
 // Ref registry — maps ref tokens to element tags / action classes

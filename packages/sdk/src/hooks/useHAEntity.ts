@@ -1,10 +1,11 @@
 // ────────────────────────────────────────────────────────────────────────────
-// importHAEntity() — Home Assistant entity import
+// useHAEntity() — Home Assistant entity hook
 //
 // Creates a typed binding object for a HA entity. The binding provides:
 //   - ReactiveNode<T> properties for reactive state reads
 //   - Action methods (compile-time no-ops) for entity control
 //
+// Must be called inside a function component body (render phase).
 // Registers the HA entity in the reactive scope so the compiler
 // can auto-generate the `platform: homeassistant` sensor import and
 // reactive trigger wiring in the final YAML.
@@ -17,6 +18,7 @@ import { ReactiveNode, isReactiveNode } from '../reactive-node';
 import type { Signal } from '../reactive-node';
 import { registerHAEntity } from './useReactiveScope';
 import { isTracking, trackDependency } from '../reactive-node';
+import { assertPhase } from '../phase';
 import type {
   LightBinding,
   SensorBinding,
@@ -89,7 +91,7 @@ export function clearHAEntityCache(): void {
 
 /**
  * Wrap a binding object in a Proxy that intercepts reads of ReactiveNode-valued
- * properties. When dependency tracking is active (inside bind.memo/effect),
+ * properties. When dependency tracking is active (inside useMemo/useEffect),
  * the proxy calls trackDependency() and recordAccess() so the dependency
  * graph and C++ codegen substitution table are populated automatically.
  */
@@ -239,18 +241,20 @@ function createActionProxy<T extends object>(binding: T, _entityId: string, _dom
 }
 
 // ────────────────────────────────────────────────────────────────────────────
-// Public API — importHAEntity() with domain-typed overloads
+// Public API — useHAEntity() with domain-typed overloads
 // ────────────────────────────────────────────────────────────────────────────
 
-export function importHAEntity(entityId: `light.${string}`): LightBinding;
-export function importHAEntity(entityId: `sensor.${string}`): SensorBinding;
-export function importHAEntity(entityId: `binary_sensor.${string}`): BinarySensorBinding;
-export function importHAEntity(entityId: `switch.${string}`): SwitchBinding;
-export function importHAEntity(entityId: `fan.${string}`): FanBinding;
-export function importHAEntity(entityId: `cover.${string}`): CoverBinding;
-export function importHAEntity(entityId: string): unknown;
+export function useHAEntity(entityId: `light.${string}`): LightBinding;
+export function useHAEntity(entityId: `sensor.${string}`): SensorBinding;
+export function useHAEntity(entityId: `binary_sensor.${string}`): BinarySensorBinding;
+export function useHAEntity(entityId: `switch.${string}`): SwitchBinding;
+export function useHAEntity(entityId: `fan.${string}`): FanBinding;
+export function useHAEntity(entityId: `cover.${string}`): CoverBinding;
+export function useHAEntity(entityId: string): unknown;
 
-export function importHAEntity(entityId: string): unknown {
+export function useHAEntity(entityId: string): unknown {
+  assertPhase('render', 'useHAEntity()');
+
   // Deduplication: return cached binding if already created.
   const cached = bindingCache.get(entityId);
   if (cached) return cached;

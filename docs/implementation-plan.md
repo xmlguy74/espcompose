@@ -26,7 +26,7 @@ User TSX Project
     │
     ├── embed.string(val), embed.secret()  ← Phase 2: Embed (build→device crossing)
     │
-    ├── bind.haEntity(), bind.expr(), bind.memo() ← Phase 3: Device-reactive (restricted)
+    ├── useHAEntity(), resolveBindProp(), useMemo() ← Phase 3: Device-reactive (restricted)
     │       └── () => expr  (reactive fns)
     │
     └── device.script(), device.include()   ← Phase 4: Device-imperative (escape hatch)
@@ -70,9 +70,9 @@ const env = build.run(() => {
 
 // --- Phase 3: Device-reactive ---
 function App() {
-  const light = bind.haEntity('light.kitchen');
-  const temp = bind.haEntity('sensor.temperature');
-  const status = bind.memo(() => light.isOn() && temp.value > 72 ? 'OK' : 'Adjust');
+  const light = useHAEntity('light.kitchen');
+  const temp = useHAEntity('sensor.temperature');
+  const status = useMemo(() => light.isOn() && temp.value > 72 ? 'OK' : 'Adjust');
 
   return (
     <screen>
@@ -107,9 +107,9 @@ export default defineProject({
 
 | Phase | Execution context | Allowed APIs | Forbidden |
 |-------|------------------|--------------|-----------|
-| Build | Node.js at compile time | `build.run()`, all Node/npm | `bind.*`, `device.*`, JSX |
+| Build | Node.js at compile time | `build.run()`, all Node/npm | hooks, `device.*`, JSX |
 | Embed | Crossing point | `embed.string()`, `embed.secret()`, `embed.number()`, `embed.json()` | Side effects |
-| Device-reactive | Conceptual device runtime | `bind.haEntity()`, `bind.expr()`, `bind.memo()`, `bind.effect()`, reactive fns `() => expr` | Node APIs, npm, `build.run()` |
+| Device-reactive | Conceptual device runtime | `useHAEntity()`, `resolveBindProp()`, `useMemo()`, `useEffect()`, reactive fns `() => expr` | Node APIs, npm, `build.run()` |
 | Device-imperative | ESPHome C++/automation | `device.script()`, `device.include()`, `device.lambda()` | Direct Node access |
 
 ## 3. Compiler Architecture
@@ -145,9 +145,9 @@ Key change: **remove the pre-bundle AST transform phase**. Instead:
 - Load bundle via CJS require (same mechanism)
 - **Phase tracking**: SDK has `setCurrentPhase(phase)` / `getCurrentPhase()`
   - Before `require(bundle)`: phase = 'module' (build.run allowed)
-  - During render: phase = 'render' (bind.* allowed, build.run forbidden)
+  - During render: phase = 'render' (hooks allowed, build.run forbidden)
   - `build.run()` checks phase === 'module', throws otherwise
-  - `bind.haEntity()` checks phase === 'render', throws otherwise
+  - `useHAEntity()` checks phase === 'render', throws otherwise
 - `defineProject()` returns a project descriptor, not raw JSX
 - Execute evaluates project descriptor → IR tree
 
@@ -288,8 +288,8 @@ A thin C++ reactive runtime (~300 lines) injected via `esphome.includes:` provid
 
 **Generated per-project** (`espcompose_bindings.h`, auto-generated):
 - Signal declarations for each HA entity / local sensor
-- Memo declarations for each `bind.memo()`
-- Effect declarations for each widget binding and `bind.effect()`
+- Memo declarations for each `useMemo()`
+- Effect declarations for each widget binding and `useEffect()`
 - `espcompose_setup()` function wiring the graph
 
 ### New Reactive Node System
@@ -331,7 +331,7 @@ When `() => light.isOn() ? 'ON' : 'OFF'` appears as a prop value:
 
 **Key change from current system**: Today, Expression tracks ONE source. ReactiveNode tracks N sources, enabling multi-source derived values.
 
-### bind.* API
+### hooks API
 
 ```ts
 const bind = {
@@ -344,18 +344,18 @@ const bind = {
 };
 ```
 
-`bind.haEntity()` returns same domain-typed bindings (LightBinding, SensorBinding, etc.) with ReactiveNode instances for reactive properties and Proxy-intercepted action methods.
+`useHAEntity()` returns same domain-typed bindings (LightBinding, SensorBinding, etc.) with ReactiveNode instances for reactive properties and Proxy-intercepted action methods.
 
-`bind.memo(fn)` creates a named Memo node. During render, fn is called once to capture dependencies. During lowering, generates a `Memo<T>` in C++.
+`useMemo(fn)` creates a named Memo node. During render, fn is called once to capture dependencies. During lowering, generates a `Memo<T>` in C++.
 
-`bind.effect(fn)` creates a side-effect Effect node. The fn body is analyzed by the action converter (same as device.script) for action dispatch.
+`useEffect(fn)` creates a side-effect Effect node. The fn body is analyzed by the action converter (same as device.script) for action dispatch.
 
-`bind.expr(propValue)` normalizes:
+`resolveBindProp(propValue)` normalizes:
 - `ReactiveNode` → pass through
 - `() => expr` → evaluate + capture dependencies → `ReactiveNode`
 - Literal value → literal (no reactivity)
 
-`bind.prop<T>` is a type alias for component authors: `T | ReactiveNode<T> | (() => T)`
+`BindProp<T>` is a type alias for component authors: `T | ReactiveNode<T> | (() => T)`
 
 ## 6. Intrinsic Elements Strategy
 
@@ -407,10 +407,10 @@ Files to modify in `scripts/codegen/`:
 
 ```tsx
 function LightButton(props: {
-  light: bind.HAEntityBinding<'light'>;
+  light: HAEntityBinding<'light'>;
   text: BindProp<string>;
 }) {
-  const text = bind.expr(props.text);  // normalize reactive prop
+  const text = resolveBindProp(props.text);  // normalize reactive prop
   return (
     <button bgColor={() => props.light.isOn() ? '#FF0000' : '#0000FF'}>
       <label text={text} />
@@ -425,7 +425,7 @@ Custom components are still plain functions that return JSX elements. The IR con
 
 The `@esphome/compose-ui` package continues as is. Components use `createIntentComponent()` for branding. Theme system via context.
 
-**New**: DS components can use `bind.prop<T>` types for props that should accept reactive values.
+**New**: DS components can use `BindProp<T>` types for props that should accept reactive values.
 
 ## 8. Mixed-Phase Handling (Critical)
 
@@ -457,7 +457,7 @@ export function assertPhase(expected: Phase | Phase[], api: string): void {
 setPhase('module');
 const projectDef = require(bundlePath);  // build.run() executes here
 setPhase('render');
-const irTree = buildIR(projectDef.default);  // bind.* executes here
+const irTree = buildIR(projectDef.default);  // hooks executes here
 setPhase('idle');
 ```
 
@@ -551,7 +551,7 @@ Raw escape hatch for hand-written C++ lambda strings.
 
 1. **Reactive-aware LVGL props**: Generated LVGL prop types accept `BindProp<T>` for updatable properties
 2. **Trigger props on LVGL widgets**: Generate typed `on*` trigger props directly on LVGL widgets (remove need for `x:custom` workaround)
-3. **bind.haEntity() replaces useHAEntity()**: Same behavior, new namespace
+3. **useHAEntity() replaces useHAEntity()**: Same behavior, new namespace
 
 ### No C++ LVGL Backend in V1
 
@@ -565,7 +565,7 @@ Per decision: leverage ESPHome's LVGL component system. All LVGL output is ESPHo
 |--------|-------|--------|
 | Add `phase.ts` to SDK | New file in `packages/sdk/src/` | Phase tracking runtime |
 | Add `build.ts`, `embed.ts` to SDK | New files | New API namespaces |
-| Evolve `useHAEntity` → `bind.haEntity` | `packages/sdk/src/hooks/useHAEntity.ts` | Re-export under new name, keep old as deprecated alias |
+| ~~Evolve `useHAEntity` → `bind.haEntity`~~ (kept as `useHAEntity`) | `packages/sdk/src/hooks/useHAEntity.ts` | Hook-style API retained |
 | Add `defineProject()` | New file in SDK | Project descriptor API |
 | Evolve `expression.ts` → `reactive-node.ts` | `packages/sdk/src/` | New abstraction layer, Expression becomes lowering target |
 | Add IR types | New file `packages/sdk/src/ir.ts` or `packages/cli/src/compiler/ir/` | IR node definitions |
@@ -576,7 +576,7 @@ Per decision: leverage ESPHome's LVGL component system. All LVGL output is ESPHo
 | Change | Files | Impact | Migration |
 |--------|-------|--------|-----------|
 | `defineProject()` wrapper required | All user projects | `export default <esphome>...` → `export default defineProject({ device: <esphome>... })` | Mechanical: wrap existing default export |
-| `useHAEntity()` → `bind.haEntity()` | User code using HA bindings | Import path change | Codemod or deprecation alias |
+| `useHAEntity()` → `useHAEntity()` | User code using HA bindings | Import path change | Codemod or deprecation alias |
 | `function` as script → `device.script()` | User code with scripts | Fundamental authoring change | Manual migration; old pattern can be supported via lint warning |
 | `useScript()` internal hook removed | `packages/sdk/src/hooks/useScript.ts` + compiler transform | No longer needed with explicit scripts | Remove after migration |
 | Script transformer simplified | `packages/cli/src/compiler/transform/` | `script-transformer.ts` loses script detection/rewriting | Keep action-converter, remove script-specific AST transforms |
@@ -607,7 +607,7 @@ Per decision: leverage ESPHome's LVGL component system. All LVGL output is ESPHo
 ### In Scope
 
 - `build.run()` + `embed.*()` APIs with phase tracking
-- `bind.haEntity()`, `bind.expr()`, `bind.memo()`, `bind.effect()` — full reactive API with ReactiveNode
+- `useHAEntity()`, `resolveBindProp()`, `useMemo()`, `useEffect()` — full reactive API with ReactiveNode
 - C++ reactive runtime (`espcompose_reactive.h`) — Signal/Memo/Effect/Scheduler
 - Per-project generated bindings (`espcompose_bindings.h`) when runtime needed
 - Hybrid lowering: ESPHome-native triggers for simple cases, runtime for complex
@@ -696,10 +696,10 @@ Per decision: leverage ESPHome's LVGL component system. All LVGL output is ESPHo
 **Milestone**: ReactiveNode + C++ reactive runtime with Signal/Memo/Effect
 
 1. Add `ReactiveNode<T>` class in `packages/sdk/src/reactive-node.ts` — supports multi-source dependencies
-2. Modify `bind.haEntity()` to return bindings with `ReactiveNode` internally
-3. Implement `bind.expr()` — normalizes `BindProp<T>` → `ReactiveNode`, captures deps via Proxy
-4. Implement `bind.memo(fn)` — creates named Memo node, captures multi-source deps
-5. Implement `bind.effect(fn)` — creates Effect node for side-effects
+2. Modify `useHAEntity()` to return bindings with `ReactiveNode` internally
+3. Implement `resolveBindProp()` — normalizes `BindProp<T>` → `ReactiveNode`, captures deps via Proxy
+4. Implement `useMemo(fn)` — creates named Memo node, captures multi-source deps
+5. Implement `useEffect(fn)` — creates Effect node for side-effects
 6. Add IR handling for `ReactiveNode` → `IRReactiveExpr` (with dependency array)
 7. Implement **hybrid lowering** decision logic:
    - Analyze all IRReactiveExpr nodes in the project
@@ -712,7 +712,7 @@ Per decision: leverage ESPHome's LVGL component system. All LVGL output is ESPHo
    c. Generate YAML wiring: `on_state:` → `signal.set(x)` lambdas, `on_boot:` → `espcompose_setup()`
    d. Generate `esphome.includes:` entries for both files
 10. Verify ha-binding-device and reactive-device E2E tests pass (both paths)
-11. Add E2E test: `multi-source-reactive-device` with `bind.memo()` exercising C++ runtime
+11. Add E2E test: `multi-source-reactive-device` with `useMemo()` exercising C++ runtime
 12. **Deliverable**: Full reactive system — simple cases zero-overhead, complex cases use injected runtime.
 
 ### Phase F: Codegen Evolution
@@ -745,7 +745,7 @@ Per decision: leverage ESPHome's LVGL component system. All LVGL output is ESPHo
 | B | Existing E2E snapshots match through IR path |
 | D | `device.script()` produces identical YAML to function-as-script for same logic |
 | E.8 | Simple reactive binding works through ESPHome-native path |
-| E.11 | `bind.memo()` with multi-source deps compiles and ESPHome validates the YAML+C++ output |
+| E.11 | `useMemo()` with multi-source deps compiles and ESPHome validates the YAML+C++ output |
 | G | Full demo project compiles with new authoring model |
 
 ## Relevant Files
@@ -760,7 +760,7 @@ Per decision: leverage ESPHome's LVGL component system. All LVGL output is ESPHo
 - `hooks/useReactiveScope.ts` — evolve for IR-based binding collection
 - `hooks/useScript.ts` — deprecate, replace with device.script()
 - `hooks/useScope.ts` — evolve for device.script() collection
-- NEW: `phase.ts`, `build.ts`, `embed.ts`, `project.ts`, `reactive-node.ts`, `device.ts`, `bind.ts`
+- NEW: `phase.ts`, `build.ts`, `embed.ts`, `project.ts`, `reactive-node.ts`, `device.ts`, `reactive-utils.ts`
 
 ### CLI (packages/cli/src/)
 - `compiler/compiler.ts` — add IR construction + lowering phases, phase transitions

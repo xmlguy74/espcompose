@@ -4,15 +4,8 @@
  * Demonstrates local Ref<T> reactive property access — a local sensor
  * component's `.value` is bound to an LVGL label widget via Expression<T>,
  * plus using an LVGL button event to control an HA entity.
- *
- * The compiler should:
- *   1. Serialize the Expression prop as `!lambda "return id(ref).state;"`.
- *   2. Inject `on_value:` trigger on the local sensor that calls
- *      `lvgl.label.update` to push state updates into the bound widget.
- *   3. Compile `heater.toggle()` inside an LVGL button's onRelease into
- *      a `homeassistant.action` YAML block.
  */
-import { Display, defineProject, useRef, bind } from '@esphome/compose';
+import { Display, defineProject, useRef, useHAEntity } from '@esphome/compose';
 import type { internal_temperature_InternalTemperatureSensor, EspComposeElement, TriggerHandler } from '@esphome/compose';
 
 /** Thin wrapper that adds typed trigger props to <lvgl-button>. */
@@ -31,12 +24,12 @@ function ActionButton(props: {
   );
 }
 
-const displayRef = useRef<Display>();
-const tempRef = useRef<internal_temperature_InternalTemperatureSensor>();
-const heater = bind.haEntity('switch.space_heater');
+function App() {
+  const displayRef = useRef<Display>();
+  const tempRef = useRef<internal_temperature_InternalTemperatureSensor>();
+  const heater = useHAEntity('switch.space_heater');
 
-export default defineProject({
-  device: (
+  return (
     <esphome name="reactive-device" comment="Local ref reactive binding demo">
       <esp32 board="esp32dev" framework={{ type: 'esp-idf' }} />
       <wifi ssid="HomeWifi" password="s3cr3t!!" />
@@ -111,5 +104,9 @@ export default defineProject({
         </lvgl-page>
       </lvgl>
     </esphome>
-  ),
+  );
+}
+
+export default defineProject({
+  device: <App />,
 });
