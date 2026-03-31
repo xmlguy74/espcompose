@@ -70,6 +70,11 @@ describe('ESPHome Compose Build', () => {
     await createProjectTest(projectsDir, 'auto-reactive-device');
   });
 
+  // useImage + useFont hook injection and deduplication
+  it('image-font-device', async () => {
+    await createProjectTest(projectsDir, 'image-font-device');
+  });
+
   // Untransformed library detection — build should fail with a clear error
   it('uncompiled-lib-device (detects untransformed library)', async () => {
     const projectPath = path.resolve(projectsDir, 'uncompiled-lib-device');

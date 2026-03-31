@@ -6,9 +6,14 @@
  * path found, the file is copied into the build output directory and the path
  * is rewritten so it is relative to the emitted YAML file.
  *
- * Skips absolute paths, URLs, and MDI/MDIL/Memory icon references.
+ * Files are named with a content-hash suffix (`<stem>-<hash8><ext>`) to avoid
+ * collisions between files with the same name but different contents, and to
+ * deduplicate identical files referenced from multiple components.
+ *
+ * Skips absolute paths, URLs, MDI/MDIL/Memory icon references, and gfonts:// URIs.
  */
 
+import * as crypto from 'crypto';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -19,13 +24,25 @@ const FILE_PATH_YAML_KEYS = new Set<string>([
 
 /**
  * Returns true if the value looks like a non-filesystem reference that
- * should be left as-is (URLs, MDI icons, etc.).
+ * should be left as-is (URLs, MDI icons, Google Fonts URIs, etc.).
  */
 function isNonFilePath(value: string): boolean {
   return /^https?:\/\//.test(value)
     || /^mdi:/.test(value)
     || /^mdil:/.test(value)
-    || /^memory:/.test(value);
+    || /^memory:/.test(value)
+    || /^gfonts:\/\//.test(value);
+}
+
+/**
+ * Compute a content-hash decorated filename: `<stem>-<hash8><ext>`.
+ */
+function hashedName(absSource: string): string {
+  const buf = fs.readFileSync(absSource);
+  const hash = crypto.createHash('sha256').update(buf).digest('hex').slice(0, 8);
+  const ext = path.extname(absSource);
+  const stem = path.basename(absSource, ext);
+  return `${stem}-${hash}${ext}`;
 }
 
 /**
@@ -44,9 +61,11 @@ export function resolveAssets(
 ): string[] {
   const assetsDir = path.join(outDir, 'assets');
   const copied: string[] = [];
-  const usedNames = new Set<string>();
 
-  walkAndRewrite(config, sourceDir, assetsDir, outDir, copied, usedNames);
+  // Maps absolute source path → relative output path (dedup + reuse)
+  const resolvedMap = new Map<string, string>();
+
+  walkAndRewrite(config, sourceDir, assetsDir, outDir, copied, resolvedMap);
 
   return copied;
 }
@@ -57,11 +76,11 @@ function walkAndRewrite(
   assetsDir: string,
   outDir: string,
   copied: string[],
-  usedNames: Set<string>,
+  resolvedMap: Map<string, string>,
 ): void {
   if (Array.isArray(obj)) {
     for (const item of obj) {
-      walkAndRewrite(item, sourceDir, assetsDir, outDir, copied, usedNames);
+      walkAndRewrite(item, sourceDir, assetsDir, outDir, copied, resolvedMap);
     }
     return;
   }
@@ -79,6 +98,13 @@ function walkAndRewrite(
 
       const absSource = path.resolve(sourceDir, value);
 
+      // Already resolved this exact file — reuse the output path
+      const existing = resolvedMap.get(absSource);
+      if (existing) {
+        record[key] = existing;
+        continue;
+      }
+
       if (!fs.existsSync(absSource)) {
         console.warn(
           `[espcompose] Asset not found: ${value} (resolved to ${absSource})`
@@ -89,34 +115,22 @@ function walkAndRewrite(
       // Ensure assets directory exists
       fs.mkdirSync(assetsDir, { recursive: true });
 
-      // Pick a unique destination name (handle collisions)
-      const destName = uniqueName(path.basename(absSource), usedNames);
+      // Content-hash decorated name avoids collisions AND deduplicates
+      const destName = hashedName(absSource);
       const destPath = path.join(assetsDir, destName);
 
-      fs.copyFileSync(absSource, destPath);
+      // Only copy if the hashed file isn't already on disk (multi-compile scenario)
+      if (!fs.existsSync(destPath)) {
+        fs.copyFileSync(absSource, destPath);
+      }
       copied.push(destPath);
 
       // Rewrite the value to be relative from the YAML output directory
-      record[key] = path.relative(outDir, destPath);
+      const relPath = path.relative(outDir, destPath);
+      resolvedMap.set(absSource, relPath);
+      record[key] = relPath;
     } else if (typeof value === 'object' && value != null) {
-      walkAndRewrite(value, sourceDir, assetsDir, outDir, copied, usedNames);
+      walkAndRewrite(value, sourceDir, assetsDir, outDir, copied, resolvedMap);
     }
   }
-}
-
-/** Generate a unique filename, appending a numeric suffix on collision. */
-function uniqueName(basename: string, used: Set<string>): string {
-  if (!used.has(basename)) {
-    used.add(basename);
-    return basename;
-  }
-
-  const ext = path.extname(basename);
-  const stem = path.basename(basename, ext);
-  let i = 2;
-  while (used.has(`${stem}_${i}${ext}`)) i++;
-
-  const name = `${stem}_${i}${ext}`;
-  used.add(name);
-  return name;
 }

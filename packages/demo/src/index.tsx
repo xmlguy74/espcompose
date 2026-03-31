@@ -1,11 +1,10 @@
 import 'dotenv/config';
-import { Display, Image, useRef } from '@esphome/compose';
+import { Display, useRef } from '@esphome/compose';
 import { UI } from './lvgl';
 import { Waveshare_ESP32P4_WIFI6_Touch_LCD_10_1 } from './hardware';
 
 function App() {
   const display = useRef<Display>();
-  const buttonBg = useRef<Image>();
 
   return (
     <esphome
@@ -27,10 +26,8 @@ function App() {
 
       <logger level="DEBUG" hardwareUart="UART0" />
 
-      <image ref={buttonBg} file="./assets/button.jpg" type="RGB565" resize="160x80" />
-
       <Waveshare_ESP32P4_WIFI6_Touch_LCD_10_1 display={display} />
-      <UI display={display} buttonBg={buttonBg} />
+      <UI display={display} />
 
     </esphome>
   );

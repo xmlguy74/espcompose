@@ -3,16 +3,17 @@ import {
     Button, Card, HStack, Screen, SliderField, SwitchField, Text, VStack,
     ThemeProvider, darkTheme, lightTheme,
 } from "@esphome/compose-ui";
-import { MyButton, MyImageButton } from "./button";
+import { HALight, MyButton, MyImageButton } from "./button";
 
 type UIProps = {
     display: Ref<Display>,
-    buttonBg?: Ref<Image>,
 }
 
 export const UI = (props: UIProps) => {
 
     const officeLight = useHAEntity('light.office');
+    const gymLight = useHAEntity('light.gym');
+    const airHockeyLight = useHAEntity('light.air_hockey_light');
 
     const myScript = useScript(async () => {
         await delay(1000);
@@ -51,15 +52,11 @@ export const UI = (props: UIProps) => {
                                     text={officeLight.isOn ? "Office Off" : "Office On"}
                                     onPress={() => { officeLight.toggle(); }}
                                 />
-                                <MyImageButton
-                                    text={officeLight.isOn ? "Office Off" : "Office On"}
-                                    bgImage={props.buttonBg}
-                                    onPress={async () => {
-                                        officeLight.toggle();
-                                        await myScript();  //valid only because we know that myScript is from createScript. We can't just call any random function.
-                                        officeLight.toggle();
-                                    }}
-                                />
+                                
+                                <HALight entity="light.office" text="Office" />
+                                <HALight entity="light.gym" text="Gym" />
+                                <HALight entity="light.air_hockey_light" text="Hockey" />
+
                             </HStack>
                         </Card>
 

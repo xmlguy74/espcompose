@@ -1,10 +1,9 @@
-import { Image, Ref, TriggerHandler } from "@esphome/compose";
+import { LightBinding, TriggerHandler, useHAEntity, useImage } from "@esphome/compose";
 import { Button } from "@esphome/compose-ui"
 
 type MyButtonProps = {
     text: string,
     onPress: TriggerHandler,
-    bgImage?: Ref<Image>
 }
 
 export const MyButton = (props: MyButtonProps) => {
@@ -14,7 +13,7 @@ export const MyButton = (props: MyButtonProps) => {
             text={props.text}
             onPress={props.onPress}
         />
-        
+
         // <lvgl-button
         //     lineRounded={true}
         //     text={props.text}
@@ -28,17 +27,41 @@ export const MyButton = (props: MyButtonProps) => {
 }
 
 export const MyImageButton = (props: MyButtonProps) => {
+
+    const bgImage = useImage({
+        file: "./assets/button.jpg",
+        type: "RGB565",
+        resize: "160x80"
+    });
+
     return (
         <lvgl-button
             lineRounded={true}
             text={props.text}
             height="60"
             width="120"
-            bgImageSrc={props.bgImage}
+            bgImageSrc={bgImage}
             x:custom={{
                 onPress: props.onPress
             }}
         >
         </lvgl-button>
     );
+}
+
+type HALightProps = {
+    entity: string,
+    text: string,
+}
+
+export const HALight = (props: HALightProps) => {
+    const entity = useHAEntity(props.entity) as LightBinding;
+    return (
+        <MyImageButton
+            text={props.text}
+            onPress={() => {
+                entity.toggle();
+            }}
+        />
+    )
 }

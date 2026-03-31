@@ -245,6 +245,8 @@ async function execute(bundleFile: string, outFile: string, sourceDir: string): 
 
   // Clear HA entity binding cache for a fresh render pass.
   cjsSDK.clearHAEntityCache();
+  cjsSDK.clearImageCache();
+  cjsSDK.clearFontCache();
   sdkModule.clearRefRegistry();
 
   // Clear theme state from any previous compile run.
@@ -265,7 +267,7 @@ async function execute(bundleFile: string, outFile: string, sourceDir: string): 
   // - ReactiveNode props are detected during render and register reactive
   //   bindings in the reactive scope.
   let collectedScripts: Array<{ id: string; then: unknown[] }> = [];
-  const { result: reactiveResult, bindings, entities, reactiveNodes } = cjsSDK.withReactiveScope(() => {
+  const { result: reactiveResult, bindings, entities, components, reactiveNodes } = cjsSDK.withReactiveScope(() => {
     const { result: config, scripts } = cjsSDK.withScriptScope(() => {
       const mod = _require(bundleFile) as { default?: unknown };
 
@@ -359,6 +361,17 @@ async function execute(bundleFile: string, outFile: string, sourceDir: string): 
   } else {
     // ── No reactive bindings — just inject HA sensor imports if any ─────
     finalConfig = injectHASensorImports(loweredConfig, entities);
+  }
+
+  // ── Inject component definitions (image, font, etc.) from hooks ─────────
+  if (components && components.length > 0) {
+    for (const comp of components) {
+      const section = comp.section;
+      if (!finalConfig[section]) {
+        finalConfig[section] = [];
+      }
+      (finalConfig[section] as unknown[]).push(comp.config);
+    }
   }
 
   // ── Inject createScript() definitions as top-level script: section ──────

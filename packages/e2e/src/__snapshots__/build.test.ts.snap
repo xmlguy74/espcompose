@@ -653,6 +653,82 @@ sensor:
 "
 `;
 
+exports[`ESPHome Compose Build > image-font-device 1`] = `
+"esphome:
+  name: image-font-device
+  comment: useImage/useFont hook demo
+esp32:
+  board: esp32dev
+  framework:
+    type: esp-idf
+wifi:
+  ssid: HomeWifi
+  password: s3cr3t!!
+api:
+logger:
+  level: DEBUG
+spi:
+  clk_pin: 18
+  mosi_pin: 23
+display:
+  id: r_ref0
+  platform: ili9xxx
+  model: ILI9341
+  invert_colors: false
+  cs_pin: 5
+  dc_pin: 27
+  reset_pin: 33
+lvgl:
+  displays:
+    - r_ref0
+  pages:
+    - widgets:
+        - image:
+            x: 10
+            y: 10
+            src: r_ref1
+        - image:
+            x: 50
+            y: 10
+            src: r_ref1
+        - image:
+            x: 90
+            y: 10
+            src: r_ref2
+        - label:
+            x: 10
+            y: 60
+            text: Small
+            text_font: r_ref3
+        - label:
+            x: 10
+            y: 90
+            text: Also small
+            text_font: r_ref3
+        - label:
+            x: 10
+            y: 120
+            text: Large
+            text_font: r_ref4
+image:
+  - id: r_ref1
+    file: assets/icon-5e4d533f.png
+    type: RGB
+    resize: 32x32
+    transparency: alpha_channel
+  - id: r_ref2
+    file: assets/icon-5e4d533f.png
+    type: BINARY
+font:
+  - id: r_ref3
+    file: gfonts://Roboto
+    size: 20
+  - id: r_ref4
+    file: gfonts://Roboto
+    size: 32
+"
+`;
+
 exports[`ESPHome Compose Build > lvgl-device 1`] = `
 "esphome:
   name: lvgl-device
