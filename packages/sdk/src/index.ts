@@ -82,15 +82,6 @@ export {
 export type { Signal, ReactiveNodeKind, ExpressionDependency, ReactiveNodeConfig } from './reactive-node';
 
 
-// device — device-imperative escape hatch
-export {
-  device,
-  DeviceLambda,
-  isDeviceLambda,
-  getIncludes,
-  clearIncludes,
-} from './device';
-
 // Action primitives for trigger handler / useScript() bodies
 export { delay, waitUntil, logger } from './actions';
 

@@ -15,7 +15,6 @@
  * Skipped cases:
  *   - Direct passthrough: officeLight.stateText (ReactiveNode handled by runtime)
  *   - Non-reactive: static values, literal expressions
- *   - device.inline/device.script callbacks (handled by script-transformer)
  *   - useEffect, _reactive.derivedMemo (kept as runtime calls)
  */
 
@@ -151,18 +150,6 @@ function isReactiveSkipCall(expr: ts.Expression): boolean {
   return false;
 }
 
-function isDeviceCall(expr: ts.Expression): boolean {
-  if (!ts.isCallExpression(expr)) return false;
-  const callee = expr.expression;
-  if (ts.isPropertyAccessExpression(callee)) {
-    const obj = callee.expression;
-    if (ts.isIdentifier(obj) && obj.text === 'device') {
-      return true;
-    }
-  }
-  return false;
-}
-
 function isDirectSignalPassthrough(expr: ts.Expression, checker: ts.TypeChecker): boolean {
   const type = checker.getTypeAtLocation(expr);
   if (!hasSignalBrand(type)) return false;
@@ -253,9 +240,6 @@ function processJsxAttributeExpression(
     processExplicitMemo(expr, sourceFile, checker, haEntities, edits, diagnostics, onTransform);
     return;
   }
-
-  // Skip device.* calls (device.lambda(), device.include())
-  if (isDeviceCall(expr)) return;
 
   // Skip direct Signal passthrough (runtime handles ReactiveNode in BindProp)
   if (isDirectSignalPassthrough(expr, checker)) return;

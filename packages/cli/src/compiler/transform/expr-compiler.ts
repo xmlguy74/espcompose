@@ -69,7 +69,7 @@ export interface ReactiveExprResult {
 }
 
 // ────────────────────────────────────────────────────────────────────────────
-// Script-transformer context (for backward-compat with device.inline/script)
+// Script-transformer context
 // ────────────────────────────────────────────────────────────────────────────
 
 export interface ScriptTransformContext {
@@ -445,10 +445,10 @@ function inferCppReturnType(node: ts.Expression, ctx: ExprCompilerContext): stri
 }
 
 // ────────────────────────────────────────────────────────────────────────────
-// Script-mode expression translator (for device.inline/device.script)
+// Script-mode expression translator
 //
 // This is the original translateExpr from script-transformer.ts, kept for
-// backward compatibility with the device callback compiler.
+// backward compatibility with the script callback compiler.
 // ────────────────────────────────────────────────────────────────────────────
 
 export function translateScriptExpr(

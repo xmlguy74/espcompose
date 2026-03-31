@@ -103,7 +103,7 @@ export function transformLib(options: TransformLibOptions): TransformLibResult {
     const reactiveResult = transformReactiveExpressions(sourceFile, program);
     diagnostics.push(...reactiveResult.diagnostics);
 
-    // Pass 2: Script callback compilation (device.inline/device.script)
+    // Pass 2: Script callback compilation
     // Re-parse if the reactive pass modified the source.
     let scriptInput: ts.SourceFile;
     if (reactiveResult.sourceText !== originalText) {

@@ -36,7 +36,7 @@ following packages:
 
 | Package | npm name | Purpose |
 |---------|----------|---------|
-| `packages/sdk` | `@esphome/compose` | Core SDK — JSX runtime, hooks (`useRef`, `useScript`, `useContext`, `useMemo`, `useEffect`, `useHAEntity`), device namespace, `secret()` helper, reactive nodes, action primitives (`delay`, `logger`), generated component types |
+| `packages/sdk` | `@esphome/compose` | Core SDK — JSX runtime, hooks (`useRef`, `useScript`, `useContext`, `useMemo`, `useEffect`, `useHAEntity`), `secret()` helper, reactive nodes, action primitives (`delay`, `logger`), generated component types |
 | `packages/cli` | `@esphome/compose-cli` / `espcompose` | CLI binary & compiler pipeline — type-check, AST transform, esbuild bundle, IR construction/lowering, execute & emit YAML, ESPHome CLI wrappers |
 | `packages/eslint` | `@esphome/compose-eslint` | ESLint plugin with custom rules for ESPHome Compose projects |
 | `packages/e2e` | `@esphome/compose-e2e` (private) | End-to-end snapshot tests — builds sample projects and verifies YAML output |
