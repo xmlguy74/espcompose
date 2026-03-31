@@ -37,10 +37,14 @@ export const MyImageButton = (props: MyButtonProps) => {
     return (
         <lvgl-button
             lineRounded={true}
+            radius="10"
+            clipCorner
             text={props.text}
             height="60"
             width="120"
             bgImageSrc={bgImage}
+            bgImageOpa="50%"
+            textAlign="CENTER"
             x:custom={{
                 onPress: props.onPress
             }}
@@ -55,7 +59,7 @@ type HALightProps = {
 }
 
 export const HALight = (props: HALightProps) => {
-    const entity = useHAEntity(props.entity) as LightBinding;
+    const entity = useHAEntity(props.entity, { domain: 'light' });
     return (
         <MyImageButton
             text={props.text}
