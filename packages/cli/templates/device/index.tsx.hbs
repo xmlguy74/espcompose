@@ -1,0 +1,9 @@
+export default (
+  <esphome name="{{name}}" comment="An ESPHome Compose device">
+    <esp32 board="{{board}}" framework=\{{ type: 'esp-idf' }} />
+    <wifi ssid="!secret wifi_ssid" password="!secret wifi_password" />
+    <api />
+    <ota platform="esphome" />
+    <logger level="DEBUG" />
+  </esphome>
+);
