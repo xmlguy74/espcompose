@@ -9,6 +9,7 @@ import { injectHASensorImports } from './reactive-injector.js';
 import { buildIR, lowerIR } from './ir/index.js';
 import { generateBindingsHeader, getRuntimeHeaderContent } from './reactive-runtime/codegen.js';
 import { buildRuntimeConfig, injectReactiveBindingsRuntime } from './reactive-config.js';
+import { resolveAssets } from './assets.js';
 
 export interface CompileOptions {
   /** Absolute path to the TSX/TS entry file. */
@@ -223,7 +224,7 @@ async function bundle(entryFile: string, outFile: string): Promise<void> {
 // Phase 3: Execute + emit YAML
 // ────────────────────────────────────────────────────────────────────────────
 
-async function execute(bundleFile: string, outFile: string): Promise<void> {
+async function execute(bundleFile: string, outFile: string, sourceDir: string): Promise<void> {
   // Use createRequire so this works correctly in both CJS and ESM contexts.
   // Rooting the require at the bundle file itself means @esphome/compose
   // resolves from the user's project node_modules (bundle sits next to source).
@@ -368,6 +369,13 @@ async function execute(bundleFile: string, outFile: string): Promise<void> {
     }));
   }
 
+  // ── Resolve asset file paths and copy files to build output ────────────
+  const outDir = path.dirname(outFile);
+  const copiedAssets = resolveAssets(finalConfig as Record<string, unknown>, sourceDir, outDir);
+  if (copiedAssets.length > 0) {
+    console.log(`  Assets  → copied ${copiedAssets.length} file(s) to ${path.relative(sourceDir, outDir)}/assets/`);
+  }
+
   const yamlOutput = cjsSDK.toYAML(finalConfig);
 
   fs.mkdirSync(path.dirname(outFile), { recursive: true });
@@ -416,7 +424,7 @@ export async function compile(options: CompileOptions): Promise<void> {
     await bundle(transformedEntry, bundlePath);
 
     // Phase 3: Execute the bundle and emit YAML
-    await execute(bundlePath, outFile);
+    await execute(bundlePath, outFile, sourceDir);
   } finally {
     // Clean up the build directory unless --debug is set
     if (!debug && fs.existsSync(buildDir)) {

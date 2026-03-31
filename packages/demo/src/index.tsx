@@ -27,7 +27,7 @@ function App() {
 
       <logger level="DEBUG" hardwareUart="UART0" />
 
-      <image ref={buttonBg} file="../src/assets/button.jpg" type="RGB565" resize="160x80" />
+      <image ref={buttonBg} file="./assets/button.jpg" type="RGB565" resize="160x80" />
 
       <Waveshare_ESP32P4_WIFI6_Touch_LCD_10_1 display={display} />
       <UI display={display} buttonBg={buttonBg} />
