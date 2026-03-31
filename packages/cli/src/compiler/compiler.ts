@@ -277,17 +277,8 @@ async function execute(bundleFile: string, outFile: string): Promise<void> {
         );
       }
 
-      // Accept bare JSX element or legacy defineProject({ device: ... }) wrapper
-      const element = (
-        rootElement !== null &&
-        typeof rootElement === 'object' &&
-        'device' in rootElement
-      )
-        ? (rootElement as { device: unknown }).device
-        : rootElement;
-
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const rendered = cjsSDK.render(element as any) as Record<string, unknown>;
+      const rendered = cjsSDK.render(rootElement as any) as Record<string, unknown>;
 
       return rendered;
     });

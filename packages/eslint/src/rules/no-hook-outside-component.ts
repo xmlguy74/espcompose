@@ -2,9 +2,9 @@
  * ESLint rule: @esphome/compose-eslint/no-hook-outside-component
  *
  * Prevents hook calls (useHAEntity, useScript, useRef, useMemo, useEffect)
- * outside function component bodies. These hooks must be called during the
- * render phase — calling them at the module top level means they execute
- * during module evaluation, which throws a PhaseError at runtime.
+ * outside function component bodies. These hooks must be called during a
+ * render pass — calling them at the module top level means they execute
+ * during module evaluation, which throws at runtime.
  *
  * This catches the mistake statically so users get a clear lint error
  * instead of a confusing runtime exception.

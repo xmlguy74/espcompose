@@ -2,7 +2,7 @@
 // useMemo — reactive memoization hook
 //
 // Creates a memoized derived value from one or more reactive sources.
-// Must be called inside a function component body (render phase).
+// Must be called inside a function component body (render pass).
 //
 // In the normal build pipeline, the CLI's reactive transformer replaces
 // useMemo() calls with _reactive.compiled() before this code runs.
@@ -26,7 +26,7 @@ import { assertHookContext } from './useState';
 /**
  * Create a memoized derived value from one or more reactive sources.
  *
- * Must be called inside a function component body (render phase).
+ * Must be called inside a function component body (render pass).
  *
  * In the normal build pipeline, the CLI's reactive transformer replaces
  * useMemo() calls with _reactive.compiled() before this code runs.

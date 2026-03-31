@@ -5,7 +5,7 @@
 //   - ReactiveNode<T> properties for reactive state reads
 //   - Action methods (compile-time no-ops) for entity control
 //
-// Must be called inside a function component body (render phase).
+// Must be called inside a function component body (render pass).
 // Registers the HA entity in the reactive scope so the compiler
 // can auto-generate the `platform: homeassistant` sensor import and
 // reactive trigger wiring in the final YAML.

@@ -5,7 +5,7 @@
 // dependency list. Use this when the automatic useMemo() compilation isn't
 // sufficient — e.g. when you need to call a C++ helper like resolve_font().
 //
-// Must be called inside a function component body (render phase).
+// Must be called inside a function component body (render pass).
 // ────────────────────────────────────────────────────────────────────────────
 
 import { ReactiveNode } from '../reactive-node';

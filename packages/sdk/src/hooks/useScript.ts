@@ -5,7 +5,7 @@
 // compiler into ESPHome actions. Returns a ScriptHandle for calling the
 // script from trigger handlers.
 //
-// Must be called inside a function component body (render phase).
+// Must be called inside a function component body (render pass).
 //
 // Usage:
 //   const myScript = useScript(async () => {
@@ -87,7 +87,7 @@ export interface CompiledScriptMeta {
  * tree compiler. The compiled actions are injected as metadata by the
  * transformer via Object.assign(__compiledScript, __refBindings).
  *
- * Must be called inside a function component body (render phase).
+ * Must be called inside a function component body (render pass).
  */
 export function useScript(
   fn: () => Promise<void>,

@@ -2,7 +2,7 @@
 // useEffect — reactive side-effect hook
 //
 // Registers a side-effect that runs when reactive sources change.
-// Must be called inside a function component body (render phase).
+// Must be called inside a function component body (render pass).
 //
 // During lowering, the callback's reactive dependencies become an Effect
 // node in the C++ reactive runtime.
@@ -18,7 +18,7 @@ import { assertHookContext } from './useState';
 /**
  * Register a side-effect that runs when reactive sources change.
  *
- * Must be called inside a function component body (render phase).
+ * Must be called inside a function component body (render pass).
  * The callback is executed once to capture dependencies. During lowering,
  * it becomes an Effect node in the C++ reactive runtime.
  */

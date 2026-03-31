@@ -3,7 +3,7 @@
 //
 // Hooks may only be called during a render pass (inside withScriptScope).
 // setCurrentHookPath() is called by withScriptScope() to establish context.
-// assertHookContext() replaces the former assertPhase('render') checks.
+// assertHookContext() guards that hooks are called inside a render pass.
 // ────────────────────────────────────────────────────────────────────────────
 
 let _currentHookPath: string | null = null;

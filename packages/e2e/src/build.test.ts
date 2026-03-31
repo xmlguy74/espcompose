@@ -47,7 +47,7 @@ describe('ESPHome Compose Build', () => {
     await createProjectTest(projectsDir, 'reactive-device');
   });
 
-  // New authoring model tests (defineProject, build.run, embed.*, device.script)
+  // Additional feature tests
   it('embed-device', async () => {
     await createProjectTest(projectsDir, 'embed-device');
   });
