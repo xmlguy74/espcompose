@@ -277,7 +277,7 @@ export const bind = {
    */
   isNaN(node: ReactiveNode<number>): ReactiveNode<boolean> {
     const sigName = node.cppSignalName ?? node.dependencies[0]?.cppSignalName;
-    const getter = sigName ? `${sigName}.get()` : `memo_${(node as any)._index}.get()`;
+    const getter = sigName ? `${sigName}.get()` : `memo_${(node as unknown as { _index: number })._index}.get()`;
     return bind.derivedMemo<boolean>({
       cppExpression: `std::isnan(${getter})`,
       cppReturnType: 'bool',

@@ -16,7 +16,6 @@ import {
   translateReactiveExpr,
   translateScriptExpr,
   scanForHAEntities,
-  hasSignalBrand,
   translateBinaryOp,
   translatePrefixOp,
   escapeStringForCpp,

@@ -20,7 +20,7 @@
 import type { ACTION_BRAND } from './types';
 
 /** Branded action function type. */
-interface ActionFunction<F extends (...args: any[]) => any> {
+interface ActionFunction<F extends (...args: never[]) => unknown> {
   readonly [ACTION_BRAND]?: true;
   (...args: Parameters<F>): ReturnType<F>;
 }

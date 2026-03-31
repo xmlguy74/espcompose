@@ -9,7 +9,7 @@
 // to push a theme-switch action that sets the C++ theme_index signal.
 // ────────────────────────────────────────────────────────────────────────────
 
-import { flattenTheme, themeSignalName } from './theme-signals';
+import { flattenTheme } from './theme-signals';
 import type { ThemeLeaf } from './theme-signals';
 import type { ACTION_BRAND } from './types';
 

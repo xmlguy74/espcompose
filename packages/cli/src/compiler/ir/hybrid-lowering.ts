@@ -10,7 +10,7 @@
 // Phase E: implements the decision logic and generates C++ binding code.
 // ────────────────────────────────────────────────────────────────────────────
 
-import type { IRRoot, IRSection, IRValue } from './types.js';
+import type { IRRoot, IRValue } from './types.js';
 import { irSection, irScalar, irObject, irArray, irEntry } from './types.js';
 
 export type ReactiveStrategy = 'native' | 'runtime';

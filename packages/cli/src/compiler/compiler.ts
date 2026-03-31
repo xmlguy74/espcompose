@@ -8,7 +8,6 @@ import { writeTransformedFiles } from './transform/index.js';
 import { injectHASensorImports } from './reactive-injector.js';
 import { buildIR, lowerIR } from './ir/index.js';
 import { generateBindingsHeader, getRuntimeHeaderContent } from './reactive-runtime/codegen.js';
-import type { ReactiveRuntimeConfig } from './reactive-runtime/codegen.js';
 import { buildRuntimeConfig, injectReactiveBindingsRuntime } from './reactive-config.js';
 
 export interface CompileOptions {

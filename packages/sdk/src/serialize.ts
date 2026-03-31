@@ -11,15 +11,15 @@ import { Scalar } from 'yaml';
 // ── Compiled action tree function interface ────────────────────────────────
 // Functions with pre-compiled action tree metadata (set by the AST transformer)
 
-interface CompiledActionFunction extends Function {
+interface CompiledActionFunction {
   __compiledActions: unknown[];
   __refBindings?: Record<string, unknown>;
 }
 
 function hasCompiledActions(v: unknown): v is CompiledActionFunction {
   return typeof v === 'function' &&
-    '__compiledActions' in (v as Function) &&
-    Array.isArray((v as CompiledActionFunction).__compiledActions);
+    '__compiledActions' in (v as unknown as Record<string, unknown>) &&
+    Array.isArray((v as unknown as CompiledActionFunction).__compiledActions);
 }
 
 /**
@@ -137,7 +137,7 @@ export function serializeValue(v: unknown): unknown {
   if (isEmbedValue(v)) {
     if (v.kind === 'secret') {
       // Secret values are emitted as `!secret <key>` references
-      const key = (v as any)._secretKey as string;
+      const key = (v as unknown as { _secretKey: string })._secretKey;
       const s = new Scalar(key);
       s.tag = '!secret';
       return s;
@@ -226,7 +226,7 @@ export function extractElementProps(el: EspComposeElement): {
  * Fragment sentinel — globally unique via Symbol.for so that CJS and ESM
  * entry points (which may be separate module instances) share the same value.
  */
-export const Fragment: unique symbol = Symbol.for('@esphome/compose.Fragment') as any;
+export const Fragment: unique symbol = Symbol.for('@esphome/compose.Fragment') as unknown as typeof Fragment;
 
 export function flattenFragments(elements: EspComposeElement[]): EspComposeElement[] {
   const out: EspComposeElement[] = [];

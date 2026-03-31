@@ -57,7 +57,7 @@ export function createScript(
 ): ScriptHandle {
   let scriptDef: ScriptDefinition;
 
-  const body = fn as Function & { __compiledScript?: CompiledScriptMeta; __refBindings?: Record<string, unknown> };
+  const body = fn as ((...args: unknown[]) => unknown) & { __compiledScript?: CompiledScriptMeta; __refBindings?: Record<string, unknown> };
   if (body.__compiledScript) {
     const resolvedActions = body.__refBindings
       ? resolveRefBindingsInActions(body.__compiledScript.then, body.__refBindings)

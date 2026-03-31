@@ -7,7 +7,7 @@ import {
   getIncludes,
   clearIncludes,
 } from './device';
-import { TriggerVar, isTriggerVar, createTriggerArgs } from './trigger-args';
+import { type TriggerVar, isTriggerVar, createTriggerArgs } from './trigger-args';
 
 describe('device', () => {
   beforeEach(() => {
@@ -77,8 +77,8 @@ describe('device', () => {
   describe('TriggerArgs utils', () => {
     it('createTriggerArgs returns proxy that yields TriggerVars', () => {
       const args = createTriggerArgs<{ x: number; y: string }>();
-      const x = (args as any).x;
-      const y = (args as any).y;
+      const x = (args as unknown as Record<string, TriggerVar>).x;
+      const y = (args as unknown as Record<string, TriggerVar>).y;
       expect(isTriggerVar(x)).toBe(true);
       expect(isTriggerVar(y)).toBe(true);
       expect(x.name).toBe('x');

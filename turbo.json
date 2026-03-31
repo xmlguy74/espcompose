@@ -6,9 +6,11 @@
       "outputs": ["dist/**"]
     },
     "@esphome/compose-e2e#build": {
+      "dependsOn": ["^build"],
       "outputs": []
     },
     "espcompose-demo#build": {
+      "dependsOn": ["^build"],
       "outputs": [".espcompose/**"]
     },
     "typecheck": {
@@ -24,7 +26,7 @@
     },
     "test": {
       "dependsOn": ["build"],
-      "cache": true
+      "cache": false
     }
   }
 }

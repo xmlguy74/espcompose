@@ -107,7 +107,7 @@ describe('bind', () => {
         bind.effect(() => {
           // In real code, this would trigger a side-effect action.
           // Just accessing a reactive property is enough to track it.
-          const _v = sensor.value;
+          void sensor.value;
         });
         // No return value to check — effect is fire-and-forget.
         // The tracking is verified by the fact that no error occurred.

@@ -15,7 +15,6 @@
 //   - 'effect':     side-effect callback (bind.effect())
 // ────────────────────────────────────────────────────────────────────────────
 
-import type { TriggerSignature } from './trigger-registry';
 import { getTriggerSignature } from './trigger-registry';
 
 // ────────────────────────────────────────────────────────────────────────────
