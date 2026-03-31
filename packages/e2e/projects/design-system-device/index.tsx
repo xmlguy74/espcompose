@@ -6,7 +6,6 @@
  */
 import {
   Display,
-  defineProject,
   useRef,
 } from '@esphome/compose';
 import {
@@ -69,6 +68,4 @@ function App() {
   );
 }
 
-export default defineProject({
-  device: <App />,
-});
+export default <App />;

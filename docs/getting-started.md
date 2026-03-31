@@ -46,29 +46,21 @@ The generated YAML is written to `.espcompose/esphome.yaml`.
 The scaffolded `index.tsx` is a minimal device configuration:
 
 ```tsx
-import { defineProject } from '@esphome/compose';
-
-export default defineProject({
-  device: (
-    <esphome name="my-device" comment="An ESPHome Compose device">
-      <esp32 board="esp32dev" framework={{ type: 'esp-idf' }} />
-      <wifi ssid="!secret wifi_ssid" password="!secret wifi_password" />
-      <api />
-      <ota platform="esphome" />
-      <logger level="DEBUG" />
-    </esphome>
-  ),
-});
+export default (
+  <esphome name="my-device" comment="An ESPHome Compose device">
+    <esp32 board="esp32dev" framework={{ type: 'esp-idf' }} />
+    <wifi ssid="!secret wifi_ssid" password="!secret wifi_password" />
+    <api />
+    <ota platform="esphome" />
+    <logger level="DEBUG" />
+  </esphome>
+);
 ```
 
-The `defineProject()` wrapper creates a typed project descriptor that the
-compiler uses as the entry point. The `device` property contains the JSX element
-tree that gets compiled to YAML. Each intrinsic element (`<esphome>`, `<esp32>`,
-`<wifi>`, etc.) maps directly to an ESPHome YAML section. Props are written in
-camelCase and automatically converted to snake_case in the output.
-
-> **Note:** The bare `export default <esphome>...</esphome>` pattern is still supported
-> for backward compatibility, but `defineProject()` is the recommended approach.
+The default export is a JSX element tree that the compiler uses as the entry
+point. Each intrinsic element (`<esphome>`, `<esp32>`, `<wifi>`, etc.) maps
+directly to an ESPHome YAML section. Props are written in camelCase and
+automatically converted to snake_case in the output.
 
 ## Function Components
 
@@ -180,7 +172,7 @@ binary_sensor:
 Use `useScript()` to create named ESPHome `script:` components. The async arrow function body is compiled at the AST level by the action tree compiler — it is never executed at runtime. Must be called inside a component function body:
 
 ```tsx
-import { delay, logger, defineProject, useScript } from '@esphome/compose';
+import { delay, logger, useScript } from '@esphome/compose';
 
 function App() {
   const greet = useScript(async () => {
@@ -204,7 +196,7 @@ function App() {
   );
 }
 
-export default defineProject({ device: <App /> });
+export default <App />;
 ```
 
 This compiles to:
@@ -252,7 +244,7 @@ Import action primitives from `@esphome/compose` to use inside script bodies and
 Refs to actionable components (lights, switches, etc.) provide typed action methods. Inside `useScript()` or trigger handlers, calling these methods emits the corresponding ESPHome actions:
 
 ```tsx
-import { delay, logger, defineProject, useRef, useScript } from '@esphome/compose';
+import { delay, logger, useRef, useScript } from '@esphome/compose';
 import type { light_LightOutput, switch__Switch, output_FloatOutput } from '@esphome/compose';
 
 function App() {
@@ -296,10 +288,7 @@ function App() {
   );
 }
 
-export default defineProject({ device: <App /> });
-```
-
-This compiles `toggleAll` into a script that emits `light.toggle`, `delay`, and `switch.toggle` actions, and wires the inline `onRelease` handler directly into the binary sensor's `on_release` trigger.
+export default <App />;
 
 ## CLI Commands
 
@@ -319,67 +308,22 @@ Pass extra flags to ESPHome after `--`:
 espcompose run ./my-device -- --device /dev/ttyUSB0
 ```
 
-## Compile-Time Build Values
+## Secrets
 
-Use `build.run()` to execute arbitrary Node.js code at compile time and capture
-the results for use in your device configuration:
-
-```tsx
-import { build, embed, defineProject } from '@esphome/compose';
-
-const env = build.run(() => ({
-  deviceName: 'my-device',
-  apiKey: process.env.API_KEY ?? 'default-key',
-}));
-
-export default defineProject({
-  device: (
-    <esphome name={embed.string(env.deviceName)}>
-      <esp32 board="esp32dev" framework={{ type: 'arduino' }} />
-      <api encryption={{ key: embed.string(env.apiKey) }} />
-    </esphome>
-  ),
-});
-```
-
-`build.run()` must be called at the module top level — not inside components or
-render functions. The `embed.*()` functions transfer the values into the YAML:
-
-| Function | Output |
-|----------|--------|
-| `embed.string(value)` | Literal YAML string |
-| `embed.number(value)` | Literal YAML number |
-| `embed.secret(value)` | `!secret` reference + secrets.yaml entry |
-| `embed.json(value)` | Inline YAML object/array |
-
-## Scripts with defineProject
-
-`useScript()` integrates naturally with the `defineProject()` authoring model.
-All hooks must be called inside a component function body:
+Use the `secret()` function to create `!secret` references for sensitive values
+like Wi-Fi passwords and API keys:
 
 ```tsx
-import { delay, logger, defineProject, useScript } from '@esphome/compose';
+import { secret } from '@esphome/compose';
 
-function App() {
-  const blink = useScript(async () => {
-    logger.log('Blink!');
-    await delay(500);
-    logger.log('Done');
-  });
-
-  return (
-    <esphome name="my-device">
-      <esp32 board="esp32dev" framework={{ type: 'arduino' }} />
-      <binary_sensor platform="gpio" pin={4} name="Button"
-        onPress={async () => { await blink(); }}
-      />
-    </esphome>
-  );
-}
-
-export default defineProject({ device: <App /> });
+export default (
+  <esphome name="my-device">
+    <esp32 board="esp32dev" framework={{ type: 'esp-idf' }} />
+    <wifi ssid={secret('wifi_ssid')} password={secret('wifi_password')} />
+    <api encryption={{ key: secret('api_key') }} />
+  </esphome>
+);
 ```
 
-`useScript()` returns a `ScriptHandle` that can be called from trigger
-handlers. The compiler collects the scripts and emits them as YAML `script:`
-sections automatically.
+The compiler collects secret references and emits a `secrets.yaml` file
+alongside the main config.

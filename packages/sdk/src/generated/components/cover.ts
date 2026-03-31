@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, EmbedValue, Pin, RefProp, TimePeriod, TriggerHandler } from "../../types";
+import type { ComponentProps, Pin, RefProp, TimePeriod, TriggerHandler } from "../../types";
 import type { _CoreComponent, _CoreEntityBase, _CoreMqttCommandComponent } from "../bases";
 import type { am43_Am43Component, binary_sensor_BinarySensor, ble_client_BLEClient, copy_CopyCover, cover_Cover, current_based_CurrentBasedCover, endstop_EndstopCover, feedback_FeedbackCover, he60r_HE60rCover, sensor_Sensor, template__TemplateCover, time_based_TimeBasedCover, tormatic_Tormatic, tuya_Tuya, tuya_TuyaCover, uart_UARTComponent, web_server_WebServer } from "../markers";
 interface CoverWebServerProps {
@@ -18,7 +18,7 @@ interface CoverBaseProps extends _CoreEntityBase, _CoreMqttCommandComponent {
     /** @yamlKey web_server */
     webServer?: CoverWebServerProps;
     /** @yamlKey mqtt_json_state_payload */
-    mqttJsonStatePayload?: boolean | EmbedValue<boolean>;
+    mqttJsonStatePayload?: boolean;
     /** @yamlKey device_class */
     deviceClass?: "awning" | "blind" | "curtain" | "damper" | "door" | "" | "garage" | "gate" | "shade" | "shutter" | "window";
     /** @yamlKey position_command_topic */
@@ -44,12 +44,12 @@ interface CoverBaseProps extends _CoreEntityBase, _CoreMqttCommandComponent {
 }
 interface Am43Props extends _CoreComponent {
     /** int: The pin for the device, as set in the app. The default is usually printed on the device. Defaults to `8888`. */
-    pin?: number | EmbedValue<number>;
+    pin?: number;
     /**
      * boolean: Inverts the position value to and from the device. Set if ESPHome is swapping around the open/close state of...
      * @yamlKey invert_position
      */
-    invertPosition?: boolean | EmbedValue<boolean>;
+    invertPosition?: boolean;
     /**
      * [ID](/guides/configuration-types#id): The id of the `ble_client` entry associated with the device.
      * @yamlKey ble_client_id
@@ -126,7 +126,7 @@ interface CurrentBasedProps extends _CoreComponent {
      * boolean: Enable to detect malfunction detection (Typically welded relays). Defaults to `True`.
      * @yamlKey malfunction_detection
      */
-    malfunctionDetection?: boolean | EmbedValue<boolean>;
+    malfunctionDetection?: boolean;
     /**
      * [Action](/automations/actions#all-actions): The action that should be performed when relay malfunction is detected. M...
      * @yamlKey malfunction_action
@@ -245,12 +245,12 @@ interface FeedbackProps extends _CoreComponent {
      * boolean: Indicates that the cover has built in end stop detectors. In this configuration the `stop_action` is not per...
      * @yamlKey has_built_in_endstop
      */
-    hasBuiltInEndstop?: boolean | EmbedValue<boolean>;
+    hasBuiltInEndstop?: boolean;
     /**
      * boolean: Whether the true state of the cover is not known. This will make the Home Assistant frontend show buttons fo...
      * @yamlKey assumed_state
      */
-    assumedState?: boolean | EmbedValue<boolean>;
+    assumedState?: boolean;
     /**
      * [Time](/guides/configuration-types#time): The interval to publish updated position information to the UI while the co...
      * @yamlKey update_interval
@@ -260,7 +260,7 @@ interface FeedbackProps extends _CoreComponent {
      * boolean: Whether to infer endstop state from the movement sensor. Requires movement sensors to be set, no endstop sen...
      * @yamlKey infer_endstop_from_movement
      */
-    inferEndstopFromMovement?: boolean | EmbedValue<boolean>;
+    inferEndstopFromMovement?: boolean;
     /**
      * [Time](/guides/configuration-types#time): Stops cover and forces a wait time between changes in direction, and takes ...
      * @yamlKey direction_change_wait_time
@@ -321,17 +321,17 @@ interface TimeBasedProps extends _CoreComponent {
      * boolean: Indicates that the cover has built in end stop detectors. In this configuration the `stop_action` is not per...
      * @yamlKey has_built_in_endstop
      */
-    hasBuiltInEndstop?: boolean | EmbedValue<boolean>;
+    hasBuiltInEndstop?: boolean;
     /**
      * boolean: For covers with manual external controls. With this configuration if the cover is commanded to open or close...
      * @yamlKey manual_control
      */
-    manualControl?: boolean | EmbedValue<boolean>;
+    manualControl?: boolean;
     /**
      * boolean: Whether the true state of the cover is not known. This will make the Home Assistant frontend show buttons fo...
      * @yamlKey assumed_state
      */
-    assumedState?: boolean | EmbedValue<boolean>;
+    assumedState?: boolean;
 }
 interface TormaticProps extends _CoreComponent {
     /** @yamlKey uart_id */
@@ -354,17 +354,17 @@ interface TemplateProps extends _CoreComponent {
     /** [lambda](/automations/templates#config-lambda): Lambda to be evaluated repeatedly to get the current state/position o... */
     lambda?: unknown;
     /** boolean: Whether to operate in optimistic mode - when in this mode, any command sent to the template cover will immed... */
-    optimistic?: boolean | EmbedValue<boolean>;
+    optimistic?: boolean;
     /**
      * boolean: Whether the true state/position of the cover is not known. This will make the Home Assistant frontend show b...
      * @yamlKey assumed_state
      */
-    assumedState?: boolean | EmbedValue<boolean>;
+    assumedState?: boolean;
     /**
      * boolean: Whether this cover will publish its position as a floating point number. By default (`false` ), the cover on...
      * @yamlKey has_position
      */
-    hasPosition?: boolean | EmbedValue<boolean>;
+    hasPosition?: boolean;
     /**
      * [Action](/automations/actions#all-actions): The action that should be performed when the remote (like Home Assistant'...
      * @yamlKey open_action
@@ -407,21 +407,21 @@ interface TuyaProps extends _CoreComponent {
     /** @yamlKey tuya_id */
     tuyaId?: RefProp<tuya_Tuya>;
     /** @yamlKey control_datapoint */
-    controlDatapoint?: number | EmbedValue<number>;
+    controlDatapoint?: number;
     /** @yamlKey direction_datapoint */
-    directionDatapoint?: number | EmbedValue<number>;
+    directionDatapoint?: number;
     /** @yamlKey position_datapoint */
-    positionDatapoint: number | EmbedValue<number>;
+    positionDatapoint: number;
     /** @yamlKey position_report_datapoint */
-    positionReportDatapoint?: number | EmbedValue<number>;
+    positionReportDatapoint?: number;
     /** @yamlKey min_value */
-    minValue?: number | EmbedValue<number>;
+    minValue?: number;
     /** @yamlKey max_value */
-    maxValue?: number | EmbedValue<number>;
+    maxValue?: number;
     /** @yamlKey invert_position */
-    invertPosition?: boolean | EmbedValue<boolean>;
+    invertPosition?: boolean;
     /** @yamlKey invert_position_report */
-    invertPositionReport?: boolean | EmbedValue<boolean>;
+    invertPositionReport?: boolean;
     /** @yamlKey restore_mode */
     restoreMode?: "NO_RESTORE" | "RESTORE" | "RESTORE_AND_CALL";
 }

@@ -11,14 +11,14 @@
 import { ReactiveNode } from '../reactive-node';
 import type { ExpressionDependency } from '../reactive-node';
 import { registerReactiveNode } from './useReactiveScope';
-import { assertPhase } from '../phase';
+import { assertHookContext } from './useState';
 
 export function useRawMemo<T>(opts: {
   cppExpression: string;
   cppReturnType: string;
   dependencies: ExpressionDependency[];
 }): ReactiveNode<T> {
-  assertPhase('render', 'useRawMemo()');
+  assertHookContext('useRawMemo()');
 
   const node = new ReactiveNode<T>({
     kind: 'memo',

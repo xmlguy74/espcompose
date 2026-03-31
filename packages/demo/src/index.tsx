@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { Display, defineProject, useRef } from '@esphome/compose';
+import { Display, useRef } from '@esphome/compose';
 import { UI } from './lvgl';
 import { Waveshare_ESP32P4_WIFI6_Touch_LCD_10_1 } from './hardware';
 
@@ -33,6 +33,4 @@ function App() {
   );
 }
 
-export default defineProject({
-  device: <App />,
-});
+export default <App />;

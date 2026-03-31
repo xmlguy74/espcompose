@@ -258,17 +258,14 @@ async function execute(bundleFile: string, outFile: string): Promise<void> {
   }
 
   // Wrap the bundle load and render in both a script scope and a reactive scope.
-  // - useScript() calls may fire during module evaluation or render phase,
-  //   so the script scope must cover both.
+  // - useScript() calls may fire during render, so the script scope covers rendering.
   // - useHAEntity() calls fire during render and register HA entities in the
   //   reactive scope.
-  // - Expression<T> props are detected during render and register reactive
+  // - ReactiveNode props are detected during render and register reactive
   //   bindings in the reactive scope.
   let collectedScripts: Array<{ id: string; then: unknown[] }> = [];
   const { result: reactiveResult, bindings, entities, reactiveNodes } = cjsSDK.withReactiveScope(() => {
     const { result: config, scripts } = cjsSDK.withScriptScope(() => {
-      // Phase: module — build.run() is allowed, hooks are forbidden
-      sdkModule.setPhase('module');
       const mod = _require(bundleFile) as { default?: unknown };
 
       const rootElement = mod.default;
@@ -280,24 +277,17 @@ async function execute(bundleFile: string, outFile: string): Promise<void> {
         );
       }
 
-      // Require ProjectDefinition (defineProject() wrapper)
-      if (!sdkModule.isProjectDefinition(rootElement)) {
-        throw new Error(
-          `Default export must use defineProject(). ` +
-            `Replace \`export default (<esphome ...>)\` with ` +
-            `\`export default defineProject({ device: (<esphome ...>) })\`.`
-        );
-      }
-      const element = (rootElement as { device: unknown }).device;
-
-      // Phase: render — hooks are allowed, build.run() is forbidden
-      sdkModule.setPhase('render');
+      // Accept bare JSX element or legacy defineProject({ device: ... }) wrapper
+      const element = (
+        rootElement !== null &&
+        typeof rootElement === 'object' &&
+        'device' in rootElement
+      )
+        ? (rootElement as { device: unknown }).device
+        : rootElement;
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const rendered = cjsSDK.render(element as any) as Record<string, unknown>;
-
-      // Phase: back to idle
-      sdkModule.setPhase('idle');
 
       return rendered;
     });

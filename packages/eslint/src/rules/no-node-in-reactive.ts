@@ -41,8 +41,7 @@ export default createRule<[], MessageIds>({
     messages: {
       nodeInReactive:
         '"{{ name }}" is a Node.js API that is not available in device-reactive contexts. ' +
-        'Use build.run() at the module top level to access Node.js APIs, ' +
-        'then pass values to the device via embed.*().',
+        'Use module-level code to compute values, then pass them into JSX props.',
     },
     schema: [],
   },

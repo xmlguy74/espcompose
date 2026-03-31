@@ -44,8 +44,8 @@ ruleTester.run('no-hook-outside-component', rule, {
     {
       name: 'unrelated function calls at module level are fine',
       code: `
-        const x = defineProject({ device: <esphome /> });
-        const y = build.run(() => process.env);
+        const x = someFunction({ device: 'test' });
+        const y = config.load();
       `,
     },
     {

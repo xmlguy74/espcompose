@@ -1,12 +1,16 @@
-import { describe, it, expect, beforeEach } from 'vitest';
-import { setPhase } from './phase';
+import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { setCurrentHookPath } from './hooks/useState';
 import { _reactive } from './_reactive';
 import { ReactiveNode, isReactiveNode } from './reactive-node';
 import { withReactiveScope } from './hooks/useReactiveScope';
 
 describe('_reactive', () => {
   beforeEach(() => {
-    setPhase('render');
+    setCurrentHookPath('test');
+  });
+
+  afterEach(() => {
+    setCurrentHookPath(null);
   });
 
   describe('_reactive.compiled()', () => {

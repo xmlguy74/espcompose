@@ -13,7 +13,6 @@
  * - Multiple sequential actions
  */
 import {
-  defineProject,
   delay,
   logger,
   useRef,
@@ -63,6 +62,4 @@ function App() {
   );
 }
 
-export default defineProject({
-  device: <App />,
-});
+export default <App />;

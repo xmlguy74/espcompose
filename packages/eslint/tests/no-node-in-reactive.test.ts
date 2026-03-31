@@ -10,9 +10,9 @@ ruleTester.run('no-node-in-reactive', rule, {
       code: `const name = process.env.DEVICE_NAME;`,
     },
     {
-      name: 'Node globals inside build.run()',
+      name: 'Node globals inside regular function',
       code: `
-        const env = build.run(() => {
+        const env = loadConfig(() => {
           return process.env;
         });
       `,

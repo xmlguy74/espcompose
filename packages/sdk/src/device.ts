@@ -12,8 +12,6 @@
 //   const reading = device.lambda<number>('return id(sensor).state;');
 // ────────────────────────────────────────────────────────────────────────────
 
-import { assertPhase } from './phase';
-
 declare const DEVICE_LAMBDA_BRAND: unique symbol;
 
 /**
@@ -60,7 +58,6 @@ export const device = {
    * The file path is relative to the project root or an absolute path.
    */
   include(path: string): void {
-    assertPhase(['module', 'render'], 'device.include()');
     if (!includesRegistry.includes(path)) {
       includesRegistry.push(path);
     }
@@ -74,7 +71,6 @@ export const device = {
    * from TypeScript reactive functions.
    */
   lambda<T = unknown>(code: string): DeviceLambda<T> {
-    assertPhase(['module', 'render'], 'device.lambda()');
     return new DeviceLambda<T>(code);
   },
 };

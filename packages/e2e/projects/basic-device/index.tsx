@@ -3,16 +3,13 @@
  *
  * A minimal device with core infrastructure components.
  */
-import { defineProject } from '@esphome/compose';
 
-export default defineProject({
-  device: (
-    <esphome name="basic-device" comment="A basic ESPHome device">
+export default (
+  <esphome name="basic-device" comment="A basic ESPHome device">
       <esp32 board="esp32dev" framework={{ type: 'esp-idf' }} />
       <wifi ssid="HomeWifi" password="s3cr3t!!" />
       <api />
       <ota platform="esphome" />
       <logger level="DEBUG" />
     </esphome>
-  ),
-});
+);

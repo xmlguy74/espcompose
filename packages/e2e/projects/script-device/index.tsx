@@ -4,7 +4,7 @@
  * Demonstrates named scripts via useScript() and inline trigger handlers
  * via bare arrow functions.
  */
-import { defineProject, useScript, delay, logger } from '@esphome/compose';
+import { useScript, delay, logger } from '@esphome/compose';
 
 function App() {
   /** Named script: greet — logs a greeting and waits 500 ms. */
@@ -30,6 +30,4 @@ function App() {
   );
 }
 
-export default defineProject({
-  device: <App />,
-});
+export default <App />;

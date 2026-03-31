@@ -19,11 +19,10 @@
 // ────────────────────────────────────────────────────────────────────────────
 
 import { createContext, useContext, withContext } from './useContext';
-import { setCurrentHookPath } from './useState';
+import { setCurrentHookPath, assertHookContext } from './useState';
 import { findInScope, registerInScope } from './useScope';
 import type { ScopeFrame } from './useScope';
 import { resolveRefBindingsInActions } from '../serialize';
-import { assertPhase } from '../phase';
 import type { ACTION_BRAND } from '../types';
 
 // ── Script-scope types & context ───────────────────────────────────────────
@@ -93,7 +92,7 @@ export interface CompiledScriptMeta {
 export function useScript(
   fn: () => Promise<void>,
 ): ScriptHandle {
-  assertPhase('render', 'useScript()');
+  assertHookContext('useScript()');
 
   let scriptDef: ScriptDefinition;
 

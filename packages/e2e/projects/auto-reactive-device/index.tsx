@@ -13,7 +13,7 @@
  *   - Direct passthrough: officeLight.stateText (should NOT be wrapped)
  *   - Explicit useMemo (should NOT be double-wrapped)
  */
-import { Display, defineProject, useRef, useHAEntity, useMemo } from '@esphome/compose';
+import { Display, useRef, useHAEntity, useMemo } from '@esphome/compose';
 
 function App() {
   const displayRef = useRef<Display>();
@@ -87,6 +87,4 @@ function App() {
   );
 }
 
-export default defineProject({
-  device: <App />,
-});
+export default <App />;

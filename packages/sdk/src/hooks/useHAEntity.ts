@@ -18,7 +18,7 @@ import { ReactiveNode, isReactiveNode } from '../reactive-node';
 import type { Signal } from '../reactive-node';
 import { registerHAEntity } from './useReactiveScope';
 import { isTracking, trackDependency } from '../reactive-node';
-import { assertPhase } from '../phase';
+import { assertHookContext } from './useState';
 import type {
   LightBinding,
   SensorBinding,
@@ -253,7 +253,7 @@ export function useHAEntity(entityId: `cover.${string}`): CoverBinding;
 export function useHAEntity(entityId: string): unknown;
 
 export function useHAEntity(entityId: string): unknown {
-  assertPhase('render', 'useHAEntity()');
+  assertHookContext('useHAEntity()');
 
   // Deduplication: return cached binding if already created.
   const cached = bindingCache.get(entityId);

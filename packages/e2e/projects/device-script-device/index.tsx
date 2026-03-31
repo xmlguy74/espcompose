@@ -1,4 +1,4 @@
-import { delay, logger, defineProject, useScript } from '@esphome/compose';
+import { delay, logger, useScript } from '@esphome/compose';
 
 function App() {
   const blink = useScript(async () => {
@@ -31,6 +31,4 @@ function App() {
   );
 }
 
-export default defineProject({
-  device: <App />,
-});
+export default <App />;

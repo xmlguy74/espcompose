@@ -21,7 +21,7 @@ import {
   stopTracking,
 } from '../reactive-node';
 import { registerReactiveNode } from './useReactiveScope';
-import { assertPhase } from '../phase';
+import { assertHookContext } from './useState';
 
 /**
  * Create a memoized derived value from one or more reactive sources.
@@ -36,7 +36,7 @@ import { assertPhase } from '../phase';
  *     a ReactiveNode with dependency tracking only
  */
 export function useMemo<T>(fn: () => T): T | ReactiveNode<T> {
-  assertPhase('render', 'useMemo()');
+  assertHookContext('useMemo()');
   startTracking();
   const value = fn();
   const deps = stopTracking();

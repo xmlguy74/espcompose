@@ -3,20 +3,20 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, EmbedValue, Pin, RefProp, TriggerHandler } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { mdns_MDNSComponent } from "../markers";
 export interface MdnsServicesProps {
     /** string: Name of extra service. */
-    service: string | EmbedValue<string>;
+    service: string;
     /** string: Protocol of service (`_udp` or `_tcp`). */
-    protocol: string | EmbedValue<string>;
+    protocol: string;
     /** int: Port number of extra service. */
-    port?: number | EmbedValue<number>;
+    port?: number;
     txt?: Record<string, string>;
 }
 export interface MdnsProps {
     /** boolean: Set to true to disable mDNS usage. Defaults to false. */
-    disabled?: boolean | EmbedValue<boolean>;
+    disabled?: boolean;
     /** list: List of additional services to expose. */
     services?: Array<MdnsServicesProps>;
 }

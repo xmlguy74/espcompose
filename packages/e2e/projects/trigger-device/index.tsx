@@ -5,7 +5,7 @@
  * actions, createScript() triggers, and bare arrow functions for anonymous triggers.
  * Ref actions are resolved at compile time via the action tree compiler.
  */
-import { defineProject, delay, logger, useRef, useScript } from '@esphome/compose';
+import { delay, logger, useRef, useScript } from '@esphome/compose';
 import type { output_FloatOutput, light_LightOutput, switch__Switch } from '@esphome/compose';
 
 function App() {
@@ -51,6 +51,4 @@ function App() {
   );
 }
 
-export default defineProject({
-  device: <App />,
-});
+export default <App />;

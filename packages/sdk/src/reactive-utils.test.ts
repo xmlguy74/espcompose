@@ -1,11 +1,15 @@
-import { describe, it, expect, beforeEach } from 'vitest';
-import { setPhase } from './phase';
+import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { setCurrentHookPath } from './hooks/useState';
 import { resolveBindProp } from './reactive-utils';
 import { ReactiveNode, isReactiveNode } from './reactive-node';
 
 describe('reactive-utils', () => {
   beforeEach(() => {
-    setPhase('render');
+    setCurrentHookPath('test');
+  });
+
+  afterEach(() => {
+    setCurrentHookPath(null);
   });
 
   describe('resolveBindProp()', () => {

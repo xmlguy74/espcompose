@@ -13,7 +13,7 @@
 
 import { ReactiveNode, startTracking, stopTracking } from '../reactive-node';
 import { registerReactiveNode } from './useReactiveScope';
-import { assertPhase } from '../phase';
+import { assertHookContext } from './useState';
 
 /**
  * Register a side-effect that runs when reactive sources change.
@@ -23,7 +23,7 @@ import { assertPhase } from '../phase';
  * it becomes an Effect node in the C++ reactive runtime.
  */
 export function useEffect(fn: () => void): void {
-  assertPhase('render', 'useEffect()');
+  assertHookContext('useEffect()');
   startTracking();
   fn();
   const deps = stopTracking();

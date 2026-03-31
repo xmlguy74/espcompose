@@ -179,7 +179,7 @@ export function buildStandaloneFileContent(
     'Pin',
     ...specialTypes,
     'TriggerHandler',
-    'EmbedValue',
+
     ...(markerRefs.size > 0 ? ['RefProp'] : []),
   ];
   statements.push(importTypeDecl(typesImports, '../../types'));
@@ -394,7 +394,7 @@ export function buildPlatformFileContent(
     'Pin',
     ...specialTypes,
     'TriggerHandler',
-    'EmbedValue',
+
     ...(markerRefs.size > 0 ? ['RefProp'] : []),
   ];
   statements.push(importTypeDecl(typesImports, '../../types'));

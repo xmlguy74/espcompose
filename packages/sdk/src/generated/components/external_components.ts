@@ -3,11 +3,11 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, EmbedValue, Pin, TriggerHandler } from "../../types";
+import type { ComponentProps, Pin, TriggerHandler } from "../../types";
 export interface ExternalComponentsProps {
     /** Repository type. One of `local`, `git`. */
     source: unknown;
-    refresh?: string | EmbedValue<string>;
+    refresh?: string;
     components?: Array<string>;
 }
 declare global {

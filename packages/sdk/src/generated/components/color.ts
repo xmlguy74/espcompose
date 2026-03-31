@@ -3,22 +3,22 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, EmbedValue, Pin, RefProp, TriggerHandler } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _CoreComponent } from "../bases";
 import type { Color } from "../markers";
 export interface ColorProps extends _CoreComponent {
     red?: unknown;
     /** @yamlKey red_int */
-    redInt?: number | EmbedValue<number>;
+    redInt?: number;
     green?: unknown;
     /** @yamlKey green_int */
-    greenInt?: number | EmbedValue<number>;
+    greenInt?: number;
     blue?: unknown;
     /** @yamlKey blue_int */
-    blueInt?: number | EmbedValue<number>;
+    blueInt?: number;
     white?: unknown;
     /** @yamlKey white_int */
-    whiteInt?: number | EmbedValue<number>;
+    whiteInt?: number;
     hex?: unknown;
 }
 declare global {

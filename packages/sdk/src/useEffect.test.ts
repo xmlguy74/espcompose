@@ -1,12 +1,16 @@
-import { describe, it, expect, beforeEach } from 'vitest';
-import { setPhase } from './phase';
+import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { setCurrentHookPath } from './hooks/useState';
 import { useEffect } from './hooks/useEffect';
 import { useHAEntity, clearHAEntityCache } from './hooks/useHAEntity';
 import { withReactiveScope } from './hooks/useReactiveScope';
 
 describe('useEffect', () => {
   beforeEach(() => {
-    setPhase('render');
+    setCurrentHookPath('test');
+  });
+
+  afterEach(() => {
+    setCurrentHookPath(null);
   });
 
   it('runs the function once immediately', () => {

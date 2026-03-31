@@ -2,7 +2,7 @@ import type { EspComposeElement } from './types';
 import { isRef } from './types';
 import { isReactiveNode } from './reactive-node';
 import type { ReactiveNode } from './reactive-node';
-import { isEmbedValue } from './embed';
+import { isSecretValue } from './secret';
 
 import { registerRefTag } from './ref-registry';
 import { isTriggerVar } from './trigger-args';
@@ -134,16 +134,10 @@ export function serializeValue(v: unknown): unknown {
   if (isReactiveNode(v)) {
     return serializeReactiveNode(v);
   }
-  if (isEmbedValue(v)) {
-    if (v.kind === 'secret') {
-      // Secret values are emitted as `!secret <key>` references
-      const key = (v as unknown as { _secretKey: string })._secretKey;
-      const s = new Scalar(key);
-      s.tag = '!secret';
-      return s;
-    }
-    // For string/number/json embed kinds, unwrap and serialize the inner value
-    return serializeValue(v.value);
+  if (isSecretValue(v)) {
+    const s = new Scalar(v.key);
+    s.tag = '!secret';
+    return s;
   }
   // Function values with compiled action tree metadata (trigger handler path)
   if (typeof v === 'function' && hasCompiledActions(v)) {

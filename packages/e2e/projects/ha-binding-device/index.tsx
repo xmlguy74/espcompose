@@ -5,7 +5,7 @@
  * LVGL widgets with automatic two-way reactive wiring, plus using LVGL
  * button events to trigger HA entity actions.
  */
-import { Display, defineProject, useRef, useHAEntity } from '@esphome/compose';
+import { Display, useRef, useHAEntity } from '@esphome/compose';
 import type { EspComposeElement, TriggerHandler } from '@esphome/compose';
 
 /** Thin wrapper that adds typed trigger props to <lvgl-button>. */
@@ -82,6 +82,4 @@ function App() {
   );
 }
 
-export default defineProject({
-  device: <App />,
-});
+export default <App />;

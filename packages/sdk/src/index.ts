@@ -41,23 +41,10 @@ export type {
 // component-prop interfaces & marker phantom-types.
 export * from './generated/index';
 
-// ── Phase A: new authoring-model namespaces ────────────────────────────────
+// ── Secrets ────────────────────────────────────────────────────────────────
 
-// Phase tracking
-export { setPhase, getPhase, assertPhase, PhaseError } from './phase';
-export type { Phase } from './phase';
-
-// build — compile-time Node.js execution
-export { build, BuildValue, isBuildValue } from './build';
-export type { BuildValueOf } from './build';
-
-// embed — build→device value crossing
-export { embed, EmbedValue, isEmbedValue, getSecrets, clearSecrets } from './embed';
-export type { EmbedKind } from './embed';
-
-// defineProject — project descriptor wrapper
-export { defineProject, isProjectDefinition } from './project';
-export type { ProjectDefinition, DefineProjectOptions } from './project';
+// secret — ESPHome !secret value marker
+export { secret, SecretValue, isSecretValue, getSecrets, clearSecrets } from './secret';
 
 // _reactive — compiler-internal reactive plumbing (not public API)
 export { _reactive } from './_reactive';

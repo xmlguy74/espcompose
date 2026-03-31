@@ -36,9 +36,9 @@ following packages:
 
 | Package | npm name | Purpose |
 |---------|----------|---------|
-| `packages/sdk` | `@esphome/compose` | Core SDK — JSX runtime, hooks (`useRef`, `useScript`, `useContext`, `useMemo`, `useEffect`, `useHAEntity`), build/embed/device namespaces, reactive nodes, action primitives (`delay`, `logger`), generated component types |
+| `packages/sdk` | `@esphome/compose` | Core SDK — JSX runtime, hooks (`useRef`, `useScript`, `useContext`, `useMemo`, `useEffect`, `useHAEntity`), device namespace, `secret()` helper, reactive nodes, action primitives (`delay`, `logger`), generated component types |
 | `packages/cli` | `@esphome/compose-cli` / `espcompose` | CLI binary & compiler pipeline — type-check, AST transform, esbuild bundle, IR construction/lowering, execute & emit YAML, ESPHome CLI wrappers |
-| `packages/eslint` | `@esphome/compose-eslint` | ESLint plugin with custom rules for ESPHome Compose projects (including phase enforcement rules) |
+| `packages/eslint` | `@esphome/compose-eslint` | ESLint plugin with custom rules for ESPHome Compose projects |
 | `packages/e2e` | `@esphome/compose-e2e` (private) | End-to-end snapshot tests — builds sample projects and verifies YAML output |
 | `packages/ui` | `@esphome/compose-ui` | Design system — reusable LVGL components (Screen, Button, Card, etc.) and themes |
 
@@ -86,63 +86,35 @@ export default (
 );
 ```
 
-### defineProject() — Project Descriptor
-The preferred way to define a device project is via `defineProject()`, which
-wraps the root JSX element in a typed descriptor:
+### secret() — Secret Management
+The `secret()` function creates a `!secret` reference for sensitive values.
+At compile time the secret key-value pair is collected and emitted into
+`secrets.yaml`, while the config YAML receives a `!secret <key>` reference.
 
 ```tsx
-import { defineProject } from '@esphome/compose';
+import { secret } from '@esphome/compose';
 
-export default defineProject({
-  device: (
-    <esphome name="my-device">
-      <esp32 board="esp32dev" framework={{ type: 'arduino' }} />
-      <wifi ssid="HomeWifi" password="secret" />
-      <api />
-      <logger />
-    </esphome>
-  ),
-});
+export default (
+  <esphome name="my-device">
+    <esp32 board="esp32dev" framework={{ type: 'esp-idf' }} />
+    <wifi ssid={secret('wifi_ssid')} password={secret('wifi_password')} />
+    <api encryption={{ key: secret('api_key') }} />
+  </esphome>
+);
 ```
 
-The compiler detects `ProjectDefinition` via `isProjectDefinition()` and
-extracts the `.device` property. The bare `export default <esphome>` pattern
-is still supported for backward compatibility.
-
-### build.run() — Compile-Time Node.js Execution
-`build.run()` executes arbitrary Node.js code at compile time and captures the
-return value as a `BuildValue<T>`. Properties of the underlying value are
-accessible via a Proxy. Must be called at module top level (module phase).
-
-```tsx
-const env = build.run(() => ({
-  deviceName: 'my-device',
-  apiKey: process.env.API_KEY ?? 'default-key',
-}));
-// env.deviceName and env.apiKey are accessible at compile time
-```
-
-### embed.*() — Build→Device Value Crossing
-`embed.*()` functions transfer compile-time values into the generated YAML:
-- `embed.string(value)` → literal YAML string
-- `embed.number(value)` → literal YAML number
-- `embed.secret(value)` → `!secret` reference + entry in secrets.yaml
-- `embed.json(value)` → inline YAML object/array
-
-```tsx
-<esphome name={embed.string(env.deviceName)} />
-<api encryption={{ key: embed.string(env.apiKey) }} />
-```
+Use `getSecrets()` to retrieve the collected secrets map after rendering,
+and `clearSecrets()` to reset the store between compilations.
 
 ### useScript() — Named Scripts
 `useScript()` declares named ESPHome scripts from async arrow function
 bodies. The AST-based action tree compiler compiles the function body at
 build time — it is never executed at runtime. Returns a `ScriptHandle`
 for calling the script from trigger handlers. Must be called inside a
-component function body (render phase).
+component function body.
 
 ```tsx
-import { delay, logger, defineProject, useRef, useScript } from '@esphome/compose';
+import { delay, logger, useRef, useScript } from '@esphome/compose';
 import type { Switch } from '@esphome/compose';
 
 function App() {
@@ -167,19 +139,16 @@ function App() {
   );
 }
 
-export default defineProject({ device: <App /> });
+export default <App />;
 ```
 
-### Compilation Phase Model
-The compiler enforces a three-phase execution model:
-- **module** — `build.run()` is allowed; hooks are forbidden
-- **render** — hooks (`useRef`, `useScript`, `useMemo`, `useEffect`, `useHAEntity`) and `embed.*` are allowed; `build.run()` is forbidden
-- **idle** — no phase-restricted APIs are active
-
-Phase enforcement is implemented at three layers:
-1. **TypeScript types** — API signatures restrict usage at the type level
-2. **ESLint rules** — `no-build-in-component` (error) and `no-node-in-reactive` (warn)
-3. **Runtime assertions** — `assertPhase()` throws `PhaseError` at runtime
+### Hook Context Guard
+Hooks (`useRef`, `useScript`, `useMemo`, `useEffect`, `useHAEntity`) must be
+called inside a component function body during the render pass. The runtime
+enforces this via `assertHookContext()`, which checks that a hook path has been
+set by the compiler's `withScriptScope()`/`withReactiveScope()` before any
+hook call. Calling a hook outside of a render context throws with a descriptive
+error message.
 
 ### IR (Intermediate Representation) Layer
 After rendering, the config object is lifted into a typed IR tree and lowered
@@ -218,7 +187,7 @@ the trigger prop.
 
 Example:
 ```tsx
-import { delay, logger, defineProject, useRef, useScript } from '@esphome/compose';
+import { delay, logger, useRef, useScript } from '@esphome/compose';
 import type { Switch } from '@esphome/compose';
 
 function App() {
@@ -247,7 +216,7 @@ function App() {
   );
 }
 
-export default defineProject({ device: <App /> });
+export default <App />;
 ```
 
 This compiles to YAML with a `script:` section for `greet` and

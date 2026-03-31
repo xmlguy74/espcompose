@@ -7,7 +7,7 @@
  * Hardware definitions live in hardware.tsx (mirroring the YAML packages
  * pattern).
  */
-import { Display, defineProject, logger, useRef, useScript } from '@esphome/compose';
+import { Display, logger, useRef, useScript } from '@esphome/compose';
 import { Hardware } from './hardware';
 
 function ConnectivityConfig() {
@@ -92,6 +92,4 @@ function App() {
   );
 }
 
-export default defineProject({
-  device: <App />,
-});
+export default <App />;
