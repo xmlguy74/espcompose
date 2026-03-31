@@ -1,12 +1,14 @@
 // ────────────────────────────────────────────────────────────────────────────
-// createScript — declares named ESPHome scripts
+// useScript — declares named ESPHome scripts
 //
 // Accepts an async arrow function whose body is compiled by the action tree
 // compiler into ESPHome actions. Returns a ScriptHandle for calling the
 // script from trigger handlers.
 //
+// Must be called inside a function component body (render pass).
+//
 // Usage:
-//   const myScript = createScript(async () => {
+//   const myScript = useScript(async () => {
 //     await delay(1000);
 //     lightRef.toggle();
 //   });
@@ -16,12 +18,45 @@
 //   <button onPress={() => { myScript.stop(); }} />              // stop running
 // ────────────────────────────────────────────────────────────────────────────
 
-import { ScriptDefinition, findInScope, registerInScope } from './useScope';
+import { createContext, useContext, withContext } from './useContext';
+import { setCurrentHookPath, assertHookContext } from './useState';
+import { findInScope, registerInScope } from './useScope';
+import type { ScopeFrame } from './useScope';
 import { resolveRefBindingsInActions } from '../serialize';
 import type { ACTION_BRAND } from '../types';
 
+// ── Script-scope types & context ───────────────────────────────────────────
+
+export interface ScriptDefinition {
+  id: string;
+  then: unknown[];
+}
+
+const scriptScopeContext = createContext<ScopeFrame<ScriptDefinition>>({ value: {} });
+
 /**
- * Handle returned by createScript() for interacting with a named ESPHome script.
+ * Establishes a script scope frame and runs `fn` inside it.
+ * Returns the function's result together with all ScriptDefinitions that were
+ * registered via useScript() during the call.
+ *
+ * Called by the compiler's execute phase to wrap bundle evaluation.
+ */
+export function withScriptScope<T>(fn: () => T): { result: T; scripts: ScriptDefinition[] } {
+  const prev = useContext(scriptScopeContext);
+  const scopeFrame: ScopeFrame<ScriptDefinition> = { next: prev, value: {} };
+
+  setCurrentHookPath('espcompose_script_render');
+  try {
+    const result = withContext(scriptScopeContext, scopeFrame, fn);
+    const scripts = Object.values(scopeFrame.value).map((e) => e.def);
+    return { result, scripts };
+  } finally {
+    setCurrentHookPath(null);
+  }
+}
+
+/**
+ * Handle returned by useScript() for interacting with a named ESPHome script.
  *
  * Callable as a function: `await myScript()` = script.execute + script.wait
  */
@@ -51,10 +86,14 @@ export interface CompiledScriptMeta {
  * The async arrow function body is compiled at build time by the action
  * tree compiler. The compiled actions are injected as metadata by the
  * transformer via Object.assign(__compiledScript, __refBindings).
+ *
+ * Must be called inside a function component body (render pass).
  */
-export function createScript(
+export function useScript(
   fn: () => Promise<void>,
 ): ScriptHandle {
+  assertHookContext('useScript()');
+
   let scriptDef: ScriptDefinition;
 
   const body = fn as ((...args: unknown[]) => unknown) & { __compiledScript?: CompiledScriptMeta; __refBindings?: Record<string, unknown> };
@@ -72,8 +111,8 @@ export function createScript(
   }
 
   // Register in scope (deduplication)
-  if (!findInScope(scriptDef.id)) {
-    registerInScope(scriptDef.id, { def: scriptDef });
+  if (!findInScope(scriptScopeContext, scriptDef.id)) {
+    registerInScope(scriptScopeContext, scriptDef.id, { def: scriptDef });
   }
 
   return createScriptHandle(scriptDef.id);

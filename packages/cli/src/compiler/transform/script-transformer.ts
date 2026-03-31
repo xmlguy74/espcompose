@@ -54,14 +54,14 @@ export function transformScriptFile(
     sourceFile,
   };
 
-  // Pass 1: Scan the file for importHAEntity() calls to build entity context
+  // Pass 1: Scan the file for useHAEntity() / importHAEntity() calls to build entity context
   scanForHAEntities(sourceFile, ctx);
 
-  // Pass 2: Find arrow functions in JSX attributes and createScript() calls,
+  // Pass 2: Find arrow functions in JSX attributes and useScript() calls,
   // compile them via the action tree compiler
   const edits: SourceEdit[] = [];
-  const refTags = scanForRefTags(sourceFile);
-  const scriptHandles = scanForScriptHandles(sourceFile);
+  const refTags = scanForRefTags(sourceFile, checker);
+  const scriptHandles = scanForScriptHandles(sourceFile, checker);
   findAndCompileTriggerHandlers(sourceFile, ctx, refTags, scriptHandles, edits);
 
   // Apply edits in reverse position order so indices stay valid
@@ -84,8 +84,8 @@ interface SourceEdit {
 
 interface TransformContext {
   checker: ts.TypeChecker;
-  /** Map of local variable name → HA entity info (from importHAEntity calls). */
-  haEntities: Map<string, HAEntityInfo>;
+  /** Map of declaration symbol → HA entity info (scope-aware). */
+  haEntities: Map<ts.Symbol, HAEntityInfo>;
   /** Auto-incrementing counter for unique trigger function names. */
   functionCounter: number;
   diagnostics: TransformDiagnostic[];
@@ -93,15 +93,11 @@ interface TransformContext {
 }
 
 // ────────────────────────────────────────────────────────────────────────────
-// Pass 1: Scan for importHAEntity() calls
-// ────────────────────────────────────────────────────────────────────────────
-
-// ────────────────────────────────────────────────────────────────────────────
-// Pass 1: Scan for importHAEntity() calls — delegates to shared scanner
+// Pass 1: Scan for useHAEntity() / importHAEntity() calls
 // ────────────────────────────────────────────────────────────────────────────
 
 function scanForHAEntities(node: ts.Node, ctx: TransformContext): void {
-  scanForHAEntitiesShared(node, ctx.haEntities);
+  scanForHAEntitiesShared(node, ctx.haEntities, ctx.checker);
 }
 
 // ────────────────────────────────────────────────────────────────────────────
@@ -110,24 +106,26 @@ function scanForHAEntities(node: ts.Node, ctx: TransformContext): void {
 
 /**
  * Scan for `const ref = useRef<...>()` patterns and build a map of
- * variable name → element tag. Tags are inferred from the generic type
+ * declaration symbol → element tag. Tags are inferred from the generic type
  * parameter if possible (e.g. `light_LightOutput` → 'light').
  */
-function scanForRefTags(sourceFile: ts.SourceFile): Map<string, string> {
-  const refTags = new Map<string, string>();
+function scanForRefTags(sourceFile: ts.SourceFile, checker: ts.TypeChecker): Map<ts.Symbol, string> {
+  const refTags = new Map<ts.Symbol, string>();
   const walk = (node: ts.Node): void => {
     if (ts.isVariableDeclaration(node) && node.initializer && ts.isIdentifier(node.name)) {
       if (ts.isCallExpression(node.initializer)) {
         const callee = node.initializer.expression;
         if (ts.isIdentifier(callee) && callee.text === 'useRef') {
-          const varName = node.name.text;
           // Try to extract tag from type argument: useRef<light_LightOutput>()
           const typeArgs = node.initializer.typeArguments;
           if (typeArgs && typeArgs.length > 0) {
             const typeText = typeArgs[0].getText();
             const underscoreIdx = typeText.indexOf('_');
             if (underscoreIdx > 0) {
-              refTags.set(varName, typeText.slice(0, underscoreIdx));
+              const sym = checker.getSymbolAtLocation(node.name);
+              if (sym) {
+                refTags.set(sym, typeText.slice(0, underscoreIdx));
+              }
             }
           }
         }
@@ -140,20 +138,23 @@ function scanForRefTags(sourceFile: ts.SourceFile): Map<string, string> {
 }
 
 /**
- * Scan for `const handle = createScript(...)` patterns and build a map of
- * variable name → script ID.
+ * Scan for `const handle = useScript(...)` or `const handle = createScript(...)` patterns
+ * and build a map of declaration symbol → script ID.
  */
-function scanForScriptHandles(sourceFile: ts.SourceFile): Map<string, string> {
-  const scriptHandles = new Map<string, string>();
+function scanForScriptHandles(sourceFile: ts.SourceFile, checker: ts.TypeChecker): Map<ts.Symbol, string> {
+  const scriptHandles = new Map<ts.Symbol, string>();
   const walk = (node: ts.Node): void => {
     if (ts.isVariableDeclaration(node) && node.initializer && ts.isIdentifier(node.name)) {
       if (ts.isCallExpression(node.initializer)) {
         const callee = node.initializer.expression;
-        if (ts.isIdentifier(callee) && callee.text === 'createScript') {
+        if (ts.isIdentifier(callee) && (callee.text === 'useScript' || callee.text === 'createScript')) {
           const varName = node.name.text;
           // Use the variable name as the script ID (snake_case)
           const scriptId = varName.replace(/([a-z0-9])([A-Z])/g, '$1_$2').toLowerCase();
-          scriptHandles.set(varName, scriptId);
+          const sym = checker.getSymbolAtLocation(node.name);
+          if (sym) {
+            scriptHandles.set(sym, scriptId);
+          }
         }
       }
     }
@@ -173,8 +174,8 @@ function scanForScriptHandles(sourceFile: ts.SourceFile): Map<string, string> {
 function findAndCompileTriggerHandlers(
   node: ts.Node,
   ctx: TransformContext,
-  refTags: Map<string, string>,
-  scriptHandles: Map<string, string>,
+  refTags: Map<ts.Symbol, string>,
+  scriptHandles: Map<ts.Symbol, string>,
   edits: SourceEdit[],
 ): void {
   // JSX attribute: <button onPress={() => { ... }} />
@@ -185,12 +186,13 @@ function findAndCompileTriggerHandlers(
     }
   }
 
-  // createScript(async () => { ... })
+  // useScript(async () => { ... }) or createScript(async () => { ... })
   if (ts.isCallExpression(node) && ts.isIdentifier(node.expression) &&
-      node.expression.text === 'createScript' && node.arguments.length >= 1) {
+      (node.expression.text === 'useScript' || node.expression.text === 'createScript') &&
+      node.arguments.length >= 1) {
     const arg = node.arguments[0];
     if (ts.isArrowFunction(arg) || ts.isFunctionExpression(arg)) {
-      compileAndInjectCreateScript(node, arg, ctx, refTags, scriptHandles, edits);
+      compileAndInjectUseScript(node, arg, ctx, refTags, scriptHandles, edits);
     }
   }
 
@@ -201,8 +203,8 @@ function findAndCompileTriggerHandlers(
 function compileAndInjectTriggerHandler(
   callback: ts.ArrowFunction | ts.FunctionExpression,
   ctx: TransformContext,
-  refTags: Map<string, string>,
-  scriptHandles: Map<string, string>,
+  refTags: Map<ts.Symbol, string>,
+  scriptHandles: Map<ts.Symbol, string>,
   edits: SourceEdit[],
 ): void {
   const result = compileActionBody(
@@ -231,7 +233,8 @@ function compileAndInjectTriggerHandler(
   const lowered = lowerActionTree(result.actions);
 
   // Collect ref variable names used in the actions (needed for runtime resolution)
-  const refNames = collectRefNamesFromActions(result.actions, refTags);
+  const refNameSet = symbolMapToNameSet(refTags);
+  const refNames = collectRefNamesFromActions(result.actions, refNameSet);
 
   // Wrap: Object.assign(() => { ... }, { __compiledActions: [...], __refBindings: { ... } })
   const arrowStart = callback.getStart();
@@ -254,12 +257,12 @@ function compileAndInjectTriggerHandler(
   });
 }
 
-function compileAndInjectCreateScript(
+function compileAndInjectUseScript(
   callExpr: ts.CallExpression,
   callback: ts.ArrowFunction | ts.FunctionExpression,
   ctx: TransformContext,
-  refTags: Map<string, string>,
-  scriptHandles: Map<string, string>,
+  refTags: Map<ts.Symbol, string>,
+  scriptHandles: Map<ts.Symbol, string>,
   edits: SourceEdit[],
 ): void {
   const result = compileActionBody(
@@ -290,7 +293,8 @@ function compileAndInjectCreateScript(
   }
 
   const lowered = lowerActionTree(result.actions);
-  const refNames = collectRefNamesFromActions(result.actions, refTags);
+  const refNameSet = symbolMapToNameSet(refTags);
+  const refNames = collectRefNamesFromActions(result.actions, refNameSet);
   const refBindingsEntries = refNames.map(name => `${name}: ${name}`);
   const refBindingsLiteral = refNames.length > 0
     ? `, __refBindings: { ${refBindingsEntries.join(', ')} }`
@@ -311,12 +315,24 @@ function compileAndInjectCreateScript(
 }
 
 /**
+ * Build a Set<string> of variable names from a symbol-keyed map.
+ * The ts.Symbol.name gives the original variable identifier text.
+ */
+function symbolMapToNameSet(map: Map<ts.Symbol, string>): Set<string> {
+  const names = new Set<string>();
+  for (const sym of map.keys()) {
+    names.add(sym.name);
+  }
+  return names;
+}
+
+/**
  * Collect ref variable names used in IR actions.
  * These need runtime binding resolution (variable name → ref token).
  */
 function collectRefNamesFromActions(
   actions: IRAction[],
-  refTags: Map<string, string>,
+  refNames: Set<string>,
 ): string[] {
   const names = new Set<string>();
   const walk = (actionList: IRAction[]): void => {
@@ -324,11 +340,11 @@ function collectRefNamesFromActions(
       switch (action.kind) {
         case 'native': {
           const config = action.config;
-          if (typeof config === 'string' && refTags.has(config)) {
+          if (typeof config === 'string' && refNames.has(config)) {
             names.add(config);
           } else if (typeof config === 'object' && config !== null) {
             const id = (config as Record<string, unknown>).id;
-            if (typeof id === 'string' && refTags.has(id)) {
+            if (typeof id === 'string' && refNames.has(id)) {
               names.add(id);
             }
           }

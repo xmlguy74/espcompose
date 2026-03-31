@@ -6,7 +6,6 @@
  */
 import {
   Display,
-  defineProject,
   useRef,
 } from '@esphome/compose';
 import {
@@ -22,10 +21,10 @@ import {
   darkTheme,
 } from '@esphome/compose-ui';
 
-const displayRef = useRef<Display>();
+function App() {
+  const displayRef = useRef<Display>();
 
-export default defineProject({
-  device: (
+  return (
     <esphome name="design-system-device" comment="Design system demo">
       <esp32 board="esp32dev" framework={{ type: 'esp-idf' }} />
       <wifi ssid="HomeWifi" password="s3cr3t!!" />
@@ -66,5 +65,7 @@ export default defineProject({
         </ThemeProvider>
       </lvgl>
     </esphome>
-  ),
-});
+  );
+}
+
+export default <App />;

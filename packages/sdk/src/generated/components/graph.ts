@@ -3,41 +3,41 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, EmbedValue, Pin, RefProp, TimePeriod, TriggerHandler } from "../../types";
+import type { ComponentProps, Pin, RefProp, TimePeriod, TriggerHandler } from "../../types";
 import type { Color, font_Font, graph_Graph, sensor_Sensor } from "../markers";
 export interface GraphTracesProps {
     sensor: RefProp<sensor_Sensor>;
-    name?: string | EmbedValue<string>;
+    name?: string;
     /** @yamlKey line_thickness */
-    lineThickness?: number | EmbedValue<number>;
+    lineThickness?: number;
     /** @yamlKey line_type */
     lineType?: "SOLID" | "DOTTED" | "DASHED";
     color?: RefProp<Color>;
-    continuous?: boolean | EmbedValue<boolean>;
+    continuous?: boolean;
 }
 export interface GraphLegendProps {
     /** @yamlKey name_font */
     nameFont: RefProp<font_Font>;
     /** @yamlKey value_font */
     valueFont?: RefProp<font_Font>;
-    width?: number | EmbedValue<number>;
-    height?: number | EmbedValue<number>;
-    border?: boolean | EmbedValue<boolean>;
+    width?: number;
+    height?: number;
+    border?: boolean;
     /** @yamlKey show_lines */
-    showLines?: boolean | EmbedValue<boolean>;
+    showLines?: boolean;
     /** @yamlKey show_values */
     showValues?: "NONE" | "AUTO" | "BESIDE" | "BELOW";
     /** @yamlKey show_units */
-    showUnits?: boolean | EmbedValue<boolean>;
+    showUnits?: boolean;
     direction?: "AUTO" | "HORIZONTAL" | "VERTICAL";
 }
 export interface GraphProps {
     /** [Time](/guides/configuration-types#time): The total graph history duration. */
     duration: TimePeriod;
     /** int: Legend width in pixels. If not specified, width is automatically calculated. */
-    width: number | EmbedValue<number>;
+    width: number;
     /** int: Legend height in pixels. If not specified, height is automatically calculated. */
-    height: number | EmbedValue<number>;
+    height: number;
     /**
      * Specifies the time per division. If not specified, no vertical grid will be drawn.
      * @yamlKey x_grid
@@ -49,14 +49,14 @@ export interface GraphProps {
      */
     yGrid?: number;
     /** boolean: Draw a border around the legend. Defaults to `true`. */
-    border?: boolean | EmbedValue<boolean>;
+    border?: boolean;
     /** [ID](/guides/configuration-types#id): The sensor value to plot */
     sensor?: RefProp<sensor_Sensor>;
     /**
      * Defaults to 3
      * @yamlKey line_thickness
      */
-    lineThickness?: number | EmbedValue<number>;
+    lineThickness?: number;
     /**
      * Specifies the plot line-type. Can be one of the following: `SOLID`, `DOTTED`, `DASHED`. Defaults to `SOLID`.
      * @yamlKey line_type

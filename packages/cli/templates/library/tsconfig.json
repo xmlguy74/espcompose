@@ -1,0 +1,12 @@
+{
+  "extends": "@esphome/compose/tsconfig.sdk.json",
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    ".espcompose-build"
+  ]
+}

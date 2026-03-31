@@ -5,6 +5,7 @@
   "main": "src/index.tsx",
   "scripts": {
     "build": "espcompose transpile",
+    "clean": "rm -rf .espcompose .espcompose-build",
     "lint": "eslint .",
     "flash": "espcompose run"
   },

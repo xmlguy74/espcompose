@@ -617,6 +617,8 @@ lvgl:
             on_release:
               - homeassistant.action:
                   action: light.toggle
+                  data:
+                    entity_id: light.kitchen_floods
             widgets:
               - label:
                   text: Toggle
@@ -843,6 +845,8 @@ lvgl:
             on_release:
               - homeassistant.action:
                   action: switch.toggle
+                  data:
+                    entity_id: switch.space_heater
             widgets:
               - label:
                   text: Heater

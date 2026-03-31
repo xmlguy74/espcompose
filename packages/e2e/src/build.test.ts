@@ -47,7 +47,7 @@ describe('ESPHome Compose Build', () => {
     await createProjectTest(projectsDir, 'reactive-device');
   });
 
-  // New authoring model tests (defineProject, build.run, embed.*, device.script)
+  // Additional feature tests
   it('embed-device', async () => {
     await createProjectTest(projectsDir, 'embed-device');
   });
@@ -75,7 +75,7 @@ describe('ESPHome Compose Build', () => {
     const projectPath = path.resolve(projectsDir, 'uncompiled-lib-device');
     const fakeLibDir = path.join(projectPath, 'node_modules', '@test', 'reactive-lib');
 
-    // Create a fake pre-built library that uses bind.memo() without transform-lib
+    // Create a fake pre-built library that uses useMemo() without transform-lib
     fs.mkdirSync(fakeLibDir, { recursive: true });
     fs.writeFileSync(
       path.join(fakeLibDir, 'package.json'),
@@ -85,10 +85,10 @@ describe('ESPHome Compose Build', () => {
       path.join(fakeLibDir, 'index.js'),
       [
         '"use strict";',
-        'const { bind } = require("@esphome/compose");',
+        'const { useHAEntity, useMemo } = require("@esphome/compose");',
         'function BadWidget() {',
-        '  const light = bind.haEntity("light.fake_test");',
-        '  bind.memo(() => light.isOn ? "On" : "Off");',
+        '  const light = useHAEntity("light.fake_test");',
+        '  useMemo(() => light.isOn ? "On" : "Off");',
         '  return null;',
         '}',
         'exports.BadWidget = BadWidget;',

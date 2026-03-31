@@ -1,9 +1,4 @@
-import { build, embed, defineProject } from '@esphome/compose';
-
-// Build-time config
-const config = build.run(() => ({
-  name: 'project-demo',
-}));
+const deviceName = 'project-demo';
 
 // Reusable function components
 type InfraProps = {
@@ -37,15 +32,13 @@ const SensorArray = () => (
   </>
 );
 
-export default defineProject({
-  device: (
-    <esphome
-      name={embed.string(config.name)}
-      comment="Project structure demo"
-    >
-      <esp32 board="esp32dev" framework={{ type: 'arduino' }} />
-      <Infrastructure ssid="TestNet" password="testpass" />
-      <SensorArray />
-    </esphome>
-  ),
-});
+export default (
+  <esphome
+    name={deviceName}
+    comment="Project structure demo"
+  >
+    <esp32 board="esp32dev" framework={{ type: 'arduino' }} />
+    <Infrastructure ssid="TestNet" password="testpass" />
+    <SensorArray />
+  </esphome>
+);

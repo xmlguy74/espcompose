@@ -61,13 +61,16 @@ export function writeTransformedFiles(
 
     const originalText = sourceFile.getFullText();
 
-    // Pass 1: Auto-wrap reactive JSX attribute expressions in bind.memo()
+    // Pass 1: Auto-wrap reactive JSX attribute expressions in useMemo()
     const reactiveResult = transformReactiveExpressions(sourceFile, program);
     diagnostics.push(...reactiveResult.diagnostics);
 
     // Pass 2: Compile trigger handler / createScript() bodies to action trees.
     // If the reactive pass modified the source, re-parse so positions are valid.
+    // We also need a fresh TypeScript program so the checker can resolve symbols
+    // (the original program's checker can't resolve nodes from a re-parsed file).
     let scriptInput: ts.SourceFile;
+    let scriptProgram: ts.Program;
     if (reactiveResult.sourceText !== originalText) {
       scriptInput = ts.createSourceFile(
         sourceFile.fileName,
@@ -76,10 +79,40 @@ export function writeTransformedFiles(
         true,
         ts.ScriptKind.TSX,
       );
+      const originalHost = ts.createCompilerHost(program.getCompilerOptions());
+      const customHost: ts.CompilerHost = {
+        ...originalHost,
+        getSourceFile: (name, languageVersion) => {
+          if (path.normalize(name) === path.normalize(sourceFile.fileName)) {
+            return scriptInput;
+          }
+          // Delegate to original program's source files first, then default host
+          const existing = program.getSourceFile(name);
+          if (existing) return existing;
+          return originalHost.getSourceFile(name, languageVersion);
+        },
+        fileExists: (name) => {
+          if (path.normalize(name) === path.normalize(sourceFile.fileName)) return true;
+          return originalHost.fileExists(name);
+        },
+        readFile: (name) => {
+          if (path.normalize(name) === path.normalize(sourceFile.fileName)) {
+            return reactiveResult.sourceText;
+          }
+          return originalHost.readFile(name);
+        },
+      };
+      scriptProgram = ts.createProgram(
+        [sourceFile.fileName],
+        program.getCompilerOptions(),
+        customHost,
+      );
+      scriptInput = scriptProgram.getSourceFile(sourceFile.fileName) ?? scriptInput;
     } else {
       scriptInput = sourceFile;
+      scriptProgram = program;
     }
-    const result = transformScriptFile(scriptInput, program);
+    const result = transformScriptFile(scriptInput, scriptProgram);
     diagnostics.push(...result.diagnostics);
 
     // Use transformed text if it changed, otherwise copy original

@@ -5,6 +5,7 @@ import type {
 import type { InferReactiveProperties } from './reactive-properties';
 import { REACTIVE_PROPERTY_MAP } from './reactive-properties';
 import { ReactiveNode } from './reactive-node';
+import { assertHookContext } from './hooks/useState';
 
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -220,6 +221,7 @@ export class RefHandle<T = unknown> implements BaseRef<T> {
  * myLight.turnOn({ brightness: 0.5 });
  */
 export function useRef<T = unknown>(): Ref<T> {
+  assertHookContext('useRef()');
   return new RefHandle<T>() as unknown as Ref<T>;
 }
 
@@ -297,9 +299,8 @@ export type Pin = number | PinConfig;
 
 export type AnyProps = BaseProps & Record<string, unknown>;
 
-// Re-export phase-aware types for use by generated code
-export type { EmbedValue } from './embed';
-export type { BindProp } from './bind';
+// Re-export types for use by generated code
+export type { BindProp } from './reactive-utils';
 
 // ────────────────────────────────────────────────────────────────────────────
 // JSX namespace — base declaration only.

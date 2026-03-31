@@ -1,20 +1,21 @@
-import { Display, Ref, bind, createScript, delay, theme } from "@esphome/compose";
+import { Display, Ref, useHAEntity, useScript, delay, theme } from "@esphome/compose";
 import {
     Button, Card, HStack, Screen, SliderField, SwitchField, Text, VStack,
     ThemeProvider, darkTheme, lightTheme,
 } from "@esphome/compose-ui";
-
-const officeLight = bind.haEntity('light.office');
-
-const myScript = createScript(async () => {
-    await delay(1000);
-});
 
 type UIProps = {
     display: Ref<Display>,
 }
 
 export const UI = (props: UIProps) => {
+
+    const officeLight = useHAEntity('light.office');
+
+    const myScript = useScript(async () => {
+        await delay(1000);
+    });
+
     return <>
         <lvgl
             byteOrder="little_endian"
@@ -28,16 +29,16 @@ export const UI = (props: UIProps) => {
                         <Text variant="title" text="Theme Demo" />
 
                         <Card>
-                            <SliderField 
-                                label="Brightness" 
-                                min={0} 
+                            <SliderField
+                                label="Brightness"
+                                min={0}
                                 max={255}
                                 value={isNaN(officeLight.brightness) ? 0 : officeLight.brightness}
                                 onChange={(args) => {
-                                    officeLight.turnOn({brightness: args.x})
+                                    officeLight.turnOn({ brightness: args.x })
                                 }}
                             />
-                            
+
                             <SwitchField label="Power" />
                         </Card>
 
@@ -50,7 +51,7 @@ export const UI = (props: UIProps) => {
                                 />
                                 <Button
                                     text={officeLight.isOn ? "Office Off" : "Office On"}
-                                    onPress={async () => {                                        
+                                    onPress={async () => {
                                         officeLight.toggle();
                                         await myScript();  //valid only because we know that myScript is from createScript. We can't just call any random function.
                                         officeLight.toggle();

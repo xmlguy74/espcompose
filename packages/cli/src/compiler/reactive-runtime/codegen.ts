@@ -92,6 +92,8 @@ export interface ReactiveRuntimeConfig {
   themeMemos?: ThemeMemoDecl[];
   /** Default theme index (for theme_index signal initial value). */
   themeDefaultIndex?: number;
+  /** Ordered theme names (index corresponds to theme_index values). */
+  themeNames?: string[];
   /** All distinct font name strings across themes (for font lookup generation). */
   fontNames?: string[];
   /** Compiled trigger functions (from device.inline/device.script AST compilation). */
@@ -218,6 +220,19 @@ export function generateBindingsHeader(config: ReactiveRuntimeConfig): string {
         lines.push(`  return ${arrName}[theme_index.get()];`);
       }
       lines.push('});');
+      lines.push('');
+    }
+
+    // select_theme(name) — maps theme name to index and triggers flush
+    const themeNames = config.themeNames ?? [];
+    if (themeNames.length > 0) {
+      lines.push('void select_theme(const char* name) {');
+      for (let i = 0; i < themeNames.length; i++) {
+        const cond = i === 0 ? 'if' : 'else if';
+        lines.push(`  ${cond} (strcmp(name, "${themeNames[i]}") == 0) { theme_index.set(${i}); }`);
+      }
+      lines.push('  Scheduler::instance().flush();');
+      lines.push('}');
       lines.push('');
     }
 

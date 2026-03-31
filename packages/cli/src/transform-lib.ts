@@ -7,7 +7,7 @@
  * rollup, etc.) then compiles the transformed sources into publishable JS.
  *
  * This enables third-party ESPCompose component libraries to ship with
- * pre-compiled `bind.__compiled()` / `bind.__slotted()` calls, so consumers
+ * pre-compiled `_reactive.compiled()` / `_reactive.slotted()` calls, so consumers
  * don't need the library's TypeScript source.
  */
 
@@ -103,7 +103,7 @@ export function transformLib(options: TransformLibOptions): TransformLibResult {
     const reactiveResult = transformReactiveExpressions(sourceFile, program);
     diagnostics.push(...reactiveResult.diagnostics);
 
-    // Pass 2: Script callback compilation (device.inline/device.script)
+    // Pass 2: Script callback compilation
     // Re-parse if the reactive pass modified the source.
     let scriptInput: ts.SourceFile;
     if (reactiveResult.sourceText !== originalText) {

@@ -1,6 +1,6 @@
 import yaml from 'yaml';
 import type { EspComposeElement, FunctionComponent } from './types';
-import { createScript, withScriptScope } from './hooks';
+import { useScript, withScriptScope } from './hooks';
 import { withReactiveScope, clearHAEntityCache } from './hooks';
 import { withContext } from './hooks/useContext';
 import type { Context } from './hooks/useContext';
@@ -240,7 +240,7 @@ export const ESPCompose = {
   Fragment,
   render,
   toYAML,
-  createScript,
+  useScript,
   withScriptScope,
   withReactiveScope,
   clearHAEntityCache,

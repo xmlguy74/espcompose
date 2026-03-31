@@ -3,7 +3,7 @@
  *
  * Prevents usage of Node.js-specific APIs (process, fs, require, __dirname,
  * __filename, Buffer) inside reactive contexts — specifically inside
- * `bind.memo()`, `bind.effect()`, and reactive arrow functions used as
+ * `useMemo()`, `useEffect()`, and reactive arrow functions used as
  * JSX prop values. These APIs are only available at build time (Node.js);
  * reactive code runs conceptually on the device.
  *
@@ -35,14 +35,13 @@ export default createRule<[], MessageIds>({
     type: 'problem',
     docs: {
       description:
-        'Disallow Node.js APIs inside reactive contexts (bind.memo, bind.effect, reactive prop functions). ' +
+        'Disallow Node.js APIs inside reactive contexts (useMemo, useEffect, reactive prop functions). ' +
         'Reactive code runs on the device and cannot use Node.js-specific APIs.',
     },
     messages: {
       nodeInReactive:
         '"{{ name }}" is a Node.js API that is not available in device-reactive contexts. ' +
-        'Use build.run() at the module top level to access Node.js APIs, ' +
-        'then pass values to the device via embed.*().',
+        'Use module-level code to compute values, then pass them into JSX props.',
     },
     schema: [],
   },
@@ -50,35 +49,32 @@ export default createRule<[], MessageIds>({
   create(context) {
     // Track whether we're inside a reactive context.
     // Reactive contexts are:
-    //   - bind.memo(() => ...)
-    //   - bind.effect(() => ...)
+    //   - useMemo(() => ...)
+    //   - useEffect(() => ...)
     //   - Arrow functions in JSX prop values: text={() => ...}
     let reactiveDepth = 0;
 
     /**
-     * Check if a CallExpression is bind.memo() or bind.effect().
+     * Check if a CallExpression is useMemo() or useEffect().
      */
-    function isBindReactiveCall(node: TSESTree.CallExpression): boolean {
+    function isReactiveCall(node: TSESTree.CallExpression): boolean {
       return (
-        node.callee.type === 'MemberExpression' &&
-        node.callee.object.type === 'Identifier' &&
-        node.callee.object.name === 'bind' &&
-        node.callee.property.type === 'Identifier' &&
-        (node.callee.property.name === 'memo' || node.callee.property.name === 'effect')
+        node.callee.type === 'Identifier' &&
+        (node.callee.name === 'useMemo' || node.callee.name === 'useEffect')
       );
     }
 
     return {
-      // Enter bind.memo() / bind.effect() callback arguments
+      // Enter useMemo() / useEffect() callback arguments
       'CallExpression > ArrowFunctionExpression'(node: TSESTree.ArrowFunctionExpression) {
         const parent = node.parent;
-        if (parent?.type === 'CallExpression' && isBindReactiveCall(parent)) {
+        if (parent?.type === 'CallExpression' && isReactiveCall(parent)) {
           reactiveDepth++;
         }
       },
       'CallExpression > ArrowFunctionExpression:exit'(node: TSESTree.ArrowFunctionExpression) {
         const parent = node.parent;
-        if (parent?.type === 'CallExpression' && isBindReactiveCall(parent)) {
+        if (parent?.type === 'CallExpression' && isReactiveCall(parent)) {
           reactiveDepth--;
         }
       },

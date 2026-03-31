@@ -2,7 +2,7 @@ import type { EspComposeElement } from './types';
 import { isRef } from './types';
 import { isReactiveNode } from './reactive-node';
 import type { ReactiveNode } from './reactive-node';
-import { isEmbedValue } from './embed';
+import { isSecretValue } from './secret';
 
 import { registerRefTag } from './ref-registry';
 import { isTriggerVar } from './trigger-args';
@@ -134,24 +134,19 @@ export function serializeValue(v: unknown): unknown {
   if (isReactiveNode(v)) {
     return serializeReactiveNode(v);
   }
-  if (isEmbedValue(v)) {
-    if (v.kind === 'secret') {
-      // Secret values are emitted as `!secret <key>` references
-      const key = (v as unknown as { _secretKey: string })._secretKey;
-      const s = new Scalar(key);
-      s.tag = '!secret';
-      return s;
-    }
-    // For string/number/json embed kinds, unwrap and serialize the inner value
-    return serializeValue(v.value);
+  if (isSecretValue(v)) {
+    const s = new Scalar(v.key);
+    s.tag = '!secret';
+    return s;
   }
   // Function values with compiled action tree metadata (trigger handler path)
   if (typeof v === 'function' && hasCompiledActions(v)) {
     const fn = v as CompiledActionFunction;
+    let actions = fn.__compiledActions;
     if (fn.__refBindings) {
-      return resolveRefBindingsInActions(fn.__compiledActions, fn.__refBindings);
+      actions = resolveRefBindingsInActions(actions, fn.__refBindings);
     }
-    return fn.__compiledActions;
+    return restoreLambdaMarkers(actions);
   }
   if (isRef(v)) return v.toString();
   if (typeof v === 'string') {
@@ -173,6 +168,29 @@ export function serializeValue(v: unknown): unknown {
 
 export function stripUndefined(obj: Record<string, unknown>): Record<string, unknown> {
   return Object.fromEntries(Object.entries(obj).filter(([, v]) => v !== undefined));
+}
+
+// ── Lambda marker restoration ──────────────────────────────────────────────
+// Lowered action trees use { __lambda__: "code" } markers for lambda values
+// because they must survive JSON.stringify (script-transformer embeds them as
+// JSON in the source). This restores them to YAML !lambda scalars.
+
+function isLambdaMarker(v: unknown): v is { __lambda__: string } {
+  return v !== null && typeof v === 'object' && '__lambda__' in v &&
+    typeof (v as Record<string, unknown>).__lambda__ === 'string';
+}
+
+function restoreLambdaMarkers(value: unknown): unknown {
+  if (isLambdaMarker(value)) return createLambdaScalar(value.__lambda__);
+  if (Array.isArray(value)) return value.map(restoreLambdaMarkers);
+  if (value !== null && typeof value === 'object') {
+    const obj: Record<string, unknown> = {};
+    for (const [k, v] of Object.entries(value as Record<string, unknown>)) {
+      obj[k] = restoreLambdaMarkers(v);
+    }
+    return obj;
+  }
+  return value;
 }
 
 /**

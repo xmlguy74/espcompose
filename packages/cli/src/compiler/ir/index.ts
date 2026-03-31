@@ -53,6 +53,7 @@ export type {
   IRLiteralParam,
   IRTriggerVarParam,
   IRActionConfig,
+  LambdaMarker,
 } from './action-tree.js';
 
 export {

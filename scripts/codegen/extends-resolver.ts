@@ -267,7 +267,7 @@ export function buildBasesFileContent(
   ])];
 
   // Imports
-  const typesImports = ['Pin', ...specialTypes, 'TriggerHandler', 'EmbedValue', ...(markerRefs.size > 0 ? ['RefProp'] : [])];
+  const typesImports = ['Pin', ...specialTypes, 'TriggerHandler', ...(markerRefs.size > 0 ? ['RefProp'] : [])];
   statements.push(importTypeDecl(typesImports, '../types'));
   if (markerRefs.size > 0) {
     statements.push(importTypeDecl([...markerRefs], './markers'));

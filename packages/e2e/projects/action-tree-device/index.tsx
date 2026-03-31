@@ -13,17 +13,16 @@
  * - Multiple sequential actions
  */
 import {
-  defineProject,
   delay,
   logger,
   useRef,
 } from '@esphome/compose';
 import type { switch__Switch } from '@esphome/compose';
 
-const switchRef = useRef<switch__Switch>();
+function App() {
+  const switchRef = useRef<switch__Switch>();
 
-export default defineProject({
-  device: (
+  return (
     <esphome name="action-tree-device" comment="Action tree compiler test">
       <esp32 board="esp32dev" framework={{ type: 'esp-idf' }} />
       <wifi ssid="TestWifi" password="testpass" />
@@ -60,5 +59,7 @@ export default defineProject({
         onPress={() => { logger.log('Button pressed!'); }}
       />
     </esphome>
-  ),
-});
+  );
+}
+
+export default <App />;

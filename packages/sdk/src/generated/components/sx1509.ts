@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, EmbedValue, Pin, RefProp, TriggerHandler } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { _CoreComponent } from "../bases";
 import type { i2c_I2CBus, sx1509_SX1509Component } from "../markers";
 export interface Sx1509KeypadProps {
@@ -11,29 +11,29 @@ export interface Sx1509KeypadProps {
      * int: The number of keypad rows to use. This enables any number of the first 8 pins. So a value of 3 enables pins 0,1,...
      * @yamlKey key_rows
      */
-    keyRows: number | EmbedValue<number>;
+    keyRows: number;
     /**
      * int: The number of keypad columns to use. This enables any number of the last 8 pins. So a value of 4 enables pins 8,...
      * @yamlKey key_columns
      */
-    keyColumns: number | EmbedValue<number>;
+    keyColumns: number;
     /**
      * int: No key press within this time will set keypad engine to sleep.
      * @yamlKey sleep_time
      */
-    sleepTime?: number | EmbedValue<number>;
+    sleepTime?: number;
     /**
      * int: Scan time per row (must be set above debounce time).
      * @yamlKey scan_time
      */
-    scanTime?: number | EmbedValue<number>;
+    scanTime?: number;
     /**
      * int: The debounce time is common to all IOs.
      * @yamlKey debounce_time
      */
-    debounceTime?: number | EmbedValue<number>;
+    debounceTime?: number;
     /** string: The keys present on the matrix, from top left to bottom right, row by row. Required for `key_collector`. */
-    keys?: string | EmbedValue<string>;
+    keys?: string;
     /**
      * [Automation](/automations): An automation to perform when a key has been pressed. The key is in a variable called `x`.
      * @yamlKey on_key

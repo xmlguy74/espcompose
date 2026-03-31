@@ -1,0 +1,18 @@
+import type { EspComposeElement } from '@esphome/compose';
+import { createIntentComponent, LVGL_INTENTS } from '@esphome/compose';
+
+interface MyComponentProps {
+  text?: string;
+}
+
+export const MyComponent = createIntentComponent(
+  (props: MyComponentProps): EspComposeElement => {
+    return (
+      <lvgl-label text={props.text ?? 'Hello from {{name}}!'} />
+    );
+  },
+  {
+    intents: [LVGL_INTENTS.WIDGET] as const,
+    allowedChildIntents: [] as const,
+  },
+);

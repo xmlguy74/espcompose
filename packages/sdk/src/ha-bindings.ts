@@ -1,7 +1,7 @@
 // ────────────────────────────────────────────────────────────────────────────
 // Home Assistant Entity Binding Types
 //
-// Domain-specific binding interfaces returned by importHAEntity().
+// Domain-specific binding interfaces returned by useHAEntity().
 // Each binding provides:
 //   - Signal<T> properties for reactive state access
 //   - Action methods for controlling the entity (compile-time no-ops)
@@ -102,6 +102,25 @@ export interface CoverBinding {
   /** Stop the cover. */
   stop(): void;
 }
+
+// ── HAEntityBinding type alias ─────────────────────────────────────────────
+
+/**
+ * Maps HA entity domain strings to their binding interface types.
+ */
+export interface HAEntityBindingMap {
+  light: LightBinding;
+  sensor: SensorBinding;
+  binary_sensor: BinarySensorBinding;
+  switch: SwitchBinding;
+  fan: FanBinding;
+  cover: CoverBinding;
+}
+
+/**
+ * Resolve an HA domain string to the corresponding binding type.
+ */
+export type HAEntityBinding<D extends keyof HAEntityBindingMap> = HAEntityBindingMap[D];
 
 /**
  * Mapping from HA action method names to HA service call names, per domain.

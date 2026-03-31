@@ -1,22 +1,21 @@
 /**
  * Reactive Expression Transformer
  *
- * Compiles reactive JSX attribute expressions and explicit bind.memo() calls
+ * Compiles reactive JSX attribute expressions and explicit useMemo() calls
  * to pre-computed C++ metadata using the TypeScript AST and type checker.
  *
  * Example transform (auto-detected):
  *   text={officeLight.isOn ? "Off" : "On"}
- *   → text={bind.__compiled({"cpp":"sig_ha_light_office.get() ? ...","type":"std::string","deps":[...]})}
+ *   → text={_reactive.compiled({"cpp":"sig_ha_light_office.get() ? ...","type":"std::string","deps":[...]})}
  *
- * Example transform (explicit bind.memo):
- *   bind.memo(() => officeLight.isOn ? "Off" : "On")
- *   → bind.__compiled({"cpp":"sig_ha_light_office.get() ? ...","type":"std::string","deps":[...]})}
+ * Example transform (explicit useMemo):
+ *   useMemo(() => officeLight.isOn ? "Off" : "On")
+ *   → _reactive.compiled({"cpp":"sig_ha_light_office.get() ? ...","type":"std::string","deps":[...]})}
  *
  * Skipped cases:
  *   - Direct passthrough: officeLight.stateText (ReactiveNode handled by runtime)
  *   - Non-reactive: static values, literal expressions
- *   - device.inline/device.script callbacks (handled by script-transformer)
- *   - bind.effect, bind.derivedMemo (kept as runtime calls)
+ *   - useEffect, _reactive.derivedMemo (kept as runtime calls)
  */
 
 import ts from 'typescript';
@@ -42,7 +41,7 @@ interface SourceEdit {
 
 /**
  * Transform a TypeScript source file: compile reactive JSX attribute
- * expressions and explicit bind.memo() calls to bind.__compiled() with
+ * expressions and explicit useMemo() calls to _reactive.compiled() with
  * pre-computed C++ metadata.
  */
 export function transformReactiveExpressions(
@@ -54,17 +53,17 @@ export function transformReactiveExpressions(
   const diagnostics: TransformDiagnostic[] = [];
   let transformCount = 0;
 
-  // Pass 0: Scan for importHAEntity / bind.haEntity calls
-  const haEntities = new Map<string, HAEntityInfo>();
-  scanForHAEntities(sourceFile, haEntities);
+  // Pass 0: Scan for useHAEntity() calls
+  const haEntities = new Map<ts.Symbol, HAEntityInfo>();
+  scanForHAEntities(sourceFile, haEntities, checker);
 
   const onTransform = () => { transformCount++; };
 
   walkNode(sourceFile, sourceFile, checker, haEntities, edits, diagnostics, onTransform);
 
-  // If transforms were applied, ensure 'bind' is importable
+  // If transforms were applied, ensure '_reactive' is importable
   if (transformCount > 0) {
-    injectBindImportIfNeeded(sourceFile, edits);
+    injectReactiveImportIfNeeded(sourceFile, edits);
   }
 
   // Apply edits in reverse position order so indices stay valid
@@ -86,7 +85,7 @@ export function transformReactiveExpressions(
 
 /**
  * Check if an expression sub-tree contains any Signal<T>-typed nodes.
- * Does NOT recurse into arrow functions, function expressions, or bind.* calls.
+ * Does NOT recurse into arrow functions, function expressions, or _reactive.* calls.
  */
 function containsSignalNode(node: ts.Node, checker: ts.TypeChecker): boolean {
   if (ts.isArrowFunction(node) || ts.isFunctionExpression(node)) {
@@ -97,7 +96,7 @@ function containsSignalNode(node: ts.Node, checker: ts.TypeChecker): boolean {
     const callee = node.expression;
     if (ts.isPropertyAccessExpression(callee) &&
         ts.isIdentifier(callee.expression) &&
-        (callee.expression.text === 'bind' || callee.expression.text === 'device')) {
+        (callee.expression.text === '_reactive' || callee.expression.text === 'device')) {
       return false;
     }
   }
@@ -121,47 +120,30 @@ function containsSignalNode(node: ts.Node, checker: ts.TypeChecker): boolean {
 // ────────────────────────────────────────────────────────────────────────────
 
 /**
- * Check if an expression is a bind.memo() call — these get AST-compiled too.
+ * Check if an expression is a useMemo() call — these get AST-compiled.
  */
-function isBindMemoCall(expr: ts.Expression): expr is ts.CallExpression {
+function isMemoCall(expr: ts.Expression): expr is ts.CallExpression {
   if (!ts.isCallExpression(expr)) return false;
   const callee = expr.expression;
-  if (ts.isPropertyAccessExpression(callee)) {
-    const obj = callee.expression;
-    const prop = callee.name.text;
-    if (ts.isIdentifier(obj) && obj.text === 'bind' && prop === 'memo') {
-      return true;
-    }
-  }
+  // useMemo(() => ...)
+  if (ts.isIdentifier(callee) && callee.text === 'useMemo') return true;
   return false;
 }
 
 /**
- * Check if an expression is a bind.* call that should be skipped entirely.
- * bind.memo is NOT in this list — it gets AST-compiled.
+ * Check if an expression is a _reactive.* or useEffect() call that should be skipped entirely.
+ * useMemo is NOT in this list — it gets AST-compiled.
  */
-function isBindSkipCall(expr: ts.Expression): boolean {
+function isReactiveSkipCall(expr: ts.Expression): boolean {
   if (!ts.isCallExpression(expr)) return false;
   const callee = expr.expression;
+  // useEffect(...), useRawMemo(...)
+  if (ts.isIdentifier(callee) && (callee.text === 'useEffect' || callee.text === 'useRawMemo')) return true;
+  // resolveBindProp(...), reactiveIsNaN(...)
+  if (ts.isIdentifier(callee) && (callee.text === 'resolveBindProp' || callee.text === 'reactiveIsNaN')) return true;
   if (ts.isPropertyAccessExpression(callee)) {
     const obj = callee.expression;
-    const prop = callee.name.text;
-    if (ts.isIdentifier(obj) && obj.text === 'bind') {
-      return prop === 'expr' || prop === 'effect'
-        || prop === 'isNaN'
-        || prop === 'derivedMemo' || prop === 'haEntity'
-        || prop === '__compiled' || prop === '__slotted';
-    }
-  }
-  return false;
-}
-
-function isDeviceCall(expr: ts.Expression): boolean {
-  if (!ts.isCallExpression(expr)) return false;
-  const callee = expr.expression;
-  if (ts.isPropertyAccessExpression(callee)) {
-    const obj = callee.expression;
-    if (ts.isIdentifier(obj) && obj.text === 'device') {
+    if (ts.isIdentifier(obj) && obj.text === '_reactive') {
       return true;
     }
   }
@@ -193,7 +175,7 @@ function serializeCompiledCall(cpp: string, cppType: string, deps: DependencyInf
     return `{${parts.join(',')}}`;
   });
 
-  return `bind.__compiled({cpp:${JSON.stringify(cpp)},type:${JSON.stringify(cppType)},deps:[${depsJson.join(',')}]})`;
+  return `_reactive.compiled({cpp:${JSON.stringify(cpp)},type:${JSON.stringify(cppType)},deps:[${depsJson.join(',')}]})`;
 }
 
 function serializeSlottedCall(
@@ -205,7 +187,7 @@ function serializeSlottedCall(
   // The `as any` cast is necessary because Signal<T> (phantom branded number)
   // is not assignable to ReactiveNode<unknown> at the type level, even though
   // it is at runtime. This is compiler-generated code, so the cast is safe.
-  return `bind.__slotted({cpp:${JSON.stringify(cpp)},type:${JSON.stringify(cppType)},slots:${slotCount}}, ${slotExprs.join(', ')}) as any`;
+  return `_reactive.slotted({cpp:${JSON.stringify(cpp)},type:${JSON.stringify(cppType)},slots:${slotCount}}, ${slotExprs.join(', ')}) as any`;
 }
 
 // ────────────────────────────────────────────────────────────────────────────
@@ -216,7 +198,7 @@ function walkNode(
   node: ts.Node,
   sourceFile: ts.SourceFile,
   checker: ts.TypeChecker,
-  haEntities: Map<string, HAEntityInfo>,
+  haEntities: Map<ts.Symbol, HAEntityInfo>,
   edits: SourceEdit[],
   diagnostics: TransformDiagnostic[],
   onTransform: () => void,
@@ -230,9 +212,9 @@ function walkNode(
     }
   }
 
-  // Process explicit bind.memo() calls anywhere in the file (not just JSX)
-  if (ts.isCallExpression(node) && isBindMemoCall(node)) {
-    processExplicitBindMemo(node, sourceFile, checker, haEntities, edits, diagnostics, onTransform);
+  // Process explicit useMemo() calls anywhere in the file (not just JSX)
+  if (ts.isCallExpression(node) && isMemoCall(node)) {
+    processExplicitMemo(node, sourceFile, checker, haEntities, edits, diagnostics, onTransform);
     return; // Don't recurse into children — we've handled this node
   }
 
@@ -245,22 +227,19 @@ function processJsxAttributeExpression(
   expr: ts.Expression,
   sourceFile: ts.SourceFile,
   checker: ts.TypeChecker,
-  haEntities: Map<string, HAEntityInfo>,
+  haEntities: Map<ts.Symbol, HAEntityInfo>,
   edits: SourceEdit[],
   diagnostics: TransformDiagnostic[],
   onTransform: () => void,
 ): void {
-  // Skip bind.* calls that shouldn't be transformed
-  if (isBindSkipCall(expr)) return;
+  // Skip _reactive.* calls and useEffect() that shouldn't be transformed
+  if (isReactiveSkipCall(expr)) return;
 
-  // bind.memo() in JSX — AST-compile it
-  if (isBindMemoCall(expr)) {
-    processExplicitBindMemo(expr, sourceFile, checker, haEntities, edits, diagnostics, onTransform);
+  // useMemo() in JSX — AST-compile it
+  if (isMemoCall(expr)) {
+    processExplicitMemo(expr, sourceFile, checker, haEntities, edits, diagnostics, onTransform);
     return;
   }
-
-  // Skip device.* calls (device.lambda(), device.include())
-  if (isDeviceCall(expr)) return;
 
   // Skip direct Signal passthrough (runtime handles ReactiveNode in BindProp)
   if (isDirectSignalPassthrough(expr, checker)) return;
@@ -291,16 +270,16 @@ function processJsxAttributeExpression(
 
   const result = translateReactiveExpr(expr, ctx);
   if (!result) {
-    // Fallback: wrap in bind.memo() for runtime codegen
+    // Fallback: wrap in useMemo() for runtime codegen
     const { line } = sourceFile.getLineAndCharacterOfPosition(expr.getStart(sourceFile));
-    diagnostics.push({ message: 'could not AST-compile expression, falling back to bind.memo()', file: sourceFile.fileName, line: line + 1 });
+    diagnostics.push({ message: 'could not AST-compile expression, falling back to useMemo()', file: sourceFile.fileName, line: line + 1 });
     const exprText = expr.getText(sourceFile);
     const start = expr.getStart(sourceFile);
     const end = expr.getEnd();
     edits.push({
       position: start,
       deleteEnd: end,
-      text: `bind.memo(() => ${exprText})`,
+      text: `useMemo(() => ${exprText})`,
     });
     onTransform();
     return;
@@ -311,7 +290,7 @@ function processJsxAttributeExpression(
   const end = expr.getEnd();
 
   if (result.slots && result.slots.length > 0) {
-    // Slots present — emit bind.__slotted() with runtime signal arguments
+    // Slots present — emit _reactive.slotted() with runtime signal arguments
     const slotExprs = result.slots.map(s => s.expr.getText(sourceFile));
     edits.push({
       position: start,
@@ -319,7 +298,7 @@ function processJsxAttributeExpression(
       text: serializeSlottedCall(result.cpp, result.cppType, result.slots.length, slotExprs),
     });
   } else {
-    // Fully static — emit bind.__compiled() with embedded deps
+    // Fully static — emit _reactive.compiled() with embedded deps
     edits.push({
       position: start,
       deleteEnd: end,
@@ -331,14 +310,14 @@ function processJsxAttributeExpression(
 }
 
 /**
- * Process an explicit bind.memo(() => expr) call.
- * Extract the arrow body, AST-compile it, and replace with bind.__compiled({...}).
+ * Process an explicit useMemo(() => expr) call.
+ * Extract the arrow body, AST-compile it, and replace with _reactive.compiled({...}).
  */
-function processExplicitBindMemo(
+function processExplicitMemo(
   callExpr: ts.CallExpression,
   sourceFile: ts.SourceFile,
   checker: ts.TypeChecker,
-  haEntities: Map<string, HAEntityInfo>,
+  haEntities: Map<ts.Symbol, HAEntityInfo>,
   edits: SourceEdit[],
   diagnostics: TransformDiagnostic[],
   onTransform: () => void,
@@ -385,11 +364,11 @@ function processExplicitBindMemo(
   const result = translateReactiveExpr(bodyExpr, ctx);
   if (!result) {
     const { line } = sourceFile.getLineAndCharacterOfPosition(callExpr.getStart(sourceFile));
-    diagnostics.push({ message: 'could not AST-compile bind.memo() body', file: sourceFile.fileName, line: line + 1 });
-    return; // Can't compile — leave as bind.memo() for runtime
+    diagnostics.push({ message: 'could not AST-compile memo() body', file: sourceFile.fileName, line: line + 1 });
+    return; // Can't compile — leave as useMemo() for runtime
   }
 
-  // Replace the entire bind.memo(...) call with compiled call
+  // Replace the entire useMemo(...) call with compiled call
   const start = callExpr.getStart(sourceFile);
   const end = callExpr.getEnd();
 
@@ -415,8 +394,8 @@ function processExplicitBindMemo(
 // Import injection
 // ────────────────────────────────────────────────────────────────────────────
 
-function injectBindImportIfNeeded(sourceFile: ts.SourceFile, edits: SourceEdit[]): void {
-  let hasBindImport = false;
+function injectReactiveImportIfNeeded(sourceFile: ts.SourceFile, edits: SourceEdit[]): void {
+  let hasReactiveImport = false;
   let composeImportDecl: ts.ImportDeclaration | null = null;
 
   for (const stmt of sourceFile.statements) {
@@ -426,7 +405,7 @@ function injectBindImportIfNeeded(sourceFile: ts.SourceFile, edits: SourceEdit[]
     if (moduleSpec.text !== '@esphome/compose') continue;
 
     // Skip type-only imports — `import type { ... }` is erased at runtime,
-    // so injecting `bind` there would leave it undefined at bundle time.
+    // so injecting `_reactive` there would leave it undefined at bundle time.
     if (stmt.importClause?.isTypeOnly) continue;
 
     composeImportDecl = stmt;
@@ -434,15 +413,15 @@ function injectBindImportIfNeeded(sourceFile: ts.SourceFile, edits: SourceEdit[]
     const namedBindings = stmt.importClause?.namedBindings;
     if (namedBindings && ts.isNamedImports(namedBindings)) {
       for (const spec of namedBindings.elements) {
-        if (spec.name.text === 'bind') {
-          hasBindImport = true;
+        if (spec.name.text === '_reactive') {
+          hasReactiveImport = true;
           break;
         }
       }
     }
   }
 
-  if (hasBindImport) return;
+  if (hasReactiveImport) return;
 
   if (composeImportDecl) {
     const namedBindings = composeImportDecl.importClause?.namedBindings;
@@ -450,7 +429,7 @@ function injectBindImportIfNeeded(sourceFile: ts.SourceFile, edits: SourceEdit[]
       const lastElement = namedBindings.elements[namedBindings.elements.length - 1];
       if (lastElement) {
         const insertPos = lastElement.getEnd();
-        edits.push({ position: insertPos, text: ', bind' });
+        edits.push({ position: insertPos, text: ', _reactive' });
         return;
       }
     }
@@ -458,6 +437,6 @@ function injectBindImportIfNeeded(sourceFile: ts.SourceFile, edits: SourceEdit[]
 
   edits.push({
     position: 0,
-    text: `import { bind } from '@esphome/compose';\n`,
+    text: `import { _reactive } from '@esphome/compose';\n`,
   });
 }

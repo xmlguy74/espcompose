@@ -3,86 +3,86 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, EmbedValue, Pin, TriggerHandler } from "../../types";
+import type { ComponentProps, Pin, TriggerHandler } from "../../types";
 export interface Esp32FrameworkPropsAdvancedProps {
     /** @yamlKey assertion_level */
     assertionLevel?: "DISABLE" | "ENABLE" | "SILENT";
     /** @yamlKey compiler_optimization */
     compilerOptimization?: "DEBUG" | "NONE" | "PERF" | "SIZE";
     /** @yamlKey enable_idf_experimental_features */
-    enableIdfExperimentalFeatures?: boolean | EmbedValue<boolean>;
+    enableIdfExperimentalFeatures?: boolean;
     /** @yamlKey enable_lwip_assert */
-    enableLwipAssert?: boolean | EmbedValue<boolean>;
+    enableLwipAssert?: boolean;
     /** @yamlKey ignore_efuse_custom_mac */
-    ignoreEfuseCustomMac?: boolean | EmbedValue<boolean>;
+    ignoreEfuseCustomMac?: boolean;
     /** @yamlKey ignore_efuse_mac_crc */
-    ignoreEfuseMacCrc?: boolean | EmbedValue<boolean>;
+    ignoreEfuseMacCrc?: boolean;
     /** @yamlKey minimum_chip_revision */
     minimumChipRevision?: "0.0" | "1.0" | "1.1" | "2.0" | "3.0" | "3.1";
     /** @yamlKey enable_lwip_dhcp_server */
-    enableLwipDhcpServer?: boolean | EmbedValue<boolean>;
+    enableLwipDhcpServer?: boolean;
     /** @yamlKey enable_lwip_mdns_queries */
-    enableLwipMdnsQueries?: boolean | EmbedValue<boolean>;
+    enableLwipMdnsQueries?: boolean;
     /** @yamlKey enable_lwip_bridge_interface */
-    enableLwipBridgeInterface?: boolean | EmbedValue<boolean>;
+    enableLwipBridgeInterface?: boolean;
     /** @yamlKey enable_lwip_tcpip_core_locking */
-    enableLwipTcpipCoreLocking?: boolean | EmbedValue<boolean>;
+    enableLwipTcpipCoreLocking?: boolean;
     /** @yamlKey enable_lwip_check_thread_safety */
-    enableLwipCheckThreadSafety?: boolean | EmbedValue<boolean>;
+    enableLwipCheckThreadSafety?: boolean;
     /** @yamlKey disable_libc_locks_in_iram */
-    disableLibcLocksInIram?: boolean | EmbedValue<boolean>;
+    disableLibcLocksInIram?: boolean;
     /** @yamlKey disable_vfs_support_termios */
-    disableVfsSupportTermios?: boolean | EmbedValue<boolean>;
+    disableVfsSupportTermios?: boolean;
     /** @yamlKey disable_vfs_support_select */
-    disableVfsSupportSelect?: boolean | EmbedValue<boolean>;
+    disableVfsSupportSelect?: boolean;
     /** @yamlKey disable_vfs_support_dir */
-    disableVfsSupportDir?: boolean | EmbedValue<boolean>;
+    disableVfsSupportDir?: boolean;
     /** @yamlKey freertos_in_iram */
-    freertosInIram?: boolean | EmbedValue<boolean>;
+    freertosInIram?: boolean;
     /** @yamlKey ringbuf_in_iram */
-    ringbufInIram?: boolean | EmbedValue<boolean>;
+    ringbufInIram?: boolean;
     /** @yamlKey heap_in_iram */
-    heapInIram?: boolean | EmbedValue<boolean>;
+    heapInIram?: boolean;
     /** @yamlKey execute_from_psram */
-    executeFromPsram?: boolean | EmbedValue<boolean>;
+    executeFromPsram?: boolean;
     /** @yamlKey loop_task_stack_size */
-    loopTaskStackSize?: number | EmbedValue<number>;
+    loopTaskStackSize?: number;
     /** @yamlKey enable_ota_rollback */
-    enableOtaRollback?: boolean | EmbedValue<boolean>;
+    enableOtaRollback?: boolean;
     /** @yamlKey use_full_certificate_bundle */
-    useFullCertificateBundle?: boolean | EmbedValue<boolean>;
+    useFullCertificateBundle?: boolean;
     /** @yamlKey include_builtin_idf_components */
     includeBuiltinIdfComponents?: Array<string>;
     /** @yamlKey enable_full_printf */
-    enableFullPrintf?: boolean | EmbedValue<boolean>;
+    enableFullPrintf?: boolean;
     /** @yamlKey disable_debug_stubs */
-    disableDebugStubs?: boolean | EmbedValue<boolean>;
+    disableDebugStubs?: boolean;
     /** @yamlKey disable_ocd_aware */
-    disableOcdAware?: boolean | EmbedValue<boolean>;
+    disableOcdAware?: boolean;
     /** @yamlKey disable_usb_serial_jtag_secondary */
-    disableUsbSerialJtagSecondary?: boolean | EmbedValue<boolean>;
+    disableUsbSerialJtagSecondary?: boolean;
     /** @yamlKey disable_dev_null_vfs */
-    disableDevNullVfs?: boolean | EmbedValue<boolean>;
+    disableDevNullVfs?: boolean;
     /** @yamlKey disable_mbedtls_peer_cert */
-    disableMbedtlsPeerCert?: boolean | EmbedValue<boolean>;
+    disableMbedtlsPeerCert?: boolean;
     /** @yamlKey disable_mbedtls_pkcs7 */
-    disableMbedtlsPkcs7?: boolean | EmbedValue<boolean>;
+    disableMbedtlsPkcs7?: boolean;
     /** @yamlKey disable_regi2c_in_iram */
-    disableRegi2cInIram?: boolean | EmbedValue<boolean>;
+    disableRegi2cInIram?: boolean;
     /** @yamlKey disable_fatfs */
-    disableFatfs?: boolean | EmbedValue<boolean>;
+    disableFatfs?: boolean;
 }
 export interface Esp32FrameworkPropsComponentsProps {
-    name: string | EmbedValue<string>;
+    name: string;
     source?: unknown;
-    ref?: string | EmbedValue<string>;
-    path?: string | EmbedValue<string>;
+    ref?: string;
+    path?: string;
 }
 export interface Esp32FrameworkProps {
     type?: "esp-idf" | "arduino";
-    version?: string | EmbedValue<string>;
-    release?: string | EmbedValue<string>;
-    source?: string | EmbedValue<string>;
+    version?: string;
+    release?: string;
+    source?: string;
     /** @yamlKey platform_version */
     platformVersion?: unknown;
     /** @yamlKey sdkconfig_options */
@@ -104,7 +104,7 @@ export interface Esp32Props {
      * boolean: ESP32-P4 only. Set to `true` if your board has engineering sample silicon (rev < 3.0). When using `variant: ...
      * @yamlKey engineering_sample
      */
-    engineeringSample?: boolean | EmbedValue<boolean>;
+    engineeringSample?: boolean;
     /**
      * string: The amount of flash memory available on the ESP32 board/module. One of `2MB`, `4MB`, `8MB`, `16MB` or `32MB`....
      * @yamlKey flash_size

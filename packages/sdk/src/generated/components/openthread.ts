@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, EmbedValue, Pin, RefProp, TimePeriod, TriggerHandler } from "../../types";
+import type { ComponentProps, Pin, RefProp, TimePeriod, TriggerHandler } from "../../types";
 import type { mdns_MDNSComponent, openthread_OpenThreadComponent } from "../markers";
 export interface OpenthreadProps {
     /** @yamlKey mdns_id */
@@ -17,14 +17,14 @@ export interface OpenthreadProps {
      * bool: Forces ESPHome configuration to override any previously stored OpenThread network dataset on the device, ensuri...
      * @yamlKey force_dataset
      */
-    forceDataset?: boolean | EmbedValue<boolean>;
+    forceDataset?: boolean;
     /** string: dataset TLVs from the Thread information in Home Assistant */
-    tlv?: string | EmbedValue<string>;
+    tlv?: string;
     /**
      * string: Manually override what address to use to connect to the ESP. Defaults to auto-generated value.
      * @yamlKey use_address
      */
-    useAddress?: string | EmbedValue<string>;
+    useAddress?: string;
     /**
      * [Time](/guides/configuration-types#config-time): When Poll_Period is set on an MTD device, the parent router will enq...
      * @yamlKey poll_period
@@ -41,7 +41,7 @@ export interface OpenthreadProps {
      */
     panId?: string;
     /** int: Channel number from 11 to 26 */
-    channel?: number | EmbedValue<number>;
+    channel?: number;
     /**
      * string: OpenThread network key
      * @yamlKey network_key
@@ -56,7 +56,7 @@ export interface OpenthreadProps {
      * string: A human-readable Network Name
      * @yamlKey network_name
      */
-    networkName?: string | EmbedValue<string>;
+    networkName?: string;
     /** string: PSKc is used to authenticate an external Thread Commissioner to a Thread network */
     pskc?: string;
     /**

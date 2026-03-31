@@ -258,46 +258,31 @@ async function execute(bundleFile: string, outFile: string): Promise<void> {
   }
 
   // Wrap the bundle load and render in both a script scope and a reactive scope.
-  // - bind.haEntity() calls fire during module evaluation and register HA
-  //   entities in the reactive scope.
-  // - Expression<T> props are detected during render and register reactive
+  // - useScript() calls may fire during render, so the script scope covers rendering.
+  // - useHAEntity() calls fire during render and register HA entities in the
+  //   reactive scope.
+  // - ReactiveNode props are detected during render and register reactive
   //   bindings in the reactive scope.
   let collectedScripts: Array<{ id: string; then: unknown[] }> = [];
   const { result: reactiveResult, bindings, entities, reactiveNodes } = cjsSDK.withReactiveScope(() => {
-    const { result: mod, scripts } = cjsSDK.withScriptScope(() => {
-      // Phase: module — build.run() is allowed, bind.* is forbidden
-      sdkModule.setPhase('module');
-      return _require(bundleFile) as { default?: unknown };
+    const { result: config, scripts } = cjsSDK.withScriptScope(() => {
+      const mod = _require(bundleFile) as { default?: unknown };
+
+      const rootElement = mod.default;
+
+      if (rootElement == null) {
+        throw new Error(
+          `Entry module does not have a default export. ` +
+            `Make sure your TSX file exports a default ESPCompose element tree.`
+        );
+      }
+
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const rendered = cjsSDK.render(rootElement as any) as Record<string, unknown>;
+
+      return rendered;
     });
     collectedScripts = scripts;
-
-    const rootElement = mod.default;
-
-    if (rootElement == null) {
-      throw new Error(
-        `Entry module does not have a default export. ` +
-          `Make sure your TSX file exports a default ESPCompose element tree.`
-      );
-    }
-
-    // Require ProjectDefinition (defineProject() wrapper)
-    if (!sdkModule.isProjectDefinition(rootElement)) {
-      throw new Error(
-        `Default export must use defineProject(). ` +
-          `Replace \`export default (<esphome ...>)\` with ` +
-          `\`export default defineProject({ device: (<esphome ...>) })\`.`
-      );
-    }
-    const element = rootElement.device;
-
-    // Phase: render — bind.* is allowed, build.run() is forbidden
-    sdkModule.setPhase('render');
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const config = cjsSDK.render(element as any) as Record<string, unknown>;
-
-    // Phase: back to idle
-    sdkModule.setPhase('idle');
 
     return config;
   });

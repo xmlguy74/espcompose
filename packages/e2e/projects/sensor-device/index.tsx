@@ -3,10 +3,8 @@
  *
  * A device with multiple sensor and binary_sensor sections.
  */
-import { defineProject } from '@esphome/compose';
 
-export default defineProject({
-  device: (
+export default (
     <esphome name="sensor-device">
       <esp32 board="esp32dev" framework={{ type: 'esp-idf' }} />
       <wifi ssid="HomeWifi" password="s3cr3t!!" />
@@ -25,5 +23,4 @@ export default defineProject({
       />
       <logger level="INFO" />
     </esphome>
-  ),
-});
+);

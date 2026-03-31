@@ -1,19 +1,19 @@
 /**
  * Sample project: script-device
  *
- * Demonstrates named scripts via createScript() and inline trigger handlers
+ * Demonstrates named scripts via useScript() and inline trigger handlers
  * via bare arrow functions.
  */
-import { defineProject, createScript, delay, logger } from '@esphome/compose';
+import { useScript, delay, logger } from '@esphome/compose';
 
-/** Named script: greet — logs a greeting and waits 500 ms. */
-const greet = createScript(async () => {
-  logger.log('Hello from ESPCompose!');
-  await delay(500);
-});
+function App() {
+  /** Named script: greet — logs a greeting and waits 500 ms. */
+  const greet = useScript(async () => {
+    logger.log('Hello from ESPCompose!');
+    await delay(500);
+  });
 
-export default defineProject({
-  device: (
+  return (
     <esphome name="script-device" comment="Device using action tree authoring">
       <esp32 board="esp32dev" framework={{ type: 'esp-idf' }} />
       <wifi ssid="HomeWifi" password="s3cr3t!!" />
@@ -27,5 +27,7 @@ export default defineProject({
         onRelease={async () => { await delay(100); }}
       />
     </esphome>
-  ),
-});
+  );
+}
+
+export default <App />;

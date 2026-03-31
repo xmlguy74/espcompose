@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 
-import type { ComponentProps, EmbedValue, Pin, RefProp, TriggerHandler } from "../../types";
+import type { ComponentProps, Pin, RefProp, TriggerHandler } from "../../types";
 import type { mcp3204_MCP3204, spi_SPIComponent } from "../markers";
 export interface Mcp3204Props {
     /**
@@ -18,12 +18,12 @@ export interface Mcp3204Props {
     /** @yamlKey spi_mode */
     spiMode?: "0" | "1" | "2" | "3" | "MODE0" | "MODE1" | "MODE2" | "MODE3";
     /** @yamlKey release_device */
-    releaseDevice?: boolean | EmbedValue<boolean>;
+    releaseDevice?: boolean;
     /**
      * [Pin Schema](/guides/configuration-types#pin-schema): The SPI cable select pin to use.
      * @yamlKey cs_pin
      */
-    csPin: Pin | EmbedValue<Pin>;
+    csPin: Pin;
 }
 declare global {
     namespace JSX {

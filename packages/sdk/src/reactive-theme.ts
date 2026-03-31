@@ -6,7 +6,7 @@
 // primary.bg) produces a cached ReactiveNode whose C++ signal name maps
 // to a theme memo in the generated espcompose_bindings.h.
 //
-// The proxy integrates with bind.memo() dependency tracking: accessing a
+// The proxy integrates with useMemo() dependency tracking: accessing a
 // theme leaf inside a memo function body records the dependency so the
 // compiler can wire the memo to the theme signal.
 // ────────────────────────────────────────────────────────────────────────────
@@ -37,7 +37,7 @@ export function clearThemeNodeCache(): void {
  * - Leaf access (e.g. `proxy.colors.primary.bg`) returns a `ReactiveNode`
  *   whose signal name is `thm_colors_primary_bg`.
  * - The node is cached so repeated access returns the same instance.
- * - If accessed inside `bind.memo()`, the dependency is tracked automatically.
+ * - If accessed inside `useMemo()`, the dependency is tracked automatically.
  */
 export function createReactiveThemeProxy(): unknown {
   const registry = getThemeRegistry();
@@ -71,7 +71,7 @@ export function createReactiveThemeProxy(): unknown {
 
 /**
  * Get (or create + cache) a ReactiveNode for a theme leaf signal path.
- * Handles dependency tracking for bind.memo() integration.
+ * Handles dependency tracking for useMemo() integration.
  */
 function getOrCreateLeafNode(
   path: string,
@@ -102,7 +102,7 @@ function getOrCreateLeafNode(
     nodeCache.set(path, node);
   }
 
-  // Track the dependency if inside bind.memo() / bind.effect()
+  // Track the dependency if inside useMemo() / useEffect()
   if (isTracking()) {
     trackDependency(node.dependencies[0]);
   }

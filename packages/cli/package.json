@@ -9,7 +9,8 @@
   "types": "dist/index.d.ts",
   "files": [
     "bin",
-    "dist"
+    "dist",
+    "templates"
   ],
   "scripts": {
     "build": "tsup src/cli.ts src/index.ts --format cjs --dts --external eslint --external @esphome/compose-eslint --external typescript-eslint",
@@ -42,6 +43,7 @@
     "@esphome/compose-eslint": "workspace:*",
     "commander": "catalog:",
     "esbuild": "catalog:",
+    "handlebars": "^4.7.8",
     "eslint": "catalog:",
     "typescript": "catalog:",
     "typescript-eslint": "catalog:",

@@ -2,37 +2,30 @@
  * Sample project: auto-reactive-device
  *
  * Demonstrates the auto-reactive transform: reactive expressions in JSX
- * attribute values are automatically wrapped in bind.memo() by the compiler.
+ * attribute values are automatically wrapped in useMemo() by the compiler.
  * Users write natural JavaScript expressions with Signal<T> values, and the
  * compiler detects them and generates the appropriate reactive bindings.
- *
- * The compiler should:
- *   1. Auto-detect Signal<T> usage in JSX attribute expressions.
- *   2. Auto-wrap them in bind.memo() during the transform phase.
- *   3. Generate identical YAML output as if bind.memo() were written manually.
  *
  * Patterns tested:
  *   - Ternary with Signal: officeLight.isOn ? "Off" : "On"
  *   - isNaN with Signal: isNaN(officeLight.brightness) ? 0 : officeLight.brightness
  *   - Multi-source: kitchenLight.isOn && tempSensor.value > 72 ? "Comfortable" : "Adjust"
  *   - Direct passthrough: officeLight.stateText (should NOT be wrapped)
- *   - Explicit bind.memo (should NOT be double-wrapped)
+ *   - Explicit useMemo (should NOT be double-wrapped)
  */
-import { Display, defineProject, useRef, bind } from '@esphome/compose';
+import { Display, useRef, useHAEntity, useMemo } from '@esphome/compose';
 
-const displayRef = useRef<Display>();
+function App() {
+  const displayRef = useRef<Display>();
+  const officeLight = useHAEntity('light.office');
+  const tempSensor = useHAEntity('sensor.temp_inside');
 
-// Bind HA entities
-const officeLight = bind.haEntity('light.office');
-const tempSensor = bind.haEntity('sensor.temp_inside');
+  // Explicit memo (should NOT be double-wrapped by the transform)
+  const explicitStatus = useMemo(
+    () => officeLight.isOn ? 'Explicit On' : 'Explicit Off',
+  );
 
-// Explicit memo (should NOT be double-wrapped by the transform)
-const explicitStatus = bind.memo(
-  () => officeLight.isOn ? 'Explicit On' : 'Explicit Off',
-);
-
-export default defineProject({
-  device: (
+  return (
     <esphome name="auto-reactive-device" comment="Auto-reactive transform demo">
       <esp32 board="esp32dev" framework={{ type: 'esp-idf' }} />
       <wifi ssid="HomeWifi" password="s3cr3t!!" />
@@ -53,7 +46,7 @@ export default defineProject({
 
       <lvgl displays={[displayRef]}>
         <lvgl-page>
-          {/* Direct passthrough — should NOT be wrapped in bind.memo */}
+          {/* Direct passthrough — should NOT be wrapped in useMemo */}
           <lvgl-label
             x={10}
             y={10}
@@ -82,7 +75,7 @@ export default defineProject({
             text={officeLight.isOn && tempSensor.value > 72 ? 'Comfortable' : 'Adjust'}
           />
 
-          {/* Explicit bind.memo — should NOT be double-wrapped */}
+          {/* Explicit useMemo — should NOT be double-wrapped */}
           <lvgl-label
             x={10}
             y={130}
@@ -91,5 +84,7 @@ export default defineProject({
         </lvgl-page>
       </lvgl>
     </esphome>
-  ),
-});
+  );
+}
+
+export default <App />;

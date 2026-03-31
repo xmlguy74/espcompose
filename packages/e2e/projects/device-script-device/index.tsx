@@ -1,20 +1,19 @@
-import { delay, logger, defineProject, createScript } from '@esphome/compose';
+import { delay, logger, useScript } from '@esphome/compose';
 
-// Define scripts using createScript() + action primitives
-const blink = createScript(async () => {
-  logger.log('Starting blink sequence');
-  await delay(1000);
-  logger.log('Blink done');
-});
+function App() {
+  const blink = useScript(async () => {
+    logger.log('Starting blink sequence');
+    await delay(1000);
+    logger.log('Blink done');
+  });
 
-const startUp = createScript(async () => {
-  logger.log('Device booting up', 'INFO');
-  await delay(2000);
-  logger.log('Boot complete');
-});
+  const startUp = useScript(async () => {
+    logger.log('Device booting up', 'INFO');
+    await delay(2000);
+    logger.log('Boot complete');
+  });
 
-export default defineProject({
-  device: (
+  return (
     <esphome name="device-script-demo" comment="Device script demo">
       <esp32 board="esp32dev" framework={{ type: 'arduino' }} />
       <wifi ssid="TestNet" password="testpass" />
@@ -29,5 +28,7 @@ export default defineProject({
         onRelease={async () => { await startUp(); }}
       />
     </esphome>
-  ),
-});
+  );
+}
+
+export default <App />;

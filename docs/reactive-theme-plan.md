@@ -26,7 +26,7 @@ Replace the current split theme system (compile-time context + style\_definition
 
 1. **Theme flattener** — `flattenTheme(theme)` in new `theme-signals.ts`: walks `Theme` object, produces flat map of `~80` leaf paths to `{ value, cppType }`. E.g., `"colors_primary_bg"` → `{ value: "#1E88E5", cppType: "uint32_t" }`
 2. **Theme registry** — new `theme-registry.ts`: `ThemeRegistry` class with `register(name, theme)`, `getThemes()`, `getSignalPaths()`. Module singleton + `clearThemeRegistry()` for compile-run cleanup
-3. **Reactive theme proxy** — new `reactive-theme.ts`: `createReactiveThemeProxy()` returns deeply-nested Proxy where leaf access (e.g., `proxy.colors.primary.bg`) returns a cached `ReactiveNode` with `cppSignalName: 'sig_theme_colors_primary_bg'`. Integrates with `trackDependency()` for `bind.memo()` tracking
+3. **Reactive theme proxy** — new `reactive-theme.ts`: `createReactiveThemeProxy()` returns deeply-nested Proxy where leaf access (e.g., `proxy.colors.primary.bg`) returns a cached `ReactiveNode` with `cppSignalName: 'sig_theme_colors_primary_bg'`. Integrates with `trackDependency()` for `useMemo()` tracking
 4. **`useReactiveTheme()` hook** — replaces `useTheme()`. Returns the proxy, registers theme signals in reactive scope on first access
 5. **Extend `ExpressionDependency`** — add `sourceType?: 'ha_entity' | 'theme'` to `reactive-node.ts` so compiler distinguishes theme signals from HA signals
 6. **`theme.select()` action** — when called inside action scope (`device.inline()`), pushes C++ lambda: `espcompose::theme_index.set(N); Scheduler::flush();` where N is the compile-time index
@@ -38,7 +38,7 @@ Replace the current split theme system (compile-time context + style\_definition
 
 *Make resolvers handle both static and ReactiveNode inputs.*
 
-1. **`bind.lift()` utility** — in `bind.ts`: if input is reactive, wraps function in `bind.memo()`; if static, calls directly. Multi-arg variant `bind.lift2()` for two inputs
+1. **`liftReactive()` utility** — in `reactive-utils.ts`: if input is reactive, wraps function in `useMemo()`; if static, calls directly. Multi-arg variant `liftReactive2()` for two inputs
 2. **Reactive-aware resolvers** — rewrite `resolvers.ts`: `resolveSpacing('md')` returns `ReactiveNode<number>` (theme value behind `'md'` can change). `resolveStatus(reactiveStatus)` returns `ReactiveStatusColors` with per-field memos. Same for `resolveSize()`, `resolveRadius()`, `resolveTypography()`, `fontDefToLvgl()`
 3. **Dynamic token lookup codegen** — extend `memo-codegen.ts`: when memo body accesses `theme.colors[dynamicVar].bg`, generate C++ ternary chain over known token values (e.g., `s == "primary" ? sig_theme_colors_primary_bg.get() : s == "danger" ? ...`)
 4. **Reactive return types** — add to `types.ts`: `ReactiveStatusColors`, `ReactiveSizeDimensions` with `ReactiveNode<T>` fields
@@ -49,7 +49,7 @@ Replace the current split theme system (compile-time context + style\_definition
 
 *All design system components updated. Button is the reference implementation.*
 
-1. **Button** (*reference, do first*) — props become `BindProp<StatusToken>`, `BindProp<SizeToken>`, etc. Uses `bind.expr()` to normalize, reactive resolvers for colors/sizing, `bind.memo()` for derived width. Remove all `statusStyleId()` / style reference usage. Colors, padding, font applied as direct reactive props on `lvgl-button` and `lvgl-label`
+1. **Button** (*reference, do first*) — props become `BindProp<StatusToken>`, `BindProp<SizeToken>`, etc. Uses `resolveBindProp()` to normalize, reactive resolvers for colors/sizing, `useMemo()` for derived width. Remove all `statusStyleId()` / style reference usage. Colors, padding, font applied as direct reactive props on `lvgl-button` and `lvgl-label`
 2. **Screen** — `bgColor` from `theme.colors.background` (reactive), padding from reactive resolver
 3. **Card** — `bgColor` from `theme.colors.surfaceAlt`, padding/radius from reactive resolvers
 4. **Text** — `textColor` + `textFont` from reactive resolvers
@@ -95,7 +95,7 @@ Replace the current split theme system (compile-time context + style\_definition
 ### Relevant Files
 
 **SDK (new):** `theme-signals.ts`, `theme-registry.ts`, `reactive-theme.ts`
-**SDK (modify):** `reactive-node.ts`, `bind.ts`, `memo-codegen.ts`, `hooks/useReactiveScope.ts`, `index.ts`
+**SDK (modify):** `reactive-node.ts`, `reactive-utils.ts`, `memo-codegen.ts`, `hooks/useReactiveScope.ts`, `index.ts`
 **UI (modify):** `theme/resolvers.ts`, `theme/types.ts`, `theme/context.ts`, all 10 component files, `index.ts`
 **UI (delete):** `theme/bridge.ts`, `theme/style-ids.ts`, `theme/json.ts`
 **UI (new):** `theme/ThemeRegistry.ts`
@@ -106,7 +106,7 @@ Replace the current split theme system (compile-time context + style\_definition
 
 ### Verification
 
-1. `cd packages/sdk && pnpm test` — flattenTheme, reactive proxy, bind.lift, resolver logic, codegen extensions
+1. `cd packages/sdk && pnpm test` — flattenTheme, reactive proxy, liftReactive, resolver logic, codegen extensions
 2. `cd packages/ui && pnpm test` — Button static/reactive paths, ThemeRegistry
 3. `cd packages/e2e && pnpm test` — all 16 e2e tests (14 existing + 2 new)
 4. `pnpm build` from root — topological build succeeds

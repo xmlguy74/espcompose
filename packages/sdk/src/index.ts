@@ -41,27 +41,34 @@ export type {
 // component-prop interfaces & marker phantom-types.
 export * from './generated/index';
 
-// ── Phase A: new authoring-model namespaces ────────────────────────────────
+// ── Secrets ────────────────────────────────────────────────────────────────
 
-// Phase tracking
-export { setPhase, getPhase, assertPhase, PhaseError } from './phase';
-export type { Phase } from './phase';
+// secret — ESPHome !secret value marker
+export { secret, SecretValue, isSecretValue, getSecrets, clearSecrets } from './secret';
 
-// build — compile-time Node.js execution
-export { build, BuildValue, isBuildValue } from './build';
-export type { BuildValueOf } from './build';
+// _reactive — compiler-internal reactive plumbing (not public API)
+export { _reactive } from './_reactive';
 
-// embed — build→device value crossing
-export { embed, EmbedValue, isEmbedValue, getSecrets, clearSecrets } from './embed';
-export type { EmbedKind } from './embed';
+// Reactive utilities (user-facing)
+export { resolveBindProp, reactiveIsNaN } from './reactive-utils';
+export type { BindProp } from './reactive-utils';
+export type { HAEntityBinding, HAEntityBindingMap } from './ha-bindings';
 
-// defineProject — project descriptor wrapper
-export { defineProject, isProjectDefinition } from './project';
-export type { ProjectDefinition, DefineProjectOptions } from './project';
+// useEffect — reactive side-effect hook (user-facing, must be called from component body)
+export { useEffect } from './hooks/useEffect';
 
-// bind — device-reactive data binding
-export { bind } from './bind';
-export type { BindProp, HAEntityBinding, HAEntityBindingMap } from './bind';
+// useHAEntity — HA entity hook (user-facing, must be called from component body)
+export { useHAEntity } from './hooks/useHAEntity';
+
+// useScript — named ESPHome script hook (user-facing, must be called from component body)
+export { useScript } from './hooks/useScript';
+export type { ScriptHandle } from './hooks/useScript';
+
+// useMemo — reactive memoization hook (user-facing, must be called from component body)
+export { useMemo } from './hooks/useMemo';
+
+// useRawMemo — explicit C++ memo construction (user-facing, must be called from component body)
+export { useRawMemo } from './hooks/useRawMemo';
 
 // ReactiveNode — unified reactive value abstraction
 export {
@@ -75,16 +82,7 @@ export {
 export type { Signal, ReactiveNodeKind, ExpressionDependency, ReactiveNodeConfig } from './reactive-node';
 
 
-// device — device-imperative escape hatch
-export {
-  device,
-  DeviceLambda,
-  isDeviceLambda,
-  getIncludes,
-  clearIncludes,
-} from './device';
-
-// Action primitives for trigger handler / createScript() bodies
+// Action primitives for trigger handler / useScript() bodies
 export { delay, waitUntil, logger } from './actions';
 
 // Ref registry — maps ref tokens to element tags / action classes

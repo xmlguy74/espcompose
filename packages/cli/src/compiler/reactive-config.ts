@@ -61,7 +61,7 @@ export function buildRuntimeConfig(
 
   // ── Validate: detect untransformed reactive nodes ─────────────────────
   // When a library ships reactive code without running `espcompose transform-lib`,
-  // `bind.memo()` hits the runtime fallback path and creates ReactiveNodes with
+  // `useMemo()` hits the runtime fallback path and creates ReactiveNodes with
   // a telltale marker in cppExpression. Detect this and fail early with a clear
   // message instead of silently generating broken C++.
   const uncompiledNodes = reactiveNodes.filter(
@@ -255,6 +255,7 @@ export function buildRuntimeConfig(
     widgetBindings,
     themeMemos: themeMemos.length > 0 ? themeMemos : undefined,
     themeDefaultIndex: themeData?.defaultIndex,
+    themeNames: themeData && themeData.themeNames.length > 0 ? themeData.themeNames : undefined,
     fontNames: fontNames.size > 0 ? Array.from(fontNames) : undefined,
     triggerFunctions: compiledTriggers && compiledTriggers.length > 0 ? compiledTriggers : undefined,
   };
