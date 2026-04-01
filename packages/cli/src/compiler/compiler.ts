@@ -10,6 +10,7 @@ import { buildIR, lowerIR } from './ir/index.js';
 import { generateBindingsHeader, getRuntimeHeaderContent } from './reactive-runtime/codegen.js';
 import { buildRuntimeConfig, injectReactiveBindingsRuntime } from './reactive-config.js';
 import { resolveAssets } from './assets.js';
+import { LIBRARY_FORMAT_VERSION } from './transform/format-version.js';
 
 export interface CompileOptions {
   /** Absolute path to the TSX/TS entry file. */
@@ -212,12 +213,72 @@ async function bundle(entryFile: string, outFile: string): Promise<void> {
     external: ['@esphome/compose'],
     outfile: outFile,
     sourcemap: false,
+    metafile: true,
   });
 
   if (result.errors.length > 0) {
     const messages = await esbuild.formatMessages(result.errors, { kind: 'error' });
     throw new Error(`Bundle failed:\n${messages.join('\n')}`);
   }
+
+  // Check format versions of any ESPCompose libraries pulled into the bundle.
+  // Libraries built with `espcompose library` stamp an `__espcompose_format__`
+  // export. We scan the bundle's resolved inputs for these markers and validate
+  // that all declared versions are compatible with this compiler.
+  if (result.metafile) {
+    validateBundledLibraryVersions(result.metafile, entryFile);
+  }
+}
+
+/**
+ * Scan esbuild metafile inputs for ESPCompose library format version markers.
+ * Reads each resolved input file (outside the project's own source tree) and
+ * checks for `__espcompose_format__` exports. Throws if any are incompatible.
+ */
+function validateBundledLibraryVersions(
+  metafile: esbuild.Metafile,
+  entryFile: string,
+): void {
+  // The entry file lives inside the build directory (.espcompose-build/).
+  // Skip everything under that tree — those are the project's own sources.
+  const buildDir = path.dirname(path.resolve(entryFile));
+
+  for (const inputPath of Object.keys(metafile.inputs)) {
+    const absPath = path.resolve(inputPath);
+
+    // Skip the project's own transformed sources
+    if (absPath.startsWith(buildDir)) continue;
+    if (!fs.existsSync(absPath)) continue;
+
+    let content: string;
+    try {
+      content = fs.readFileSync(absPath, 'utf8');
+    } catch {
+      continue;
+    }
+
+    // Look for __espcompose_format__ assignments in the source
+    const versionMatch = content.match(
+      /(?:export\s+(?:const|var|let)\s+)?__espcompose_format__\s*=\s*(\d+)/,
+    );
+    if (!versionMatch) continue;
+
+    const version = parseInt(versionMatch[1], 10);
+    if (version !== LIBRARY_FORMAT_VERSION) {
+      const libName = extractLibraryName(inputPath);
+      throw new Error(
+        `Library ${libName} was compiled with ESPCompose format v${version}, ` +
+        `but this compiler requires format v${LIBRARY_FORMAT_VERSION}. ` +
+        `Please rebuild the library with a compatible ESPCompose CLI version.`,
+      );
+    }
+  }
+}
+
+/** Extract a human-readable library name from a node_modules path. */
+function extractLibraryName(inputPath: string): string {
+  const match = inputPath.match(/node_modules\/(@[^/]+\/[^/]+|[^/]+)/);
+  return match ? match[1] : inputPath;
 }
 
 // ────────────────────────────────────────────────────────────────────────────

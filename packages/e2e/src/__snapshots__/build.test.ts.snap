@@ -805,6 +805,50 @@ font:
 "
 `;
 
+exports[`ESPHome Compose Build > library-contract-device (consumes compiled library) 1`] = `
+"esphome:
+  name: library-contract-device
+  comment: Compiled library consumption test
+  includes:
+    - espcompose_bindings.h
+    - espcompose_reactive.h
+  on_boot:
+    priority: -10
+    then:
+      - lambda: espcompose::setup();
+esp32:
+  board: esp32dev
+  framework:
+    type: esp-idf
+wifi:
+  ssid: HomeWifi
+  password: s3cr3t!!
+api:
+logger:
+  level: DEBUG
+text_sensor:
+  platform: template
+  name: Light Status
+  id: light_status
+binary_sensor:
+  platform: homeassistant
+  id: ha_light_office
+  entity_id: light.office
+  trigger_on_initial_state: true
+  on_state:
+    - lambda: !lambda "espcompose::sig_ha_light_office.set(x);
+        espcompose::Scheduler::instance().flush();"
+sensor:
+  platform: homeassistant
+  id: ha_light_office_brightness
+  entity_id: light.office
+  attribute: brightness
+  on_value:
+    - lambda: !lambda "espcompose::sig_ha_light_office_brightness.set(x);
+        espcompose::Scheduler::instance().flush();"
+"
+`;
+
 exports[`ESPHome Compose Build > lvgl-device 1`] = `
 "esphome:
   name: lvgl-device

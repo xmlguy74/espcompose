@@ -47,7 +47,7 @@ export * from './generated/index';
 export { secret, SecretValue, isSecretValue, getSecrets, clearSecrets } from './secret';
 
 // _reactive — compiler-internal reactive plumbing (not public API)
-export { _reactive } from './_reactive';
+export { _reactive, validateLibraryFormat, SUPPORTED_FORMAT_VERSIONS } from './_reactive';
 
 // Reactive utilities (user-facing)
 export { resolveBindProp, reactiveIsNaN } from './reactive-utils';
