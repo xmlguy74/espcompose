@@ -42,11 +42,6 @@ export { delay, logger } from './actions';
 // Public API — Reactive utilities
 // ────────────────────────────────────────────────────────────────────────────
 
-export { ReactiveNode, isReactiveNode } from './reactive-node';
-export type { Signal } from './reactive-node';
-
-export type { BindProp } from './reactive-utils';
-
 // _reactive — compiler-internal reactive plumbing (injected into user bundles by CLI)
 export { _reactive } from './_reactive';
 
@@ -58,13 +53,9 @@ export { registerTheme, getThemeRegistry, theme } from './theme-registry';
 export { useReactiveTheme } from './reactive-theme';
 
 // ────────────────────────────────────────────────────────────────────────────
-// Public API — HA bindings
-// ────────────────────────────────────────────────────────────────────────────
-
-export type { LightBinding } from './ha-bindings';
-
-// ────────────────────────────────────────────────────────────────────────────
-// Public API — Expression types (consumed by UI theme resolvers)
+// Public API — Used by theme resolvers
 // ────────────────────────────────────────────────────────────────────────────
 
 export type { ExprNode } from './ir/index';
+export { ReactiveNode, isReactiveNode } from './reactive-node';
+export type { Signal } from './reactive-node';

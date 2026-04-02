@@ -190,15 +190,6 @@ typedTester.run('no-unsupported-trigger-body (type-aware)', rule, {
       `,
     },
     {
-      name: 'LightBinding.turnOn() — branded',
-      filename: 'test.tsx',
-      code: `
-        import type { LightBinding } from '@esphome/compose';
-        declare const kitchen: LightBinding;
-        <button onPress={() => { kitchen.turnOn(); }} />;
-      `,
-    },
-    {
       name: 'SwitchBinding.toggle() — branded',
       filename: 'test.tsx',
       code: `

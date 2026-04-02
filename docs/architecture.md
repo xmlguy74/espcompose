@@ -21,13 +21,22 @@ packages/
 The compiler runs six phases to turn a `.tsx` source file into ESPHome configuration:
 
 ```mermaid
-flowchart LR
-  src["Source\n.tsx"] --> p0["Phase 0\nType-Check\n(ts.Program)"]
-  p0 --> p05["Phase 0.5\nLint\n(ESLint)"]
-  p05 --> p1["Phase 1\nTransform\n(AST rewrite to\n.espcompose-build/)"]
-  p1 --> p2["Phase 2\nBundle\n(esbuild → CJS)"]
-  p2 --> p3["Phase 3\nExecute\n(require + render\n→ SemanticIR)"]
-  p3 --> p4["Phase 4\nTarget Emit\n(ComposeTarget.emit())"]
+flowchart TD
+  subgraph row1[" "]
+    direction LR
+    src["Source<br/>.tsx"] --> p0["Phase 0<br/>Type-Check<br/>(ts.Program)"]
+    p0 --> p05["Phase 0.5<br/>Lint<br/>(ESLint)"]
+    p05 --> p1["Phase 1<br/>Transform<br/>(AST rewrite to<br/>.espcompose-build/)"]
+  end
+  subgraph row2[" "]
+    direction LR
+    p2["Phase 2<br/>Bundle<br/>(esbuild → CJS)"]
+    p2 --> p3["Phase 3<br/>Execute<br/>(require + render<br/>→ SemanticIR)"]
+    p3 --> p4["Phase 4<br/>Target Emit<br/>(ComposeTarget.emit())"]
+  end
+  row1 --> row2
+  style row1 fill:none,stroke:none
+  style row2 fill:none,stroke:none
 ```
 
 A secondary entry point, `compileToIR()`, runs Phases 0–3 and returns the `SemanticIR` directly — useful as a programmatic API for tools that need the IR without emitting target-specific files.

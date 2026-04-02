@@ -24,8 +24,6 @@ import type {
 /**
  * Safely access a nested path on the reactive theme proxy.
  *
- * @example themeLeaf('spacing', 'md') → ReactiveNode<number>
- * @example themeLeaf('colors', 'primary', 'bg') → ReactiveNode<lv_color_t>
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function themeLeaf(...path: string[]): any {

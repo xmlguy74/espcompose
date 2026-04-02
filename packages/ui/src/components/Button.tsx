@@ -52,7 +52,6 @@ export const Button = createIntentComponent(
     const typo = resolveTypography('body');
     const font = resolveFont({ fontFamily: typo.fontFamily, fontSize: dims.fontSize });
 
-    // Colors from reactive theme (direct ReactiveNode props)
     const bgColor = variant === 'solid' ? sc.bg : undefined;
     const bgOpa = variant === 'outline' ? 'TRANSP' : undefined;
     const borderColor = variant === 'outline' ? sc.bg : undefined;
