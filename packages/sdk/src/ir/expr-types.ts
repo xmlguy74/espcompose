@@ -64,7 +64,7 @@ export interface ExprSignalRead {
 
 export interface ExprMemoRead {
   readonly kind: 'memo_read';
-  readonly memoIndex: number;
+  readonly memoId: string;
 }
 
 export interface ExprBinary {

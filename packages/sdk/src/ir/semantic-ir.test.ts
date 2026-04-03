@@ -5,7 +5,7 @@ import type { ReactiveBinding, HAEntityRegistration, ComponentRegistration } fro
 import type { SerializationCaptures } from '../serialize';
 import type { ActionNode } from './action-types';
 import { buildSemanticIR } from './build';
-import { collectFromIR, collectBindings, collectReactiveNodes } from './traverse';
+import { collectFromIR } from './traverse';
 
 // ── Helpers ────────────────────────────────────────────────────────────────
 
@@ -44,7 +44,7 @@ function makeMemoNode(index: number): ReactiveNode {
     exprType: 'float',
   });
   node.exprIR = { kind: 'ternary', test: { kind: 'signal_read', signalIndex: 0 }, consequent: { kind: 'literal', value: 1.0, type: 'float' }, alternate: { kind: 'literal', value: 0.0, type: 'float' } };
-  node._index = index;
+  void index; // index no longer needed; nodeId is assigned at construction
   return node;
 }
 
@@ -152,7 +152,6 @@ describe('buildSemanticIR', () => {
     expect(textVal?.kind).toBe('reactive');
     if (textVal?.kind !== 'reactive') return;
     expect(textVal.node).toBe(node);
-    expect(textVal.binding).toBe(binding);
   });
 
   it('captures Ref from serialized token string', () => {
@@ -393,7 +392,6 @@ describe('collectFromIR', () => {
     const collected = collectFromIR(ir);
     expect(collected.reactives).toHaveLength(1);
     expect(collected.reactives[0].node).toBe(node);
-    expect(collected.reactives[0].binding).toBe(binding);
     expect(collected.refs).toHaveLength(1);
     expect(collected.refs[0].token).toBe(token);
     expect(collected.actions).toHaveLength(1);
@@ -401,65 +399,6 @@ describe('collectFromIR', () => {
     expect(collected.secrets[0].key).toBe('wifi_password');
     expect(collected.triggerVars).toHaveLength(1);
     expect(collected.triggerVars[0].name).toBe('x');
-  });
-
-  it('collectReactiveNodes extracts nodes from tree', () => {
-    const node = makeMemoNode(0);
-    const scalar = lambdaScalar('return espcompose::memo_0.get();');
-
-    const captures = emptyCaptures();
-    captures.reactives.set(scalar, node);
-
-    const config = {
-      lvgl: { label: { id: 'w1', text: scalar } },
-    };
-
-    const ir = buildSemanticIR({
-      config,
-      captures,
-      bindings: [],
-      entities: [],
-      components: [],
-      scripts: [],
-      reactiveNodes: [],
-    });
-
-    const treeNodes = collectReactiveNodes(ir);
-    expect(treeNodes).toHaveLength(1);
-    expect(treeNodes[0]).toBe(node);
-  });
-
-  it('collectBindings extracts bindings from tree', () => {
-    const node = makeMemoNode(0);
-    const scalar = lambdaScalar('return espcompose::memo_0.get();');
-
-    const captures = emptyCaptures();
-    captures.reactives.set(scalar, node);
-
-    const binding: ReactiveBinding = {
-      targetId: 'lbl_1',
-      targetType: 'label',
-      targetProp: 'text',
-      expression: node,
-    };
-
-    const config = {
-      lvgl: { label: { id: 'lbl_1', text: scalar } },
-    };
-
-    const ir = buildSemanticIR({
-      config,
-      captures,
-      bindings: [binding],
-      entities: [],
-      components: [],
-      scripts: [],
-      reactiveNodes: [],
-    });
-
-    const treeBindings = collectBindings(ir);
-    expect(treeBindings).toHaveLength(1);
-    expect(treeBindings[0]).toBe(binding);
   });
 
   it('returns empty collections for a plain config', () => {

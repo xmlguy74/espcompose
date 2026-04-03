@@ -19,7 +19,11 @@ import type { SemanticIR } from '@esphome/compose/internals';
  * Produce a JSON-safe plain object from a SemanticIR.
  *
  * Handles:
- *   - ReactiveNode class-instance fields → stripped (valueOf, toString, isSingleSource, __reactive_node__)
+ *   - ReactiveNode class-instance fields → spread to plain object. Prototype
+ *     members (valueOf, toString, isSingleSource) are not own enumerable props
+ *     so they are dropped automatically. `__`-prefixed fields (e.g.
+ *     __reactive_node__) are preserved in the JSON; the viewer hides them by
+ *     default and exposes a toggle to show them.
  *   - IRThemeData.leafData    → Map converted to a plain object
  *   - ReactiveBinding.expression → sanitized ReactiveNode
  *
@@ -53,12 +57,16 @@ export function serializeIR(ir: SemanticIR): Record<string, unknown> {
   };
 }
 
-/** Strip non-serializable class-instance fields from a ReactiveNode. */
+/**
+ * Convert a ReactiveNode class instance to a plain object.
+ *
+ * Spreading own enumerable properties drops prototype members (valueOf,
+ * toString, isSingleSource) automatically. `__`-prefixed brand fields are
+ * intentionally kept — the viewer filters them at render time.
+ */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function sanitizeReactiveNode(node: any): Record<string, unknown> {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { valueOf, toString, isSingleSource, __reactive_node__, ...rest } = node as Record<string, unknown>;
-  return rest;
+  return { ...(node as Record<string, unknown>) };
 }
 
 /**

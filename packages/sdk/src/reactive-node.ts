@@ -105,12 +105,11 @@ export class ReactiveNode<T = unknown> {
   readonly sourceDomain?: string;
 
   /**
-   * Index assigned by registerReactiveNode() during the render pass.
-   * Used for C++ variable naming (memo_0, effect_0, etc.) and by the
-   * serializer for generating initial value lambdas.
-   * -1 means not yet registered.
+   * Stable identity for this reactive node, assigned at construction time.
+   * Combines the node kind with a random suffix (e.g. `memo_f18b3i5jb`).
+   * Used as the lookup key in backend maps and for IR debug output.
    */
-  _index = -1;
+  readonly nodeId: string;
 
   /**
    * Target-agnostic expression AST for this reactive node.
@@ -128,6 +127,7 @@ export class ReactiveNode<T = unknown> {
     this.property = config.property;
     this.triggerType = config.triggerType;
     this.sourceDomain = config.sourceDomain;
+    this.nodeId = `${config.kind}_${Math.random().toString(36).slice(2, 11)}`;
   }
 
   /** Whether this node has a single dependency. */

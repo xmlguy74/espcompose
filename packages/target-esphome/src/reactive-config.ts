@@ -196,10 +196,12 @@ export function buildRuntimeConfig(
   let memoIdx = 0;
   let effectIdx = 0;
 
-  // Memo deduplication: signature → canonical memo index
-  const memoSignatureMap = new Map<string, number>();
-  // Maps each memo's assigned index → canonical index (only for duplicates)
-  const memoCanonical = new Map<number, number>();
+  // Memo deduplication: signature → canonical memo nodeId
+  const memoSignatureMap = new Map<string, string>();
+  // Maps each memo's nodeId → canonical nodeId (only for duplicates)
+  const memoCanonical = new Map<string, string>();
+  // Maps each memo's nodeId → sequential C++ index
+  const memoNodeIdToIdx = new Map<string, number>();
 
   for (const node of reactiveNodes) {
     if (node.kind === 'memo') {
@@ -215,17 +217,19 @@ export function buildRuntimeConfig(
       if (canonical !== undefined) {
         // Duplicate — emit as alias
         const thisIdx = memoIdx++;
-        memoCanonical.set(thisIdx, canonical);
+        memoNodeIdToIdx.set(node.nodeId, thisIdx);
+        memoCanonical.set(node.nodeId, canonical);
         memos.push({
           index: thisIdx,
           cppReturnType,
           cppExpression,
           sourceSignals,
-          canonicalIndex: canonical,
+          canonicalIndex: memoNodeIdToIdx.get(canonical)!,
         });
       } else {
         const thisIdx = memoIdx++;
-        memoSignatureMap.set(signature, thisIdx);
+        memoNodeIdToIdx.set(node.nodeId, thisIdx);
+        memoSignatureMap.set(signature, node.nodeId);
         memos.push({
           index: thisIdx,
           cppReturnType,
@@ -235,7 +239,7 @@ export function buildRuntimeConfig(
       }
 
       // Populate memoNames for downstream memo_read references
-      cppCtx.memoNames.set(node._index ?? memoIdx - 1, `memo_${memoIdx - 1}`);
+      cppCtx.memoNames.set(node.nodeId, `memo_${memoIdx - 1}`);
     } else if (node.kind === 'effect') {
       const sourceNames = deriveSourceSignals(node, signalMap, themeVarNames);
       const cppBody = node.exprIR ? exprToCpp(node.exprIR, cppCtx) : '0 /* no ExprIR */';
@@ -260,11 +264,11 @@ export function buildRuntimeConfig(
 
     if (expr.kind === 'memo') {
       // Memo-backed binding: read from the runtime memo variable.
-      const mIdx = expr._index >= 0 ? expr._index : 0;
-      const canonIdx = memoCanonical.get(mIdx) ?? mIdx;
-      valueExpr = `memo_${canonIdx}.get()`;
+      const canonNodeId = memoCanonical.get(expr.nodeId) ?? expr.nodeId;
+      const memoName = cppCtx.memoNames.get(canonNodeId) ?? cppCtx.memoNames.get(expr.nodeId) ?? 'memo_0';
+      valueExpr = `${memoName}.get()`;
       cppType = expr.exprType ? exprTypeToCpp(expr.exprType) : 'std::string';
-      sourceNames = [`memo_${canonIdx}`];
+      sourceNames = [memoName];
     } else if (expr.dependencies?.[0]?.sourceType === 'theme') {
       // Theme-sourced binding: read from the generated theme memo
       const themeIR = expr.exprIR as { kind: string; path?: string; type?: string } | undefined;

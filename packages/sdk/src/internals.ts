@@ -139,7 +139,7 @@ export { lvglWidgetUpdate, LVGL_UPDATABLE_WIDGETS } from './lvgl-actions';
 export { isTriggerVar } from './trigger-args';
 
 // ── Semantic IR ────────────────────────────────────────────────────────────
-export { buildSemanticIR, collectFromIR, collectReactiveNodes, collectBindings } from './ir/index';
+export { buildSemanticIR, collectFromIR } from './ir/index';
 export type {
   SemanticIR, IRESPHomeData, IRESPComposeData, IRReactiveData,
   BuildSemanticIRInput, IRThemeData, IRScriptDefinition,

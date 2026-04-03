@@ -6,8 +6,6 @@
 // bindings, refs, actions, secrets, and trigger vars from the IR.
 // ────────────────────────────────────────────────────────────────────────────
 
-import type { ReactiveNode } from '../reactive-node';
-import type { ReactiveBinding } from '../hooks/useReactiveScope';
 import type { SemanticIR, IRValue, IRReactive, IRRef, IRAction, IRSecret, IRTriggerVar } from './types';
 
 // ────────────────────────────────────────────────────────────────────────────
@@ -79,33 +77,4 @@ export function collectFromIR(ir: SemanticIR): IRTreeCollected {
   }
 
   return collected;
-}
-
-// ────────────────────────────────────────────────────────────────────────────
-// Derived data — extract what buildRuntimeConfig needs from the tree
-// ────────────────────────────────────────────────────────────────────────────
-
-/**
- * Extract ReactiveNode[] from the IR tree's IRReactive nodes.
- *
- * Walks the config tree and collects all ReactiveNode instances from
- * IRReactive value nodes. This is the canonical way to get reactive
- * nodes from a SemanticIR.
- */
-export function collectReactiveNodes(ir: SemanticIR): ReactiveNode[] {
-  const collected = collectFromIR(ir);
-  return collected.reactives.map(r => r.node);
-}
-
-/**
- * Extract ReactiveBinding[] from the IR tree's IRReactive nodes.
- *
- * Only returns bindings for IRReactive nodes that have a binding
- * attached (i.e., nodes that are bound to a specific widget prop).
- */
-export function collectBindings(ir: SemanticIR): ReactiveBinding[] {
-  const collected = collectFromIR(ir);
-  return collected.reactives
-    .filter(r => r.binding != null)
-    .map(r => r.binding!);
 }

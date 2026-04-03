@@ -49,7 +49,7 @@ export {
 export { buildSemanticIR } from './build';
 export type { BuildSemanticIRInput } from './build';
 
-export { collectFromIR, collectReactiveNodes, collectBindings } from './traverse';
+export { collectFromIR } from './traverse';
 export type { IRTreeCollected } from './traverse';
 
 // ── Expression IR ────────────────────────────────────────────────────────────

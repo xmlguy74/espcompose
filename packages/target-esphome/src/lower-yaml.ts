@@ -119,12 +119,12 @@ function generateInitialValueLambda(node: any, ctx?: CppLoweringContext): string
   }
 
   // Memo: read from runtime memo variable
-  const idx = node._index >= 0 ? node._index : 0;
+  const memoName = ctx?.memoNames?.get(node.nodeId) ?? node.nodeId;
   const exprType = node.exprType;
   if (exprType === 'string') {
-    return `return espcompose::memo_${idx}.get().c_str();`;
+    return `return espcompose::${memoName}.get().c_str();`;
   }
-  return `return espcompose::memo_${idx}.get();`;
+  return `return espcompose::${memoName}.get();`;
 }
 
 /** Wrap a C++ expression for conversion to std::string for initial value lambdas. */
@@ -245,11 +245,11 @@ export function lowerToYamlConfig(
       }
     }
     // Populate memoNames from reactive nodes
-    const memoNames = new Map<number, string>();
+    const memoNames = new Map<string, string>();
     let memoIdx = 0;
     for (const node of reactiveNodes) {
       if (node.kind === 'memo') {
-        memoNames.set(node._index ?? memoIdx, `memo_${memoIdx}`);
+        memoNames.set(node.nodeId, `memo_${memoIdx}`);
         memoIdx++;
       }
     }

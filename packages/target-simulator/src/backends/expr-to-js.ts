@@ -18,8 +18,8 @@ import type {
 export interface JsLoweringContext {
   /** Map signal index → getter function */
   signalGetters: Map<number, () => unknown>;
-  /** Map memo index → getter function */
-  memoGetters: Map<number, () => unknown>;
+  /** Map memo nodeId → getter function */
+  memoGetters: Map<string, () => unknown>;
   /** Map slot index → getter function (resolved at IR assembly) */
   slotGetters: Map<number, () => unknown>;
   /** Map entity ID + property → getter function */
@@ -48,8 +48,8 @@ export function exprToJs(node: ExprNode, ctx: JsLoweringContext): () => unknown 
     }
 
     case 'memo_read': {
-      const getter = ctx.memoGetters.get(node.memoIndex);
-      if (!getter) throw new Error(`Unknown memo index: ${node.memoIndex}`);
+      const getter = ctx.memoGetters.get(node.memoId);
+      if (!getter) throw new Error(`Unknown memo id: ${node.memoId}`);
       return getter;
     }
 

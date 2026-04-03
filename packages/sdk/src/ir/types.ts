@@ -181,8 +181,6 @@ export interface IRReactive {
   kind: 'reactive';
   /** The original ReactiveNode instance with full metadata. */
   node: ReactiveNode;
-  /** The binding that connects this node to a specific widget prop. */
-  binding?: ReactiveBinding;
 }
 
 /**
@@ -257,8 +255,8 @@ export function irNull(): IRNull {
   return { kind: 'null' };
 }
 
-export function irReactive(node: ReactiveNode, binding?: ReactiveBinding): IRReactive {
-  return { kind: 'reactive', node, ...(binding ? { binding } : {}) };
+export function irReactive(node: ReactiveNode): IRReactive {
+  return { kind: 'reactive', node };
 }
 
 export function irRef(token: string): IRRef {

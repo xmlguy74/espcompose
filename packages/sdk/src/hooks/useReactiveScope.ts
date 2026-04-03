@@ -131,18 +131,16 @@ export function registerComponent(reg: ComponentRegistration): void {
 
 /**
  * Register a ReactiveNode (memo or effect) created during the render pass.
- * Assigns a sequential index to the node and returns it.
- * No-op (returns -1) if called outside a reactive scope.
+ * Returns the node's stable nodeId. No-op (returns empty string) if called
+ * outside a reactive scope.
  */
-export function registerReactiveNode(node: ReactiveNode): number {
+export function registerReactiveNode(node: ReactiveNode): string {
   const frame = useContext(reactiveScopeContext);
   if (frame) {
-    const index = frame.reactiveNodes.length;
-    node._index = index;
     frame.reactiveNodes.push(node);
-    return index;
+    return node.nodeId;
   }
-  return -1;
+  return '';
 }
 
 // ────────────────────────────────────────────────────────────────────────────

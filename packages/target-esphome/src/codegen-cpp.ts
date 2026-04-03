@@ -1,8 +1,8 @@
 // ────────────────────────────────────────────────────────────────────────────
 // C++ Backend — Generate espcompose_bindings.h from SemanticIR
 //
-// Extracts reactive data from the SemanticIR config tree via collectFromIR()
-// and delegates to the existing buildRuntimeConfig and generateBindingsHeader
+// Uses the side-channel arrays on ir.espcompose.reactive as the authoritative
+// source and delegates to the existing buildRuntimeConfig and generateBindingsHeader
 // functions.
 // ────────────────────────────────────────────────────────────────────────────
 

@@ -82,8 +82,8 @@ describe('serializeIR', () => {
     expect(serializedNode.kind).toBe('memo');
     expect(serializedNode.dependencies).toEqual(node.dependencies);
     expect(serializedNode.exprType).toBe('string');
-    // Class brand field should be stripped (it's an own enumerable property)
-    expect(Object.prototype.hasOwnProperty.call(serializedNode, '__reactive_node__')).toBe(false);
+    // Class brand field is preserved in JSON; viewer hides it at render time
+    expect(Object.prototype.hasOwnProperty.call(serializedNode, '__reactive_node__')).toBe(true);
 
     expect(() => JSON.stringify(result)).not.toThrow();
   });
@@ -110,7 +110,7 @@ describe('serializeIR', () => {
     const serializedBinding = espcompose.reactive.bindings[0];
     const expr = serializedBinding.expression as Record<string, unknown>;
     expect(expr.kind).toBe('expression');
-    expect(expr).not.toHaveProperty('__reactive_node__');
+    expect(expr).toHaveProperty('__reactive_node__', true);
 
     expect(() => JSON.stringify(result)).not.toThrow();
   });

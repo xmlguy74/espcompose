@@ -59,37 +59,11 @@ function isQuotedScalar(val: unknown): val is { value: string; type: string } {
 }
 
 // ────────────────────────────────────────────────────────────────────────────
-// Binding lookup index
-// ────────────────────────────────────────────────────────────────────────────
-
-function bindingKey(targetId: string, targetProp: string, part?: string, state?: string): string {
-  if (part || state) {
-    return `${targetId}::${part ?? ''}::${state ?? ''}::${targetProp}`;
-  }
-  return `${targetId}::${targetProp}`;
-}
-
-function buildBindingIndex(bindings: ReactiveBinding[]): Map<string, ReactiveBinding> {
-  const index = new Map<string, ReactiveBinding>();
-  for (const b of bindings) {
-    index.set(bindingKey(b.targetId, b.targetProp, b.part, b.state), b);
-  }
-  return index;
-}
-
-// ────────────────────────────────────────────────────────────────────────────
 // Config value → IRValue conversion (with capture-based classification)
 // ────────────────────────────────────────────────────────────────────────────
 
 interface WalkContext {
   captures: SerializationCaptures;
-  bindingIndex: Map<string, ReactiveBinding>;
-  currentWidgetId?: string;
-  currentProp?: string;
-  /** Current LVGL part name (snake_case) when inside a part sub-object. */
-  currentPart?: string;
-  /** Current LVGL state name (snake_case) when inside a state sub-object. */
-  currentState?: string;
 }
 
 function configValueToIR(val: unknown, ctx: WalkContext): IRValue {
@@ -100,13 +74,7 @@ function configValueToIR(val: unknown, ctx: WalkContext): IRValue {
     // ReactiveNode capture (serialized as !lambda Scalar)
     const reactiveNode = ctx.captures.reactives.get(val);
     if (reactiveNode) {
-      // Look up the binding for this reactive prop
-      let binding: ReactiveBinding | undefined;
-      if (ctx.currentWidgetId && ctx.currentProp) {
-        const key = bindingKey(ctx.currentWidgetId, ctx.currentProp, ctx.currentPart, ctx.currentState);
-        binding = ctx.bindingIndex.get(key);
-      }
-      return irReactive(reactiveNode, binding);
+      return irReactive(reactiveNode);
     }
 
     // TriggerVar capture (serialized as !lambda Scalar)
@@ -164,63 +132,10 @@ function configValueToIR(val: unknown, ctx: WalkContext): IRValue {
 }
 
 function convertObject(obj: Record<string, unknown>, ctx: WalkContext): IRValue {
-  const widgetId = typeof obj.id === 'string' ? obj.id : undefined;
-  const childCtx: WalkContext = widgetId
-    ? { ...ctx, currentWidgetId: widgetId }
-    : ctx;
-
-  const entries = Object.entries(obj).map(([key, val]) => {
-    // Detect part/state sub-objects by checking if the key matches a
-    // known binding pattern. We probe the binding index to see if any
-    // binding uses this key as a part or state.
-    let propCtx: WalkContext;
-    if (val !== null && typeof val === 'object' && !Array.isArray(val) && childCtx.currentWidgetId) {
-      // Check if this key is a part name (any binding has this as part)
-      propCtx = inferPartState(key, childCtx);
-    } else {
-      propCtx = { ...childCtx, currentProp: key };
-    }
-    return irEntry(key, configValueToIR(val, propCtx));
-  });
-
+  const entries = Object.entries(obj).map(([key, val]) =>
+    irEntry(key, configValueToIR(val, ctx)),
+  );
   return irObject(entries);
-}
-
-/**
- * Infer part/state context for a nested object key by probing the binding
- * index. If any binding uses this key as a part or state for the current
- * widget, propagate that context so reactive prop lookups use the full key.
- */
-function inferPartState(key: string, parentCtx: WalkContext): WalkContext {
-  const widgetId = parentCtx.currentWidgetId;
-  if (!widgetId) return { ...parentCtx, currentProp: key };
-
-  // If we're already in a part context and this key is a state
-  if (parentCtx.currentPart && !parentCtx.currentState) {
-    // Try: widgetId::part::state::someProp — check if any binding matches
-    for (const bindKey of parentCtx.bindingIndex.keys()) {
-      if (bindKey.startsWith(`${widgetId}::${parentCtx.currentPart}::${key}::`)) {
-        return { ...parentCtx, currentState: key };
-      }
-    }
-  }
-
-  // Check if key is a part name
-  if (!parentCtx.currentPart && !parentCtx.currentState) {
-    for (const bindKey of parentCtx.bindingIndex.keys()) {
-      if (bindKey.startsWith(`${widgetId}::${key}::`)) {
-        return { ...parentCtx, currentPart: key };
-      }
-    }
-    // Check if key is a state name (without part)
-    for (const bindKey of parentCtx.bindingIndex.keys()) {
-      if (bindKey.startsWith(`${widgetId}::::${key}::`)) {
-        return { ...parentCtx, currentState: key };
-      }
-    }
-  }
-
-  return { ...parentCtx, currentProp: key };
 }
 
 // ────────────────────────────────────────────────────────────────────────────
@@ -234,7 +149,7 @@ export interface BuildSemanticIRInput {
   /** Serialization captures recorded during the render pass */
   captures: SerializationCaptures;
 
-  /** Reactive bindings linking nodes to widget props (used to attach bindings to IRReactive nodes in the tree) */
+  /** Reactive bindings linking nodes to widget props */
   bindings: ReactiveBinding[];
 
   /** HA entity registrations for sensor imports */
@@ -266,11 +181,8 @@ export interface BuildSemanticIRInput {
  * semantic types.
  */
 export function buildSemanticIR(input: BuildSemanticIRInput): SemanticIR {
-  const bindingIndex = buildBindingIndex(input.bindings);
-
   const ctx: WalkContext = {
     captures: input.captures,
-    bindingIndex,
   };
 
   const sections: IRSection[] = Object.entries(input.config).map(([key, value]) =>

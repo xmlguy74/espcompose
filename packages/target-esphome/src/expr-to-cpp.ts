@@ -19,8 +19,8 @@ import type {
 export interface CppLoweringContext {
   /** Map signal index → C++ signal variable name (e.g. `sig_ha_light_office`) */
   signalNames: Map<number, string>;
-  /** Map memo index → C++ memo variable name (e.g. `memo_0`) */
-  memoNames: Map<number, string>;
+  /** Map memo nodeId → C++ memo variable name (e.g. `memo_0`) */
+  memoNames: Map<string, string>;
   /** Map slot index → C++ expression string (substituted at IR assembly) */
   slotExprs: Map<number, string>;
   /** Map entity ID → generated component ID (e.g. `ha_light_office`) */
@@ -43,8 +43,8 @@ export function exprToCpp(node: ExprNode, ctx: CppLoweringContext): string {
     }
 
     case 'memo_read': {
-      const name = ctx.memoNames.get(node.memoIndex);
-      if (!name) throw new Error(`Unknown memo index: ${node.memoIndex}`);
+      const name = ctx.memoNames.get(node.memoId);
+      if (!name) throw new Error(`Unknown memo id: ${node.memoId}`);
       return `${name}.get()`;
     }
 

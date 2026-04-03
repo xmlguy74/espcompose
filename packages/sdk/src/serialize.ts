@@ -264,8 +264,7 @@ function serializeReactiveNode(node: ReactiveNode): unknown {
   if (node.kind === 'expression' && node.sourceId && node.property) {
     return createLambdaScalar(`return id(${node.sourceId})${node.property};`);
   }
-  const idx = node._index >= 0 ? node._index : 0;
-  return createLambdaScalar(`return espcompose::memo_${idx}.get();`);
+  return createLambdaScalar(`return espcompose::${node.nodeId}.get();`);
 }
 
 /**

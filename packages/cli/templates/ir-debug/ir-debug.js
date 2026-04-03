@@ -3,7 +3,17 @@
   const esphome = data.esphome || {};
   const espcompose = data.espcompose || {};
   const reactive = espcompose.reactive || {};
+  // ── Internal-field visibility toggle ────────────────────────────────────────
+  // Fields whose keys start with __ are implementation brands (e.g.
+  // __reactive_node__). They are hidden by default and shown when the user
+  // toggles the "Show Internal" button.
+  var showHidden = false;
 
+  function visibleKeys(obj) {
+    var keys = Object.keys(obj);
+    if (showHidden) return keys;
+    return keys.filter(function(k) { return k.indexOf('__') !== 0; });
+  }
   // ── Tree renderer ──────────────────────────────────────────────────────
   var treeEl = document.getElementById('tree');
 
@@ -30,12 +40,12 @@
   function hasChildren(val) {
     if (!val || typeof val !== 'object') return false;
     if (Array.isArray(val)) return val.length > 0;
-    return Object.keys(val).length > 0;
+    return visibleKeys(val).length > 0;
   }
 
   function childCount(val) {
     if (Array.isArray(val)) return val.length;
-    if (val && typeof val === 'object') return Object.keys(val).length;
+    if (val && typeof val === 'object') return visibleKeys(val).length;
     return 0;
   }
 
@@ -116,15 +126,15 @@
           children.appendChild(buildNode('[' + i + ']', item, depth + 1));
         });
       } else if (irKind === 'reactive') {
-        Object.keys(value).filter(function(k) { return k !== 'kind'; }).forEach(function(k) {
+        visibleKeys(value).filter(function(k) { return k !== 'kind'; }).forEach(function(k) {
           children.appendChild(buildNode(k, value[k], depth + 1));
         });
       } else if (irKind === 'ref') {
-        Object.keys(value).filter(function(k) { return k !== 'kind'; }).forEach(function(k) {
+        visibleKeys(value).filter(function(k) { return k !== 'kind'; }).forEach(function(k) {
           children.appendChild(buildNode(k, value[k], depth + 1));
         });
       } else if (irKind === 'action') {
-        Object.keys(value).filter(function(k) { return k !== 'kind'; }).forEach(function(k) {
+        visibleKeys(value).filter(function(k) { return k !== 'kind'; }).forEach(function(k) {
           children.appendChild(buildNode(k, value[k], depth + 1));
         });
       } else if (Array.isArray(value)) {
@@ -132,7 +142,7 @@
           children.appendChild(buildNode('[' + i + ']', item, depth + 1));
         });
       } else {
-        Object.keys(value).forEach(function(k) {
+        visibleKeys(value).forEach(function(k) {
           children.appendChild(buildNode(k, value[k], depth + 1));
         });
       }
@@ -298,7 +308,14 @@
       }
     });
   }
-
+  // ── Show / hide internal fields (‘__‘-prefixed keys) ────────────────────────
+  window.toggleHidden = function() {
+    showHidden = !showHidden;
+    var btn = document.getElementById('btn-hidden');
+    btn.textContent = showHidden ? 'Hide Internal' : 'Show Internal';
+    btn.classList.toggle('btn-active', showHidden);
+    renderTree();
+  };
   // ── Expand / Collapse All ──────────────────────────────────────────────
   window.expandAll = function() {
     treeEl.querySelectorAll('.toggle.collapsed').forEach(function(t) {
