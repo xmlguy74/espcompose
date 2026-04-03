@@ -13,35 +13,36 @@
 
 export interface ThemeLeaf {
   value: unknown;
-  cppType: string;
+  /** Target-agnostic value type (ExprType compatible). */
+  valueType: string;
 }
 
 // ── Constants ──────────────────────────────────────────────────────────────
 
 export const THEME_SIGNAL_PREFIX = 'thm_';
 
-// ── C++ type inference ─────────────────────────────────────────────────────
+// ── Value type inference ───────────────────────────────────────────────────
 
 const HEX_COLOR_RE = /^#[0-9a-fA-F]{3,8}$/;
 
 /**
- * Infer the C++ type for a theme leaf value.
+ * Infer the value type for a theme leaf (ExprType compatible).
  *
- *  - '#RRGGBB' strings → 'lv_color_t'
- *  - other strings     → 'const char*'
- *  - integers          → 'int32_t'
+ *  - '#RRGGBB' strings → 'color'
+ *  - other strings     → 'string'
+ *  - integers          → 'int'
  *  - floats            → 'float'
  *  - booleans          → 'bool'
  */
-export function inferCppType(value: unknown): string {
+export function inferValueType(value: unknown): string {
   if (typeof value === 'string') {
-    return HEX_COLOR_RE.test(value) ? 'lv_color_t' : 'const char*';
+    return HEX_COLOR_RE.test(value) ? 'color' : 'string';
   }
   if (typeof value === 'number') {
-    return Number.isInteger(value) ? 'int32_t' : 'float';
+    return Number.isInteger(value) ? 'int' : 'float';
   }
   if (typeof value === 'boolean') return 'bool';
-  return 'int32_t';
+  return 'int';
 }
 
 // ── Flattener ──────────────────────────────────────────────────────────────
@@ -51,7 +52,7 @@ export function inferCppType(value: unknown): string {
  *
  * @param obj    — any nested plain object (typically a Theme)
  * @param prefix — accumulated path prefix (underscore-separated)
- * @returns flat map, e.g. `{ colors_primary_bg: { value: '#1E88E5', cppType: 'lv_color_t' } }`
+ * @returns flat map, e.g. `{ colors_primary_bg: { value: '#1E88E5', valueType: 'color' } }`
  */
 export function flattenTheme(
   obj: Record<string, unknown>,
@@ -63,7 +64,7 @@ export function flattenTheme(
     if (value !== null && typeof value === 'object' && !Array.isArray(value)) {
       Object.assign(result, flattenTheme(value as Record<string, unknown>, path));
     } else {
-      result[path] = { value, cppType: inferCppType(value) };
+      result[path] = { value, valueType: inferValueType(value) };
     }
   }
   return result;

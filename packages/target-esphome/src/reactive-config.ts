@@ -14,6 +14,7 @@ import { Scalar } from 'yaml';
 import { exprToCpp, exprTypeToCpp } from './expr-to-cpp.js';
 import type { CppLoweringContext } from './expr-to-cpp.js';
 import type { ExprNode } from '@esphome/compose';
+import type { ExprType } from '@esphome/compose/internals';
 
 // ────────────────────────────────────────────────────────────────────────────
 // Sensor type → C++ type mapping
@@ -92,6 +93,17 @@ function collectThemePaths(node: ExprNode | undefined): string[] {
     case 'resolve_font':
       paths.push(...collectThemePaths(node.family), ...collectThemePaths(node.size));
       break;
+    case 'type_cast':
+    case 'format_string':
+      paths.push(...collectThemePaths(node.expr));
+      break;
+    case 'null_coalesce':
+      paths.push(...collectThemePaths(node.left), ...collectThemePaths(node.right));
+      break;
+    case 'string_method':
+      paths.push(...collectThemePaths(node.object));
+      for (const arg of node.args) paths.push(...collectThemePaths(arg));
+      break;
   }
   return paths;
 }
@@ -103,8 +115,8 @@ function collectThemePaths(node: ExprNode | undefined): string[] {
 export interface ThemeData {
   themeNames: string[];
   defaultIndex: number;
-  /** For each signal path, ordered values across themes + C++ type. */
-  leafData: Map<string, { values: unknown[]; cppType: string }>;
+  /** For each signal path, ordered values across themes + value type (ExprType compatible). */
+  leafData: Map<string, { values: unknown[]; valueType: string }>;
 }
 
 // ────────────────────────────────────────────────────────────────────────────
@@ -260,7 +272,9 @@ export function buildRuntimeConfig(
       const sigName = themePath ? `thm_${themePath}` : `thm_unknown`;
       valueExpr = `${sigName}.get()`;
       const leafData = themePath ? themeData?.leafData.get(themePath) : undefined;
-      cppType = leafData?.cppType ?? (expr.exprType ? exprTypeToCpp(expr.exprType) : 'int32_t');
+      // Convert valueType (ExprType) to C++ type; fallback to exprType if available
+      const leafValueType = leafData?.valueType as ExprType | undefined;
+      cppType = leafValueType ? exprTypeToCpp(leafValueType) : (expr.exprType ? exprTypeToCpp(expr.exprType) : 'int32_t');
       sourceNames = [sigName];
     } else {
       // Single-source binding: read directly from signal
@@ -290,9 +304,11 @@ export function buildRuntimeConfig(
 
   if (themeData && themeData.themeNames.length > 0) {
     for (const [signalPath, leaf] of themeData.leafData) {
+      // Convert valueType (ExprType) to C++ type for code generation
+      const leafValueType = leaf.valueType as ExprType;
       allThemeMemos.push({
         name: `thm_${signalPath}`,
-        cppType: leaf.cppType,
+        cppType: exprTypeToCpp(leafValueType),
         values: leaf.values,
       });
     }

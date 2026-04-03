@@ -10,8 +10,8 @@ import type {
 } from '@esphome/compose';
 import type {
   ExprType,
-  BinaryOp,
   BuiltinFn,
+  StringMethod,
 } from '@esphome/compose/internals';
 
 // ── Lowering context ─────────────────────────────────────────────────────────
@@ -104,6 +104,18 @@ export function exprToCpp(node: ExprNode, ctx: CppLoweringContext): string {
     case 'trigger_var':
       return node.name;
 
+    case 'type_cast':
+      return typeCastToCpp(exprToCpp(node.expr, ctx), node.fromType, node.toType);
+
+    case 'format_string':
+      return `str_sprintf("${node.format}", ${exprToCpp(node.expr, ctx)})`;
+
+    case 'null_coalesce':
+      return nullCoalesceToCpp(exprToCpp(node.left, ctx), exprToCpp(node.right, ctx), node.type);
+
+    case 'string_method':
+      return stringMethodToCpp(node.method, exprToCpp(node.object, ctx), node.args.map(a => exprToCpp(a, ctx)));
+
     default:
       throw new Error(`Unknown ExprNode kind: ${(node as ExprNode).kind}`);
   }
@@ -141,6 +153,7 @@ const BUILTIN_TO_CPP: Record<BuiltinFn, string> = {
   math_round: 'std::round',
   math_floor: 'std::floor',
   math_ceil: 'std::ceil',
+  math_trunc: 'static_cast<int32_t>',
   math_sqrt: 'std::sqrt',
   math_pow: 'std::pow',
   math_log: 'std::log',
@@ -149,11 +162,71 @@ const BUILTIN_TO_CPP: Record<BuiltinFn, string> = {
   math_sin: 'std::sin',
   math_cos: 'std::cos',
   math_tan: 'std::tan',
+  math_clamp: 'std::clamp',
   is_nan: 'std::isnan',
 };
 
 function builtinToCpp(fn: BuiltinFn): string {
   return BUILTIN_TO_CPP[fn];
+}
+
+// ── Type cast helpers ────────────────────────────────────────────────────────
+
+function typeCastToCpp(expr: string, fromType: ExprType, toType: ExprType): string {
+  if (fromType === toType) return expr;
+
+  if (toType === 'string') {
+    if (fromType === 'bool') return `(${expr}) ? std::string("true") : std::string("false")`;
+    return `std::to_string(${expr})`;
+  }
+  if (toType === 'float') {
+    if (fromType === 'string') return `std::stof(${expr})`;
+    return `static_cast<float>(${expr})`;
+  }
+  if (toType === 'int') {
+    if (fromType === 'string') return `std::stoi(${expr})`;
+    return `static_cast<int32_t>(${expr})`;
+  }
+  if (toType === 'bool') {
+    if (fromType === 'string') return `!(${expr}).empty()`;
+    return `static_cast<bool>(${expr})`;
+  }
+  return `static_cast<${exprTypeToCpp(toType)}>(${expr})`;
+}
+
+// ── Null coalesce helpers ────────────────────────────────────────────────────
+
+function nullCoalesceToCpp(left: string, right: string, type: ExprType): string {
+  if (type === 'float') return `std::isnan(${left}) ? ${right} : ${left}`;
+  if (type === 'string') return `(${left}).empty() ? ${right} : ${left}`;
+  // For int/bool, there's no natural null — return left as-is
+  return left;
+}
+
+// ── String method helpers ────────────────────────────────────────────────────
+
+function stringMethodToCpp(method: StringMethod, obj: string, args: string[]): string {
+  switch (method) {
+    case 'length':
+      return `static_cast<int>(${obj}.length())`;
+    case 'toUpperCase':
+      return `([](std::string s){ for(auto &c:s) c=toupper(c); return s; })(${obj})`;
+    case 'toLowerCase':
+      return `([](std::string s){ for(auto &c:s) c=tolower(c); return s; })(${obj})`;
+    case 'substring':
+      if (args.length === 2) return `${obj}.substr(${args[0]}, (${args[1]}) - (${args[0]}))`;
+      if (args.length === 1) return `${obj}.substr(${args[0]})`;
+      return obj;
+    case 'charAt':
+      return `std::string(1, ${obj}.at(${args[0]}))`;
+    case 'indexOf': {
+      return `static_cast<int>(${obj}.find(${args[0]}) != std::string::npos ? ${obj}.find(${args[0]}) : -1)`;
+    }
+    case 'trim':
+      return `([](std::string s){ s.erase(0,s.find_first_not_of(" \\t\\n\\r")); s.erase(s.find_last_not_of(" \\t\\n\\r")+1); return s; })(${obj})`;
+    default:
+      throw new Error(`Unknown string method: ${method}`);
+  }
 }
 
 // ── ExprType → C++ type mapping ──────────────────────────────────────────────

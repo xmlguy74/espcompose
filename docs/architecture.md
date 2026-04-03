@@ -183,11 +183,11 @@ This context is threaded through `exprToCpp()` so the same ExprNode tree can be 
 
 ```mermaid
 flowchart TD
-  A["useHAEntity('light.office')"] --> B["light.isOn\nReactiveNode { kind: 'expression', exprType: 'bool' }"]
+  A["useHAEntity('light.office')"] --> B["light.isOn<br/>ReactiveNode { kind: 'expression', exprType: 'bool' }"]
   B --> C["useMemo(() => light.isOn ? 'On' : 'Off')"]
-  C -->|"Phase 1: AST compiler\nbuilds ExprNode"| D["ReactiveNode { kind: 'memo', exprType: 'string' }\nexprIR: ternary → entity_prop / literal / literal"]
-  D -->|"Phase 4: ESPHome backend"| E["exprToCpp(exprIR, ctx)\n→ sig_r_abc.get() ? std::string('On') : std::string('Off')"]
-  E --> F["YAML: text: !lambda 'return memo_0.get();'\nC++: Memo&lt;std::string&gt; memo_0(…)"]
+  C -->|"Phase 1: AST compiler<br/>builds ExprNode"| D["ReactiveNode { kind: 'memo', exprType: 'string' }<br/>exprIR: ternary → entity_prop / literal / literal"]
+  D -->|"Phase 4: ESPHome backend"| E["exprToCpp(exprIR, ctx)<br/>→ sig_r_abc.get() ? std::string('On') : std::string('Off')"]
+  E --> F["YAML: text: !lambda 'return memo_0.get();'<br/>C++: Memo&lt;std::string&gt; memo_0(…)"]
 ```
 
 ## Theme System

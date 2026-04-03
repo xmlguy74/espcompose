@@ -10,13 +10,13 @@
 // ────────────────────────────────────────────────────────────────────────────
 
 import { Scalar } from 'yaml';
-import type { SemanticIR, IRValue, IRObject, IRArray, IRAction, IRSecret, IRTriggerVar } from '@esphome/compose/internals';
+import type { SemanticIR, IRValue, IRObject, IRArray, IRAction, IRSecret, IRTriggerVar, ActionNode } from '@esphome/compose/internals';
 import { getTriggerSignature } from '@esphome/compose/internals';
 import { injectHASensorImports } from './reactive-injector.js';
 import { injectReactiveBindingsRuntime } from './reactive-config.js';
-import { exprToCpp, exprTypeToCpp } from './expr-to-cpp.js';
 import type { CppLoweringContext } from './expr-to-cpp.js';
 import type { CppBackendResult } from './codegen-cpp.js';
+import { lowerActionTree } from './action-lowering.js';
 
 // ── YAML Scalar constructors ─────────────────────────────────────────────
 
@@ -164,7 +164,8 @@ function irValueToYaml(node: IRValue, ctx?: CppLoweringContext): unknown {
 
     case 'action': {
       const actionNode = node as IRAction;
-      let actions: unknown[] = actionNode.actions;
+      // Lower ActionNode[] to ESPHome YAML format, then resolve ref bindings
+      let actions: unknown[] = lowerActionTree(actionNode.actions as ActionNode[]);
       if (actionNode.refBindings) {
         actions = actions.map(a =>
           resolveRefBindingsInValue(a, actionNode.refBindings!),
@@ -283,7 +284,7 @@ export function lowerToYamlConfig(
   if (ir.scripts.length > 0) {
     finalConfig['script'] = ir.scripts.map((s) => ({
       id: s.id,
-      then: s.then,
+      then: lowerActionTree(s.then as ActionNode[]),
     }));
   }
 

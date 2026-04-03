@@ -331,7 +331,7 @@ describe('buildSemanticIR', () => {
       themes: {
         themeNames: ['light', 'dark'],
         defaultIndex: 0,
-        leafData: new Map([['colors_primary', { values: [0xFF0000, 0x0000FF], cppType: 'int32_t' }]]),
+        leafData: new Map([['colors_primary', { values: [0xFF0000, 0x0000FF], valueType: 'int' }]]),
       },
     });
 

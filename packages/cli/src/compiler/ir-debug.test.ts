@@ -1,0 +1,210 @@
+import { describe, it, expect } from 'vitest';
+import { serializeIR, writeIRDebugFiles } from './ir-debug';
+import * as fs from 'fs';
+import * as path from 'path';
+import * as os from 'os';
+import type { SemanticIR, ReactiveBinding } from '@esphome/compose/internals';
+
+type ReactiveNodeLike = SemanticIR['reactiveNodes'][number];
+
+/** Create a ReactiveNode-shaped object for testing. */
+function makeReactiveNode(overrides?: Record<string, unknown>): Record<string, unknown> {
+  return {
+    __reactive_node__: true,
+    kind: 'expression',
+    dependencies: [],
+    _index: -1,
+    ...overrides,
+  };
+}
+
+function makeMinimalIR(overrides?: Partial<SemanticIR>): SemanticIR {
+  return {
+    sections: [],
+    bindings: [],
+    entities: [],
+    components: [],
+    scripts: [],
+    reactiveNodes: [],
+    ...overrides,
+  };
+}
+
+describe('serializeIR', () => {
+  it('handles an empty IR', () => {
+    const ir = makeMinimalIR();
+    const result = serializeIR(ir);
+    expect(result.sections).toEqual([]);
+    expect(result.bindings).toEqual([]);
+    expect(result.reactiveNodes).toEqual([]);
+    expect(result.themes).toBeUndefined();
+
+    // Should be JSON-stringifiable without error
+    expect(() => JSON.stringify(result)).not.toThrow();
+  });
+
+  it('preserves scalar, object, array, and null IR nodes in sections', () => {
+    const ir = makeMinimalIR({
+      sections: [
+        {
+          key: 'esphome',
+          value: {
+            kind: 'object',
+            entries: [
+              { key: 'name', value: { kind: 'scalar', value: 'my-device' } },
+              { key: 'items', value: { kind: 'array', items: [{ kind: 'scalar', value: 42 }, { kind: 'null' }] } },
+            ],
+          },
+        },
+      ],
+    });
+    const result = serializeIR(ir);
+    expect(result.sections).toHaveLength(1);
+    const section = (result.sections as Array<{ key: string; value: unknown }>)[0];
+    expect(section.key).toBe('esphome');
+    expect(JSON.stringify(result)).toContain('"my-device"');
+    expect(JSON.stringify(result)).toContain('42');
+  });
+
+  it('strips jsClosure from ReactiveNode and preserves other fields', () => {
+    const node = makeReactiveNode({
+      kind: 'memo',
+      dependencies: [{ sourceId: 'ha_light', property: 'isOn', domain: 'light', entityId: 'light.office' }],
+      exprType: 'string',
+      jsClosure: () => 'test',
+      jsValue: 'initial',
+    });
+
+    const ir = makeMinimalIR({ reactiveNodes: [node as unknown as ReactiveNodeLike] });
+    const result = serializeIR(ir);
+    const serializedNode = (result.reactiveNodes as Record<string, unknown>[])[0];
+
+    expect(serializedNode.kind).toBe('memo');
+    expect(serializedNode.dependencies).toEqual(node.dependencies);
+    expect(serializedNode.exprType).toBe('string');
+    expect(serializedNode).not.toHaveProperty('jsClosure');
+    expect(serializedNode.jsValue).toBe('initial');
+
+    expect(() => JSON.stringify(result)).not.toThrow();
+  });
+
+  it('sanitizes ReactiveNode in bindings', () => {
+    const node = makeReactiveNode({
+      kind: 'expression',
+      exprType: 'bool',
+      jsClosure: () => true,
+    });
+
+    const ir = makeMinimalIR({
+      bindings: [
+        {
+          targetId: 'lbl_1',
+          targetType: 'lvgl_label',
+          targetProp: 'text',
+          expression: node as unknown as ReactiveBinding['expression'],
+        },
+      ],
+    });
+    const result = serializeIR(ir);
+    const binding = (result.bindings as Record<string, unknown>[])[0];
+    const expr = binding.expression as Record<string, unknown>;
+    expect(expr.kind).toBe('expression');
+    expect(expr).not.toHaveProperty('jsClosure');
+
+    expect(() => JSON.stringify(result)).not.toThrow();
+  });
+
+  it('converts theme leafData from Map to object', () => {
+    const leafData = new Map<string, { values: unknown[]; valueType: string }>();
+    leafData.set('colors_primary_bg', { values: ['#1E88E5', '#FF5722'], valueType: 'color' });
+    leafData.set('spacing_md', { values: [8, 12], valueType: 'int' });
+
+    const ir = makeMinimalIR({
+      themes: {
+        themeNames: ['default', 'dark'],
+        defaultIndex: 0,
+        leafData,
+      },
+    });
+    const result = serializeIR(ir);
+    expect(result.themes).toBeDefined();
+    const themes = result.themes as Record<string, unknown>;
+    expect(themes.themeNames).toEqual(['default', 'dark']);
+    expect(themes.defaultIndex).toBe(0);
+
+    const ld = themes.leafData as Record<string, unknown>;
+    expect(ld['colors_primary_bg']).toEqual({ values: ['#1E88E5', '#FF5722'], valueType: 'color' });
+    expect(ld['spacing_md']).toEqual({ values: [8, 12], valueType: 'int' });
+
+    expect(() => JSON.stringify(result)).not.toThrow();
+  });
+
+  it('handles ReactiveNode with exprIR (ExprNode AST)', () => {
+    const node = makeReactiveNode({
+      kind: 'memo',
+      exprType: 'string',
+      exprIR: {
+        kind: 'ternary',
+        condition: { kind: 'entity_prop', entityId: 'light.office', property: 'isOn', type: 'bool' },
+        consequent: { kind: 'literal', value: 'On', type: 'string' },
+        alternate: { kind: 'literal', value: 'Off', type: 'string' },
+      },
+    });
+
+    const ir = makeMinimalIR({ reactiveNodes: [node as unknown as ReactiveNodeLike] });
+    const result = serializeIR(ir);
+    const serializedNode = (result.reactiveNodes as Record<string, unknown>[])[0];
+    expect(serializedNode.exprIR).toBeDefined();
+    expect((serializedNode.exprIR as Record<string, unknown>).kind).toBe('ternary');
+
+    expect(() => JSON.stringify(result)).not.toThrow();
+  });
+
+  it('preserves entities and components as-is', () => {
+    const ir = makeMinimalIR({
+      entities: [
+        { entityId: 'light.office', domain: 'light', sensorType: 'binary_sensor' as const, generatedId: 'ha_light_office' },
+      ],
+      components: [
+        { section: 'image', id: 'img_logo', config: { file: 'logo.png', resize: '64x64' } },
+      ],
+    });
+    const result = serializeIR(ir);
+    expect(result.entities).toHaveLength(1);
+    expect(result.components).toHaveLength(1);
+    expect(() => JSON.stringify(result)).not.toThrow();
+  });
+});
+
+describe('writeIRDebugFiles', () => {
+  it('writes JSON and HTML files to the build directory', () => {
+    const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'ir-debug-test-'));
+    try {
+      const ir = makeMinimalIR({
+        sections: [
+          { key: 'esphome', value: { kind: 'object', entries: [{ key: 'name', value: { kind: 'scalar', value: 'test' } }] } },
+        ],
+      });
+
+      const htmlPath = writeIRDebugFiles(ir, tmpDir);
+
+      // JSON file
+      const jsonPath = path.join(tmpDir, 'ir-debug.json');
+      expect(fs.existsSync(jsonPath)).toBe(true);
+      const json = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
+      expect(json.sections).toHaveLength(1);
+      expect(json.sections[0].key).toBe('esphome');
+
+      // HTML file
+      expect(fs.existsSync(htmlPath)).toBe(true);
+      expect(htmlPath).toBe(path.join(tmpDir, 'ir-debug.html'));
+      const html = fs.readFileSync(htmlPath, 'utf8');
+      expect(html).toContain('<!DOCTYPE html>');
+      expect(html).toContain('ESPCompose');
+      expect(html).toContain('IR_DATA');
+      expect(html).toContain('"test"');
+    } finally {
+      fs.rmSync(tmpDir, { recursive: true, force: true });
+    }
+  });
+});

@@ -8,6 +8,7 @@
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts --clean --external @esphome/compose --external esbuild",
     "typecheck": "tsc --noEmit",
+    "lint": "eslint src",
     "clean": "rimraf dist",
     "test": "vitest run"
   },

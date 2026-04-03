@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { Signal, Memo, Effect, Scheduler } from '../runtime/signals';
+import { Scheduler } from '../runtime/signals';
 import { MockProvider } from '../providers/mock-provider';
 import {
   setSimulatorProvider,
@@ -286,10 +286,6 @@ function irArray(items: IRValue[]): IRValue {
   return { kind: 'array', items };
 }
 
-function irNull(): IRValue {
-  return { kind: 'null' };
-}
-
 function makeEmptyIR(sections: IRSection[]): SemanticIR {
   return {
     sections,
@@ -462,9 +458,10 @@ describe('IR-based simulator renderer', () => {
 
   it('classifies IRAction as action prop', () => {
     const rawActions = [{
-      'homeassistant.service': {
-        service: 'light.toggle',
-        entity_id: 'light.kitchen',
+      kind: 'ha_service',
+      action: 'light.toggle',
+      data: {
+        entity_id: { kind: 'literal', value: 'light.kitchen' },
       },
     }];
 

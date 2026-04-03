@@ -167,15 +167,18 @@ export function lvglWidgetToPlain(el: EspComposeElement): Record<string, unknown
 
   const data: Record<string, unknown> = { ...allProps };
 
-  if (nestedWidgets.length > 0) {
-    data.widgets = nestedWidgets;
-  }
-
   const yamlKey = toYamlKey(el.type as string);
 
   detectAndRegisterReactiveProps(data, yamlKey);
 
-  return { [yamlKey]: stripUndefined(keysToSnakeCase(data)) };
+  // Serialize own props first, then attach already-serialized child widgets
+  // to avoid double-serialization which breaks capture WeakMap references.
+  const serialized = stripUndefined(keysToSnakeCase(data));
+  if (nestedWidgets.length > 0) {
+    serialized.widgets = nestedWidgets;
+  }
+
+  return { [yamlKey]: serialized };
 }
 
 /**
@@ -197,20 +200,23 @@ export function buildLvglSection(el: EspComposeElement): Record<string, unknown>
       const pageResolved = resolveLvglChildren(pageChildren);
       const pageWidgets = pageResolved.filter((c) => isLvglElement(c.type)).map(lvglWidgetToPlain);
       const pageData: Record<string, unknown> = { ...pageProps };
-      if (pageWidgets.length > 0) {
-        pageData.widgets = pageWidgets;
-      }
       detectAndRegisterReactiveProps(pageData, 'page');
-      pages.push(stripUndefined(keysToSnakeCase(pageData)));
+      // Serialize own props first, then attach already-serialized child widgets.
+      const serializedPage = stripUndefined(keysToSnakeCase(pageData));
+      if (pageWidgets.length > 0) {
+        serializedPage.widgets = pageWidgets;
+      }
+      pages.push(serializedPage);
     } else if (isLvglElement(child.type)) {
       topWidgets.push(lvglWidgetToPlain(child));
     }
     // Non-lvgl children are ignored (shouldn't appear here)
   }
 
-  const data: Record<string, unknown> = { ...allProps };
-  if (pages.length > 0) data.pages = pages;
-  if (topWidgets.length > 0) data.widgets = topWidgets;
+  // Serialize own props first, then attach already-serialized children.
+  const serialized = stripUndefined(keysToSnakeCase({ ...allProps }));
+  if (pages.length > 0) serialized.pages = pages;
+  if (topWidgets.length > 0) serialized.widgets = topWidgets;
 
-  return stripUndefined(keysToSnakeCase(data));
+  return serialized;
 }

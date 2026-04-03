@@ -265,18 +265,15 @@ function processJsxAttributeExpression(
 
   const irResult = translateReactiveExprIR(expr, ctx);
   if (!irResult) {
-    // Fallback: wrap in useMemo() for runtime codegen
-    const { line } = sourceFile.getLineAndCharacterOfPosition(expr.getStart(sourceFile));
-    diagnostics.push({ message: 'could not AST-compile expression, falling back to useMemo()', file: sourceFile.fileName, line: line + 1 });
-    const exprText = expr.getText(sourceFile);
-    const start = expr.getStart(sourceFile);
-    const end = expr.getEnd();
-    edits.push({
-      position: start,
-      deleteEnd: end,
-      text: `useMemo(() => ${exprText})`,
+    const { line, character } = sourceFile.getLineAndCharacterOfPosition(expr.getStart(sourceFile));
+    diagnostics.push({
+      message: `Unsupported reactive expression: cannot compile to ExprIR. ` +
+        `Expression contains patterns not supported by the compiler (e.g. unsupported method calls, ` +
+        `property access, or operators). Simplify the expression or extract it into a supported form.`,
+      file: sourceFile.fileName,
+      line: line + 1,
+      character: character + 1,
     });
-    onTransform();
     return;
   }
 
@@ -358,9 +355,16 @@ function processExplicitMemo(
 
   const irResult = translateReactiveExprIR(bodyExpr, ctx);
   if (!irResult) {
-    const { line } = sourceFile.getLineAndCharacterOfPosition(callExpr.getStart(sourceFile));
-    diagnostics.push({ message: 'could not AST-compile memo() body', file: sourceFile.fileName, line: line + 1 });
-    return; // Can't compile — leave as useMemo() for runtime
+    const { line, character } = sourceFile.getLineAndCharacterOfPosition(callExpr.getStart(sourceFile));
+    diagnostics.push({
+      message: `Unsupported expression in useMemo() body: cannot compile to ExprIR. ` +
+        `The memo body contains patterns not supported by the compiler. ` +
+        `Simplify the expression or extract it into a supported form.`,
+      file: sourceFile.fileName,
+      line: line + 1,
+      character: character + 1,
+    });
+    return;
   }
 
   // Replace the entire useMemo(...) call with compiled call

@@ -47,14 +47,14 @@ export function ScriptButton() {
   const greet = useScript(Object.assign(async () => {
     logger.log('Hello!');
     await delay(500);
-  }, { __compiledScript: {"id":"greet","then":[{"logger.log":"Hello!"},{"delay":"500ms"}]} }));
+  }, { __compiledScript: {"id":"greet","then":[{"kind":"logger","message":"Hello!"},{"kind":"delay","duration":"500ms"}]} }));
 
   return (
     <binary_sensor
       platform="gpio"
       pin={4}
       name="ScriptBtn"
-      onPress={Object.assign(async () => { await greet(); }, { __compiledActions: [{"script.execute":{"id":"greet"}},{"script.wait":{"id":"greet"}}] })}
+      onPress={Object.assign(async () => { await greet(); }, { __compiledActions: [{"kind":"script_execute","scriptId":"greet"},{"kind":"script_wait","scriptId":"greet"}] })}
     />
   );
 }

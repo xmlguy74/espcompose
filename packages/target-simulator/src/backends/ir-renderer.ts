@@ -17,7 +17,7 @@
 // ────────────────────────────────────────────────────────────────────────────
 
 import type { ExprNode } from '@esphome/compose';
-import type { SemanticIR, IRValue, IRObject, IRReactive, IRRef, IRAction, IRSecret, IRTriggerVar } from '@esphome/compose/internals';
+import type { SemanticIR, IRValue, IRObject, IRReactive, IRRef, IRAction, IRSecret, IRTriggerVar, ActionNode } from '@esphome/compose/internals';
 import type { RuntimeNode, RuntimeProp, RuntimeDependency, ActionStep } from '../types';
 import { Signal, Scheduler } from '../runtime/signals';
 import type { MockProvider } from '../providers/mock-provider';
@@ -325,38 +325,92 @@ function irActionToRuntimeProp(
   };
 }
 
+/**
+ * Convert ActionNode[] from SemanticIR to simulator-friendly ActionStep[] format.
+ * ActionNode is the target-agnostic IR from the CLI compiler.
+ */
 function interpretActionSteps(actions: unknown[]): ActionStep[] {
   const steps: ActionStep[] = [];
   for (const action of actions) {
     if (action == null || typeof action !== 'object') continue;
-    const obj = action as Record<string, unknown>;
+    const node = action as ActionNode;
 
-    for (const [key, value] of Object.entries(obj)) {
-      if (key === 'homeassistant.service' || key === 'homeassistant.action') {
-        const svc = value as Record<string, unknown>;
-        const fullAction = String(svc.service ?? svc.action ?? '');
-        const data = svc.data as Record<string, unknown> | undefined;
-        steps.push({
-          type: 'ha_service',
-          action: fullAction,
-          entityId: String(svc.entity_id ?? data?.entity_id ?? ''),
-          data: data ?? {},
-        });
-      } else if (key === 'delay') {
-        steps.push({ type: 'delay', duration: String(value) });
-      } else if (key === 'logger.log') {
-        const log = value as Record<string, unknown>;
-        steps.push({
-          type: 'log',
-          message: String(log.format ?? log.message ?? value),
-          level: String(log.level ?? 'INFO'),
-        });
-      } else if (key === 'script.execute') {
-        steps.push({
-          type: 'component_action',
-          target: String((value as Record<string, unknown>)?.id ?? value),
-          method: 'execute',
-        });
+    // Check for ActionNode format (has 'kind' property)
+    if ('kind' in node) {
+      switch (node.kind) {
+        case 'native': {
+          // Parse actionKey like 'light.toggle' into target and method
+          const [target, method] = node.actionKey.split('.');
+          const config = typeof node.config === 'string'
+            ? { id: node.config }
+            : node.config as Record<string, unknown>;
+          steps.push({
+            type: 'component_action',
+            target: String(config.id ?? target),
+            method: method ?? 'toggle',
+            params: config,
+          });
+          break;
+        }
+        case 'ha_service': {
+          const rawEntityId = node.data?.entity_id;
+          const entityId = rawEntityId == null ? ''
+            : typeof rawEntityId === 'string' ? rawEntityId
+            : String((rawEntityId as { value?: unknown }).value ?? '');
+          const data: Record<string, unknown> = {};
+          if (node.data) {
+            for (const [k, v] of Object.entries(node.data)) {
+              if (typeof v !== 'object' || v === null) {
+                data[k] = v;
+              } else {
+                data[k] = (v as { kind: string; value?: unknown }).kind === 'literal'
+                  ? (v as { value: unknown }).value
+                  : v;
+              }
+            }
+          }
+          steps.push({
+            type: 'ha_service',
+            action: node.action,
+            entityId,
+            data,
+          });
+          break;
+        }
+        case 'delay':
+          steps.push({ type: 'delay', duration: node.duration });
+          break;
+        case 'logger':
+          steps.push({
+            type: 'log',
+            message: node.message,
+            level: node.level,
+          });
+          break;
+        case 'script_execute':
+          steps.push({
+            type: 'component_action',
+            target: node.scriptId,
+            method: 'execute',
+          });
+          break;
+        case 'theme_select':
+          steps.push({
+            type: 'theme_select',
+            themeName: node.themeName,
+          });
+          break;
+        case 'if':
+          steps.push({
+            type: 'conditional',
+            condition: () => true, // TODO: evaluate condition
+            then: interpretActionSteps(node.then),
+            else: node.else ? interpretActionSteps(node.else) : undefined,
+          });
+          break;
+        // Ignore other action types for simulator (they'd need more complex handling)
+        default:
+          break;
       }
     }
   }

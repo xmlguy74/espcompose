@@ -29,8 +29,8 @@ export interface IRScriptDefinition {
 export interface IRThemeData {
   themeNames: string[];
   defaultIndex: number;
-  /** For each signal path, ordered values across themes + C++ type. */
-  leafData: Map<string, { values: unknown[]; cppType: string }>;
+  /** For each signal path, ordered values across themes + value type (ExprType compatible). */
+  leafData: Map<string, { values: unknown[]; valueType: string }>;
 }
 
 // ────────────────────────────────────────────────────────────────────────────

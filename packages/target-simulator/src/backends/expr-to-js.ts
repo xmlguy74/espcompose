@@ -10,6 +10,7 @@ import type {
 } from '@esphome/compose';
 import type {
   BuiltinFn,
+  StringMethod,
 } from '@esphome/compose/internals';
 
 // ── Lowering context ─────────────────────────────────────────────────────────
@@ -130,6 +131,31 @@ export function exprToJs(node: ExprNode, ctx: JsLoweringContext): () => unknown 
     case 'trigger_var':
       return () => 0; // Trigger variables not available in simulator
 
+    case 'type_cast': {
+      const inner = exprToJs(node.expr, ctx);
+      return makeTypeCastEval(inner, node.toType);
+    }
+
+    case 'format_string': {
+      const inner = exprToJs(node.expr, ctx);
+      const precision = parseFormatPrecision(node.format);
+      return () => (inner() as number).toFixed(precision);
+    }
+
+    case 'null_coalesce': {
+      const left = exprToJs(node.left, ctx);
+      const right = exprToJs(node.right, ctx);
+      if (node.type === 'float') return () => { const v = left() as number; return isNaN(v) ? right() : v; };
+      if (node.type === 'string') return () => { const v = left() as string; return v === '' ? right() : v; };
+      return () => left() ?? right();
+    }
+
+    case 'string_method': {
+      const obj = exprToJs(node.object, ctx);
+      const args = node.args.map(a => exprToJs(a, ctx));
+      return makeStringMethodEval(node.method, obj, args);
+    }
+
     default:
       throw new Error(`Unknown ExprNode kind: ${(node as ExprNode).kind}`);
   }
@@ -183,6 +209,7 @@ function makeBuiltinEval(fn: BuiltinFn, args: (() => unknown)[]): () => unknown 
     case 'math_round': return () => Math.round(args[0]() as number);
     case 'math_floor': return () => Math.floor(args[0]() as number);
     case 'math_ceil': return () => Math.ceil(args[0]() as number);
+    case 'math_trunc': return () => Math.trunc(args[0]() as number);
     case 'math_sqrt': return () => Math.sqrt(args[0]() as number);
     case 'math_pow': return () => Math.pow(args[0]() as number, args[1]() as number);
     case 'math_log': return () => Math.log(args[0]() as number);
@@ -191,7 +218,46 @@ function makeBuiltinEval(fn: BuiltinFn, args: (() => unknown)[]): () => unknown 
     case 'math_sin': return () => Math.sin(args[0]() as number);
     case 'math_cos': return () => Math.cos(args[0]() as number);
     case 'math_tan': return () => Math.tan(args[0]() as number);
+    case 'math_clamp': return () => Math.min(Math.max(args[0]() as number, args[1]() as number), args[2]() as number);
     case 'is_nan': return () => isNaN(args[0]() as number);
     default: return () => undefined;
+  }
+}
+
+// ── Type cast evaluation ─────────────────────────────────────────────────────
+
+function makeTypeCastEval(inner: () => unknown, toType: string): () => unknown {
+  switch (toType) {
+    case 'float': return () => Number(inner());
+    case 'int': return () => Math.trunc(Number(inner()));
+    case 'string': return () => String(inner());
+    case 'bool': return () => Boolean(inner());
+    default: return inner;
+  }
+}
+
+// ── Format string helpers ────────────────────────────────────────────────────
+
+function parseFormatPrecision(format: string): number {
+  const match = format.match(/%.(\d+)f/);
+  return match ? parseInt(match[1], 10) : 0;
+}
+
+// ── String method evaluation ─────────────────────────────────────────────────
+
+function makeStringMethodEval(
+  method: StringMethod,
+  obj: () => unknown,
+  args: (() => unknown)[],
+): () => unknown {
+  switch (method) {
+    case 'length': return () => String(obj()).length;
+    case 'toUpperCase': return () => String(obj()).toUpperCase();
+    case 'toLowerCase': return () => String(obj()).toLowerCase();
+    case 'substring': return () => String(obj()).substring(args[0]() as number, args[1]?.() as number | undefined);
+    case 'charAt': return () => String(obj()).charAt(args[0]() as number);
+    case 'indexOf': return () => String(obj()).indexOf(String(args[0]()));
+    case 'trim': return () => String(obj()).trim();
+    default: return obj;
   }
 }

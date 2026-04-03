@@ -4,10 +4,10 @@
 // ComposeTarget implementation
 export { createEsphomeTarget } from './target.js';
 
-export { lowerToYamlConfig } from './lower-yaml.js';
-export { generateCppFromIR } from './codegen-cpp.js';
-export type { ThemeData } from './reactive-config.js';
-export { resolveAssets } from './assets.js';
+// Action lowering (used by CLI script-transformer)
+export { lowerActionTree } from './action-lowering.js';
+
+// ESPHome CLI wrappers
 export {
   resolveEsphome,
   esphomeConfig,

@@ -48,7 +48,7 @@ export {
 export {
   themeSignalName,
   dottedToSignalPath,
-  inferCppType,
+  inferValueType,
   THEME_SIGNAL_PREFIX,
 } from './theme-signals';
 export type { ThemeLeaf } from './theme-signals';
@@ -147,10 +147,29 @@ export type {
   IRTreeCollected,
 } from './ir/index';
 export type {
-  ExprType, BinaryOp, UnaryOp, PostfixOp, BuiltinFn,
+  ExprType, BinaryOp, UnaryOp, PostfixOp, BuiltinFn, StringMethod,
   ExprLiteral, ExprSignalRead, ExprMemoRead,
   ExprBinary, ExprUnary, ExprPostfix, ExprTernary,
   ExprCall, ExprConcat, ExprToString, ExprGroup,
   ExprSlot, ExprResolveFont, ExprThemeRead,
-  ExprEntityProp, ExprComponentRead, ExprTriggerVar, ExprNode,
+  ExprEntityProp, ExprComponentRead, ExprTriggerVar,
+  ExprTypeCast, ExprFormatString, ExprNullCoalesce, ExprStringMethod,
+  ExprNode,
+} from './ir/index';
+
+// ── Action IR ────────────────────────────────────────────────────────────────
+export type {
+  ActionNode,
+  IRNativeAction, IRHAServiceAction, IRLoggerAction, IRDelayAction,
+  IRWaitUntilAction, IRIfAction, IRWhileAction, IRRepeatAction,
+  IRScriptExecute, IRScriptWait, IRScriptStop, IRThemeSelect,
+  IRCondition, IRLambdaCondition, IRNativeCondition,
+  IRActionParam, IRLiteralParam, IRTriggerVarParam, IRExpressionParam,
+  IRActionConfig,
+} from './ir/index';
+export {
+  irNativeAction, irHAServiceAction, irLoggerAction, irDelayAction,
+  irWaitUntilAction, irIfAction, irWhileAction, irRepeatAction,
+  irScriptExecute, irScriptWait, irScriptStop, irThemeSelect,
+  irLambdaCondition, irNativeCondition,
 } from './ir/index';

@@ -8,6 +8,7 @@ import { writeTransformedFiles } from './transform/index.js';
 import { LIBRARY_FORMAT_VERSION } from './transform/format-version.js';
 import type { SemanticIR, ComposeTarget } from '@esphome/compose/internals';
 import { buildSemanticIR } from '@esphome/compose/internals';
+import { writeIRDebugFiles } from './ir-debug.js';
 
 export interface CompileOptions {
   /** Absolute path to the TSX/TS entry file. */
@@ -283,7 +284,7 @@ function extractLibraryName(inputPath: string): string {
 }
 
 // ────────────────────────────────────────────────────────────────────────────
-// Phase 3: Execute + emit YAML
+// Phase 3: Execute + render
 // ────────────────────────────────────────────────────────────────────────────
 
 interface ExecuteResult {
@@ -356,10 +357,10 @@ function executeAndBuildIR(bundleFile: string): ExecuteResult {
     const themeNames: string[] = registry.getThemeNames();
     if (themeNames.length > 0) {
       const signalPaths: string[] = registry.getSignalPaths();
-      const leafData = new Map<string, { values: unknown[]; cppType: string }>();
+      const leafData = new Map<string, { values: unknown[]; valueType: string }>();
       for (const path of signalPaths) {
         const values: unknown[] = [];
-        let cppType = 'int32_t';
+        let valueType = 'int32_t';
         for (const name of themeNames) {
           const themes = registry.getThemes();
           const theme = themes.get(name);
@@ -367,13 +368,13 @@ function executeAndBuildIR(bundleFile: string): ExecuteResult {
             const val = theme.values[path];
             if (val) {
               values.push(val.value);
-              cppType = val.cppType;
+              valueType = val.valueType;
             } else {
               values.push(0);
             }
           }
         }
-        leafData.set(path, { values, cppType });
+        leafData.set(path, { values, valueType });
       }
       themeData = {
         themeNames,
@@ -457,6 +458,12 @@ export async function compile(options: CompileOptions): Promise<void> {
   const { entryFile, projectDir, outDir, target, debug = false } = options;
 
   const { ir, buildDir, sourceDir } = await runPipeline(entryFile);
+
+  // Write IR debug files when --debug is set
+  if (debug) {
+    const htmlPath = writeIRDebugFiles(ir, buildDir);
+    console.log(`IR debug viewer: ${htmlPath}`);
+  }
 
   try {
     // Phase 4: Delegate to the target for lowering and output

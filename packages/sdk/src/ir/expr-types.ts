@@ -33,11 +33,20 @@ export type PostfixOp = '++' | '--';
 
 export type BuiltinFn =
   | 'math_abs' | 'math_min' | 'math_max'
-  | 'math_round' | 'math_floor' | 'math_ceil'
+  | 'math_round' | 'math_floor' | 'math_ceil' | 'math_trunc'
   | 'math_sqrt' | 'math_pow'
   | 'math_log' | 'math_log2' | 'math_log10'
   | 'math_sin' | 'math_cos' | 'math_tan'
+  | 'math_clamp'
   | 'is_nan';
+
+// ── String method names ──────────────────────────────────────────────────────
+
+export type StringMethod =
+  | 'length'
+  | 'toUpperCase' | 'toLowerCase'
+  | 'substring' | 'charAt' | 'indexOf'
+  | 'trim';
 
 // ── Expression node types ────────────────────────────────────────────────────
 
@@ -142,6 +151,39 @@ export interface ExprTriggerVar {
   readonly name: string;
 }
 
+/** Explicit type conversion (Number(), String(), Boolean(), Math.trunc()) */
+export interface ExprTypeCast {
+  readonly kind: 'type_cast';
+  readonly expr: ExprNode;
+  readonly fromType: ExprType;
+  readonly toType: ExprType;
+}
+
+/** Formatted number-to-string (e.g. .toFixed(2) → format "%.2f") */
+export interface ExprFormatString {
+  readonly kind: 'format_string';
+  readonly expr: ExprNode;
+  /** printf-style format specifier, e.g. "%.2f" */
+  readonly format: string;
+}
+
+/** Null-coalescing operator (??) — type determines the null-check strategy */
+export interface ExprNullCoalesce {
+  readonly kind: 'null_coalesce';
+  readonly left: ExprNode;
+  readonly right: ExprNode;
+  /** Type of the left operand — backends use this to determine null semantics. */
+  readonly type: ExprType;
+}
+
+/** String method call or property access (.length, .toUpperCase(), etc.) */
+export interface ExprStringMethod {
+  readonly kind: 'string_method';
+  readonly method: StringMethod;
+  readonly object: ExprNode;
+  readonly args: ExprNode[];
+}
+
 // ── Union type ───────────────────────────────────────────────────────────────
 
 export type ExprNode =
@@ -161,4 +203,8 @@ export type ExprNode =
   | ExprThemeRead
   | ExprEntityProp
   | ExprComponentRead
-  | ExprTriggerVar;
+  | ExprTriggerVar
+  | ExprTypeCast
+  | ExprFormatString
+  | ExprNullCoalesce
+  | ExprStringMethod;
