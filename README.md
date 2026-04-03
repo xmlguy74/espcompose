@@ -11,7 +11,7 @@
 
 </div>
 
-# ESPHome Compose
+# ESPCompose
 
 Write [ESPHome](https://esphome.io/) device configurations in TypeScript/TSX instead of YAML.
 

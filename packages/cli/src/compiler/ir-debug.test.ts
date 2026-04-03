@@ -186,7 +186,7 @@ describe('serializeIR', () => {
 });
 
 describe('writeIRDebugFiles', () => {
-  it('writes JSON and HTML files to the build directory', () => {
+  it('writes ir-debug.json and a self-contained ir-debug.html', () => {
     const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'ir-debug-test-'));
     try {
       const ir = makeMinimalIR({
@@ -199,7 +199,10 @@ describe('writeIRDebugFiles', () => {
 
       const htmlPath = writeIRDebugFiles(ir, tmpDir);
 
-      // JSON file
+      // Returned path is ir-debug.html directly in buildDir (not a subdirectory)
+      expect(htmlPath).toBe(path.join(tmpDir, 'ir-debug.html'));
+
+      // JSON is written alongside for external tooling
       const jsonPath = path.join(tmpDir, 'ir-debug.json');
       expect(fs.existsSync(jsonPath)).toBe(true);
       const json = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
@@ -207,14 +210,15 @@ describe('writeIRDebugFiles', () => {
       expect(jsonEsphome.sections).toHaveLength(1);
       expect(jsonEsphome.sections[0].key).toBe('esphome');
 
-      // HTML file
+      // HTML is a single self-contained file
       expect(fs.existsSync(htmlPath)).toBe(true);
-      expect(htmlPath).toBe(path.join(tmpDir, 'ir-debug.html'));
       const html = fs.readFileSync(htmlPath, 'utf8');
       expect(html).toContain('<!DOCTYPE html>');
-      expect(html).toContain('ESPCompose');
-      expect(html).toContain('IR_DATA');
+      // IR data is injected inline — no fetch() needed
+      expect(html).toContain('window.__IR_DATA');
       expect(html).toContain('"test"');
+      // No external asset references (fully self-contained)
+      expect(html).not.toContain('src="./assets/');
     } finally {
       fs.rmSync(tmpDir, { recursive: true, force: true });
     }

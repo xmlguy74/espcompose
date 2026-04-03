@@ -148,3 +148,5 @@ vite.config.ts.timestamp-*
 .cache/
 
 .DS_Store
+
+packages/cli/assets/ir-viewer-dist/

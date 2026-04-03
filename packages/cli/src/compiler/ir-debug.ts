@@ -1,14 +1,17 @@
 // ────────────────────────────────────────────────────────────────────────────
-// IR Debug — Serialize SemanticIR to JSON and generate an interactive HTML viewer.
+// IR Debug — Serialize SemanticIR to JSON and deploy the pre-built viewer.
 //
 // When --debug is passed to the CLI, the compiler writes:
-//   .espcompose-build/ir-debug.json  — raw JSON representation
-//   .espcompose-build/ir-debug.html  — self-contained interactive tree viewer
+//   .espcompose-build/ir-debug.json  — raw JSON (for external tooling)
+//   .espcompose-build/ir-debug.html  — self-contained viewer (all assets + data inlined)
+//
+// vite-plugin-singlefile produces a single index.html with all JS/CSS inline.
+// The CLI injects `window.__IR_DATA = {...}` so the viewer never needs fetch(),
+// making it safe to open directly via file:// with no CORS issues.
 // ────────────────────────────────────────────────────────────────────────────
 
 import * as fs from 'fs';
 import * as path from 'path';
-import Handlebars from 'handlebars';
 import type { SemanticIR } from '@esphome/compose/internals';
 
 // ────────────────────────────────────────────────────────────────────────────
@@ -98,14 +101,21 @@ function circularReplacer() {
 // ────────────────────────────────────────────────────────────────────────────
 
 /**
- * Write ir-debug.json and ir-debug.html to the build directory.
- * Returns the absolute path to the HTML file.
+ * Write ir-debug.json and ir-debug.html to buildDir.
+ * Returns the absolute path to ir-debug.html.
+ *
+ * ir-debug.html is a fully self-contained file: the pre-built viewer
+ * (all JS/CSS inlined via vite-plugin-singlefile) with the IR data
+ * injected as `window.__IR_DATA = {...}` — no fetch() needed at runtime,
+ * so it opens cleanly via file://.
  */
 export function writeIRDebugFiles(ir: SemanticIR, buildDir: string): string {
   const serialized = serializeIR(ir);
   const json = JSON.stringify(serialized, circularReplacer(), 2);
 
   fs.mkdirSync(buildDir, { recursive: true });
+
+  // Write the raw JSON alongside for external tooling.
   fs.writeFileSync(path.join(buildDir, 'ir-debug.json'), json, 'utf8');
 
   const htmlPath = path.join(buildDir, 'ir-debug.html');
@@ -119,22 +129,22 @@ export function writeIRDebugFiles(ir: SemanticIR, buildDir: string): string {
 // ────────────────────────────────────────────────────────────────────────────
 
 function generateHTML(irJson: string): string {
-  // The JSON is embedded as a JS variable. We escape </script> to prevent
-  // premature tag closure, and escape <!-- to prevent comment injection.
+  // Locate the pre-built single-file viewer HTML. In the compiled bundle
+  // __dirname is dist/ (one level from package root); under vitest it is
+  // src/compiler/ (two levels from package root). Try production path first.
+  const prodPath = path.resolve(__dirname, '..', 'assets', 'ir-viewer-dist', 'index.html');
+  const devPath  = path.resolve(__dirname, '..', '..', 'assets', 'ir-viewer-dist', 'index.html');
+  const templatePath = fs.existsSync(prodPath) ? prodPath : devPath;
+  const template = fs.readFileSync(templatePath, 'utf8');
+
+  // Escape </script> and <!-- in the JSON to prevent tag injection.
   const safeJson = irJson
     .replace(/<\/script/gi, '<\\/script')
     .replace(/<!--/g, '<\\!--');
 
-  // Locate templates relative to the package root. The compiled bundle places
-  // this file in dist/ (one level up from templates/), while vitest runs it
-  // from src/compiler/ (two levels up). Try both.
-  const distPath = path.resolve(__dirname, '..', 'templates', 'ir-debug');
-  const srcPath = path.resolve(__dirname, '..', '..', 'templates', 'ir-debug');
-  const templateDir = fs.existsSync(distPath) ? distPath : srcPath;
-  const css = fs.readFileSync(path.join(templateDir, 'ir-debug.css'), 'utf8');
-  const js = fs.readFileSync(path.join(templateDir, 'ir-debug.js'), 'utf8');
-  const htmlTemplate = fs.readFileSync(path.join(templateDir, 'ir-debug.html.hbs'), 'utf8');
-
-  return Handlebars.compile(htmlTemplate, { noEscape: true })({ css, js, data: safeJson });
+  // Inject window.__IR_DATA before </body> so it is available synchronously
+  // when the inlined React bundle executes.
+  const injection = `<script>window.__IR_DATA = ${safeJson};</script>`;
+  return template.replace('</body>', `${injection}\n</body>`);
 }
 

@@ -10,9 +10,11 @@
   "files": [
     "bin",
     "dist",
-    "templates"
+    "templates",
+    "assets"
   ],
   "scripts": {
+    "prebuild": "node -e \"const fs=require('fs'); fs.rmSync('assets/ir-viewer-dist',{recursive:true,force:true}); fs.cpSync('../ir-viewer/dist','assets/ir-viewer-dist',{recursive:true,force:true});\"",
     "build": "tsup src/cli.ts src/index.ts --format cjs --dts --external eslint --external @esphome/compose-eslint --external @esphome/compose-target-simulator --external @esphome/compose-target-esphome --external typescript-eslint",
     "typecheck": "tsc --noEmit",
     "clean": "rimraf dist",
@@ -53,6 +55,7 @@
     "yaml": "catalog:"
   },
   "devDependencies": {
+    "@esphome/ir-viewer": "workspace:*",
     "@types/node": "catalog:",
     "@types/which": "catalog:",
     "tsup": "catalog:",
