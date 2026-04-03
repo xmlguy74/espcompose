@@ -34,9 +34,6 @@ export function useEffect(fn: () => void): void {
       dependencies: deps,
     });
 
-    // Preserve the original JS closure for the simulator.
-    node.jsClosure = fn as () => unknown;
-
     registerReactiveNode(node);
   }
 }

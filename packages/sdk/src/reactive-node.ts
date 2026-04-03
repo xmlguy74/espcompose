@@ -113,26 +113,6 @@ export class ReactiveNode<T = unknown> {
   _index = -1;
 
   /**
-   * Optional JS closure that produced this reactive value.
-   *
-   * Set by useMemo()/useEffect() to preserve the original authored function.
-   * The simulator's IR renderer uses this for live evaluation instead of
-   * falling back to type-based defaults.
-   *
-   * Not set for kind='expression' nodes (HA entity / theme leaf) or for
-   * __espcompose.compiled() nodes (where the JS closure is the memo body).
-   */
-  jsClosure?: () => unknown;
-
-  /**
-   * The JS value produced by evaluating the closure at render time.
-   *
-   * Set by useMemo() when the closure is evaluated during the render pass.
-   * This captures the initial value for the simulator.
-   */
-  jsValue?: unknown;
-
-  /**
    * Target-agnostic expression AST for this reactive node.
    *
    * Set by the AST compiler (__espcompose.compiled) when the expression is

@@ -59,12 +59,6 @@ export function useMemo<T>(fn: () => T): T | ReactiveNode<T> {
     exprType,
   });
 
-  // Preserve the original JS closure and its evaluated value.
-  // The simulator's IR renderer uses these for live evaluation
-  // instead of falling back to type-based defaults.
-  node.jsClosure = fn as () => unknown;
-  node.jsValue = value;
-
   registerReactiveNode(node);
   return node;
 }

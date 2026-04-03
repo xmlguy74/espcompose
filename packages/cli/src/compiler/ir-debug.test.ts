@@ -54,14 +54,12 @@ describe('serializeIR', () => {
     expect(JSON.stringify(result)).toContain('42');
   });
 
-  it('strips jsClosure from ReactiveNode and preserves other fields', () => {
+  it('serializes ReactiveNode fields correctly', () => {
     const node = new ReactiveNode({
       kind: 'memo',
       dependencies: [{ sourceId: 'ha_light', triggerType: 'on_state', sourceDomain: 'binary_sensor' }],
       exprType: 'string',
     });
-    node.jsClosure = () => 'test';
-    node.jsValue = 'initial';
 
     const ir = makeMinimalIR({ reactiveNodes: [node] });
     const result = serializeIR(ir);
@@ -70,8 +68,8 @@ describe('serializeIR', () => {
     expect(serializedNode.kind).toBe('memo');
     expect(serializedNode.dependencies).toEqual(node.dependencies);
     expect(serializedNode.exprType).toBe('string');
-    expect(serializedNode).not.toHaveProperty('jsClosure');
-    expect(serializedNode.jsValue).toBe('initial');
+    // Class brand field should be stripped (it's an own enumerable property)
+    expect(Object.prototype.hasOwnProperty.call(serializedNode, '__reactive_node__')).toBe(false);
 
     expect(() => JSON.stringify(result)).not.toThrow();
   });
@@ -82,7 +80,6 @@ describe('serializeIR', () => {
       dependencies: [],
       exprType: 'bool',
     });
-    node.jsClosure = () => true;
 
     const binding: ReactiveBinding = {
       targetId: 'lbl_1',
@@ -99,7 +96,7 @@ describe('serializeIR', () => {
     const serializedBinding = (result.bindings as Record<string, unknown>[])[0];
     const expr = serializedBinding.expression as Record<string, unknown>;
     expect(expr.kind).toBe('expression');
-    expect(expr).not.toHaveProperty('jsClosure');
+    expect(expr).not.toHaveProperty('__reactive_node__');
 
     expect(() => JSON.stringify(result)).not.toThrow();
   });

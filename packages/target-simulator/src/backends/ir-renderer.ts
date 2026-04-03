@@ -182,12 +182,7 @@ function irReactiveToRuntimeProp(
     }
   }
 
-  // Use ExprIR for evaluation if available (Phase B+), then fall back to
-  // jsClosure (Phase 4), then type-based defaults.
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const nodeAny = node as any;
-  const hasJsClosure = typeof nodeAny.jsClosure === 'function';
-
+  // Use ExprIR for evaluation if available, otherwise fall back to type-based defaults.
   let evaluate: () => unknown;
   let current: unknown;
 
@@ -196,9 +191,6 @@ function irReactiveToRuntimeProp(
     const evaluator = exprToJs(node.exprIR, jsCtx);
     try { current = evaluator(); } catch { current = reactiveDefaultValue(reactive); }
     evaluate = evaluator;
-  } else if (hasJsClosure) {
-    current = nodeAny.jsValue;
-    evaluate = nodeAny.jsClosure as () => unknown;
   } else {
     current = reactiveDefaultValue(reactive);
     evaluate = () => reactiveDefaultValue(reactive);

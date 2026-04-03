@@ -19,8 +19,7 @@ import type { SemanticIR } from '@esphome/compose/internals';
  * Produce a JSON-safe plain object from a SemanticIR.
  *
  * Handles:
- *   - ReactiveNode.jsClosure  → stripped (functions are not serializable)
- *   - ReactiveNode.jsValue    → best-effort via replacer (could be arbitrary)
+ *   - ReactiveNode class-instance fields → stripped (valueOf, toString, isSingleSource, __reactive_node__)
  *   - IRThemeData.leafData    → Map converted to a plain object
  *   - ReactiveBinding.expression → sanitized ReactiveNode
  *
@@ -47,27 +46,12 @@ export function serializeIR(ir: SemanticIR): Record<string, unknown> {
   };
 }
 
-/** Strip non-serializable fields from a ReactiveNode instance. */
+/** Strip non-serializable class-instance fields from a ReactiveNode. */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function sanitizeReactiveNode(node: any): Record<string, unknown> {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { jsClosure, jsValue, valueOf, toString, isSingleSource, __reactive_node__, ...rest } = node as Record<string, unknown>;
-  return {
-    ...rest,
-    // Best-effort for jsValue: stringify then parse to drop non-JSON types
-    ...(jsValue !== undefined ? { jsValue: safeJsonClone(jsValue) } : {}),
-  };
-}
-
-/**
- * Clone a value via JSON round-trip, returning undefined if it can't be serialized.
- */
-function safeJsonClone(value: unknown): unknown {
-  try {
-    return JSON.parse(JSON.stringify(value, circularReplacer()));
-  } catch {
-    return '[unserializable]';
-  }
+  const { valueOf, toString, isSingleSource, __reactive_node__, ...rest } = node as Record<string, unknown>;
+  return rest;
 }
 
 /**
