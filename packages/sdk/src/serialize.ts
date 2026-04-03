@@ -8,6 +8,7 @@ import { registerRefTag } from './ref-registry';
 import { isTriggerVar } from './trigger-args';
 import type { TriggerVar } from './trigger-args';
 import { LambdaMarker, SecretMarker, QuotedMarker, isSerializeMarker } from './markers';
+import type { ActionNode } from './ir/action-types';
 
 // ── IR Capture ─────────────────────────────────────────────────────────────
 // When capture is active, serializeValue() records pre-serialization data
@@ -22,7 +23,7 @@ export interface SerializationCaptures {
   /** Serialized token string → original Ref object */
   refs: Map<string, unknown>;
   /** Serialized action array/object → pre-resolution action metadata */
-  actions: WeakMap<object, { rawActions: unknown[]; refBindings?: Record<string, unknown> }>;
+  actions: WeakMap<object, { rawActions: ActionNode[]; refBindings?: Record<string, unknown> }>;
   /** Serialized Scalar → secret key string */
   secrets: WeakMap<object, string>;
   /** Serialized Scalar → TriggerVar marker */
@@ -200,7 +201,7 @@ export function serializeValue(v: unknown): unknown {
     const result = restoreLambdaMarkers(actions);
     if (_captures && result !== null && typeof result === 'object') {
       _captures.actions.set(result as object, {
-        rawActions: fn.__compiledActions,
+        rawActions: fn.__compiledActions as ActionNode[],
         refBindings: fn.__refBindings,
       });
     }

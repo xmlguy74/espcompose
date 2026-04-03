@@ -6,7 +6,7 @@ import ts from 'typescript';
 import { ESLint } from 'eslint';
 import { writeTransformedFiles } from './transform/index.js';
 import { LIBRARY_FORMAT_VERSION } from './transform/format-version.js';
-import type { SemanticIR, ComposeTarget } from '@esphome/compose/internals';
+import type { SemanticIR, ComposeTarget, BuildSemanticIRInput } from '@esphome/compose/internals';
 import { buildSemanticIR } from '@esphome/compose/internals';
 import { writeIRDebugFiles } from './ir-debug.js';
 
@@ -322,7 +322,7 @@ function executeAndBuildIR(bundleFile: string): ExecuteResult {
   cjsSDK.clearThemeNodeCache();
 
   // Wrap the bundle load and render in both a script scope and a reactive scope.
-  let collectedScripts: Array<{ id: string; then: unknown[] }> = [];
+  let collectedScripts: unknown[] = [];
   cjsSDK.startSerializationCapture();
   const { result: reactiveResult, bindings, entities, components, reactiveNodes } = cjsSDK.withReactiveScope(() => {
     const { result: config, scripts } = cjsSDK.withScriptScope(() => {
@@ -392,7 +392,7 @@ function executeAndBuildIR(bundleFile: string): ExecuteResult {
         bindings: bindings ?? [],
         entities: entities ?? [],
         components: components ?? [],
-        scripts: collectedScripts,
+        scripts: collectedScripts as BuildSemanticIRInput['scripts'],
         reactiveNodes: reactiveNodes ?? [],
         themes: themeData,
       })

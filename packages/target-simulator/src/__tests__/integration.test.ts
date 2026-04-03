@@ -569,12 +569,12 @@ describe('IR-based simulator renderer', () => {
           ]),
         },
       ],
-      bindings: [],
       entities: [
         { entityId: 'light.kitchen', domain: 'light', sensorType: 'binary_sensor', generatedId: 'ha_light_kitchen' },
       ],
       components: [],
       scripts: [],
+      bindings: [],
       reactiveNodes: [],
     };
 

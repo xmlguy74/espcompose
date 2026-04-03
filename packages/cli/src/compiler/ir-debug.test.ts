@@ -4,19 +4,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as os from 'os';
 import type { SemanticIR, ReactiveBinding } from '@esphome/compose/internals';
-
-type ReactiveNodeLike = SemanticIR['reactiveNodes'][number];
-
-/** Create a ReactiveNode-shaped object for testing. */
-function makeReactiveNode(overrides?: Record<string, unknown>): Record<string, unknown> {
-  return {
-    __reactive_node__: true,
-    kind: 'expression',
-    dependencies: [],
-    _index: -1,
-    ...overrides,
-  };
-}
+import { ReactiveNode } from '@esphome/compose';
 
 function makeMinimalIR(overrides?: Partial<SemanticIR>): SemanticIR {
   return {
@@ -67,15 +55,15 @@ describe('serializeIR', () => {
   });
 
   it('strips jsClosure from ReactiveNode and preserves other fields', () => {
-    const node = makeReactiveNode({
+    const node = new ReactiveNode({
       kind: 'memo',
-      dependencies: [{ sourceId: 'ha_light', property: 'isOn', domain: 'light', entityId: 'light.office' }],
+      dependencies: [{ sourceId: 'ha_light', triggerType: 'on_state', sourceDomain: 'binary_sensor' }],
       exprType: 'string',
-      jsClosure: () => 'test',
-      jsValue: 'initial',
     });
+    node.jsClosure = () => 'test';
+    node.jsValue = 'initial';
 
-    const ir = makeMinimalIR({ reactiveNodes: [node as unknown as ReactiveNodeLike] });
+    const ir = makeMinimalIR({ reactiveNodes: [node] });
     const result = serializeIR(ir);
     const serializedNode = (result.reactiveNodes as Record<string, unknown>[])[0];
 
@@ -89,25 +77,27 @@ describe('serializeIR', () => {
   });
 
   it('sanitizes ReactiveNode in bindings', () => {
-    const node = makeReactiveNode({
+    const node = new ReactiveNode({
       kind: 'expression',
+      dependencies: [],
       exprType: 'bool',
-      jsClosure: () => true,
     });
+    node.jsClosure = () => true;
+
+    const binding: ReactiveBinding = {
+      targetId: 'lbl_1',
+      targetType: 'lvgl_label',
+      targetProp: 'text',
+      expression: node,
+    };
 
     const ir = makeMinimalIR({
-      bindings: [
-        {
-          targetId: 'lbl_1',
-          targetType: 'lvgl_label',
-          targetProp: 'text',
-          expression: node as unknown as ReactiveBinding['expression'],
-        },
-      ],
+      reactiveNodes: [node],
+      bindings: [binding],
     });
     const result = serializeIR(ir);
-    const binding = (result.bindings as Record<string, unknown>[])[0];
-    const expr = binding.expression as Record<string, unknown>;
+    const serializedBinding = (result.bindings as Record<string, unknown>[])[0];
+    const expr = serializedBinding.expression as Record<string, unknown>;
     expect(expr.kind).toBe('expression');
     expect(expr).not.toHaveProperty('jsClosure');
 
@@ -140,18 +130,19 @@ describe('serializeIR', () => {
   });
 
   it('handles ReactiveNode with exprIR (ExprNode AST)', () => {
-    const node = makeReactiveNode({
+    const node = new ReactiveNode({
       kind: 'memo',
+      dependencies: [],
       exprType: 'string',
-      exprIR: {
-        kind: 'ternary',
-        condition: { kind: 'entity_prop', entityId: 'light.office', property: 'isOn', type: 'bool' },
-        consequent: { kind: 'literal', value: 'On', type: 'string' },
-        alternate: { kind: 'literal', value: 'Off', type: 'string' },
-      },
     });
+    node.exprIR = {
+      kind: 'ternary',
+      test: { kind: 'entity_prop', entityId: 'light.office', property: 'isOn', type: 'bool' },
+      consequent: { kind: 'literal', value: 'On', type: 'string' },
+      alternate: { kind: 'literal', value: 'Off', type: 'string' },
+    };
 
-    const ir = makeMinimalIR({ reactiveNodes: [node as unknown as ReactiveNodeLike] });
+    const ir = makeMinimalIR({ reactiveNodes: [node] });
     const result = serializeIR(ir);
     const serializedNode = (result.reactiveNodes as Record<string, unknown>[])[0];
     expect(serializedNode.exprIR).toBeDefined();

@@ -10,7 +10,7 @@
 // ────────────────────────────────────────────────────────────────────────────
 
 import { Scalar } from 'yaml';
-import type { SemanticIR, IRValue, IRObject, IRArray, IRAction, IRSecret, IRTriggerVar, ActionNode } from '@esphome/compose/internals';
+import type { SemanticIR, IRValue, IRObject, IRArray, IRAction, IRSecret, IRTriggerVar } from '@esphome/compose/internals';
 import { getTriggerSignature } from '@esphome/compose/internals';
 import { injectHASensorImports } from './reactive-injector.js';
 import { injectReactiveBindingsRuntime } from './reactive-config.js';
@@ -165,7 +165,7 @@ function irValueToYaml(node: IRValue, ctx?: CppLoweringContext): unknown {
     case 'action': {
       const actionNode = node as IRAction;
       // Lower ActionNode[] to ESPHome YAML format, then resolve ref bindings
-      let actions: unknown[] = lowerActionTree(actionNode.actions as ActionNode[]);
+      let actions: unknown[] = lowerActionTree(actionNode.actions);
       if (actionNode.refBindings) {
         actions = actions.map(a =>
           resolveRefBindingsInValue(a, actionNode.refBindings!),
@@ -224,6 +224,11 @@ export function lowerToYamlConfig(
   ir: SemanticIR,
   cppResult: CppBackendResult | null,
 ): Record<string, unknown> {
+  // Use side-channel arrays as authoritative source for reactive data
+  // (hook-registered nodes may not appear in the config tree)
+  const reactiveNodes = ir.reactiveNodes;
+  const bindings = ir.bindings;
+
   // Build a CppLoweringContext for initial value lambda generation
   let cppCtx: CppLoweringContext | undefined;
   if (cppResult) {
@@ -242,7 +247,7 @@ export function lowerToYamlConfig(
     // Populate memoNames from reactive nodes
     const memoNames = new Map<number, string>();
     let memoIdx = 0;
-    for (const node of ir.reactiveNodes) {
+    for (const node of reactiveNodes) {
       if (node.kind === 'memo') {
         memoNames.set(node._index ?? memoIdx, `memo_${memoIdx}`);
         memoIdx++;
@@ -263,7 +268,7 @@ export function lowerToYamlConfig(
   if (cppResult) {
     finalConfig = injectReactiveBindingsRuntime(
       loweredConfig,
-      ir.bindings,
+      bindings,
       ir.entities,
       cppResult.runtimeConfig,
     );
@@ -284,7 +289,7 @@ export function lowerToYamlConfig(
   if (ir.scripts.length > 0) {
     finalConfig['script'] = ir.scripts.map((s) => ({
       id: s.id,
-      then: lowerActionTree(s.then as ActionNode[]),
+      then: lowerActionTree(s.then),
     }));
   }
 

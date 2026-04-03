@@ -12,6 +12,7 @@
 
 import type { ReactiveNode } from '../reactive-node';
 import type { ReactiveBinding, HAEntityRegistration, ComponentRegistration } from '../hooks/useReactiveScope';
+import type { ActionNode } from './action-types';
 
 // ────────────────────────────────────────────────────────────────────────────
 // Script definition (re-declared here to avoid circular imports with hooks)
@@ -19,7 +20,7 @@ import type { ReactiveBinding, HAEntityRegistration, ComponentRegistration } fro
 
 export interface IRScriptDefinition {
   id: string;
-  then: unknown[];
+  then: ActionNode[];
 }
 
 // ────────────────────────────────────────────────────────────────────────────
@@ -45,15 +46,21 @@ export interface IRThemeData {
  * SemanticIR and produce target-specific output (YAML + C++ headers, or
  * RuntimeNode[] + HTML for the browser simulator).
  *
- * Bundles the config tree (with semantic value nodes) together with all
- * side-channel data collected during the render pass. This is everything
- * a backend needs to produce target-specific output.
+ * The config tree contains semantic value nodes (IRReactive, IRRef, etc.)
+ * that preserve pre-serialization data. Use collectFromIR() to extract
+ * reactive nodes and bindings from the tree.
+ *
+ * Side-channel arrays carry data registered via hooks during the render
+ * pass. Some of this data may NOT be embedded in the config tree (e.g.,
+ * reactive nodes created by hooks but not used as JSX props). Backends
+ * should use these arrays as the authoritative source for reactive nodes
+ * and bindings rather than relying solely on tree walking.
  */
 export interface SemanticIR {
   /** Top-level config sections (esphome:, wifi:, lvgl:, sensor:, etc.) */
   sections: IRSection[];
 
-  /** Reactive bindings: links ReactiveNodes to target widget props */
+  /** Reactive bindings registered via hooks during the render pass */
   bindings: ReactiveBinding[];
 
   /** HA entity registrations for auto-generated sensor imports */
@@ -65,7 +72,7 @@ export interface SemanticIR {
   /** Named script definitions from useScript() */
   scripts: IRScriptDefinition[];
 
-  /** All ReactiveNode instances created during the render pass */
+  /** Reactive nodes registered via hooks during the render pass */
   reactiveNodes: ReactiveNode[];
 
   /** Theme data from the theme registry (undefined if no themes) */
@@ -151,17 +158,14 @@ export interface IRReactive {
 }
 
 /**
- * A cross-component reference — wraps the original Ref object.
+ * A cross-component reference — wraps the serialized ref token.
  *
- * Preserves the typed Ref so backends can resolve component IDs,
- * action methods, and reactive properties from the original object.
+ * Backends use the token to resolve component IDs in the final output.
  */
 export interface IRRef {
   kind: 'ref';
   /** The serialized token string (e.g. "r_k7m3dh9z2"). */
   token: string;
-  /** The original Ref object (preserves phantom type brand and action methods). */
-  ref: unknown;
 }
 
 /**
@@ -173,7 +177,7 @@ export interface IRRef {
 export interface IRAction {
   kind: 'action';
   /** The raw compiled action tree (pre-ref-resolution). */
-  actions: unknown[];
+  actions: ActionNode[];
   /** Variable name → Ref mappings for resolving ref references in actions. */
   refBindings?: Record<string, unknown>;
 }
@@ -229,11 +233,11 @@ export function irReactive(node: ReactiveNode, binding?: ReactiveBinding): IRRea
   return { kind: 'reactive', node, ...(binding ? { binding } : {}) };
 }
 
-export function irRef(token: string, ref: unknown): IRRef {
-  return { kind: 'ref', token, ref };
+export function irRef(token: string): IRRef {
+  return { kind: 'ref', token };
 }
 
-export function irAction(actions: unknown[], refBindings?: Record<string, unknown>): IRAction {
+export function irAction(actions: ActionNode[], refBindings?: Record<string, unknown>): IRAction {
   return { kind: 'action', actions, ...(refBindings ? { refBindings } : {}) };
 }
 

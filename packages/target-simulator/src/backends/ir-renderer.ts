@@ -329,11 +329,11 @@ function irActionToRuntimeProp(
  * Convert ActionNode[] from SemanticIR to simulator-friendly ActionStep[] format.
  * ActionNode is the target-agnostic IR from the CLI compiler.
  */
-function interpretActionSteps(actions: unknown[]): ActionStep[] {
+function interpretActionSteps(actions: ActionNode[]): ActionStep[] {
   const steps: ActionStep[] = [];
   for (const action of actions) {
     if (action == null || typeof action !== 'object') continue;
-    const node = action as ActionNode;
+    const node = action;
 
     // Check for ActionNode format (has 'kind' property)
     if ('kind' in node) {
@@ -507,7 +507,7 @@ function irWidgetObjectToRuntimeNode(
     }
     // Action props that are arrays (compiled action lists)
     if (isActionPropKey(key) && entry.value.kind === 'array') {
-      const actionItems = entry.value.items.map(irValueToPlain);
+      const actionItems = entry.value.items.map(irValueToPlain) as ActionNode[];
       const steps = interpretActionSteps(actionItems);
       props[key] = {
         kind: 'action',

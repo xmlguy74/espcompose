@@ -16,6 +16,7 @@
 import type { ReactiveBinding, HAEntityRegistration, ComponentRegistration } from '../hooks/useReactiveScope';
 import type { ReactiveNode } from '../reactive-node';
 import type { SerializationCaptures } from '../serialize';
+import type { ActionNode } from './action-types';
 import type {
   SemanticIR,
   IRSection,
@@ -129,9 +130,8 @@ function configValueToIR(val: unknown, ctx: WalkContext): IRValue {
 
   // ── Check capture map for ref token strings ────────────────────────────
   if (typeof val === 'string') {
-    const refObj = ctx.captures.refs.get(val);
-    if (refObj !== undefined) {
-      return irRef(val, refObj);
+    if (ctx.captures.refs.has(val)) {
+      return irRef(val);
     }
   }
 
@@ -234,7 +234,7 @@ export interface BuildSemanticIRInput {
   /** Serialization captures recorded during the render pass */
   captures: SerializationCaptures;
 
-  /** Reactive bindings linking nodes to widget props */
+  /** Reactive bindings linking nodes to widget props (used to attach bindings to IRReactive nodes in the tree) */
   bindings: ReactiveBinding[];
 
   /** HA entity registrations for sensor imports */
@@ -244,9 +244,9 @@ export interface BuildSemanticIRInput {
   components: ComponentRegistration[];
 
   /** Named script definitions from useScript() */
-  scripts: Array<{ id: string; then: unknown[] }>;
+  scripts: Array<{ id: string; then: ActionNode[] }>;
 
-  /** All ReactiveNode instances created during the render pass */
+  /** Reactive nodes registered during the render pass */
   reactiveNodes: ReactiveNode[];
 
   /** Theme data from the theme registry */

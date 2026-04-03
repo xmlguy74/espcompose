@@ -2,12 +2,8 @@
 // IR Tree Traversal — collect semantic nodes from the config tree
 //
 // Walks the SemanticIR config tree and collects all nodes of each semantic
-// type. This is the foundation for backends to derive reactive data directly
-// from the IR instead of from side-channel arrays.
-//
-// Provides validation: collectFromIR() results can be compared against
-// the side-channel arrays (ir.reactiveNodes, ir.bindings, ir.entities)
-// to prove the IR tree is complete and no captures were missed.
+// type. This is the canonical way for backends to extract reactive data,
+// bindings, refs, actions, secrets, and trigger vars from the IR.
 // ────────────────────────────────────────────────────────────────────────────
 
 import type { ReactiveNode } from '../reactive-node';
@@ -92,17 +88,9 @@ export function collectFromIR(ir: SemanticIR): IRTreeCollected {
 /**
  * Extract ReactiveNode[] from the IR tree's IRReactive nodes.
  *
- * This gives the same set of nodes as ir.reactiveNodes — the memo and
- * effect nodes registered during the render pass. Expression-kind nodes
- * (from HA entity bindings) are accessible via IRReactive.node but are
- * NOT in ir.reactiveNodes (they live only in bindings[].expression).
- *
- * Note: ir.reactiveNodes contains ALL memo/effect nodes created during
- * render (including ones that may not appear in the config tree, e.g.
- * nodes created in hooks that were conditionally excluded). The tree
- * walk only finds nodes that made it into the final config. For
- * validation, compare the tree-derived nodes against ir.bindings
- * (which is the authoritative source for widget↔node connections).
+ * Walks the config tree and collects all ReactiveNode instances from
+ * IRReactive value nodes. This is the canonical way to get reactive
+ * nodes from a SemanticIR.
  */
 export function collectReactiveNodes(ir: SemanticIR): ReactiveNode[] {
   const collected = collectFromIR(ir);

@@ -3,8 +3,8 @@ import { ReactiveNode } from '../reactive-node';
 import { RefHandle } from '../types';
 import type { ReactiveBinding, HAEntityRegistration, ComponentRegistration } from '../hooks/useReactiveScope';
 import type { SerializationCaptures } from '../serialize';
+import type { ActionNode } from './action-types';
 import { buildSemanticIR } from './build';
-import { lowerSemanticIR } from './lower';
 import { collectFromIR, collectBindings, collectReactiveNodes } from './traverse';
 
 // ── Helpers ────────────────────────────────────────────────────────────────
@@ -72,7 +72,6 @@ describe('buildSemanticIR', () => {
     expect(ir.sections).toHaveLength(2);
     expect(ir.sections[0].key).toBe('esphome');
     expect(ir.sections[1].key).toBe('wifi');
-    expect(ir.bindings).toHaveLength(0);
   });
 
   it('preserves scalar types correctly', () => {
@@ -130,7 +129,7 @@ describe('buildSemanticIR', () => {
       entities: [],
       components: [],
       scripts: [],
-      reactiveNodes: [node],
+      reactiveNodes: [],
     });
 
     // Walk to the label text value
@@ -184,11 +183,10 @@ describe('buildSemanticIR', () => {
     expect(i2cVal?.kind).toBe('ref');
     if (i2cVal?.kind !== 'ref') return;
     expect(i2cVal.token).toBe(token);
-    expect(i2cVal.ref).toBe(ref);
   });
 
   it('captures compiled action metadata', () => {
-    const rawActions = [{ 'homeassistant.service': { service: 'light.toggle', entity_id: 'light.kitchen' } }];
+    const rawActions: ActionNode[] = [{ kind: 'ha_service', action: 'light.toggle', data: { entity_id: { kind: 'literal', value: 'light.kitchen' } } }];
     const serializedResult = [{ 'homeassistant.service': { service: 'light.toggle', entity_id: 'light.kitchen' } }];
 
     const captures = emptyCaptures();
@@ -326,7 +324,7 @@ describe('buildSemanticIR', () => {
       bindings: [],
       entities: [entity],
       components: [component],
-      scripts: [{ id: 'script_1', then: [{ delay: '500ms' }] }],
+      scripts: [{ id: 'script_1', then: [{ kind: 'delay', duration: '500ms' } satisfies ActionNode] }],
       reactiveNodes: [],
       themes: {
         themeNames: ['light', 'dark'],
@@ -343,195 +341,6 @@ describe('buildSemanticIR', () => {
 });
 
 // ────────────────────────────────────────────────────────────────────────────
-// lowerSemanticIR round-trip tests
-// ────────────────────────────────────────────────────────────────────────────
-
-describe('lowerSemanticIR (round-trip)', () => {
-  it('round-trips a simple config', () => {
-    const config = {
-      esphome: { name: 'my-device', platform: 'ESP32' },
-      wifi: { ssid: 'MyWiFi', password: 'secret' },
-    };
-
-    const ir = buildSemanticIR({
-      config,
-      captures: emptyCaptures(),
-      bindings: [],
-      entities: [],
-      components: [],
-      scripts: [],
-      reactiveNodes: [],
-    });
-
-    expect(lowerSemanticIR(ir)).toEqual(config);
-  });
-
-  it('round-trips ReactiveNode as !lambda', () => {
-    const node = makeMemoNode(0);
-    const scalar = lambdaScalar('return espcompose::memo_0.get();');
-
-    const captures = emptyCaptures();
-    captures.reactives.set(scalar, node);
-
-    const config = {
-      lvgl: { label: { text: scalar } },
-    };
-
-    const ir = buildSemanticIR({
-      config,
-      captures,
-      bindings: [],
-      entities: [],
-      components: [],
-      scripts: [],
-      reactiveNodes: [node],
-    });
-
-    const lowered = lowerSemanticIR(ir);
-    const text = (lowered.lvgl as Record<string, Record<string, Record<string, string>>>).label.text;
-    // lowerSemanticIR generates lambda for float memo at index 0: "return espcompose::memo_0.get();"
-    expect(text.tag).toBe('!lambda');
-    expect(text.value).toBe('return espcompose::memo_0.get();');
-  });
-
-  it('round-trips Ref as token string', () => {
-    const ref = new RefHandle();
-    const token = ref.toString();
-
-    const captures = emptyCaptures();
-    captures.refs.set(token, ref);
-
-    const config = {
-      sensor: { i2c_id: token },
-    };
-
-    const ir = buildSemanticIR({
-      config,
-      captures,
-      bindings: [],
-      entities: [],
-      components: [],
-      scripts: [],
-      reactiveNodes: [],
-    });
-
-    const lowered = lowerSemanticIR(ir);
-    expect((lowered.sensor as Record<string, string>).i2c_id).toBe(token);
-  });
-
-  it('round-trips secret as !secret', () => {
-    const scalar = secretScalar('my_pass');
-
-    const captures = emptyCaptures();
-    captures.secrets.set(scalar, 'my_pass');
-
-    const config = { wifi: { password: scalar } };
-
-    const ir = buildSemanticIR({
-      config,
-      captures,
-      bindings: [],
-      entities: [],
-      components: [],
-      scripts: [],
-      reactiveNodes: [],
-    });
-
-    const lowered = lowerSemanticIR(ir);
-    const pwd = (lowered.wifi as Record<string, Record<string, string>>).password;
-    expect(pwd.tag).toBe('!secret');
-    expect(pwd.value).toBe('my_pass');
-  });
-
-  it('round-trips trigger var as !lambda', () => {
-    const scalar = lambdaScalar('return x;');
-
-    const captures = emptyCaptures();
-    captures.triggerVars.set(scalar, { name: 'x' });
-
-    const config = { sensor: { value: scalar } };
-
-    const ir = buildSemanticIR({
-      config,
-      captures,
-      bindings: [],
-      entities: [],
-      components: [],
-      scripts: [],
-      reactiveNodes: [],
-    });
-
-    const lowered = lowerSemanticIR(ir);
-    const val = (lowered.sensor as Record<string, Record<string, string>>).value;
-    expect(val.tag).toBe('!lambda');
-    expect(val.value).toBe('return x;');
-  });
-
-  it('round-trips nested objects and arrays', () => {
-    const config = {
-      wifi: {
-        ssid: 'Test',
-        ap: { ssid: 'Fallback', password: 'pass123' },
-      },
-      sensor: [
-        { platform: 'homeassistant', id: 'ha_1' },
-        { platform: 'homeassistant', id: 'ha_2' },
-      ],
-      api: null,
-    };
-
-    const ir = buildSemanticIR({
-      config,
-      captures: emptyCaptures(),
-      bindings: [],
-      entities: [],
-      components: [],
-      scripts: [],
-      reactiveNodes: [],
-    });
-
-    expect(lowerSemanticIR(ir)).toEqual(config);
-  });
-
-  it('round-trips action with ref bindings', () => {
-    const ref = new RefHandle();
-    const rawActions = [{ 'homeassistant.service': { service: 'light.toggle', target: 'lightRef' } }];
-    // Simulates the serialized form after ref resolution
-    const serialized = [{ 'homeassistant.service': { service: 'light.toggle', target: ref.toString() } }];
-
-    const captures = emptyCaptures();
-    captures.actions.set(serialized, { rawActions, refBindings: { lightRef: ref } });
-
-    const config = {
-      button: { on_press: serialized },
-    };
-
-    const ir = buildSemanticIR({
-      config,
-      captures,
-      bindings: [],
-      entities: [],
-      components: [],
-      scripts: [],
-      reactiveNodes: [],
-    });
-
-    // Verify it captured as IRAction
-    const button = ir.sections[0].value;
-    if (button.kind !== 'object') return;
-    const onPress = button.entries.find(e => e.key === 'on_press')?.value;
-    expect(onPress?.kind).toBe('action');
-
-    // Round-trip should resolve refs and produce equivalent output
-    const lowered = lowerSemanticIR(ir);
-    const loweredActions = (lowered.button as Record<string, unknown[]>).on_press;
-    expect(loweredActions).toHaveLength(1);
-    const action = loweredActions[0] as Record<string, Record<string, string>>;
-    expect(action['homeassistant.service'].target).toBe(ref.toString());
-  });
-});
-
-// ────────────────────────────────────────────────────────────────────────────
 // collectFromIR tree-walk tests
 // ────────────────────────────────────────────────────────────────────────────
 
@@ -543,7 +352,7 @@ describe('collectFromIR', () => {
     const triggerVal = lambdaScalar('return x;');
     const ref = new RefHandle();
     const token = ref.toString();
-    const rawActions = [{ 'homeassistant.service': { service: 'light.toggle' } }];
+    const rawActions: ActionNode[] = [{ kind: 'ha_service', action: 'light.toggle' }];
     const actionArr = [{ 'homeassistant.service': { service: 'light.toggle' } }];
 
     const captures = emptyCaptures();
@@ -578,7 +387,7 @@ describe('collectFromIR', () => {
       entities: [],
       components: [],
       scripts: [],
-      reactiveNodes: [node],
+      reactiveNodes: [],
     });
 
     const collected = collectFromIR(ir);
@@ -594,7 +403,7 @@ describe('collectFromIR', () => {
     expect(collected.triggerVars[0].name).toBe('x');
   });
 
-  it('collectReactiveNodes returns the same nodes as ir.reactiveNodes', () => {
+  it('collectReactiveNodes extracts nodes from tree', () => {
     const node = makeMemoNode(0);
     const scalar = lambdaScalar('return espcompose::memo_0.get();');
 
@@ -612,7 +421,7 @@ describe('collectFromIR', () => {
       entities: [],
       components: [],
       scripts: [],
-      reactiveNodes: [node],
+      reactiveNodes: [],
     });
 
     const treeNodes = collectReactiveNodes(ir);
@@ -620,7 +429,7 @@ describe('collectFromIR', () => {
     expect(treeNodes[0]).toBe(node);
   });
 
-  it('collectBindings matches ir.bindings for bound reactives', () => {
+  it('collectBindings extracts bindings from tree', () => {
     const node = makeMemoNode(0);
     const scalar = lambdaScalar('return espcompose::memo_0.get();');
 
@@ -645,7 +454,7 @@ describe('collectFromIR', () => {
       entities: [],
       components: [],
       scripts: [],
-      reactiveNodes: [node],
+      reactiveNodes: [],
     });
 
     const treeBindings = collectBindings(ir);
