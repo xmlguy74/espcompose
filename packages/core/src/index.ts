@@ -4,10 +4,10 @@
  * This package provides the core framework for writing ESPHome configurations
  * using TypeScript/TSX syntax that compiles to ESPHome YAML.
  *
- * Design-system components have moved to @esphome/compose-ui.
+ * Design-system components have moved to @espcompose/compose-ui.
  *
- * Public API: import from '@esphome/compose'
- * Compiler internals: import from '@esphome/compose/internals'
+ * Public API: import from '@espcompose/core'
+ * Compiler internals: import from '@espcompose/core/internals'
  */
 
 // ────────────────────────────────────────────────────────────────────────────

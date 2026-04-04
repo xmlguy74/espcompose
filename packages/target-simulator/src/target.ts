@@ -9,7 +9,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { exec } from 'child_process';
-import type { ComposeTarget, EmitRequest, EmitResult } from '@esphome/compose/internals';
+import type { ComposeTarget, EmitRequest, EmitResult } from '@espcompose/core/internals';
 import { simulatorBuildFromIR } from './build';
 
 export interface SimulatorTargetOptions {

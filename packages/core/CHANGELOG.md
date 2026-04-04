@@ -1,4 +1,4 @@
-# @esphome/compose
+# @espcompose/core
 
 ## 0.4.0
 

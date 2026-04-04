@@ -271,8 +271,8 @@ describe('Simulator render function', () => {
 // ────────────────────────────────────────────────────────────────────────────
 
 import { lowerToSimulator } from '../backends/ir-renderer';
-import { ReactiveNode } from '@esphome/compose';
-import type { SemanticIR, IRSection, IRValue } from '@esphome/compose/internals';
+import { ReactiveNode } from '@espcompose/core';
+import type { SemanticIR, IRSection, IRValue } from '@espcompose/core/internals';
 
 function irScalar(value: string | number | boolean): IRValue {
   return { kind: 'scalar', value };

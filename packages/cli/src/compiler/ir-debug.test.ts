@@ -3,8 +3,8 @@ import { serializeIR, writeIRDebugFiles } from './ir-debug';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as os from 'os';
-import type { SemanticIR, ReactiveBinding } from '@esphome/compose/internals';
-import { ReactiveNode } from '@esphome/compose';
+import type { SemanticIR, ReactiveBinding } from '@espcompose/core/internals';
+import { ReactiveNode } from '@espcompose/core';
 
 function makeMinimalIR(overrides?: {
   esphome?: Partial<SemanticIR['esphome']>;

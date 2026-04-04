@@ -6,8 +6,8 @@ import ts from 'typescript';
 import { ESLint } from 'eslint';
 import { writeTransformedFiles } from './transform/index.js';
 import { LIBRARY_FORMAT_VERSION } from './transform/format-version.js';
-import type { SemanticIR, ComposeTarget, BuildSemanticIRInput, IRThemeData } from '@esphome/compose/internals';
-import { buildSemanticIR } from '@esphome/compose/internals';
+import type { SemanticIR, ComposeTarget, BuildSemanticIRInput, IRThemeData } from '@espcompose/core/internals';
+import { buildSemanticIR } from '@espcompose/core/internals';
 import { writeIRDebugFiles } from './ir-debug.js';
 
 export interface CompileOptions {
@@ -59,7 +59,7 @@ async function typeCheck(entryFile: string): Promise<ts.Program> {
       target: ts.ScriptTarget.ES2022,
       moduleResolution: ts.ModuleResolutionKind.Bundler,
       jsx: ts.JsxEmit.ReactJSX,
-      jsxImportSource: '@esphome/compose',
+      jsxImportSource: '@espcompose/core',
       strict: true,
       esModuleInterop: true,
       skipLibCheck: true,
@@ -101,11 +101,11 @@ async function typeCheck(entryFile: string): Promise<ts.Program> {
 /**
  * Build the default ESLint flat config used when a project has no config file.
  *
- * Loads the `@esphome/compose-eslint` recommended preset, which includes
+ * Loads the `@espcompose/compose-eslint` recommended preset, which includes
  * `typescript-eslint` recommended rules and JSX parser options.
  */
 async function buildDefaultConfig(): Promise<ESLint.Options['overrideConfig']> {
-  const { default: composeESLint } = await import('@esphome/compose-eslint');
+  const { default: composeESLint } = await import('@espcompose/compose-eslint');
   return composeESLint.recommended as ESLint.Options['overrideConfig'];
 }
 
@@ -114,7 +114,7 @@ async function buildDefaultConfig(): Promise<ESLint.Options['overrideConfig']> {
  *
  * Always enforced — if the project has its own `eslint.config.*` the ESLint
  * API discovers it automatically; otherwise the compiler supplies a built-in
- * default config based on `@esphome/compose-eslint` recommended.
+ * default config based on `@espcompose/compose-eslint` recommended.
  *
  * Throws on lint errors. Warnings are printed to stderr but do not fail.
  */
@@ -210,9 +210,9 @@ async function bundle(entryFile: string, outFile: string): Promise<void> {
     format: 'cjs',
     target: 'node18',
     jsx: 'automatic',
-    jsxImportSource: '@esphome/compose',
+    jsxImportSource: '@espcompose/core',
     // Keep the SDK external — it will be require()'d from the host process
-    external: ['@esphome/compose'],
+    external: ['@espcompose/core'],
     outfile: outFile,
     sourcemap: false,
     metafile: true,
@@ -296,7 +296,7 @@ interface ExecuteResult {
  */
 function executeAndBuildIR(bundleFile: string): ExecuteResult {
   // Use createRequire so this works correctly in both CJS and ESM contexts.
-  // Rooting the require at the bundle file itself means @esphome/compose
+  // Rooting the require at the bundle file itself means @espcompose/core
   // resolves from the user's project node_modules (bundle sits next to source).
   const _require = createRequire(bundleFile);
 
@@ -309,7 +309,7 @@ function executeAndBuildIR(bundleFile: string): ExecuteResult {
   // statically-imported ESM copy and the user bundle's CJS copy would have
   // separate state and never communicate.
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const cjsSDK = (_require('@esphome/compose') as any).ESPCompose;
+  const cjsSDK = (_require('@espcompose/core') as any).ESPCompose;
 
   // Clear all compiler state for a fresh render pass.
   cjsSDK.clearHAEntityCache();

@@ -1,6 +1,6 @@
 {
-  "name": "@esphome/compose-ui",
-  "version": "0.4.0",
+  "name": "@espcompose/compose-ui",
+  "version": "0.0.1",
   "description": "LVGL Design System components for ESPHome Compose",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -45,11 +45,11 @@
     "access": "public"
   },
   "dependencies": {
-    "@esphome/compose": "workspace:*"
+    "@espcompose/core": "workspace:*"
   },
   "devDependencies": {
-    "@esphome/compose-cli": "workspace:*",
-    "@esphome/compose-eslint": "workspace:*",
+    "@espcompose/compose-cli": "workspace:*",
+    "@espcompose/compose-eslint": "workspace:*",
     "@types/node": "catalog:",
     "eslint": "catalog:",
     "tsx": "catalog:",

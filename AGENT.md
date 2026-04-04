@@ -39,7 +39,7 @@ The compiler runs six phases to turn a `.tsx` source file into target output:
    Transformed files are written to `.espcompose-build/`, preserving directory
    structure. With `--debug`, these files are human-readable.
 4. **Phase 2 — Bundle** — esbuild bundles the transformed TypeScript into a
-   single CJS module (with `@esphome/compose` kept external). Library format
+   single CJS module (with `@espcompose/core` kept external). Library format
    versions are validated here: if a dependency was compiled with an
    incompatible `LIBRARY_FORMAT_VERSION` (currently **2**), the build fails.
 5. **Phase 3 — Execute & Render** — The bundle is `require()`'d in Node.js.
@@ -61,19 +61,19 @@ The project is a pnpm workspace monorepo (Node.js ≥22) managed by Turborepo:
 
 | Package | npm name | Purpose |
 |---------|----------|---------|
-| `packages/sdk` | `@esphome/compose` | Core SDK — JSX runtime, hooks (`useRef`, `useScript`, `useMemo`, `useEffect`, `useHAEntity`, `useImage`, `useFont`), `secret()` helper, `ReactiveNode<T>`, action primitives (`delay`, `logger`), Semantic IR types, `ComposeTarget` interface, theme infrastructure (`registerTheme`, `useReactiveTheme`, `theme.select`), generated component types (316 components), intent system |
-| `packages/cli` | `@esphome/compose-cli` / `espcompose` | CLI binary & compiler pipeline — type-check, lint, AST transforms (reactive + script), esbuild bundle, execute & render, target dispatch, ESPHome CLI wrappers, library pre-compilation |
-| `packages/target-esphome` | `@esphome/compose-target-esphome` | ESPHome backend — YAML config generation, C++ reactive runtime headers (`espcompose_bindings.h`, `espcompose_reactive.h`), `ExprNode` → C++ lowering, HA sensor injection, asset pipeline |
-| `packages/target-simulator` | `@esphome/compose-target-simulator` | Browser preview backend — walks Semantic IR to produce an interactive HTML page with canvas-rendered LVGL widgets, JS reactive runtime (Signal/Memo/Scheduler), mock HA entity provider |
-| `packages/eslint` | `@esphome/compose-eslint` | ESLint plugin with custom rules (JSX children intent validation, trigger body validation) |
-| `packages/ui` | `@esphome/compose-ui` | Design system — reusable LVGL components (Screen, Button, Card, Text, etc.), reactive theme system, token resolvers, pre-built dark/light themes |
-| `packages/e2e` | `@esphome/compose-e2e` (private) | End-to-end snapshot tests — 20 test projects built by the full pipeline, YAML snapshot-tested |
+| `packages/core` | `@espcompose/core` | Core SDK — JSX runtime, hooks (`useRef`, `useScript`, `useMemo`, `useEffect`, `useHAEntity`, `useImage`, `useFont`), `secret()` helper, `ReactiveNode<T>`, action primitives (`delay`, `logger`), Semantic IR types, `ComposeTarget` interface, theme infrastructure (`registerTheme`, `useReactiveTheme`, `theme.select`), generated component types (316 components), intent system |
+| `packages/cli` | `@espcompose/compose-cli` / `espcompose` | CLI binary & compiler pipeline — type-check, lint, AST transforms (reactive + script), esbuild bundle, execute & render, target dispatch, ESPHome CLI wrappers, library pre-compilation |
+| `packages/target-esphome` | `@espcompose/compose-target-esphome` | ESPHome backend — YAML config generation, C++ reactive runtime headers (`espcompose_bindings.h`, `espcompose_reactive.h`), `ExprNode` → C++ lowering, HA sensor injection, asset pipeline |
+| `packages/target-simulator` | `@espcompose/compose-target-simulator` | Browser preview backend — walks Semantic IR to produce an interactive HTML page with canvas-rendered LVGL widgets, JS reactive runtime (Signal/Memo/Scheduler), mock HA entity provider |
+| `packages/eslint` | `@espcompose/compose-eslint` | ESLint plugin with custom rules (JSX children intent validation, trigger body validation) |
+| `packages/ui` | `@espcompose/compose-ui` | Design system — reusable LVGL components (Screen, Button, Card, Text, etc.), reactive theme system, token resolvers, pre-built dark/light themes |
+| `packages/e2e` | `@espcompose/compose-e2e` (private) | End-to-end snapshot tests — 20 test projects built by the full pipeline, YAML snapshot-tested |
 | `packages/demo` | (private) | Example project for development and manual testing |
 
 ## Targets (ComposeTarget Interface)
 
 The compiler communicates with backends through the `ComposeTarget` interface
-defined in `packages/sdk/src/target.ts`:
+defined in `packages/core/src/target.ts`:
 
 ```typescript
 interface ComposeTarget {
@@ -152,7 +152,7 @@ At compile time the secret key-value pair is collected and emitted into
 `secrets.yaml`, while the config YAML receives a `!secret <key>` reference.
 
 ```tsx
-import { secret } from '@esphome/compose';
+import { secret } from '@espcompose/core';
 
 export default (
   <esphome name="my-device">
@@ -171,8 +171,8 @@ for calling the script from trigger handlers. Must be called inside a
 component function body.
 
 ```tsx
-import { delay, logger, useRef, useScript } from '@esphome/compose';
-import type { Switch } from '@esphome/compose';
+import { delay, logger, useRef, useScript } from '@espcompose/core';
+import type { Switch } from '@espcompose/core';
 
 function App() {
   const switchRef = useRef<Switch>();
@@ -209,7 +209,7 @@ YAML action sequences. They are never executed at runtime.
 Trigger props (props starting with `on`) accept `TriggerHandler<T>` — an
 async arrow function whose body is compiled to ESPHome actions.
 
-Supported action primitives (imported from `@esphome/compose`):
+Supported action primitives (imported from `@espcompose/core`):
 - `await delay(ms)` → `delay: <ms>ms`
 - `logger.log(message, level?)` → `logger.log: { message, level? }`
 - `await waitUntil(() => condition)` → `wait_until: { condition: !lambda ... }`
@@ -333,7 +333,7 @@ the current `LIBRARY_FORMAT_VERSION`. Mismatched versions produce a clear error.
 
 ### Type Generation from ESPHome Schemas
 ESPHome publishes JSON schemas at schema.esphome.io. The project includes a
-codegen script (`pnpm --filter @esphome/compose codegen`) that:
+codegen script (`pnpm --filter @espcompose/core codegen`) that:
 - Fetches the schema for the target ESPHome version
 - Maps ESPHome validator types to TypeScript types
 - Emits IntrinsicElements interfaces, prop types, and ref action types
@@ -362,7 +362,7 @@ implemented yet:
 
 ## Key Constraints
 
-- **Never edit generated files directly** — Files under `packages/sdk/src/generated/`
+- **Never edit generated files directly** — Files under `packages/core/src/generated/`
   are auto-generated by `pnpm codegen` (via `scripts/codegen/`). To change
   generated output, modify the codegen scripts (e.g. `lvgl-codegen.ts`,
   `type-mapper.ts`, `overrides.ts`, `action-codegen.ts`) and regenerate.

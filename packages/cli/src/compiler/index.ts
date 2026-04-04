@@ -1,7 +1,7 @@
 export { compile, build, lint, compileToIR } from './compiler';
 export type { CompileOptions } from './compiler';
 // Re-export ComposeTarget from the SDK for convenience
-export type { ComposeTarget, EmitRequest, EmitResult } from '@esphome/compose/internals';
+export type { ComposeTarget, EmitRequest, EmitResult } from '@espcompose/core/internals';
 
 // IR layer
 export {

@@ -4,7 +4,7 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "jsx": "react-jsx",
-    "jsxImportSource": "@esphome/compose",
+    "jsxImportSource": "@espcompose/core",
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
@@ -15,7 +15,7 @@
     "outDir": "dist",
     "rootDir": "src",
     "paths": {
-      "@esphome/compose/jsx-runtime": ["./src/jsx-runtime.ts"]
+      "@espcompose/core/jsx-runtime": ["./src/jsx-runtime.ts"]
     }
   },
   "include": ["src"],

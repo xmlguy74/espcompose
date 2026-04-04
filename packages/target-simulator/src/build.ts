@@ -10,7 +10,7 @@ import { MockProvider } from './providers/mock-provider';
 import { renderSimulatorPage } from './renderer/lvgl-dom';
 import { lowerToSimulator } from './backends/ir-renderer';
 import type { RuntimeNode } from './types';
-import type { SemanticIR } from '@esphome/compose/internals';
+import type { SemanticIR } from '@espcompose/core/internals';
 
 // ── Build result ─────────────────────────────────────────────────────────────
 

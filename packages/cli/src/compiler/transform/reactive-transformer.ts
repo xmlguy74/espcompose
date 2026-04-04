@@ -401,7 +401,7 @@ function injectReactiveImportIfNeeded(sourceFile: ts.SourceFile, edits: SourceEd
     if (!ts.isImportDeclaration(stmt)) continue;
     const moduleSpec = stmt.moduleSpecifier;
     if (!ts.isStringLiteral(moduleSpec)) continue;
-    if (moduleSpec.text !== '@esphome/compose') continue;
+    if (moduleSpec.text !== '@espcompose/core') continue;
 
     // Skip type-only imports — `import type { ... }` is erased at runtime,
     // so injecting `__espcompose` there would leave it undefined at bundle time.
@@ -436,6 +436,6 @@ function injectReactiveImportIfNeeded(sourceFile: ts.SourceFile, edits: SourceEd
 
   edits.push({
     position: 0,
-    text: `import { __espcompose } from '@esphome/compose';\n`,
+    text: `import { __espcompose } from '@espcompose/core';\n`,
   });
 }

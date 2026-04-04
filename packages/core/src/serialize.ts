@@ -304,7 +304,7 @@ export function extractElementProps(el: EspComposeElement): {
  * Fragment sentinel — globally unique via Symbol.for so that CJS and ESM
  * entry points (which may be separate module instances) share the same value.
  */
-export const Fragment: unique symbol = Symbol.for('@esphome/compose.Fragment') as unknown as typeof Fragment;
+export const Fragment: unique symbol = Symbol.for('@espcompose/core.Fragment') as unknown as typeof Fragment;
 
 export function flattenFragments(elements: EspComposeElement[]): EspComposeElement[] {
   const out: EspComposeElement[] = [];

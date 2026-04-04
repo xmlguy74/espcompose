@@ -1,12 +1,12 @@
 {
-  "name": "@esphome/compose-target-simulator",
-  "version": "0.1.0",
+  "name": "@espcompose/compose-target-simulator",
+  "version": "0.0.1",
   "description": "ESPHome Compose Simulator — Browser-based LVGL UI preview for fast iteration",
   "private": true,
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsup src/index.ts --format cjs,esm --dts --clean --external @esphome/compose --external esbuild",
+    "build": "tsup src/index.ts --format cjs,esm --dts --clean --external @espcompose/core --external esbuild",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src",
     "clean": "rimraf dist",
@@ -20,7 +20,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@esphome/compose": "workspace:*",
+    "@espcompose/core": "workspace:*",
     "esbuild": "catalog:"
   },
   "devDependencies": {

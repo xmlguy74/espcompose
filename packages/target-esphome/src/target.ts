@@ -9,7 +9,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import yaml from 'yaml';
-import type { ComposeTarget, EmitRequest, EmitResult } from '@esphome/compose/internals';
+import type { ComposeTarget, EmitRequest, EmitResult } from '@espcompose/core/internals';
 import { lowerToYamlConfig } from './lower-yaml.js';
 import { generateCppFromIR } from './codegen-cpp.js';
 import { resolveAssets } from './assets.js';

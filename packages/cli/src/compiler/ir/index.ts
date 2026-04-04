@@ -31,7 +31,7 @@ export { lowerIR, irValueToConfig } from './lower-ir.js';
 export { analyzeReactiveStrategy } from './hybrid-lowering.js';
 export type { ReactiveStrategy, ReactiveAnalysis } from './hybrid-lowering.js';
 
-// Action tree IR (re-exported from @esphome/compose/internals)
+// Action tree IR (re-exported from @espcompose/core/internals)
 export type {
   ActionNode,
   IRAction,

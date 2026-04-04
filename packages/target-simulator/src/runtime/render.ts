@@ -32,7 +32,7 @@ interface EspComposeElement {
 }
 
 // Fragment sentinel — same symbol as SDK
-const Fragment: unique symbol = Symbol.for('@esphome/compose.Fragment') as unknown as typeof Fragment;
+const Fragment: unique symbol = Symbol.for('@espcompose/core.Fragment') as unknown as typeof Fragment;
 
 // ── ID generation ────────────────────────────────────────────────────────────
 

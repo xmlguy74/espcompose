@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { exprToJs, type JsLoweringContext } from './expr-to-js';
-import type { ExprNode } from '@esphome/compose';
+import type { ExprNode } from '@espcompose/core';
 
 function emptyCtx(): JsLoweringContext {
   return {

@@ -7,11 +7,11 @@
 
 import type {
   ExprNode,
-} from '@esphome/compose';
+} from '@espcompose/core';
 import type {
   BuiltinFn,
   StringMethod,
-} from '@esphome/compose/internals';
+} from '@espcompose/core/internals';
 
 // ── Lowering context ─────────────────────────────────────────────────────────
 

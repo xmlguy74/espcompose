@@ -1,10 +1,10 @@
 // ────────────────────────────────────────────────────────────────────────────
 // Action IR Types — Re-export from SDK
 //
-// The action IR types and constructors are defined in @esphome/compose/internals.
+// The action IR types and constructors are defined in @espcompose/core/internals.
 // This file re-exports them for backwards compatibility with existing CLI code.
 //
-// NOTE: Action lowering (to ESPHome YAML) is in @esphome/compose-target-esphome.
+// NOTE: Action lowering (to ESPHome YAML) is in @espcompose/compose-target-esphome.
 // ────────────────────────────────────────────────────────────────────────────
 
 // Re-export all action types and constructors from SDK
@@ -30,7 +30,7 @@ export type {
   IRTriggerVarParam,
   IRExpressionParam,
   IRActionConfig,
-} from '@esphome/compose/internals';
+} from '@espcompose/core/internals';
 
 export {
   irNativeAction,
@@ -47,8 +47,8 @@ export {
   irThemeSelect,
   irLambdaCondition,
   irNativeCondition,
-} from '@esphome/compose/internals';
+} from '@espcompose/core/internals';
 
 // Backwards compatibility: re-export ActionNode as IRAction
 // TODO: migrate all usages to ActionNode and remove this alias
-export type { ActionNode as IRAction } from '@esphome/compose/internals';
+export type { ActionNode as IRAction } from '@espcompose/core/internals';

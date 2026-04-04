@@ -32,7 +32,7 @@ import {
   irThemeSelect,
   irLambdaCondition,
 } from '../ir/action-tree.js';
-import type { ExprNode } from '@esphome/compose';
+import type { ExprNode } from '@espcompose/core';
 
 // ────────────────────────────────────────────────────────────────────────────
 // Constants

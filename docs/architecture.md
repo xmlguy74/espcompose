@@ -6,7 +6,7 @@ ESPCompose is a TypeScript-to-ESPHome compiler. You write UI and automation logi
 
 ```
 packages/
-  sdk/              Core runtime — JSX execution, reactive hooks, IR types
+  core/             Core runtime — JSX execution, reactive hooks, IR types
   cli/              Compiler — AST transforms, bundling, build orchestration
   target-esphome/   ESPHome backend — YAML + C++ header generation
   target-simulator/ Browser preview — HTML/JS output from the same IR
@@ -66,7 +66,7 @@ Transformed files are written to `.espcompose-build/`, preserving the directory 
 
 ### Phase 2: Bundle
 
-**esbuild** bundles the transformed TypeScript into a single CommonJS file. The SDK (`@esphome/compose`) is kept external — it will be provided at execution time. Library format versions are validated here: if a dependency was compiled with an incompatible `LIBRARY_FORMAT_VERSION`, the build fails with a clear error.
+**esbuild** bundles the transformed TypeScript into a single CommonJS file. The SDK (`@espcompose/core`) is kept external — it will be provided at execution time. Library format versions are validated here: if a dependency was compiled with an incompatible `LIBRARY_FORMAT_VERSION`, the build fails with a clear error.
 
 ### Phase 3: Execute & Render
 
@@ -115,7 +115,7 @@ The IR sits between the render pass and the backend. Every value in the rendered
 | `IRSecret` | Secret reference (`!secret` in YAML) |
 | `IRTriggerVar` | Trigger variable for lambda injection |
 
-The IR is defined in `packages/sdk/src/ir/types.ts`. Building it is handled by `packages/sdk/src/ir/build.ts`.
+The IR is defined in `packages/core/src/ir/types.ts`. Building it is handled by `packages/core/src/ir/build.ts`.
 
 ## Reactive System
 
@@ -204,7 +204,7 @@ When a component reads a theme value, a `theme_read` ExprNode is created. The ES
 
 ## Trigger Registry
 
-The trigger registry (`packages/sdk/src/trigger-registry.ts`) is a hand-maintained map from ESPHome component domains and trigger names to the variables available inside trigger callbacks. For example, `binary_sensor.on_state` provides variable `x` with **`cppType: 'bool'`**.
+The trigger registry (`packages/core/src/trigger-registry.ts`) is a hand-maintained map from ESPHome component domains and trigger names to the variables available inside trigger callbacks. For example, `binary_sensor.on_state` provides variable `x` with **`cppType: 'bool'`**.
 
 These `cppType` values are C++ type annotations that describe ESPHome's actual lambda parameter types — they come from ESPHome's C++ source code and are used by the backend when generating trigger lambda signatures. This is separate from the Expression IR system; these types describe the ESPHome runtime API, not user expressions.
 
@@ -256,7 +256,7 @@ The simulator is an alternative backend that produces a browser-based LVGL previ
 
 ## Target Interface
 
-The compiler communicates with backends through the `ComposeTarget` interface defined in `packages/sdk/src/target.ts`. The compiler has no knowledge of what any target does — it simply passes the `SemanticIR` and path information.
+The compiler communicates with backends through the `ComposeTarget` interface defined in `packages/core/src/target.ts`. The compiler has no knowledge of what any target does — it simply passes the `SemanticIR` and path information.
 
 ```typescript
 interface ComposeTarget {
@@ -350,7 +350,7 @@ sequenceDiagram
 |---------|------|
 | CLI commands | `packages/cli/src/cli.ts` |
 | Compiler pipeline | `packages/cli/src/compiler/compiler.ts` |
-| Target interface | `packages/sdk/src/target.ts` |
+| Target interface | `packages/core/src/target.ts` |
 | ESPHome target | `packages/target-esphome/src/target.ts` |
 | Simulator target | `packages/target-simulator/src/target.ts` |
 | Reactive transformer | `packages/cli/src/compiler/transform/reactive-transformer.ts` |
@@ -358,14 +358,14 @@ sequenceDiagram
 | Expression compiler | `packages/cli/src/compiler/transform/expr-compiler.ts` |
 | Action compiler | `packages/cli/src/compiler/transform/action-compiler.ts` |
 | Library pre-compilation | `packages/cli/src/transform-lib.ts` |
-| SDK render / runtime | `packages/sdk/src/runtime.ts` |
-| ReactiveNode class | `packages/sdk/src/reactive-node.ts` |
-| ExprNode types | `packages/sdk/src/ir/expr-types.ts` |
-| Semantic IR types | `packages/sdk/src/ir/types.ts` |
-| IR builder | `packages/sdk/src/ir/build.ts` |
-| Hooks (useHAEntity, useMemo, useEffect) | `packages/sdk/src/hooks/` |
-| Theme signals | `packages/sdk/src/theme-signals.ts` |
-| Trigger registry | `packages/sdk/src/trigger-registry.ts` |
+| SDK render / runtime | `packages/core/src/runtime.ts` |
+| ReactiveNode class | `packages/core/src/reactive-node.ts` |
+| ExprNode types | `packages/core/src/ir/expr-types.ts` |
+| Semantic IR types | `packages/core/src/ir/types.ts` |
+| IR builder | `packages/core/src/ir/build.ts` |
+| Hooks (useHAEntity, useMemo, useEffect) | `packages/core/src/hooks/` |
+| Theme signals | `packages/core/src/theme-signals.ts` |
+| Trigger registry | `packages/core/src/trigger-registry.ts` |
 | YAML lowering | `packages/target-esphome/src/lower-yaml.ts` |
 | C++ codegen | `packages/target-esphome/src/codegen-cpp.ts` |
 | ExprNode → C++ | `packages/target-esphome/src/expr-to-cpp.ts` |

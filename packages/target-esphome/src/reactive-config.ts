@@ -13,8 +13,8 @@ import type { SignalDecl, MemoDecl, EffectDecl, WidgetBindingDecl, ThemeMemoDecl
 import { Scalar } from 'yaml';
 import { exprToCpp, exprTypeToCpp } from './expr-to-cpp.js';
 import type { CppLoweringContext } from './expr-to-cpp.js';
-import type { ExprNode } from '@esphome/compose';
-import type { ExprType } from '@esphome/compose/internals';
+import type { ExprNode } from '@espcompose/core';
+import type { ExprType } from '@espcompose/core/internals';
 
 // ────────────────────────────────────────────────────────────────────────────
 // Sensor type → C++ type mapping

@@ -6,8 +6,8 @@
  * All visual props are reactive — they update when the theme changes.
  */
 
-import type { EspComposeElement, TriggerHandler, BindProp } from '@esphome/compose';
-import { createIntentComponent, LVGL_INTENTS, useMemo } from '@esphome/compose';
+import type { EspComposeElement, TriggerHandler, BindProp } from '@espcompose/core';
+import { createIntentComponent, LVGL_INTENTS, useMemo } from '@espcompose/core';
 import { resolveSize, resolveTypography, resolveFont, resolveStatus } from '../theme/resolvers';
 import type { StatusToken, SizeToken } from '../theme/types';
 

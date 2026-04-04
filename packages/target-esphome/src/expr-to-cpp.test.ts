@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { exprToCpp, type CppLoweringContext } from './expr-to-cpp';
-import type { ExprNode } from '@esphome/compose';
+import type { ExprNode } from '@espcompose/core';
 
 function emptyCtx(): CppLoweringContext {
   return {

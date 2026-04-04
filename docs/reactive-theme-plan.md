@@ -100,8 +100,8 @@ ReactiveNodes through render functions.
 ### Current API
 
 ```tsx
-import { ThemeProvider, darkTheme, lightTheme, Screen, Button, Text } from '@esphome/compose-ui';
-import { useReactiveTheme, theme } from '@esphome/compose';
+import { ThemeProvider, darkTheme, lightTheme, Screen, Button, Text } from '@espcompose/compose-ui';
+import { useReactiveTheme, theme } from '@espcompose/core';
 
 function App() {
   return (

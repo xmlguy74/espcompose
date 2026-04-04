@@ -16,8 +16,8 @@
 // The existing hooks/render are kept for standalone use (testing, REPL).
 // ────────────────────────────────────────────────────────────────────────────
 
-import type { ExprNode } from '@esphome/compose';
-import type { SemanticIR, IRValue, IRObject, IRReactive, IRRef, IRAction, IRSecret, IRTriggerVar, ActionNode } from '@esphome/compose/internals';
+import type { ExprNode } from '@espcompose/core';
+import type { SemanticIR, IRValue, IRObject, IRReactive, IRRef, IRAction, IRSecret, IRTriggerVar, ActionNode } from '@espcompose/core/internals';
 import type { RuntimeNode, RuntimeProp, RuntimeDependency, ActionStep } from '../types';
 import { Signal, Scheduler } from '../runtime/signals';
 import type { MockProvider } from '../providers/mock-provider';

@@ -10,7 +10,7 @@ import type {
   IRActionConfig,
   IRActionParam,
   IRCondition,
-} from '@esphome/compose/internals';
+} from '@espcompose/core/internals';
 import { exprToCpp, type CppLoweringContext } from './expr-to-cpp.js';
 
 // ── JSON-safe lambda marker ─────────────────────────────────────────────

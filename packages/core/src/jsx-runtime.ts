@@ -1,8 +1,8 @@
 // ────────────────────────────────────────────────────────────────────────────
-// JSX automatic runtime for @esphome/compose
+// JSX automatic runtime for @espcompose/core
 //
 // Auto-imported by TypeScript/esbuild when using:
-//   "jsx": "react-jsx" + "jsxImportSource": "@esphome/compose"
+//   "jsx": "react-jsx" + "jsxImportSource": "@espcompose/core"
 //
 // The automatic transform calls jsx(type, props) where children are already
 // inside props.children — unlike the classic transform which passes children

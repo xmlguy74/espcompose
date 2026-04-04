@@ -8,7 +8,7 @@
 // arrow functions.
 //
 // Usage:
-//   import { delay, waitUntil, logger } from '@esphome/compose';
+//   import { delay, waitUntil, logger } from '@espcompose/core';
 //
 //   onPress={async () => {
 //     logger.log('Hello!');

@@ -8,7 +8,7 @@
 // Later phases add IR transforms between buildIR and lowerIR.
 // ────────────────────────────────────────────────────────────────────────────
 
-import { LambdaMarker, QuotedMarker } from '@esphome/compose/internals';
+import { LambdaMarker, QuotedMarker } from '@espcompose/core/internals';
 import type { IRRoot, IRValue, IRObject, IRArray } from './types.js';
 
 /**

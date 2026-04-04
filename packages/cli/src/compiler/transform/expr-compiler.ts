@@ -12,8 +12,8 @@
  */
 
 import ts from 'typescript';
-import type { ExprNode } from '@esphome/compose';
-import type { ExprType, BuiltinFn, BinaryOp, UnaryOp, PostfixOp, StringMethod } from '@esphome/compose/internals';
+import type { ExprNode } from '@espcompose/core';
+import type { ExprType, BuiltinFn, BinaryOp, UnaryOp, PostfixOp, StringMethod } from '@espcompose/core/internals';
 
 // ────────────────────────────────────────────────────────────────────────────
 // Context types

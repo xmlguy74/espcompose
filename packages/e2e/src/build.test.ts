@@ -1,8 +1,8 @@
 import { describe, it, expect } from 'vitest';
 import path from 'path';
 import fs from 'fs';
-import { build } from '@esphome/compose-cli';
-import { createEsphomeTarget } from '@esphome/compose-target-esphome';
+import { build } from '@espcompose/compose-cli';
+import { createEsphomeTarget } from '@espcompose/compose-target-esphome';
 import { createProjectTest } from './helpers';
 
 const projectsDir = path.resolve(__dirname, '..', 'projects');
@@ -95,7 +95,7 @@ describe('ESPHome Compose Build', () => {
       path.join(fakeLibDir, 'index.js'),
       [
         '"use strict";',
-        'const { useHAEntity, useMemo } = require("@esphome/compose");',
+        'const { useHAEntity, useMemo } = require("@espcompose/core");',
         'function BadWidget() {',
         '  const light = useHAEntity("light.fake_test");',
         '  useMemo(() => light.isOn ? "On" : "Off");',
@@ -132,8 +132,8 @@ describe('ESPHome Compose Build', () => {
         '"use strict";',
         'const __espcompose_format__ = 2;',
         'exports.__espcompose_format__ = __espcompose_format__;',
-        'const { __espcompose, useHAEntity } = require("@esphome/compose");',
-        'const { jsx } = require("@esphome/compose/jsx-runtime");',
+        'const { __espcompose, useHAEntity } = require("@espcompose/core");',
+        'const { jsx } = require("@espcompose/core/jsx-runtime");',
         'function StatusSensor() {',
         '  const light = useHAEntity("light.office");',
         '  const text = __espcompose.compiled({',

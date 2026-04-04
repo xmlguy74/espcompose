@@ -6,7 +6,7 @@
 // functions.
 // ────────────────────────────────────────────────────────────────────────────
 
-import type { SemanticIR } from '@esphome/compose/internals';
+import type { SemanticIR } from '@espcompose/core/internals';
 import { buildRuntimeConfig } from './reactive-config.js';
 import { generateBindingsHeader, getRuntimeHeaderContent } from './bindings-codegen.js';
 import type { ReactiveRuntimeConfig } from './bindings-codegen.js';

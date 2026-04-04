@@ -10,8 +10,8 @@
 // ────────────────────────────────────────────────────────────────────────────
 
 import { Scalar } from 'yaml';
-import type { SemanticIR, IRValue, IRObject, IRArray, IRAction, IRSecret, IRTriggerVar } from '@esphome/compose/internals';
-import { getTriggerSignature } from '@esphome/compose/internals';
+import type { SemanticIR, IRValue, IRObject, IRArray, IRAction, IRSecret, IRTriggerVar } from '@espcompose/core/internals';
+import { getTriggerSignature } from '@espcompose/core/internals';
 import { injectHASensorImports } from './reactive-injector.js';
 import { injectReactiveBindingsRuntime } from './reactive-config.js';
 import type { CppLoweringContext } from './expr-to-cpp.js';
